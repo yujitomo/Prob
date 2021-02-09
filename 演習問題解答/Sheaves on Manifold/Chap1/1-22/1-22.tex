@@ -1,0 +1,46 @@
+\ifcsname Chap\endcsname\else
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+\newcommand{\StylePath}{\ifcsname AllKS\endcsname KS-Style/KS-Style.sty\else
+\ifcsname Chap\endcsname ../KS-Style/KS-Style.sty\else
+../../KS-Style/KS-Style.sty\fi\fi}
+\input{\StylePath}
+
+\KSset{1}{22}
+\setcounter{section}{\value{KSS}-1}
+\begin{document}
+\maketitle\HeaderCommentA
+\section{\KSsection{section}}
+\setcounter{prob}{\value{KSP}-1}
+\fi
+
+
+\begin{prob}\label{1.22}
+  \(\mcC,\mcD,\mcE\)をそれぞれアーベル圏として、
+  \(F:\mcC\to \mcD, G:\mcD\to \mcE\)を左完全函手とする。
+  \(F\)-injectiveな\(\mcI\subset \mcC\)と
+  \(G\)-injectiveな\(\mcJ\subset \mcD\)が存在して、
+  \(F(\mcI)\subset \mcJ\)となると仮定する
+  (本文\cite[Proposition 1.8.7]{kashiwara2002sheaves}の状況設定)。
+  \(X\in \sfD^+(\mcC)\)は\(R^jF(X) = 0, (\forall j<n)\)を満たすと仮定する。
+  \(R^n(G\circ F)(X) \cong (G\circ R^nF)(X)\)を示せ。
+\end{prob}
+
+\begin{proof}
+  本文\cite[Remark 1.8.6]{kashiwara2002sheaves}を\(RF(X)\)と\(G\)に対して適用することで、
+  任意の\(j<n\)に対して\(R^jG(RF(X)) = 0\)であり、さらに
+  \(R^nG(RF(X)) \cong G(H^n(RF(X))) = G(R^nF(X))\)である。
+  また、本文\cite[Proposition 1.8.7]{kashiwara2002sheaves}より
+  \(R(G\circ F)(X) \cong RG(RF(X))\)であるので、
+  \(n\)番目のコホモロジーをとれば
+  \(R^n(G\circ F)(X) \cong R^nG(RF(X))\)が従う。
+  よって\(R^n(G\circ F)(X) \cong R^nG(RF(X))\cong G(R^nF(X))\)となり、
+  以上で\autoref{1.22}の解答を完了する。
+\end{proof}
+
+
+
+
+\ifcsname Chap\endcsname\else
+\printbibliography
+\end{document}
+\fi

@@ -1,0 +1,358 @@
+\ifcsname Chap\endcsname\else
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+\newcommand{\StylePath}{\ifcsname AllKS\endcsname KS-Style/KS-Style.sty\else
+\ifcsname Chap\endcsname ../KS-Style/KS-Style.sty\else
+../../KS-Style/KS-Style.sty\fi\fi}
+\input{\StylePath}
+
+\KSset{2}{8}
+
+\setcounter{section}{\value{KSS}-1}
+\begin{document}
+\maketitle
+\HeaderCommentA
+\section{\KSsection{section}}
+\setcounter{prob}{\value{KSP}-1}
+
+本文では、局所コンパクト空間であるという場合には、
+ハウスドルフ性を常に仮定していることに注意しておく
+(cf. 本文\cite[Proposition 2.5.1]{kashiwara2002sheaves}直前の記述)。
+\fi
+
+
+\begin{prob}\label{2.8}
+  \(X\)を局所コンパクトハウスドルフ空間として、
+  可算個のコンパクト部分集合の和集合であるとする。
+  \(X\)上の層\(F\)が\textbf{しなやか} (supple) であるとは、
+  任意の開集合\(U\subset X\)と
+  \(U\)の二つの閉部分集合\(Z_1,Z_2\subset U\)に対して
+  \(\Gamma_{Z_1}(U,F) \oplus \Gamma_{Z_2}(U,F) \to \Gamma_{Z_1\cup Z_2}(U,F)\)
+  が全射であることを言う。
+  \begin{enumerate}
+    \item \label{2.8.1}
+    脆弱層はしなやかであることを示せ。
+    \item \label{2.8.2}
+    層\(F\)がしなやかであれば、任意の閉部分集合\(Z\subset X\)に対して
+    層\(\Gamma_Z(F)\)は \(c\)-soft であることを示せ。
+    \item \label{2.8.3}
+    \(F\)を\(X\)上の層とする。
+    \(X\)のある開被覆\(X=\bigcup_{i\in I}U_i\)が存在して、
+    任意の\(i\)で\(F|_{U_i}\)が\(U_i\)上のしなやかな層であるとするとき、
+    \(F\)もしなやかであることを示せ。
+  \end{enumerate}
+\end{prob}
+
+\begin{proof}
+  \ref{2.8.1}を示す。
+  \(F\)を\(X\)上の脆弱層とする。
+  開集合\(U\)と閉集合\(Z_1,Z_2\subset U\)を任意にとる。
+  \(V_i\dfn U\setminus Z_i, (i=1,2)\)とすると、
+  \(V_1,V_2\subset X\)は開である。
+  \(F\)は脆弱であるから、
+  可換図式
+  \[
+  \begin{CD}
+    0 @>>> \Gamma_{Z_1\cap Z_2}(U,F) @>>>
+    \Gamma_{Z_1}(U,F) \oplus \Gamma_{Z_2}(U,F) @>>> \Gamma_{Z_1\cup Z_2}(U,F) @. \\
+    @. @VVV @VVV @VVV @. \\
+    0 @>>> F(U) @>>> F(U) \oplus F(U) @>>> F(U) @>>> 0 \\
+    @. @VVV @VVV @VVV @. \\
+    0 @>>> F(V_1\cup V_2) @>>> F(V_1)\oplus F(V_2) @>>> F(V_1\cap V_2) @.
+  \end{CD}
+  \]
+  において真ん中から下への縦向きの射はいずれも全射であり、
+  さらに一番下の行は層であることの定義より完全である。
+  蛇の補題を用いることで、
+  \(\Gamma_{Z_1}(U,F) \oplus \Gamma_{Z_2}(U,F) \to \Gamma_{Z_1\cup Z_2}(U,F)\)
+  が全射であることが従う。
+  以上で\ref{2.8.1}の証明を完了する。
+
+  \ref{2.8.2}を示す。
+  \(F\)を\(X\)上のしなやかな層とする。
+  まず、任意の閉部分集合\(Z\)に対して
+  \(\Gamma_Z(F)\)が\(X\)上のしなやかな層であることを示す。
+  \(U\subset X\)を開集合、
+  \(Z'\subset U\)を\(U\)の閉部分集合とする。
+  \(F\)の\(U\)上のsectionであって\(Z\)に台を持ち、
+  さらに\(Z'\)にも台を持つものは\(Z\cap Z'\)に台を持つので、
+  \[
+  \Gamma_{Z'}(U,\Gamma_Z(F)) = \Gamma_{Z'\cap Z}(U,F)
+  \]
+  が成り立つ。
+  二つの閉部分集合\(Z_1,Z_2\subset U\)に対して、
+  \(Z'_1\dfn Z_1\cap Z, Z'_2\dfn Z_2\cap Z\)とおけば、
+  \(F\)がしなやかであることから、
+  \[
+  \Gamma_{Z'_1}(U,F)\oplus \Gamma_{Z'_2}(U,F) \to \Gamma_{Z'_1\cup Z'_2}(U,F)
+  \]
+  は全射である。
+  \(Z'_1\cup Z'_2 = (Z_1\cup Z_2)\cap Z\)であるので、従って
+  \[
+  \Gamma_{Z_1}(U,\Gamma_Z(F))\oplus \Gamma_{Z_2}(U,\Gamma_Z(F)) \to
+  \Gamma_{Z_1\cup Z_2}(U,\Gamma_Z(F))
+  \]
+  も全射である。
+  これは\(\Gamma_Z(F)\)がしなやかであることを意味する。
+  以上より、\ref{2.8.2}を示すためには、
+  任意のしなやかな層が\(c\)-softであることを示すことが十分である。
+
+  \(F\)を\(X\)上のしなやかな層として、
+  \(K\subset X\)をコンパクト部分集合とする。
+  \(t\in F(K)\)を一つとる。
+  本文\cite[Proposition 2.5.1 (ii)]{kashiwara2002sheaves}より、
+  ある開集合\(K\subset U\subset X\)と\(t_U\in F(U)\)が存在して、
+  \(t_U|_K = t\)が成り立つ。
+  \(K\subset V, \bar{V}\subset U\)となる開集合\(V\subset X\)を一つとる。
+  \(Z\dfn \Supp(t_U)\setminus V\)とおくと、
+  \(t_U\in \Gamma_{Z\cup \bar{V}}(U,F)\)である。
+  \(F\)はしなやかであり、\(\bar{V},Z\subset U\)は閉集合であるから、
+  ある\(u\in \Gamma_Z(U,F), v\in \Gamma_{\bar{V}}(U,F)\)が存在して
+  \(t_U = u+v\)が成り立つ。
+  \(Z\cap K \subset Z\cap V = \emptyset\)であるから、
+  \(u|_K = 0\)である。
+  従って\(t = t_U|_K = v|_K\)が成り立つ。
+  \(\bar{V}\subset U\)であるから、
+  \(\Gamma_{\bar{V}}(X,F) \xrightarrow{\sim} \Gamma_{\bar{V}}(U,F)\)
+  は同型射である。
+  従って\(v\in \Gamma_{\bar{V}}(X,F)\subset F(X)\)とみなすことができる。
+  よって\(v|_K = t\)となる大域切断\(v\in F(X)\)が存在することが従い、
+  \(F\)は\(c\)-softであることが従う。
+  以上で\ref{2.8.2}の証明を完了する。
+
+  \ref{2.8.3}を示す。
+  まず以下の主張を証明する：
+  \begin{enumerate}[label=(\fnsymbol*),start=2]
+    \item \label{2.8.3.p1}
+    \(X\)を位相空間、
+    \(Z\subset X\)を閉部分集合、
+    \(U\subset X\)を開集合、
+    \(F\)を\(X\)上の層として、\(F|_U\)がしなやかであると仮定する。
+    開集合\(V\)と閉集合\(C\)が\(V\subset C\subset U\)を満たしているとする。
+    このとき、任意の切断\(t\in \Gamma_Z(X,F)\)に対し、
+    ある\(u\in \Gamma_{Z\cap C}(X,F)\)と
+    \(v\in \Gamma_{Z\setminus V}(X,F)\)が存在して
+    \(t=u+v\)が成り立つ。
+  \end{enumerate}
+  \(t|_U\in \Gamma_{Z\cap U}(U,F)\)について考える。
+  \(F|_U\)はしなやかであり、
+  \(Z\cap U = (Z\cap U\cap C) \cup ((Z\cap U)\setminus V)
+  = (Z\cap C) \cup ((Z\cap U)\setminus V)\)であるから、
+  ある\(u_1\in \Gamma_{Z\cap C}(U,F)\)と
+  \(v_1\in \Gamma_{(Z\cap U)\setminus V}(U,F)\)が存在して
+  \(t|_U = u_1+v_1\)が成り立つ。
+  \(Z\cap C\)は\(X\)の閉部分集合であるような\(U\)の部分集合であり、
+  \(u_1|_{U\setminus (Z\cap C)} = 0\)であるから、
+  \(X\setminus (Z\cap C)\)上の関数\(0\)と\(u_1\)が貼り合い、
+  \(u|_U = u_1, \Supp(u) \subset Z\cap C\)
+  となる大域切断\(u\in \Gamma_{Z\cap C}(X,F)\)が一意的に定義される。
+  \(v \dfn t-u\)とおけば、
+  \(u_1+v_1 = t|_U = u|_U + v|_U = u_1 + v|_U\)
+  であるから\(v_1 = v|_U\)が成り立ち、
+  従って\(\Supp(v|_U)\subset (Z\cap U)\setminus V\)である。
+  一方、\(\Supp(u)\subset Z\cap C\)であるから、
+  \(v|_{X\setminus(Z\cap C)} = t|_{X\setminus (Z\cap C)}\)であり、従って
+  \(\Supp(v|_{X\setminus(Z\cap C)}) \subset Z\cap (X\setminus (Z\cap C)) = Z\setminus C\)
+  が成り立つ。
+  以上より
+  \[
+  \Supp(v)\subset (Z\setminus C)\cup ((Z\cap U)\setminus V) = Z\setminus V
+  \]
+  が成り立ち、\(v\in \Gamma_{Z\setminus V}(X,F)\)が成り立つ。
+  以上で\ref{2.8.3.p1}の証明を完了する。
+
+  次に以下の主張を証明する：
+  \begin{enumerate}[label=(\fnsymbol*),start=3]
+    \item \label{2.8.3.p2}
+    \(X\)を位相空間、
+    \(F\)を\(X\)上の層として、
+    \(t_i\in \Gamma(X,F), (i\in I)\)を大域切断の族とする。
+    閉集合族\((\Supp(t_i))_{i\in I}\)が局所有限であるとき、
+    ある大域切断\(t\in \Gamma(X,F)\)が存在して、
+    任意の\(x\in X\)で\(t_x = \sum_{i\in I}t_{i,x}\)が成り立つ
+    (各\(x\in X\)に対して
+    stalk \(t_{i,x}\)は有限個の\(i\in I\)を除き\(0\)なので、
+    右辺が well-defined であることに注意)。
+  \end{enumerate}
+  各\(x\in X\)に対して
+  \(U(x) \cap \Supp(t_i) \neq \emptyset\)となる\(i\in I\)が有限個
+  となる開近傍\(x\in U(x)\)を一つずつ選び、
+  \(I(x) \dfn \left\{i\in I\middle| U(x)\cap \Supp(t_i) \neq \emptyset\right\}\)
+  定める。
+  定義より\(I(x)\)は有限集合である。
+  \(t(x)\dfn (\sum_{i\in I(x)}t_i)|_{U(x)}\)と定義する
+  (\(I(x)\)が有限集合であることに注意)。
+  このとき、\(x,y\in X\)に対して
+  \(t(x)|_{U(x)\cap U(y)} = t(y)|_{U(x)\cap U(y)}\)
+  が成り立つ
+  (各stalkごとに、\(U(x)\cap U(y)\)上で\(0\)でない\(t_i\)たちの和と等しい)。
+  \(F\)が層であることから、
+  ある\(t\in \Gamma(X,F)\)が存在して
+  任意の\(x\in X\)に対して\(t|_{U(x)} = t(x)\)が成り立つ。
+  \(t(x)\)の定義より、この大域切断\(t\)が所望の大域切断である。
+  以上で\ref{2.8.3.p2}の証明を完了する。
+
+  本題に入る。
+  \((U_i)_{i\in I}\)を\(X\)の開被覆として、\(F\)を\(X\)上の層とする。
+  \(F|_{U_i}\)が\(U_i\)上のしなやかな層であるとする。
+  各\(i\in I\)に対して、\(F|_{U_i\cap U}\)は\(U_i\cap U\)上のしなやかな層であるから、
+  \ref{2.8.3}を示すためには、
+  任意の閉集合\(Z_1,Z_2\subset X\)に対して
+  \(\Gamma_{Z_1}(X,F) \oplus \Gamma_{Z_2}(X,F)\to \Gamma_{Z_1\cup Z_2}(X,F)\)
+  が全射であることを証明することが十分である。
+  \(X\)は局所コンパクトであり可算個のコンパクト部分集合の和であるから、
+  パラコンパクトである (cf. 本文\cite[Proposition 2.5.1]{kashiwara2002sheaves}の段落)。
+  従って、局所有限な開被覆による\((U_i)_{i\in I}\)の細分をとることによって、
+  \ref{2.8.3}を示すためには、
+  \((U_i)_{i\in I}\)が局所有限であると仮定しても一般性を失わない。
+  開集合\(V_i\subset U_i\)を\(\bar{V}_i\subset U_i\)となるようにとると、
+  閉被覆\((\bar{V}_i)_{i\in I}\)も局所有限である。
+  \(I\)に整列順序を入れて順序数とみなしたものを\(\alpha\)とおき (整列可能定理)、
+  各\(\beta<\alpha\)に対して対応するものを\(U_{\beta},V_{\beta}\)などと表す。
+  各\(\beta<\alpha\)に対して
+  \[
+  U_{<\beta} \dfn \bigcup_{\gamma<\beta}U_{\gamma}, \ \
+  U_{\leq\beta} \dfn U_{<\beta+1}, \ \
+  V_{<\beta} \dfn \bigcup_{\gamma<\beta}V_{\gamma}, \ \
+  V_{\leq\beta} \dfn V_{<\beta+1},
+  \]
+  とおく
+  (ただし\(U_{<0}=V_{<0}=\emptyset\)と定義する)。
+  このとき、任意の\(\beta<\alpha\)に対して
+  \(\bar{V}_{<\beta} = \bigcup_{\gamma<\beta}\bar{V}_{\gamma}\)が成り立ち、
+  また\(V_{<\alpha} = U_{<\alpha} = X\)が成り立つ。
+
+  \(t\in \Gamma_{Z_1\cup Z_2}(X,F)\)を任意にとる。
+  各\(\beta \leq \alpha\)に対して、
+  大域切断
+  \(t_{i,<\beta}\in \Gamma_{Z_i\cap \bar{V}_{<\beta}}(X,F),(i=1,2)\)
+  であって
+  \begin{equation}
+    \label{eq 2.8.3}
+    t|_{V_{<\beta}}=(t_{1,<\beta}+t_{2,<\beta})|_{V_{<\beta}}
+    \tag{\(\bigstar\)}
+  \end{equation}
+  が成り立つものが存在することを示す。
+  そのためには、超限帰納法により、\(\beta \leq \alpha\)を任意にとり、
+  任意の\(\gamma<\beta\)に対して
+  に対して等式\eqref{eq 2.8.3}を満たす
+  \(Z_i\cap \bar{V}_{<\gamma}\)に台を持つ大域切断\(t_{i,<\gamma}\)が存在すると仮定して、
+  \(\beta\)に対して等式\eqref{eq 2.8.3}を満たす
+  \(Z_i\cap \bar{V}_{<\gamma}\)に台を持つ大域切断\(t_{i,<\gamma}\)が存在する
+  ことを示すことが十分である。
+  \(\beta = 0\)に対しては\(t_{1,<0} = t_{2,<0} = 0\)と定義すれば
+  \eqref{eq 2.8.3}が成り立つ。
+  (そうでなくても、\(V_{<0}=\emptyset\)なのでなんでも良い)。
+  \(\beta \leq \alpha\)を任意にとる。
+  任意の\(\gamma<\beta\)に対して
+  に対して等式\eqref{eq 2.8.3}を満たす
+  \(Z_i\cap \bar{V}_{<\gamma}\)に台を持つ大域切断\(t_{i,<\gamma}\)が存在すると仮定する。
+  \(u_{\gamma} = t-(t_{1,<\gamma}+t_{2,<\gamma})\)とおく。
+  \(u_{\gamma}|_{V_{<\gamma}} = 0\)であり、
+  \(t\)は\(Z_1\cup Z_2\)に台を持ち、
+  \(t_{i,<\gamma}\)は\(Z_i\cap \bar{V}_{<\gamma}\)に台を持つので、
+  \(u_{\gamma}\)は\((Z_1\cup Z_2)\setminus V_{<\gamma}\)に台を持つ。
+  \(\beta\)が極限順序数である場合は、
+  各\(t_{i,<\gamma+1}-t_{i,<\gamma}\)は
+  \(\bar{V}_{\gamma+1}\setminus V_{<\gamma}\)に台を持ち、
+  閉集合族\((\bar{V}_{\gamma+1}\setminus V_{<\gamma})_{\gamma<\beta}\)は局所有限であるから、
+  \ref{2.8.3.p2}を用いて
+  \(t_{i,<\beta} \dfn \sum_{\gamma<\beta}(t_{i,<\gamma+1}-t_{i,<\gamma})\)
+  と定義することで所望の大域切断を得る。
+  \(\beta\)が\(\beta^-\)の後続順序数である場合に
+  所望の大域切断\(t_{i,<\beta}\)の存在を示すことが残っている。
+  \ref{2.8.3.p1}を
+  \(U=U_{\beta^-}, Z=(Z_1\cup Z_2)\setminus V_{<\beta^-},
+  C=\bar{V}_{\beta^-}, V=V_{\beta^-}\)
+  に対して適用することにより、
+  \((Z_1\cup Z_2)\setminus V_{<\beta}\)に台を持つ大域切断\(u'_{\beta}\)と
+  \((Z_1\cup Z_2)\cap \bar{V}_{\beta^-}\)に台を持つ大域切断\(t_{\beta^-}\)が存在して、
+  \(u_{\beta^-} = u'_{\beta} + t_{\beta^-}\)
+  が成り立つ。
+  \(F|_{U_{\beta^-}}\)はしなやかであるから、\(i=1,2\)に対して
+  \(Z_i\cap \bar{V}_{\beta^-}\)に台を持つ\(U_{\beta^-}\)上の大域切断\(t_{i,\beta^-}\)が存在して
+  \(t_{\beta}|_{U_{\beta^-}} = (t_{1,\beta^-}+t_{2,\beta^-})|_{U_{\beta^-}}\)が成り立つ。
+  \(Z_i\cap \bar{V}_{\beta^-}, (i=1,2)\)は\(X\)の閉部分集合であるから、
+  \(t_{i,\beta^-}\)は\(U_{\beta^-}\)の外で\(0\)とすることで大域切断に延長できる。
+  よって、\(i=1,2\)に対して
+  \(Z_i\cap \bar{V}_{\beta^-}\)に台を持つ大域切断\(t_{i,\beta^-}\)が存在して
+  \(t_{\beta^-}=t_{1,\beta^-}+t_{2,\beta^-}\)が成り立つ。
+  \(t_{i,<\beta}\dfn t_{i,<\beta^-} + t_{i,\beta^-}, (i=1,2)\)と定義すると、
+  大域切断\(t_{i,<\beta}\)は\(Z_i\cap \bar{V}_{<\beta}\)に台を持ち、さらに
+  \begin{align*}
+    t|_{V_{<\beta}}
+    &= (t_{1,<\beta^-}+t_{2,<\beta^-} + u_{\beta^-})|_{V_{<\beta}} \\
+    &= (t_{1,<\beta^-}+t_{2,<\beta^-} + u'_{\beta} + t_{\beta^-})|_{V_{<\beta}} \\
+    &= (t_{1,<\beta^-}+t_{2,<\beta^-} + u'_{\beta}
+    + t_{1,\beta^-}+t_{2,\beta^-})|_{V_{<\beta}} \\
+    &= (t_{1,<\beta}+t_{2,<\beta} + u'_{\beta})|_{V_{<\beta}} \\
+    &= (t_{1,<\beta}+t_{2,<\beta})|_{V_{<\beta}} + u'_{\beta}|_{V_{<\beta}} \\
+    &= (t_{1,<\beta}+t_{2,<\beta})|_{V_{<\beta}}
+  \end{align*}
+  が成り立つ。
+  以上より、各\(\beta\leq \alpha\)に対して、
+  \(Z_i\cap \bar{V}_{<\beta}\)に台を持つ大域切断
+  \(t_{i,<\beta}\)であって
+  \(t|_{V_{<\beta}} = (t_{1,<\beta}+t_{2,<\beta})|_{V_{<\beta}}\)
+  を満たすものが存在することが示された。
+  \(\beta=\alpha\)とすることで\ref{2.8.3}の証明が完了する。
+  以上で\autoref{2.8}の解答を完了する。
+\end{proof}
+
+
+\begin{kansou*}
+  \ref{2.8.3}を上手に示す方法を知っている (もしくは、上手に証明できた) 人は教えてください
+  (上の証明はゴリ押し感が強いので)。
+  本文で参照されている Bengal-Schapira はフランス語だったし
+  どこにそれっぽい主張が書いてあるのかあんまりよくわからなかったので
+  あんまり参考にしてません。
+  \ref{2.8.3}より\ref{2.8.2}の方が難しくて苦労しました。
+  慣れてなかっただけかもしれません。
+\end{kansou*}
+
+
+\begin{rem*}
+  \(X\)がパラコンパクトであり\(F\)が\(X\)上のしなやかな層であるとすると、
+  \ref{2.8.2}と同様の証明により、
+  任意の閉部分集合\(Z\)に対して\(\Gamma_Z(F)\)はsoftであることを示すことができる。
+\end{rem*}
+
+
+\begin{rem*}
+  \(X\)をハウスドルフとして、\(F\)を\(X\)上のしなやかな層であるとする。
+  \(K\subset X\)を閉部分集合として、
+  \(K\)がコンパクトであるか、または\(X\)がパラコンパクトであるとする。
+  このとき、\(F|_K\)は\(K\)上のしなやかな層である。
+  これを示す。
+  明らかに\(F\)の開部分集合への制限はその開部分集合上しなやかな層となる。
+  \(K\)の開部分集合は\(X\)の開集合\(W\subset X\)により
+  \(K\cap W\)と表すことができる。
+  \(Z_1,Z_2\subset K\cap W\)を閉集合とする。
+  このとき\(Z_1,Z_2\)は\(W\)の閉集合である。
+  \(K\cap W\subset W' \subset W\)となる開集合\(W'\subset X\)の族を
+  包含関係の逆順に関して有向集合とみなしてそれを\(I\)とし、
+  \(i\in I\)に対して対応する開集合を\(W_i\)と表す。
+  各\(i\in I\)に対して
+  \(F|_{W_i}\)は\(W_i\)上のしなやかな層であるから、
+  \[
+  \Gamma_{Z_1}(W_i,F|_{W_i}) \oplus \Gamma_{Z_2}(W_i,F|_{W_i})
+  \to \Gamma_{Z_1\cup Z_2}(W_i,F|_{W_i})
+  \]
+  は全射である。
+  \(i\in I\)に渡って余極限をとると、
+  本文\cite[Proposition 2.5.1]{kashiwara2002sheaves}より、
+  \[
+  \Gamma_{Z_1}(K\cap W,F|_{K\cap W}) \oplus \Gamma_{Z_2}(K\cap W,F|_{K\cap W})
+  \to \Gamma_{Z_1\cup Z_2}(K\cap W,F|_{K\cap W})
+  \]
+  が全射であることが従う。
+  これは\(F|_K\)がしなやかであることを意味する。
+\end{rem*}
+
+
+
+
+
+\ifcsname Chap\endcsname\else
+\printbibliography
+\end{document}
+\fi

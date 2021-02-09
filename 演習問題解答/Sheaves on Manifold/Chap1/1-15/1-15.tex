@@ -1,0 +1,133 @@
+\ifcsname Chap\endcsname\else
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+\newcommand{\StylePath}{\ifcsname AllKS\endcsname KS-Style/KS-Style.sty\else
+\ifcsname Chap\endcsname ../KS-Style/KS-Style.sty\else
+../../KS-Style/KS-Style.sty\fi\fi}
+\input{\StylePath}
+
+\KSset{1}{15}
+\setcounter{section}{\value{KSS}-1}
+\begin{document}
+\maketitle
+\HeaderCommentA
+\section{\KSsection{section}}
+\setcounter{prob}{\value{KSP}-1}
+\fi
+
+
+
+\begin{prob}\label{1.15}
+  \(\mcC\)を圏とする。
+  \(c\in \mcC\)に対して、
+  \(h_c^{\mcC} \dfn \Hom_{\mcC}(-,c)\)を
+  米田埋め込み\(\mcC\to \sfSet^{\mcC^{\op}}\)による
+  \(c\in \mcC\)の像とする
+  (\(\mcC\)が明らかな場合は上付き添字の\(\mcC\)を省略してたんに\(h_c\)と表す)。
+  \(\Ind(\mcC)\)を\(\sfSet^{\mcC^{\op}}\)の充満部分圏であって、
+  ある filtered diagram \(F:\mcI\to \mcC\)に対する
+  \(\colim_{i\in \mcI} h_{F(i)}\)と同型な対象たちからなるものとする。
+
+  \(\mcC\)をさらにアーベル圏であるとして、
+  \(S_X\)を over category \(\mcC_{X/}\)の充満部分圏であって、
+  擬同型\(X\to X'\)たちからなるものとする。
+  \begin{enumerate}
+    \item \label{1.15.1}
+    \(\sigma(X) \dfn \colim_{X'\in S_X}h_{X'}\)
+    によって函手
+    \(\sigma:\sfD^+(\mcC)\to \Ind(\sfK^+(\mcC))\)
+    がwell-definedに定まることを示し、
+    \(\sigma\)が忠実充満であることを示せ。
+    \item \label{1.15.2}
+    \(F:\mcC\to \mcC'\)をアーベル圏の間の左完全函手とする。
+    \(T(X)\dfn \colim_{X'\in S_X}h_{F(X')}^{\mcC'}\)
+    と定める。
+    これによって函手\(T:\sfD^+(\mcC)\to \Ind(\sfK^+(\mcC'))\)
+    がwell-definedに定まることを示せ。
+    \(F\)が\(X\in \sfD^+(\mcC)\)で\textbf{derivable}であるということを、
+    ある対象\(Y\in \sfD^+(\mcC')\)が存在して
+    \(T(X) \cong \sigma(Y)\)となることとして定義する。
+    このような\(Y\)が (up to isomで) 一意的であることを示せ。
+    また、\(F\)がすべての\(X\in \sfD^+(\mcC)\)でderivableであるときに、
+    函手\(RF:\sfD^+(\mcC)\to \sfD^+(\mcC')\)で
+    \(\sigma\circ RF \cong T\)となるものが (up to isomで) 一意的に存在することを示せ
+    (すなわち、\(F\)は右導来函手\(RF\)をadmitsする)。
+  \end{enumerate}
+\end{prob}
+
+\begin{proof}
+  \ref{1.15.1}の函手\(\sigma\)のwell-defined性は
+  \ref{1.15.2}の函手\(T\)のwell-defined性の特別な場合 (\(F=\id_{\mcC}\)の場合) であるので、
+  まず\ref{1.15.2}の函手\(T\)がwell-definedに定まることを示す。
+  \(T\)は函手\(\sfK^+(\mcC)\to \Ind(\sfK^+(\mcC'))\)
+  としてはwell-definedに定まっている。
+  \(X\in \sfK^+(\mcC)\)を\(0\)と擬同型な対象とする。
+  このとき\(0\)-射\(X\to 0\)は圏\(S_X\)の終対象であるので、
+  \[T(X) = \colim_{X'\in S_X}h_{F(X)} = h_{F(0)} = h_0 \cong 0\]
+  となる。
+  よって\(\Ind(\sfK^+(\mcC'))\)において\(T(X)\cong 0\)である。
+  従って、本文\cite[Proposition1.6.9 (iii)]{kashiwara2002sheaves}より、
+  函手\(T:\sfD^+(\mcC)\to \Ind(\sfK^+(\mcC'))\)がwell-definedに定まる。
+  以上で\(T\)が (よって、\(\sigma\)も) well-definedに定まることがわかった。
+
+  函手\(\sigma\)が忠実であることを示す。
+  \(X,Y\)を\(\sfD^+(\mcC)\)の対象、
+  \(f:X\to Y\)を\(\sfD^+(\mcC)\)の射であって、
+  \(\sigma(f) = 0\)であるとする。
+  \(f\)は\(\sfK^+(\mcC)\)の図式
+  \(X\xrightarrow{f'} Y' \xleftarrow{t} Y\)によって代表される。
+  ここで\(t\)は擬同型である。
+  \(\sigma(f) = 0\)であることと、
+  \(\sigma(t)\)が同型射であることから、
+  \(\sigma(f')\)は\(0\)-射である。
+  \(\id_X\in h_X(X)\)により代表される元
+  \([\id_X]\in \sigma(X)(X) = \colim_{X'\in S_X}h_{X'}(X)\)の
+  \(\sigma(f')(X): \sigma(X)(X)\to \sigma(Y')(X)\)での行き先は
+  \(f':X\to Y'\)により代表される元
+  \([f']\in \sigma(Y')(X) = \colim_{Y''\in S_{Y'}}h_{Y'}(X)\)
+  であるが、\(\sigma(f') = 0\)であるから、
+  \([f']=0\)である。
+  これは、ある\([t':Y'\to Y'']\in S_{Y'}\)が存在して
+  \(t'\circ f' = 0\)となることを意味する。
+  さらに\(t'\circ f' = 0\)は\(f'\)が\(\sfD^+(\mcC)\)において\(0\)-射であることを意味する。
+  よって\(f\)は\(\sfD^+(\mcC)\)において\(0\)-射であることが従う。
+  以上より\(\sigma\)は忠実である。
+
+  函手\(\sigma\)が充満であることを示す。
+  \(f:\sigma(X)\to \sigma(Y)\)を\(\Ind(\sfK^+(\mcC))\)の射とする。
+  \(\id_X:X\to X\)で代表される元
+  \([\id_X]\in \sigma(X)(X) = \colim_{X'\in S_X}(h_{X'}(X))\)の
+  \(f(X):\sigma(X)(X)\to \sigma(Y)(X)\)での行き先を
+  \([f]\in \sigma(Y)(X) = \colim_{Y'\in S_Y}(h_{Y'}(X))\)と置く。
+  \(S_Y\)はfilteredであるから、
+  ある\([t:Y\to Y']\in S_Y\)とある射\(f':X\to Y'\)が存在して、
+  \([f]\)は\(f'\)によって代表される。
+  \(\sfK^+(\mcC)\)の図式\(X\xrightarrow{f'}Y' \xleftarrow{t} Y\)
+  によって代表される\(\sfD^+(\mcC)\)の射を\(g\)と置くと、
+  \(f'\)が\([f]\)を代表することから、
+  \(\sigma(g)([\id_X]) = [f]\in \sigma(Y)(X)\)がわかる。
+  これは\(\sigma(g) = f\)を意味する。
+  以上より\(\sigma\)は充満であり、
+  \ref{1.15.1}の証明を完了する。
+
+  \ref{1.15.2}を証明する。
+  \(T\)がwell-definedに定義されることは既に示している。
+  \(Y\)の (up to isomでの) 一意性は\(\sigma\)が忠実であることから従う。
+  すべての\(X\in \sfD^+(\mcC)\)で\(F\)がderivableであれば、
+  \(F:\sfD^+(\mcC)\to \Ind(\sfK^+(\mcC'))\)は
+  \(\sigma:\sfD^+(\mcC')\to \Ind(\sfK^+(\mcC'))\)の本質的像を一意的に経由するため、
+  \(\sigma\)が忠実充満であることから、
+  右導来函手\(RF:\sfD^+(\mcC)\to \sfD^+(\mcC')\)であって
+  \(\sigma\circ RF \cong T\)となるものが (up to isomで) 一意的に存在する。
+  以上で\autoref{1.15}の解答を完了する。
+\end{proof}
+
+
+
+
+
+
+
+\ifcsname Chap\endcsname\else
+\printbibliography
+\end{document}
+\fi

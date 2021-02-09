@@ -1,0 +1,74 @@
+\ifcsname Chap\endcsname\else
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+\newcommand{\StylePath}{\ifcsname AllKS\endcsname KS-Style/KS-Style.sty\else
+\ifcsname Chap\endcsname ../KS-Style/KS-Style.sty\else
+../../KS-Style/KS-Style.sty\fi\fi}
+\input{\StylePath}
+
+\KSset{1}{10}
+\setcounter{section}{\value{KSS}-1}
+\begin{document}
+\maketitle
+\HeaderCommentA
+\section{\KSsection{section}}
+\setcounter{prob}{\value{KSP}-1}
+\fi
+
+
+\begin{prob}\label{1.10}
+  \(\mcC\)をアーベル圏とする。
+  図式
+  \[
+  \begin{CD}
+    0 @>>> M @>>> M_0 @>>> M_1 @>>> 0 \\
+    @. @| @. @. @. \\
+    0 @>>> M @>>> M_0' @>>> M_1' @>>> 0
+  \end{CD}
+  \]
+  において、横向きは完全であり、\(M_0,M_0'\)はそれぞれ入射的であるとする。
+  同型射\(M_0\oplus M_1' \xrightarrow{\sim} M_0'\oplus M_1\)を構成せよ。
+\end{prob}
+
+\begin{proof}
+  \(N\dfn M_0\coprod_M M_0'\)とおいて、
+  \(j:M_0 \to N \gets M_0':j'\)を自然な射とする。
+  \(i,i'\)はモノ射であるから、
+  \autoref{1.6.3}より、
+  そのpush-outである\(j,j'\)もそれぞれモノ射である。
+  従って、\(M_0\)が入射的であることから、
+  ある射\(p:N\to M_0\)が存在して\(p\circ j = \id_{M_0}\)となり、
+  \(M_0'\)が入射的であることから、
+  ある射\(p':N\to M_0'\)が存在して\(p'\circ j' = \id_{M_0'}\)となる。
+  図式
+  \[
+  \begin{CD}
+    M @>>> M_0 @>>> M_1 \\
+    @VVV @V j VV @VVV \\
+    M_0' @> j' >> N @>>> X \\
+    @VVV @VVV @. \\
+    M_1' @>>> Y @.
+  \end{CD}
+  \]
+  に\(\mcC^{\op}\)で\autoref{1.6.2}を適用すると、
+  射\(M_1\to X\)と\(M_1'\to Y\)はそれぞれ同型射であることがわかる。
+  以上より、二つの完全列
+  \[
+  \begin{CD}
+    0 @>>> M_0 @> j >> N @>>> M_1' @>>> 0 \\
+    0 @>>> M_0' @> j' >> N @>>> M_1 @>>> 0
+  \end{CD}
+  \]
+  を得る。
+  \(j,j'\)は分裂モノ射であるから、\autoref{1.4}より、
+  同型射\(M_0\oplus M_1' \cong N \cong M_0'\oplus M_1\)を得る。
+  以上で\autoref{1.10}の証明を完了する。
+\end{proof}
+
+
+
+
+
+\ifcsname Chap\endcsname\else
+\printbibliography
+\end{document}
+\fi

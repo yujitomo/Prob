@@ -1,0 +1,80 @@
+\ifcsname Chap\endcsname\else
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+\newcommand{\StylePath}{\ifcsname AllKS\endcsname KS-Style/KS-Style.sty\else
+\ifcsname Chap\endcsname ../KS-Style/KS-Style.sty\else
+../../KS-Style/KS-Style.sty\fi\fi}
+\input{\StylePath}
+
+\KSset{1}{25}
+\setcounter{section}{\value{KSS}-1}
+\begin{document}
+\maketitle\HeaderCommentA
+\section{\KSsection{section}}
+\setcounter{prob}{\value{KSP}-1}
+\fi
+
+
+
+\begin{prob}\label{1.25}
+  \(\mcC\)をアーベル圏、
+  \(X\)を\(\mcC\)の複体で、
+  各\(n\)に対して
+  \(X^{p,q}\neq 0, p+q=n\)となる\((p,q)\)は高々有限個であるとする。
+  \begin{enumerate}
+    \item \label{1.25.1}
+    以下の三角形が\(\sfD(\mcC)\)において完全であることを示せ：
+    \begin{align*}
+      \Tot(\tau_{II}^{\leq n-1}(X)) \to
+      \Tot(\tau_{II}^{\leq n}(X)) \to
+      H_{II}^n(X)[-n] \xrightarrow{+1}, \\
+      H_{II}^n(X)[-n] \to
+      \Tot(\tau_{II}^{\geq n}(X)) \to
+      \Tot(\tau_{II}^{\geq n+1}(X)) \xrightarrow{+1}, \\
+    \end{align*}
+    \item \label{1.25.2}
+    \(k\in \Z\)を固定する。
+    自然な射\(H^k(\Tot(\tau_{II}^{\leq n}(X))) \to H^k(\Tot(X))\)
+    (resp. \(H^k(\Tot(X))\to H^k(\Tot(\tau_{II}^{\geq n}(X)))\))
+    は\(n\gg 0\) (resp. \(n \ll 0\)) に対して同型であることを示せ。
+    \item \label{1.25.3}
+    \(k\in \Z\)を固定する。
+    \(n \ll 0\)に対して\(H^k(\Tot(\tau_{II}^{\leq n}(X))) = 0\)であることと、
+    \(n \gg 0\)に対して\(H^k(\Tot(\tau_{II}^{\geq n}(X))) = 0\)であることを示せ。
+  \end{enumerate}
+\end{prob}
+
+\begin{proof}
+  \ref{1.25.1}を示す。
+  自然な射
+  \(\coker(\tau_{II}^{\leq n-1}(X) \to \tau_{II}^{\leq n}(X))\to H_{II}^n(X)[-n]\)
+  に本文\cite[Proposition 1.9.3]{kashiwara2002sheaves}を用いることにより、
+  \(\Tot(\coker(\tau_{II}^{\leq n-1}(X) \to \tau_{II}^{\leq n}(X)))\to H_{II}^n(X)[-n]\)
+  が擬同型であることが従い、
+  これは一つ目の三角形が完全三角であることを示している。
+  二つ目の三角形が完全三角であることは
+  \(\mcC^{\op}\)において一つ目の三角形が完全三角であることより従う。
+  以上で\ref{1.25.1}の証明を完了する。
+
+  \ref{1.25.2}を示す。
+  \(X^{p,q}\neq 0, p+q=k,k-1,k+1\)となる\(p\)が存在するような\(q\)のうち
+  最大のものを\(n_0\)とすれば、\(n > n_0\)と\(p+q=k,k-1,k+1\)を満たす任意の\(p,q\)に対して
+  \((\tau_{II}^{\leq n}(X))^{p,q} = X^{p,q}\)となり、
+  \ref{1.25.2}はこれからただちに従う。
+  以上で\ref{1.25.2}の証明を完了する。
+
+  \ref{1.25.3}を示す。
+  \(X^{p,q}\neq 0, p+q=k,k-1,k+1\)となる\(p\)が存在するような\(q\)のうち
+  最小のものを\(n_0\)とすれば、\(n < n_0\)と\(p+q=k,k-1,k+1\)を満たす任意の\(p,q\)に対して
+  \((\tau_{II}^{\leq n}(X))^{p,q} = X^{p,q} = 0\)となり、
+  \ref{1.25.3}はこれからただちに従う。
+  以上で\ref{1.25.3}の証明を完了し、
+  \autoref{1.25}の解答を完了する。
+\end{proof}
+
+
+
+
+\ifcsname Chap\endcsname\else
+\printbibliography
+\end{document}
+\fi

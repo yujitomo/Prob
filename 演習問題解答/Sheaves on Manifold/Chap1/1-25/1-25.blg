@@ -1,0 +1,15 @@
+[0] Config.pm:311> INFO - This is Biber 2.16
+[1] Config.pm:314> INFO - Logfile is '1-25.blg'
+[285] biber-darwin:340> INFO - === Mon Feb  8, 2021, 21:49:13
+[354] Biber.pm:415> INFO - Reading '1-25.bcf'
+[788] Biber.pm:952> INFO - Found 1 citekeys in bib section 0
+[885] Biber.pm:4340> INFO - Processing section 0
+[943] Biber.pm:4531> INFO - Looking for bibtex format file '../../KS-Style/KS-Bib.bib' for section 0
+[982] bibtex.pm:1689> INFO - LaTeX decoding ...
+[1005] bibtex.pm:1494> INFO - Found BibTeX data source '../../KS-Style/KS-Bib.bib'
+[1222] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[1222] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[1222] Biber.pm:4168> INFO - Sorting list 'anyt/global//global/global' of type 'entry' with template 'anyt' and locale 'en-US'
+[1222] Biber.pm:4174> INFO - No sort tailoring available for locale 'en-US'
+[1244] bbl.pm:654> INFO - Writing '1-25.bbl' with encoding 'UTF-8'
+[1254] bbl.pm:757> INFO - Output to 1-25.bbl

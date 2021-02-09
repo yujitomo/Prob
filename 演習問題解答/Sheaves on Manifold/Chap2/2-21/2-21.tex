@@ -1,0 +1,243 @@
+\ifcsname Chap\endcsname\else
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+\newcommand{\StylePath}{\ifcsname AllKS\endcsname KS-Style/KS-Style.sty\else
+\ifcsname Chap\endcsname ../KS-Style/KS-Style.sty\else
+../../KS-Style/KS-Style.sty\fi\fi}
+\input{\StylePath}
+
+\KSset{2}{21}
+
+\setcounter{section}{\value{KSS}-1}
+\begin{document}
+\maketitle
+\HeaderCommentA
+\section{\KSsection{section}}
+\setcounter{prob}{\value{KSP}-1}
+
+\fi
+
+
+\begin{prob}\label{2.21}
+  \(X\)を位相空間、\((X_n)_{n\in \N}\)を\(X\)の閉部分集合の減少列で
+  \(X_n=X, (n \ll 0)\)と\(\bigcap_{n\in \N}X_n = \emptyset\)
+  を満たすものとする。
+  \(F\in \sfD^+(X)\)は\(k\neq n\)に対して
+  \(H^k_{X_n\setminus X_{n+1}}(F)=0\)を満たすとする。
+  完全三角
+  \[
+  R\Gamma_{X_{n+1}\setminus X_{n+2}}(F) \to
+  R\Gamma_{X_n\setminus X_{n+2}}(F) \to
+  R\Gamma_{X_n\setminus X_{n+1}}(F) \xrightarrow{+1}
+  \]
+  のコホモロジーをとって、連結準同型を
+  \(d^n:H^n_{X_n\setminus X_{n+1}}(F) \to H^{n+1}_{X_{n+1}\setminus X_{n+2}}(F)\)
+  と表す。
+  \(K^n\dfn H^n_{X_n\setminus X_{n+1}}(F)\)と表す。
+  \begin{enumerate}
+    \item \label{2.21.1}
+    \((K^{\bullet},d^{\bullet})\)は\(X\)上の層の複体であることを示せ。
+    \item \label{2.21.2}
+    \(k<n\)に対して\(H^k_{X_n}(F)=0\)であり、
+    さらに\(H^n_{X_{n-1}}(F) \xrightarrow{\sim} H^n(F)\)は同型射であることを示せ。
+    \item \label{2.21.3}
+    \(G^n = \Gamma_{X_n}(F^n)\cap (d^n_F)^{-1}(\Gamma_{X_{n+1}}(F^{n+1}))\)
+    とおく。
+    射\(d_G^n:G^n\to G^{n+1}\)を構成して、
+    \(G=(G^{\bullet},d^{\bullet})\)が複体であることを示せ。
+    さらに\(G\to K\)と\(G\to F\)を構成して、
+    各\(F^n\)が脆弱層である場合に擬同型となることを示せ。
+    \(\sfD^+(X)\)において\(F\cong K\)であることを結論付けよ。
+  \end{enumerate}
+\end{prob}
+
+\begin{proof}
+  \ref{2.21.1}を示す。
+  明らかに以下の図式が可換である：
+  \[
+  \begin{CD}
+    0 @>>> \Gamma_{X_{n+2}\setminus X_{n+3}}(-)
+    @>>> \Gamma_{X_n\setminus X_{n+3}}(-)
+    @>>> \Gamma_{X_n\setminus X_{n+2}}(-) \\
+    @. @VVV @| @VVV \\
+    0 @>>> \Gamma_{X_{n+1}\setminus X_{n+3}}(-)
+    @>>> \Gamma_{X_n\setminus X_{n+3}}(-)
+    @>>> \Gamma_{X_n\setminus X_{n+1}}(-).
+  \end{CD}
+  \]
+  従って、完全三角の間の射
+  \[
+  \begin{CD}
+    R\Gamma_{X_n\setminus X_{n+3}}(-)
+    @>>> R\Gamma_{X_n\setminus X_{n+2}}(-)
+    @>>> R\Gamma_{X_{n+2}\setminus X_{n+3}}(-)[1]
+    @>{+1}>> \\
+    @| @VVV @VVV @. \\
+    R\Gamma_{X_n\setminus X_{n+3}}(-)
+    @>>> R\Gamma_{X_n\setminus X_{n+1}}(-)
+    @>>> R\Gamma_{X_{n+1}\setminus X_{n+3}}(-)[1]
+    @>{+1}>>
+  \end{CD}
+  \]
+  を得る。
+  縦に伸ばして横向きに書けば、完全三角の射
+  \[
+  \begin{CD}
+    R\Gamma_{X_n\setminus X_{n+2}}(-)
+    @>>> R\Gamma_{X_n\setminus X_{n+1}}(-)
+    @>>> R\Gamma_{X_{n+1}\setminus X_{n+2}}(-)[1]
+    @>{+1}>> \\
+    @VVV @VVV @| @. \\
+    R\Gamma_{X_{n+2}\setminus X_{n+3}}(-)[1]
+    @>>> R\Gamma_{X_{n+1}\setminus X_{n+3}}(-)[1]
+    @>>> R\Gamma_{X_{n+1}\setminus X_{n+2}}(-)[1]
+    @>{+1}>>
+  \end{CD}
+  \]
+  を得る。
+  \(n\)次と\(n+1\)次の周辺でコホモロジーをとれば、可換図式
+  \[
+  \begin{CD}
+    @>>> H^n_{X_n\setminus X_{n+1}}(-)
+    @>{d^n}>> H^{n+1}_{X_{n+1}\setminus X_{n+2}}(-)
+    @>>> H^{n+1}_{X_n\setminus X_{n+2}} (-)
+    @>>> \\
+    @. @VVV @| @VVV @. \\
+    @>>> H^{n+1}_{X_{n+1}\setminus X_{n+3}}(-)
+    @>>> H^{n+1}_{X_{n+1}\setminus X_{n+2}}(-)
+    @>{d^{n+1}}>> H^{n+2}_{X_{n+2}\setminus X_{n+3}} (-)
+    @>>>
+  \end{CD}
+  \]
+  を得る。
+  横向きは完全であるから、
+  \(d^{n+1}\circ d^n = 0\)が従う。
+  以上で\ref{2.21.1}の証明を完了する。
+
+  \ref{2.21.2}を示す。
+  完全三角
+  \[
+  R\Gamma_{X_{i+1}}(F) \to R\Gamma_{X_i}(F) \to
+  R\Gamma_{X_i\setminus X_{i+1}}(F) \xrightarrow{+1}
+  \]
+  でコホモロジーをとる。
+  各\(k < i\)に対して\(H^k_{X_i\setminus X_{i+1}}(F)\cong 0\)であるので、
+  各\(k < i\)に対して同型射
+  \(H^k_{X_{i+1}}(F) \xrightarrow{\sim} H^k_{X_i}(F)\)を得る。
+  \(i\geq n\)としてこの同型射を繋ぐことによって、
+  各\(k < n\)に対して同型射
+  \(H^k_{X_i}(F) \xrightarrow{\sim} H^k_{X_n}(F), (i \gg 0)\)を得る。
+  \(x\in X\)を任意にとれば、
+  \(\bigcap_{i\in \N}X_i = \emptyset\)であるので、
+  ある\(i\gg 0\)が存在して\(x\in X_i\)となる。
+  点\(x\)で stalk をとることによって、
+  \(0 = H^k_{X_i}(F)_x \xrightarrow{\sim} H^k_{X_n}(F)_x\)を得る
+  (\(H^k_{X_i}(F)\)は\(X_i\)の上に台を持つ)。
+  \(H^k_{X_n}(F)\)は任意の点の stalk が\(0\)であるので、
+  \(H^k_{X_n}(F) = 0\)が従う。
+  これが示すべきことの一つ目である。
+  また、各\(k > i\)に対して\(H^k_{X_i\setminus X_{i+1}}(F)\cong 0\)であるので、
+  各\(k > i+1\)に対して同型射
+  \(H^k_{X_{i+1}}(F) \xrightarrow{\sim} H^k_{X_i}(F)\)を得る。
+  \(k=n\)として\(i\leq n-2\)とすれば、この同型射を繋ぐことにより、
+  同型射\(H^n_{X_{n-1}}(F) \xrightarrow{\sim} H^n_{X_i}(F), (i\ll 0)\)を得る。
+  \(X_i = X, (i\ll 0)\)であるので、
+  同型射\(H^n_{X_{n-1}}(F) \xrightarrow{\sim} H^n(F)\)を得る。
+  これが示すべきことの二つ目である。
+  以上で\ref{2.21.2}の証明を完了する。
+
+  \ref{2.21.3}を示す。
+  自然な包含射を\(i^n:\Gamma_{X_n}(F^n) \to F^n\)とおく。
+  \(G^n\)の定義より、
+  \[
+  \begin{CD}
+    G^n @>{q^n}>> \Gamma_{X_{n+1}}(F^{n+1}) \\
+    @V{p^n}VV @VV{i^{n+1}}V \\
+    \Gamma_{X_n}(F^n) @>{d^n\circ i^n}>> F^{n+1}
+  \end{CD}
+  \]
+  は pull-back 図式である。
+  また、\(p^n\)はモノ射である。
+  さらに、
+  \[
+  d^{n+1}\circ i^{n+1}\circ q^n
+  = d^{n+1}\circ d^n \circ i^n \circ p^n
+  = 0
+  \]
+  であるので、
+  \(i^{n+1}\circ q^n:G^n \to \Gamma_{X_{n+1}}(F^{n+1})\)と
+  \(0\)-射\(G^n\to \Gamma_{X_{n+2}}(F^{n+2})\)は
+  \(p^{n+1}\circ d_G^n = q^n, q^{n+1}\circ d_G^n=0\)となる
+  射\(d_G^n:G^n\to G^{n+1}\)を一意的に定義する。
+  このとき、
+  \begin{align*}
+    p^{n+2}\circ d_G^{n+1}\circ d_G^n
+    &= q^{n+1}\circ d_G^n = 0, \\
+    q^{n+2}\circ d_G^{n+1}\circ d_G^n
+    &= 0\circ d_G^n = 0
+  \end{align*}
+  が成り立つ。
+  従って\(d_G^{n+1}\circ d_G^n = 0\)であり、
+  \((G^{\bullet},d_G^{\bullet})\)は層の複体である。
+  また、\(p^n\circ i^n : G^n\to F^n\)は
+  複体の射\(G\to F\)を与える。
+
+  各\(F^n\)が脆弱層であるとする。
+  このとき任意の局所閉集合\(?\subset X\)に対して
+  \(R\Gamma_{?}(F)\cong \Gamma_{?}(F)\)が成り立つ。
+  \(i^{n+1}\)はモノなので、
+  \[
+  \ker(d_G^n) = \ker(i^{n+1}\circ d_G^n) = \ker(d^n\circ p^n \circ i^n)
+  = \ker(d^n)\cap \Gamma_{X_n}(F^n) = \Gamma_{X_n}(\ker(d^n))
+  \]
+  が成り立つ。
+  定義より
+  \(\im(d_G^{n-1}) = \Gamma_{X_n}(F^n)\cap \im(d^{n-1}) = \Gamma_{X_n}(\im(d^{n-1}))\)
+  が成り立つ。
+  従って、
+  \(H^n(G) \cong \Gamma_{X_n}(\ker(d^n))/\Gamma_{X_n}(\im(d^{n-1}))\)
+  であり、さらに
+  \[
+  \begin{CD}
+    \im(d_G^{n-1}) @>>> \im(d^{n-1}) \\
+    @VVV @VVV \\
+    \ker(d_G^n) @>>> \ker(d^n)
+  \end{CD}
+  \]
+  は Cartesian である。
+  よって、\autoref{1.6.3}より、
+  \(H^n(G) \to H^n(F)\)は単射である。
+  また、複体の完全列
+  \[
+  0\to \Gamma_{X_n}(F) \to \Gamma_{X_{n-1}}(F) \to
+  \Gamma_{X_n\setminus X_{n-1}}(F) \to 0
+  \]
+  でコホモロジーをとることにより、
+  完全列
+  \[
+  H^n_{X_n}(F) \to H^n_{X_{n-1}}(F) \to H^n_{X_{n-1}\setminus X_n}(F)
+  \]
+  を得る。
+  ここで仮定より、\(H^n_{X_{n-1}\setminus X_n}(F) = 0\)であり、
+  さらに\ref{2.21.2}より、\(H^n_{X_{n-1}}(F)\cong H^n(F)\)であるので、
+  \(H^n_{X_n}(F) \to H^n(F)\)は全射である。
+  一方、\(\Im(d^{n-1})) \cong \Gamma_{X_n}(F^n)\times_{} \)
+  層の複体の完全列
+  \[
+  0 \to \Gamma_{X_n}(F) \to F\to \Gamma_{X\setminus X_n}(F) \to 0
+  \]
+
+\end{proof}
+
+
+あいうえお
+
+\begin{kansou*}
+  \ref{2.21.3}は、filtered complex のスペクトル系列の特別な場合。
+\end{kansou*}
+
+
+
+\ifcsname Chap\endcsname\else
+\printbibliography
+\end{document}
+\fi

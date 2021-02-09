@@ -1,0 +1,138 @@
+\ifcsname Chap\endcsname\else
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+\newcommand{\StylePath}{\ifcsname AllKS\endcsname KS-Style/KS-Style.sty\else
+\ifcsname Chap\endcsname ../KS-Style/KS-Style.sty\else
+../../KS-Style/KS-Style.sty\fi\fi}
+\input{\StylePath}
+
+\KSset{2}{5}
+
+\setcounter{section}{\value{KSS}-1}
+\begin{document}
+\maketitle
+\HeaderCommentA
+\section{\KSsection{section}}
+\setcounter{prob}{\value{KSP}-1}
+
+本文では、パラコンパクト空間であるという場合には、
+ハウスドルフ性を常に仮定していることに注意しておく
+(cf. 本文\cite[Proposition 2.5.1]{kashiwara2002sheaves}直後の記述)。
+\fi
+
+
+\begin{prob}\label{2.5}
+  \(X\)をパラコンパクトハウスドルフ空間とする。
+  \(X\)上の層\(F\)が\textbf{soft}であるとは、
+  任意の閉集合\(Z\subset X\)に対して
+  \(F(X)\to F(Z)\)が全射であることを言う。
+  \(F\)がsoftであるとき、
+  任意の\(i > 0\)に対して\(H^i(X,F)=0\)であることを示せ。
+\end{prob}
+
+\begin{proof}
+  \autoref{2.5}を示すには、
+  softな層たちからなる\(\Ab(X)\)の充満部分圏が\(\Gamma(X,-)\)-injective
+  であることを示すこと、
+  従って、次の事柄を示すことが十分である
+  (cf. 本文\cite[Definition 1.8.2]{kashiwara2002sheaves}の直後の記述)：
+  \begin{enumerate}
+    \item \label{2.5.p1}
+    脆弱層はsoftである
+    (従って、とくに、任意の層\(F\)に対して、
+    \(F\)を部分層として含むsoftな層\(G\)が存在する)。
+    \item \label{2.5.p2}
+    \(0\to F\to G\to H\to 0\)が層の完全列であるとき、
+    \(F,G\)がsoftであるとすると、\(H\)もsoftである。
+    \item \label{2.5.p3}
+    \(0\to F\to G\to H\to 0\)が層の完全列であるとき、
+    \(F\)がsoftであれば、
+    次の列も完全である：
+    \[
+    0\to \Gamma(X,F) \to \Gamma(X,G) \to \Gamma(X,H)\to 0.
+    \]
+  \end{enumerate}
+  \ref{2.5.p1}は本文\cite[Proposition 2.5.1 (iii)]{kashiwara2002sheaves}よりただちに従う。
+  \ref{2.5.p2}は、
+  閉部分集合の上への制限をする函手が完全であること、
+  softな層の閉部分集合への制限がsoftであること、
+  \ref{2.5.p3}、
+  へびの補題、より従う。
+  残っているのは\ref{2.5.p3}を示すことである。
+
+  \ref{2.5.p3}を示す。
+  \(u\in \Gamma(X,H)\)を任意にとる。
+  もとの層の列が完全であることから、\(u\)は局所的には\(G\)へと持ち上がる、
+  すなわち、ある\(X\)の開被覆\(X=\bigcup_{i\in I}U_i\)と
+  各\(U_i\)上の\(G\)の切断\(t_i^1\in \Gamma(U_i,G)\)が存在して、
+  \(t_i\mapsto u|_{U_i}\)となる。
+  \(U_i\)を局所有限開被覆による細分でおきかえて、
+  \(t_i\)を制限することを考えれば、
+  \ref{2.5.p3}を示すためには、
+  \(U_i\)は局所有限であると仮定しても一般性を失わない。
+  本文\cite[Proposition 2.5.1]{kashiwara2002sheaves}の主張が終わるところから
+  その証明が始まる前までの記述にあるとおり、
+  \(U_i\)の開被覆による細分\((V_i)_{i\in I}\)であって、
+  任意の\(i\in I\)に対して\(\bar{V}_i\subset U_i\)となるものが存在する。
+  このとき、\((\bar{V}_i)_{i\in I}\)も局所有限である。
+  \(i\in I\)に対して\(Z_i\dfn \bar{V}_i\)とおく。
+  すると、\((Z_i)_{i\in I}\)が局所有限であることから、
+  任意の\(J\subset I\)に対して
+  \[Z_J\dfn \bigcup_{j\in J}Z_j = \overline{\bigcup_{j\in J}V_j} \subset X\]
+  である (とくに\(Z_J\)は閉である)。
+  \[
+  \mcS \dfn \left\{ (J,t) \middle| J\subset I, t\in \Gamma(Z_J,G), \text{s.t.},
+  t|_{Z_J}\mapsto u|_{Z_J}\right\}
+  \]
+  と定義して、
+  \[
+  (J_1,t_1)\leq (J_2,t_2) \ \ \deff \ \
+  J_1\subset J_2 \text{かつ} t_1 = t_2|_{Z_{J_1}}
+  \]
+  と定義する。
+  \(\mcT\subset \mcS\)を全順序部分集合とする。
+  \(J_{\mcT} \dfn \bigcup_{(J,t_J)\in \mcT}J\)とおく。
+  このとき、\(Z_{J_{\mcT}} = \bigcup_{(J,t_J)\in \mcT}Z_J\)であるから、
+  各\((J,t_J)\in \mcT\)に対して層の全射
+  \(G_{Z_{J_{\mcT}}} \to G_{Z_J}\)を得る。
+  この全射は\(Z_J\)上の各点のstalkの間で同型射であるから、
+  自然な射
+  \(G_{Z_{J_{\mcT}}} \xrightarrow{\sim} \lim_{J\in \mcT}G_{Z_J}\)
+  は同型射となる。
+  大域切断をとることにより、
+  同型射\(\Gamma(Z_{J_{\mcT}},G)\xrightarrow{\sim} \lim_{J\in \mcT}\Gamma(Z_J,G)\)
+  を得る。
+  従って、各切断\(t_J\in \Gamma(Z_J,G)\)は切断\(t\in \Gamma(Z_{J_{\mcT}},G)\)を定め、
+  \(\mcT\)は上界\((J_{\mcT},t)\)を持つ。
+  よって、Zornの補題により、\(\mcS\)には極大元\((J,t)\)が存在する。
+  \(J=I\)であることを証明できれば、
+  \(Z_J=X\)であるから、\ref{2.5.p3}の証明が完了する。
+  よって、\ref{2.5.p3}が成り立つためには、\(J=I\)であることが十分である。
+  元\(i\in I\setminus J\)が存在することを仮定する。
+  \(t_i|_{Z_i\cap Z_J} - t|_{Z_i\cap Z_J}\mapsto 0\)であるから、
+  \(t_i|_{Z_i\cap Z_J} - t|_{Z_i\cap Z_J}\in F(Z_i\cap Z_J)\)である。
+  \(F\)はsoftであり、\(Z_i\cap Z_J\subset X\)は閉であるから、
+  ある\(s\in \Gamma(X,F)\)が存在して、
+  \(s|_{Z_i\cap Z_J} = t_i|_{Z_i\cap Z_J} - t|_{Z_i\cap Z_J}\)となる。
+  \(t_i'\dfn t_i-s|_{U_i}\)と定義すると、
+  \(s\)の定義より、
+  \(t_i'|_{Z_i\cap Z_J} = t|_{Z_i\cap Z_J}\)が成り立つ。
+  従って、本文\cite[Proposition 2.3.6 (vi)]{kashiwara2002sheaves}より、
+  \(J'\dfn J\cup\{i\}\)とおけば、
+  ある\(t'\in G(Z_{J'})\)が存在して、\(t'|_{Z_i} = t_i'\)かつ
+  \(t'|_{Z_J} = t\)となる。
+  よって、再び本文\cite[Proposition 2.3.6 (vi)]{kashiwara2002sheaves}より、
+  \(t'\mapsto u|_{Z_{J'}}\)である。
+  これは\((J,t) < (J',t')\)を意味し、\((J,t)\)の極大性に反する。
+  以上で\(I=J\)が従い、
+  \ref{2.5.p3}の証明を、
+  従って、\autoref{2.5}の解答を、完了する。
+\end{proof}
+
+
+
+
+
+\ifcsname Chap\endcsname\else
+\printbibliography
+\end{document}
+\fi

@@ -1,0 +1,66 @@
+\ifcsname Chap\endcsname\else
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+\newcommand{\StylePath}{\ifcsname AllKS\endcsname KS-Style/KS-Style.sty\else
+\ifcsname Chap\endcsname ../KS-Style/KS-Style.sty\else
+../../KS-Style/KS-Style.sty\fi\fi}
+\input{\StylePath}
+
+\KSset{1}{34}
+\setcounter{section}{\value{KSS}-1}
+\begin{document}
+\maketitle\HeaderCommentA
+\section{\KSsection{section}}
+\setcounter{prob}{\value{KSP}-1}
+\fi
+
+
+\begin{prob}\label{1.34}
+  \(k\)を体、\(X\in \sfD^b_f(\Mod(k))\)とする。
+  \[
+  b_i(X) \dfn \dim(H^i(X)), \ \
+  b_i^*(X) \dfn (-1)^i \sum_{j\leq i}(-1)^jb_j(X)
+  \]
+  とおく。
+  \(Y\to X\to Z\xrightarrow{+1}\)を\(\sfD^b_f(\Mod(k))\)の完全三角とする。
+  以下の式を示せ (\(\chi(X)\)の定義については\autoref{1.32.4}を参照)：
+  \begin{align*}
+    \chi(X) &= \chi(Y) + \chi(Z), \\
+    b_i^*(X) &\leq b_i^*(Y) + b_i^*(Z).
+  \end{align*}
+\end{prob}
+
+\begin{proof}
+  一つ目の等式は
+  \KSDoubleAutoref{1.32.3}{1.32.4}
+  より直ちに従う。
+  二つ目の不等式を示す。
+  コホモロジーをとると、長完全列
+  \[
+  \begin{CD}
+    @> \delta^{i-1} >> H^{i-1}(Y) @>>> H^{i-1}(X) @>>> H^{i-1}(Z) \\
+    @> \delta^i >> H^i(Y) @>>> H^i(X) @>>> H^i(Z) \\
+    @> \delta^{i+1} >> \cdots @. @.
+  \end{CD}
+  \]
+  を得る。
+  従って、とくに
+  \begin{align*}
+    0 &\leq \dim(\im(\delta^{i+1})) \\
+    &= b_i(Z) - b_i(X) + b_i(Y) - b_{i-1}(Z) + \cdots \\
+    &= \sum_{j\leq i}(-1)^{i-j}b_j(Z) - \sum_{j\leq i}(-1)^{i-j}b_j(X)
+    + \sum_{j\leq i}(-1)^{i-j}b_j(Y) \\
+    &= b_i^*(Z) - b_i^*(X) + b_i^*(Y)
+  \end{align*}
+  を得る。
+  よって二つ目の不等式が従う。
+  以上で\autoref{1.34}の解答を完了する。
+\end{proof}
+
+
+
+
+
+\ifcsname Chap\endcsname\else
+\printbibliography
+\end{document}
+\fi

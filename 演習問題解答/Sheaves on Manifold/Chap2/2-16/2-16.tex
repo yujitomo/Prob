@@ -1,0 +1,90 @@
+\ifcsname Chap\endcsname\else
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+\newcommand{\StylePath}{\ifcsname AllKS\endcsname KS-Style/KS-Style.sty\else
+\ifcsname Chap\endcsname ../KS-Style/KS-Style.sty\else
+../../KS-Style/KS-Style.sty\fi\fi}
+\input{\StylePath}
+
+\KSset{2}{16}
+\setcounter{section}{\value{KSS}-1}
+\begin{document}
+\maketitle
+\HeaderCommentA
+\section{\KSsection{section}}
+\setcounter{prob}{\value{KSP}-1}
+
+\fi
+
+
+\begin{prob}\label{2.16}
+  \(A\)を可換環、\(A^{\times}\)を単元のなす群とする。
+  \(X\)を位相空間、\(\mcU=\{U_i\}_i\)を\(X\)の開被覆として、
+  \(c\in C^2(\mcU,A_X^{\times})\)を\(\delta c = 0\)となる元とする。
+  \(c'\)を\(c\)の\(H^2(C^{\bullet}(\mcU,A_X^{\times}))\)での剰余類として、
+  \(c''\)を\(c'\)の\(H^2(X,A_X^{\times})\)での像とする
+  (cf. \autoref{2.15.2})。
+  圏\(\Sh(X,c)\)を次によって定義する：
+  \begin{itemize}
+    \item
+    対象は\(A_{U_i}\)-加群\(F_i\)と
+    同型射\(\rho_{ij}:F_j|_{U_i\cap U_j}\xrightarrow{\sim} F_i|_{U_i\cap U_j}\)
+    の族\(\{F_i,\rho_{ij}\}\)で、
+    任意の\(i,j,k\)に対して
+    \[
+    \rho_{ij}\rho_{jk}\rho_{ki} = c_{ijk}\id_{F_i|U_i\cap U_j\cap U_k}
+    \]
+    を満たすものとする。
+    \item
+    射\(f:\{F_i,\rho_{ij}\}\to \{F'_i,\rho_{ij}\}\)は
+    \(U_i\)上の射の族\(f_i:F_i\to F'_i\)で
+    \(U_i\cap U_j\)上で\(\rho'_{ij}\circ f_j = f_i\circ \rho_{ij}\)
+    を満たすものとする。
+  \end{itemize}
+  以下を示せ：
+  \begin{enumerate}
+    \item \label{2.16.1}
+    \(\Sh(X,c)\)はアーベル圏であることを証明せよ。
+    \item \label{2.16.2}
+    \(\tilde{c}\in C^2(\mcU,A_X^{\times})\)を別の元で
+    \(\tilde{c}'' = c''\)を満たすものとする。
+    \(\Sh(X,c)\)と\(\Sh(X,\tilde{c})\)の間の圏同値が存在することを示せ。
+  \end{enumerate}
+\end{prob}
+
+\begin{proof}
+  \ref{2.16.1}を示す。
+  \(\Sh(X,c)\)は明らかな\(0\)-対象を持つ
+  (各\(U_i\)上で\(0\)であるもの)。
+  また、明らかに、二つの対象\(\{F_i,\rho_{ij}\},\{F_i',\rho_{ij}'\}\)に対して
+  \(\{F_i\oplus F_i',\rho{ij}\oplus \rho_{ij}'\}\)は\(\Sh(X,c)\)の対象である。
+  さらに、二つの対象の間の射\(f=(f_i):\{F_i,\rho_{ij}\}\to\{F_i',\rho_{ij}'\}\)に対し、
+  各\(i\)ごとに\(\ker(f_i)\)をとり、
+  \(\rho^{\ker(f)}_{ij}\dfn \rho_{ij}|_{\ker(f_i)|_{U_i\cap U_j}}\)
+  と定めることにより、明らかに
+  \(\{\ker(f_i),\rho^{\ker(f)}_{ij}\}\)は\(\Sh(X,c)\)の対象となる。
+  余核についても同様である。
+  核と余核が各\(i\)ごとに定義されるので、
+  余像と像は一致し、これにより\(\Sh(X,c)\)がアーベル圏であることが従う。
+  以上で\ref{2.16.1}の証明を完了する。
+
+  \ref{2.16.2}を示す。
+  \(\{F_i,\rho_{ij}\}\)を\(\Sh(X,c)\)の対象とする。
+  \(\bar{c} \dfn c-\tilde{c}\)とおく。
+  このとき\(\bar{c}''=0\)である。
+  本文\cite[Proposition 2.8.4]{kashiwara2002sheaves}より、augmentation map
+  \(\delta:F\xrightarrow{\text{qis}} \mcC^{\bullet}(\mcU,F)\)
+  は擬同型であるので、
+  \(H^2(R\Gamma(X,\mcC^{\bullet}(\mcU,A_X^{\times})))\)での
+  \(\bar{c}''\)の像は\(0\)である。
+\end{proof}
+
+
+
+
+
+
+
+\ifcsname Chap\endcsname\else
+\printbibliography
+\end{document}
+\fi

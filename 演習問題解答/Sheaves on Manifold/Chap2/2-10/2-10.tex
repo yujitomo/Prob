@@ -1,0 +1,139 @@
+\ifcsname Chap\endcsname\else
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+\newcommand{\StylePath}{\ifcsname AllKS\endcsname KS-Style/KS-Style.sty\else
+\ifcsname Chap\endcsname ../KS-Style/KS-Style.sty\else
+../../KS-Style/KS-Style.sty\fi\fi}
+\input{\StylePath}
+
+\KSset{2}{10}
+\setcounter{section}{\value{KSS}-1}
+\begin{document}
+\maketitle
+\HeaderCommentA
+\section{\KSsection{section}}
+\setcounter{prob}{\value{KSP}-1}
+\fi
+
+\begin{prob}\label{2.10}
+  \(\mcR\)を\(X\)上の環の層として、\(M\)を\(\mcR\)加群とする。
+  \begin{enumerate}
+    \item \label{2.10.1}
+    \(M\)が入射的であるための必要十分条件は、
+    任意の部分\(\mcR\)-加群\(\mcI\subset \mcR\)
+    (これを\(\mcR\)の\textbf{イデアル}という)
+    に対して
+    \[
+    \Gamma(X,M) \cong \Hom_{\mcR}(\mcR,M)\to \Hom_{\mcR}(\mcI,M)
+    \]
+    が全射となることである。これを示せ。
+    \item \label{2.10.2}
+    \(A\)を体とする。
+    \(A_X\)のイデアルはある開集合\(U\subset X\)を用いて\(A_U\)と表すことができる。
+    このことから、\(A_X\)-加群\(M\)が入射的であるための必要十分条件は
+    \(M\)が脆弱層であることであることを帰結せよ。
+  \end{enumerate}
+\end{prob}
+
+
+\begin{proof}
+  \ref{2.10.1}を示す。
+  必要性は明らかであるので十分性が問題である。
+  \(\mcR\)-加群\(F\)とその部分\(\mcR\)-加群\(G\subset F\)と
+  射\(g:G\to M\)を任意にとる。
+  集合
+  \[
+  S\dfn \left\{ (H,h)\middle| G\subset H\subset F, h|_G=g\right\}
+  \]
+  に
+  \[(H_0,H_0) \leq (H_1,h_1) \ \iff \ H_0\subset H_1 \text{かつ} h_1|_{H_0}=h_0\]
+  で順序を入れる。
+  全順序部分集合\(S_0\subset S\)に対して、
+  \(H_{S_0}\dfn \bigcup_{H\in S_0}H\)と定めて
+  \(h_{S_0}:H_{S_0}\to M\)を余極限の普遍性により定まる自然な射とすると
+  \((H_{S_0},h_{S_0})\)は\(S_0\)の上界である。
+  よってZornの補題より\(S\)には極大限\((H,h)\)が存在する。
+  \(H\neq F\)であるとする。
+  このとき、開集合\(U\subset X\)と切断\(s\in F(U)\setminus H(U)\)が存在する。
+  \(U\)上の切断\(s\)は\(\mcR\)-加群の射\(\mcR_U\to H\)と対応する。
+  Fiber積をとって\(\mcI\dfn \mcR_U\times_FH\)とおけば、
+  \(\mcI\)は\(\mcR_U\)の部分\(\mcR\)-加群である。
+  ここで
+  \[
+  \Hom_{\mcR}(\mcR,M)\to \Hom_{\mcR}(\mcR_U,M)\to \Hom_{\mcR}(\mcI,M)
+  \]
+  の合成は全射であるから、
+  \(\Hom_{\mcR}(\mcR_U,M)\to \Hom_{\mcR}(\mcI,M)\)も全射であり、
+  従って、自然な射影と\(h\)の合成\(\mcI\to H\xrightarrow{h}M\)は
+  射\(\mcR_U\to M\)へとリフトし、
+  可換図式
+  \[
+  \begin{CD}
+    \mcI @> \subset >> \mcR_U \\
+    @VVV @VVV \\
+    H @> h >> M
+  \end{CD}
+  \]
+  を得る。
+  Push-out をとることによって、
+  射\(h':H'\dfn \mcR_U\coprod_{\mcI}H \to M\)を得る。
+  一方、可換図式
+  \[
+  \begin{CD}
+    \mcI @> \subset >> \mcR_U \\
+    @VVV @VV s V \\
+    H @> \subset >> F
+  \end{CD}
+  \]
+  で push-out をとることにより、
+  射\(H' \to F\)を得るが、
+  \(\mcI=\mcR_U\times_F H\)であることと
+  \autoref{1.6.3}より、
+  \(H'\to F\)はモノ射である。
+  従って\(H'\subset F\)とみなせる。
+  \(s\not\in H(U)\)なので\(H\subsetneq H'\)である。
+  これは\((H,h) < (H',h')\)を意味し、\((H,h)\)の極大性に反する。
+  この矛盾は\(H\neq F\)と仮定したことにより引き起こされたので、
+  \(H=F\)であることが帰結し、
+  以上で、\(f|_G=g\)となる射\(f:F\to M\)の存在が示された。
+  これは\(F\)が入射的層であることを示している。
+  以上で\ref{2.10.1}の証明を完了する。
+
+  \ref{2.10.2}を示す。
+  \(A\)を体、\(\mcI\subset A_X\)をイデアルとする。
+  各\(x\in X\)に対して
+  \(\mcI_x\subset A_{X,x}\)はイデアルであるが、
+  \(A_{X,x}\)は体なので、\(\mcI_x\)は\(0\)か\(A_{X,x}\)のいずれかである。
+  \[S\dfn \left\{x\in X\middle| \mcI_x=A_{X,x}\right\}\]
+  とおき、\(S\)が開であることを示す。
+  \(x\in S\)を任意にとる。
+  \(\mcI_x=A_{X,x}\)であるので、
+  ある開近傍\(x\in U\)とある切断\(s\in \mcI(U)\)が存在して、
+  任意の\(y\in U\)に対して\(s_y = 1\)が成り立つ。
+  これから各\(y\in U\)で\(\mcI_y\neq 0\)であることが従い、
+  \(\mcI_y\)は\(0\)か\(A_{X,y}\)のいずれかであったので、
+  \(\mcI_y = A_{X,y}\)が従う。
+  よって\(U\subset S\)が従い、これは\(S\)が開であることを示している。
+  最後の主張を示す。
+  入射的ならば脆弱層であるため、
+  \(A_X\)-加群\(M\)が脆弱層である場合に\(M\)が入射的であることを示す。
+  \(M\)が入射的であることを示すためには、\ref{2.10.1}より、
+  任意のイデアル層\(\mcI\subset A_X\)と任意の\(A_X\)-加群の射\(\mcI\to M\)に対し、
+  それが\(\mcI\subset A_X\)に沿ってリフトすることを示すことが十分である。
+  既に証明したことにより、イデアル層\(\mcI\subset A_X\)に対して
+  ある開集合\(U\subset X\)が存在して\(\mcI = A_U\)が成り立つ。
+  \(A_X\)加群の射\(A_U\to M\)は\(M(U)\)の切断と対応し、
+  \(M\)は脆弱層であるので、
+  それは\(M(X)\)の元に延長することができる。
+  このことは射\(A_U=\mcI\to M\)が\(A_U=\mcI\subset A_X\)に沿ってリフトすることを意味し、
+  従って\(M\)は入射的である。
+  以上で\ref{2.10.2}の証明を完了し、
+  \autoref{2.10}の解答を完了する。
+\end{proof}
+
+
+
+
+\ifcsname Chap\endcsname\else
+\printbibliography
+\end{document}
+\fi

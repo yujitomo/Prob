@@ -1,0 +1,4832 @@
+\documentclass[uplatex]{jsarticle}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+
+\usepackage{xcolor}
+\usepackage[dvipdfmx]{graphicx}
+
+
+\usepackage{applekeys}
+\usepackage{mandorasymb}
+\usepackage{ulem}
+\usepackage{braket}
+\usepackage{framed}
+
+
+%%%%%ハイパーリンク
+\usepackage[setpagesize=false,dvipdfmx]{hyperref}
+\usepackage{aliascnt}
+\hypersetup{
+    colorlinks=true,
+    citecolor=blue,
+    linkcolor=blue,
+    urlcolor=blue,
+}
+%%%%%ハイパーリンク
+
+
+
+
+%%%%%図式
+\usepackage{tikz}%%%図
+\usetikzlibrary{arrows}
+\usepackage{amscd}%%%簡単な図式
+%%%%%図式
+
+
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+
+\usepackage{amsthm}
+\theoremstyle{definition}
+\newtheorem{thm}{定理}[section]
+\newcommand{\thmautorefname}{定理}
+
+\newaliascnt{prop}{thm}%%%カウンター「prop」の定義（thmと同じ）
+\newtheorem{prop}[prop]{命題}
+\aliascntresetthe{prop}
+\newcommand{\propautorefname}{命題}%%%カウンター名propは「命題」で参照する
+
+\newaliascnt{cor}{thm}
+\newtheorem{cor}[cor]{系}
+\aliascntresetthe{cor}
+\newcommand{\corautorefname}{系}
+
+\newaliascnt{lem}{thm}
+\newtheorem{lem}[lem]{補題}
+\aliascntresetthe{lem}
+\newcommand{\lemautorefname}{補題}
+
+\newaliascnt{defi}{thm}
+\newtheorem{defi}[defi]{定義}
+\aliascntresetthe{defi}
+\newcommand{\defiautorefname}{定義}
+
+\newaliascnt{prob}{thm}
+\newtheorem{prob}[prob]{練習問題}
+\aliascntresetthe{prob}
+\newcommand{\probautorefname}{練習問題}
+
+
+%%%%%%%番号づけない定理環境
+\newtheorem*{exam*}{例}
+\newtheorem*{rrem*}{ゆじノート}
+\newtheorem*{question*}{疑問}
+\newtheorem*{defi*}{定義}
+
+\newtheorem*{nikki*}{日記}
+
+%%%証明環境を「proof」から「証明.」に変えるやつ
+\renewcommand\proofname{\bf 解答.}
+\renewcommand{\qedsymbol}{\kinoposymbniko}
+
+
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+
+
+
+
+%%%%%箇条書き環境
+\usepackage[]{enumitem}
+
+\makeatletter
+\AddEnumerateCounter{\fnsymbol}{\c@fnsymbol}{9}%%%%fnsymbolという文字をenumerate環境のパラメーターで使えるようにする。
+\makeatother
+
+\renewcommand{\theenumi}{(\arabic{enumi})}%%%%%itemは(1),(2),(3)で番号付ける。
+\renewcommand{\labelenumi}{\theenumi}
+%%%%%箇条書き環境
+
+
+\usepackage{latexsym}
+\renewcommand{\emptyset}{\varnothing}
+\def\ep{\varepsilon}
+\def\id{\mathrm{id}}
+\DeclareMathOperator{\tr}{\mathrm{tr}}
+
+\def\C{\mathbb{C}}
+\def\R{\mathbb{R}}
+\def\Q{\mathbb{Q}}
+\def\Z{\mathbb{Z}}
+\def\N{\mathbb{N}}
+\def\P{\mathbf{P}}
+\def\T{\mathbb{T}}
+
+
+\def\E{\mathbb{E}}
+\def\I{\mathbf{1}}
+
+\def\mcA{\mathcal{A}}
+\def\mcB{\mathcal{B}}
+\def\mcC{\mathcal{C}}
+\def\mcD{\mathcal{D}}
+\def\mcE{\mathcal{E}}
+\def\mcF{\mathcal{F}}
+\def\mcG{\mathcal{G}}
+\def\mcH{\mathcal{H}}
+\def\mcI{\mathcal{I}}
+\def\mcJ{\mathcal{J}}
+\def\mcK{\mathcal{K}}
+\def\mcL{\mathcal{L}}
+\def\mcM{\mathcal{M}}
+\def\mcN{\mathcal{N}}
+\def\mcO{\mathcal{O}}
+\def\mcP{\mathcal{P}}
+\def\mcQ{\mathcal{Q}}
+\def\mcR{\mathcal{R}}
+\def\mcS{\mathcal{S}}
+\def\mcT{\mathcal{T}}
+\def\mcU{\mathcal{U}}
+\def\mcV{\mathcal{V}}
+\def\mcW{\mathcal{W}}
+\def\mcX{\mathcal{X}}
+\def\mcY{\mathcal{Y}}
+\def\mcZ{\mathcal{Z}}
+
+\def\dfn{:\overset{\mbox{{\scriptsize def}}}{=}}
+\newcommand{\deff}{:\hspace{-3pt}\overset{\text{def}}{\iff}}
+
+\renewcommand{\ae}{\text{a.e.}}
+\newcommand{\as}{\text{a.s.}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+%\DeclareMathOperator{\liminf}{\textrm{lim inf}}
+
+\allowdisplaybreaks[1]
+
+\begin{document}
+
+
+\title{確率微分方程式 (共立講座 数学の輝き 谷口説男著) \\
+演習問題解答}
+\date{\today}
+\author{ゆじとも}
+
+\maketitle
+
+\begin{abstract}
+  このノートは谷口説男氏による著書「確率微分方程式 (共立講座 数学の輝き) 」
+  の演習問題の解答を書いたものです。
+\end{abstract}
+
+\tableofcontents
+
+
+
+
+
+
+\newpage
+\section{確率論の基礎概念}
+\label{section 1}
+
+\begin{prob}\label{prob: 1.1}
+  \(\sigma(\mcA)\)は\(\sigma\)-加法族であることを示せ。
+\end{prob}
+
+\begin{proof}
+  任意の\(\mcG\in \Lambda(\mcA)\)は\(\sigma\)-加法族であるから
+  \(\emptyset, \Omega\in \mcG\)であり、
+  従ってとくに\(\emptyset,\Omega\in \sigma(\mcA)\)である。
+
+  \(A\in \sigma(\mcA)\)とする。
+  任意の\(\mcG\in\Lambda(\mcA)\)は\(\sigma\)-加法族であり、
+  \(A\in \sigma(\mcA)\subset \mcG\)であるから、
+  \(\Omega \setminus A \in \mcG\)となって、
+  とくに\(\Omega\setminus A\in \bigcap \mcG = \sigma(\mcA)\)となる。
+
+  \(A_i\in\sigma(\mcA) , i=1,2,\cdots\)とする。
+  任意の\(\mcG\in\Lambda(\mcA)\)は\(\sigma\)-加法族であり、
+  \(\bigcup_{i=1}^\infty A_i\in \sigma(\mcA)\subset \mcG\)であるから、
+  \(\bigcup_{i=1}^\infty A_i \in \mcG\)となって、
+  とくに\(\bigcup_{i=1}^\infty A_i\in \bigcap \mcG = \sigma(\mcA)\)となる。
+  以上で全ての条件が確認できた。
+\end{proof}
+
+
+
+
+
+
+\begin{prob}\label{prob: 1.2}
+  例1.5(2)の\(\P\)が確率測度であることを確認せよ。
+\end{prob}
+
+\begin{proof}
+  \[
+  \P(\Omega) = \sum_{i=1}^\infty p_i\I_{\Omega}(i) = \sum_{i=1}^\infty p_i = 1,
+  \]
+  であるので\(\P\)は一つ目の条件を満たす。
+  また\(A_j\in\mcF, j = 1,2,\cdots \)がたがいに交わらないとき、
+  \begin{itemize}
+    \item[ \ ]
+    \(\I_{\bigcup_{j=1}^\infty A_j}(i) = 1\)
+    \item[\(\iff\)]
+    \(i\in \bigcup_{j=1}^\infty A_j\)
+    \item[\(\iff\)]
+    ある\(j=1,2,\cdots\)で\(i\in A_j\)
+    \item[\(\iff\)]
+    ただ一つの\(j\)で\(i\in A_j\)
+    \item[\(\iff\)]
+    ただ一つの\(j\)で\(\I_{A_j}(i)=1\)
+  \end{itemize}
+  となる。ただし3つ目の\(\iff\)は\(A_j\)たちがたがいに交わらないことより従う。
+  以上より
+  \[
+  \I_{\bigcup_{j=1}^\infty A_j}(i) = \sum_{j=1}^\infty \I_{A_j}(i)
+  \]
+  となって、
+  \[
+  \P(\bigcup_{j=1}^\infty A_j)
+  = \sum_{i=1}^\infty \I_{\bigcup_{j=1}^\infty A_j}(i)
+  = \sum_{i=1}^\infty \sum_{j=1}^\infty \I_{A_j}(i)
+  = \sum_{j=1}^\infty \sum_{i=1}^\infty \I_{A_j}(i)
+  = \sum_{j=1}^\infty \P(A_j)
+  \]
+  となる。
+  よって\(\P\)は二つ目の条件も満たす。
+  以上で\(\P\)は確率測度となる。
+\end{proof}
+
+
+
+
+
+
+\begin{prob}\label{prob: 1.3}
+  \(E,E_1,E_2\)を可分距離空間とし、
+  \(d\)を\(E\)上の距離関数とする。
+  \begin{enumerate}
+    \item \label{enumi: 1.3-1}
+    \(E_1\times E_2\)のボレル\(\sigma\)-加法族
+    \(\mcB(E_1\times E_2)\)は
+    \(\sigma\left(\left\{ A_1\times A_2
+    \middle| A_i\in \mcB(E_i),i=1,2\right\} \right)\)
+    と一致することを示せ。
+    \item \label{enumi: 1.3-2}
+    \(E\)-値確率変数\(X,Y\)に対し
+    \(d(X,Y)\)は確率変数となることを示せ。
+  \end{enumerate}
+\end{prob}
+
+\begin{proof}
+  \ref{enumi: 1.3-1}。
+  まず\(E_1\times E_2\)の開集合\(U\)は
+  \[
+  U = \bigcup (U_1 \times U_2)
+  \]
+  と書ける。
+  ただし\(U_i\)は\(E_i\)の開集合であり
+  和は\(U_1\times U_2 \subset U\)となるペア\((U_1,U_2)\)すべてに渡る。
+  ここで\(E_1,E_2\)は可分であるから、
+  \(E_1\times E_2\)は第二可算であり、
+  従って可算個のペア\((U_1,U_2)\)をとることで
+  \(U\)は上の形のある可算和として表すことができる。
+  すると各\(U_1\times U_2\)は
+  \(\sigma(\left\{ A_1\times A_2 \mid A_i\in \mcB(E_i),i=1,2\right\})\)
+  に属するから、
+  その可算和である\(U\)もそこに属することがわかる。
+  \(\mcB(E_1\times E_2)\)が開集合系で生成された\(\sigma\)-加法族であることから、
+  以上より、
+  \[
+  \mcB(E_1\times E_2)\subset
+  \sigma(\left\{ A_1\times A_2 \mid A_i\in \mcB(E_i),i=1,2\right\})
+  \]
+  がわかる。
+
+  \(A_i\in \mcB(E_i)\)に対して
+  \(A_1\times A_2\in \mcB(E_1\times E_2)\)であるから
+  逆の包含もわかる。以上で示された。
+
+  \ref{enumi: 1.3-2}
+  \(X,Y\)を並べて得られる
+  \(X\times Y:\Omega \to E\)は\(E\)-値確率変数であり、
+  また距離関数\(d(-,-)\)は連続関数であり、
+  連続関数は可測関数であるから、
+  以上より\(d\)と\(X\times Y\)の合成である
+  \(d(X,Y)\)は確率変数となる。
+\end{proof}
+
+
+
+
+
+
+\begin{prob}\label{prob: 1.4}
+  確率変数\(X_n\)が\(X\)に確率収束し、
+  \(f:\R\to \R\)が連続であれば、
+  \(f(X_n)\)は\(f(X)\)に確率収束することを示せ。
+\end{prob}
+
+\begin{proof}
+  \(\ep > 0\)を任意にとる。
+  \(A_n \dfn \left\{ |f(X_n)-f(X)| > \ep \right\}\)とおく。
+  示したいことは次である：
+  \[
+  \P(A_n) \to 0 , \ \ \ (n\to \infty).
+  \]
+  \(\delta > 0\)をとる。
+  \[
+  B_\delta \dfn
+  \left\{ x\in \R \mid
+  \exists y, |x-y|<\delta \text{かつ} |f(x)-f(y)|>\ep \right\}
+  \]
+  とおく。
+  また、\(C_n(\delta) \dfn \left\{ |X_n-X|\geq \delta \right\}\)
+  とおく。
+  これらの定義から、任意の\(\delta >0\)に対して
+  \[
+  A_n\subset \left\{ X\in B_\delta \right\} \cup C_n(\delta)
+  \]
+  となることがわかる。
+  次に注意：
+  \begin{enumerate}
+    \item
+    \(f\)は連続なので、
+    \(\bigcap_{\delta >0}B_\delta = \emptyset\)であり、
+    従って\(\lim_{\delta \to 0}\P(X\in B_{\delta}) = 0\)となる。
+    \item
+    \(X_n\)は\(X\)に確率収束するので、任意の\(\delta > 0\)に対して
+    \(\P(C_n(\delta)) \to 0 , (n\to \infty)\)となる。
+  \end{enumerate}
+  以上より
+  \[
+  \P(A_n) \leq \P(X\in B_\delta) + \P(C_n(\delta)) \to 0,
+  \ \ \ (n\to \infty, \delta \to 0)
+  \]
+  となって所望の結果を得る。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+\begin{prob}\label{prob: 1.5}
+  \(\mcF\)を\(\sigma\)-加法族、
+  \(\mcG\subset \mcF\)を有限な\(\sigma\)-加法族とする。
+  このとき、\(A_1,\cdots, A_n\in \mcG\)があって次を満たす：
+  \begin{enumerate}
+    \item \label{enumi: prob 1.5 condition 1}
+    \(A_i\cap A_j = \emptyset , (i\neq j)\).
+    \item \label{enumi: prob 1.5 condition 2}
+    \(\bigcup_{i=1}^n A_i = \Omega\).
+  \end{enumerate}
+  さらに\(\P(A_i) > 0\)と仮定する。
+  このとき、ある\(X\in L^1(\P)\)が存在して
+  \[
+  \E\left[ X \middle| \mcG\right] =
+  \sum_{i=1}^n \frac{\E\left[ X; A_i\right]}{\P(A_i)}\I_{A_i}
+  \]
+  となることを示せ。
+\end{prob}
+
+\begin{proof}
+  なんかこの問題は「\(A_i\)たちに対する最小性」のようなものがないとまずい気がする。
+  たとえば
+  \(n=1, A_1 = \Omega\)とかは二つの条件を満たして、
+  しかも\(\P(A_1)=1\)になるけど
+  \(\E\left[ X\middle| \mcG\right] = \E[X]\)で一定になって、
+  これはすごくまずい気がする。
+  というわけでここではそのような\(A_i\)たちであって
+  最小のものをとってくることで
+  最後の等式が成立するようにできることを示す。
+
+  まず\(\Omega\)に同値関係を入れる：
+  \[
+  \omega_1\sim \omega_2
+  \deff
+  \forall A \in \mcG,
+  \omega_1,\omega_2\in A \text{または}
+  \omega_1,\omega_2\in \Omega \setminus A.
+  \]
+  明らかに\(\sim\)は\(\Omega\)上の同値関係であり、
+  \(\mcG\)が有限集合であることから、
+  \(\Omega\)は有限個の同値類\(A_1,\cdots,A_n\)に分割される。
+  しかも\(A_i\)は\(A_i\)を含む\(\mcG\)の元すべての共通部分として表すことができるので、
+  \(\mcG\)が有限集合であることから、\(A_i\in \mcG\)であることもわかる。
+  これらの\(A_i\)は明らかに条件
+  \ref{enumi: prob 1.5 condition 1}と
+  \ref{enumi: prob 1.5 condition 2}を満たす。
+
+  任意の\(i\)で\(\P(A_i) > 0\)であると仮定して、
+  最後の等式を証明する。
+  \(\E[X\mid\mcG]\)は\(A_i\)上一定の値 (それを\(c\)とおく) をとる確率変数である
+  (なぜなら\(A_i\)より小さい\(\mcG\)の元は\(\emptyset\)しかないから)。
+  従って
+  \begin{align*}
+    \E[X;A_i]
+    &= \E \left[ \E \left[X\middle|\mcG\right]; A_i\right] \\
+    &= \int_{A_i} \E \left[X\middle|\mcG\right] d\P \\
+    &= c \int_{A_i} d\P \\
+    &= c \P(A_i)
+  \end{align*}
+  となる。
+  ゆえに確率変数\(\E[X\mid\mcG]\)は\(A_i\)上で一定の値
+  \(c = \frac{\E[X;A_i]}{\P(A_i)}\)をとる。
+  \(A_i\)たちはdisjointであるから、所望の等式を得る。
+\end{proof}
+
+
+
+
+
+
+
+
+\begin{prob}\label{prob: 1.6}
+  \(X\in L^2(\P)\)であるとき、次を示せ：
+  \[
+  \E\left[\left(X-\E\left[X\middle|\mcG\right]\right)^2\right]
+  = \min \left\{ \E\left[(X-Z)^2\right] \middle|
+  \text{\(Z\in L^2(\P)\)は\(\mcG\)-可測}\right\}.
+  \]
+\end{prob}
+
+\begin{proof}
+  \(X\in L^2(\P)\)より
+  \(
+  \left| \E\left[ X\middle| \mcG\right]\right|^2
+  \leq \E \left[ X^2 \middle| \mcG\right]
+  \)
+  となる (定理1.34(4))。
+  期待値をとって、
+  \[
+  \E\left[ \left| \E\left[ X\middle| \mcG\right]\right|^2 \right]
+  \leq \E \left[ \E \left[ X^2 \middle| \mcG\right]\right]
+  = \E [X^2] < \infty
+  \]
+  となる。
+  ゆえに\(\E\left[X\middle|\mcG\right]\in L^2(\P)\)である。
+  従って、とくに、
+  任意の\(Z\in L^2(\P)\)に対して
+  \[
+  \E\left[ \left(X-\E\left[X\middle|\mcG\right]\right)^2\right]
+  \leq \E\left[ (X-Z)^2\right]
+  \]
+  となることが示せれば良い。
+
+  \(Y \dfn Z-\E\left[X\middle|\mcG\right]\)とおく。
+  このとき、
+  \begin{align*}
+    &\E\left[ (X-Z)^2\right]
+    - \E\left[ \left(X-\E\left[X\middle|\mcG\right]\right)^2\right] \\
+    &= \E\left[ -Y\left(X-\E\left[X\middle|\mcG\right]+X-Z\right)\right] \\
+    &= \E\left[ -Y\left(2X-2\E\left[X\middle|\mcG\right]-Y\right)\right] \\
+    &= \E[Y^2] + 2\E\left[ Y\left(\E\left[X\middle|\mcG\right]-X\right)\right] \\
+    &\geq 2\E\left[ Y\E\left[X\middle|\mcG\right]-YX\right] \\
+    &= 2\E\left[ \E\left[XY\middle|\mcG\right]\right] - 2\E\left[YX\right] \\
+    &= 0
+  \end{align*}
+  となって所望の不等式を得る。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{prob}\label{prob: 1.7}
+  \(\mcG\subset \mcF\)を\(\sigma\)-加法族、
+  \(X,Y\)を独立な確率変数、
+  \(Y\)を\(\mcG\)-可測とするとき、
+  任意の有界な\(\mcB(\R^2)\)-可測関数\(g:\R^2\to \R\)に対し
+  \[
+  \E\left[ g(X,Y)\middle| \mcG\right]
+  = \E\left[ g(X,y) \right]|_{y=Y}
+  \]
+  となることを示せ。
+\end{prob}
+
+\begin{proof}
+  本文中では右辺も条件付き期待値になっていたけど、
+  \(\mcG\)は必要ないはず。
+  より一般的な次の事実を証明する：
+  \begin{enumerate}[label=(\fnsymbol*), start=2]
+    \item \label{enumi: pf of prob 1.7}
+    \(E_1,E_2\)を (可分) 距離空間、
+    \(\mcG\subset \mcF\)を\(\sigma\)-加法族、
+    \(Y:\Omega \to E_2\)を\(\mcG\)-可測な確率変数、
+    \(X:\Omega \to E_1\)を\(Y\)と独立な確率変数とするとき、
+    任意の\(\mcB(E_1\times E_2)\)-可測関数\(g:\R^2\to \R\)に対し
+    \[
+    \E\left[ g(X,Y)\middle| \mcG\right]
+    = \E\left[ g(X,y) \right]|_{y=Y}
+    \]
+    となる。
+  \end{enumerate}
+
+  \(g=g^+-g^-\)と分けて示すことを考えれば、
+  \(g\)は非負であると仮定して\ref{enumi: pf of prob 1.7}を証明すれば十分である。
+  また\(g\)を単関数の単調増加な列で近似して単調収束定理を用いることを考えれば、
+  \(g\)は単関数であると仮定して\ref{enumi: pf of prob 1.7}を証明すれば十分である。
+  さらに単関数は定義関数の線形和であることから、
+  ある\(A\in \mcB(E_1\times E_2)\)に対して\(g = \I_A\)となると
+  仮定して\ref{enumi: pf of prob 1.7}を証明すれば十分である。
+  さらに\autoref{prob: 1.3} \ref{enumi: 1.3-1}より
+  \(\mcB(E_1\times E_2) = \sigma\left(
+  \left\{ A\times B \middle| A\in \mcB(E_1) , B\in \mcB(E_2)\right\}\right)\)
+  であるから、
+  ある\(A\in \mcB(E_1) , B\in \mcB(E_2)\)に対して
+  \(g = \I_{A\times B}\)となると
+  仮定して\ref{enumi: pf of prob 1.7}を証明すれば十分である。
+  このとき\(g(x,y) = \I_{A\times B}(x,y) = \I_A(x) \I_B(y)\)
+  であるから、条件付き期待値の性質 (定理1.34 (6) (7)) より
+  主張\ref{enumi: pf of prob 1.7}は自明に成立する。
+  以上で示された。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{prob}\label{prob: 1.8}
+  \(\mcG\subset \mcF\)を\(\sigma\)-加法族とし、
+  \(X,X_n\in L^1(\P)\)とする。
+  次を示せ：
+  \begin{enumerate}
+    \item \label{enumi: prob: 1.8-1}
+    \(X_n \to X, \text{in} L^1\)ならば
+    \(\E\left[X_n\middle|\mcG\right] \to \E\left[X\middle|\mcG\right]
+    , \text{in} L^1\)である。
+    \item \label{enumi: prob: 1.8-2}
+    \(X_n\leq X_{n+1}, (\P\text{-a.s.})\)かつ
+    \(X_n\to X, (\P\text{-a.s.})\)ならば
+    \(\E\left[X_n\middle|\mcG\right] \to \E\left[X\middle|\mcG\right],
+    (\P\text{-a.s.})\)である。
+    \item \label{enumi: prob: 1.8-3}
+    \(X_n \geq 0, (\P\text{-a.s.})\)ならば
+    \[
+    \E\left[ \liminf_{n\to \infty} X_n\middle|\mcG \right]
+    \leq \liminf_{n\to \infty}\E\left[X_n\middle|\mcG\right],
+    (\P\text{-a.s.})
+    \]
+    となる。
+    ただし\(\liminf_{n\to \infty} X_n\not\in L^1(\P)\)の場合は、
+    この不等式は\(\infty = \infty\)を許して
+    \[
+    \E\left[ \liminf_{n\to \infty} X_n; A \right]
+    \leq \liminf_{n\to \infty}\E\left[X_n; A\right],
+    (\forall A\in\mcG)
+    \]
+    が成り立つことを意味する。
+    \item \label{enumi: prob: 1.8-4}
+    \(Y\geq 0\)なる\(Y\in L^1(\P)\)が存在し、
+    \(|X_n| \leq Y , (\P\text{-a.s.})\)であり、
+    さらに\(X_n\to X, (\P\text{-a.s.})\)であるとする。
+    このとき
+    \(\E\left[X_n\middle|\mcG\right] \to \E\left[X\middle|\mcG\right],
+    (\P\text{-a.s.})\)である。
+  \end{enumerate}
+\end{prob}
+
+\begin{proof}
+  \ref{enumi: prob: 1.8-1}。
+  \(\| X_n-X\| _1 = \E\left[ X_n-X\right] \to 0 , (n\to \infty)\)とする。
+  このとき
+  \begin{align*}
+    \| \E\left[X_n\middle|\mcG\right]-\E\left[X\middle|\mcG\right]\| _1
+    &= \E\left[\|\E\left[X_n-X\middle|\mcG\right]\|\right] \\
+    &\leq \E\left[\E\left[\|X_n-X\|\middle|\mcG\right]\right] \ \ \ \
+    (\text{イェンセンの不等式}) \\
+    &\leq \E\left[\|X_n-X\|\right] \\
+    &\to 0 , \ \ \ \ (n\to \infty)
+  \end{align*}
+  となる。
+
+  \ref{enumi: prob: 1.8-2}。
+  \(\bar{X}\dfn \lim_{n\to \infty}\E\left[ X_n\middle|\mcG\right]\)とおく。
+  これは\(\mcG\)-可測である。
+  \(\bar{X} = \E\left[X\middle|\mcG\right], (\P\text{-a.s.})\)を示せば良い。
+  そのためには、条件付き確率の一意性より、
+  任意の\(A\in \mcG\)に対して
+  \(\E\left[\bar{X};A\right] = \E\left[X;A\right]\)であれば良い。
+  ここで通常の期待値に対する単調収束定理より、\(\P\)-a.s.に
+  \begin{align*}
+    \E\left[\bar{X};A\right]
+    &= \E\left[\lim_{n\to \infty}\E\left[ X_n\middle|\mcG\right];A\right] \\
+    &= \E\left[\lim_{n\to \infty}\E\left[ X_n\middle|\mcG\right]\I_A\right] \\
+    &= \lim_{n\to \infty}\E\left[\E\left[ X_n\middle|\mcG\right]\I_A\right] \\
+    &= \lim_{n\to \infty}\E\left[ X_n\I_A \right] \\
+    &= \E\left[ \lim_{n\to \infty}X_n\I_A \right] \\
+    &= \E\left[ \lim_{n\to \infty}X_n;A \right] \\
+    &= \E\left[ X;A \right]
+  \end{align*}
+  となる。
+  これは所望の結果である。
+
+  \ref{enumi: prob: 1.8-3}。
+  もしある\(\P(A)>0\)となる\(A\in \mcG\)上で\( > \)側の不等号が成立するとすれば、
+  \(A\)上で期待値をとることで
+  \[
+  \E\left[\liminf_{n\to \infty} X_n ;A \right]
+  > \liminf_{n\to \infty}\E \left[ X_n;A\right]
+  \]
+  となるが、
+  これは通常の期待値に対するファトゥの補題で\(X_n\)を\(X_n\I_A\)とした場合に反する。
+
+  \ref{enumi: prob: 1.8-4}。
+  \[
+  \E\left[ X_n\middle|\mcG\right]
+  \leq \E\left[|X_n|\middle|\mcG\right]
+  \leq \E\left[Y\middle|\mcG\right]
+  \]
+  なので
+  \(\bar{X}\dfn \lim_{n\to \infty}\E\left[ X_n\middle|\mcG\right]\)
+  をとって\ref{enumi: prob: 1.8-2}と同じことをすれば良い。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+\section{マルチンゲール}
+\label{section 2}
+
+
+\begin{prob}\label{prob: 2.1}
+  \(\mcF_t^X\)は\(X_s, (s\in\T\cap[0,t])\)をすべて可測にする
+  最小の\(\sigma\)-加法族であることを示せ。
+\end{prob}
+
+\begin{proof}
+  \(\mcF\)が\(\mcF_t^X\)より小さい\(\sigma\)-加法族であれば、
+  ある\(s\)とある\(A\in \mcB(\R)\)があって
+  \(\left\{X_s\in A\right\}\not\in \mcF\)となるので
+  \(X_s\)は\(\mcF\)-可測でなくなる。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{prob}\label{prob: 2.2}
+  \(\left\{X_t\right\}_{t\in \T}\)が
+  \(\mcF_t\)-発展的可測であれば、
+  \((\mcF_t)\)-適合である。
+\end{prob}
+
+\begin{proof}
+  二つの可測関数の合成
+  \[
+  \left\{ t\right\} \times \Omega \to
+  [0,t]\times \Omega \xrightarrow{X} E
+  \]
+  は可測である。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+\begin{prob}\label{prob: 2.3}
+  \(\mcN\subset \mcF_0\)とする。
+  \(\P\)-a.s.に右連続かつ\((\mcF_t)\)-適合な
+  確率過程\(\left\{X_t\right\}_{t\in \T}\)は
+  \((\mcF_t)\)-発展的可測な修正\(\left\{Y_t\right\}_{t\in \T}\)を持つことを示せ。
+\end{prob}
+
+\begin{proof}
+  例2.2より
+  \(X_t\)は右連続な修正を持つ。
+  補題2.4よりそれは\((\mcF_t)\)-発展的可測である。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{prob}\label{prob: 2.4}
+  \(X,Y \geq 0, p\geq 0\)とする。
+  このとき次を示せ：
+  \[
+  \E\left[ XY^p \right] = \int_0^\infty p\lambda^{p-1}
+  \E\left[ X;Y>\lambda \right] d\lambda.
+  \]
+\end{prob}
+
+\begin{proof}
+  \(Z = Y^p\)とおく。右辺を変形すると
+  \begin{align*}
+    \int_0^\infty p\lambda^{p-1}
+    \E\left[ X;Y>\lambda \right] d\lambda
+    &= \int_0^\infty \E\left[ X;Y>\lambda \right] d(\lambda^p) \\
+    &= \int_0^\infty \E\left[ X;Y>\lambda^{1/p} \right] d\lambda \\
+    &= \int_0^\infty \E\left[ X;Z>\lambda \right] d\lambda \\
+    &= \int_0^\infty \int_{\Omega}X(\omega)\I_{Z>\lambda} d\P(\omega) d\lambda \\
+    &= \int_{\Omega}\int_0^\infty X(\omega)\I_{Z>\lambda} d\lambda d\P(\omega) \\
+    &= \int_{\Omega}X(\omega)\int_0^\infty \I_{Z>\lambda} d\lambda d\P(\omega) \\
+    &= \int_{\Omega}X(\omega)Z(\omega) d\P(\omega) \\
+    &= \E[XZ] \\
+    &= \E[XY^p]
+  \end{align*}
+  となる (\(Y\)のまま計算してもよかったかも)。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{prob}\label{prob: 2.5}
+  \(\mcF_{\tau}\)が\(\sigma\)-加法族であることを示せ。
+\end{prob}
+
+\begin{proof}
+  定義を確認すると、
+  \[
+  \mcF_{\tau} = \left\{ A \in \mcF \middle|
+  A\cap \left\{\tau \leq t \right\} \in \mcF_t, (t\in [0,\infty))\right\}
+  \]
+  である。
+  まず
+  \begin{itemize}
+    \item
+    \(\emptyset \cap \left\{\tau\leq t\right\} = \emptyset \in \mcF_t\)
+    \item
+    \(\Omega \cap \left\{\tau\leq t\right\} = \left\{\tau\leq t\right\} \in \mcF_t\)
+  \end{itemize}
+  なので\(\sigma\)-加法族であるための一つ目の条件は満たされる。
+  \(A\cap \left\{\tau\leq t\right\} \in \mcF_t\)と仮定する。
+  このとき
+  \[
+  (\Omega \setminus A) \cap \left\{\tau\leq t\right\}
+  = \left\{\tau\leq t\right\} \setminus \left( \left\{\tau\leq t\right\} \cap A \right)
+  \]
+  であるが、
+  ここで\(\left\{\tau\leq t\right\}\)と
+  \(\left\{\tau\leq t\right\}\cap A\)はともに\(\mcF_t\)の元であるから
+  \((\Omega \setminus A) \cap \left\{\tau\leq t\right\}\)
+  も\(\mcF_t\)の元となる。
+  よって\(\sigma\)-加法族であるための二つ目の条件も成立する。
+  \(A_i\cap \left\{\tau\leq t\right\} \in \mcF_t\)が
+  \(i=1,2,\cdots\)で成り立つとする。
+  このとき
+  \[
+  \left( \bigcup_{i=1}^\infty A_i\right) \cap \left\{\tau\leq t\right\}
+  = \bigcup_{i=1}^\infty \left( A_i \cap \left\{\tau\leq t\right\} \right)
+  \in \mcF_t
+  \]
+  となって\(\sigma\)-加法族であるための条件が全て確認できた。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{prob}\label{prob: 2.6}
+  \(T > 0\)とする。
+  \(M_t\in L^2(\P), (\forall t\leq T)\)となる連続マルチンゲール
+  \(\left\{ M_t\right\}_{t\leq T}\)全体を\(\mcM^2_{c,T}\)とおく。
+  また、\(M\in \mcM^2_{c,T}\)に対して
+  \[
+  \| |M| \| \dfn \|M_T\|_2
+  \]
+  と定義する。
+  \(M^n\in \mcM^2_{c,T}\)をマルチンゲールの列とし、
+  \(\| |M^n-M^m| \| \to 0 , (n,m\to \infty)\)とする。
+  このとき、ある\(M\in \mcM^2_{c,T}\)が存在して
+  \[
+  \E\left[ \sup_{t\leq T}|M^n_t - M_t|^2\right]\to 0 , \ \ (n\to \infty)
+  \]
+  となることを示せ。
+\end{prob}
+
+\begin{proof}
+  Doobの不等式 (定理2.9) と仮定\(\| |M^n-M^m|\| \to 0\)より
+  \[
+  \E \left[ \sup_{t\leq T}|M^n_t - M_t|^2\right]
+   \leq 2^2 \E\left[ (M_T^n-M_T^m)^2 \right]\to 0 , \ \ (n,m\to \infty)
+  \]
+  となる。
+  よって命題2.18(2)より
+  ある連続な確率過程\(M_t\)があって
+  \[
+  \lim_{n\to \infty} \E \left[
+  \sup_{t\leq T}(M_t^n-M_t)^2\right] = 0
+  \]
+  となる。
+  あとは\(M_t\)がマルチンゲールとなれば良いが、
+  それは命題2.8(4)より従う。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{prob}\label{prob: 2.7}
+  \[
+  d(M,N) \dfn \sum_{n=1}^\infty 2^{-n}
+  \left( \| \left< M-N\right>_n \|_2 \wedge 1 \right) ,
+  \ \ (M,N\in \mcM_c^2)
+  \]
+  とおく。
+  \begin{enumerate}
+    \item \label{enumi: prob: 2.7-1}
+    \[
+    \sum_{n=1}^\infty 2^{-n}\left(
+    \E \left[ \sum_{t\leq n}|M_t-N_t|^2\right]\right)^{1/2}\wedge 1
+    \leq 4d(M,N)
+    \]
+    を示せ。
+    \item \label{enumi: prob: 2.7-2}
+    \(\lim_{n,m\to \infty}d(M,N)=0\)であるとき
+    あr\(M\in \mcM_c^2\)が存在して\(\lim_{n\to \infty}d(M_n,M)=0\)
+    となることを示せ。
+  \end{enumerate}
+\end{prob}
+
+\begin{proof}
+  \ref{enumi: prob: 2.7-1}。
+
+  \ref{enumi: prob: 2.7-2}。
+  \ref{enumi: prob: 2.7-1}より、
+  すべての\(N\)に対して
+  \[
+  \E \left[ \sum_{t\leq N}|M_t^n-M_t^m|^2\right] \to 0, \ \ (n,m\to \infty)
+  \]
+  となる。
+  すると命題2.18(2)より
+  ある連続確率過程\(M_t, t\geq 0\)があって
+  \[
+  \E \left[ \sum_{t\leq N}|M_t^n-M_t|^2\right] \to 0, \ \ (n\to \infty)
+  \]
+  となる。
+  すると
+  \(\| \left< M^n-M\right>_N\|_2 = \)
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{prob}\label{prob: 2.8}
+
+\end{prob}
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+\section{ブラウン運動}
+\label{section 3}
+
+\begin{prob}\label{prob: 3.1}
+  \(X \sim N(\mu,\Sigma)\)であることは、
+  任意の\(f\in C_b(\R^N)\)に対して
+  \[
+  \E\left[f(X)\right] = \int_{\R^N}f(x)\mathfrak{g}_{N,\mu,\Sigma}(x) dx
+  \]
+  が成り立つことと同値であることを示せ。
+\end{prob}
+
+\begin{proof}
+  \(f\)として定義関数\(\I_A\)をとることで、この等式が成り立てば
+  \(X\sim N(\mu,\Sigma)\)であることはわかる。
+  逆を示すには、\(f\)が定義関数であるときにこの等式が成立することから、
+  線形和をとることで単関数に対してこの等式が成立し、
+  単関数の単調増加な列で有界非負可測関数を近似して単調収束定理を用いることで、
+  任意の有界非負可測関数に対してこの等式が成立し、
+  任意の有界可測関数を有界非負可測関数の差で表すことにより
+  すべての\(f\in C_b(\R^N)\)に対してこの等式が成立することがわかる。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{prob}\label{prob: 3.2}
+  \
+  \begin{enumerate}
+    \item \label{enumi: prob: 3.2-1}
+    \(\frac{\partial}{\partial t}\mathfrak{g}_N(t,x)
+    = \frac{1}{2}\Delta\mathfrak{g}_N(t,x)\)
+    となることを示せ。
+    \item \label{enumi: prob: 3.2-2}
+    \(f\in C_b(\R^N)\)に対して
+    \[
+    u(t,x) \dfn \int_{\R^N}f(x+y)\mathfrak{g}_N(t,y)dy
+    \]
+    とおく。
+    \(\frac{\partial}{\partial t}u = \frac{1}{2}\Delta u\)
+    を示せ。
+  \end{enumerate}
+\end{prob}
+
+\begin{proof}
+  \[
+  u(t,x) = \int_{\R^N}f(x+y)\mathfrak{g}_N(t,y)dy
+  = \int_{\R^N}f(y)\mathfrak{g}_N(t,x+y)dy
+  \]
+  なので\ref{enumi: prob: 3.2-1}がわかれば
+  \ref{enumi: prob: 3.2-2}は明らかである。
+  \ref{enumi: prob: 3.2-1}を示す。
+  \begin{align*}
+    \frac{\partial}{\partial t}\mathfrak{g}_N(t,x)
+    &= \frac{\partial}{\partial t}\mathfrak{g}_{N,0,tI}(x) \\
+    &= \frac{\partial}{\partial t}\left(
+    \frac{1}{\sqrt{(2\pi)^Nt^N}}
+    \exp\left( -\frac{1}{2t}\sum_\alpha (x^\alpha)^2\right)\right) \\
+    &= -\frac{N}{2}t^{-\frac{N}{2}-1}\frac{1}{\sqrt{(2\pi)^N}}
+    \exp\left( -\frac{1}{2t}\sum (x^\alpha)^2\right)
+    + \left( -\frac{1}{2}\sum_{\alpha}(x^\alpha)^2\right)\frac{1}{t^2}
+    \frac{1}{\sqrt{(2\pi)^N}t^N}
+    \exp\left( -\frac{1}{2t}\sum (x^\alpha)^2\right) \\
+    &= \frac{1}{2}\sum_{\alpha}\left( \frac{(x^\alpha)^2}{t^2}-\frac{1}{t}\right)
+    \mathfrak{g}_{N}(t,x), \\
+    \frac{\partial}{\partial x^\alpha} \mathfrak{g}_N(t,x)
+    &= \frac{1}{\sqrt{(2\pi t)^N}}\left( -\frac{2x^\alpha}{2t}\right)
+    \exp\left( -\frac{1}{2t}\sum_\alpha(x^\alpha)^2\right) \\
+    &= -\frac{x^\alpha}{t}\mathfrak{g}_N(t,x), \\
+    \left( \frac{\partial}{\partial x^\alpha}\right)^2 \mathfrak{g}_N(t,x)
+    &= \frac{\partial}{\partial x^\alpha}
+    \left( -\frac{x^\alpha}{t}\mathfrak{g}_N(t,x) \right) \\
+    &= -\frac{1}{t}\left( \mathfrak{g}_N(t,x) + x^\alpha
+    \frac{\partial}{\partial x^\alpha} \mathfrak{g}_N(t,x) \right) \\
+    &= -\frac{1}{t}\left( \mathfrak{g}_N(t,x)
+    - \frac{(x^\alpha)^2}{t}\mathfrak{g}_N(t,x) \right) \\
+    &= \left( \frac{(x^\alpha)^2}{t} - \frac{1}{t}\right) \mathfrak{g}_N(t,x), \\
+  \end{align*}
+  であるから、
+  これらを比較すれば良い。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{prob}\label{prob: 3.3}
+  \(B_t\)を\(d\)次元ブラウン運動とする。
+  \begin{enumerate}
+    \item \label{enumi: prob: 3.3-1}
+    \(c>0\)とし、
+    \(\tilde{B}_t \dfn \frac{1}{c}B_{c^2t}\)とおく。
+    \(\tilde{B}_t\)も\(d\)次元ブラウン運動であることを示せ。
+    \item \label{enumi: prob: 3.3-2}
+    \(t_0 \geq 0\)とし、
+    \(\hat{B}_t \dfn B_{t+t_0}-B_{t_0}\)とおく。
+    \(\hat{B}_t\)も\(d\)次元ブラウン運動であることを示せ。
+    \item \label{enumi: prob: 3.3-3}
+    \(U\)を直交行列とする。
+    \(UB_t\)も\(d\)次元ブラウン運動であることを示せ。
+  \end{enumerate}
+\end{prob}
+
+\begin{proof}
+  \ref{enumi: prob: 3.3-1}と\ref{enumi: prob: 3.3-2}では、
+  3.2節冒頭のブラウン運動の定義にある4つの条件を満たすことを確認する。
+
+  \ref{enumi: prob: 3.3-1}。
+  まず\(\tilde{B}_0(\omega) = \frac{1}{c}B_0(\omega) = 0\)
+  であるから\(\tilde{B}_t\)は一つ目の条件を満たす。
+
+  また\(t\mapsto c^2t\)は連続関数であるから、
+  任意の\(\omega\)に対して\(\tilde{B}_t(\omega) = \frac{1}{c}B_{c^2t}(\omega)\)
+  も\(t\)に関する連続関数となり、\(\tilde{B}_t\)は二つ目の条件も満たす。
+
+  \(0 = t_0 < t_1 < \cdots < t_n\)をとる。
+  \(B_t\)は\(d\)次元ブラウン運動であるから、三つ目の条件より、
+  \(0 = c^2t_0 < c^2t_1 < \cdots < c^2t_n\)に対して
+  \(B_{c^2t_1}-B_{c^2t_0},\cdots ,B_{c^2t_n}-B_{c^2t_{n-1}}\)
+  は独立であり、
+  従ってこれらを一斉に\(\frac{1}{c}\)倍した
+  \(\tilde{B}_{t_1}-\tilde{B}_{t_0}, \cdots,
+  \tilde{B}_{t_n}-\tilde{B}_{t_{n-1}}\)も独立である。
+  よって\(\tilde{B}_t\)は三つ目の条件も満たす。
+
+  \(X\sim N(0,tI)\)となるときに
+  \(cX\sim N(0,c^2tI)\)となることに注意すれば
+  \(\tilde{B}_t\)が四つ目の条件を満たすことがわかる。
+  以上で\(\tilde{B}_t\)は\(d\)次元ブラウン運動である。
+
+  \ref{enumi: prob: 3.3-2}。
+  まず\(\hat{B}_0 = B_{t_0}-B_{t_0} = 0\)であるから
+  \(\hat{B}_t\)は一つ目の条件を満たす。
+
+  また\(\hat{B}_t\)は連続な確率過程から確率変数を引いたものであるから連続な確率過程であり、
+  とくに二つ目の条件を満たす。
+
+  さらに
+  \(0=t_0' < t_1' < \cdots < t_n'\)に対して
+  \(t_i = t_i' + t_0 , (i=1,\cdots, n),t_{-1}=0\)と置きなおすことで
+  \(B_{t_0}-B_{t_{-1}},\cdots,B_{t_n}-B_{t_{n-1}}\)は独立となるが、
+  ここで\(\hat{B}_t = B_{t+t_0}-B_t\)であるから
+  \[
+  \hat{B}_{t_i'}
+  = B_{t_i}-B_{t_{i-1}}
+  = \hat{B}_{t_i'} - \hat{B}_{t_{i-1}'}, (i=0,\cdots,n)
+  \]
+  となり、従って
+  \(\hat{B}_{t_1'}-\hat{B}_{t_0'}, \cdots, \hat{B}_{t_n'}-\hat{B}_{t_{n-1}'}\)
+  も独立となる。
+  これは\(\hat{B}_t\)が三つ目の条件を満たすことを示している。
+
+  \(0\leq s < t\)を任意にとる。
+  \(\hat{B}_t - \hat{B}_s = B_{t+t_0} - B_{s+t_0} \sim
+  N(0,(t+t_0 - s-t_0)I) = N(0,(t-s)I)\)なので
+  \(\hat{B}_t\)は四つ目の条件も満たす。
+
+  \ref{enumi: prob: 3.3-3}。
+  命題3.5を使う。
+  \(0 = t_0 < t_1 < \cdots < t_n\)と
+  \(f\in C_b((\R^d)^n)\)を任意にとる。
+  \(g(x_1,\cdots,x_n) \dfn f(Ux_1,\cdots,Ux_n)\)とおく。
+  すると\(g\in C_b((\R^d)^n)\)である。
+  従って、
+  \begin{align*}
+    \E[f(UB_{t_1},\cdots,UB_{t_n})]
+    &= \E[g(B_{t_1},\cdots,B_{t_n})] \\
+    &= \int_{(\R^d)^n}g(x_1,\cdots,x_n)
+    \prod_{i=1}^n\mathfrak{g}_d(t_i-t_{i-1},x_i-x_{i-1})dx_1\cdots dx_n \\
+    &= \int_{(\R^d)^n}f(Ux_1,\cdots,Ux_n)
+    \prod_{i=1}^n\mathfrak{g}_d(t_i-t_{i-1},x_i-x_{i-1})dx_1\cdots dx_n \\
+    &= \int_{(\R^d)^n}f(y_1,\cdots,y_n)
+    \prod_{i=1}^n\mathfrak{g}_d(t_i-t_{i-1},U^{-1}(y_i-y_{i-1}))
+    (|\det U^{-1}|)^n dy_1\cdots dy_n \\
+    &= \int_{(\R^d)^n}f(y_1,\cdots,y_n)
+    \prod_{i=1}^n\mathfrak{g}_d(t_i-t_{i-1},U^{-1}(y_i-y_{i-1})) dy_1\cdots dy_n
+  \end{align*}
+  となる。
+  ここで\(U\)が直交行列であることから、
+  \begin{align*}
+    \mathfrak{g}_d(t,U^{-1}x)
+    &= \frac{1}{(2\pi t)^d}\exp \left(
+    -\frac{1}{2}\left< U^{-1}x,t^{-1}U^{-1}x\right>\right) \\
+    &= \frac{1}{(2\pi t)^d}\exp \left(
+    -\frac{1}{2}\left< x,t^{-1}x\right>\right) \\
+    &= \mathfrak{g}_d(t,x)
+  \end{align*}
+  となることに注意すれば、
+  \begin{align*}
+    \E[f(UB_{t_1},\cdots,UB_{t_n})]
+    &= \int_{(\R^d)^n}f(y_1,\cdots,y_n)
+    \prod_{i=1}^n\mathfrak{g}_d(t_i-t_{i-1},U^{-1}(y_i-y_{i-1})) dy_1\cdots dy_n \\
+    &= \int_{(\R^d)^n}f(y_1,\cdots,y_n)
+    \prod_{i=1}^n\mathfrak{g}_d(t_i-t_{i-1},y_i-y_{i-1}) dy_1\cdots dy_n
+  \end{align*}
+  となることがわかり、
+  命題3.5より\(UB_t\)は\(d\)次元ブラウン運動となる。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{prob}\label{prob: 3.4}
+  \(B_t\)を\(1\)次元ブラウン運動とする。
+  \begin{enumerate}
+    \item \label{enumi: prob: 3.4-1}
+    \(\int_{\R}e^{-|x|}\mathfrak{g}_1(t,x)dx
+    \leq 1-\sqrt{\frac{2t}{\pi}} + \frac{t}{2}\)
+    を示せ。
+    \item \label{enumi: prob: 3.4-2}
+    \(T>0\)とし、
+    \(V_n \dfn \sum_{k=0}^{2^n-1}
+    \left| B_{\frac{(k+1)T}{2^n}}-B_{\frac{kT}{2^n}}\right|\)
+    とおく。
+    \(\lim_{n\to \infty}\E\left[e^{-V_n}\right] = 0\)を示せ。
+    \item \label{enumi: prob: 3.4-3}
+    \(\P\)-a.s.に写像\(t\mapsto B_t(\omega)\)は有界変動でないことを示せ。
+  \end{enumerate}
+\end{prob}
+
+\begin{proof}
+  \ref{enumi: prob: 3.4-1}。
+  \(\int_{\R}e^{-|x|}\mathfrak{g}_1(t^2,x)dx
+  \leq 1-\sqrt{\frac{2}{\pi}}t + \frac{t^2}{2}\)
+  を示せば良い。
+  \[
+  F(t) \dfn 1-\sqrt{\frac{2}{\pi}}t + \frac{t^2}{2}
+  - \int_{\R}e^{-|x|}\mathfrak{g}_1(t^2,x)dx
+  \]
+  と置く。
+  \begin{align*}
+    &\int_{\R}e^{-|x|}\mathfrak{g}_1(t^2,x)dx \\
+    &= \int_{\R}e^{-|x|}\frac{1}{\sqrt{2\pi}t}e^{-\frac{1}{2t^2}x^2}dx \\
+    &= \frac{2}{\sqrt{2\pi}t}\int_0^\infty e^{-\frac{1}{2t^2}x^2-x}dx \\
+    &= \frac{2}{\sqrt{2\pi}}\int_0^\infty e^{-\frac{1}{2}x^2-tx}dx \\
+    &= \frac{2}{\sqrt{2\pi}}\int_0^\infty e^{-\frac{1}{2}(x+t)^2+\frac{1}{2}t^2}dx \\
+    &= \frac{2}{\sqrt{2\pi}}e^{\frac{1}{2}t^2}
+    \int_0^\infty e^{-\frac{1}{2}(x+t)^2}dx \\
+    &= \frac{2}{\sqrt{2\pi}}e^{\frac{1}{2}t^2}
+    \int_t^\infty e^{-\frac{1}{2}x^2}dx \\
+    &= e^{\frac{1}{2}t^2} - \frac{2}{\sqrt{2\pi}}e^{\frac{1}{2}t^2}
+    \int_0^t e^{-\frac{1}{2}x^2}dx
+  \end{align*}
+  であるから、
+  \[
+  F(t) = 1-\sqrt{\frac{2}{\pi}}t + \frac{t^2}{2} - e^{\frac{1}{2}t^2}
+  + \frac{2}{\sqrt{2\pi}}e^{\frac{1}{2}t^2}\int_0^t e^{-\frac{1}{2}x^2}dx
+  \]
+  となる。
+  従って\(F(0)=0\)がわかる。
+  よって\(F'(t) \geq 0, (\forall t \geq 0)\)を証明すれば良い。
+  また、
+  \begin{align*}
+    F'(t) &=
+    -\sqrt{\frac{2}{\pi}} + t - te^{\frac{1}{2}t^2}
+    + \frac{2}{\sqrt{2\pi}}\left(
+    te^{\frac{1}{2}t^2}\int_0^t e^{-\frac{1}{2}x^2}dx + 1 \right) \\
+    &= t - te^{\frac{1}{2}t^2}
+    + \frac{2}{\sqrt{2\pi}}te^{\frac{1}{2}t^2}\int_0^t e^{-\frac{1}{2}x^2}dx \\
+    &= te^{\frac{1}{2}t^2}\left(
+    + \frac{2}{\sqrt{2\pi}}\int_0^t e^{-\frac{1}{2}x^2}dx - 1
+    + e^{-\frac{1}{2}t^2}\right) \\
+  \end{align*}
+  となる。
+  \[
+  G(t) \dfn
+  \frac{2}{\sqrt{2\pi}}\int_0^t e^{-\frac{1}{2}x^2}dx - 1
+  + e^{-\frac{1}{2}t^2}
+  \]
+  とおく。
+  \(G(0) = 0, \lim_{t\to \infty}G(t) = 0\)は直ちにわかる。
+  \begin{align*}
+    G'(t) &= \frac{2}{\sqrt{2\pi}}e^{-\frac{1}{2}t^2} - te^{-\frac{1}{2}t^2} \\
+    &= e^{-\frac{1}{2}t^2}\left(\frac{2}{\sqrt{2\pi}} - t\right)
+  \end{align*}
+  であるから、
+  \(0\leq t \leq \frac{2}{\sqrt{2\pi}}\)に対して
+  \(G'(t) \geq 0\)であり、
+  \(t \geq \frac{2}{\sqrt{2\pi}}\)に対して
+  \(G'(t) \leq 0\)である。
+  ここで\(G(0)=0,\lim_{t\to \infty}G(t)=0\)を考慮すれば
+  \(G(t) \geq 0 , ( \forall t \geq 0)\)がわかる。
+  以上より\(F'(t) \geq 0, (\forall t \geq 0)\)がわかり、
+  \(F(t) \geq 0, (\forall t \geq 0)\)がわかった。
+
+  \ref{enumi: prob: 3.4-2}。
+  \(B_t\)はブラウン運動なので、
+  各\(k=0,\cdots,2^n-1\)に対して
+  \(B_{\frac{(k+1)T}{2^n}}-B_{\frac{kT}{2^n}}\)たちは独立である。
+  従って、
+  \begin{align*}
+    \E\left[e^{-V_n}\right]
+    &= \E\left[ \prod_{k=0}^{2^n}\exp
+    \left(-|B_{\frac{(k+1)T}{2^n}}-B_{\frac{kT}{2^n}}|\right)\right] \\
+    &= \prod_{k=0}^{2^n} \E\left[ \exp
+    \left(-|B_{\frac{(k+1)T}{2^n}}-B_{\frac{kT}{2^n}}|\right)\right] \\
+    &= \prod_{k=0}^{2^n} \int_{\R}e^{-|x|}
+    \mathfrak{g}_1(\frac{(k+1)T}{2^n}-\frac{kT}{2^n},x)dx \\
+    &= \prod_{k=0}^{2^n} \int_{\R}e^{-|x|}
+    \mathfrak{g}_1(\frac{T}{2^n},x)dx \\
+    &\overset{\bigstar}{\geq} \prod_{k=0}^{2^n}
+    \left( 1-\frac{T}{2^{n-1}\pi}+\frac{T}{2^{n+1}}\right) \\
+    &= \left( 1-\frac{T}{2^{n-1}\pi}+\frac{T}{2^{n+1}}\right)^{2^n} \\
+    &\to 0, \ \ \ \ (n\to \infty) \\
+  \end{align*}
+  となる。ただし\(\bigstar\)の箇所は\ref{enumi: prob: 3.4-1}を用いた。
+
+  \ref{enumi: prob: 3.4-3}。
+  \(\omega \in A\)に対して
+  \(t\mapsto B_t(\omega)\)が有界変動となるような
+  \(\P(A) \neq 0\)な集合\(A\subset \Omega\)が存在するとする。
+  すると
+  \begin{align*}
+    \E\left[ e^{-V_n}\right]
+    &= \E\left[ e^{-V_n};A\right]
+    + \E\left[ e^{-V_n}; \Omega \setminus A\right] \\
+    &= \E\left[ e^{-V_n};A\right] \\
+  \end{align*}
+  となる。
+  ここで\(A\)は\(t\mapsto B_t(\omega)\)が有界変動となるような\(\omega\)たちからなるので、
+  \(e^{-V_n}\)は各\(\omega\in A\)に対して
+  \(0\)でない正の値をとるある確率変数に収束する。
+  すなわち
+  \[
+  \lim _{n\to \infty} \E\left[ e^{-V_n};A\right]
+  = \E\left[ \lim_{n\to \infty} e^{-V_n};A \right] \neq 0
+  \]
+  となり、\ref{enumi: prob: 3.4-2}の結果に反する。
+\end{proof}
+
+
+
+\begin{prob}\label{prob: 3.5}
+  \(B_t\)を\(d\)次元\(\mcF_t\)-ブラウン運動とする。
+  次を示せ。
+  \begin{enumerate}
+    \item \label{enumi: prob: 3.5-1}
+    \(B_t^{\alpha},(\alpha = 1,\cdots,d)\)は\((\mcF_t)\)-マルチンゲールである。
+    \item \label{enumi: prob: 3.5-2}
+    \(\left\{ B_t^{\alpha}B_t^{\beta} - \delta_{\alpha\beta}t\right\}_t,
+    (\alpha,\beta = 1,\cdots ,d)\)は\((\mcF_t)\)-マルチンゲールである。
+    とくに\(\left< B^{\alpha},B^{\beta}\right>_t = t ,
+    (\alpha\neq \beta, t\geq 0)\)となる。
+  \end{enumerate}
+\end{prob}
+
+\begin{proof}
+  \ref{enumi: prob: 3.5-1}。
+  \(0\leq s < t\)をとる。
+  \(B_t\)はブラウン運動なので、\(B_t-B_s\)は\(B_s\)と独立であり、
+  すなわち\(\mcF_s\)と独立であるから、
+  \begin{align*}
+    \E\left[ B_t^{\alpha}\middle| \mcF_s \right]
+    &= B_s^{\alpha} + \E\left[ B_t^{\alpha}-B_s^{\alpha}\middle| \mcF_s \right] \\
+    &= B_s^{\alpha} + \E\left[ B_t^{\alpha}-B_s^{\alpha}\right] \\
+    &= B_s^{\alpha}
+  \end{align*}
+  となる。
+  これは\(B^\alpha\)が\(\mcF_t\)-マルチンゲールであることを示している。
+
+  \ref{enumi: prob: 3.5-2}。
+  \(0\leq s < t\)をとる。
+  \(\alpha\neq \beta\)のときは、\(B^\alpha,B^\beta\)は独立であるから、
+  \(B^\alpha B^\beta\)のマルチンゲール性は\(B^\alpha\)のマルチンゲール性から従う。
+  残っているのは\(\alpha = \beta\)のときである。
+  \begin{align*}
+    \E\left[ (B_t^{\alpha})^2-t \middle| \mcF_s \right]
+    &= (B_s^{\alpha})^2 - t
+    + \E\left[ (B_t^{\alpha})^2 - (B_s^{\alpha})^2 \middle| \mcF_s \right] \\
+    &= (B_s^{\alpha})^2 - t
+    + \E\left[ (B_t^\alpha-B_s^\alpha)^2
+    + 2B_s^\alpha (B_t^\alpha-B_s^\alpha) \middle| \mcF_s \right] \\
+    &= (B_s^{\alpha})^2 - t
+    + \E\left[ (B_t^\alpha-B_s^\alpha)^2 \middle| \mcF_s \right]
+    + \E\left[ 2B_s^\alpha (B_t^\alpha-B_s^\alpha) \middle| \mcF_s \right] \\
+    &= (B_s^{\alpha})^2 - t
+    + \E\left[ (B_t^\alpha-B_s^\alpha)^2 \right]
+    + 2B_s^\alpha \E\left[ B_t^\alpha-B_s^\alpha \right] \\
+    &= (B_s^{\alpha})^2 - t + t - s
+    + 2B_s^\alpha \E\left[ B_t^\alpha-B_s^\alpha \right] \\
+    &= (B_s^{\alpha})^2 - s
+  \end{align*}
+  となるので\((B_t^\alpha)^2-t\)は\((\mcF_t)\)-マルチンゲールとなる。
+  以上で示された。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{prob}\label{prob: 3.6}
+  \(0 = t_0 < t_1 < \cdots\)は
+  \(\lim_{i\to \infty}t_i = \infty\)を満たすとする。
+  \(\alpha = 1,\cdots , d, i = 0,1, \cdots \)に対し、
+  \(f_{\alpha,i}\)は\(\mcF_{t_i}\)-可測であるとする。
+  任意の\(t\geq 0\)に対して
+  \[
+  \E\left[ \exp\left( \frac{1}{2}\sum_{\alpha=1}^d\sum_{i=0}^\infty
+  f_{\alpha,i}^2(t\wedge t_{i+1}-t\wedge t_i) \right)\right] < \infty
+  \]
+  であるとする。
+  このとき
+  \begin{align*}
+    M_t &\dfn \sum_{\alpha=1}^d\sum_{i=0}^\infty
+    f_{\alpha,i}\left(B_{t\wedge t_{i+1}}^\alpha - B_{t\wedge t_i}^\alpha \right) , \\
+    e_t &\dfn \exp \left( M_t - \frac{1}{2} \sum_{\alpha=1}^d\sum_{i=0}^\infty
+    f_{\alpha,i}^2(t\wedge t_{i+1} - t\wedge t_i) \right) , \\
+  \end{align*}
+  で定義される確率過程\(e_t\)はマルチンゲールであることを示せ。
+\end{prob}
+
+\begin{proof}
+  定理3.10より\(M_t\)はマルチンゲールである。
+  また、定理3.10の証明と同様にして、
+  \(t_i \leq s < t \leq t_{i+1}\)となる場合に
+  \(\E\left[e_t\middle| \mcF_s\right] = e_s\)が証明できれば良い。
+  さらに、
+  \(t_i < s < t \leq t_{i+1}\)または
+  \(t_i \leq s < t < t_{i+1}\)のそれぞれの場合で
+  \(\E\left[e_t\middle| \mcF_s\right] = e_s\)が証明できているとすると、
+  \(s=t_i,t=t_{i+1}\)の場合も
+  \[
+  \E\left[e_{t_{i+1}}\middle| \mcF_{t_i}\right]
+  = \E\left[\E\left[e_{t_{i+1}} \middle|
+  \mcF_{\frac{t_{i+1}+t_i}{2}}\right]\middle| \mcF_{t_i}\right]
+  = \E\left[e_{\frac{t_{i+1}+t_i}{2}} \middle| \mcF_{t_i}\right]
+  = e_{t_i}
+  \]
+  が成り立つ。
+  従って
+  \(t_i < s < t \leq t_{i+1}\)と
+  \(t_i \leq s < t < t_{i+1}\)のそれぞれの場合に
+  \(\E\left[e_t\middle| \mcF_s\right] = e_s\)が証明できれば良い。
+  この場合は\(0 < 1-\frac{t_{i+1}-t_i}{t-s}\)となることに注意。
+
+
+  \(0< \ep < 1 - \frac{t_{i+1}-t_i}{t-s}\)となる\(\ep\)をとる。
+  このとき
+  \(\frac{1}{1-\ep} < \frac{t_{i+1}-t_i}{t-s}\)である。
+  仮定より、
+  \begin{align*}
+    &\E\left[ \exp\left( \frac{1}{2(1-\ep)}\sum_{\alpha=1}^d\sum_{i=0}^\infty
+    f_{\alpha,i}^2(t-s) \right)\right] \\
+    &< \E\left[ \exp\left( \frac{1}{2}\sum_{\alpha=1}^d\sum_{i=0}^\infty
+    f_{\alpha,i}^2(t_{i+1} - t_i) \right)\right] \\
+    &< \infty
+  \end{align*}
+  となることに注意。
+
+  相加相乗平均の関係より
+  \[
+  f_{\alpha,i}(B_t^\alpha-B_s^\alpha) \leq
+  \frac{1}{2(t-s)}f_{\alpha,i}^2
+  + \frac{(1-\ep)}{2(t-s)}(B_t^\alpha-B_s^\alpha)^2
+  \]
+  であることに注意すると、
+  \begin{align*}
+    &\E\left[ \exp \left(
+    \sum_\alpha f_{\alpha,i}(B_t^\alpha-B_s^\alpha) \right)\right] \\
+    &\leq \E\left[ \exp \left( \sum_\alpha \frac{1}{2(t-s)}f_{\alpha,i}^2 +
+    \frac{(1-\ep)}{2(t-s)}(B_t^\alpha-B_s^\alpha)^2 \right)\right] \\
+    &\overset{\bigstar}{=}
+    \E\left[ \exp \left( \sum_\alpha \frac{1}{2(t-s)}f_{\alpha,i}^2\right]
+    \E\left[ \frac{(1-\ep)}{2(t-s)}(B_t^\alpha-B_s^\alpha)^2 \right)\right] \\
+    &\overset{\spadesuit}{\leq}
+    \E\left[ \exp \left( \sum_\alpha \frac{1}{2(t-s)}f_{\alpha,i}^2\right) \right]
+    e \ep ^{-d/2} \\
+    &< \infty
+  \end{align*}
+  となる。
+  ただし\(\bigstar\)の箇所は\(f_{\alpha,i}\)が\(\mcF_{t_i}\)-可測であることと
+  \(B_t-B_s\)が\(\mcF_s \supset \mcF_{t_i}\)と独立であることを使い、
+  \(\spadesuit\)の箇所は定理3.11を使った。
+  以上で
+  \[
+  \exp \left( \sum_\alpha f_{\alpha,i}(B_t^\alpha-B_s^\alpha) \right)\in L^1(\P)
+  \]
+  がわかった。
+  あとは定理3.10の証明と同様である。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{prob}\label{prob: 3.7}
+  \(B_t\)を\(d\)次元ブラウン運動、
+  \(\xi \in \R^d\)とする。
+  このとき
+  \(\exp\left( i\left<\xi,B_t\right> + \frac{|\xi|^2}{2}t \right)\)
+  はマルチンゲールであることを示せ。
+\end{prob}
+
+\begin{proof}
+  \(0\leq s < t\)をとる。
+  \begin{align*}
+    &\E\left[ \exp\left( i\left<\xi,B_t\right> + \frac{|\xi|^2}{2}t \right)
+    \middle| \mcF_s\right] \\
+    &= \exp\left( i\left<\xi,B_s\right> + \frac{|\xi|^2}{2}t \right)
+    \E\left[ \exp\left( i\left<\xi,B_t-B_s\right>
+    \right) \middle| \mcF_s\right] \\
+    &= \exp\left( i\left<\xi,B_s\right> + \frac{|\xi|^2}{2}t \right)
+    \E\left[ \exp\left( i\left<\xi,B_t-B_s\right> \right)\right] \\
+    &= \exp\left( i\left<\xi,B_s\right> + \frac{|\xi|^2}{2}t \right)
+    \int_{(\R^d)^2}e^{i\left<\xi,x_2-x_1\right>}
+    \mathfrak{g}_d(s,x_1)\mathfrak{g}_d(t-s,x_2-x_1)dx_1dx_2 \\
+    &= \exp\left( i\left<\xi,B_s\right> + \frac{|\xi|^2}{2}t \right)
+    \int_{\R^d}e^{i\left<\xi,x_2\right>}\mathfrak{g}_d(t-s,x_2)dx_2
+    \int_{\R^d}\mathfrak{g}_d(s,x_1)dx_1 \\
+    &= \exp\left( i\left<\xi,B_s\right> + \frac{|\xi|^2}{2}t \right)
+    \int_{\R^d}e^{i\left<\xi,x\right>}\mathfrak{g}_d(t-s,x)dx \\
+    &\overset{\bigstar}{=}
+    \exp\left( i\left<\xi,B_s\right> + \frac{|\xi|^2}{2}t \right)
+    \E\left[ e^{i\left<\xi,N(0,(t-s)I)\right>}\right] \\
+    &\overset{\spadesuit}{=}
+    \exp\left( i\left<\xi,B_s\right> + \frac{|\xi|^2}{2}t \right)
+    e^{-\frac{1}{2}\left<\xi,(t-s)\xi\right>} \\
+    &= \exp\left( i\left<\xi,B_s\right> + \frac{|\xi|^2}{2}t
+    - \frac{1}{2}|\xi|^2(t-s) \right) \\
+    &= \exp\left( i\left<\xi,B_s\right> + \frac{|\xi|^2}{2}s \right) \\
+  \end{align*}
+  となる。
+  ただし\(\bigstar\)の箇所は式(3.2)を用い、
+  \(\spadesuit\)の箇所はガウス分布\(N\)の特性関数の表示 (命題3.1(5)) を用いた。
+  以上で所望の結果を得る。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{prob}\label{prob: 3.8}
+  \(B_t\)を\(1\)次元ブラウン運動とする。
+  \(\tau \dfn \inf\left\{ t > 0 \middle| B_t > 0\right\}\)とおく。
+  \begin{enumerate}
+    \item \label{enumi: prob: 3.8-1}
+    \(\left\{ \tau = 0\right\} \in \mcF_0^*\)となることを示せ。
+    \item \label{enumi: prob: 3.8-2}
+    \(\P(\tau = 0) \geq \frac{1}{2}\)を示せ。
+    \item \label{enumi: prob: 3.8-3}
+    \(\P(\tau = 0) = 1\)を示せ。
+  \end{enumerate}
+\end{prob}
+
+\begin{proof}
+  \ref{enumi: prob: 3.8-1}。
+  \begin{align*}
+    \Omega \setminus \left\{ \tau = 0\right\}
+    &= \left\{ \tau > 0\right\} \\
+    &= \bigcup_{N\in \N}\left\{ \tau > \frac{1}{N}\right\} \\
+    &= \lim_{N\to \infty}\left\{ \tau > \frac{1}{N} \right\} \\
+    &= \lim_{N\to \infty}
+    \left\{ \sup_{0\leq t\leq \frac{1}{N}}B_t \leq 0\right\} \\
+    &\in \mcF_{1/N}^* , \ \ (\forall N\in \N )
+  \end{align*}
+  となる
+  よって
+  \[
+  \left\{ \tau = 0\right\} \in \bigcap_{N\in \N}\mcF_{1/N}^*
+  \overset{\bigstar}{=} \mcF_0^*
+  \]
+  となる。
+  ただし\(\bigstar\)の箇所は定理3.17を用いた。
+  以上で示された。
+
+  \ref{enumi: prob: 3.8-2}。
+  \(\left\{ \tau = 0 \right\} =
+  \bigcap _{N\in \N}\left\{\tau \leq \frac{1}{N}\right\}\)
+  なので、
+  定理1.4(3)より
+  \[
+  \P(\tau = 0) = \lim_{N\to \infty} \P\left(\tau \leq \frac{1}{N}\right)
+  \]
+  となる。
+  一方、
+  \[
+  \left\{ \tau \leq \frac{1}{N} \right\} \supset
+  \left\{ B_{1/N} > 0 \right\}
+  \]
+  であるから、
+  \[
+  \P\left( \tau \leq \frac{1}{N} \right) \geq
+  \P\left( B_{1/N} > 0 \right)
+  = \int_{x>0}\mathfrak{g}_1\left(\frac{1}{N},x\right) dx
+  = \frac{1}{2}
+  \]
+  となる。
+  以上より
+  \[
+  \P( \tau = 0 ) = \lim_{N\to \infty} \P\left( \tau \leq \frac{1}{N} \right)
+  \geq \frac{1}{2}
+  \]
+  がわかる。
+
+  \ref{enumi: prob: 3.8-3}。
+  \ref{enumi: prob: 3.8-1}より
+  \(\P(\tau = 0) = 0\)または\(\P(\tau = 0) = 1\)である。
+  一方\ref{enumi: prob: 3.8-2}より\(\P(\tau = 0) \geq \frac{1}{2}\)である。
+  以上より\(\P(\tau = 0)=1\)となる。
+\end{proof}
+
+
+
+
+
+
+\newpage
+\section{確率積分}
+\label{section 4}
+
+\begin{prob}\label{prob: 4.1}
+  \(f_t\in \mcL_0\)に対する確率積分は\(f_t\)の表示によらないことを示せ。
+\end{prob}
+
+\begin{proof}
+  \(f_t,g_s\)が同じ\(\mcL_0\)の元を与えるとする。
+  \(0=t_0 < t_1 < \cdots\)と
+  \(0=s_0 < s_1 < \cdots\)を
+  各\([t_i,t_{i+1}), [s_i,s_{i+1})\)上で
+  \(f_t,g_t\)が一定 (\(\omega\in \Omega\)には依存する) となるような時刻の列とする。
+  \(f_t,g_s\)が同じ単関数の (異なるかもしれない) 表示であることから、
+  ある
+  \(0=u_0 < u_1 < \cdots\)と
+  \(i(n),j(n)\)が存在して、
+  各\(n\)について\(t_{i(n)} = u_n = s_{j(n)}\)であり、
+  また各\(n\)に対して\(s,t\in [u_n,u_{n+1})\)となるならば
+  \(f_t = f_{t_{i(n)}} = g_s = g_{s_{j(n)}}\)となる。
+  このとき
+  \begin{align*}
+    \sum_{i=i(n)}^{i(n+1)-1}f_{t_i}
+    \left( B_{t\wedge t_{i+1}}^{\alpha}-B_{t\wedge t_i}^{\alpha}\right) \\
+    &= f_{t_{i(n)}}\sum_{i=i(n)}^{i(n+1)-1}
+    \left( B_{t\wedge t_{i+1}}^{\alpha}-B_{t\wedge t_i}^{\alpha}\right) \\
+    &= f_{t_{i(n)}}
+    \left( B_{t\wedge t_{i(n+1)}}^{\alpha}-B_{t\wedge t_{i(n)}}^{\alpha}\right) \\
+    &= f_{u_n}
+    \left( B_{t\wedge u_{n+1}}^{\alpha}-B_{t\wedge u_n}^{\alpha}\right) \\
+    \sum_{j=j(n)}^{j(n+1)-1}g_{s_j}
+    \left( B_{s\wedge s_{j+1}}^{\alpha}-B_{s\wedge s_j}^{\alpha}\right) \\
+    &= g_{s_{j(n)}}\sum_{j=j(n)}^{j(n+1)-1}
+    \left( B_{s\wedge s_{j+1}}^{\alpha}-B_{s\wedge s_j}^{\alpha}\right) \\
+    &= g_{u_n}
+    \left( B_{s\wedge u_{n+1}}^{\alpha}-B_{s\wedge u_n}^{\alpha}\right),
+  \end{align*}
+  となる。
+  これらは変数\(s,t\)の表記の違い以外に異なる点はない。
+  以上を足し合わせることで確率積分が表記によらないことがわかる。
+\end{proof}
+
+
+
+
+\begin{prob}\label{prob: 4.2}
+  \(0=t_0 < t_1 < \cdots, \lim_{n\to \infty}t_n = \infty\)とする。
+  \(f_i:\Omega \to \R \)を\(\mcF_{t_i}\)-可測関数として、
+  \[
+  f_t \dfn \sum_{i=0}^\infty f_i\I_{[0,t_i)}(t)
+  \]
+  と定義する。
+  このとき、\(f_t\in \mcL_{\mathrm{loc}}^2\)であり、
+  さらに
+  \[
+  \int_0^t f_sdB_s^\alpha
+  = \sum_{i=0}^\infty f_i
+  \left( B_{t\wedge t_{i+1}}^\alpha - B_{t\wedge t_i}^\alpha \right)
+  \]
+  となることを示せ。
+\end{prob}
+
+
+\begin{proof}
+  この問題は\(f_t\)の定義を間違えていると思う。
+  なぜなら各\(t\)について\(f_t\)の定義式の右辺は無限和になっていて、
+  たとえば関数\(f_i\)として\(f_i = i\)のような定数関数をとってくると
+  右辺は発散してしまう。
+  これは\(f_t\in \mcL_{\mathrm{loc}}^2\)どころの話ではないと思われる。
+  たぶん、定義関数が\(\I_{[t_i,t_{i+1})}\)なんじゃないか？
+
+  定義関数が\(\I_{[t_i,t_{i+1})}\)だと思って問題を解く。
+  明らかに\(f_t\)は\(\mcF_t\)-発展的可測である。
+  任意に\(t\)をとる。
+  \(t_n \leq t < t_{n+1}\)となる\(n\)をとると、
+  \[
+  \int_0^tf_s^2ds
+  = \int_0^t \sum_{i=0}^\infty f_i\I_{[t_i,t_{i+1})}(s)ds
+  = \sum_{i=0}^{n-1} f_i^2(t_{i+1}-t_i) + f_n^2(t-t_n) < \infty
+  \]
+  であるので、\(f_t\in \mcL_{\mathrm{loc}}^2\)である。
+
+  最後の等式を証明する。
+  まず、(有界とは限らない!) 可測関数\(f:\Omega\to \R\)により、
+  \(f_t = f\I_{[0,u)}(t)\)とかけている場合に最後の等式を示す。
+  可測関数\(f\)が有界であれば、
+  定義より、\(u\geq t\)なら
+  \[
+  \int_0^t f_sdB_s^\alpha = f B_t^\alpha
+  \]
+  であり\(u \leq t\)なら
+  \[
+  \int_0^t f_sdB_s^\alpha = f B_u^\alpha
+  \]
+  となる。
+  とくに
+  \[
+  \int_0^t f_sdB_s^\alpha = f B_{t\wedge u}^\alpha
+  \]
+  となる。
+  次に\(f\)が非負の場合、\(f^n \dfn f\wedge n\)とおけば
+  \(f^n\I_{[0,u)}(t) \to f\I_{[0,u)}(t), (n\to \infty, \forall \omega,t)\)
+  であり、
+  従って\(\mcL_{\mathrm{loc}}^2\)の関数に対する確率積分の定義より、
+  \(u\geq t\)なら
+  \[
+  \int_0^t f_sdB_s^\alpha
+  = \lim_{n\to \infty}\int_0^tf_s^n dB_s^\alpha
+  = \lim_{n\to \infty}f^nB_t^\alpha
+  = f B_t^\alpha
+  \]
+  となり\(u \leq t\)なら
+  \[
+  \int_0^t f_sdB_s^\alpha
+  = \lim_{n\to \infty}\int_0^tf_s^n dB_s^\alpha
+  = \lim_{n\to \infty}f^nB_u^\alpha
+  = f B_u^\alpha
+  \]
+  となる。
+  とくに
+  \[
+  \int_0^t f_sdB_s^\alpha = f B_{t\wedge u}^\alpha
+  \]
+  となる。
+  最後に\(f\)が任意の場合、\(f=f_+-f_-\)として確率積分の加法性より
+  \(u \geq t\)なら
+  \begin{align*}
+    \int_0^t f_sdB_s^\alpha
+    &= \int_0^t(f_+\I_{[0,u)}(s)-f_-\I_{[0,u)}(s))dB_s^\alpha \\
+    &= \int_0^tf_+\I_{[0,u)}(s)dB_s^\alpha - \int_0^tf_-\I_{[0,u)}(s)dB_s^\alpha \\
+    &= f_+B_t^\alpha - f_-B_t^\alpha \\
+    &= fB_t^\alpha
+  \end{align*}
+  となり\(u \leq t\)なら
+  \begin{align*}
+    \int_0^t f_sdB_s^\alpha
+    &= \int_0^t(f_+\I_{[0,u)}(s)-f_-\I_{[0,u)}(s))dB_s^\alpha \\
+    &= \int_0^tf_+\I_{[0,u)}(s)dB_s^\alpha - \int_0^tf_-\I_{[0,u)}(s)dB_s^\alpha \\
+    &= f_+B_u^\alpha - f_-B_u^\alpha \\
+    &= fB_u^\alpha
+  \end{align*}
+  となる。
+  とくに
+  \[
+  \int_0^t f_sdB_s^\alpha = fB_{t\wedge u}^\alpha
+  \]
+  となる。
+
+  \(f_t = f\I_{[u_1,u_2)}(t)\)に対しては、
+  \(f_t = f\I_{[0,u_2)}(t) - f\I_{[0,u_1)}(t)\)
+  であるから、
+  確率積分の加法性より、
+  \(t \leq u_1\)なら
+  \begin{align*}
+    \int_0^t f_sdB_s^\alpha
+    &= \int_0^t (f\I_{[0,u_2)}(s) - f\I_{[0,u_1)}(s))dB_s^\alpha \\
+    &= \int_0^t f\I_{[0,u_2)}(s)dB_s^\alpha  - \int_0^t f\I_{[0,u_1)}(s)dB_s^\alpha \\
+    &= fB_t^\alpha - fB_t^\alpha \\
+    &= 0
+  \end{align*}
+  であり、
+  \(u_1 \leq t \leq u_2\)なら
+  \begin{align*}
+    \int_0^t f_sdB_s^\alpha
+    &= \int_0^t (f\I_{[0,u_2)}(s) - f\I_{[0,u_1)}(s))dB_s^\alpha \\
+    &= \int_0^t f\I_{[0,u_2)}(s)dB_s^\alpha  - \int_0^t f\I_{[0,u_1)}(s)dB_s^\alpha \\
+    &= fB_t^\alpha - fB_{u_1}^\alpha \\
+    &= f(B_t^\alpha-B_{u_1}^\alpha)
+  \end{align*}
+  であり、
+  \(t\geq u_2\)なら
+  \begin{align*}
+    \int_0^t f_sdB_s^\alpha
+    &= \int_0^t (f\I_{[0,u_2)}(s) - f\I_{[0,u_1)}(s))dB_s^\alpha \\
+    &= \int_0^t f\I_{[0,u_2)}(s)dB_s^\alpha  - \int_0^t f\I_{[0,u_1)}(s)dB_s^\alpha \\
+    &= fB_{u_2}^\alpha - fB_{u_1}^\alpha \\
+    &= f(B_{u_2}^\alpha-B_{u_1}^\alpha)
+  \end{align*}
+  である。
+  とくに、
+  \[
+  \int_0^t f_sdB_s^\alpha
+  = f(B_{t\wedge u_2} - B_{t\wedge u_1})
+  \]
+  となる。
+
+  この問題で考えられている一般の\(f_t\)に対して最後の等式を証明する。
+  \(t_n \leq t < t_{n+1}\)となる\(n\)をとれば、
+  確率積分の加法性とこれまでに得られた結果から、
+  \begin{align*}
+    \int_0^t f_sdB_s^\alpha
+    &= \int_0^t \sum_{i=0}^\infty f_i\I_{[t_i,t_{i+1})}(s)dB_s^\alpha \\
+    &= \sum_{i=0}^\infty \int_0^t f_i\I_{[t_i,t_{i+1})}(s)dB_s^\alpha \\
+    &= \sum_{i=0}^\infty f_i(B_{t\wedge t_{i+1}}-B_{t\wedge t_i})
+  \end{align*}
+  となる。
+  ただし和は実際には有限和であることから積分と交換した。
+  以上で所望の等式が証明できた。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{prob}\label{prob: 4.3}
+  \(\phi: [0,\infty )\to \R\)を連続関数とする。
+  \(\phi_n(t) \dfn \phi\left( \frac{[2^nt]}{2^n}\right)\)とおく。
+  次を示せ：
+  \begin{enumerate}
+    \item \label{enumi: prob: 4.3-1}
+    \(\int_0^t\phi_n(s)dB_s^\alpha
+    \sim N\left( 0,\int_0^t\phi_n^2(s)ds \right)\)
+    \item \label{enumi: prob: 4.3-2}
+    \(\int_0^t\phi(s)dB_s^\alpha
+    \sim N\left( 0,\int_0^t\phi^2(s)ds \right)\)
+  \end{enumerate}
+\end{prob}
+
+\begin{proof}
+  \ref{enumi: prob: 4.3-1}。
+  より一般に、
+  \(0 = t_0 < t_1 < \cdots , \lim_{n\to \infty}t_n = \infty\)
+  となる時刻の列が存在して
+  各\(t\in [t_i,t_{i+1})\)に対して\(\omega,t\)によらずに一定の値\(f_t\)をとる
+  確率過程\(f_t\in \mcL_0\)に対して同様の事実を証明する。
+  \(t\geq 0\)をとる。
+  \(t_m \leq t < t_{m+1}\)となる\(m\)をとると、
+  \begin{align*}
+    \int_0^t f_s dB_s^\alpha
+    &= \sum_{i=0}^\infty f_{t_i} \left(
+    B_{t\wedge t_{i+1}}^\alpha - B_{t\wedge t_i}^\alpha\right) \\
+    &= \sum_{i=0}^{m-1} f_{t_i} \left(
+    B_{t_{i+1}}^\alpha - B_{t_i}^\alpha\right)
+    + f_{t_m} \left( B_t^\alpha - B_{t_m}^\alpha\right) \\
+    &\overset{\bigstar}{\sim}
+    N\left(0,
+    \sum_{i=0}^{m-1}f_{t_i}^2(t_{i+1}-t_i)
+    + f_{t_m}^2(t-t_m)\right) \\
+    &= N\left(0, \int_0^t f_s^2 ds\right)
+  \end{align*}
+  となる。
+  ただし\(\bigstar\)の箇所は命題3.2(2)を用いた。
+
+  \ref{enumi: prob: 4.3-2}。
+  まず\(\phi_n\)が補題4.5の条件を満たすことを示す。
+  任意に\(t\geq 0\)と\(\ep > 0\)をとる。
+  区間\([0,t]\)はコンパクトなので、
+  \(\phi\)は\([0,t]\)上では一様連続である。
+  従って、ある\(\delta > 0\)が存在して
+  \(|x-y| < \delta , x,y\in [0,t]\)に対して
+  \(|\phi(x)-\phi(y)| < \sqrt{\frac{\ep}{t}}\)となる。
+  ここで\(t2^{-N} < \delta\)となる十分大きい\(N\)をとれば、
+  \(n \geq N\)と\(s\in [0,t]\)に対して
+  \(\left| s - \frac{[2^ns]}{2^n}\right| < \frac{t}{2^n} < \delta\)
+  となるから、とくに\(n\geq N\)と\(s\in [0,t]\)に対して
+  \[
+  \left| \phi_n(s)-\phi(s) \right|
+  = \left| \phi(\frac{[2^ns]}{2^n})-\phi(s) \right|
+  < \sqrt{\frac{\ep}{t}}
+  \]
+  となる。
+  以上より、\(n \geq N\)に対して
+  \[
+  \int_0^t\left|\phi_n(s)-\phi(s)\right|^2ds
+  < \int_0^t \frac{\ep}{t} ds = \ep
+  \]
+  となる。
+  これは
+  \[
+  \int_0^t\left|\phi_n(s)-\phi(s)\right|^2ds \to 0, \ \ (n\to \infty)
+  \]
+  を示している。
+  よって補題4.6より、\(\phi\)の確率積分
+  \(\int_0^t\phi(s)dB_s^\alpha\)は
+  確率過程\(\int_0^t\phi_n(s)dB_s^\alpha\)の極限となる。
+
+  次に、各\(t\)に対して二つの確率変数
+  \(\int_0^t\phi_n(s)dB_s^\alpha\)と
+  \(\int_0^t\phi_m(s)dB_s^\alpha\)の差を考える。
+  これらは\ref{enumi: prob: 4.3-1}よりガウス分布であることに注意。
+  \(\phi_n(s)-\phi_m(s)\)は
+  \([i/2^N,(i+1)/2^N)\)の形の区間上で\(\omega\)にも\(s\)にもよらない定数であるから、
+  \ref{enumi: prob: 4.3-1}でより一般的に証明した事実から、
+  \[
+  \int_0^t\left( \phi_n(s) - \phi_m(s)\right) dB_s^\alpha
+  \sim N\left( 0, \int_0^t\left( \phi_n(s) - \phi_m(s)\right)^2 ds\right)
+  \]
+  となる。
+  従って、
+  \begin{align*}
+    \left\| \int_0^t\phi_n(s)dB_s^\alpha - \int_0^t\phi_m(s)dB_s^\alpha \right\|_2
+    &= \E \left[ \left(
+    \int_0^t\phi_n(s)dB_s^\alpha - \int_0^t\phi_m(s)dB_s^\alpha
+    \right)^2 \right] \\
+    &= \E \left[
+    N\left( 0, \int_0^t\left( \phi_n(s) - \phi_m(s)\right)^2 ds\right)
+    \right] \\
+    &= \int_0^t\left( \phi_n(s) - \phi_m(s)\right)^2 ds
+  \end{align*}
+  となる。
+  ここで既に示したことから、十分おおきい\(n,m\)に対しては、
+  任意の\(s\)について
+  \[
+  \left| \phi_n(s)-\phi_m(s) \right|^2
+  \leq \left| \phi_n(s)-\phi(s) \right|^2
+  + \left| \phi_m(s)-\phi(s) \right|^2
+  < 2\ep
+  \]
+  となるから、
+  \[
+  \int_0^t\left( \phi_n(s) - \phi_m(s)\right)^2 ds \to 0
+  , \ \ \ (n,m \to \infty)
+  \]
+  となる。
+  よって定理1.13より、ガウス分布の族
+  \(\int_0^t\phi_n(s)dB_s^\alpha\)は
+  確率変数\(\int_0^t\phi(s)dB_s^\alpha\)に\(L^2\)収束する。
+  よって命題3.2(5)より\(\int_0^t\phi(s)dB_s^\alpha\)もガウス分布であり、
+  \[
+  \int_0^t\phi_n^2(s)ds \to \int_0^t\phi^2(s)ds, \ \ \ (n\to \infty)
+  \]
+  であることから
+  \[
+  \int_0^t\phi(s)dB_s^\alpha \sim N\left( 0, \int_0^t\phi^2(s)ds\right)
+  \]
+  がわかる。
+\end{proof}
+
+
+
+
+
+
+
+
+\begin{prob}\label{prob: 4.4}
+  \(T\in (0,\infty]\)とする。
+  \(\phi:[0,T) \to (0,\infty)\)は
+  \(\int_0^T\phi^2(s)ds = \infty\)を満たすとする。
+  \(\Phi(t) \dfn \int_0^t\phi^2(s)ds\)とおくとこれは単調増加である。
+  \(\psi\)を\(\Phi\)の逆関数とする。
+  このとき
+  \[
+  b_t \dfn \int_0^{\psi(t)}\phi(s)dB_s^\alpha
+  \]
+  で定まる確率過程はブラウン運動であることを示せ。
+\end{prob}
+
+\begin{proof}
+  \(c_t \dfn b_{\Phi(t)} = \int_0^t\phi(s)dB_s^\alpha\)とおく。
+  任意に\(f\in C_0^\infty(\R)\)をとる。
+  伊藤の公式より
+  \begin{align*}
+    f(b_t) - f(b_0)
+    &= f(c_{\psi(t)}) - f(0) \\
+    &= \int_0^{\psi(t)} f'(c_s)\phi(s)dB_s^\alpha
+    + \frac{1}{2}\int_0^{\psi(t)} f''(c_s)\phi^2(s) ds \\
+    &= \int_0^{\psi(t)} f'(c_s)\phi(s)dB_s^\alpha
+    + \frac{1}{2}\int_0^t f''(c_{\psi(s)})\phi^2(\psi(s)) d\psi(s) \\
+    &\overset{\bigstar}{=} \int_0^{\psi(t)} f'(c_s)\phi(s)dB_s^\alpha
+    + \frac{1}{2}\int_0^t f''(b_s) ds
+  \end{align*}
+  となる。
+  ただし\(\bigstar\)の箇所は\(\psi^{-1}(s) = \Phi(s) = \int_0^s\phi^2(u)du\)
+  を用いて
+  \[
+  ds = d\left( \Phi(\psi(s)) \right)
+  = \psi'(s)\Phi'(\psi(s)) ds = \phi^2(\psi(s))d(\psi(s))
+  \]
+  と計算した。
+  とくに、定理4.9(4)より
+  \[
+  f(b_t) - f(b_0) - \frac{1}{2}\int_0^tf''(b_s)ds
+  = \int_0^{\psi(t)} f'(c_s)\phi(s)dB_s^\alpha
+  \]
+  はマルチンゲールであり、
+  定理3.12より\(b_t\)はブラウン運動となる。
+
+  \textbf{別解答}。
+  定理4.9(4)より\(c_t\)はマルチンゲールであり、
+  その二次変分は\(\Phi(t) = \int_0^t\phi^2(s)ds\)である。
+  従ってとくに\(b_t\)もマルチンゲールであり、
+  その二次変分は\(\Phi(\psi(t)) = t\)である。
+  注意4.18にあるレヴィの定理を用いることで\(b_t\)がブラウン運動であることがわかる。
+\end{proof}
+
+
+
+
+
+\begin{prob}\label{prob: 4.5}
+  伊藤過程\(X_t\)と\(f\in C^2(\R)\)に対し、
+  \[
+  d(f(X_t)) = \sum_{i=1}^Nf_i^{(1)}(X_t)\circ dX_t^i
+  \]
+  を示せ。
+  ただし\(\circ\)はStratonovich積分である。
+\end{prob}
+
+\begin{proof}
+  添字は縮約記法で表記する。
+  \(dX_t^i = \alpha^i_jdB_t^j + b_t^idt\)とおく。
+  \[
+  dX_t^i\cdot dX_t^j = \alpha^i_k\alpha^j_ldB_t^kdB_t^l
+  = \alpha^i_k\alpha^j_l\delta^{kl}dt
+  = \sum_k \alpha^i_k\alpha^j_kdt
+  \]
+  となる。
+  伊藤の公式から
+  \begin{align*}
+    d(f(X_t))
+    &= f_i^{(1)}(X_t)dX_t^i
+    + \frac{1}{2} f_{ij}^{(2)}dX_t^i\cdot dX_t^j \\
+    &= f_i^{(1)}(X_t)dX_t^i
+    + \frac{1}{2} \sum_k f_{ij}^{(2)}\alpha^i_k\alpha^j_kdt , \\
+    d(f_i^{(1)}(X_t))\cdot dX_t^i
+    &= f_{ij}^{(2)}(X_t)dX_t^j\cdot dX_t^i
+    + \frac{1}{2} f_{ijk}^{(3)}(X_t)dX_t^j\cdot dX_t^i\cdot dX_t^k \\
+    &= f_{ij}^{(2)}(X_t)dX_t^i\cdot dX_t^j \\
+    &= \sum_k f_{ij}^{(2)}(X_t)\alpha^i_k\alpha^j_kdt
+  \end{align*}
+  となるので、
+  \begin{align*}
+    d(f(X_t))
+    &= f_i^{(1)}(X_t)dX_t^i
+    + \frac{1}{2}\sum_k f_{ij}^{(2)}\alpha^i_k\alpha^j_kdt \\
+    &= f_i^{(1)}(X_t)dX_t^i
+    + \frac{1}{2} d(f_i^{(1)}(X_t))\cdot dX_t^i \\
+    &= f_i^{(1)}(X_t)\circ dX_t^i
+  \end{align*}
+  となる。
+  これは所望の等式である。
+\end{proof}
+
+
+
+
+
+
+\begin{prob}\label{prob: 4.6}
+  確率変数\(X\)は\(e^{aX}\in L^1(\P) , (\forall a\in \R)\)を満たすとする。
+  \begin{enumerate}
+    \item \label{enumi: prob: 4.6-1}
+    \(e^{|X|}\in L^p(\P) , (\forall p \geq 1)\)を示せ。
+    \item \label{enumi: prob: 4.6-2}
+    \(G\in L^p(\P), (p > 1)\)に対し、
+    \(\C\)上の写像\(\zeta \mapsto \E\left[ Ge^{\zeta X}\right]\)
+    は正則関数となることを示せ。
+  \end{enumerate}
+\end{prob}
+
+\begin{proof}
+  \ref{enumi: prob: 4.6-1}。
+  \(e^{a|x|} \leq e^{ax} + e^{-ax}\)であるから、
+  任意の\(a\)で\(e^{aX}\in L^1(\P)\)であることより、
+  \(\E[e^{a|X|}] \leq \E[e^{aX}] + \E[e^{-aX}] < \infty\)
+  となって\(e^{a|X|}\in L^1(\P), (\forall a\in \R)\)がわかる。
+  また、
+  \(\E[(e^{a|X|})^p] = \E[e^{ap|X|}] < \infty\)であるから、
+  \(e^{a|X|}\in L^p(\P), (\forall a\in R, \forall p\geq 1)\)もわかる。
+
+  \ref{enumi: prob: 4.6-2}。
+  \(\zeta\in \C\)を任意にとり、
+  \(\zeta\)の近傍での微分可能性を示せば良い。
+  十分大きい定数\(A > |\zeta|\)を一つ選ぶ
+  (\(A>\mathrm{Re}(\zeta)\)である)。
+  このとき
+  \[
+  \E\left[ \left| XGe^{\zeta X}\right|\right]
+  = \E \left[ |XG|e^{|\mathrm{Re}(\zeta)X|}\right]
+  < \E \left[ |XG|e^{|AX|}\right]
+  \]
+  である。
+  \(X < e^X\)であるから、任意の\(q\)に対して\(X\in L^q(\P)\)であることに注意すると、
+  \(G\in L^p(\P)\)と任意の\(q\)に対して
+  \(X,e^{|AX|}\in L^q(\P)\)であることから、
+  ヘルダーの不等式より\(|XG|e^{|AX|}\in L^1(\P)\)がわかる。
+  \(Y\dfn |XG|e^{|AX|}\)とおく。
+  \(\zeta\)に収束する点列\(\zeta_n\)を
+  \(|\zeta_n| < A\)となるようにとり、
+  \(X_n\dfn \frac{Ge^{\zeta_nX}-Ge^{\zeta X}}{\zeta_n - \zeta}\)
+  と定める。
+  平均値の定理より、\(\theta_n\in \C\)であって
+  \(|\zeta - \theta_n| < |\zeta - \zeta_n|\)となるものが存在し、
+  \(X_n = XGe^{\theta_n X}\)となる。
+  \(\theta_n \to \zeta , (n\to \infty)\)と\(|X_n| \leq Y\)に注意して、
+  優収束定理により
+  \[
+  \E\left[ X_n\right] \to \E\left[ XGe^{\zeta X}\right], (n\to\infty)
+  \]
+  となる。
+  とくに\(\zeta_n\)の取り方によらずに同一の極限
+  \(\E\left[ XGe^{\zeta X}\right]\)を持つことから、
+  \(\zeta \mapsto \E\left[ Ge^{\zeta X}\right]\)
+  は正則であることがわかる。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+\begin{prob}\label{prob: 4.7}
+  \(p\geq 2\)とする。
+  \(f_t\in \mcL^2\)は任意の\(T\geq 0\)に対して
+  \(\E\left[ \int_0^T|f_t|^pdt\right] < \infty\)を満たすとする。
+  このとき
+  \[
+  \E\left[ \sup_{0\leq t\leq T}\left|
+  \int_0^tf_sdB_s^\alpha - \int_0^tf_s^ndB_s^\alpha \right|^p\right] \to 0
+  , \ \ \ (n\to\infty), (\forall T\geq 0)
+  \]
+  を満たす\(f_t^n\in \mcL_0\)が存在することを示せ。
+\end{prob}
+
+
+\begin{proof}
+  証明の方針は以下の通り：
+  \begin{enumerate}
+    \item \label{proof enumi: prob: 4.7-1}
+    まず補題4.5と同じ議論により、
+    \(\E\left[ \int_0^T|f_t-f_t^n|^pdt \right]\to 0, (n\to \infty)\)
+    となる\(f_t^n\in \mcL_0\)をとってくる。
+    \item \label{proof enumi: prob: 4.7-2}
+    次にモーメント不等式 (定理4.27) を使って極限を評価する。
+  \end{enumerate}
+
+  \ref{proof enumi: prob: 4.7-1}を実行する。
+  \(g_t^n \dfn (-n)\vee (f_t\wedge n)\)とおく。
+  すると各\(t,\omega\)に対して
+  \(|g_t^n| \leq |f_t|\)であるから、
+  とくに\(g_t^n\in \mcL^2\)であり、
+  さらに任意の\(T\geq 0\)に対して
+  \(\E\left[ \int_0^T|g_t^n|^pdt\right] < \infty\)を満たす。
+  ここで優収束定理により
+  \(\E\left[ \int_0^T|f_t-g_t^n|^pdt\right] \to 0\)であることに注意すると、
+  \(L^p\)-ノルムが三角不等式を満たすこと (ミンコフスキーの不等式) から、
+  \(g_n^t\)に対する所望の近似を求めることで
+  \(f_t\)に対する所望の近似を得ることができる。
+  よって、所望の近似を得るには、\(f_t\)は有界であると仮定して良い。
+
+  \(f_t\)は有界であると仮定する。
+  \(h_t^n \dfn n\int_{\left(t-\frac{1}{n}\right)\vee 0}^t f_sds\)
+  とおくと\(h_t^n\)は有界かつ連続であり、
+  \(\forall \omega\)に対してほとんど全ての\(t\)で
+  \(\lim_{n\to \infty}h_t^n(\omega) = f_t(\omega)\)である。
+  有界収束定理により
+  \(\E\left[ \int_0^T|f_t-h_t^n|^pdt\right] \to 0\)であることに注意して、
+  前段落と同じ理由により\(f_t\)を有界かつ連続と仮定しても良い。
+
+  \(f_t\)は有界かつ連続であると仮定する。
+  \(f_t^n \dfn f_{k/n}, t\in [k/n,(k+1)/n)\)と定めると、
+  連続性により\(f_t^n(\omega)\to f_t(\omega) , (\forall t,\forall \omega)\)
+  であるので、有界収束定理により
+  \(\E\left[ \int_0^T|f_t-f_t^n|^pdt\right] \to 0\)となる。
+  \(f_t^n\in \mcL_0\)であるから、所望の近似を得ることができた。
+
+  \ref{proof enumi: prob: 4.7-2}を実行する。
+  今、\(\E\left[ \int_0^T|f_t-f_t^n|^pdt\right] \to 0\)
+  となる\(f_t^n\in \mcL_0\)が存在することがわかっている。
+  \(X_t \dfn \int_0^t\left( f_s - f_s^n\right) dB_s^\alpha\)
+  と置くと、
+  \begin{align*}
+    &\E\left[ \sup_{0\leq t\leq T}\left|
+    \int_0^tf_sdB_s^\alpha - \int_0^tf_s^ndB_s^\alpha \right|^p\right] \\
+    &= \E\left[ \sup_{0\leq t\leq T}\left| X_t\right|^p \right] \\
+    &\overset{\bigstar}{\leq} A_p \E\left[ \left(
+    \int_0^T\left( f_s - f_s^n\right)^2dt \right)^{p/2}\right] \\
+    &\overset{\spadesuit}{\leq} A_pT^{p-1} \E\left[
+    \int_0^T\left| f_s - f_s^n\right|^pdt \right] \\
+    &\to 0 , \ \ \ (n\to\infty)
+  \end{align*}
+  となる。
+  ただし\(\bigstar\)の箇所はモーメント不等式 (定理4.27) を用い、
+  \(\spadesuit\)の箇所はヘルダーの不等式 (例1.14) を用いた。
+  また、\(A_p\)は\(p\)のみに依存する定数である。
+  以上で示された。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+\begin{prob}\label{prob: 4.8}
+  \(B_t\)を\(1\)次元ブラウン運動とし、\(T > 0\)とする。
+  \begin{enumerate}
+    \item \label{enumi: prob: 4.8-1}
+    \((T-t)B_t = \int_0^t(T-s)dB_s - \int_0^tB_sds\)を示せ。
+    \item \label{enumi: prob: 4.8-2}
+    \(B_T^3 = \int_0^T f_tdB_t\)を満たす
+    確率過程\(f_t\in \mcL^2\)を求めよ。
+  \end{enumerate}
+\end{prob}
+
+\begin{proof}
+  \ref{enumi: prob: 4.8-1}。
+  \(\int_0^tTdB_s = TB_t\)であるから、
+  \(tB_t = \int_0^tsdB_s + \int_0^tB_sds\)を示せば良い。
+  すなわち
+  \(d(sB_s) = sdB_s + B_sds\)を示せば良いが、
+  これは伊藤の積の公式 (例4.16 (3)) より明らかである。
+
+  \ref{enumi: prob: 4.8-2}。
+  まず\(d((B_t)^3) = 3B_t^2dB_t + 3B_tdt\)であるから、
+  \[
+  B_T^3 = \int_0^T(3B_s^2)dB_s + 3\int_0^TB_sds
+  \]
+  となる。
+  \ref{enumi: prob: 4.8-1}の等式に\(t=T\)を代入すると、
+  \[
+  \int_0^TB_sds = \int_0^T(T-s)dB_s
+  \]
+  がわかる。
+  これを代入して、
+  \[
+  B_T^3 = \int_0^T(3B_s^2)dB_s + 3\int_0^TB_sds
+  = \int_0^T(3B_s^2 + 3(T-s)) dB_s
+  \]
+  を得る。
+  よって求める\(f_t\)は
+  \(f_t = 3B_t^2 + 3(T-t)\)である。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+\section{確率微分方程式(I)}
+\label{section 5}
+
+
+\begin{prob}\label{prob: 5.1}
+  \(a\leq 0 \leq b , k\in \N\)とする。
+  \[
+  \varphi(x) \dfn
+  \begin{cases}
+    (x-a)^{2k+1}, &(x < a), \\
+    0 , &(a \leq x \leq b), \\
+    (x-b)^{2k+1}, &(x > b),
+  \end{cases}
+  \]
+  と定義する。
+  \(B_t\)を\(1\)次元ブラウン運動とし、
+  \(X_t \dfn \varphi(B_t)\)とおく。
+  このとき\(X_t\)は次の確率微分方程式の解であることを示せ：
+  \[
+  dX_t = (2k+1)X_t^{\frac{2k}{2k+1}}dB_t + k(2k+1)X_t^{\frac{2k-1}{2k+1}}dt.
+  \]
+\end{prob}
+
+\begin{proof}
+  もとの問題文では\(X_t \dfn \varphi(X_t)\)となっていたけどこれはたぶん間違いだと思う。
+
+  まず\(\varphi(x)\)の二階微分を計算する。
+  \[
+  \varphi'(x) =
+  \begin{cases}
+    (2k+1)(x-a)^{2k}, &(x < a), \\
+    0, &(a\leq x \leq b), \\
+    (2k+1)(x-b)^{2k}, &(x > b),
+  \end{cases}
+  \]
+  であるから、
+  とくに\(\varphi'(x) = (2k+1)\varphi(x)^{\frac{2k}{2k+1}}\)である。
+  また
+  \[
+  \varphi''(x) =
+  \begin{cases}
+    2k(2k+1)(x-a)^{2k-1}, &(x < a), \\
+    0, &(a\leq x \leq b), \\
+    2k(2k+1)(x-b)^{2k-1}, &(x > b),
+  \end{cases}
+  \]
+  であるから、
+  とくに\(\varphi''(x) = 2k(2k+1)\varphi(x)^{\frac{2k-1}{2k+1}}\)である。
+  以上で\(\varphi\)は\(C^2\)-級である。
+  ブラウン運動\(B_t\)は定義から伊藤過程であるから、
+  伊藤の公式より
+  \begin{align*}
+    dX_t
+    &= d\varphi(B_t) \\
+    &= \varphi'(B_t)dB_t + \frac{1}{2}\varphi''(B_t)dt \\
+    &= (2k+1)\varphi(B_t)^{\frac{2k}{2k+1}}dB_t
+    + k(2k+1)\varphi(B_t)^{\frac{2k-1}{2k+1}}dt \\
+    &= (2k+1)X_t^{\frac{2k}{2k+1}}dB_t
+    + k(2k+1)X_t^{\frac{2k-1}{2k+1}}dt
+  \end{align*}
+  となる。
+  これは所望の結果である。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+\begin{prob}\label{prob: 5.2}
+  \(n\in \N\)とする。
+  もし\(1\)次元確率微分方程式
+  \[
+  dX_t = \frac{1}{n}X_t^{n+1}dB_t + \frac{n+1}{2n^2}X_t^{2n+1}dt
+  \]
+  の解\(X_t, t\geq 0\)が存在するならば
+  \[
+  X_t = (1-B_t)^{-\frac{1}{n}} , (t < \tau_1)
+  \]
+  となることを示せ。
+  ただし\(\tau_1 \dfn \left\{ t\geq 0\middle| B_t = 1\right\}\)である。
+  これから上の確率微分方程式に解が存在しないことを導け。
+\end{prob}
+
+\begin{proof}
+  \(t<\tau_1\)に対して\(X_t\)が上のように求まれば、
+  \(X_t, t\geq 0\)が連続 (かつ\(\mcF_t\)-発展的可測) な確率過程であることに反する
+  (\(t=\tau_1(\omega)\)で連続でない)。
+  すなわちはじめの確率微分方程式に解が存在しないことになる。
+  よって、はじめの確率微分方程式に解が存在すると仮定した上で、
+  \(t<\tau_1\)に対して\(X_t\)を求めれば良い。
+
+  仮定より、\(X_t\)は伊藤過程である。
+  また、\((dX_t)^2 = \frac{1}{n^2}X_t^{2n+2}dt\)である。
+  \(Y_t \dfn X_t^n\)とおけば、
+  伊藤の公式より
+  \begin{align*}
+    dY_t
+    &= d(X_t^n) \\
+    &= nX_t^{n-1}dX_t + \frac{1}{2}n(n-1)X_t^{n-2}(dX_t)^2 \\
+    &= nX_t^{n-1}\left( \frac{1}{n}X_t^{n+1}dB_t
+    + \frac{n+1}{2n^2}X_t^{2n+1}dt\right)
+    + \frac{1}{2}n(n-1)X_t^{n-2}\frac{1}{n^2}X_t^{2n+2}dt \\
+    &= X_t^{2n}dB_t
+    + \frac{n+1}{2n}X_t^{3n}dt
+    + \frac{n-1}{2n}X_t^{3n}dt \\
+    &= X_t^{2n}dB_t + X_t^{3n}dt \\
+    &= Y_t^2dB_t + Y_t^3dt
+  \end{align*}
+  となる。
+  とくに\((dY_t)^2 = Y_t^4dt\)である。
+  \(Z_t \dfn \frac{1}{Y_t}\)とおけば、
+  伊藤の公式より
+  \begin{align*}
+    dZ_t
+    &= d\left( \frac{1}{Y_t}\right) \\
+    &= -\frac{1}{Y_t^2}dY_t + \frac{1}{Y_t^3}(dY_t)^2 \\
+    &= -(dB_t+Y_tdt) + Y_tdt \\
+    &= -dB_t
+  \end{align*}
+  となる。
+  また、初期条件\(X_0=1\)より
+  \(Z_0 = 1\)であるから、\(\int_0^t\)で積分することで
+  \[
+  Z_t = 1-B_t
+  \]
+  を得る。
+  以上より\(t < \tau_1\)に対して
+  \[
+  X_t = Y_t^{\frac{1}{n}} = Z_t^{-\frac{1}{n}} = (1-B_t)^{-\frac{1}{n}}
+  \]
+  となることがわかった。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{prob}\label{prob: 5.3}
+  \(A\in \R^{d\times d}\)とする。
+  \(\R^d\)上の確率微分方程式
+  \[
+  dX_t = dB_t + AX_t dt, \ \ \ X_0 = x
+  \]
+  の解\(X_t^x\)を求めよ。
+  また
+  \[
+  J_t^x \dfn \partial_x X_t^x =
+  \left( \frac{\partial X_t^{x,i}}{\partial x^j} \right)_{1\leq i,j \leq N}
+  \]
+  を求めよ。
+\end{prob}
+
+\begin{proof}
+  行列\(P\)に対して\(e^P \dfn \sum_{n\geq 0}\frac{P^n}{n!}\)とおく。
+  \[
+  d\left( e^{-At}X_t \right)
+  = e^{-At}\left( -AX_tdt + dX_t \right)
+  = e^{-At} dB_t
+  = e^{-At}\circ dB_t
+  \]
+  であるから、
+  \[
+  X_t^i = X_0^i + \int_0^{B_t^j}\left(e^{-At}\right)^i_j dt
+  \]
+  となる (\(j\)で和をとっている)。
+  また定理5.16より
+  \(J_t^x\)は (確率) 微分方程式
+  \[
+  dJ_t^x = AJ_t^xdt , \ \ \ J_0^x = I
+  \]
+  を満たすので、
+  \[
+  J_t^x = e^{At}
+  \]
+  となる。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{prob}\label{prob: 5.4}
+  \(d=N=1, V\in C^\infty_d(\R)\)とする。
+  \(C^\infty\)-級関数\(\varphi:\R^2 \to \R\)は
+  微分方程式
+  \[
+  \frac{\partial \varphi}{\partial \xi}(x,\xi) = V(\varphi(x,\xi)) ,
+  \varphi(x,0)=x
+  \]
+  を満たすとする。
+  \begin{enumerate}
+    \item \label{enumi: prob: 5.4-1}
+    \(X_t^x \dfn \varphi(x,B_t)\)の満たす
+    Stratonovich型の確率微分方程式を求めよ。
+    \item \label{enumi: prob: 5.4-2}
+    \(J_t^x \dfn \frac{\partial}{\partial x}X_t^x =
+    \exp\left( \int_0^{B_t}V'(\varphi(x,\eta))d\eta \right)\)
+    を示せ。
+  \end{enumerate}
+\end{prob}
+
+\begin{proof}
+  解答に入る前にStratonovich積分に関するちょっとした注意をする。
+  Stratonovich積分の定義と伊藤の公式から、
+  \[
+  f'(X_t)\circ dX_t
+  = f'(X_t)dX_t + \frac{1}{2}d\left( f'(X_t)\right) dX_t
+  = f'(X_t)dX_t + \frac{1}{2}f''(X_t)(dX_t)^2
+  = d\left( f(X_t) \right)
+  \]
+  となる。
+  従って、これを積分することで、
+  \[
+  \int_{t_1}^{t_2}f'(X_t)\circ dX_t = f(X_{t_2}) - f(X_{t_1})
+  \]
+  を得る。
+  とくに\(f\)は原始関数\(\int_0^t f(u)du\)の\(t\)での微分として表示できることから、
+  \[
+  \int_{t_1}^{t_2}f(X_t)\circ dX_t = \int_{X_{t_1}}^{X_{t_2}}f(t)dt
+  \]
+  となる (変数変換公式のような感じ？)。
+  また、\(YdZ+\frac{1}{2}dYdZ = Y\circ dZ = dW\)となる\(W\)があれば、
+  \begin{align*}
+    X\circ (Y\circ dZ)
+    &= X\circ dW = XdW + \frac{1}{2}dXdW \\
+    &= XYdZ + \frac{1}{2}XdYdZ + \frac{1}{2}YdXdZ + \frac{1}{4}dXdYdZ \\
+    &= XYdZ + \frac{1}{2}XdYdZ + \frac{1}{2}YdXdZ \\
+    &= XYdZ + \frac{1}{2}(d(XY)dZ) - \frac{1}{2}dXdYdZ \\
+    &= XYdZ + \frac{1}{2}(d(XY)dZ) \\
+    &= (XY)\circ dZ
+  \end{align*}
+  となる。
+
+  \ref{enumi: prob: 5.4-1}。
+  \(x\)を定数と考えて普通に\(X_t^x\)を微分する。
+  Stratonovich積分で書けば、
+  \begin{align*}
+    d(X_t^x)
+    &= d\left( \varphi(x,B_t)\right) \\
+    &= \left.\frac{\partial \varphi}{\partial\xi}
+    (x,\xi)\right|_{\xi=B_t} \circ dB_t \\
+    &= V(\varphi(x,B_t)) \circ dB_t \\
+    &= V(X_t^x) \circ dB_t \\
+  \end{align*}
+  となる。
+
+  \ref{enumi: prob: 5.4-2}。
+  \(J_t^x\)は定理5.16より
+  \[
+  dJ_t^x = V'(X_t^x)J_t^x\circ dB_t
+  = J_t^x\circ \left( V'(X_t^x)\circ dB_t\right)
+  \]
+  を満たすので、
+  \begin{align*}
+    d\left( \log(J_t^x)\right)
+    &= \frac{1}{J_t^x}\circ dJ_t^x \\
+    &= \frac{1}{J_t^x}\circ
+    \left( J_t^x\circ \left( V'(X_t^x)\circ dB_t\right) \right) \\
+    &= V'(X_t^x)\circ dB_t \\
+    &= V'(\varphi(x,B_t))\circ dB_t
+  \end{align*}
+  となる。
+  これを\(\int_0^t\)で積分すれば、
+  定理5.16より\(J_0^x = 1\)なので、
+  \[
+  \log J_t^x = \int_0^t V'(\varphi(x,B_t))\circ dB_t
+  = \int_0^{B_t} V'(\varphi(x,\eta)) d\eta
+  \]
+  となる。
+  これは所望の結果である。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{prob}\label{prob: 5.5}
+  補題5.13の\(|\mathbf{k}| \geq 2\)の場合の証明を完了せよ。
+\end{prob}
+
+\begin{proof}
+  \(|\mathbf{k}|\)に関する帰納法で証明する。
+  \(|\mathbf{k}| = 0,1\)の場合は本文中で証明が完了しているので、
+  \(\mathbf{h}<\mathbf{k}\)となるすべての\(\mathbf{h}\)に対して証明できているとして、
+  \(\mathbf{k}\)の場合を証明する。
+  \(t \leq T\)とする。
+
+  補題5.13の証明中の最後の等式
+  \begin{align*}
+    \partial^{\mathbf{k}}_x X_t^{(n),x}
+    &= \partial^\mathbf{k}\iota(x)
+    + \sum_{\alpha=0}^d \int_0^t\partial V_\alpha\left(X_{[s)_n}^{(n),x}\right)
+    \partial_x^{\mathbf{k}}X_{[s)_n}^{(n),x} dB_s^\alpha \\
+    &\ \ \ \ \ \
+    + \sum_{2\leq |\mathbf{h}| , \mathbf{h} < \mathbf{k}}\sum_{\alpha=0}^d
+    \int_0^t \left( \partial^{\mathbf{k}} V_\alpha \right)
+    \left( X_{[s)_n}^{(n),x}\right)
+    \Phi_{\mathbf{h}}^{\mathbf{k}}\left[ X_{[s)_n}^{(n),x}\right] dB_s^\alpha \\
+    &\ \ \ \ \ \
+    + \sum_{m=0}^{[2^nt)-1}\left(
+    \hat{R}_{T_{n,m}}^{n,m,x}\partial_x^{\mathbf{k}}X_{T_{n,m}}^{(n),x}
+    + \sum_{2 \leq |\mathbf{h}| , \mathbf{h} < \mathbf{k}}
+    \hat{R}_{T_{n,m}}^{n,m,x,\mathbf{h}}
+    \Phi_{\mathbf{h}}^{\mathbf{k}}\left[ X_{T_{n,m}}^{(n),x}\right]\right) \\
+    &\ \ \ \ \ \
+    + \hat{R}_t^{n,[2^nt),x}\partial_x^{\mathbf{k}}X_{[t)_n}^{(n),x}
+    + \sum_{2 \leq |\mathbf{h}| , \mathbf{h} < \mathbf{k}}
+    \hat{R}_t^{n,[2^nt),x,\mathbf{h}}
+    \Phi_{\mathbf{h}}^{\mathbf{k}}\left[ X_{[s)_n}^{(n),x}\right]
+  \end{align*}
+  を用いる
+  (本文中の式は第四項の和の中の\(\hat{R}\)の添字が\(t\)となっているが、
+  これは\(T_{n,m}\)の間違いであると思われる)。
+  ここで\(\hat{R}\)は、\(t,x,n,m\)に依存しない定数\(C_8,C_9\)により
+  \begin{equation}\label{eq: 5.5}
+    |\hat{R}_t^{n,m,x}| + |\hat{R}_t^{n,m,x,\mathbf{h}}| \leq
+    C_8|\xi_t^{n,m}|^2e^{C_9|\xi_t^{n,m}|}
+    \tag{\(\dagger\)}
+  \end{equation}
+  と評価できる確率過程であり、
+  \(\Phi_{\mathbf{h}}^{\mathbf{k}}\left[ f\right]\)
+  は\(\partial_x^{\mathbf{h}}f\)についてのある多項式である。
+  各項を評価する。
+
+  帰納法の仮定より、すべての自然数\(p\)に対し、
+  \(x,n,0\leq m \leq [2^nT)\)と
+  \(2 \leq |\mathbf{h}| , \mathbf{h} < \mathbf{k}\)
+  に依存しない定数\(C_{10}(p)\)が存在して
+  \[
+  |\partial_x^{\mathbf{h}}X_{T_{n,m}}^{(n),x}|^p \leq C_{10}(p)
+  \]
+  となる。
+  従って、とくにある定数\(C_{10}\)が存在して、
+  すべての\(n,x,0\leq m \leq [2^nT)\)に対し、
+  \[
+  \left| \Phi_{\mathbf{h}}^{\mathbf{k}}\left[ X_{T_{n,m}}^{(n),x}\right]\right|
+  \leq C_{10}
+  \]
+  となる。
+
+  \(V_\alpha\)のすべての偏導関数が有限であることから、とくに
+  ある定数\(C_{11}\)が存在して、
+  すべての\(\alpha=0,1,\cdots, d\)と
+  すべての\(2 \leq |\mathbf{h}| , \mathbf{h} < \mathbf{k}\)に対して
+  \(|V_\alpha|<C_{11}\)となる。
+  従って、第三項は、ある定数\(C_{12}\)を用いて、
+  \begin{align*}
+    &\E\left[ \sup_{s \leq t}\left|
+    \sum_{2\leq |\mathbf{h}| , \mathbf{h} < \mathbf{k}}\sum_{\alpha=0}^d
+    \int_0^s \left( \partial^{\mathbf{k}} V_\alpha \right)
+    \left( X_{[u)_n}^{(n),x}\right)
+    \Phi_{\mathbf{h}}^{\mathbf{k}}\left[ X_{[u)_n}^{(n),x}\right] dB_u^\alpha
+    \right|^p \right] \\
+    &\leq \E\left[ \sup_{s \leq t}\left|
+    \sum_{2\leq |\mathbf{h}| , \mathbf{h} < \mathbf{k}}\sum_{\alpha=0}^d
+    \int_0^s \left| \left( \partial^{\mathbf{k}} V_\alpha \right)
+    \left( X_{[u)_n}^{(n),x}\right)\right|
+    \left| \Phi_{\mathbf{h}}^{\mathbf{k}}\left[ X_{[u)_n}^{(n),x}\right] \right|
+    dB_u^\alpha \right|^p \right] \\
+    &\leq \E\left[ \sup_{s \leq t}\left|
+    \sum_{2\leq |\mathbf{h}| , \mathbf{h} < \mathbf{k}}\sum_{\alpha=0}^d
+    \int_0^s C_{10}C_{11} dB_u^\alpha \right|^p \right] \\
+    &\overset{\bigstar}{\leq} A_p C_{10}C_{11} \E\left[ \sup_{s \leq t}\left|
+    \sum_{2\leq |\mathbf{h}| , \mathbf{h} < \mathbf{k}}\sum_{\alpha=0}^d
+    \int_0^s du \right|^{\frac{p}{2}} \right] \\
+    &= C_{12} \\
+  \end{align*}
+  と評価できる。
+  ただし\(\bigstar\)の箇所はモーメント不等式を用いた。
+
+  第四項と第五項のうち
+  和\(\sum_{2\leq |\mathbf{h}| , \mathbf{h} < \mathbf{k}}\sum_{\alpha=0}^d\)
+  の部分を評価する。
+  式\eqref{eq: 5.5}より、
+  \[
+  |\hat{R}_t^{n,m,x,\mathbf{h}}| \leq
+  |\hat{R}_t^{n,m,x}| + |\hat{R}_t^{n,m,x,\mathbf{h}}| \leq
+  C_8|\xi_t^{n,m}|^2e^{C_9|\xi_t^{n,m}|}
+  \]
+  であることに注意すると、ある定数\(C_{13},C_{14}\)を用いて、
+  \begin{align*}
+    &\left\| \sup_{s\leq t}
+    \left| \sum_{m=0}^{[2^ns)-1}\sum_{2 \leq |\mathbf{h}| , \mathbf{h} < \mathbf{k}}
+    \hat{R}_{T_{n,m}}^{n,m,x,\mathbf{h}}
+    \Phi_{\mathbf{h}}^{\mathbf{k}}\left[ X_{T_{n,m}}^{(n),x}\right]
+    + \sum_{2 \leq |\mathbf{h}| , \mathbf{h} < \mathbf{k}}
+    \hat{R}_s^{n,[2^ns),x,\mathbf{h}}
+    \Phi_{\mathbf{h}}^{\mathbf{k}}\left[ X_{[s)_n}^{(n),x}\right]
+    \right| \right\|_p \\
+    &\overset{\bigstar}{\leq} \left\| \sup_{s\leq t} \left(
+    \sum_{m=0}^{[2^ns)-1}\sum_{2 \leq |\mathbf{h}| , \mathbf{h} < \mathbf{k}}
+    \left| \hat{R}_{T_{n,m}}^{n,m,x,\mathbf{h}}\right|
+    \left|
+    \Phi_{\mathbf{h}}^{\mathbf{k}}\left[ X_{T_{n,m}}^{(n),x}\right]
+    \right|
+    + \sum_{2 \leq |\mathbf{h}| , \mathbf{h} < \mathbf{k}}
+    \left| \hat{R}_s^{n,[2^ns),x,\mathbf{h}}\right|
+    \left|
+    \Phi_{\mathbf{h}}^{\mathbf{k}}\left[ X_{[s)_n}^{(n),x}\right]
+    \right| \right) \right\|_p \\
+    &\leq \left\| \sup_{s\leq t}\left(
+    \sum_{m=0}^{[2^ns)-1}\sum_{2 \leq |\mathbf{h}| , \mathbf{h} < \mathbf{k}}
+    C_8|\xi_{T_{n,m}}^{n,m}|^2e^{C_9|\xi_{T_{n,m}}^{n,m}|} C_{10}
+    + \sum_{2 \leq |\mathbf{h}| , \mathbf{h} < \mathbf{k}}
+    C_8|\xi_s^{n,[s)_n}|^2e^{C_9|\xi_s^{n,[s)_n}|} C_{10}
+    \right) \right\|_p \\
+    &\leq
+    C_{13} \left\| \sum_{m=0}^{[2^nt)} \sup_{s\leq t}\left(
+    |\xi_s^{n,m}|^2e^{C_9|\xi_s^{n,m}|}\right)\right\|_p \\
+    &\overset{\spadesuit}{\leq}
+    C_{13} \sum_{m=0}^{[2^nt)}
+    \left\| \sup_{s\leq t} |\xi_s^{n,m}|^2\right\|_{2p}
+    \left\| \sup_{s\leq t}e^{C_9|\xi_s^{n,m}|}\right\|_{2p} \\
+    &\overset{\clubsuit}{\leq}
+    C_{13} \sum_{m=0}^{[2^nt)} K_{4p}^{\frac{1}{2p}}
+    \left( t\wedge T_{n,m+1} - t\wedge T_{n,m}\right)^{\frac{4p/2}{2p}}
+    \left\| \sup_{s\leq t}e^{C_9|\xi_s^{n,m}|}\right\|_{2p} \\
+    &=
+    C_{13} \sum_{m=0}^{[2^nt)} K_{4p}^{\frac{1}{2p}}
+    \left( t\wedge T_{n,m+1} - t\wedge T_{n,m}\right)^{\frac{4p/2}{2p}}
+    \left\| \exp\left( C_9 \sup_{s\leq t} |\xi_s^{n,m}| \right)\right\|_{2p} \\
+    &\leq
+    C_{13} K_{4p}^{\frac{1}{2p}} \sum_{m=0}^{[2^nt)} \frac{1}{[2^nt)}
+    \left\| \exp\left( C_9 \sup_{s\leq t} |\xi_s^{n,m}| \right)\right\|_{2p} \\
+    &=
+    C_{13} K_{4p}^{\frac{1}{2p}} \sum_{m=0}^{[2^nt)} \frac{1}{[2^nt)}
+    \left\| \exp\left( C_9 \sup_{s\leq t} \sqrt{ \sum_{\alpha}
+    (B_{s\wedge T_{n,m+1}}^\alpha - B_{s\wedge T_{n,m}}^\alpha )^2 } \right)\right\|_{2p} \\
+    &\leq
+    C_{13} K_{4p}^{\frac{1}{2p}} \sum_{m=0}^{[2^nt)} \frac{1}{[2^nt)}
+    \left\| \exp\left( C_9 \sup_{s\leq t} \left(
+    \sqrt{ \sum_{\alpha} (B_{s\wedge T_{n,m+1}})^2}
+    + \sqrt{ \sum_{\alpha} (B_{s\wedge T_{n,m}})^2}
+    \right) \right)\right\|_{2p} \\
+    &\leq
+    C_{13} K_{4p}^{\frac{1}{2p}} \sum_{m=0}^{[2^nt)} \frac{1}{[2^nt)}
+    \left\| \exp\left( 2C_9 \sup_{s\leq t} \left(
+    \sqrt{ \sum_{\alpha} (B_s^{\alpha})^2}
+    \right) \right)\right\|_{2p} \\
+    &=
+    C_{13} K_{4p}^{\frac{1}{2p}}
+    \left\| \exp\left( 2C_9 \sup_{s\leq t} |B_s| \right)\right\|_{2p} \\
+    &\overset{\heartsuit}{\leq} C_{14}
+  \end{align*}
+  と評価できる。
+  ただし\(\bigstar\)の箇所はミンコフスキーの不等式を用い、
+  \(\spadesuit\)の箇所はヘルダーの不等式とミンコフスキーの不等式を用い、
+  \(\clubsuit\)の箇所は式(5.19)を用い、
+  \(\heartsuit\)の箇所は定理3.11を用いた。
+  以上で\(\partial_x^{\mathbf{k}}X_{T_{n,m}}^{(n),x}\)のかかっていない項は
+  すべて定数で上から評価できることがわかった。
+
+  \(\partial_x^{\mathbf{k}}X_t^{(n),x}\)のかかる項を評価する。
+  第二項を評価する。
+  式(5.38)よりすべての\(0\leq t\leq T\)に対して
+  \(\partial_x^{\mathbf{k}}X_t^{(n),x}\in \mcL^2\)であるから、
+  \(\alpha \neq 0\)の場合は
+  ある定数\(C_{15}\)を用いて
+  \begin{align*}
+    &\E \left[\sup_{s\leq t} \left|
+    \int_0^s\partial V_\alpha\left(X_{[u)_n}^{(n),x}\right)
+    \partial_x^{\mathbf{k}}X_{[u)_n}^{(n),x} dB_u^\alpha
+    \right|^p\right] \\
+    &\overset{\bigstar}{\leq} (\text{定数倍}) \E \left[\sup_{s\leq t} \left|
+    \int_0^s \partial_x^{\mathbf{k}}X_{[u)_n}^{(n),x} dB_u^\alpha
+    \right|^p\right] \\
+    &\overset{\spadesuit}{\leq} (\text{定数倍}) \E \left[\left(
+    \int_0^t \left(\partial_x^{\mathbf{k}}X_{[s)_n}^{(n),x}\right)^2 ds
+    \right)^{\frac{p}{2}}\right] \\
+    &\overset{\clubsuit}{\leq} C_{15} \E \left[
+    \int_0^t \left| \partial_x^{\mathbf{k}}X_{[s)_n}^{(n),x}\right|^p
+    ds \right] \\
+    &\overset{\heartsuit}{=} C_{15} \int_0^t \E \left[ \left|
+    \partial_x^{\mathbf{k}}X_{[s)_n}^{(n),x}\right|^p \right] ds
+  \end{align*}
+  と評価できる。
+  ただし\(\bigstar\)の箇所は\(V_\alpha\)のすべての偏導関数が有界であることを用い、
+  \(\spadesuit\)の箇所はモーメント不等式を用い、
+  \(\clubsuit\)の箇所はヘルダーの不等式を用い、
+  \(\heartsuit\)の箇所はフビニの定理 (式(5.38)より今の状況で使うことができる) を用いた。
+  \(\alpha = 0\)の場合は
+  ある定数\(C_{16}\)を用いて
+  \begin{align*}
+    &\E \left[\sup_{s\leq t} \left|
+    \int_0^s\partial V_\alpha\left(X_{[u)_n}^{(n),x}\right)
+    \partial_x^{\mathbf{k}}X_{[u)_n}^{(n),x} dB_u^\alpha
+    \right|^p\right] \\
+    &\overset{\bigstar}{\leq} (\text{定数倍}) \E \left[\sup_{s\leq t} \left|
+    \int_0^s \partial_x^{\mathbf{k}}X_{[u)_n}^{(n),x} du \right|^p\right] \\
+    &\overset{\spadesuit}{\leq} (\text{定数倍}) \E \left[\sup_{s\leq t}
+    \int_0^s \left| \partial_x^{\mathbf{k}}X_{[u)_n}^{(n),x}\right|^p du \right] \\
+    &\leq C_{16} \E \left[
+    \int_0^t \left| \partial_x^{\mathbf{k}}X_{[s)_n}^{(n),x}\right|^p ds \right] \\
+    &\overset{\clubsuit}{=} C_{16} \int_0^t \E \left[ \left|
+    \partial_x^{\mathbf{k}}X_{[s)_n}^{(n),x}\right|^p \right] ds
+  \end{align*}
+  と評価できる。
+  ただし\(\bigstar\)の箇所は\(V_\alpha\)のすべての偏導関数が有界であることを用い、
+  \(\spadesuit\)の箇所はヘルダーの不等式を用い、
+  \(\clubsuit\)の箇所はフビニの定理を用いた。
+  とくに、\(\alpha = 0,\cdots ,d\)に対して、
+  ある定数\(C_{15},C_{16}\leq C_{17}\)を用いて、
+  \[
+  \E \left[\sup_{s\leq t} \left|
+  \sum_{\alpha=0}^d \int_0^s\partial V_\alpha\left(X_{[u)_n}^{(n),x}\right)
+  \partial_x^{\mathbf{k}}X_{[u)_n}^{(n),x} dB_u^\alpha
+  \right|^p\right]
+  \leq C_{17} \int_0^t \E \left[ \left|
+  \partial_x^{\mathbf{k}}X_{[s)_n}^{(n),x}\right|^p \right] ds
+  \]
+  と評価できる。
+
+  第四項と第五項の残っている部分は、ある定数\(C_{18}\)を用いて、
+  \begin{align*}
+    &\left\| \sup_{s\leq t}
+    \left| \sum_{m=0}^{[2^ns)-1}
+    \hat{R}_{T_{n,m}}^{n,m,x} \partial_x^{\mathbf{k}}X_{T_{n,m}}^{(n),x}
+    + \hat{R}_s^{n,[s)_n,x} \partial_x^{\mathbf{k}}X_{[s)_n}^{(n),x}
+    \right| \right\|_p \\
+    &\overset{\bigstar}{\leq} \left\|
+    \sup_{s\leq t} \left(
+    \sum_{m=0}^{[2^ns)-1}
+    \left| \hat{R}_{T_{n,m}}^{n,m,x} \right|
+    \left| \partial_x^{\mathbf{k}}X_{T_{n,m}}^{(n),x}\right|
+    + \left| \hat{R}_s^{n,[s)_n,x} \right|
+    \left| \partial_x^{\mathbf{k}}X_{[s)_n}^{(n),x} \right| \right) \right\|_p \\
+    &\leq \left\| \sum_{m=0}^{[2^nt)-1}
+    \left| \hat{R}_{T_{n,m}}^{n,m,x} \right|
+    \left| \partial_x^{\mathbf{k}}X_{T_{n,m}}^{(n),x}\right|
+    + \left| \hat{R}_t^{n,[t)_n,x} \right|
+    \left| \partial_x^{\mathbf{k}}X_{[t)_n}^{(n),x} \right| \right\|_p \\
+    &\leq \left\| \sum_{m=0}^{[2^nt)-1}
+    \left( \sup_{s\leq t}\left| \hat{R}_s^{n,m,x} \right| \right)
+    \left| \partial_x^{\mathbf{k}}X_{T_{n,m}}^{(n),x}\right|
+    + \left( \sup_{s\leq t} \left| \hat{R}_s^{n,[t)_n,x} \right| \right)
+    \left| \partial_x^{\mathbf{k}}X_{[t)_n}^{(n),x} \right| \right\|_p \\
+    &= \left\| \sum_{m=0}^{[2^nt)}
+    \left( \sup_{s\leq t} \left| \hat{R}_s^{n,m,x} \right| \right)
+    \left| \partial_x^{\mathbf{k}}X_{T_{n,m}}^{(n),x}\right| \right\|_p \\
+    &\overset{\spadesuit}{\leq} \left\| \sum_{m=0}^{[2^nt)}
+    \left( \sup_{s\leq t} \left( C_8|\xi_s^{n,m}|^2e^{C_9|\xi_s^{n,m}|}
+    \right) \right)
+    \left| \partial_x^{\mathbf{k}}X_{T_{n,m}}^{(n),x}\right| \right\|_p \\
+    &\overset{\clubsuit}{\leq} C_8 \sum_{m=0}^{[2^nt)}
+    \left\| \sup_{s\leq t} |\xi_s^{n,m}|^2 e^{C_9|\xi_s^{n,m}|}
+    \left| \partial_x^{\mathbf{k}}X_{T_{n,m}}^{(n),x}\right| \right\|_p \\
+    &\overset{\heartsuit}{\leq} C_8 \sum_{m=0}^{[2^nt)}
+    \left\| \sup_{s\leq t} |\xi_s^{n,m}|^2 e^{C_9|\xi_s^{n,m}|} \right\|_p
+    \left\| \partial_x^{\mathbf{k}}X_{T_{n,m}}^{(n),x} \right\|_p \\
+    &\overset{\diamondsuit}{\leq} C_8 K_{4p}^{\frac{1}{2p}}
+    \left\| \exp\left( 2C_9\sup_{s\leq t}|B_s|\right) \right\|_p
+    \sum_{m=0}^{[2^nt)} \left( t\wedge T_{n,m+1} - t\wedge T_{n,m} \right)
+    \left\| \partial_x^{\mathbf{k}}X_{T_{n,m}}^{(n),x} \right\|_p \\
+    &= C_8 K_{4p}^{\frac{1}{2p}}
+    \left\| \exp\left( 2C_9\sup_{s\leq t}|B_s|\right) \right\|_p
+    \int_0^t \left\| \partial_x^{\mathbf{k}}X_{[s)_n}^{(n),x} \right\|_p ds \\
+    &\overset{\star\star}{\leq} C_{18}
+    \int_0^t \left\| \partial_x^{\mathbf{k}}X_{[s)_n}^{(n),x} \right\|_p ds \\
+  \end{align*}
+  と評価できる。
+  ただし\(\bigstar\)の箇所はミンコフスキーの不等式を用い、
+  \(\spadesuit\)の箇所は式\eqref{eq: 5.5}を用い、
+  \(\clubsuit\)の箇所はミンコフスキーの不等式を用い、
+  \(\heartsuit\)の箇所は\(B_{s\wedge T_{n,m+1}} - B_{s\wedge T_{n,m}}\)と
+  \(X_{T_{n,m}}^{(n),x}\)が独立であることから従う
+  \(\sup_{s\leq t} |\xi_s^{n,m}|^2 e^{C_9|\xi_s^{n,m}|}\)と
+  \(\partial_x^{\mathbf{k}}X_{T_{n,m}}^{(n),x}\)の独立性を用い、
+  \(\diamondsuit\)の箇所は\(\partial_x^{\mathbf{k}}X_{T_{n,m}}^{(n),x}\)のかかっていない
+  第四項と第五項の評価と同様の評価を行い、
+  \(\star\star\)の箇所は任意の\(r>0\)に対して
+  \(\E\left[ \exp\left( r\sup_{t\leq T}|B_t|\right)\right]< \infty\)
+  であることを用いた。
+
+  以上より、
+  定数\(C_{19},C_{20}\)を用いて
+  \begin{align*}
+    &\E\left[ \sup_{s\leq t} \left|
+    \partial^{\mathbf{k}}_x X_s^{(n),x} - \partial^\mathbf{k}\iota(x)
+    \right|^p\right] \\
+    &= \E\left[ \sup_{s\leq t} \left|
+    \sum_{\alpha=0}^d \int_0^s\partial V_\alpha\left(X_{[u)_n}^{(n),x}\right)
+    \partial_x^{\mathbf{k}}X_{[u)_n}^{(n),x} dB_u^\alpha \right. \right. \\
+    &\ \ \ \ \ \ \ \ \ \ \ \
+    + \sum_{2\leq |\mathbf{h}| , \mathbf{h} < \mathbf{k}}\sum_{\alpha=0}^d
+    \int_0^s \left( \partial^{\mathbf{k}} V_\alpha \right)
+    \left( X_{[u)_n}^{(n),x}\right)
+    \Phi_{\mathbf{h}}^{\mathbf{k}}\left[ X_{[u)_n}^{(n),x}\right] dB_u^\alpha \\
+    &\ \ \ \ \ \ \ \ \ \ \ \
+    + \sum_{m=0}^{[2^ns)-1}\left(
+    \hat{R}_{T_{n,m}}^{n,m,x}\partial_x^{\mathbf{k}}X_{T_{n,m}}^{(n),x}
+    + \sum_{2 \leq |\mathbf{h}| , \mathbf{h} < \mathbf{k}}
+    \hat{R}_{T_{n,m}}^{n,m,x,\mathbf{h}}
+    \Phi_{\mathbf{h}}^{\mathbf{k}}\left[ X_{T_{n,m}}^{(n),x}\right]\right) \\
+    &\ \ \ \ \ \ \ \ \ \ \ \ \left.\left.
+    + \hat{R}_s^{n,[2^nt),x}\partial_x^{\mathbf{k}}X_{[s)_n}^{(n),x}
+    + \sum_{2 \leq |\mathbf{h}| , \mathbf{h} < \mathbf{k}}
+    \hat{R}_s^{n,[2^ns),x,\mathbf{h}}
+    \Phi_{\mathbf{h}}^{\mathbf{k}}\left[ X_{[s)_n}^{(n),x}\right]
+    \right|^p\right] \\
+    &\overset{\bigstar}{\leq}
+    \left(
+    \E\left[ \sup_{s\leq t} \left|
+    \sum_{\alpha=0}^d \int_0^s\partial V_\alpha\left(X_{[u)_n}^{(n),x}\right)
+    \partial_x^{\mathbf{k}}X_{[u)_n}^{(n),x} dB_u^\alpha \right|^p
+    \right] ^{\frac{1}{p}} \right.\\
+    &\ \ \ \ \ \
+    + \E\left[ \sup_{s\leq t} \left|
+    \sum_{2\leq |\mathbf{h}| , \mathbf{h} < \mathbf{k}} \sum_{\alpha=0}^d
+    \int_0^s \left( \partial^{\mathbf{k}} V_\alpha \right)
+    \left( X_{[u)_n}^{(n),x}\right)
+    \Phi_{\mathbf{h}}^{\mathbf{k}}\left[ X_{[u)_n}^{(n),x}\right] dB_u^\alpha
+    \right|^p \right] ^{\frac{1}{p}} \\
+    &\ \ \ \ \ \
+    + \E\left[ \sup_{s\leq t} \left| \sum_{m=0}^{[2^nt)-1}
+    \hat{R}_{T_{n,m}}^{n,m,x}\partial_x^{\mathbf{k}}X_{T_{n,m}}^{(n),x}
+    + \hat{R}_s^{n,[2^nt),x}\partial_x^{\mathbf{k}}X_{[s)_n}^{(n),x}
+    \right| ^p \right] ^{\frac{1}{p}} \\
+    &\ \ \ \ \ \
+    + \left. \E\left[ \sup_{s\leq t} \left| \sum_{m=0}^{[2^nt)-1}
+    \sum_{2 \leq |\mathbf{h}| , \mathbf{h} < \mathbf{k}}
+    \hat{R}_{T_{n,m}}^{n,m,x,\mathbf{h}}
+    \Phi_{\mathbf{h}}^{\mathbf{k}}\left[ X_{T_{n,m}}^{(n),x}\right]
+    + \sum_{2 \leq |\mathbf{h}| , \mathbf{h} < \mathbf{k}}
+    \hat{R}_s^{n,[2^ns),x,\mathbf{h}}
+    \Phi_{\mathbf{h}}^{\mathbf{k}}\left[ X_{[s)_n}^{(n),x}\right]
+    \right| ^p \right] ^{\frac{1}{p}}  \right)^p \\
+    &\overset{\spadesuit}{\leq}
+    \left(
+    C_{17}^{\frac{1}{p}}\left( \int_0^t \E \left[ \left|
+    \partial_x^{\mathbf{k}}X_{[s)_n}^{(n),x}\right|^p
+    \right] ds \right)^{\frac{1}{p}}
+    + C_{12}^{\frac{1}{p}}
+    + C_{18}\left(
+    \int_0^t \left\| \partial_x^{\mathbf{k}}X_{[s)_n}^{(n),x} \right\|_p ds
+    \right) + C_{14} \right)^p \\
+    &\overset{\heartsuit}{\leq} 4^{p-1} \left(
+    C_{17} \int_0^t \E \left[ \left|
+    \partial_x^{\mathbf{k}}X_{[s)_n}^{(n),x}\right|^p \right] ds
+    + C_{12} + C_{18}^p \left( \int_0^t
+    \left\| \partial_x^{\mathbf{k}}X_{[s)_n}^{(n),x} \right\|_p ds
+    \right)^p + C_{14}^p \right) \\
+    &\overset{\diamondsuit}{\leq} 4^{p-1} \left(
+    C_{17}\int_0^t \E \left[ \left|
+    \partial_x^{\mathbf{k}}X_{[s)_n}^{(n),x}\right|^p \right] ds
+    + C_{12} + C_{18}^p \int_0^t \E \left[ \left|
+    \partial_x^{\mathbf{k}}X_{[s)_n}^{(n),x}\right|^p \right] ds
+    + C_{14}^p \right) \\
+    &= C_{19} + C_{20} \int_0^t \E \left[ \left|
+    \partial_x^{\mathbf{k}}X_{[s)_n}^{(n),x}\right|^p \right] ds \\
+    &\overset{\star\star}{\leq} C_{19} + C_{20}2^p \left(
+    \int_0^t \E\left[ \left| \partial^{\mathbf{k}}\iota(x)\right|^p \right] ds
+    + \int_0^t \E \left[ \left| \partial_x^{\mathbf{k}}X_{[s)_n}^{(n),x}
+    - \partial^{\mathbf{k}}\iota(x)\right|^p \right] ds \right) \\
+    &\leq C_{19} + C_{20}2^pT + C_{20}2^p \int_0^t \E \left[ \left|
+    \partial_x^{\mathbf{k}}X_{[s)_n}^{(n),x}
+    - \partial^{\mathbf{k}}\iota(x)\right|^p \right] ds \\
+    &\leq C_{19} + C_{20}2^pT + C_{20}2^p \int_0^t \E \left[
+    \sup_{s\leq u}\left| \partial_x^{\mathbf{k}}X_{[s)_n}^{(n),x}
+    - \partial^{\mathbf{k}}\iota(x)\right|^p \right] du
+  \end{align*}
+  となる。
+  ただし\(\bigstar\)の箇所はミンコフスキーの不等式を用い、
+  \(\spadesuit\)の箇所でこれまでに得られた評価を用い、
+  \(\heartsuit\)の箇所は凸不等式を用い、
+  \(\diamondsuit\)の箇所は第三項にヘルダーの不等式を用い、
+  \(\star\star\)の箇所は凸不等式を用いた。
+  よってグロンウォールの不等式より、
+  \(n=1,2,\cdots\)と\(x\in \R^N\)によらずに
+  \begin{align*}
+    &\E\left[ \sup_{s\leq t} \left|
+    \partial^{\mathbf{k}}_x X_s^{(n),x} - \partial^\mathbf{k}\iota(x)
+    \right|^p\right] \\
+    &\leq
+    C_{19} + C_{20}2^pT + C_{20}2^p
+    \int_0^t \left( C_{19} + C_{20}2^pT\right)e^{a(t-s)}ds \\
+    &< \infty
+  \end{align*}
+  が成立する。
+  以上で示された。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{prob}\label{prob: 5.6}
+  \(C:[0,T]\to \R^{d\times d}\)は連続、
+  \(A:[0,T]\to \R^{d\times d}\)は\(C^1\)-級であり、
+  \[
+  \frac{d}{dt}A(t) = C(t)A(t)
+  \]
+  を満たすとする。
+  このとき
+  \[
+  \frac{d}{dt}\det A(t) = \left( \tr C(t) \right) \det A(t)
+  \]
+  となることを示せ。
+\end{prob}
+
+\begin{proof}
+  \(t\in [0,T]\)を任意にとる。
+  \(t\)の近傍で恒等的に\(\det A(t) = 0\)である場合には所望の等式は自明に成立する。
+  従って\(t\)の任意の近傍に対して\(\det A(u) \neq 0\)となる点\(u\)が存在すると仮定して良い。
+
+  \(\det A(u)\neq 0\)となる任意の点\(u\)で所望の等式を証明することができたと仮定する。
+  \(\det A(t)\)は\(C^1\)-級で\(\tr C(t)\)は連続なので、
+  所望の等式の両辺は連続である。
+  従って\(\det A(t) = 0\)となる点\(t\)の任意の近傍で
+  \(\det A(u_n) \neq 0\)となる点\(u_n\)をとり、
+  等式
+  \[
+  \left.\frac{d}{dt}\right|_{t=u_n}\det A(t)
+  = \left( \tr C(u_n)\right) \det A(u_n)
+  \]
+  の両辺で\(u_n\to t\)の極限をとることで、
+  点\(t\)においても等式
+  \[
+  \frac{d}{dt}\det A(t)
+  = \left( \tr C(t)\right) \det A(t)
+  \]
+  が成立することがわかる。
+  従って\(\det A(t) \neq 0\)と仮定しても良い。
+  このとき\(t\)の十分小さい近傍の点\(u\)に対して\(\det A(u) \neq 0\)である。
+
+  十分小さい\(\ep>0\)と任意の行列\(A\)に対して
+  \[
+  \det (I+\ep A) = 1 + \ep \tr A + O(\ep^2)
+  \]
+  であるから、
+  \(A\)が可逆行列で\(B\)が任意の行列であるとき、
+  \begin{align*}
+    \det (A+\ep B) &= \det A \left( \det (I + \ep A^{-1}B)\right) \\
+    &= \left(\det A\right) \left( 1+\ep \tr(A^{-1}B)\right) \\
+    &= \det A + \ep \left( \det A\right) \tr (A^{-1}B) + O(\ep^2)
+  \end{align*}
+  となる。
+  従って、
+  \begin{align*}
+    \det A(t+\ep)
+    &= \det \left( A(t) + \ep\frac{d}{dt}A(t) + O(\ep^2)\right) \\
+    &= \det A(t)
+    + \ep \left( \det A(t) \right) \tr \left( A(t)^{-1}\frac{d}{dt}A(t)\right)
+    + O(\ep^2) \\
+  \end{align*}
+  となる。
+  以上より、\(A(t)\)が可逆となる\(t\)に対しては
+  \[
+  \frac{d}{dt} \det A(t)
+  = \left( \det A(t) \right) \tr \left( A(t)^{-1}\frac{d}{dt}A(t)\right)
+  = \left( \det A(t) \right) \tr C(t)
+  \]
+  となり、所望の結果が得られた。
+
+  \textbf{追記：2020.7.2}。
+  これ見ながら思ったけど、\(\det A(t) \neq 0\)となるような微妙な近傍とかを調整しなくても
+  普通に\(\det A(t+\ep)\)を展開すれば証明できると思った。
+  つまり、
+  \begin{align*}
+    \det A(t+\ep)
+    &= \det\left( A(t) + \ep \frac{d}{dt}A(t) + O(\ep^2) \right) \\
+    &\overset{\bigstar}{=} \det\left( A(t) + \ep A(t)C(t) + O(\ep^2) \right) \\
+    &= \det A(t) \det \left( I + \ep C(t)\right) + O(\ep^2) \\
+    &= \det A(t) \left( 1 + \ep \tr C(t) \right) + O(\ep^2) \\
+    &= \det A(t) + \ep \det A(t) \tr C(t) + O(\ep^2)
+  \end{align*}
+  ってなる。\(\bigstar\)の箇所は条件の微分方程式を使う。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{prob}\label{prob: 5.7}
+  \(V_\alpha = (V_\alpha^1,\cdots,V_\alpha^d)\in C_b^\infty(\R^d,\R^d)\)
+  は
+  \[
+  V_\alpha^\beta(x) = \delta_{\alpha}^\beta - \frac{x_\alpha x_\beta}{|x|^2}
+  , \ \ \ \left( \frac{1}{2}\leq |x| \leq 2\right)
+  \]
+  を満たすとする。
+  \(X_t^x\)を確率微分方程式
+  \[
+  dX_t = \sum_{\alpha=1}^d V_\alpha(X_t)\circ dB_t^\alpha,
+  \ \ \ X_0 = x
+  \]
+  の解とする。
+  写像\(x\mapsto X_t^x\)を
+  \(S^{d-1} = \left\{ x\in \R^d \middle| |x| = 1\right\}\)
+  に制限すれば、
+  \(S^{d-1}\)上の微分同相写像になることを示せ。
+\end{prob}
+
+\begin{proof}
+  定理5.18より、\(X_t^x\)は\(t\) (と\(\omega\)) を固定するごとに
+  \(x\)を変数とする\(\R^d\)から\(\R^d\)への微分同相写像であるから、
+  \(|x|=1\)であるときにすべての\(t\in [0,\infty)\) (と\(\omega\)) に対して
+  \(|X_t^x|=1\)であることを証明すれば良い。
+
+  新たな確率過程を
+  \[Y_t^x \dfn \sum_{\alpha}(X_t^{x,\alpha})^2 = |X_t^x|^2\]
+  と定義する。
+  \(Y_0^x = |x|^2\)である。
+  伊藤の公式より、
+  \begin{align*}
+    d\left(Y_t^x\right)
+    &= \sum_{\alpha} d\left( (X_t^{x,\alpha})^2\right) \\
+    &= 2 \sum_{\alpha} X_t^{x,\alpha}\circ d X_t^{x,\alpha} \\
+    &= 2 \sum_{\alpha} X_t^{x,\alpha}\circ
+    \sum_{\beta}V_\beta^\alpha(X_t^x)\circ dB_t^\beta \\
+    &= 2 \sum_{\alpha,\beta}
+    \left( X_t^{x,\alpha} V_{\beta}^{\alpha}(X_t^x) \right) \circ dB_t^\beta \\
+  \end{align*}
+  となる。
+  \(|x| = 1\)とすれば、
+  十分小さい\(0 < t < \ep\)に対して
+  \(\frac{1}{2}\leq |X_t^x|\leq 2\)であるから、
+  十分小さい\(0 < t < \ep\)に対しては
+  \begin{align*}
+    Y_t^x - |x|^2
+    &= 2 \int_0^t \sum_{\alpha,\beta}
+    \left( X_t^{x,\alpha} V_{\beta}^{\alpha}(X_t^x) \right) \circ dB_t^\beta \\
+    &= 2 \int_0^t \sum_{\alpha,\beta}
+    X_t^{x,\alpha} \left( \delta_{\alpha}^{\beta} -
+    \frac{X_t^{x,\alpha}X_t^{x,\beta}}{|X_t^x|} \right) \circ dB_t^\beta \\
+    &= 2 \int_0^t \left( \sum_{\alpha}X_t^{x,\alpha} - \sum_{\alpha,\beta}
+    \frac{\left( X_t^{x,\alpha}\right)^2X_t^{x,\beta}}{|X_t^x|}
+    \right) \circ dB_t^\beta \\
+    &= 2 \int_0^t \left( \sum_{\alpha} X_t^{x,\alpha} - \sum_{\beta} X_t^{x,\beta}
+    \right) \circ dB_t^\beta \\
+    &= 0
+  \end{align*}
+  となる。
+  従って、十分小さいすべての\(0 < t < \ep\)に対して
+  \(|X_t^x|^2 = Y_t^x = |x|^2 = 1\)が成立することがわかる。
+  \(|X_t^x|^2 = 1\)が成立する最大の\(t\)に対して時刻変更を行って同様のことを繰り返せば、
+  全ての\(t\in [0,\infty)\)に対して\(|X_t^x| = 1\)となることがわかる。
+  以上で示された。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{prob}\label{prob: 5.8}
+  式(5.48)を示せ。
+\end{prob}
+
+\begin{proof}
+  \(B_\bullet^{(\sigma_m)}\)は\(\mcF_{\sigma_m}\)と独立であり、
+  \(X_{\sigma_m}^{(n),x}\)は\(\mcF_{\sigma_m}\)-可測である。
+  なので\autoref{prob: 1.7}の解答で示した主張\ref{enumi: pf of prob 1.7}を
+  この場合にそのまま適用するだけで良い。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+\section{確率微分方程式(II)}
+\label{section 6}
+
+
+\begin{prob}\label{prob: 6.1}
+  \(\beta_t\)を\(3\)次元ブラウン運動、
+  \(0\neq y\in \R^3\)とする。
+  \(Y_t \dfn |y+\beta_t|^{-1}\)を利用して
+  \(d=N=1\)に対する確率微分方程式
+  \[
+  dX_t = X_t^2 dB_t, \ \ \ X_0 = x > 0
+  \]
+  は弱い解を持つことを確かめよ。
+\end{prob}
+
+\begin{proof}
+  \(Z_t \dfn Y_t^{-1} = |y + \beta_t|\)とおく。
+  伊藤の公式より、
+  \begin{align*}
+    dZ_t
+    &= \frac{1}{2Z_t}d\left( \sum_{i=1}^3(y^i + \beta_t^i)^2 \right)
+    + \frac{1}{2}\cdot \frac{-1}{4Z_t^3}
+    \left( d\left( \sum_{i=1}^3(y^i + \beta_t^i)^2 \right) \right)^2 \\
+    &= \frac{1}{2Z_t}\sum_{i=1}^3\left(
+    2(y^i+\beta_t^i)d\beta_t^i + \frac{1}{2}\cdot 2dt\right)
+    - \frac{1}{8Z_t^3}\sum_{i=1}^3 4(y^i+\beta_t^i)^2 dt \\
+    &= \frac{1}{Z_t}\sum_{i=1}^3(y^i+\beta_t^i)d\beta_t^i
+    + \frac{3}{2Z_t} dt - \frac{1}{2Z_t} dt \\
+    &= \frac{1}{Z_t}\sum_{i=1}^3(y^i+\beta_t^i)d\beta_t^i
+    + \frac{1}{Z_t} dt
+  \end{align*}
+  となる。
+  よって\((dZ_t)^2 = dt\)であり、
+  \begin{align*}
+    dY_t
+    &= d\left( \frac{1}{Z_t}\right) \\
+    &= -\frac{1}{Z_t^2}dZ_t + \frac{1}{Z_t^3}(dZ_t)^2 \\
+    &= -\frac{1}{Z_t^3}\sum_{i=1}^3(y^i+\beta_t^i)d\beta_t^i
+    - \frac{1}{Z_t^3}dt + \frac{1}{Z_t^3}dt \\
+    &= -\frac{1}{Z_t^3}\sum_{i=1}^3(y^i+\beta_t^i)d\beta_t^i \\
+    &= - Y_t^2 \sum_{i=1}^3\frac{y^i+\beta_t^i}{|y+\beta_t|} d\beta_t^i
+  \end{align*}
+  を得る。
+  定理4.20 (1) (b)より\(\P\)-a.s.に\(Z_t > 0\)であるから、
+  \(i=1,2,3\)に対して
+  \(\frac{y^i+\beta_t^i}{|y+\beta_t|} \in \mcL_{\mathrm{loc}}^2\)
+  である。
+  よって
+  \[
+  B_t \dfn -\int_0^t \sum_{i=1}^3 \frac{y^i+\beta_t^i}{|y+\beta_t|} d \beta_t^i
+  \]
+  はwell-definedであり、
+  さらに定理4.17より\(B_t\)は\(\mcF_t\)-ブラウン運動である。
+  また、\(dB_t = -\sum_{i=1}^3 \frac{y^i+\beta_t^i}{|y+\beta_t|} d \beta_t^i\)
+  であるから、
+  \[
+  dY_t = Y_t^2 dB_t
+  \]
+  である。
+  さらに、(\(\P\)-a.s.に) \(Y_t\)は連続であり、かつ発展的可測である。
+  各\(\omega\)について\(Y_t^2\)は連続なので、
+  \(Y_t^2\in \mcL_{\mathrm{loc}}^2\)である。
+  以上より、\(Y_t\)は確率微分方程式
+  \[
+  dY_t = Y_t^2dB_t
+  \]
+  の解であるための条件 (定義5.2) (i),(ii)を満たす。
+
+  (iii)を満たすことを証明する。
+  \(\sigma_r^y \dfn \left\{ t \geq 0 \middle| |\beta_t| = r\right\}\)
+  とおけば、
+  \(0 < r < |y|\)に対して
+  \[
+  Y_{t\wedge\sigma_r^y}
+  = |y| + \int_0^{t\wedge\sigma_r^y}Y_s^2 dB_s
+  \]
+  である。
+  ここで\(r\to 0\)とすれば、定理4.20 (1) (b)より
+  (\(\P\)-a.s.に) \(\sigma_r^y \to \infty\)
+  であるから、任意の\(t\)に対して
+  \[
+  Y_t = |y| + \int_0^t Y_s^2 dB_s
+  \]
+  となることがわかる。
+  以上より\((B_t,Y_t)\)は確率微分方程式
+  \[
+  dX_t = X_t^2 dB_t, \ \ \ X_0 = x > 0
+  \]
+  の弱い解となることがわかった。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{prob}\label{prob: 6.2}
+  命題6.7の証明を完成させよ。
+\end{prob}
+
+\begin{proof}
+
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{prob}\label{prob: 6.3}
+  ノビコフの条件が成り立てば(6.4)が成り立つ、ということを確かめよ。
+\end{prob}
+
+\begin{proof}
+  \(0< \ep < 1\)とする。
+  \(\frac{1}{1-\ep} > 1\)なのでヘルダーの不等式より、
+  \begin{align*}
+    &\E\left[ \exp \left( \frac{1-\ep}{2} \int_0^T|a_t|^2dt
+    \right)\right]^{\frac{1}{1-\ep}} \\
+    &\leq
+    \E\left[ \exp \left( \frac{1}{2} \int_0^T|a_t|^2dt \right)\right]
+  \end{align*}
+  となる。
+  従ってとくに
+  \begin{align*}
+    1 &\leq \left( \E\left[ \exp \left( \frac{1-\ep}{2} \int_0^T|a_t|^2dt
+    \right)\right] \right)^{\ep} \\
+    &\leq
+    \left( \E\left[ \exp \left( \frac{1}{2} \int_0^T|a_t|^2dt
+    \right)\right]\right)^{\ep (1-\ep)} \\
+    &\to 1 , \ \ \ (\ep \to 0)
+  \end{align*}
+  である。
+  これは(6.4)が成立することを示している。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{prob}\label{prob: 6.4}
+  \
+  \begin{itemize}
+    \item
+    \(T > 0\),
+    \item
+    \(\sigma = (\sigma_\alpha^i(x))_{1\leq i \leq N, 1\leq \alpha \leq d}\in
+    C^\infty(\R^N;\R^{N\times d})\),
+    \item
+    \(b = (b^i)_{1\leq i\leq N}^\dagger \in C^\infty(\R^N;\R^N)\),
+    \item
+    \(f_1,\cdots, f_d\in C(\R^N)\)：局所リプシッツ連続な関数たち、
+    \item
+    \(\hat{b}^i \dfn b^i - \sum_{\alpha=1}^d f_\alpha \sigma_\alpha^i,
+    \hat{b} = (\hat{b}^1,\cdots, \hat{b}^N)\),
+    \item
+    \(\varphi_n\in C_0^\infty(\R^N)\)：コンパクト台を持つ\(C^\infty\)-級関数で、
+    \(|x| \leq n\)ならば\(\varphi_n(x) = 1\)となるもの、
+    \item
+    \(\sigma^{(n)}\dfn \varphi_n\sigma, b^{(n)}\dfn \varphi_n b\),
+    \item
+    \(\left\{ B_t, Y_t\right\}\)：次の確率微分方程式の弱い解：
+    \[
+    dY_t = \sigma(Y_t)dB_t + \hat{b}(Y_t)dt, \ \ \ Y_0 = y.
+    \]
+    \item
+    \(X_t^{(n)}\)：次の確率微分方程式の解：
+    \[
+    dX_t^{(n)} = \sigma^{(n)}(X_t^{(n)}) dB_t + b^{(n)}(X_t^{(n)})dt,
+    \ \ \ X_0^{(n)}=y.
+    \]
+    \item
+    \(M_t \dfn \exp \left(
+    \sum_{\alpha=1}^d \int_0^t f_\alpha(Y_s) dB_s^\alpha
+    - \frac{1}{2}\sum_{\alpha=1}^d\int_0^tf_\alpha^2(Y_s)ds \right)\),
+    \item
+    \(\tau_n \dfn \inf\left\{ t\geq 0\middle| |X_t^{(n)}| \geq n \right\}\),
+    \(\tau \dfn \lim_{n\to \infty}\tau_n\),
+  \end{itemize}
+  とする。
+  このとき
+  \[
+  \P(\tau > T) = \E \left[ M_T \right]
+  \]
+  を示せ。
+\end{prob}
+
+\begin{proof}
+  はじめに注意：\(a_t^\alpha \dfn f_\alpha(Y_t)\)とおいても
+  これはギルザノフの定理 (定理6.13) の仮定を満たさないかもしれない。
+  なので\(M_t\)がマルチンゲールになるかどうかはわからない。
+  あと、本文中では\(f_\alpha\)たちに局所リプシッツ性は仮定されていなかったが、
+  これがないと\(Y_t\)の一意性が従わないかもしれないので、
+  問題として破綻すると思われる。
+  ここでは\(f_\alpha\)は局所リプシッツ連続であるとして本問題に解答する。
+
+  次のように定義しておく：
+  \begin{itemize}
+    \item
+    \(f_\alpha^{(n)}\dfn \varphi_n f_\alpha,
+    \hat{b}^{(n),i} \dfn \varphi_n\hat{b}^i
+    = b^{(n),i} - \sum_{\alpha=1}^d f_\alpha^{(n)}\sigma_{\alpha}^{(n),i}\),
+    \item
+    \(Y_t^{(n)}\)を次の確率微分方程式の解とする：
+    \[
+    dY_t^{(n)} = \sigma^{(n)}(Y_t^{(n)}) + \hat{b}^{(n)}(Y_t^{(n)})dt,
+    \ \ \ Y_0^{(n)} = y.
+    \]
+    このとき\(f_\alpha^{(n)}(Y_t^{(n)})\)は\(\omega\)によらず
+    ある定数でおさえることのできる有界な確率過程であるから、
+    \(a_t^\alpha \dfn f_\alpha^{(n)}(Y_t^{(n)})\)とおけば
+    これはギルザノフの定理 (定理6.13) の仮定を満たす。
+    \item
+    \(M_t^{(n)} \dfn \exp\left(
+    \sum_{\alpha=1}^d\int_0^t f_\alpha^{(n)}(Y_s^{(n)})dB_s^\alpha
+    - \frac{1}{2}\sum_{\alpha = 1}^d \left( f_\alpha^{(n)}(Y_s^{(n)})\right)^2 ds
+    \right)\),
+    これはギルザノフの定理 (定理6.13) よりマルチンゲールである。
+    \item
+    \(\hat{\P}^{(n)}\)を
+    \(\hat{\P}^{(n)}(A) \dfn \E\left[ M_T^{(n)}; A\right]\)
+    で定義される確率測度とする。
+    \item
+    \(\hat{B}_t^{(n),\alpha}\)を次で定義される確率過程とする：
+    \[
+    d\hat{B}_t^{(n),\alpha} = dB_t^\alpha - f_\alpha^{(n)}(Y_t^{(n)})dt,
+    \ \ \ \hat{B}_0^{(n)} = 0.
+    \]
+    ギルザノフの定理 (定理6.13) より、
+    \(\hat{B}_t^{(n)}\)は\(\hat{\P}^{(n)}\)についてのブラウン運動であり、
+    さらに\(Y_t^{(n)}\)は次の確率微分方程式の解となる：
+    \[
+    dY_t^{(n)} = \sigma^{(n)}(Y_t^{(n)}) d\hat{B}_t^{(n)} + b^{(n)}(Y_t^{(n)})dt,
+    \ \ \ Y_0^{(n)} = y.
+    \]
+    \item
+    \(\rho_n \dfn \inf\left\{ t\geq 0 \middle| |Y_t| \geq n \right\}\),
+    極限\(n\to \infty\)において\(\rho_n \to \infty\)となることに注意。
+  \end{itemize}
+
+  二つのステップに分けて証明する。
+  各ステップで次のことを証明する：
+  \begin{itemize}
+    \item[Step 1:]
+    \(\P\)-a.s.に
+    \[
+    X_{t\wedge \tau_n \wedge \tau_m}^{(n)}
+    = X_{t\wedge \tau_n \wedge \tau_m}^{(m)},
+    Y_{t\wedge \rho_n}^{(n)}
+    = Y_{t\wedge \rho_n}
+    \]
+    であることを示す。
+    これは定理5.7の証明の前半部分とほとんど全く
+    (\(X\)の方は完全に) 同じ方法で示せる。
+    とくに\(\tau_n\)は\(\P\)-a.s.に単調増加であり、
+    \(\rho_n\)は\(\P\)-a.s.に
+    \[
+    \rho_n = \inf\left\{ t \geq 0 \middle| |Y_t^{(n)}| \geq n\right\}
+    \]
+    となる。
+    \item[Step 2:]
+    ギルザノフの定理を使って
+    \(\P(\tau_n > T) = \E \left[ M_T^{(n)}; \left\{ \rho_n > T \right\} \right]\)
+    を示す。
+    最後に\(n\to \infty\)として求める結果を得る。
+  \end{itemize}
+
+  \underline{Step 1}を実行する。
+  \(n,m\)を任意にとる。
+  \(\sigma,b\)は\(C^\infty\)-級であるから、
+  局所リプシッツ条件を満たす。
+  従って、定理5.6の記号を使って、ある\(K_{T,n\vee m}\)が存在して
+  任意の\(|x|,|y| \leq n\vee m\)となる\(x,y\in \R^N\)に対し
+  \[
+  \| \sigma(x) - \sigma(y) \| + |b(x) - b(y)|
+  \leq K_{n\vee m}|x-y|
+  \]
+  となる。
+  \(\tau_n\)の定義から、
+  \(0 \leq s \leq \tau_n\)であれば
+  \(|X_s^{(n)}| \leq n\)であり、
+  また\(|x| \leq n\)であるときは
+  \(\sigma^{(n)}(x) = \sigma(x), b^{(n)}(x) = b(x)\)なので、
+  \(X_s^{(n)}\)が確率微分方程式
+  \[
+  dX_t^{(n)} = \sigma^{(n)}(X_t^{(n)}) dB_t + b^{(n)}(X_t^{(n)})dt,
+  \ \ \ X_0^{(n)}=y.
+  \]
+  の解であることから、
+  \(\P\)-a.s.に
+  \[
+  X_{t\wedge \tau_n \wedge \tau_m}^{(n)}
+  = y + \int_0^{t\wedge \tau_n \wedge \tau_m}\sigma(X_s^{(n)}) dB_s
+  + \int_0^{t\wedge \tau_n \wedge \tau_m} b(X_s^{(n)})ds
+  \]
+  が成り立つ。
+  従って、任意の\(t\in [0,T]\)に対して
+  \begin{align*}
+    &\E \left[ \sup_{s \leq t} \left|
+    X_{s\wedge \tau_n \wedge \tau_m}^{(n)}
+    - X_{s\wedge \tau_n \wedge \tau_m}^{(m)}\right|^2\right] \\
+    &= \E \left[ \sup_{s \leq t} \left|
+    \int_0^{s\wedge \tau_n \wedge \tau_m}
+    \left( \sigma(X_u^{(n)}) - \sigma(X_u^{(m)}) \right) dB_u
+    + \int_0^{s\wedge \tau_n \wedge \tau_m}
+    \left( b(X_u^{(n)}) - b(X_u^{(m)})\right) du
+    \right|^2 \right] \\
+    &\overset{\bigstar}{\leq}
+    2 \E \left[ \sup_{s \leq t} \left|
+    \int_0^{s\wedge \tau_n \wedge \tau_m}
+    \left( \sigma(X_u^{(n)}) - \sigma(X_u^{(m)}) \right) dB_u
+    \right|^2 \right] \\
+    &\ \ \ \ \ \
+    + 2\E \left[ \sup_{s \leq t} \left|
+    \int_0^{s\wedge \tau_n \wedge \tau_m}
+    \left( b(X_u^{(n)}) - b(X_u^{(m)})\right) du
+    \right|^2 \right] \\
+    &\overset{\spadesuit}{\leq}
+    8 \E \left[ \sum_{i=1}^N \left| \sum_{\alpha=1}^d
+    \int_0^{t\wedge \tau_n \wedge \tau_m}
+    \left( \sigma_\alpha^i(X_s^{(n)}) - \sigma_\alpha^i(X_s^{(m)}) \right)
+    dB_s^\alpha \right|^2 \right] \\
+    &\ \ \ \ \ \
+    + 2\E \left[ \sup_{s \leq t} \left|
+    \int_0^{s\wedge \tau_n \wedge \tau_m}
+    \left( b(X_u^{(n)}) - b(X_u^{(m)})\right) du
+    \right|^2 \right] \\
+    &\overset{\clubsuit}{\leq}
+    8 \E \left[ \sum_{i=1}^N \left(\sum_{\alpha=1}^d
+    \int_0^{t\wedge \tau_n \wedge \tau_m}
+    \left( \sigma_\alpha^i(X_s^{(n)}) - \sigma_\alpha^i(X_s^{(m)}) \right)
+    dB_s^\alpha \right)^2 \right] \\
+    &\ \ \ \ \ \
+    + 2\E \left[ \sup_{s \leq t} s \int_0^{s\wedge \tau_n \wedge \tau_m}
+    \left| b(X_u^{(n)}) - b(X_u^{(m)})\right|^2 du \right] \\
+    &\overset{\heartsuit}{\leq}
+    8 \E \left[ \sum_{i=1}^N \sum_{\alpha=1}^d
+    \int_0^{t\wedge \tau_n \wedge \tau_m}
+    \left( \sigma_\alpha^i(X_s^{(n)}) - \sigma_\alpha^i(X_s^{(m)}) \right)^2
+    ds \right] \\
+    &\ \ \ \ \ \
+    + 2T \E \left[ \int_0^{t\wedge \tau_n \wedge \tau_m}
+    \left| b(X_u^{(n)}) - b(X_u^{(m)})\right|^2 ds \right] \\
+    &\leq
+    8 \E \left[ \int_0^{t\wedge \tau_n \wedge \tau_m}\left(
+    \left\| \sigma(X_s^{(n)}) - \sigma(X_s^{(m)}) \right\|^2
+    + \left| b(X_s^{(n)}) - b(X_s^{(m)} \right|^2 \right) ds \right] \\
+    &\ \ \ \ \ \
+    + 2T \E \left[ \int_0^{t\wedge \tau_n \wedge \tau_m}\left(
+    \left\| \sigma(X_s^{(n)}) - \sigma(X_s^{(m)}) \right\|^2
+    + \left| b(X_s^{(n)}) - b(X_s^{(m)} \right|^2 \right) ds \right] \\
+    &=
+    2(4+T) \E \left[ \int_0^{t\wedge \tau_n \wedge \tau_m}\left(
+    \left\| \sigma(X_s^{(n)}) - \sigma(X_s^{(m)}) \right\|^2
+    + \left| b(X_s^{(n)}) - b(X_s^{(m)} \right|^2 \right) ds \right] \\
+    &\overset{\diamondsuit}{\leq}
+    2(4+T)K_{n\vee m}^2 \E \left[ \int_0^{t\wedge \tau_n \wedge \tau_m}
+    \left| X_s^{(n)} - X_s^{(m)}\right|^2 ds \right] \\
+    &\leq
+    2(4+T)K_{n\vee m}^2 \E \left[ \int_0^t
+    \left| X_{s\wedge \tau_n \wedge \tau_m}^{(n)}
+    - X_{s\wedge \tau_n \wedge \tau_m}^{(m)}\right|^2 ds \right] \\
+    &=
+    2(4+T)K_{n\vee m}^2 \int_0^t \E \left[
+    \left| X_{s\wedge \tau_n \wedge \tau_m}^{(n)}
+    - X_{s\wedge \tau_n \wedge \tau_m}^{(m)}\right|^2 \right] ds \\
+    &\leq
+    2(4+T)K_{n\vee m}^2 \int_0^t \E \left[ \sup_{u\leq s}
+    \left| X_{u\wedge \tau_n \wedge \tau_m}^{(n)}
+    - X_{u\wedge \tau_n \wedge \tau_m}^{(m)}\right|^2 \right] ds
+  \end{align*}
+  となる。
+  ただしここで\(\bigstar\)の箇所は任意の実数\(a,b\)に対して
+  \((a+b)^2 \leq 2a^2+2b^2\)となることを用い、
+  \(\spadesuit\)の箇所は第一項に\(p=2\)の場合のDoobの不等式を用い、
+  \(\clubsuit\)の箇所は第二項にヘルダーの不等式 (例1.14参照) を用い、
+  \(\heartsuit\)の箇所は第一項に伊藤積分の等長性を用い、
+  \(\diamondsuit\)の箇所は局所リプシッツ条件を用いた。
+  この不等式評価とグロンウォールの不等式より、
+  \[
+  \E \left[ \sup_{t \leq T} \left|
+  X_{t\wedge \tau_n \wedge \tau_m}^{(n)}
+  - X_{t\wedge \tau_n \wedge \tau_m}^{(m)}\right|^2\right] = 0
+  \]
+  を得る。
+  以上より、任意の\(t\in [0,T]\)に対して\(\P\)-a.s.に
+  \(X_{t\wedge \tau_n \wedge \tau_m}^{(n)}
+  = X_{t\wedge \tau_n \wedge \tau_m}^{(m)}\)
+  であることがわかった。
+
+  \(Y\)の方の不等式評価を行う。
+  \(f_\alpha\)は局所リプシッツ連続であり、
+  \(\varphi_n\)は\(C^{\infty}\)-級であるから、
+  \(\sigma,\hat{b}\)や
+  各\(l\)に対する\(\sigma^{(l)},\hat{b}^{(l)}\)は局所リプシッツ条件を満たす、
+  つまり
+  従って、任意の\(|x|,|y| \leq n\)となる\(x,y\in \R^N\)に対し、
+  ある定数\(\hat{K}_n\)が存在し、
+  \begin{align*}
+    \| \sigma^{(n)}(x) - \sigma^{(n)}(y) \| + |\hat{b}^{(n)}(x) - \hat{b}^{(n)}(y)|
+    \leq \hat{K}_n|x-y|
+  \end{align*}
+  となる。
+  \(\rho_n\)の定義から、
+  \(0 \leq s \leq \tau_n\)であれば
+  \(|Y_s| \leq n\)であり、
+  また\(|x| \leq n\)であるときは
+  \(\sigma^{(n)}(x) = \sigma(x), \hat{b}^{(n)}(x) = \hat{b}(x)\)なので、
+  \(Y_s\)が確率微分方程式
+  \[
+  dY_t = \sigma(Y_t) dB_t + \hat{b}(Y_t)dt,
+  \ \ \ Y_0 = y.
+  \]
+  の解であることから、
+  \(\P\)-a.s.に
+  \[
+  Y_{t\wedge \rho_n}
+  = y + \int_0^{t\wedge \rho_n}\sigma^{(n)}(Y_s) dB_s
+  + \int_0^{t\wedge \rho_n} \hat{b}^{(n)}(Y_s)ds
+  \]
+  が成り立つ。
+  従って、任意の\(t\in [0,T]\)に対して
+  \begin{align*}
+    &\E \left[ \sup_{s \leq t} \left|
+    Y_{s\wedge \rho_n} - Y_{s\wedge \rho_n}^{(n)}\right|^2\right] \\
+    &= \E \left[ \sup_{s \leq t} \left|
+    \int_0^{s\wedge \rho_n}
+    \left( \sigma^{(n)}(Y_u) - \sigma^{(n)}(Y_u^{(n)})\right) dB_u
+    + \int_0^{s\wedge \rho_n}
+    \left( \hat{b}^{(n)}(Y_u) - \hat{b}^{(n)}(Y_u^{(n)})\right) du
+    \right|^2\right] \\
+    &\overset{\bigstar}{\leq}
+    2 \E \left[ \sup_{s \leq t} \left| \int_0^{s\wedge \rho_n}
+    \left( \sigma^{(n)}(Y_u) - \sigma^{(n)}(Y_u^{(n)})\right) dB_u \right|^2\right] \\
+    &\ \ \ \ \ \
+    + 2 \E \left[ \sup_{s \leq t} \left| \int_0^{s\wedge \rho_n}
+    \left( \hat{b}^{(n)}(Y_u) - \hat{b}^{(n)}(Y_u^{(n)})\right) du \right|^2\right] \\
+    &\overset{\spadesuit}{\leq}
+    8 \E \left[ \sum_{i=1}^N \left( \sum_{\alpha=1}^d \int_0^{t\wedge \rho_n}
+    \left( \sigma_\alpha^{(n),i}(Y_s) - \sigma_\alpha^{(n),i}(Y_s^{(n)})\right)
+    dB_s^\alpha \right)^2\right] \\
+    &\ \ \ \ \ \
+    + 2 \E \left[ \sup_{s \leq t} \left| \int_0^{s\wedge \rho_n}
+    \left( \hat{b}^{(n)}(Y_u) - \hat{b}^{(n)}(Y_u^{(n)})\right) du \right|^2\right] \\
+    &\overset{\clubsuit}{\leq}
+    8 \E \left[ \sum_{i=1}^N \left( \sum_{\alpha=1}^d \int_0^{t\wedge \rho_n}
+    \left( \sigma_\alpha^{(n),i}(Y_s) - \sigma_\alpha^{(n),i}(Y_s^{(n)})\right)
+    dB_s^\alpha \right)^2\right] \\
+    &\ \ \ \ \ \
+    + 2 \E \left[ \sup_{s \leq t} s \int_0^{s\wedge \rho_n}
+    \left| \hat{b}^{(n)}(Y_u) - \hat{b}^{(n)}(Y_u^{(n)})\right|^2 du \right] \\
+    &\overset{\heartsuit}{\leq}
+    8 \E \left[ \sum_{i=1}^N \sum_{\alpha=1}^d \int_0^{t\wedge \rho_n}
+    \left( \sigma_\alpha^{(n),i}(Y_s) - \sigma_\alpha^{(n),i}(Y_s^{(n)})\right)^2
+    ds \right] \\
+    &\ \ \ \ \ \
+    + 2T \E \left[ \int_0^{t\wedge \rho_n}
+    \left| \hat{b}^{(n)}(Y_s) - \hat{b}^{(n)}(Y_s^{(n)})\right|^2 ds \right] \\
+    &\leq
+    8 \E \left[ \int_0^{t\wedge \rho_n} \left(
+    \left\| \sigma^{(n)}(Y_s) - \sigma^{(n)}(Y_s^{(n)})\right\|^2
+    + \left| \hat{b}^{(n)}(Y_s) - \hat{b}^{(n)}(Y_s^{(n)})\right|^2
+    \right) ds \right] \\
+    &\ \ \ \ \ \
+    + 2T \E \left[ \int_0^{t\wedge \rho_n} \left(
+    \left\| \sigma^{(n)}(Y_s) - \sigma^{(n)}(Y_s^{(n)})\right\|^2
+    + \left| \hat{b}^{(n)}(Y_s) - \hat{b}^{(n)}(Y_s^{(n)})\right|^2
+    \right) ds \right] \\
+    &= 2(4+T) \E \left[ \int_0^{t\wedge \rho_n} \left(
+    \left\| \sigma^{(n)}(Y_s) - \sigma^{(n)}(Y_s^{(n)})\right\|^2
+    + \left| \hat{b}^{(n)}(Y_s) - \hat{b}^{(n)}(Y_s^{(n)})\right|^2
+    \right) ds \right] \\
+    &\overset{\diamondsuit}{\leq}
+    2(4+T) \hat{K}_n^2 \E \left[ \int_0^{t\wedge \rho_n}
+    \left| Y_s - Y_s^{(n)} \right|^2 ds \right] \\
+    &\leq
+    2(4+T) \hat{K}_n^2 \E \left[ \int_0^t
+    \left| Y_{s\wedge \rho_n} - Y_{s\wedge \rho_n}^{(n)} \right|^2 ds \right] \\
+    &=
+    2(4+T) \hat{K}_n^2 \int_0^t \E \left[
+    \left| Y_{s\wedge \rho_n} - Y_{s\wedge \rho_n}^{(n)} \right|^2 \right] ds \\
+    &\leq
+    2(4+T) \hat{K}_n^2 \int_0^t \E \left[ \sup_{u\leq s}
+    \left| Y_{u\wedge \rho_n} - Y_{u\wedge \rho_n}^{(n)} \right|^2 \right] ds
+  \end{align*}
+  となる。
+  ただしここで\(\bigstar\)の箇所は任意の実数\(a,b\)に対して
+  \((a+b)^2 \leq 2a^2+2b^2\)となることを用い、
+  \(\spadesuit\)の箇所は第一項に\(p=2\)の場合のDoobの不等式を用い、
+  \(\clubsuit\)の箇所は第二項にヘルダーの不等式 (例1.14参照) を用い、
+  \(\heartsuit\)の箇所は第一項に伊藤積分の等長性を用い、
+  \(\diamondsuit\)の箇所は局所リプシッツ条件を用いた。
+  この不等式評価とグロンウォールの不等式より、
+  \[
+  \E \left[ \sup_{t \leq T} \left|
+  Y_{t\wedge \rho_n} - Y_{t\wedge \rho_n}^{(n)} \right|^2\right] = 0
+  \]
+  を得る。
+  以上より、任意の\(t\in [0,T]\)に対して\(\P\)-a.s.に
+  \(Y_{t\wedge \rho_n} = Y_{t\wedge \rho_n}^{(n)}\)
+  であることがわかった。
+  以上で Step 1 を完了する。
+
+  \underline{Step 2}を実行する。
+  \(\left\{ \P, B_t,X_t^{(n)}\right\}\)と
+  \(\left\{ \hat{\P}, \hat{B}_t^{(n)},Y_t^{(n)}\right\}\)は
+  同じ確率微分方程式の弱い解である。
+  \(\sigma^{(n)}, b^{(n)}\)は局所リプシッツ条件を満たすので、
+  弱い解は一意的である (\autoref{prob: 6.2}の証明を参照)。
+  特に
+  \[
+  \P \left(\sup_{t\in [0,T]}|X_t^{(n)}| < n\right)
+  = \hat{\P}^{(n)} \left( \sup_{t\in [0,T]}|Y_t^{(n)}| < n\right)
+  \]
+  が成り立つ。
+  Step 1 より、\(\P\)-a.s.に
+  \[
+  \rho_n = \inf \left\{ t\geq 0\middle| |Y_t^{(n)}| \geq n \right\}
+  \]
+  であるので、
+  \begin{align*}
+    \P(\tau_n > T)
+    &= \P \left(\sup_{t\in [0,T]}|X_t^{(n)}| < n\right) \\
+    &= \hat{\P}^{(n)} \left( \sup_{t\in [0,T]}|Y_t^{(n)}| < n\right) \\
+    &= \hat{\P}^{(n)} (\rho_n > T) \\
+    &= \E \left[ M_T ; \left\{ \rho_n > T \right\} \right] \\
+    &\to \E\left[ M_T \right] , \ \ \ (n\to \infty)
+  \end{align*}
+  となる。
+  また、Step 1 より
+  \(\tau_n\)は\(\P\)-a.s.に単調増加であるから、
+  \[
+  \left\{ \tau > T\right\}
+  = \bigcap_{n\geq 0}\left\{ \tau_n > T\right\}
+  \]
+  である。
+  従って
+  \[
+  \P(\tau_n > T) \to \P (\tau > T) , \ \ \ (n\to\infty)
+  \]
+  であり、
+  以上より
+  \[
+  \P (\tau > T) = \E\left[ M_T \right]
+  \]
+  を得る。
+\end{proof}
+
+
+
+
+
+
+
+
+\begin{prob}\label{prob: 6.5}
+  \(r > 0, f\in C^{\infty}_b(\R)\)とする。
+  \[
+  \frac{\partial u}{\partial t}(t,x) =
+  \frac{1}{2}\frac{\partial^2 u}{\partial x^2}(t,x)
+  - x \frac{\partial u}{\partial x}(t,x)
+  -ru, \ \ \ u(0,x) = f(x), \ \ \ ((t,x)\in [0,\infty)\times \R),
+  \]
+  の有界な解を具体的に求めよ。
+\end{prob}
+
+\begin{proof}
+  まず\(v(t,x) \dfn \exp\left(-\frac{1}{2}x^2\right)u(t,x)\)とおく。
+  このとき
+  \begin{alignat*}{3}
+    &\frac{\partial v}{\partial x}(t,x) &
+    &= \frac{d}{dx}\left( \exp\left(-\frac{1}{2}x^2\right) \right) u(t,x)
+    + \exp\left(-\frac{1}{2}x^2\right) \frac{\partial u}{\partial x}(t,x) \\
+    & &
+    &= -x\exp\left(-\frac{1}{2}x^2\right) u(t,x)
+    + \exp\left(-\frac{1}{2}x^2\right) \frac{\partial u}{\partial x}(t,x) \\
+    & &
+    &= -x v(t,x)
+    + \exp\left(-\frac{1}{2}x^2\right) \frac{\partial u}{\partial x}(t,x), \\
+    &\frac{\partial^2 v}{\partial x^2}(t,x) &
+    &= - \frac{\partial }{\partial x}\left( xv(t,x)\right)
+    + \frac{d}{dx}\left(\exp\left(-\frac{1}{2}x^2\right)\right)
+    \frac{\partial u}{\partial x}(t,x)
+    + \exp\left(-\frac{1}{2}x^2\right)\frac{\partial^2 u}{\partial x^2}(t,x) \\
+    & &
+    &= - v(t,x) - x \frac{\partial v}{\partial x}(t,x)
+    - x\exp\left(-\frac{1}{2}x^2\right)\frac{\partial u}{\partial x}(t,x)
+    + \exp\left(-\frac{1}{2}x^2\right)\frac{\partial^2 u}{\partial x^2}(t,x) \\
+    & &
+    &= - v(t,x) - x \left( -x v(t,x)
+    + \exp\left(-\frac{1}{2}x^2\right) \frac{\partial u}{\partial x}(t,x)\right) \\
+    & &
+    &\ \ \ \ \ \ \ \
+    - x\exp\left(-\frac{1}{2}x^2\right)\frac{\partial u}{\partial x}(t,x)
+    + \exp\left(-\frac{1}{2}x^2\right)\frac{\partial^2 u}{\partial x^2}(t,x) \\
+    & &
+    &= - v(t,x) + x^2 v(t,x)
+    - 2x \exp\left(-\frac{1}{2}x^2\right)\frac{\partial u}{\partial x}(t,x)
+    + \exp\left(-\frac{1}{2}x^2\right)\frac{\partial^2 u}{\partial x^2}(t,x) \\
+    & &
+    &= - v(t,x) + x^2 v(t,x)
+    + 2\exp\left(-\frac{1}{2}x^2\right)
+    \left( \frac{1}{2}\frac{\partial^2 u}{\partial x^2}(t,x)
+    - x\frac{\partial u}{\partial x}(t,x) \right) \\
+    & &
+    &= - v(t,x) + x^2 v(t,x)
+    + 2\exp\left(-\frac{1}{2}x^2\right)
+    \left( \frac{\partial u}{\partial t}(t,x) + ru(t,x) \right) \\
+    & &
+    &= - v(t,x) + x^2 v(t,x)
+    + 2 \frac{\partial v}{\partial t}(t,x) + 2rv(t,x) \\
+    & &
+    &= - \left( 1 - x^2 + 2r\right)v(t,x)
+    + 2 \frac{\partial v}{\partial t}(t,x),
+  \end{alignat*}
+  となるので、\(v(t,x)\)は次の偏微分方程式を満たす：
+  \[
+  \frac{\partial v}{\partial t}(t,x)
+  = \frac{1}{2}\frac{\partial^2 v}{\partial x^2}(t,x)
+  + \frac{1 - x^2 + 2r}{2}v(t,x), \ \ \
+  v(0,x) = e^{-\frac{1}{2}x^2}u(0,x) = e^{-\frac{1}{2}x^2}f(x).
+  \]
+  そこで\(d=N=1,V_1=1,V_0=0,\Theta_1=0,U(x)=\frac{1 - x^2 + 2r}{2}\)
+  とおいて\(X_t^x\)を確率微分方程式
+  \[
+  dX_t = \sum_{\alpha}V_\alpha(X_t) \circ dB_t^\alpha + V_0(X_t)dt,
+  dB_t
+  \ \ \ X_0 = x,
+  \]
+  の解とすると、\(X_t^x = B_t + x\)であるから、
+  ファインマン-カッツの定理 (定理6.22) より
+  \begin{align*}
+    v(t,x)
+    &= \E \left[ e^{-\frac{1}{2}(B_t + x)^2}f(B_t+x)
+    \exp\left( \int_0^t \frac{1}{2}\left( 1-(B_s+x)^2 + 2r
+    \right) ds\right) \right] \\
+    &= e^{\frac{1+2r}{2}t}\E \left[ f(B_t+x) \exp\left(
+    -\frac{1}{2}(B_t + x)^2 - \frac{1}{2}\int_0^t (B_s+x)^2 ds \right) \right]
+  \end{align*}
+  となる。
+  従って、
+  \begin{align*}
+    u(t,x) &= e^{\frac{1}{2}x^2}v(t,x) \\
+    &= e^{\frac{1+2r}{2}t} \E \left[ f(B_t+x) \exp\left(
+    - \frac{1}{2}(B_t)^2 - xB_t - \frac{1}{2}\int_0^t (B_s+x)^2 ds
+    \right) \right]
+  \end{align*}
+  となる。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{prob}\label{prob: 6.6}
+  \
+  \begin{itemize}
+    \item
+    \(\sigma = \left(\sigma_\alpha^i(x)\right)_{1\leq i\leq N, 1\leq \alpha \leq d}
+    \in C(\R^N;\R^{N\times d})\),
+    \item
+    \(b = (b^1,\cdots,b^N)^\dagger \in C(\R^N)\),
+    \item
+    \(a^{ij}\dfn \sum_{\alpha=1}^d \sigma_\alpha^i\sigma_\alpha^j\),
+    \item
+    \(\mcL =
+    \frac{1}{2}\sum_{i,j=1}^N a^{ij}\frac{\partial^2}{\partial x^i\partial x^j}
+    + \sum_{i=1}^N b^i\frac{\partial}{\partial x^i}\)を\(\R^N\)上の微分作用素、
+    \item
+    \(B_t^x,X_t^x\)を次の確率微分方程式の弱い解とする：
+    \[
+    dX_t = \sigma(X_t)dB_t + b(X_t)dt, \ \ \ X_0 = x.
+    \]
+    \item
+    \(\tau^x\)を次で定義される停止時刻とする：
+    \[
+    \tau^x \dfn \inf\left\{ t\geq 0 \middle| X_t^(x) \not\in D\right\}.
+    \]
+    \item
+    \(g\in C(\bar{D})\)を連続関数で次を満たすとする：
+    \[
+    \E\left[ \int_0^{\tau^x}|g(X_t^x)|dt \right] < \infty , \ \ \ (\forall x\in D).
+    \]
+    \item
+    \(f\in C(\partial D)\)を連続関数、
+  \end{itemize}
+  とする。
+  さらに\(u\in C^2(D)\cap C(\bar{D})\)は次を満たすとする：
+  \[
+  \mcL u(x) = g(x), \ \ \ (\forall x\in D), \ \ \
+  u|_{\partial D} = f.
+  \]
+  このとき、上を満たす有界な\(u\)は
+  \[
+  u(x) = \E \left[ f(X_{\tau^x}^x) - \int_0^{\tau^x}g(X_t^x)dt \right]
+  \]
+  と表現できることを示せ。
+\end{prob}
+
+\begin{proof}
+  定理6.26と同じ。
+  \(\P(\tau^x < \infty) = 1\)という条件が必要だと思われる。
+
+  次のように定義する：
+  \begin{itemize}
+    \item
+    \(z\in \R^N\)に対して
+    \[d(z,\partial D) \dfn \inf\left\{ |z-y| \middle| y\in \partial D \right\},\]
+    \item
+    \(D_n \dfn \left\{ z\in D \middle| |z| < n, d(z,\partial D) > \frac{1}{n}\right\}\)
+    とおく。
+    このとき\(D_1\subset D_2\subset \cdots , D=\bigcup_{n\geq 0}D_n\)である。
+    \item
+    \(x\in D_m\)となる\(m \gg 0\)を選んで、\(n \geq m\)に対して
+    \[\tau_n^x \dfn \inf\left\{ t\geq 0 \middle| X_t^(x) \not\in D_n \right\}\]
+    と停止時刻を定める。
+    本文中にある通り、\(\tau_n^x\)は停止時刻であり、
+    \(\tau^x\)はその極限であるから\(\tau^x\)もまた停止時刻となる。
+  \end{itemize}
+  \(\bar{D}_n\)は有界閉集合なので、コンパクトである。
+  従って、\(\bar{D}_n\)上で\(u_n = u\)となる
+  \(u_n\in C^2_0(\R^N)\)が存在する。
+  \(\bar{D}_n\)上では\(u_n = u\)かつ
+  \(\mcL u_n(x) = \mcL u(x) = g(x) \)である。
+  \(d\left( u(X_t)\right)\)を計算する。
+  \begin{align*}
+    dX_t^idX_t^j
+    &=
+    \left( \sum_{\alpha=1}^d\sigma_\alpha^i(X_t)dB_t^{x,\alpha} \right)
+    \left( \sum_{\beta=1}^d\sigma_\beta^j(X_t)dB_t^{x,\beta} \right) \\
+    &=
+    \sum_{\alpha,\beta=1}^d
+    \sigma_\alpha^i(X_t)\sigma_\beta^j(X_t)dB_t^{x,\alpha} dB_t^{x,\beta} \\
+    &=
+    \sum_{\alpha,\beta=1}^d
+    \sigma_\alpha^i(X_t)\sigma_\beta^j(X_t)\delta^{\alpha\beta}dt \\
+    &=
+    \sum_{\alpha=1}^d \sigma_\alpha^i(X_t)\sigma_\alpha^j(X_t)dt
+  \end{align*}
+  となるので、伊藤の公式より
+  \begin{align*}
+    d\left( u(X_t)\right)
+    &= \sum_{i=1}^N \frac{\partial u}{\partial x^i}(X_t)dX_t^i
+    + \frac{1}{2}\sum_{i,j=1}^N
+    \frac{\partial^2 u}{\partial x^i\partial x^j}(X_t)dX_t^idX_t^j \\
+    &= \sum_{i=1}^N \sum_{\alpha=1}^d
+    \sigma_\alpha^i(X_t)\frac{\partial u}{\partial x^i}(X_t)dB_t^{x,\alpha}
+    + \sum_{i=1}^N b^i(X_t)\frac{\partial u}{\partial x^i}(X_t)dt
+    + \frac{1}{2}\sum_{i,j=1}^N \sum_{\alpha=1}^d
+    \sigma_\alpha^i(X_t)\sigma_\alpha^j(X_t)
+    \frac{\partial^2 u}{\partial x^i\partial x^j}(X_t) dt \\
+    &= \sum_{i=1}^N \sum_{\alpha=1}^d
+    \sigma_\alpha^i(X_t)\frac{\partial u}{\partial x^i}(X_t)dB_t^{x,\alpha}
+    + \sum_{i=1}^N b^i(X_t)\frac{\partial u}{\partial x^i}(X_t)dt
+    + \frac{1}{2}\sum_{i,j=1}^N \sum_{\alpha=1}^d
+    a^{ij}(X_t)\frac{\partial^2 u}{\partial x^i\partial x^j}(X_t) dt \\
+    &= \sum_{i=1}^N \sum_{\alpha=1}^d
+    \sigma_\alpha^i(X_t)\frac{\partial u}{\partial x^i}(X_t)dB_t^{x,\alpha}
+    + \mcL u(X_t)dt \\
+    &= \sum_{i=1}^N \sum_{\alpha=1}^d
+    \sigma_\alpha^i(X_t)\frac{\partial u}{\partial x^i}(X_t)dB_t^{x,\alpha}
+    + g(X_t)dt
+  \end{align*}
+  であるから、
+  \(\bar{D}_n\)上では
+  \[
+  u(X_{t\wedge \tau_n^x}^x)
+  = u(x) + \sum_{i=1}^N \sum_{\alpha=1}^d \int_0^{t\wedge \tau_n^x}
+  \sigma_\alpha^i(X_s)\frac{\partial u}{\partial x^i}(X_s)dB_s^{x,\alpha}
+  + \int_0^{t\wedge \tau_n^x}g(X_s)ds
+  \]
+  となることがわかる。
+  \(u_n\)は\(\R^N\)全体で定義された二階微分が連続な有界な関数であり、
+  \(\sigma^i_\alpha\)は連続、とくに\(\bar{D}_n\)上で有界であるから
+  \(\sigma_\alpha^i\frac{\partial u_n}{\partial x^i}\)は\(\bar{D}_n\)上で有界であり、
+  とくに\(\sigma_\alpha^i\frac{\partial u_n}{\partial x^i}\in \mcL^2\)である。
+  従って上式の右辺第二項はマルチンゲールであり、
+  期待値をとれば、\(x\in D_n\)に対して
+  \[
+  \E\left[ u(X_{t\wedge \tau_n^x}^x) \right]
+  = u(x) + \E\left[ \int_0^{t\wedge \tau_n^x}g(X_s)ds \right]
+  \]
+  となる。
+  \(n\to \infty\)とすれば、\(x\in D\)と\(t\geq 0\)に対して
+  \[
+  \E\left[ u(X_{t\wedge \tau^x}^x) \right]
+  = u(x) + \E\left[ \int_0^{t\wedge \tau^x}g(X_s)ds \right]
+  \]
+  を得る。
+  さらに\(t\to \infty\)とすることで、\(\P(\tau^x < \infty) = 1\)より
+  \[
+  \E\left[ u(X_{\tau^x}^x) \right]
+  = u(x) + \E\left[ \int_0^{\tau^x}g(X_t)dt \right]
+  \]
+  を得る。\(\tau^x\)の定義より
+  \(X_{\tau^x}^x\in \partial D\)であるから、
+  \(u(X_{\tau^x}^x) = f(X_{\tau^x}^x)\)であり、
+  従って
+  \[
+  u(x) = \E\left[ f(X_{\tau^x}^x) - \int_0^{\tau^x}g(X_t)dt\right]
+  \]
+  を得る。これは所望の等式である。
+\end{proof}
+
+
+
+
+
+
+
+
+
+\begin{prob}\label{prob: 6.7}
+  \(D \subset \R^N\)をコンパクト集合とする。
+  \(u\in C^2(D) \cap C(\bar{D})\)が\(D\)上
+  \(\Delta u = 0\)を満たすとする。
+  このとき
+  \[
+  \max_{x\in \bar{D}} u(x) \leq \max_{x\in \partial D}u(x)
+  \]
+  となることを示せ。
+\end{prob}
+
+\begin{proof}
+  \(d = N, \sigma_\alpha^i = \delta_\alpha^i, b=0\)とした場合の
+  確率微分方程式
+  \[
+  dX_t = \sigma (X_t)dB_t + b(X_t)dt, \ \ \ X_0 = x,
+  \]
+  の解は\(X_t = B_t + x\)である。
+  このとき\(\mcL = \sum_{i=1}^N \frac{\partial^2}{\partial x_i^2} = \Delta\)であり、
+  さらに停止時刻\(\tau^x\)は定理4.20より
+  \(\P(\tau^x < \infty) = 1\)を満たす。
+
+  \(f(y) \dfn u(y) , (y\in \partial D)\)と定義すると、
+  \(u\)は偏微分方程式
+  \[
+  \mcL u(x) = 0, \ \ \ (x\in D), \ \ \ u|_{\partial D} = f,
+  \]
+  の有界な解であるから、
+  定理6.26より
+  \(u(x) = \E\left[ f(X_{\tau^x}^x) \right]\)
+  と表示できる。
+  任意の\(y\in \partial D\)に対して
+  \(f(y) \leq \max_{x\in \partial D}f(x)\)
+  であるから、とくに
+  \[f(X_{\tau^x}^x) \leq \max_{x\in \partial D}f(x)\]
+  であり、従って
+  \[
+  u(x) = \E\left[ f(X_{\tau^x}^x) \right]
+  \leq \E\left[ \max_{x\in \partial D}f(x) \right]
+  = \max_{x\in \partial D}f(x)
+  \]
+  が成り立つ。
+  左辺の\(\max\)を取れば所望の不等式を得る。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{prob}\label{prob: 6.8}
+  \
+  \begin{itemize}
+    \item
+    \(D \dfn \left\{ (x_i)_{1\leq i \leq 4}\in \R^4 \middle|
+    x_1^2 + x_2^2 < 1 , x_3^2 + x_4^2 < 1\right\}\),
+    \item
+    \(D_0 \dfn \left\{ (x_i)_{1\leq i \leq 4}\in \R^4 \middle|
+    x_1^2 + x_2^2 = 1 , x_3^2 + x_4^2 = 1\right\}\),
+    \item
+    \(B \dfn \left\{ x \in \R^4 \middle| |x| < 2 \right\}\),
+  \end{itemize}
+  とする。
+  \(B\)上で\(\Delta u = 0\)を満たす\(u\in C^2(B)\)に対して
+  \[
+  \max_{x\in \bar{D}} u(x) \leq \max_{x\in D_0}u(x)
+  \]
+  を示せ。
+
+  とくに\(f\in C(\partial D)\)が\(D_0\)以外で最大値をとるならば、
+  \(\bar{D}\)を含む開集合\(D'\)上で\(\Delta u = 0\)であり、
+  さらに\(u|_{\partial D} = f\)となるような\(u\in C^2(D')\)は
+  存在しないことを確かめよ。
+\end{prob}
+
+\begin{proof}
+
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+\section{経路空間での微積分学}
+\label{section 7}
+
+\begin{prob}\label{prob: 7.1}
+  \(\gamma,\delta\)が\([0,\infty)\)上の\(C^1\)-級関数であり、
+  \(T\)が十分小さいとすると、条件(A.1)が成り立つことを示せ。
+\end{prob}
+
+\begin{proof}
+\end{proof}
+
+\begin{prob}\label{prob: 7.2}
+  \(\gamma(t) = 0, \delta(t) = \delta(0) , (\forall t\leq T)\)
+  と仮定する。
+  \(B\in \R^{d\times d}\)に対し、
+  \(c(B) \dfn \sum_{n=0}^\infty \frac{(-1)^n}{(2n)!}B^n\)と定義する。
+  \begin{enumerate}
+    \item \label{enumi: prob: 7.2-1}
+    \(A(t) = c(\delta(0)(T-t)^2) , (t\leq T)\)となることを示せ。
+    \item \label{enumi: prob: 7.2-2}
+    \(\lambda_1,\cdots,\lambda_d\)を\(\delta(0)\)の固有値とするとき、
+    \[
+    \det A(t) = \prod_{\alpha = 1}^d \cos \left( \sqrt{\lambda_\alpha}(t-T)\right)
+    \]
+    となることを示せ。
+    \item \label{enumi: prob: 7.2-3}
+    \(\max_{\alpha=1,\cdots,d}\lambda_\alpha < \frac{\pi^2}{4T^2}\)
+    となるとき、(A.1)が成り立つことを示せ。
+  \end{enumerate}
+\end{prob}
+
+\begin{proof}
+  \ref{enumi: prob: 7.2-1}は本文では\(A(t) = c(\delta(0)(T-t))\)を示せ、となっていたけど、
+  これは2乗が抜けてるんじゃないかと思う。
+  \ref{enumi: prob: 7.2-2}と比較してもそんな感じがする。
+
+  \ref{enumi: prob: 7.2-1}。
+  \(\gamma(t)=0\)と\(\delta(t) = \delta(0)\)から、
+  与えられた微分方程式は
+  \[
+  A''(t) = -\delta(0)A(t)
+  \]
+  と書ける。
+  従って、\(A(t)\)は\(C^\infty\)-級であり、
+  \(T\)のまわりでテイラー展開すると、
+  \[
+  A(t) = A(T+(t-T)) = \sum_{n=0}^{\infty} \frac{1}{n!}A^{(n)}(T)(t-T)^n
+  \]
+  となる。
+  ここで\(A^{(n)}(t)\)は\(A(t)\)の\(n\)階導関数である。
+  \begin{alignat*}{7}
+    A^{(2n)}(T) &= -\delta(0)A^{(2(n-1))}(T)
+    &&= \cdots &&= (-1)^n\delta(0)^nA(T) &&= (-1)^n\delta(0)^n, \\
+    A^{(2n+1)}(T) &= -\delta(0)A^{(2n-1)}(T)
+    &&= \cdots &&= (-1)^n\delta(0)^nA'(T) &&= 0,
+  \end{alignat*}
+  に注意すると、
+  \begin{align*}
+    A(t) &= \sum_{n=0}^{\infty} \frac{1}{n!}A^{(n)}(T)(t-T)^n \\
+    &= \sum_{n=0}^{\infty} \frac{1}{(2n)!}A^{(2n)}(T)(t-T)^{2n} \\
+    &= \sum_{n=0}^{\infty} \frac{1}{(2n)!}(-1)^n\delta(0)^n(t-T)^{2n} \\
+    &= c(\delta(0)(T-t)^2)
+  \end{align*}
+  を得る。これは所望の結果である。
+
+  \ref{enumi: prob: 7.2-2}。
+  \(\delta(0)\)は (重複込みで) ちょうど\(d\)個の固有値を持つので
+  上三角化可能である。
+  \(D\dfn P\delta(0)P^{-1}\)が上三角行列となるように\(P\)をとれば、
+  \[
+  c(\delta(0)(T-t)^2) = c(P^{-1}DP(T-t)^2)
+  = P^{-1}c(D(T-t)^2)P
+  \]
+  となる。
+  各\(D^n\)の対角成分が\(\lambda_1^n,\cdots,\lambda_d^n\)であることから、
+  \(c(D(T-t)^2)\)の対角成分は
+  \[
+  \cos (\sqrt{\lambda_1}(t-T)) =
+  \sum_{n=0}^\infty \frac{(-1)^n}{(2n)!}\lambda_1^n(T-t)^2 , \ \cdots \ ,
+  \cos (\sqrt{\lambda_d}(t-T)) =
+  \sum_{n=0}^\infty \frac{(-1)^n}{(2n)!}\lambda_d^n(T-t)^2
+  \]
+  である。
+  従って
+  \[
+  \det A(t) = \det (P^{-1}c(D(T-t)^2)P) = \det c(D(T-t)^2)
+  = \prod_{\alpha=1}^d \cos (\sqrt{\lambda_\alpha}(t-T))
+  \]
+  となる。
+  これは所望の結果である。
+
+  \ref{enumi: prob: 7.2-3}。
+  \ref{enumi: prob: 7.2-2}の結果を見れば、
+  各\(\cos\)が\(\neq 0\)であれば良いが、それは条件より明らかである。
+\end{proof}
+
+
+\begin{prob}\label{prob: 7.3}
+  \(d=1\)とし、
+  \(\delta(t) < 0 , (\forall t \leq T)\)を仮定する。
+  このとき、
+  \(A''(t) \geq 0 , (t \leq T)\)を示し、
+  条件(A.1)が成り立つことを示せ。
+\end{prob}
+
+\begin{proof}
+  \(d=1\)なので、\(\gamma^\dagger = -\gamma\)であることから\(\gamma = 0\)となる。
+  従って与えられた微分方程式は
+  \[
+  A''(t) = -\delta(t) A(t)
+  \]
+  である。
+  ここで\(\delta(t) < 0\)であるから、
+  右辺の係数\(-\delta(t)\)は正である。
+  \(A(t) = 0\)となる\(t\in [0,T]\)が存在すると仮定する。
+  また\(A(T) = I = 1 > 0\)であることから、
+  \(\alpha \dfn \max\left\{ t\in [0,T] \middle| A(t) = 0\right\}\)
+  とおけば、
+  \(\alpha < T\)である。
+  このとき、すべての\(s\in [\alpha,T]\)に対して
+  \(\delta(s)A(s) < 0\)である。
+  \(A'(T) = \frac{1}{2}\gamma(T) = 0\)であることに注意して、
+  すべての\(t\in (\alpha,T)\)に対して
+  \[
+  A'(t) = A'(t) - A'(T)
+  = \int_T^t A''(s)ds = \int_t^T \delta(s)A(s) ds < 0
+  \]
+  となる。
+  一方、\(A(\alpha)=0\)であるから、
+  \[
+  1 = A(T) = A(T) - A(\alpha) = \int_\alpha^T A'(s)ds < 0
+  \]
+  となり、これは矛盾である。
+  よって\(A(t) = 0\)となる点\(t\)は存在しない。
+\end{proof}
+
+
+
+
+
+
+
+
+\begin{prob}\label{prob: 7.4}
+  伊藤の公式を用いて、補題7.7の等式を証明せよ。
+\end{prob}
+
+\begin{proof}
+  補題7.7の等式の右辺の第二項の\(dt\)に関する積分の積分範囲に誤植がある。
+  正しい積分範囲は\(0\)から\(T\)であると思われる。
+
+  \(F(t) \dfn \int_t^T \kappa(s)ds\)とおく。
+  \(F'(t) = -\kappa(t)\)である。
+  \(F(t)\)は行列で、その成分を\(F(t)_{ij}\)のように書く。
+  示すべき等式は
+  \[
+  2\int_0^T\left< F(t)B_t, dB_t\right>
+  + \int_0^T\tr F(t) dt + \int_0^T \left< F'(t)B_t, B_t\right> dt = 0
+  \]
+  である。
+  \(\delta\)をクロネッカーのデルタとして、
+  \(\tr F(t) = F(t)_{ij}\delta^{ij}\)
+  と\(F(t) = F(t)^\dagger\)に注意して、
+  内積を成分ごとに計算することで、
+  \[
+  \int_0^T F(t)_{ij}B_t^i dB_t^j + \int_0^T F(t)_{ij}B_t^j dB_t^i
+  + \int_0^T \left( F(t)_{ij}\delta^{ij} + F'(t)_{ij}B_t^iB_t^j \right)dt = 0
+  \]
+  を示せば良い。
+  ただし添字に関しては縮約記法を用いて和を取っている。
+  \(\delta^{ij}dt = dB_t^idB_t^j\)に注意すると、
+  伊藤の公式より
+  \begin{align*}
+    &F(t)_{ij}B_t^i dB_t^j + F(t)_{ij}B_t^j dB_t^i
+    + F(t)_{ij}\delta^{ij}dt + F'(t)_{ij}B_t^iB_t^jdt \\
+    &= B_t^iB_t^jF'(t)_{ij}dt + F(t)_{ij}d (B_t^iB_t^j) \\
+    &= d\left( F(t)_{ij}B_t^iB_t^j\right)
+  \end{align*}
+  となる。\(\int_0^T\)で積分すると、
+  \begin{align*}
+    &\int_0^T F(t)_{ij}B_t^i dB_t^j + \int_0^T F(t)_{ij}B_t^j dB_t^i
+    + \int_0^T \left( F(t)_{ij}\delta^{ij} + F'(t)_{ij}B_t^iB_t^j \right)dt \\
+    &= \int_0^T d\left( F(t)_{ij}B_t^iB_t^j\right) \\
+    &= F(T)_{ij}B_T^iB_T^j - F(0)_{ij}B_0^iB_0^j
+  \end{align*}
+  となる。
+  \(F(T) = \int_T^T\kappa(s)ds = 0\)と
+  \(B_0=0\)に注意すれば、
+  この等式の右辺は\(0\)となり、所望の結果を得る。
+\end{proof}
+
+
+
+
+
+
+\begin{prob}\label{prob: 7.5}
+  定理7.10の証明中の\(X_t^{(x,\eta)} = X_t^{\xi_t^{(x,\eta)}}\)が
+  確率微分方程式(7.11)の解となることを確かめよ。
+\end{prob}
+
+\begin{proof}
+
+\end{proof}
+
+
+
+
+\begin{prob}\label{prob: 7.6}
+  \(B_t\)を\(d\)次元ブラウン運動とする。
+  \(B_T \sim N(0,TI)\)となることを用いて系7.12の等式を証明せよ。
+\end{prob}
+
+\begin{proof}
+  \(\alpha = 1\)で証明すれば良い。
+  \(x_1\)で部分積分をすることで、
+  \begin{align*}
+    &\E \left[ \frac{\partial f}{\partial x^1}(B_T)\right] \\
+    &= \frac{1}{(2\pi T)^{d/2}} \int_{\R^d}
+    \frac{\partial f}{\partial x^1}(\mathbf{x})
+    e^{-\frac{1}{2}\sum_{i=1}^d (x^i)^2} d\mathbf{x} \\
+    &= \frac{1}{(2\pi T)^{d/2}} \int_{\R^{d-1}} \left( \left[
+    f(\mathbf{x})e^{-\frac{1}{2}\sum_{i=1}^d (x^i)^2} \right]_{-\infty}^\infty
+    + \frac{1}{T} \int_{-\infty}^\infty x^1 f(\mathbf{x})
+    e^{-\frac{1}{2}\sum_{i=1}^d (x^i)^2}  dx^1
+    \right) dx^2 \cdots dx^d \\
+    &= \frac{1}{T} \cdot \frac{1}{(2\pi T)^{d/2}} \int_{\R^d}
+    x^1 f(\mathbf{x}) e^{-\frac{1}{2}\sum_{i=1}^d (x^i)^2} d\mathbf{x} \\
+    &= \frac{1}{T}\E \left[ f(B_T)B_T^1 \right]
+  \end{align*}
+  となる。
+  これは所望の等式である。
+\end{proof}
+
+
+
+
+
+
+\begin{prob}\label{prob: 7.7}
+  \(V_0,\cdots, V_d\in C_d^\infty(\R^N;\R^N)\)の場合にも、
+  \(f\in C_b^\infty(\R^N),\xi\in \R^N\)に対して
+  次が成り立つことを示せ：
+  \[
+  \E\left[ \left< \nabla f(X_t^x) , J_T^xA_T^x\xi \right>\right]
+  = \E \left[ f(X_t^x)\sum_{\alpha = 1}^d \int_0^T \left<
+  (J_t^x)^{-1}V_\alpha(X_t^x),\xi \right>\right].
+  \]
+\end{prob}
+
+\begin{proof}
+  系7.11で\(g = 1\) (定数関数) とすれば、
+  \(V_0,\cdots, V_d\in C_0^\infty(\R^N;\R^N)\)
+  の場合が従う。
+  \(\varphi_n\in C_0^\infty(\R^N)\)を
+  \(\varphi_n(x) = 1 , (|x| \leq n)\)となるものとして、
+  \(V^n_\alpha(x) \dfn V_\alpha (x)\varphi(x)\)と定めると、
+  \(V^n_1,\cdots ,V_d^n\in C_0^\infty(\R^N;\R^N)\)であるから、
+  \[
+  \E\left[ \left< \nabla f(X_t^x) , J_T^{n,x}A_T^{n,x}\xi \right>\right]
+  = \E \left[ f(X_t^x)\sum_{\alpha = 1}^d \int_0^T \left<
+  (J_t^{n,x})^{-1}V_\alpha^n(X_t^x),\xi \right>\right]
+  \]
+  となる。
+  ただし\(J^n,A^n\)はそれぞれ\(V^n\)に対する\(J,A\)である。
+  \(n\to \infty\)として有界収束定理を用いれば所望の結果を得る。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+\appendix
+
+\section{日記}
+
+\begin{nikki*}[2020.6.2 (火)]
+  基礎固めのために購入。\autoref{prob: 1.3}まで解いた。
+  明日からゆっくりやっていこうと思う。
+\end{nikki*}
+
+\begin{nikki*}[2020.6.3 (水)]
+  \autoref{prob: 1.8}まで解いた。
+  難しい問題は結構普通に難しいから大変。
+  \autoref{prob: 1.5}は私の読み間違いでなければいろいろ条件が足りないんじゃないかな。
+  あと\autoref{prob: 1.7}の右辺は条件付き期待値じゃなくてただの期待値なんじゃないかな
+  (これシュリーヴの本で独立性の補題と言われていたもののはず、
+  そっちでは証明むずいので略〜って感じだったと思うけど...)。
+\end{nikki*}
+
+\begin{nikki*}[2020.6.4 (木)]
+  \autoref{prob: 2.6}までといた。
+  \autoref{prob: 2.7}がわからん。なんか微妙にうまくいかない。
+  Doobの不等式を使うんだとは思うけど。細かいところで計算が合わない。
+\end{nikki*}
+
+\begin{nikki*}[2020.6.5 (金)]
+  やっぱり\autoref{prob: 2.7}がわからんからとりあえず飛ばした。
+  \autoref{prob: 3.5}まで解いた。
+  \autoref{prob: 3.6}がわからんくてかなり悩んでる。
+\end{nikki*}
+
+\begin{nikki*}[2020.6.6 (土)]
+  実家に帰って親とヨガをしてたので解いてない。
+\end{nikki*}
+
+\begin{nikki*}[2020.6.7 (日)]
+  完全にだらけてた。一問も解いてない。何してたんだろ。
+\end{nikki*}
+
+\begin{nikki*}[2020.6.8 (月)]
+  わからなかった\autoref{prob: 3.6}が解けた。
+  何が問題かを整理して、そのために何をすれば良いかを考えて、
+  ということをきちんと詰めれば自然に解けるものだなと思った。
+  まあ数学って全部そういうものだけど、
+  それをきちんとやるのはわかっていても結構難しい。
+  \ref{section 3}節の演習をとりあえず終わらせた。
+\end{nikki*}
+
+\begin{nikki*}[2020.6.9 (火)]
+  今日はセミナーだったからやらなかった。さぼり。
+\end{nikki*}
+
+\begin{nikki*}[2020.6.10 (水)]
+  さぼっていた \TeX 打ちをやった。
+  \autoref{prob: 1.4}くらいからサボってたからかなり時間がかかったけど、
+  とりあえず\ref{section 3}節の最後までは終わったのでよかった。
+  まあ打つだけだけど見直しにもなったしよかったのかな。
+  結局\autoref{prob: 2.7}がわからないままだな。
+  ていうか\autoref{prob: 2.8}を解いてなかったな。考えないと。
+\end{nikki*}
+
+\begin{nikki*}[2020.6.11 (木)]
+  \ref{section 4}節を終わらせた。
+  三条大橋のスタバにいたら知り合いがいた気がしたけど気のせいかな。
+  \autoref{prob: 4.2}は\(f_t\)の定義を間違えている気がする。
+  定義関数のとこ、\([t_i,t_{i+1})\)かなあ？と言う指摘を下さった方がいたので、
+  そのつもりで解いた。
+  私も最初はそうかなと思ったんだけど、もし\([t_i,t_{i+1})\)なら
+  本文中に書いてあることと全く同じじゃんって思ってて、
+  それなら違う何かかなあと思ってたんだけど、
+  よく考えると本文中の\(\mcL_0\)は有界関数で、
+  この問題の\(f_t\)は\(f_i\)の取り方がだんだん大きくなる感じだったら
+  有界じゃなくなるから、そういう違いが一応あるかなと思った。
+\end{nikki*}
+
+\begin{nikki*}[2020.6.12 (金)]
+  \autoref{prob: 5.1}、\autoref{prob: 5.2}、\autoref{prob: 5.4}だけやった。
+  恋人にふられた。すごくつらい。すごく。。。
+  これはやばいやつだと思ってメンタリストDaiGoの失恋に関する動画を見たら、
+  失恋のつらさは自己喪失感だと言っていて、
+  アイデンティティーを補うようなことをすれば回復が早まると言っていた。
+  アイデンティティーってなんなんだ。。。
+\end{nikki*}
+
+\begin{nikki*}[2020.6.13 (土)]
+  実家に帰っておやつをいっぱい食べてヨガをやって猫と遊んだ。
+  少し気が紛れた。
+  \autoref{prob: 5.3}と\autoref{prob: 5.6}をやった。
+  \autoref{prob: 5.5}はめんどくさそう。
+\end{nikki*}
+
+\begin{nikki*}[2020.6.14 (日)]
+  何も解かなかった。休憩。
+  つらい日だった。
+  いろいろな過去を思い出すと泣けてくる。
+  たくさん泣いた。
+  心の底から幸せになって欲しいと思った人は初めてだった。
+  修論頑張ってたときの横顔とかを思い出すと本当にそういう気持ちになる。
+  なんだろうこれ。
+  幸せでいてくれればそれでいいと思ってたけど、
+  できれば一緒に幸せになりたかったなぁ...
+  どうか、いろいろな想いが報われてほしい。
+  仕事もうまく行ってほしい。
+  希望の部署に配属されてほしい。
+  良い先輩に恵まれてほしい。
+  幸せであってほしい。
+\end{nikki*}
+
+\begin{nikki*}[2020.6.15 (月)]
+  \autoref{prob: 5.5}を解いた。
+  すごく面倒だった、とくに \TeX 打ちが...
+  雑な不等式評価しかしてないのにすごい疲れた。
+
+  ふとしたタイミングでいろいろなことを思い出して泣きそうになる。
+  たくさん遊んで、すごく楽しかったな。
+  また行きたい場所もいっぱいある。
+  今は、神戸三田のアウトレットとか行きたいな。
+  服買ったな、いい感じのやつ、誕生日にいいお店行くからって。
+  お揃いの財布も買ったな、それはりんくうの方だったかな。
+  買い換えようかな、なんか違うやつに。
+  なんかアウトレットのこと思い出すと
+  GODIVAのショコリキサー飲みたくなってくるな。
+  三条河原町のLOFTのとこにあるGODIVAはコロナで潰れちゃったよ。
+  悲しいね。
+
+  つらい気持ちに蓋をしない方がいいらしいけど...
+  LINEとかしないタイプだし、
+  こうやって日記に書くくらいしかできない。
+  無理に忘れようとしたりしない方がいいらしいけど...
+  なんか友達みんな東京行っちゃったからなあ。
+  人に会いたい。東京に行きたい。
+  東京に行って一週間くらい会いたい人に会いまくって帰りたいけど、
+  みんな仕事あるし、東京まだコロナっぽいし、なかなかそんなこともできないか。
+  悲しいね。
+
+  なんか意味わかんない気持ちのままユニクロでめっちゃ服買っちゃった、
+  着るか着ないかもわかんないのになんとなくかごに放り込んで買ってしまった。
+  いや、、、着ようか、、、
+  違う服着れば気分も変わるかな、、、
+\end{nikki*}
+
+\begin{nikki*}[2020.6.16 (火)]
+  セミナーの日。どうせ修論の見直しするだけだからなんの準備もせずZoomで喋るだけ。
+  これ意味あんのかって思うけどまあ楽なので何も言わないでおく。
+  特に今は、それでいいよもう。
+  星先生との話題が尽きてきたし、
+  話題作りのためにもそろそろ何か新しい事考えとかないとな。
+  エタールホモトピー関連で何かやろかな。
+  ここ1ヶ月くらい代数幾何ぽいことやってなかったしな。
+
+  明日、散歩がてら安井金比羅でも行こうかな、行った事ないし。
+  縁切り神社と言われているけど、実は縁切りではなくて、
+  人の願いを叶える能力がすごく強いとか、そういう話らしい。
+  お互い幸せになれるように、
+  綺麗な思い出として仕舞っておけるように、祈ってこようかな。
+  清水五条あたりにあるらしいから、散歩にはちょうど良さそう。
+  いつか髪も切ろう、そうだな、土曜日実家に帰るから、
+  そのときにいつも一緒に行ってた美容院の予約しよう。
+  いろいろ聞かれるかな、いやだな。
+  髪型変えたいな、相談するか。色とかも、相談してみよう。
+
+  家を少し掃除した。水回り。
+  綺麗になって少し気分も晴れた。
+  \ref{section 5}節を終わらせた。
+  \autoref{prob: 5.7}みたいな幾何的な問題は面白いな。
+  もうすこし幾何的な問題がたくさんあると良かったんだけどな。
+  この問題、唐突すぎるだろと思ったけど、
+  本文をちゃんと読むと注意5.17でやってる議論と全く同じ方法で出る。
+  なんだか本に試されている気がした。
+  \autoref{prob: 5.8}は前に証明したことを使うだけだった。
+  この節結構難しかったから、最後は拍子抜けかな。
+\end{nikki*}
+
+\begin{nikki*}[2020.6.17 (水)]
+  安井金比羅に行ってきた。
+  なんかいろいろ願うことが整理できないまま行ってしまったけど、
+  幸せになってほしい。
+  行く途中、いろいろ考えて泣きそうになりながら歩く変人になってたけど、
+  なんとなく気が楽になった気がしたから、まあいいや。
+  みんな幸せになってくれ。うん。
+
+  \autoref{prob: 6.1}だけ解いた。
+  なんか安井金比羅行ったあと普通に買い物たくさんして家帰ってしまった。
+  まあいいや。そういう日があってもいいよ。
+\end{nikki*}
+
+\begin{nikki*}[2020.6.18 (木)]
+  なんか今日の朝めっちゃ辛かったんだけどなんで？
+  メンタルがつらいとかじゃなくて普通に寝起きがつらかった。
+  意味わからん。
+
+  今日弟の誕生日なんだけど、
+  土曜日弟も実家に帰るらしいから、
+  何か買ってあげないとな。
+  土曜日美容院の予約してるから、
+  梅田で探そう。
+  いい感じのがあればいいけど。
+
+  演習は、\autoref{prob: 6.2}がよくわかんなくてなんもできんかった。
+  \autoref{prob: 6.3}はなんか考え違いでなければあまりにも当たり前な気がして
+  あってるのかどうかすごい不安。
+\end{nikki*}
+
+
+\begin{nikki*}[2020.6.19 (金)]
+  朝がつらい。気圧のせい？
+  なんとかしたいけど起きれなくてだるい。
+  つらくなくなるまで待ってから起きて紅茶飲んだらだいぶ元気になるんだけど、
+  これはどういうことなんだろう。
+
+  \autoref{prob: 6.4}ってこれ\(Y\)出す意味あんのかなあ。
+  勘違いでなければ\(M_t\)はマルチンゲールになるんだから
+  \(\E[M_T]=1\)だろう。
+  結局\(X_t^{(n)}\)の停止時刻に関する問題に翻訳されて、
+  \(Y_t\)の存在意義があんまりない気がしてくる。
+  よくわかんない問題が続くとやる気が失せる。。。
+\end{nikki*}
+
+
+\begin{nikki*}[2020.6.20 (土)]
+  美容院に行った。
+  髪がすごい軽くなった。
+  かなり短くしてもらった。
+  10cmは切ったんじゃないかな。
+  美容師さんのおばさんのすごい人の話がめっちゃおもしろくてすごかった。
+  博士課程なんです〜って言ったらその人の話が始まって、
+  博士課程行く人ってそういうすごい人材なんやろうから楽しみ〜とか言われた。
+  励まされるねえ。人生がんばろう。
+
+  弟の誕生日ケーキを買った。
+  チョコレートケーキ。中にキャラメルが入っていてすごいおいしかった。
+  毎週シュークリーム買って帰ってるんだけど、
+  デパ地下のシュークリームよりビアードパパの方が安くて美味しい気がする。
+  生地のサクサク感と中身のクリームの感じが一番いい感じになってると思う。
+  ビアードパパのクッキーシューめっちゃ美味しいよ。
+  ラングドシャシューも食べてみたけど、
+  見た目の感じに反してクッキーシューの方がサクサク感があった。
+  お母さんもクッキーシューが一番やねと言ってるけど、
+  うちの家系の舌がバカな可能性は十分にある。
+
+  お母さんに別れたことを伝えた。
+  悲しいね〜〜〜〜ほんと悲しいね〜〜〜〜。
+  残念やねえって言われたけど、
+  まあ最終的には結婚したって先に死なれたらいつか別れることになるわけだし、
+  そういうもんだよ。。。いや悲しいけど。。。
+
+  演習は一問も解いてません。
+\end{nikki*}
+
+
+\begin{nikki*}[2020.6.21 (日)]
+  なんの目的もなく歩き初めて二条城を眺めて帰った。
+  なんもやる気ないなーって思いながら家で何もせず座ってて、
+  とりあえず歩くかって言って歩き始めて、
+  時間的にスタバとか行くのもアレだなってなって二条城の門の前でぼーっとして帰った。
+  曲聴きながら歩いてるけど、
+  いつも聞く曲が全部失恋ソングに聞こえてきてじーんとする。
+  まあでも歩いてるととりあえず何かやった気にはなるからいいな。
+  帰りに本屋に吸い込まれて適当な気持ちのまま一冊買ってしまった。
+  自制心。。。
+
+  なんか生活変えようと思ってスマホのアプリの整理とかずっとやってた。無意味に。
+  いつも朝にシャワー浴びて体とかもその時に洗ってたけど
+  なんかそれを夜にしようと思った。
+  でも朝家出る時に水浴びないのは気持ち悪いから、
+  とりあえず朝は水で流すだけにして、
+  夜にゆっくり洗うことにしようと思った。
+  特に意味ないけど、
+  夜寝る前に何かやること作っとかないと
+  食べるのが止まらなくなってしまうなと思って、
+  食べるのを止めるためにも何かやることを作ろうっていう感じ。
+  効果あるといいな。
+
+  演習は一問もやってない。。。明日からもうちょっとやろう。。。
+\end{nikki*}
+
+
+
+
+
+\begin{nikki*}[2020.6.22 (月)]
+  朝二条城まで歩いてそこでちょっと瞑想してからスタバで勉強した。
+  帰りはなんかユニクロでオフィスカジュアルぽい服適当に買って帰った。
+  第一生命のインターン行こうと思って、それが理由で服買ったんだけど、
+  インターンの申し込み画面で自撮りをアップしろって書いてあって、
+  それでちゃんと見えそうな服がなかったから買おうって感じで。
+  すごい適当に選んだけどまあそのうち着よう。
+  歩くと汗かくからあんま歩かない日に着たい。
+  9月に陽さん主催の研究集会で喋ることになってるけど、
+  そのアブストも送った。えらい。
+  修論のアブストほとんどそのままだけど。まあいいだろ。
+  こういうのはだらだら考えててもしょうがないし、
+  よくわかんなくてもとりあえず送信するのが大事だよ。
+  学振と同じ。
+  あと脱毛行きたくなったから予約した。
+  一年半以上ぶりくらいかな。すごい久しぶり。
+  水曜日空いてるらしいから水曜にした。
+
+  \autoref{prob: 6.4}に1日溶かした。
+  ギルザノフの定理で\(Y_t\)が関係なくなる話にならんか？って思ってたけど、
+  たぶんこれ本文中に載ってるギルザノフの定理を
+  \(a_t = f(Y_t)\)みたいなので使おうとすると、
+  \(f\)がただの連続関数だから条件を満たすかどうか微妙っぽい問題が出てくるはず？
+  だからとくに\(M_t\)がマルチンゲールかどうかもよくわかんなくなるはず？
+  すると\(\E[M_T]=1\)かどうかはわかんないから、
+  そういうところをどうにかしろというのがこの問題の求めているところなのかなあ。
+  というのはなんとなくずっと思っていたけど。
+  どうすればいいんだって思ってしばらく放ったらかしてしまってた。
+  一日中悩んでたらなんとなくできた気がするけど、
+  これでいいんか不安ではある。
+  結局この問題しか解いてないや。
+  \autoref{prob: 6.5}もちょっと計算したけど
+  なんか確率微分方程式解くところに帰着して、
+  これどう解くんだよって言ってるところ。
+  明日やろう。
+\end{nikki*}
+
+
+
+\begin{nikki*}[2020.6.23 (火)]
+  \autoref{prob: 6.5}が解けないから放置して
+  \autoref{prob: 6.6}と\autoref{prob: 6.7}をやった。
+  \autoref{prob: 6.8}はなんか\(x_3,x_4\)をfixするごとに調和関数になればいいんだろう
+  と思うけどfixするごとに調和関数ってのは成り立つんだろうかって感じでよくわからない。
+\end{nikki*}
+
+
+
+
+
+\begin{nikki*}[2020.6.24 (水)]
+  脱毛行った。いらない毛たち、抜けてね、頼むから。
+  帰りに梅田でジュンク堂行ったけど椅子が消えてた。
+  下ろしすぎたお金の残りで無駄に本を買ってしまった...
+  しかも量子力学と場古典、めっちゃ物理、読むんかこれ？
+  本棚に飾って終わるんじゃないの？ヨビノリに乗せられてしまった...
+
+  蔦屋書店のスタバでイチゴのフラペチーノを買って
+  ラウンジで買った本読みながら飲んだけど、
+  すごい贅沢なお金の使い方だったな。
+  頭悪いわ。ラウンジは場所代2時間1000円です。あほ。
+  今日は頭悪かった。お菓子も爆食いしてしまったし。ダメだなあ。
+
+  しかも演習一問もやってない。
+  \ref{section 7}章をぺらぺら読んだりしてたけど。
+  マリアヴァン解析かあ。
+  そろそろ自分の数学に戻りたい気もするけど。。。
+  ていうかなんで確率解析なんかやってるんだ私。。。
+\end{nikki*}
+
+
+
+\begin{nikki*}[2020.6.24 (水)]
+  \autoref{prob: 6.5}の偏微分方程式をとりあえずある程度具体的に書いたけどこれでいいんかな？
+  もっと簡単に書けっていう問題なんかな？
+  わからんし一緒にやってくれる仲間がほしいなあ。うん。
+  孤独だね、博士課程。
+\end{nikki*}
+
+
+
+明確化の質問、前提調査の質問、エビデンスの質問、視点の質問、影響と結果の質問、疑問の質問
+
+
+
+
+
+
+
+\end{document}

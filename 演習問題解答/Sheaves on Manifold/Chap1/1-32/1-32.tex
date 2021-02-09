@@ -1,0 +1,206 @@
+\ifcsname Chap\endcsname\else
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+\newcommand{\StylePath}{\ifcsname AllKS\endcsname KS-Style/KS-Style.sty\else
+\ifcsname Chap\endcsname ../KS-Style/KS-Style.sty\else
+../../KS-Style/KS-Style.sty\fi\fi}
+\input{\StylePath}
+
+\KSset{1}{32}
+\setcounter{section}{\value{KSS}-1}
+\begin{document}
+\maketitle\HeaderCommentA
+\section{\KSsection{section}}
+\setcounter{prob}{\value{KSP}-1}
+\fi
+
+
+
+\begin{prob}\label{1.32}
+  \(k\)を体、\(X\in \sfD^b(\Mod(k))\)とする。
+  \(X^*\dfn R\Hom(X,k)\)とおく
+  (微分が本文\cite[Remark 1.8.11]{kashiwara2002sheaves}で与えられることを思い出そう)。
+  \begin{enumerate}
+    \item \label{1.32.1}
+    \(X\in \sfD^b_f(\Mod(k))\)と仮定する。
+    以下の自然な同型が存在することを示せ：
+    \[
+    X\xrightarrow{\sim}X^{**} \ \ , \ \
+    X^*\otimes X \xrightarrow{\sim} R\Hom(X,X).
+    \]
+    さらに、\((X^n)^*\otimes X^n \to k\)の直和として
+    射\(X^*\otimes X\to k\)を構成せよ。
+    \item \label{1.32.2}
+    \(X\in \sfD^b_f(\Mod(k))\)と\(v\in \Hom(X,X)\)に対して
+    \[
+    \tr(v) \dfn \sum_j (-1)^j\tr(H^j(v))
+    \]
+    と定義する。
+    ここで\(\tr(H^j(v))\)は自己準同型\(H^j(v):H^j(X)\to H^j(X)\)の
+    トレースである。
+    \(Y\in \sfK^b(\Mod^f(k))\)として、
+    \(v\in \Hom_{\sfK^b(\Mod^f(k))}(Y,Y)\)とする。
+    以下の等式を示せ：
+    \[
+    \tr(v) = \sum_j (-1)^j \tr(v^j).
+    \]
+    \item \label{1.32.3}
+    \(\sfD^b_f(\Mod(k))\)の完全三角の間の自己射
+    \[
+    \begin{CD}
+      X' @>>> X @>>> X'' @>>> \\
+      @V{v'}VV @V{v}VV @V{v''}VV @. \\
+      X' @>>> X @>>> X'' @>>> \\
+    \end{CD}
+    \]
+    に対して、\(\tr(v) = \tr(v') + \tr(v'')\)が成り立つことを示せ。
+    \item \label{1.32.4}
+    \ref{1.32.2}の状況設定において、
+    \(\tr(v)\)が\(v\)の
+    \[
+    H^0(R\Hom(X,X)) \cong H^0(X^*\otimes X) \to k
+    \]
+    による像と一致することを示せ。
+    \(X\in \sfD^b_f(\Mod(k))\)に対して
+    \[
+    \chi(X) \dfn \sum_j (-1)^j\dim H^j(X)
+    \]
+    とおく。
+    \(k\)において\(\chi(X) = \tr(\id_X)\)が成り立つ。
+  \end{enumerate}
+\end{prob}
+
+\begin{proof}
+  \ref{1.32.1}を示す。
+  \(k\)は体なので、\autoref{1.30.5}より\(X\)はperfectであり、
+  従って、一つ目の同型は\autoref{1.30.3}より従う。
+  自然な同型射
+  \((X^{-m})^*\otimes X^n \xrightarrow{\sim} \Hom(X^{-m},X^n)\)
+  を並べることによって、二重複体の同型射
+  \(X^*\otimes X\xrightarrow{\sim}\Hom(X,X)\)
+  を得る。
+  \(\Tot\)を取ることによって複体の同型射
+  \(X^*\otimes X \xrightarrow{\sim} R\Hom(X,X)\)を得る。
+  これが二つ目の同型である。
+  最後の自然な射を構成する。
+  \(0\)次の部分は各\(n\in \Z\)に対して自然な射
+  \((X^*)^{-n}\otimes X^n = (X^n)^*\otimes X^n \to k\)
+  を直和することにより得られる射\((X^*\otimes X)^0\to k\)で、
+  他の次数は\(0\)射とすることにより、
+  複体の射\(X^*\otimes X \to k\)がwell-definedに定義されることを示す。
+  そのためには、これらの射が複体\(X^*\otimes X\)と\(k\)
+  (これは\(0\)次部分のみに\(k\)があり他で\(0\)となる複体を表す)
+  の微分と可換することを示すことが十分である。
+  射
+  \begin{align*}
+    &(X^*)^{-n}\otimes X^{n-1} \to (X^*)^{-n}\otimes X^n \to k \\
+    &(X^*)^{-n}\otimes X^{n-1} \to (X^*)^{-n+1}\otimes X^{n-1} \to k
+  \end{align*}
+  について考える。
+  ただしここで、
+  最後の\(k\)への射は\((f,x)\mapsto f(x)\)により与えられる自然な射
+  (\((X^*)^{-n}=(X^n)^*\)に注意せよ) であり、
+  はじめの射は本文\cite[式 (1.9.3)]{kashiwara2002sheaves}により定義される、
+  \(\Tot\)の微分を与える射である。
+  上の二つの射の合成は\((f,x)\in (X^*)^{-n}\otimes X^{n-1}\)が
+  \[(f,x)\mapsto (f,(-1)^{-n}d^{n-1}(x)) \mapsto (-1)^nf(d^{n-1}(x))\]
+  と写る射である。
+  微分\((X^*)^{-n}\to (X^*)^{-n+1}\)は
+  \((-1)^{n-1}d^{n-1}:X^{n-1}\to X^n\)を合成することにより与えられているので
+  (cf. 本文\cite[Remark 1.8.11]{kashiwara2002sheaves})、
+  下の二つの射の合成は\((f,x)\in (X^*)^{-n}\otimes X^{n-1}\)が
+  \[(f,x)\mapsto ((-1)^{n-1}(f\circ d^{n-1}),x) \mapsto (-1)^{n-1}f(d^{n-1}(x))\]
+  と写る射である。
+  \((-1)^nf(d^{n-1}(x))+(-1)^{n-1}f(d^{n-1}(x)) = 0\)
+  であるため、従って、\(X^*\otimes X\to k\)は複体の射である。
+  以上で\ref{1.32.1}の証明を完了する。
+
+  \ref{1.32.2}を示す。
+  有限次元\(k\)-線形空間の完全列の自己準同型
+  \[
+  \begin{CD}
+    0 @>>> V_1 @>>> V_2 @>>> V_3 @>>> 0 \\
+    @. @V f_1 VV @V f_2 VV @V f_3 VV @. \\
+    0 @>>> V_1 @>>> V_2 @>>> V_3 @>>> 0
+  \end{CD}
+  \]
+  があると、
+  \(f_1,f_3\)の上三角化を与える\(V_1,V_3\)の基底により
+  \(f_2\)の上三角化が与えられる。
+  従って\(\tr(f_2) = \tr(f_1) + \tr(f_3)\)が成り立つ。
+  完全列の射
+  \[
+  \begin{CD}
+    0 @>>> H^n(Y) @>>> \coker(d_Y^{n-1}) @>>> \ker(d_Y^{n+1}) @>>> H^{n+1}(Y) @>>> 0 \\
+    @. @V{H^n(v)}VV @V{C^{n-1}(v)}VV @VV{Z^{n+1}(v)}V @VV{H^{n+1}(v)}V @. \\
+    0 @>>> H^n(Y) @>>> \coker(d_Y^{n-1}) @>>> \ker(d_Y^{n+1}) @>>> H^{n+1}(Y) @>>> 0
+  \end{CD}
+  \]
+  にこれを適用することで、
+  \(\tr(C^{n-1}(v)) - \tr(H^n(v)) = \tr(Z^{n+1}(v)) - \tr(H^{n+1}(v))\)を得る。
+  ただし\(C^n(v)\)は余核の間に引き起こされる自然な射である。
+  完全列の間の射
+  \[
+  \begin{CD}
+    0 @>>> Z_Y^n @>>> Y^n @>>> \im(d_Y^n) @>>> 0 \\
+    @. @V{Z^n(v)}VV @V{v^n}VV @VV{B^n(v)}V @. \\
+    0 @>>> Z_Y^n @>>> Y^n @>>> \im(d_Y^n) @>>> 0
+  \end{CD}
+  \]
+  に適用することにより、
+  \(\tr(B^n(v)) + \tr(Z^n(v)) = \tr(v^n)\)を得る。
+  完全列の間の射
+  \[
+  \begin{CD}
+    0 @>>> H^n(Y) @>>> \coker(d_Y^{n-1}) @>>> \im(d_Y^n) @>>> 0 \\
+    @. @V{H^n(v)}VV @V{C^{n-1}(v)}VV @VV{B^n(v)}V @. \\
+    0 @>>> H^n(Y) @>>> \coker(d_Y^{n-1}) @>>> \im(d_Y^n) @>>> 0
+  \end{CD}
+  \]
+  に適用することにより、
+  \(\tr(B^n(v)) = \tr(C^{n-1}(v)) - \tr(H^n(v))\)を得る。
+  ただし\(C^n(v)\)は余核の間に引き起こされる自然な射である。
+  従って、
+  \begin{align*}
+    \sum_j (-1)^j\tr(v^j)
+    &= \sum_j (-1)^j\left( \tr(B^j(v)) + \tr(Z^j(v)) \right) \\
+    &= \sum_j (-1)^j\left( \tr(C^{j-1}(v)) - \tr(H^j(v)) + \tr(Z^j(v)) \right) \\
+    &= \sum_j (-1)^j\left( \tr(C^{j-1}(v)) + \tr(C^{j-2}(v)) - \tr(H^{j-1}(v)) \right) \\
+    &= \sum_j (-1)^{j+1}\tr(H^{j-1}(v)) \\
+    &= \sum_j (-1)^j\tr(H^j(v)) = \tr(v)
+  \end{align*}
+  が成り立つ。
+  以上で\ref{1.32.2}の証明を完了する。
+
+  \ref{1.32.3}はコホモロジーをとることによって得られる長完全列を
+  短完全列に分解して\ref{1.32.2}の証明の最初で示した等式を用いると証明できる。
+
+  \ref{1.32.4}を示す。
+  \(f:X\to Y\)の定める\(H^0(R\Hom(X,Y))\)の元は、
+  各\(i\)について\(f^i:X^i\to Y^i\)の定める\(\Hom(X^i,Y^i)\)の元を
+  \(((-1)^if^i)\in \bigoplus_i \Hom(X^i,Y^i)\)と並べた元である。
+  実際、\(R\Hom(X,Y)\)の微分は、
+  第一変数に関しては\((-1)^id_X^i\)を合成することによって与えられるので、
+  \(d_Y^i\circ ((-1)^if^i = f^{i+1}\circ ((-1)^id_X^i)\)が成り立ち、
+  \(((-1)^if^i)\)は\(H^0(R\Hom(X,Y))\)の元を定める。
+  \(v:X\to X\)を複体の自己射とする。
+  各\(j\)に対する\(v^j:X^j \to X^j\)のトレースは
+  \(\Hom(X^j,X^j) \cong (X^j)^*\otimes X^j \to k\)
+  による\(v^j\)の像が定める\(k\)の元と一致する。
+  従って、\(v\)の定める\(H^0(R\Hom(X,X))\)の元、
+  すなわち\(((-1)^iv^i)\in \bigoplus_i \Hom(X,X)\)の
+  自然な射\(H^0(R\Hom(X,X))\to k\)による像は
+  \(\sum_j(-1)^j\tr(v^j)\)に他ならない。
+  よって\ref{1.32.4}の最初の主張が従う。
+  また、\(\dim(V) = \tr(\id_V)\)であるので、
+  \ref{1.32.2}より
+  \(\chi(X) = \sum_j(-1)^j\dim(H^j(X))\)が従う。
+  以上で\ref{1.32.4}の証明を完了し、
+  \autoref{1.32}の解答を完了する。
+\end{proof}
+
+
+
+\ifcsname Chap\endcsname\else
+\printbibliography
+\end{document}
+\fi

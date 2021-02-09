@@ -1,0 +1,392 @@
+\ifcsname Chap\endcsname\else
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+\newcommand{\StylePath}{\ifcsname AllKS\endcsname KS-Style/KS-Style.sty\else
+\ifcsname Chap\endcsname ../KS-Style/KS-Style.sty\else
+../../KS-Style/KS-Style.sty\fi\fi}
+\input{\StylePath}
+
+\KSset{2}{20}
+\setcounter{section}{\value{KSS}-1}
+\begin{document}
+\maketitle
+\HeaderCommentA
+\section{\KSsection{section}}
+\setcounter{prob}{\value{KSP}-1}
+\fi
+
+
+
+\begin{prob}\label{2.20}
+  \(A\)を可換環で、\(\wgld(A)<\infty\)であるものとする。
+  \(E\)を有限次元実線形空間とする。
+  \(s:E\times E \to E\)を足し算写像とし、
+  \(F,G\in \sfD^+(A_E)\)に対して
+  \(F*G \dfn Rs_!(F\boxtimes^LG)\)と定める。
+  これを\(\sfD^+(A_E)\)上の
+  \textbf{convolution作用素}という。
+  \begin{enumerate}
+    \item \label{2.20.1}
+    \(F,G,H\in \sfD^+(A_E)\)に対し、
+    \(F*G\cong G*F, F*(G*H)\cong (F*G)*H, A_{\{0\}}*F\cong F\)
+    が成り立つことを示せ。
+    \item \label{2.20.2}
+    \(Z_1,Z_2\subset E\)をコンパクト凸集合とする。
+    \(A_{Z_1}*A_{Z_2}\cong A_{Z_1+Z_2}\)であることを示せ。
+    \item \label{2.20.3}
+    \(\gamma\)を proper closed convex cone とするとき、
+    \(A_{\gamma}*A_{\Int(\gamma)} = 0\)であることを示せ。
+    \item \label{2.20.4}
+    \(E = \R^n\)であると仮定せよ。
+    \(Z_1 \dfn [-1,1]^n, Z_2\dfn (-1,1)^n\)とする。
+    \(A_{Z_1}*A_{Z_2}\cong A_{\{0\}}[-n-1]\)であることを示せ。
+  \end{enumerate}
+\end{prob}
+
+\begin{rem*}
+  \ref{2.20.3}で「proper cone」の意味がよくわからなかった
+  (本文に定義書いてましたっけ...) ので
+  \href{https://ja.wikipedia.org/wiki/%E5%87%B8%E9%8C%90}{Wikipedia}
+  を参考にして次の性質を満たす錐\(\gamma\)のことと解釈しました:
+  \begin{itemize}
+    \item \(\Int(\gamma) \neq \emptyset\)である。
+    \item \(\{x,-x\}\in \gamma\)ならば\(x=0\)である
+    (つまり\href{https://ja.wikipedia.org/wiki/%E5%87%B8%E9%8C%90}{Wikipedia}
+    で\textbf{突錐}と呼ばれているものである)。
+  \end{itemize}
+  以下の解答ではこれら二つの条件はどちらも\ref{2.20.3}を解くのに用いられますが、
+  別の解法で突錐であることを仮定せずとも\ref{2.20.3}が解けるのであれば、気になります。
+\end{rem*}
+
+\begin{rem*}
+  \ref{2.20.4}は本文ではシフトが\(-n\)になっていたけど、
+  \(-n-1\)な気がします。気のせいでしょうか。
+\end{rem*}
+
+\begin{proof}
+  \ref{2.20.1}を示す。
+  \(p_1,p_2:E\times E\to E\)を第一射影、第二射影として、
+  \(p:E\times E\xrightarrow E\times E\)を
+  成分を入れ替えることによって得られる同相写像とする。
+  まず\(F*G\cong G*F\)を示す。
+  \(p\)は同相写像であるので、\(Rp_! \cong Rp_*\cong p^{-1}\)が成り立つ。
+  \(s = s\circ p, p_2 = p_1\circ p, p_1 = p_2\circ p\)であるので、従って、
+  \begin{align*}
+    Rs_!(p_1^{-1}F\otimes^L p_2^{-1}G)
+    &\cong Rs_!Rp_!(p_1^{-1}F\otimes^L p_2^{-1}G) \\
+    &\cong Rs_!p^{-1}(p_1^{-1}F\otimes^L p_2^{-1}G) \\
+    &\cong Rs_!(p^{-1}p_1^{-1}F\otimes^L p^{-1}p_2^{-1}G) \\
+    &\cong Rs_!(p_2^{-1}F\otimes^L p_1^{-1}G) \\
+    &\cong Rs_!(p_1^{-1}G\otimes^L p_2^{-1}F)
+  \end{align*}
+  が成り立つ。
+  以上で\(F*G\cong G*F\)が示された。
+
+  次に\(F*(G*H)\cong (F*G)*H\)を示す。
+  \(q_{ij}:E\times E\times E \to E\times E\)を第\(ij\)成分への射影とし、
+  \(q_i:E\times E\times E \to E\)を第\(i\)成分への射影とする。
+  \(\bar{s}:E\times E\times E \to E\)を足し算写像とする。
+  このとき、図式
+  \[
+  \begin{CD}
+    E\times E\times E @>{\id\times s}>> E\times E \\
+    @V{q_{23}}VV @VV{p_2}V \\
+    E\times E @>{s}>> E
+  \end{CD}
+  \]
+  は Cartesian である。
+  従って自然な同型射
+  \(p_2^{-1}\circ Rs_!\xrightarrow{\sim} R(\id\times s)_!\circ q_{23}^{-1}\)
+  が存在する。
+  よって、
+  \begin{align}
+    F*(G*H)
+    &= Rs_!(p_1^{-1}F\otimes^L p_2^{-1}Rs_!(p_1^{-1}G\otimes^L p_2^{-1}H)) \notag \\
+    &\xrightarrow{\sim}
+    Rs_!(p_1^{-1}F\otimes^L R(\id\times s)_!q_{23}^{-1}(p_1^{-1}G\otimes^L p_2^{-1}H))
+    \notag \\
+    &\xrightarrow{\sim}
+    Rs_!(p_1^{-1}F\otimes^L R(\id\times s)_!
+    (q_{23}^{-1}p_1^{-1}G\otimes^L q_{23}^{-1}p_2^{-1}H)) \notag \\
+    &\cong Rs_!(p_1^{-1}F\otimes^L R(\id\times s)_!(q_2^{-1}G\otimes^L q_3^{-1}H))
+    \label{eq: 2.20.1.1} \\
+    &\xrightarrow{\sim}
+    Rs_!R(\id\times s)_!((\id\times s)^{-1} p_1^{-1}F
+    \otimes^L q_2^{-1}G\otimes^L q_3^{-1}H)
+    \label{eq: 2.20.1.2} \\
+    &\cong R\bar{s}_!(q_1^{-1}F \otimes^L q_2^{-1}G\otimes^L q_3^{-1}H)
+    \label{eq: 2.20.1.3}
+  \end{align}
+  が成り立つ。
+  ただしここで
+  \eqref{eq: 2.20.1.1}の箇所に等式
+  \(p_1\circ q_{23} = q_2, p_2\circ q_{23} = q_3\)を用い、
+  \eqref{eq: 2.20.1.2}の箇所に
+  本文\cite[Proposition 2.6.6]{kashiwara2002sheaves}を用い、
+  \eqref{eq: 2.20.1.3}の箇所に等式
+  \(s\circ (\id\times s) = \bar{s}, p_1\circ (\id\times s) = q_1\)を用いた。
+  同様に
+  \((F*G)*H\cong R\bar{s}_!(q_1^{-1}F \otimes^L q_2^{-1}G\otimes^L q_3^{-1}H)\)
+  が従う。
+  以上より\(F*(G*H)\cong (F*G)*H\)が成り立つ。
+
+  次に\(A_{\{0\}}*F\cong F\)を示す。
+  \(i:E\cong \{0\}\times E \to E\times E\)を包含射とする。
+  \(i\)は閉部分集合の上への同相写像なので、\(i_!\)は完全函手である
+  (cf. 本文\cite[Proposition 2.5.4 (i)]{kashiwara2002sheaves})。
+  従って、
+  \begin{align}
+    A_{\{0\}}*F
+    &= Rs_!(p_1^{-1}A_{\{0\}}\otimes^L p_2^{-1}F) \notag \\
+    &= Rs_!(A_{\{0\}\times E}\otimes^L p_2^{-1}F) \notag \\
+    &\cong Rs_!((p_2^{-1}F)_{\{0\}\times E}) \label{eq: 2.20.1.4} \\
+    &\xrightarrow{\sim}
+    Rs_!i_!(i^{-1}p_2^{-1}F) \label{eq: 2.20.1.5} \\
+    &\xrightarrow{\sim} F \label{eq: 2.20.1.6}
+  \end{align}
+  が成り立つ。
+  ただしここで
+  \eqref{eq: 2.20.1.4}の箇所に本文\cite[Proposition 2.3.10]{kashiwara2002sheaves}と
+  \(A_{\{0\}\times E}\)が \(A_{E\times E}\)-flat であることを用い、
+  \eqref{eq: 2.20.1.5}の箇所に
+  本文\cite[Proposition 2.5.4(ii)]{kashiwara2002sheaves}を用い、
+  \eqref{eq: 2.20.1.6}の箇所に等式
+  \(s\circ i = \id_E, p_2\circ i = \id_E\)を用いた。
+  以上で\ref{2.20.1}の証明を完了する。
+
+  \ref{2.20.2}を示す。
+  \(A_{Z_i}\)は \(A_E\)-flat なので、
+  \(p_1^{-1}A_{Z_1} \cong A_{Z_1\times E}\)と
+  \(p_2^{-1}A_{Z_2} \cong A_{E\times Z_2}\)も
+  \(A_{E\times E}\)-flat である。
+  従って
+  \[
+  p_1^{-1}A_{Z_1}\otimes^L p_2^{-1}A_{Z_2} \cong
+  A_{Z_1\times E}\otimes A_{E\times Z_2}
+  \cong A_{(Z_1\times E)\cap (E\times Z_2)}
+  = A_{Z_1\times Z_2}
+  \]
+  が成り立つ。
+  \(p:Z_1\times Z_2\to Z_1+Z_2\)を\(s\)の制限 (足し算写像) とする。
+  \(A_{Z_1\times Z_2} \cong p^{-1}A_{Z_1+Z_2}\)が成り立つ。
+  \(p\)はコンパクト空間からコンパクト空間への射なので固有である。
+  従って\(p_!=p_*\)が成り立つ。
+  \(Z_1,Z_2\)は凸であるので、
+  \(Z_1\times Z_2\subset E\times E\)はコンパクト凸集合である。
+  従って、任意の点\(z\in Z_1+Z_2\)に対して、
+  \(p^{-1}(z) = (Z_1\times Z_2)\cap s^{-1}(z)\)
+  はコンパクト凸集合と閉凸集合の共通部分であり、
+  再びコンパクト凸集合、とくに可縮となる。
+  すなわち、\(p\)の各 fiber は可縮である。
+  よって、\(i:Z_1+Z_2\to E\)を包含射とすれば、
+  本文\cite[Corollary 2.7.7 (iv)]{kashiwara2002sheaves}より、
+  自然な射
+  \(i^{-1}A_E\xrightarrow{\sim} Rp_*p^{-1}i^{-1}A_E \cong Rp_!p^{-1}i^{-1}A_E\)
+  は同型射である。
+  \(j:Z_1\times Z_2\to E\times E\)を包含射とすれば、
+  \(i\circ p = s\circ j\)であるから、
+  従って、とくに
+  \[
+  A_{Z_1+Z_2}\cong i_!i^{-1}A_E
+  \cong i_!(Rp_!p^{-1}i^{-1}A_E)
+  \cong R(s\circ j)_!(s\circ j)^{-1}A_E
+  \cong Rs_!A_{Z_1\times Z_2}
+  \cong A_{Z_1}*A_{Z_2}
+  \]
+  が成り立つ。
+  以上で\ref{2.20.2}の証明を完了する。
+
+  \ref{2.20.3}を示す。
+  \(p_1,p_2:E\times E\to E\)を第一、第二射影とする。
+  \(p_1^{-1}A_{\gamma}\otimes^L p_2^{-1}A_{\Int(\gamma)}
+  \cong A_{\gamma\times \Int(\gamma)}\)である。
+  \ref{2.20.3}を示すためには、
+  \(Rs_!A_{\gamma\times \Int(\gamma)} = 0\)を示すことが十分である。
+  各\(z\in E\)に対して
+  \(i:E\cong s^{-1}(z) \to E\times E\)を包含射とする。
+  このとき、本文\cite[Proposition 2.6.7]{kashiwara2002sheaves}より、
+  \((Rs_!A_{\gamma\times \Int(\gamma)})_z \cong
+  R\Gamma_c(s^{-1}(z), A_{\gamma\times \Int(\gamma)}|_{s^{-1}(z)})\)
+  が成り立つ。
+  \autoref{2.19.4}の証明で行ったように、
+  \(Z\)が局所閉集合である場合にも\autoref{2.19.4}の等式が成立する。
+  従って、本文\cite[Remark 2.6.9 (iii)]{kashiwara2002sheaves}より、
+  \begin{align*}
+    R\Gamma_c(s^{-1}(z), A_{\gamma\times \Int(\gamma)}|_{s^{-1}(z)}) &\cong
+    R\Gamma_c(s^{-1}(z)\cap (\gamma\times \Int(\gamma)), A_{s^{-1}(z)}) \\
+    &\cong R\Gamma_c(s^{-1}(z)\cap (\gamma\times \Int(\gamma)),
+    A_{s^{-1}(z)\cap (\gamma\times \Int(\gamma))})
+  \end{align*}
+  が成り立つ。
+  従って、
+  \(Rs_!A_{\gamma\times \Int(\gamma)} = 0\)を示すためには、
+  各\(z\in E\)に対して
+  \(R\Gamma_c(s^{-1}(z)\cap (\gamma\times \Int(\gamma)),
+  A_{s^{-1}(z)\cap (\gamma\times \Int(\gamma))}) = 0\)
+  であることを示すことが十分である。
+  ここで\(s^{-1}(z)\cap (\gamma\times \Int(\gamma)) = \emptyset\)であれば
+  明らかにこの等式が成り立つので、
+  以下、\(s^{-1}(z)\cap (\gamma\times \Int(\gamma)) \neq \emptyset\)であると仮定して
+  \(R\Gamma_c(s^{-1}(z)\cap (\gamma\times \Int(\gamma)),
+  A_{s^{-1}(z)\cap (\gamma\times \Int(\gamma))}) = 0\)を示す。
+  このとき、成分ごとに足すことによって\(z\in \Int(\gamma)\)であることが従う。
+  簡単のため
+  \(X \dfn s^{-1}(z)\cap (\gamma\times \Int(\gamma))\)とおく。
+  示すべきことは\(R\Gamma_c(X,A_X)=0\)である。
+
+  \(a\in \Int(\gamma)\)を一つとり、以下固定する。
+  \(K_n \dfn (\gamma \times (a/n + \gamma)) \cap X \subset X\)とおく。
+  このとき、\(X = \bigcup_{n\in \N}K_n\)が成り立つ。
+  \(K_n\)に関して以下を主張を示す：
+  \begin{enumerate}[label=(\fnsymbol*),start=2]
+    \item \label{2.20.3.p1}
+    \(K_n\)はコンパクトである。
+    \item \label{2.20.3.p2}
+    \(X\setminus K_n\)は可縮である。
+  \end{enumerate}
+  \ref{2.20.3.p1}を示す。
+  もし\(K_n\)がコンパクトでなければ、点列コンパクトでないので、
+  \(K_n\)内で収束しない点列\(v_i = (w_i,z-w_i)\in K_n\)が存在する。
+  もし数列\(\| w_i\|\)が\(N\)で抑えられるとすれば、
+  \(\gamma\)は閉であるから、\(\gamma\cap [-N,N]^{\dim E}\)はコンパクトであり、
+  また、\(w_i\in \gamma\cap [-N,N]^{\dim E}\)であるので、
+  従って\(w_i\)は\(\gamma\cap [-N,N]^{\dim E}\)内で収束する。
+  これは\(v_i\)が\(K\)内で収束しないということに反する。
+  従って\(\| w_i\|\)は非有界である。
+  \(\gamma\)内の点列\(w_i/\|w_i\|\in \gamma\)と
+  \((z-w_i)/\|w_i\|\)はノルムが有界なので\(\gamma\)内で収束する。
+  \(w \dfn \lim w_i/\|w_i\|\in \gamma\)とおく。
+  ここで\(\|w_i\| \to \infty\)であるから
+  \(z/\|w_i\|\to 0\)であり、
+  \((z-w_i)/\|w_i\| \to -w\in \gamma\)が成り立つ。
+  一方、\(\gamma\)は突であるので、これは\(w = 0\)を意味する。
+  しかしながら、\(\|w_i/\|w_i\|\| = 1\)であるため、\(\|w\|=1\)であり、
+  これは矛盾している。
+  以上より\(K_n\)は点列コンパクトである。
+  今、\(K_n\)は有限次元実線形空間の部分空間なので、
+  \(K_n\)はコンパクトである。
+
+  \ref{2.20.3.p2}を示す。
+  \(z\in \Int(\gamma)\)であるので、
+  十分大きい\(N\gg n+1\)をとれば、
+  \(z-a/N\in \gamma\)が成り立つ。
+  \(a/N\not\in (a/n+\gamma)\)であるので、従って
+  \((z-a/N,a/N)\in X\setminus K_n\)である。
+  点\(v = (v_1,v_2)\in X\setminus K_n\)を任意にとる。
+  このとき、\(v_2\not\in (a/n+\gamma)\)が成り立つ。
+  ある\(t,u>0, t+u = 1\)が存在して、
+  \(ta/N + uv_2 \in (a/n+\gamma)\)が成り立つと仮定する。
+  このとき、ある\(v_3\in \gamma\)が存在して、
+  \(ta/N + uv_2 = a/n + v_3\)が成り立つ。
+  整理すれば、
+  \begin{align*}
+    uv_2 &= \frac{u}{n}a + \frac{1-u}{n}a + v_3 - \frac{t}{N}a \\
+    v_2 &= \frac{1}{n}a + \frac{1}{u}\left( v_3 +
+    \left(\frac{t}{n} - \frac{t}{N}\right)a \right)
+  \end{align*}
+  となるので、\(N \gg n+1\)であることから、
+  \(v_2\in (a/n + \gamma)\)が従う。これは矛盾である。
+  よって\(v_2\)と\(a/N\)を結ぶ線分は\(a/n+\gamma\)と交わらない。
+  従って\(v=(v_1,v_2)\)と\((z-a/N,a/N)\)を結ぶ線分は
+  \(K_n\)と交わらず、
+  \(X\setminus K_n\)は星状であることが従う。
+  よってとくに\(X\setminus K_n\)は可縮である。
+
+  \(R\Gamma_c(X,A_X) = 0\)を示す。
+  コンパクト部分集合\(K\subset X\)の集合は
+  包含関係に関して有向集合であり、
+  \(\{K_n | n\in \N\}\)はそのcofinalな部分集合をなす。
+  従って、本文\cite[Notations 2.6.8]{kashiwara2002sheaves}の最後の記述より、
+  任意の\(F\in \Ab(X)\)に対して
+  \(H^j_c(X,F)\cong \colim_n H^j_{K_n}(X,F)\)
+  が成り立つ。
+  \(X\)は可縮であり、
+  さらに十分大きな\(n\)に対して\(X\setminus K_n\)も可縮であるので、
+  本文\cite[Corollary 2.7.7 (iii)]{kashiwara2002sheaves}より、
+  十分大きな\(n\)に対して
+  \(A\cong R\Gamma(X,A_X)\cong R\Gamma(X\setminus K_n, A_{X\setminus K_n})\)
+  が成り立つ。
+  従って任意の\(i\)に対して
+  \(H^i(X,A_X) \to H^i(X\setminus K_n, A_X)\)は同型射である
+  (\(i=0\)の場合は\(\id_A\)で、他の次数ではどちらも\(0\))。
+  よって任意の\(i\)に対して\(H^i_{K_n}(X,A_X)=0\)が従い、
+  とくに\(H^i_c(X,A_X)=0\)が成り立つ。
+  これは\(R\Gamma_c(X,A_X)=0\)を意味する。
+  以上で\ref{2.20.3}の証明を完了する。
+
+  \ref{2.20.4}を示す。
+  \(p_1,p_2:E\times E\to E\)を第一、第二射影とする。
+  \(p_1^{-1}A_{Z_1}\otimes^L p_2^{-1}A_{Z_2}\cong A_{Z_1\times Z_2}\)である。
+  \(Rs_!A_{Z_1\times Z_2}\)を計算しなければならない。
+  \(z\in E\)を任意にとる。
+  \(S(z) = s^{-1}(z)\cap (Z_1\times Z_2)\)とおく。
+  \(Rs_!A_{Z_1\times Z_2}\cong R\Gamma_c(S(z),A_{S(z)})\)
+  である。
+  従って、\ref{2.20.4}を示すためには、
+  \((z,i)\neq (0,n)\)に対して\(H^i_c(S(z),A_{S(z)}) = 0\)であり、
+  \(H^n_c(S(z),A_{S(z)})\cong A\)であることを示すことが十分である。
+  \(S\subset E\)に対して
+  \(z+S = \{z+v | v\in S\}\)とおく。
+  \(v = (v_1,v_2)\in S(z)\)は
+  \(v_1+v_2 = z, v_1\in Z_1,v_2\in Z_2\)を満たす。
+  従って、\(v_1-z = -v_2 \in Z_2\)が成り立つ
+  (\(Z_2\)は原点対称であることに注意)。
+  すなわち、\(v_1\in Z_1\cap (z+Z_2)\)が成り立つ。
+  よって\(Z_1\cap (z+Z_2) \to S(z), v_1\mapsto (v_1,z-v_1)\)
+  は同相写像である。
+  これにより\(S(z)\)を\(Z_1\cap (z+Z_2)\)と同一視する。
+  \(S_k(z) \dfn Z_1\cap (z+[-1+1/k,1-1/k]^n)\)とおく。
+  \(S(z) = \bigcup_{k\in \N}S_k(z)\)が成り立つ。
+  また、\(S_k(z)\)はコンパクト空間二つの共通部分であるから、コンパクトである。
+
+  \(z\neq 0\)に対して\(H^i_c(S(z),A_{S(z)})=0\)を示す。
+  \(1/k_0 < \min\{|z_1|,\cdots,|z_n|\}\)となる\(k_0\)をとれば、
+  任意の\(k \geq k_0\)に対して、
+  \(S(z)\setminus S_k(z)\)は、
+  \(z_i\neq 0\)となる座標を\(z_i/|z_i|\)側へと潰すホモトピーによって、
+  可縮である。
+  また、\(S(z) = \bigcup_{k\geq k_0}S_k(z)\)であるので、
+  本文\cite[Notations 2.6.8]{kashiwara2002sheaves}の最後の記述より、
+  \(H^i_c(S(z),A_{S(z)}) \cong \colim_{k\geq k_0} H^i_{S_k(z)}(S(z),A_{S(z)})\)
+  が成り立つ。
+  さらに、\(S(z)\)と\(S(z)\setminus S_k(z)\)はともに可縮であるから、
+  本文\cite[Corollary 2.7.7 (iii)]{kashiwara2002sheaves}より、
+  \(R\Gamma(S(z),A_{S(z)})\cong
+  R\Gamma(S(z)\setminus S_k(z),A_{S(z)\setminus S_k(z)})\cong A\)
+  が成り立つ。
+  従って、\(R\Gamma_{S_k(z)}(S(z),A_{S_k(z)})\cong 0\)であり、
+  とくに\(H^i_{S_k(z)}(S(z),A_{S(z)}) = 0\)である。
+  よって\(H^i_c(S(z),A_{S(z)}) = 0\)が従う。
+
+  \(z=0\)とする。
+  \(S(0)\setminus S_k(0)\)は\(n\)次元球面\(S^n\)とホモトピックであり、
+  Mayer-Vietoris完全列
+  (cf. 本文\cite[Remark 2.6.10]{kashiwara2002sheaves}) と
+  本文\cite[Corollary 2.7.7 (iii)]{kashiwara2002sheaves}を用いて、帰納法により、
+  \(R\Gamma(S(0)\setminus S_k(0),A_{S(0)\setminus S_k(0)})\cong A\oplus A[-n]\)
+  が従う。
+  \(S(0)\)は可縮なので、本文\cite[Corollary 2.7.7 (iii)]{kashiwara2002sheaves}より
+  \(R\Gamma(S(0),A_{S(0)})\cong A\)である。
+  以上より、\(R\Gamma_{S_k(0)}(S(0),A_{S(0)}) \cong A[-n-1]\)が成り立つ。
+  従って、とくに
+  \(i\neq n+1\)に対して
+  \(H^i_{S_k(0)}(S(0),A_{S(0)})\cong 0\)であり、
+  \(i=n+1\)に対しては\(H^{n+1}_{S_k(0)}(S(0),A_{S(0)})\cong A\)である。
+  \(S(0)=\bigcup_{k\in \N}S_k(0)\)であるから、
+  任意の\(i\)に対して
+  \(H^i_c(S(0),A_{S(0)})\cong \colim_{k\in \N}H^i_{S_k(0)}(S(0),A_{S(0)})\)
+  であり、
+  よって\(H^i_c(S(0),A_{S(0)}) = 0, (i\neq n+1)\)と
+  \(H^{n+1}_c(S(0),A_{S(0)}) \cong A\)が成り立つ。
+  以上で\ref{2.20.4}の証明を完了し、
+  \autoref{2.20}の解答を完了する。
+\end{proof}
+
+
+
+
+
+
+\ifcsname Chap\endcsname\else
+\printbibliography
+\end{document}
+\fi

@@ -1,0 +1,128 @@
+\ifcsname Chap\endcsname\else
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+\newcommand{\StylePath}{\ifcsname AllKS\endcsname KS-Style/KS-Style.sty\else
+\ifcsname Chap\endcsname ../KS-Style/KS-Style.sty\else
+../../KS-Style/KS-Style.sty\fi\fi}
+\input{\StylePath}
+
+\KSset{1}{4}
+\setcounter{section}{\value{KSS}-1}
+\begin{document}
+\maketitle
+\HeaderCommentA
+\section{\KSsection{section}}
+\setcounter{prob}{\value{KSP}-1}
+\fi
+
+
+\begin{prob}\label{1.4}
+  \(\mcC\)を加法圏、
+  \(X\rightarrow{i_1} Z \rightarrow{p_2} Y\)
+  を射の列で、\(p_2\circ i_1 = 0\)を満たすとする。
+  このとき、以下の条件が同値であることを示せ：
+  \begin{enumerate}
+    \item \label{1.4.1}
+    任意の対象\(W\in \mcC\)に対して次の列は完全である：
+    \[
+    0 \to \Hom_{\mcC}(W,X) \to \Hom_{\mcC}(W,Z) \to \Hom_{\mcC}(W,Y) \to 0.
+    \]
+    \item \label{1.4.2}
+    任意の対象\(W\in \mcC\)に対して次の列は完全である：
+    \[
+    0 \gets \Hom_{\mcC}(X,W) \gets \Hom_{\mcC}(Z,W) \gets \Hom_{\mcC}(Y,W) \gets 0.
+    \]
+    \item \label{1.4.3}
+    射\(i_2:Y\to Z\)と\(p_1:Z\to X\)が存在して、
+    \autoref{1.3}の条件を満たす。
+  \end{enumerate}
+  これらの条件が満たされるとき、
+  \[ 0\to X\rightarrow{i_1} Z \rightarrow{p_2} Y \to 0 \]
+  は\textbf{分裂する}と言い、
+  \(X\)は\(Z\)の直和因子であると言う。
+  \begin{enumerate}[label=(\fnsymbol*),start=2]
+    \item \label{1.4.4}
+    \(\mcC\)がアーベル圏または三角圏であるとする。
+    \(i_1:X\to Z, p_1:Z\to X\)が
+    \(p_1\circ i_1 = \id_X\)を満たすとき、
+    \(X\)は\(Z\)の直和因子となることを示せ。
+  \end{enumerate}
+\end{prob}
+
+\begin{proof}
+  はじめに\ref{1.4.1}, \ref{1.4.2}, \ref{1.4.3}が同値であることを確認する。
+  \ref{1.4.1}を仮定して\ref{1.4.3}を証明する。
+  \(W=Y\)とすることで、
+  \ref{1.4.1}で仮定されている完全性 (のうちの右側の全射性) より、
+  \(p_2\circ i_2 = \id_Y\)となる射\(i_2:Y\to Z\)が存在することがわかる。
+  \(W=Z\)とすれば、
+  \(p_2\circ (\id_Z - i_2\circ p_2) = p_2 - p_2 = 0\)であることと、
+  \ref{1.4.1}で仮定されている完全性 (のうちの真ん中の完全性) より、
+  \(i_1\circ p_1 = \id_Z - i_2\circ p_2\)
+  となる射\(p_1:Z\to X\)が存在することがわかる。
+  \(W=X\)として\(p_1\circ i_1 :X\to X\)の行き先を見ると、それは
+  \[
+  i_1\circ p_1 \circ i_1
+  = i_1 - i_2\circ p_2 \circ i_1 = i_1 = i_1 \circ \id_X
+  \]
+  であるので、
+  \ref{1.4.1}で仮定されている完全性 (のうちの左側の単射性) より、
+  \(p_1\circ i_1 = \id_X\)であることがわかる。
+  \(W=Y\)として\(p_2\circ i_1 : Y\to X\)の行き先を見ると、それは
+  \(i_1\circ p_2\circ i_1 = 0\)であるので、
+  \ref{1.4.1}で仮定されている完全性 (のうちの左側の単射性) より、
+  \(p_2\circ i_1 = 0\)であることがわかる。
+  以上で\ref{1.4.1}から\ref{1.4.3}が帰結することがわかった。
+
+  \ref{1.4.2}を仮定すれば\(\mcC^{\op}\)において
+  \(Y\xrightarrow{p_2}Z \xrightarrow{i_1}X\)は条件\ref{1.4.1}を満たすので、
+  すでに証明したことにより\(\mcC^{\op}\)においての条件\ref{1.4.3}が帰結するが、
+  それは\(\mcC\)においての条件\ref{1.4.3}を意味している。
+  以上で\ref{1.4.2}から\ref{1.4.3}が帰結することがわかった。
+
+  \ref{1.4.3}を仮定すると、
+  \(p_1:Z\to X\)と\(i_2:Y\to Z\)を用いて各\(W\)について
+  函手的な直和分解
+  \[
+  \Hom_{\mcC}(W,Z) \cong \Hom_{\mcC}(W,X)\oplus \Hom_{\mcC}(W,Y)
+  \]
+  を得るので、これはどんな\(W\)についても
+  \ref{1.4.1}の列が分裂完全列であることを意味し、
+  \(\mcC^{\op}\)で考えることによって\ref{1.4.2}の列が分裂完全列であることもわかる。
+  以上で\ref{1.4.1}, \ref{1.4.2}, \ref{1.4.3}が同値であることが示された。
+
+  \(\mcC\)がアーベル圏であるときに\ref{1.4.4}を証明する。
+  任意の\(W\)に対して
+  \[
+  0\to \Hom_{\mcC}(\coker(i_1),W) \to \Hom_{\mcC}(Z,W) \to \Hom_{\mcC}(X,W)
+  \]
+  は完全となるが、\(p_1\circ i_1\)であるから、
+  \(i_1\)を合成する射\(\Hom_{\mcC}(X,W) \to \Hom_{\mcC}(Z,W)\)は
+  一番右の射の分裂を与え、これによって条件\ref{1.4.2}が満たされる。
+  以上で\(\mcC\)がアーベル圏である場合は証明された。
+
+  \(\mcC\)が三角圏である場合に\ref{1.4.4}を証明する。
+  \(i_1:X\to Z\)を完全三角
+  \(X\xrightarrow{i_1} Z\xrightarrow{p_2} Y\to X[1]\)
+  に延長すると、任意の\(W\)について長い完全列
+  \[
+  \begin{CD}
+    @>>> \Hom_{\mcC}(W,X) @>>> \Hom_{\mcC}(W,Z) @>>> \Hom_{\mcC}(W,Y) \\
+    @>>> \Hom_{\mcC}(W,X[1]) @>>> \Hom_{\mcC}(W,X[1]) @>>> \cdots
+  \end{CD}
+  \]
+  を得る (\(\Hom_{\mcC}(W,-)\)はコホモロジー函手である：
+  \cite[Proposition 1.5.3 (ii)]{kashiwara2002sheaves})。
+  \(p_1:Z\to X\)を (シフトしてから) 合成することで、
+  \(\Hom_{\mcC}(W,X[i]) \to \Hom_{\mcC}(W,Z[i])\)の単射性を得る。
+  ここで上の長い列の完全性によって、
+  \(\Hom_{\mcC}(W,Z) \to \Hom_{\mcC}(W,Y)\)の全射性が従う。
+  これによって条件\ref{1.4.1}が満たされる。
+  以上で\(\mcC\)が三角圏である場合も証明された。
+  以上で\autoref{1.4}の解答を完了する。
+\end{proof}
+
+
+\ifcsname Chap\endcsname\else
+\printbibliography
+\end{document}
+\fi

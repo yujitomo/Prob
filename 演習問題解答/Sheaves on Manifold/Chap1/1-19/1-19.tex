@@ -1,0 +1,166 @@
+\ifcsname Chap\endcsname\else
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+\newcommand{\StylePath}{\ifcsname AllKS\endcsname KS-Style/KS-Style.sty\else
+\ifcsname Chap\endcsname ../KS-Style/KS-Style.sty\else
+../../KS-Style/KS-Style.sty\fi\fi}
+\input{\StylePath}
+
+\KSset{1}{19}
+\setcounter{section}{\value{KSS}-1}
+\begin{document}
+\maketitle
+\HeaderCommentA
+\section{\KSsection{section}}
+\setcounter{prob}{\value{KSP}-1}
+\fi
+
+
+\begin{prob}\label{1.19}
+  \(\mcC,\mcC'\)を二つのアーベル圏、
+  \(F:\mcC \to \mcC'\)を左完全函手とする。
+  さらに\(\mcI\subset \mcC\)を\(F\)-injectiveな部分圏とする。
+  対象\(X\in \mcC\)が\textbf{\(F\)-acyclic}であるということを、
+  任意の\(k\neq 0\)に対して\(R^kF(X) = 0\)となることとして定義する。
+  \(\mcJ\subset \mcC\)を\(F\)-acyclicな対象からなる充満部分圏とする。
+  \begin{enumerate}
+    \item \label{1.19.1}
+    \(\mcJ\)は\(F\)-injectiveであることを示せ。
+    \item \label{1.19.2}
+    任意の自然数\(n\geq 0\)に対して、
+    以下の主張が同値であることを証明せよ：
+    \begin{enumerate}
+      \item \label{1.19.2.1}
+      任意の\(k > n\)と任意の対象\(X\in \mcC\)に対して\(R^kF(X) = 0\)である。
+      \item \label{1.19.2.2}
+      任意の対象\(X\in \mcC\)に対して、
+      完全列
+      \[
+      0 \to X \to X^0 \to \cdots \to X^n \to 0
+      \]
+      で各\(0\leq j\leq n\)に対して\(X^j\in \mcJ\)となるものが存在する。
+      \item \label{1.19.2.3}
+      \(X^0\to \cdots X^n \to 0\)が完全であり、
+      任意の\(j < n\)に対して\(X^j\in \mcJ\)であるとき、
+      \(X^n\in \mcJ\)である。
+    \end{enumerate}
+    これらの同値な条件のうちのどれか一つが成立するとき、
+    \(F\)は\textbf{コホモロジー次元\(\leq n\)を持つ}と言う。
+  \end{enumerate}
+\end{prob}
+
+\begin{proof}
+  \ref{1.19.1}を示す。
+  まず、\(F\)-injectiveな対象は\(F\)-acyclicなので
+  (cf. 本文\cite[Proposition 1.8.3]{kashiwara2002sheaves}とその直前の記述)、
+  \(\mcI\subset \mcJ\)であり、
+  従って\(\mcJ\)は本文条件\cite[Definition 1.8.2 (i)]{kashiwara2002sheaves}を満たす。
+  また、\(\mcJ\)に属する対象はすべて\(F\)-acyclicであるから、
+  \(\mcJ\)が本文条件\cite[Definition 1.8.2 (ii)]{kashiwara2002sheaves}
+  を満たすことは明らかである。
+  \(X'\to X\)を\(\mcJ\)に属する対象の間のモノ射として
+  \(X'' \dfn X/X'\)とすると、
+  各\(i\geq 1\)に対して
+  完全列\(R^iF(X)\to R^iF(X/X')\to R^{i+1}F(X')\)を得る。
+  \(X,X'\)は\(F\)-acyclicであるから、
+  \(R^iF(X)=0, R^{i+1}F(X')=0\)であり、
+  従って\(R^iF(X/X')=0\)もわかる。
+  これは\(X/X'\)が\(F\)-acyclicであることを示していて、
+  \(X/X'\)は\(\mcJ\)に属する。
+  よって\(\mcJ\)は本文条件\cite[Definition 1.8.2 (ii)]{kashiwara2002sheaves}を満たし、
+  \(\mcJ\)は\(F\)-injectiveである。
+  以上で\ref{1.19.1}の証明を完了する。
+
+  \ref{1.19.2}を示す。
+  \ref{1.19.2.1}\(\Leftrightarrow\)\ref{1.19.2.2}を示す。
+  \ref{1.19.2.1}\(\Leftrightarrow\)\ref{1.19.2.2}
+  を示すためには、対象\(X\in \mcC\)を固定して、
+  次の二つの主張が同値であることを証明することが十分である：
+  \begin{enumerate}[label=(\Alph*)]
+    \item \label{1.19.2.p1}
+    任意の\(k > n\)に対して\(R^kF(X) = 0\)である。
+    \item \label{1.19.2.p2}
+    完全列
+    \[
+    0 \to X \to X^0 \to \cdots \to X^n \to 0
+    \]
+    で各\(0\leq j\leq n\)に対して\(X^j\in \mcJ\)となるものが存在する。
+  \end{enumerate}
+  \(n\)に関する帰納法により
+  \ref{1.19.2.p1}\(\Leftrightarrow\)\ref{1.19.2.p2}
+  を示す。
+  \(n=0\)に対して\ref{1.19.2.p1}が成り立つことは、
+  \(X\)が\(F\)-acyclicであることと同値であり、
+  さらにこれは\(n=0\)に対して\ref{1.19.2.p2}が成り立つことと同値である。
+  よって\(n=0\)の場合は明らかに
+  \ref{1.19.2.p1}\(\Leftrightarrow\)\ref{1.19.2.p2}
+  が成り立つ。
+  \(n\geq 1\)として、\(n\)より小さいすべての自然数に対して
+  \ref{1.19.2.p1}\(\Leftrightarrow\)\ref{1.19.2.p2}
+  が成り立つと仮定する。
+  \(\mcJ\)は本文条件\cite[Definition 1.8.2 (i)]{kashiwara2002sheaves}を満たすので、
+  モノ射\(d:X\to X^0\)が存在する。
+  \(X^0\)は\(F\)-acyclicであるから、
+  任意の\(k > n\)に対して
+  \(R^{k-1}F(\coker(d)) \cong R^kF(X)\)となる。
+  従ってとくに、\(X\)と\(n\)に対して\ref{1.19.2.p1}が成り立つことは、
+  \(X=\coker(d)\)と\(n-1\)に対して\ref{1.19.2.p1}が成り立つことと同値である。
+  帰納法の仮定により、これは
+  \(X=\coker(d)\)と\(n-1\)に対して\ref{1.19.2.p2}が成り立つことと同値である。
+  さらに\(\coker(d)\)に対する\ref{1.19.2.p2}の完全列を
+  \(X^0\to \coker(d)\)と繋ぐことを考えれば、
+  \(X=\coker(d)\)と\(n-1\)に対して\ref{1.19.2.p2}が成り立つことは
+  \(X\)と\(n\)に対して\ref{1.19.2.p2}が成り立つことと同値である。
+  以上で\ref{1.19.2.p1}\(\Leftrightarrow\)\ref{1.19.2.p2}
+  の証明を完了し、
+  従って
+  \ref{1.19.2.1}\(\Rightarrow\)\ref{1.19.2.2}
+  の証明を完了する。
+
+  \ref{1.19.2.1}\(\Rightarrow\)\ref{1.19.2.3}
+  を示すためには、
+  各対象\(X\in \mcC\)に対して
+  次の二つの主張が同値であることを証明することが十分である：
+  \begin{enumerate}[label=(\Alph*),start=3]
+    \item \label{1.19.2.q1}
+    任意の\(k > n\)に対して\(R^kF(X) = 0\)である。
+    \item \label{1.19.2.q3}
+    完全列
+    \[
+    0 \to X \to X^0 \to \cdots \to X^n \to 0
+    \]
+    が条件「各\(j < n\)に対して\(X^j\in \mcJ\)である」を満たせば、
+    \(X^n\in \mcJ\)となる。
+  \end{enumerate}
+  \(n=0\)に対して\ref{1.19.2.q1}が成り立つことは、
+  \(X\)が\(F\)-acyclicであることと同値であり、
+  これは\(n=0\)に対して\ref{1.19.2.q3}が成り立つことと同値である。
+  よって\(n=0\)の場合は明らかに
+  \ref{1.19.2.q1}\(\Leftrightarrow\)\ref{1.19.2.q3}
+  が成り立つ。
+  \(n\geq 1\)として、\(n\)より小さいすべての自然数に対して
+  \ref{1.19.2.q1}\(\Leftrightarrow\)\ref{1.19.2.q3}
+  が成り立つと仮定する。
+  \[
+  0 \to X \xrightarrow{d} X^0 \to \cdots \to X^n \to 0
+  \]
+  を条件「各\(j < n\)に対して\(X^j\in \mcJ\)である」を満たす完全列とする。
+  \(X^0\)は\(F\)-acyclicであるから、
+  任意の\(k > n\)に対して
+  \(R^{k-1}F(\coker(d)) \cong R^kF(X)\)となる。
+  よって、\(X\)と\(n\)に対して\ref{1.19.2.q1}が成り立つことは、
+  \(X=\coker(d)\)と\(n-1\)に対して\ref{1.19.2.q1}が成り立つことと同値である。
+  帰納法の仮定により、これは
+  \(X=\coker(d)\)と\(n-1\)に対して\ref{1.19.2.q3}が成り立つことと同値である。
+  一方これは明らかに
+  \(X\)と\(n\)に対して\ref{1.19.2.q3}が成り立つことと同値であるから、
+  よって\ref{1.19.2.q1}\(\Leftrightarrow\)\ref{1.19.2.q3}が従う。
+  以上で\ref{1.19.2}の証明を完了し、
+  \autoref{1.19}の解答を完了する。
+\end{proof}
+
+
+
+\ifcsname Chap\endcsname\else
+\printbibliography
+\end{document}
+\fi

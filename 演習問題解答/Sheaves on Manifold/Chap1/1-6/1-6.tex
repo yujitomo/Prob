@@ -1,0 +1,354 @@
+\ifcsname Chap\endcsname\else
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+\newcommand{\StylePath}{\ifcsname AllKS\endcsname KS-Style/KS-Style.sty\else
+\ifcsname Chap\endcsname ../KS-Style/KS-Style.sty\else
+../../KS-Style/KS-Style.sty\fi\fi}
+\input{\StylePath}
+
+\KSset{1}{6}
+\setcounter{section}{\value{KSS}-1}
+\begin{document}
+\maketitle
+\HeaderCommentA
+\section{\KSsection{section}}
+\setcounter{prob}{\value{KSP}-1}
+\fi
+
+
+\begin{prob}\label{1.6}
+  \(\mcC\)をアーベル圏とする。
+  \begin{enumerate}
+    \item \label{1.6.1}
+    \(f:X\to Z,g: Y\to Z\)を射とする。
+    このとき、\(\ker(X\oplus Y\to Z)\)は函手
+    \[
+    W\mapsto \Hom(W,X) \times_{\Hom(W,Z)}\Hom(W,Y)
+    \]
+    の表現対象であることを示せ。
+    この対象を\(X\times_ZY\)と表す。
+
+    同様に、二つの射\(f:Z\to X, g:Z\to Y\)が与えられているとき、
+    \(\coker(Z\to X\oplus Y)\)は函手
+    \[
+    W\mapsto \Hom(X,W)\times_{\Hom(Z,W)}\Hom(Y,W)
+    \]
+    の表現対象であることを示せ。
+    この対象を\(X\coprod_ZY\)と表す。
+    \item \label{1.6.2}
+    \ref{1.6.1}の状況下で、
+    \(f':X\times_ZY\to Y, g':X\times_ZY\to X\)を射影とするとき、
+    自然な射\(\ker(f')\to \ker(f), \ker(g')\to \ker(g)\)が存在して
+    それぞれ同型であることを示せ。
+    \item \label{1.6.3}
+    \[
+    \begin{CD}
+      X' @> f' >>Y' \\
+      @V g' VV @VV g V \\
+      X @> f >> Y
+    \end{CD}
+    \]
+    を可換図式とする。
+    このとき、以下の条件は同値であることを示せ：
+    \begin{enumerate}
+      \item \label{1.6.3.1}
+      自然な射\(X'\to X'\times_YY'\)はエピである。
+      \item \label{1.6.3.2}
+      \(X\coprod_{X'}Y'\to Y\)はモノである。
+      \item \label{1.6.3.3}
+      次はすべて完全である：
+      \[
+      \begin{CD}
+        0 @>>> \ker(f')\times_{X'}\ker(g') @>>> \ker(g') @>>> \ker(g) @>>> 0, \\
+        0 @>>> \ker(f')\times_{X'}\ker(g') @>>> \ker(f') @>>> \ker(f) @>>> 0, \\
+        0 @>>> \coker(f') @>>> \coker(f) @>>> \coker(f)\coprod_Y\coker(g) @>>> 0, \\
+        0 @>>> \coker(g') @>>> \coker(g) @>>> \coker(f)\coprod_Y\coker(g) @>>> 0.
+      \end{CD}
+      \]
+    \end{enumerate}
+    \item \label{1.6.4}
+    \(f:X\to Y\)を\(\Ch(\mcC)\)の射とする。
+    各\(n\)について、可換図式
+    \[
+    \begin{CD}
+      \coker(d^{n-1}_X) @>>> X^{n+1} \\
+      @VVV @VVV \\
+      \coker(d^{n-1}_Y) @>>> Y^{n+1}
+    \end{CD}
+    \]
+    が\ref{1.6.3}の同値な条件を満たすとする。
+    このとき\(f\)は擬同型であることを示せ。
+  \end{enumerate}
+\end{prob}
+
+
+\begin{proof}
+  \ref{1.6.1}は自明である。
+
+  \ref{1.6.2}を\(f\)側のみ示す。
+  核の普遍性から自然な射\(\ker(f')\to \ker(f)\)が存在する。
+  これが同型であることを示せば良い。
+  まず\(\mcC\)がアーベル群の圏である場合に
+  自然な射\(\ker(f')\to \ker(f)\)が同型射であることを示す。
+  \((x,y)\in X\times_ZY\)が\(f'(x,y)=0\)を満たし、さらに\(\ker(f)\)での像
+  （これは\(x\)に等しい）が\(0\)であれば、
+  \(0 = f'(x,y) = y\)であるから\((x,y) = (0,0)\)がわかり、
+  従って\(\ker(f')\to \ker(f)\)は単射である。
+  任意の\(x\in \ker(f)\)に対して
+  \((x,0)\in X\times Y\)は\(X\times_ZY\)に属しているので、
+  \(\ker(f')\to \ker(f)\)は全射である。
+  以上より\(\mcC\)がアーベル群の圏である場合には主張が示された。
+
+  一般のアーベル圏\(\mcC\)の場合に
+  \(\ker(f')\to \ker(f)\)が同型射であることを証明をする。
+  \(W\)を任意にとり、
+  \(f_W:\Hom(W,X)\to \Hom(W,Z), f'_W:\Hom(W,X\times_ZY)\to \Hom(W,Y)\)
+  を\(f,f'\)を合成することにより得られる射とする。
+  このとき\(\Hom(W,X\times_ZY)\cong \Hom(W,X)\times_{\Hom(W,Z)}\Hom(W,Y)\)であるから、
+  \(\mcC\)がアーベル群の場合の結果より、
+  自然な射\(\ker(f'_W)\to \ker(f_W)\)は同型射である。
+  従って、米田の補題により、\(\ker(f')\to \ker(f)\)も同型射である。
+  以上で一般のアーベル圏の場合も証明ができた。
+
+  \ref{1.6.3}を証明する。
+  まず\ref{1.6.3.2}を仮定して\ref{1.6.3.1}を証明する。
+  \(Z\dfn X\coprod_{X'}Y\)とおく。
+  射\(Z\to Y\xleftarrow{g} Y'\)があるので、
+  \(Z'\dfn Z\times_YY'\)ができる。
+  このとき、pull-backの普遍性により、\(Z'\times_Z X \cong X\times_YY'\)となる：
+  \[
+  \begin{CD}
+    Z'\times_Z X @>>> Z' @>>> Y' \\
+    @VVV @VVV @VVV \\
+    X @>>> Z @>>> Y.
+  \end{CD}
+  \]
+  上の可換図式の左側に\ref{1.6.2}を用いることで、
+  \(\ker(Z'\to Y')\cong \ker(Z\to Y)\)であることがわかる。
+  仮定より\(\ker(Z\to Y) = 0\)であるから、
+  \(Z'\to Y'\)はモノ射である。
+  \(Z \dfn X\coprod_{X'}Y'\)であるから、
+  射\(Y'\to Z\)があり、これによって\(Z'\to Y'\)のレトラクト\(Y'\to Z'\)を得る
+  (合成\(Y'\to Z'\to Y'\)は\(\id\))。
+  \(Z'\to Y'\)がモノ射であることから、レトラクトの存在より、
+  \(Z'\to Y'\)は同型射でなければならない。
+  よって、射\(X'\to X\times_YY'\)がエピであることを示すためには、
+  \(X'\to X\times_ZY'\)がエピであることを示すことが十分である。
+  しかし、構成より、
+  \[
+  X\times_ZY \cong \ker(X\oplus Y \to Z)
+  \cong \ker(X\oplus Y \to \coker(X' \to X\oplus Y))
+  \cong \im(X' \to X\oplus Y)
+  \]
+  となる。
+  これは\(X'\to X\oplus_ZY\)がエピであることを示している。
+  以上で
+  \ref{1.6.3.2}\(\Rightarrow\)\ref{1.6.3.1}
+  が証明された。
+  \(\mcC^{\op}\)で考えることにより、
+  \ref{1.6.3.1}\(\Rightarrow\)\ref{1.6.3.2}
+  がわかる。
+  以上で
+  \ref{1.6.3.1}\(\Leftrightarrow\)\ref{1.6.3.2}
+  がわかった。
+
+  \ref{1.6.3.1}と\ref{1.6.3.2}を仮定して
+  \ref{1.6.3.3}を証明する。
+  \(\varphi:X'\to X\times_YY'\)と置く。
+  任意に射\(h:W\to X'\)をとる。
+  \(X\times_YY'\)の定義より、
+  \begin{itemize}
+    \item[ \ ]
+    \(\varphi\circ h = 0\).
+    \item[\(\Leftrightarrow\)]
+    \(f'\circ h = 0\)かつ\(g'\circ h = 0\).
+    \item[\(\Leftrightarrow\)]
+    \(h\)は\(\ker(f')\)と\(\ker(g')\)の両方を経由する。
+    \item[\(\Leftrightarrow\)]
+    \(h\)は\(\ker(f')\times_{X'}\ker(g')\)を経由する。
+  \end{itemize}
+  となる。
+  従って自然に\(\ker(\varphi) \cong \ker(f')\times_{X'}\ker(g')\)となる。
+  \(\mcC^{\op}\)で考えることで、自然に
+  \(\coker(X\coprod_{X'}Y'\to Y)\cong \coker(f)\coprod_Y\coker(g)\)
+  となることがわかる。
+
+  図式
+  \[
+  \begin{CD}
+    X' @> \varphi >> X\times_Y Y' \\
+    @V g' VV @VVV \\
+    X @= X
+  \end{CD}
+  \]
+  について考える。
+  \ref{1.6.2}を用いることで、
+  \(\ker(X\times_YY'\to X) \cong \ker(g)\)であることがわかる。
+  二重に添字付けられた図式の極限が交換することにより、
+  \(\ker\)が交換して、
+  \[
+  \ker(f')\times_{X'}\ker(g')\cong \ker(\varphi)
+  \cong \ker(\ker(\varphi)\to 0) \cong \ker(\ker(g')\to \ker(g))
+  \]
+  がわかる。
+  \(f\)側でも同じことをすることによって、
+  \[
+  \begin{CD}
+    0 @>>> \ker(f')\times_{X'}\ker(g') @>>> \ker(g') @>>> \ker(g),  \\
+    0 @>>> \ker(f')\times_{X'}\ker(g') @>>> \ker(f') @>>> \ker(f),
+  \end{CD}
+  \]
+  が完全であることがわかった。
+  \(\mcC^{\op}\)で考えることで、
+  \[
+  \begin{CD}
+    \coker(f') @>>> \coker(f) @>>> \coker(f)\coprod_Y\coker(g) @>>> 0, \\
+    \coker(g') @>>> \coker(g) @>>> \coker(f)\coprod_Y\coker(g) @>>> 0,
+  \end{CD}
+  \]
+  が完全であることがわかる
+  (ここまで\ref{1.6.3.1}と\ref{1.6.3.2}を使っていない)。
+
+  \(\ker(g')\to \ker(g)\)がエピであることを証明すれば、
+  \(g\)と\(f\)を入れ替えることによって
+  \(\ker(f')\to \ker(f)\)がエピであることがわかり、
+  \(\mcC^{\op}\)で考えることで\(\coker\)の方のモノ性も従う。
+  なので\(\ker(g')\to \ker(g)\)がエピであることを示すことが残っていることである。
+  \ref{1.6.2}より\(\ker(g)\cong \ker(X\times_YY'\to X)\)であるから、
+  \(\ker(g')\to \ker(g)\)がエピであることを示すためには、
+  可換図式
+  \[
+  \begin{CD}
+    X' @>>> X\times_YY' \\
+    @V g' VV @VVV \\
+    X @= X
+  \end{CD}
+  \]
+  で\(\ker(g')\to \ker(X\times_YY'\to X)\)
+  が\(\ker(g')\to \ker(g)\)がエピであることを示すことが十分である。
+  よって\(Y=X,f=\id_X\)であり、\(f'\)はエピであると仮定しても一般性を失わない。
+  また、\(\im(g)\)をとっても\(\ker\)は変わらないので、
+  \(g\)もエピであると仮定しても一般性を失わない。
+  このとき\(X'\)の部分対象として\(\ker(f')\subset \ker(g')\)であるので、
+  \(X',\ker(g')\)を\(\ker(f')\)で割ることによって、
+  完全列の間の射
+  \[
+  \begin{CD}
+    0 @>>> \ker(g')/\ker(f') @>>> X'/\ker(f') @> g' >> X @>>> 0 \\
+    @. @VVV @VVV @| @. \\
+    0 @>>> \ker(g) @>>> Y' @>>> X @>>> 0
+  \end{CD}
+  \]
+  を得る。
+  ここで真ん中の射\(X'/\ker(f')\to Y'\)は\(f'\)がエピであることによってエピ射である。
+  従って縦向き真ん中の射と縦向き右端の射が同型であることがわかった。
+  射の圏において同型な二つの射の核は当然同型であるから、
+  縦向き左端の射が同型であることがわかる。
+  これは\(\ker(g')\to \ker(g)\)がエピであることを意味する。
+  以上で\ref{1.6.3.1}と\ref{1.6.3.2}を仮定することで
+  \ref{1.6.3.3}が従うことがわかった。
+
+  \ref{1.6.3.3}を仮定して\ref{1.6.3.1}を示す部分が残っている。
+  \ref{1.6.3.3}を仮定する。
+  \(\ker(f')\times_{X'}\ker(g')\cong \ker(\varphi:X'\to X\times_YY')\)
+  となることはすでに示している。
+  \(\ker(\varphi:X'\to X\times_YY')\)で\(X'\)を割ることで、
+  \(\ker(f')\times_{X'}\ker(g') = 0\)であると仮定しても一般性を失わない。
+  \(p:X\times_YY'\to Y'\)を自然な射影とする。
+  可換図式
+  \[
+  \begin{CD}
+    X\times_YY' @> p >> Y' \\
+    @VVV @VV g V \\
+    X @> f >> Y
+  \end{CD}
+  \]
+  にすでに示した「\ref{1.6.3.1}\(\Rightarrow\)\ref{1.6.3.3}」を適用することで、
+  自然な射\(\coker(p)\to \coker(f)\)はモノ射であることがわかる。
+  また、図式
+  \[
+  \begin{CD}
+    X' @> f' >> Y' \\
+    @V \varphi VV   @| \\
+    X\times_YY' @> p >> Y'
+  \end{CD}
+  \]
+  が可換であることから、
+  \[\coker(\coker(f') \to \coker(p)) \cong
+  \coker(\coker(\varphi) \to \coker(\id_{Y'})) = 0\]
+  となるので、\(\coker(f')\to \coker(p)\)はエピである。
+  今\ref{1.6.3.3}を仮定しているので、
+  合成\(\coker(f')\to \coker(p) \to \coker(f)\)はモノ射であり、
+  従ってとくに\(\coker(f')\to \coker(p)\)もモノ射である。
+  このことは、\(\coker(f')\to \coker(p)\)が同型射であることを意味する。
+  従って図式
+  \[
+  \begin{CD}
+    Y' @>>> \coker(f') \\
+    @| @VV \cong V \\
+    Y' @>>> \coker(p)
+  \end{CD}
+  \]
+  はCartesianであり、\ref{1.6.2}を適用することで、
+  自然な射
+  \[\im(f') = \ker(Y'\to \coker(f')) \xrightarrow{\sim} \ker(Y'\to\coker(p)) = \im(p)\]
+  は同型射であることがわかる。
+  \ref{1.6.2}より、自然な射\(\ker(f)\xrightarrow{\sim} \ker(p)\)は同型であるので、
+  以下の可換図式を得る：
+  \[
+  \begin{CD}
+    0 @>>> \ker(f') @> i >> X' @> f' >> \im(f') @>>> 0  \\
+    @.   @V \cong VV   @V \varphi VV   @VV \cong V    @. \\
+    0 @>>> \ker(p) @> j >> X\times_YY' @> p >> \im(p) @>>> 0,
+  \end{CD}
+  \]
+  ただしここで横向きはすべて完全であり、
+  \(i:\ker(f')\to X', j:\ker(p)\to X\times_YY'\)は自然なモノ射である。
+  \(\bar{\varphi}:\im(f')\xrightarrow{\sim} \im(p)\)と置く。
+  任意に射\(h:X\times_YY' \to Z\)を取って、\(h\circ\varphi = 0\)であると仮定する。
+  \(\varphi\)がエピであることを示すには、\(h=0\)を証明することが十分である。
+  このとき\(h\circ\varphi \circ i = 0\)であることと、
+  \(\ker(f')\cong \ker(p)\)であることと、
+  上の図式が可換であることにより、
+  \(h\circ j = 0\)がわかる。
+  従って\(h = h'\circ p\)となる射\(h':\im(p)\to Z\)が存在する。
+  \(h'\circ \bar{\varphi}\circ f' = h'\circ p\circ \varphi = h\circ \varphi = 0\)
+  であることと、\(f'\)がエピであることから、\(h'\circ \bar{\varphi} = 0\)であるが、
+  \(\bar{\varphi}\)は同型射であるので、\(h'=0\)がわかる。
+  以上より\(h = h'\circ p = 0\)である。
+  以上で\ref{1.6.3}の証明を完了する。
+
+  \ref{1.6.4}を示す。
+  まず\(\coker(d_X^{n-1})\cong X^n/\im(d_X^{n-1})\)であることから
+  \(H^n(X) \cong \ker(\coker(d_X^{n-1})\to X^{n+1})\)である。
+  可換図式
+  \[
+  \begin{CD}
+    \coker(d_X^{n-1}) @>>> X^{n+1} \\
+    @VVV @VV f^{n+1} V \\
+    \coker(d_Y^{n-1}) @>>> Y^{n+1}
+  \end{CD}
+  \]
+  に\ref{1.6.3} \ref{1.6.3.3}を使うことで、
+  \(H^n(f):H^n(X)\to H^n(Y)\)は各\(n\)でエピであることがわかる。
+  また、\(\coker(\coker(d_X^{n-1})\to X^{n+1}) \cong \coker(d_X^n)\)であるから、
+  上の可換図式に再び\ref{1.6.3} \ref{1.6.3.3}を使うことで、
+  \(\coker(d_X^n)\to \coker(d_Y^n)\)は各\(n\)でモノであることがわかる。
+  特に\(\coker(d_X^{n-1})\to \coker(d_Y^{n-1})\)もモノであり、
+  従って上の可換図式に再び\ref{1.6.3} \ref{1.6.3.3}を使うと
+  \[
+  \ker(H^n(f)) \cong
+  \ker(\ker(\coker(d_X^{n-1})\to \coker(d_Y^{n-1})) \to \ker(f^{n+1})) = 0
+  \]
+  がわかる。
+  以上より\(H^n(f)\)は各\(n\)でモノ射である。
+  \(H^n(f)\)はエピだったので、\(H^n(f)\)は同型射となる。
+  このことは\(f\)が擬同型であることを意味する。
+  以上で\autoref{1.6}の証明を完了する。
+\end{proof}
+
+
+
+\ifcsname Chap\endcsname\else
+\printbibliography
+\end{document}
+\fi

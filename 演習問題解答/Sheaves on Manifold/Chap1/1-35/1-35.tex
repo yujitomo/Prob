@@ -1,0 +1,90 @@
+\ifcsname Chap\endcsname\else
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+\newcommand{\StylePath}{\ifcsname AllKS\endcsname KS-Style/KS-Style.sty\else
+\ifcsname Chap\endcsname ../KS-Style/KS-Style.sty\else
+../../KS-Style/KS-Style.sty\fi\fi}
+\input{\StylePath}
+
+\KSset{1}{35}
+\setcounter{section}{\value{KSS}-1}
+\begin{document}
+\maketitle\HeaderCommentA
+\section{\KSsection{section}}
+\setcounter{prob}{\value{KSP}-1}
+\fi
+
+\begin{prob}\label{1.35}
+  \(\hat{\mcC} = \sfSet^{\mcC^{\op}}\)を前層圏とする。
+  \begin{enumerate}
+    \item \label{1.35.1}
+    \(I\)を有向集合、
+    \(X_i\)を\(I\)で添字付けられた圏\(\mcC\)の図式とする。
+    \(X\mapsto \colim_{i\in I}\Hom_{\mcC}(X,X_i)\)
+    により定まる\(\hat{\mcC}\)の対象
+    \(``\colim"_{i\in I} X_i\)
+    (この記号の定義は\cite[Definition 1.11.4]{kashiwara2002sheaves}を参照) は
+    \(I\)で添字付けられた図式
+    \(h_{X_i}\in \hat{\mcC}\)の余極限であることを示せ。
+    より詳しく、
+    \(F\in \hat{\mcC}\)に対して以下の自然な同型を示せ：
+    \[
+    \Hom_{\hat{\mcC}}(``\colim"_{i\in I} X_i, F) \cong \colim_{i\in I} F(X_i).
+    \]
+    \item \label{1.35.2}
+    \(Y_j\in \mcC\)を有向集合\(J\)で添字付けられた図式とする。
+    以下の自然な同型を示せ：
+    \[
+    \Hom_{\hat{\mcC}}(``\colim"_{i\in I} X_i, ``\colim"_{j\in J} Y_j)
+    \cong \lim_{i\in I}\colim_{j\in J}\Hom_{\mcC}(X_i,Y_j).
+    \]
+  \end{enumerate}
+\end{prob}
+
+\begin{rem*}
+  本文では\ref{1.35.2}の左辺の右側の\(``\colim"\)が
+  たんに\(\colim\)と表記されていたが、これは\(``"\)をつけ忘れた？
+\end{rem*}
+
+\begin{proof}
+  \ref{1.35.1}を示す。
+  函手圏の余極限は各点ごとに計算されるので
+  \(``\colim"_{i\in I} X_i\cong \colim_{i\in I}h_{X_i}\)が従う。
+  さらにこれがわかると、余極限の定義と米田の補題より、
+  \begin{align*}
+    \Hom_{\hat{\mcC}}(``\colim"_{i\in I} X_i, F)
+    &\cong \Hom_{\hat{\mcC}}(\colim_{i\in I} X_i, F) \\
+    &\cong \lim_{i\in I}\Hom_{\hat{\mcC}}(h_{X_i}, F) \\
+    &\cong \lim_{i\in I}F(X_i)
+  \end{align*}
+  が従う。
+  以上で\ref{1.35.1}の証明を完了する。
+
+  \ref{1.35.2}を示す。
+  素直に計算すると、
+  \begin{align*}
+    \Hom_{\hat{\mcC}}(``\colim"_{i\in I} X_i, ``\colim"_{j\in J} h_{Y_j})
+    &\overset{\star}{\cong}
+    \Hom_{\hat{\mcC}}(\colim_{i\in I} h_{X_i}, \colim_{j\in J} h_{Y_j}) \\
+    &\overset{*}{\cong}
+    \lim_{i\in I}\Hom_{\hat{\mcC}}(h_{X_i}, \colim_{j\in J} h_{Y_j}) \\
+    &\overset{\scriptstyle\spadesuit}{\cong}
+    \lim_{i\in I}(\colim_{j\in J} h_{Y_j})(X_i) \\
+    &\overset{\scriptstyle\clubsuit}{\cong}
+    \lim_{i\in I}\colim_{j\in J}\Hom_{\mcC}(X_i,Y_j)
+  \end{align*}
+  となる。
+  ただしここで、\(\star\)の部分に\ref{1.35.1}を用い、
+  \(*\)の部分に余極限の定義を用い、
+  \(\spadesuit\)の部分に米田の補題を用い、
+  \(\clubsuit\)の部分に函手圏での余極限が各点ごとに計算されることを用いた。
+  以上で\ref{1.35.2}の証明を完了し、
+  \autoref{1.35}の解答を完了する。
+\end{proof}
+
+
+
+
+\ifcsname Chap\endcsname\else
+\printbibliography
+\end{document}
+\fi

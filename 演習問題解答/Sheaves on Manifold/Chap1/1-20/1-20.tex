@@ -1,0 +1,94 @@
+\ifcsname Chap\endcsname\else
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+\newcommand{\StylePath}{\ifcsname AllKS\endcsname KS-Style/KS-Style.sty\else
+\ifcsname Chap\endcsname ../KS-Style/KS-Style.sty\else
+../../KS-Style/KS-Style.sty\fi\fi}
+\input{\StylePath}
+
+\KSset{1}{20}
+\setcounter{section}{\value{KSS}-1}
+\begin{document}
+\maketitle\HeaderCommentA
+\section{\KSsection{section}}
+\setcounter{prob}{\value{KSP}-1}
+\fi
+
+
+
+\begin{prob}\label{1.20}
+  \(\mcC,\mcD,\mcE\)をそれぞれアーベル圏として、
+  \(F:\mcC\to \mcD, G:\mcD\to \mcE\)を左完全函手とする。
+  \(F\)-injectiveな\(\mcI\subset \mcC\)と
+  \(G\)-injectiveな\(\mcJ\subset \mcD\)が存在して、
+  \(F(\mcI)\subset \mcJ\)となると仮定する
+  (本文\cite[Proposition 1.8.7]{kashiwara2002sheaves}の状況設定)。
+  さらに、\(F\)はコホモロジー次元\(\leq r\)を持ち、
+  \(G\)はコホモロジー次元\(\leq s\)を持つとする。
+  このとき、\(G\circ F\)はコホモロジー次元\(\leq r+s\)を持つことを示せ。
+\end{prob}
+
+\begin{proof}
+  \(X\in \mcC\)を任意にとる。
+  \(F\)はコホモロジー次元\(\leq r\)を持つので、
+  ある擬同型\(X\xrightarrow{\text{qis.}} I\)で、
+  各\(k\)について\(I^k\)は\(F\)-acyclicであり、
+  さらに\(\tau^{\leq r}(I) = I\)となるものがある。
+  このとき、\(RF(X) \cong RF(I)\)であるが、
+  本文\cite[Proposition 1.8.3]{kashiwara2002sheaves}と\autoref{1.19.1}より、
+  さらに\(RF(I)\cong F(I)\)となる。
+  ただしここで\(F(I)\)は各\(I^k\)を\(F\)で送ることによって得られる複体
+  (つまり\(\sfK^+(F)(I)\)) を表している。
+  従って、本文\cite[Proposition 1.8.7]{kashiwara2002sheaves}より、
+  \(R(G\circ F)(X)\cong RG(RF(X)) \cong RG(F(I))\)が従う。
+  \(G\)のコホモロジー次元が\(\leq s\)であることと、
+  \(\tau^{\leq r}(F(I)) = F(I)\)であることから、
+  \autoref{1.20}を示すためには、次の主張を証明することが十分である：
+  \begin{enumerate}[label=(\fnsymbol*),start=2]
+    \item \label{1.20.p}
+    \(F:\mcC\to \mcD\)をアーベル圏の間の左完全函手とする。
+    \(F\)はコホモロジー次元\(\leq r\)を持ち、
+    さらに\(F\)-injectiveな\(\mcI\subset \mcC\)が存在すると仮定する。
+    \(n\geq 0\)を自然数とする。
+    このとき、\(\tau^{\leq n}(X) = X\)が成り立つ
+    任意の\(X\in \Ch^+(\mcC)\)に対して、
+    自然な射\(\tau^{\leq n+r}(RF(X)) \to RF(X)\)は同型射である。
+  \end{enumerate}
+  \(n\)に関する帰納法により\ref{1.20.p}を示す。
+  \(n=0\)の場合は\autoref{1.19.2.2}より従う。
+  \(n-1\)以下で\ref{1.20.p}が成立すると仮定する。
+  \(Y\dfn \tau^{\leq n-1}(X), Z\dfn \coker(d_X^{n-1})\in \mcC\)と置く。
+  このとき、\(Y\to X\)のconeは\(Z[n]\)と擬同型である。
+  また、\(\tau^{\leq n-1}(Y)=Y\)であるから、帰納法の仮定より
+  \(\tau^{\leq n-1+r}(RF(\tau^{\leq n-1}(X))) \cong RF(\tau^{\leq n-1}(X))\)
+  であり、
+  \(\tau^{\leq 0}(Z) = Z\)であるから、
+  すでに示されている\(n=0\)の場合より、
+  \(\tau^{\leq n+r}(RF(Z[n])) = \tau^{\leq r}(RF(Z))[n]
+  cong RF(Z)[n] = RF(Z[n])\)である。
+  完全三角
+  \(Y\to X \to Z[n] \to Y[1]\)
+  に\(RF\)を適用して得られる完全三角
+  \(RF(Y) \to RF(X) \to RF(Z[n]) \to RF(Y[1])\)
+  に\(\tau^{\leq n+r}\)を適用すれば、
+  完全三角
+  \[
+  \tau^{\leq n+r}(RF(Y)) \to \tau^{\leq n+r}(RF(X)) \to
+  \tau^{\leq n+r}(RF(Z[n])) \to \tau^{\leq n+r}(RF(Y[1]))
+  \]
+  を得る。
+  \(\tau^{\leq n+r}(RF(Y)) \cong RF(Y),
+  \tau^{\leq n+r}(RF(Z[n])) \cong RF(Z[n])\)より、完全三角
+  \[
+  RF(Y) \to \tau^{\leq n+r}(RF(X)) \to Z[n] \to Y[1]
+  \]
+  を得る。
+  以上で\ref{1.20.p}の証明を完了し、
+  \autoref{1.20}の解答を完了する。
+\end{proof}
+
+
+
+\ifcsname Chap\endcsname\else
+\printbibliography
+\end{document}
+\fi

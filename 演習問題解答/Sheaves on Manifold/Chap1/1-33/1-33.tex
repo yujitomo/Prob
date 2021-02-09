@@ -1,0 +1,116 @@
+\ifcsname Chap\endcsname\else
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+\newcommand{\StylePath}{\ifcsname AllKS\endcsname KS-Style/KS-Style.sty\else
+\ifcsname Chap\endcsname ../KS-Style/KS-Style.sty\else
+../../KS-Style/KS-Style.sty\fi\fi}
+\input{\StylePath}
+
+\KSset{1}{33}
+\setcounter{section}{\value{KSS}-1}
+\begin{document}
+\maketitle\HeaderCommentA
+\section{\KSsection{section}}
+\setcounter{prob}{\value{KSP}-1}
+\fi
+
+
+\begin{prob}\label{1.33}
+  \(k\)を体、\(V\)を\(k\)-線形空間とする。
+  自己準同型\(u:V\to V\)が
+  \textbf{trace class}
+  であるとは、
+  ある\(n\)に対して\(\dim(u^n(V)) < \infty\)
+  が成り立つことと定義する。
+  \(u:V\to V\)が trace class であるとき、
+  \(\tr(u) \dfn \tr(u|_{u^n(V)})\)と定義する。
+  \begin{enumerate}
+    \item \label{1.33.1}
+    \(\tr(u)\)の定義は\(n\)に依存しないことを示せ。
+    \item \label{1.33.2}
+    \(V\xrightarrow{u} W \xrightarrow{v} V\)を\(k\)-線形空間の射の列とする。
+    \(u\circ v\)が trace class であることと
+    \(v\circ u\)が trace class であることは同値であることを示せ。
+    さらにこのとき\(\tr(u\circ v) = \tr(v\circ u)\)が成り立つことを示せ。
+    \item \label{1.33.3}
+    \(k\)-線形空間の完全列の自己準同型
+    \[
+    \begin{CD}
+      0 @>>> V_1 @>>> V_2 @>>> V_3 @>>> 0 \\
+      @. @V{v_1}VV @V{v_2}VV @V{v_3}VV @. \\
+      0 @>>> V_1 @>>> V_2 @>>> V_3 @>>> 0
+    \end{CD}
+    \]
+    について、\(v_2\)が trace class であることと
+    \(v_1,v_3\)がどちらも trace class であることは同値であることを示せ。
+    さらにこのとき、\(\tr(v_2) = \tr(v_1) + \tr(v_3)\)が成り立つことを示せ。
+  \end{enumerate}
+\end{prob}
+
+
+\begin{proof}
+  \ref{1.33.1}を示す。
+  まず\(x\mapsto [u:V\to V]\)により\(V\)を\(k[x]\)-加群と考える。
+  十分大きい\(n\)に対して\(\dim(\im(u^n)) < \infty\)であるので、
+  \(n \gg 0\)で\(\im(u^n) = \im(u^{n+1})\)となる。
+  従って、自然な射\(\im(u^n) \subset V\to V\otimes_k k[x,1/x]\)は
+  \(n \gg 0\)で同型射であり、
+  とくに\(V\otimes_k k[x,1/x]\)は
+  \(k\)-線形空間として有限次元である。
+  \(u\)のトレースは\(k\)-線形空間\(V\otimes_k k[x,1/x]\)上への
+  \(x\)の作用にしか依存しないため、\(n\)の取り方によらずにwell-definedである。
+  以上で\ref{1.33.1}の証明を完了する。
+
+  \ref{1.33.2}を示す。
+  \(v\circ (u\circ v)^n\circ u = (v\circ u)^{n+1}\)
+  なので\(u\circ v\)が trace class であることと
+  \(v\circ u\)が trace class であることは同値である。
+  \(v\circ u:V\to V\)と
+  \(u\circ v:W\to W\)によって\(V,W\)をそれぞれ\(k[x]\)-加群と考えたとき、
+  \(u:V\to W\)と\(v:W\to V\)は\(k[x]\)-加群の射である。
+  さらに、\(u\circ v\)か\(v\circ u\)の一方が trace class であれば、
+  十分大きい\(n\)に対して
+  \(v\circ u:(v\circ u)^n (V) \to (v\circ u)^n (V)\)と
+  \(u\circ v:(u\circ v)^n (W) \to (u\circ v)^n (W)\)はいずれも全単射であり、
+  とくに\(k[x]\)-加群の同型射である。
+  これは\(v\circ u\)と\(u\circ v\)の固有値の和が等しいことを意味する。
+  以上で\ref{1.33.2}の証明を完了する。
+
+  \ref{1.33.3}を示す。
+  \(v_1,v_2,v_3\)によって\(V_1,V_2,V_3\)を\(k[x]\)-加群とみなす。
+  \(v_1,v_2,v_3\)が\(k\)-線形空間の完全列の射を成すことから、
+  \[
+  \begin{CD}
+    0 @>>> V_1 @>>> V_2 @>>> V_3 @>>> 0
+  \end{CD}
+  \]
+  は\(k[x]\)-加群の完全列である。
+  \(k[x,1/x]\)をテンソルすると、
+  \(k[x,1/x]\)は\(k[x]\)上平坦であるから、
+  \(k[x,1/x]\)-加群の完全列
+  \[
+  \begin{CD}
+    0 @>>> V_1\otimes_{k[x]}k[x,1/x] @>>> V_2\otimes_{k[x]}k[x,1/x]
+    @>>> V_3\otimes_{k[x]}k[x,1/x] @>>> 0
+  \end{CD}
+  \]
+  を得る。
+  \(v_i\)が trace class であることは、
+  \(V_i\otimes_{k[x]}k[x,1/x]\)が長さ有限であることと同値であるので、
+  以上より\(v_2\)が trace class であることと
+  \(v_1,v_3\)がどちらも trace class であることが同値であることが従う。
+  \(v_i\)のトレースは\(V_i\otimes_{k[x]}k[x,1/x]\)への\(v_i\)の作用
+  (つまり\(x\)の作用)
+  のトレースであるから、
+  \(V_i\otimes_{k[x]}k[x,1/x]\)たちの成す短完全列を考えることによって、
+  \(\tr(v_2) = \tr(v_1) + \tr(v_3)\)であることが従う
+  (cf. \autoref{1.32.2}の証明の一番最初の部分など)。
+  以上で\ref{1.33.3}の証明を完了し、
+  \autoref{1.33}の解答を完了する。
+\end{proof}
+
+
+
+\ifcsname Chap\endcsname\else
+\printbibliography
+\end{document}
+\fi

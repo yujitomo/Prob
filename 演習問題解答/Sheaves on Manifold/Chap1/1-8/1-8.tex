@@ -1,0 +1,51 @@
+\ifcsname Chap\endcsname\else
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+\newcommand{\StylePath}{\ifcsname AllKS\endcsname KS-Style/KS-Style.sty\else
+\ifcsname Chap\endcsname ../KS-Style/KS-Style.sty\else
+../../KS-Style/KS-Style.sty\fi\fi}
+\input{\StylePath}
+
+\KSset{1}{8}
+\setcounter{section}{\value{KSS}-1}
+\begin{document}
+\maketitle
+\HeaderCommentA
+\section{\KSsection{section}}
+\setcounter{prob}{\value{KSP}-1}
+\fi
+
+
+\begin{prob}[The Five Lemma]\label{1.8}
+  \(\mcC\)をアーベル圏とする。
+  \(\mcC\)の可換図式
+  \[
+  \begin{CD}
+    X^0 @>>> X^1 @>>> X^2 @>>> X^3 @>>> X^4 \\
+    @V f_0 VV   @V f_1 VV   @V f_2 VV   @V f_3 VV   @V f_4 VV \\
+    Y^0 @>>> Y^1 @>>> Y^2 @>>> Y^3 @>>> Y^4
+  \end{CD}
+  \]
+  について以下の主張を証明せよ。
+  ただし横向きは完全であるとする。
+  \begin{enumerate}
+    \item \label{1.8.1}
+    \(f_0\)がエピであり、
+    \(f_1,f_3\)がモノであれば、
+    \(f_2\)はモノである。
+    \item \label{1.8.2}
+    \(f_4\)がモノであり、
+    \(f_1,f_3\)がエピであれば、
+    \(f_2\)はエピである。
+  \end{enumerate}
+\end{prob}
+
+\begin{proof}
+  \autoref{1.7}によって\(\Ab\)での主張と見做して良く、
+  この場合、主張は初等的である。
+\end{proof}
+
+
+\ifcsname Chap\endcsname\else
+\printbibliography
+\end{document}
+\fi

@@ -1,0 +1,70 @@
+\ifcsname Chap\endcsname\else
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+\newcommand{\StylePath}{\ifcsname AllKS\endcsname KS-Style/KS-Style.sty\else
+\ifcsname Chap\endcsname ../KS-Style/KS-Style.sty\else
+../../KS-Style/KS-Style.sty\fi\fi}
+\input{\StylePath}
+
+\KSset{2}{15}
+\setcounter{section}{\value{KSS}-1}
+\begin{document}
+\maketitle
+\HeaderCommentA
+\section{\KSsection{section}}
+\setcounter{prob}{\value{KSP}-1}
+
+\fi
+
+
+
+\begin{prob}\label{2.15}
+  \begin{enumerate}
+    \item \label{2.15.1}
+    \(F^{\bullet}\)を下に有界な\(X\)上の層の複体とする。
+    自然な射
+    \(H^j(\Gamma(X,F^{\bullet})) \to H^j(R\Gamma(X,F^{\bullet}))\)
+    を構成せよ。
+    \item \label{2.15.2}
+    \(\mcU = \{U_i\}_i\)を\(X\)の開被覆として、
+    \(F\)を\(X\)上の層とする。
+    自然な射\(H^j(C^{\bullet}(\mcU,F)) \to H^j(X,F)\)を構成せよ。
+  \end{enumerate}
+\end{prob}
+
+\begin{proof}
+  \ref{2.15.1}を示す。
+  入射的層からなる複体へのモノな擬同型\(F^{\bullet}\xrightarrow{\text{qis}}I^{\bullet}\)
+  をとれば複体の射
+  \(\Gamma(X,F^{\bullet})\to \Gamma(X,I^{\bullet})\cong R\Gamma(X,F^{\bullet})\)
+  が得られるので、
+  \(j\)次コホモロジーをとることによって射
+  \(H^j(\Gamma(X,F^{\bullet})) \to H^j(R\Gamma(X,F^{\bullet}))\)
+  を得る。
+  以上で\ref{2.15.1}の証明を完了する。
+
+  \ref{2.15.2}を示す。
+  \(F\)を\(0\)次だけが\(F\)で他が\(0\)である自明な複体とみなすと、
+  本文\cite[Proposition 2.8.4]{kashiwara2002sheaves}より、augmentation map
+  \(\delta:F\xrightarrow{\text{qis}} \mcC^{\bullet}(\mcU,F)\)
+  は擬同型である。
+  よって\(\sfD^+(\Ab(X))\)の同型射
+  \(R\Gamma(X,\delta):R\Gamma(X,F)\xrightarrow{\sim}
+  R\Gamma(X,\mcC^{\bullet}(\mcU,F))\)を得る。
+  \ref{2.15.1}を\(F^{\bullet} = \mcC^{\bullet}(\mcU,F)\)に対して適用すると、
+  \(\Gamma(X,\mcC^{\bullet}(\mcU,F)) \cong C^{\bullet}(\mcU,F)\)
+  であるので、射
+  \(H^j(C^{\bullet}(\mcU,F)) \to H^j(R\Gamma(X,\mcC^{\bullet}(\mcU,F))\)
+  を得る。
+  これに\(H^j(R\Gamma(X,\delta)^{-1})\)を合成することで
+  射\(H^j(C^{\bullet}(\mcU,F))\to H^j(X,F)\)を得る。
+  以上で\ref{2.15.2}の証明を完了し、
+  \autoref{2.15}の解答を完了する。
+\end{proof}
+
+
+
+
+\ifcsname Chap\endcsname\else
+\printbibliography
+\end{document}
+\fi

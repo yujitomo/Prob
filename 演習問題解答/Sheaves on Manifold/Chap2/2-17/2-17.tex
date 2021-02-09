@@ -1,0 +1,140 @@
+\ifcsname Chap\endcsname\else
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+\newcommand{\StylePath}{\ifcsname AllKS\endcsname KS-Style/KS-Style.sty\else
+\ifcsname Chap\endcsname ../KS-Style/KS-Style.sty\else
+../../KS-Style/KS-Style.sty\fi\fi}
+\input{\StylePath}
+
+\KSset{2}{17}
+\setcounter{section}{\value{KSS}-1}
+\begin{document}
+\maketitle
+\HeaderCommentA
+\section{\KSsection{section}}
+\setcounter{prob}{\value{KSP}-1}
+
+\fi
+
+\begin{prob}\label{2.17}
+  \(X\)を局所コンパクト空間、
+  \(\mcR\)を\(X\)上の (可換) 環の層で\(\wgld(\mcR)<\infty\)であるものとし、
+  \(Z_1,Z_2\subset X\)を局所閉部分集合とする。
+  \begin{enumerate}
+    \item \label{2.17.1}
+    \(F_1,F_2\in \sfD^+(\mcR)\)に対し、
+    自然な射
+    \[
+    R\Gamma_{Z_1}(F_1)\otimes_{\mcR}^L R\Gamma_{Z_2}(F_2)
+    \to R\Gamma_{Z_1\cap Z_2}(F_1\otimes_{\mcR}^L F_2)
+    \]
+    を構成せよ。
+    \item \label{2.17.2}
+    \(A\)を可換環として、\(\mcR=A_X\)であると仮定せよ。
+    \(F_1,F_2\in \sfD^+(\mcR)\)に対し、
+    自然な射
+    \[
+    R\Gamma_{Z_1}(X,F_1)\otimes_A^L R\Gamma_{Z_2}(X,F_2)
+    \to R\Gamma_{Z_1\cap Z_2}(X,F_1\otimes_A^L F_2)
+    \]
+    を構成し、各\(p,q\in \Z\)に対して
+    \[
+    H^p_{Z_1}(X,F_1)\otimes_A H^q_{Z_2}(X,F_2)
+    \to H^{p+q}_{Z_1\cap Z_2}(X,F_1\otimes_A^L F_2)
+    \]
+    を構成せよ。
+    最後の射は\textbf{cup積}と呼ばれる。
+  \end{enumerate}
+\end{prob}
+
+\begin{proof}
+  \ref{2.17.1}を示す。
+  本文\cite[同型 (2.6.9)]{kashiwara2002sheaves}より、自然に
+  \(R\Gamma_{Z_i}(F_i) \cong R\inHom_{\mcR}(\mcR_{Z_i},F_i)\)が成り立つ。
+  また、本文\cite[射 (2.6.11)]{kashiwara2002sheaves}より、自然な射
+  \begin{align*}
+    R\inHom_{\mcR}(\mcR_{Z_1},F_1) \otimes_{\mcR}^L R\inHom_{\mcR}(\mcR_{Z_2},F_2)
+    &\to R\inHom_{\mcR}(\mcR_{Z_1},F_1\otimes_{\mcR}^L R\inHom_{\mcR}(\mcR_{Z_2},F_2)) \\
+    &\to R\inHom_{\mcR}(\mcR_{Z_1},R\inHom_{\mcR}(\mcR_{Z_2},F_1\otimes_{\mcR}^L F_2))
+  \end{align*}
+  を得る。
+  さらに本文\cite[Proposition 2.6.3 (ii)]{kashiwara2002sheaves}より、
+  自然な同型
+  \[
+  R\inHom_{\mcR}(\mcR_{Z_1},R\inHom_{\mcR}(\mcR_{Z_2},F_1\otimes_{\mcR}^L F_2))
+  \cong R\inHom_{\mcR}(\mcR_{Z_1}\otimes_{\mcR}^L \mcR_{Z_2},F_1\otimes_{\mcR}^L F_2))
+  \]
+  を得る。
+  ここで\(\mcR_{Z_i}\)は \(\mcR\)-flat であるので、自然に
+  \(\mcR_{Z_1}\otimes_{\mcR}^L \mcR_{Z_2} \cong
+  \mcR_{Z_1}\otimes_{\mcR} \mcR_{Z_2} \cong \mcR_{Z_1\cap Z_2}\)
+  が成り立つ。
+  再び本文\cite[同型 (2.6.9)]{kashiwara2002sheaves}を用いることで、自然に
+  \(R\Gamma_{Z_1\cap Z_2}(F_1\otimes_{\mcR}^L F_2) \cong
+  R\inHom_{\mcR}(\mcR_{Z_1\cap Z_2},F_1\otimes_{\mcR}^L F_2)\)
+  が成り立つので、
+  これらを組み合わせることによって所望の射を得る。
+  以上で\ref{2.17.1}の証明を完了する。
+
+  \ref{2.17.2}を示す。
+  \(f:X\to \{\mathrm{pt}\}\)を自明な射とする。
+  まず、\(Z_1=Z_2=X\)の場合に証明する。
+  この場合、\(R\Gamma_{Z_i}(X,-)\cong Rf_*(-)\)が成り立つ。
+  今、\(\mcR = A_X = f^{-1}A\)は定数層であるので、
+  従って、本文\cite[Proposition 2.6.4 (ii)]{kashiwara2002sheaves}より、自然に
+  \[
+  \Hom_{\sfD^+(A)}(Rf_*F_1\otimes_A^L Rf_*F_2, Rf_*(F_1\otimes_{A_X}^L F_2))
+  \cong \Hom_{\sfD^+(A_X)}(f^{-1}(Rf_*F_1\otimes_A^L Rf_*F_2),F_1\otimes_{A_X}^L F_2)
+  \]
+  が成り立つ。
+  また、本文\cite[Proposition 2.6.5]{kashiwara2002sheaves}より、自然に
+  \(f^{-1}(Rf_*F_1\otimes_A^L Rf_*F_2)\cong
+  (f^{-1}Rf_*F_1)\otimes_{A_X}^L (f^{-1}Rf_*F_2)\)
+  が成り立つ。
+  本文\cite[射 (2.6.17)]{kashiwara2002sheaves}より、自然な射
+  \((f^{-1}Rf_*F_1)\otimes_{A_X}^L (f^{-1}Rf_*F_2)\to F_1\otimes_{A_X}^LF_2\)
+  があり、以上より射
+  \begin{align*}
+    \Hom_{\sfD^+(A_X)}(F_1\otimes_{A_X}^LF_2,F_1\otimes_{A_X}^L F_2)
+    &\to \Hom_{\sfD^+(A_X)}((f^{-1}Rf_*F_1)\otimes_{A_X}^L (f^{-1}Rf_*F_2)
+    ,F_1\otimes_{A_X}^L F_2) \\
+    &\cong \Hom_{\sfD^+(A_X)}(f^{-1}(Rf_*F_1\otimes_A^L Rf_*F_2), F_1\otimes_{A_X}^L F_2) \\
+    &\cong \Hom_{\sfD^+(A)}(Rf_*F_1\otimes_A^L Rf_*F_2, Rf_*(F_1\otimes_{A_X}^L F_2))
+  \end{align*}
+  を得る。
+  \(\id\)の行き先が射
+  \(Rf_*F_1\otimes_A^L Rf_*F_2\to Rf_*(F_1\otimes_{A_X}^L F_2)\)を与える。
+  以上で\(Z_1=Z_2=X\)の場合の1つ目の射の構成を完了する。
+  一般の場合、\ref{2.17.1}の自然な射に対して\(R\Gamma(X,-)\)を適用し、
+  \(Z_1=Z_2=X\)の場合に得られた射と合成することによって、射
+  \begin{align*}
+    R\Gamma_{Z_1}(X,F_1)\otimes_A^L R\Gamma_{Z_2}(X,F_2)
+    &\cong R\Gamma(X,R\Gamma_{Z_1}(F_1))\otimes_A^L R\Gamma(X,R\Gamma_{Z_2}(F_2)) \\
+    &\to R\Gamma(X,R\Gamma_{Z_1}(F_1)\otimes_{A_X}^L R\Gamma_{Z_2}(F_2)) \\
+    &\to R\Gamma(X,R\Gamma_{Z_1\cap Z_2}(F_1\otimes_{A_X}^L F_2)) \\
+    &\cong R\Gamma_{Z_1\cap Z_2}(X,F_1\otimes_{A_X}^L F_2)
+  \end{align*}
+  を得る。
+  以上で一般の場合の1つ目の射の構成を完了する。
+  二つ目の射は、\autoref{1.24.1}で
+  \(F=\otimes_A, X=R\Gamma_{Z_1}(X,F_1), Y=R\Gamma_{Z_2}(X,F_2)\)
+  とすることにより、自然な射
+  \begin{align*}
+    H^p_{Z_1}(X,F_1)\otimes_A H^q_{Z_2}(X,F_2)
+    &\to H^{p+q}(R\Gamma_{Z_1}(X,F_1)\otimes_A^L R\Gamma_{Z_2}(X,F_2)) \\
+    &\to H^{p+q}(R\Gamma_{Z_1\cap Z_2}(X,F_1\otimes_{A_X}^L F_2))
+  \end{align*}
+  を得る。これが所望の射である。
+  以上で\ref{2.17.2}の証明を完了し、
+  \autoref{2.17}の解答を完了する。
+\end{proof}
+
+
+
+
+
+
+
+\ifcsname Chap\endcsname\else
+\printbibliography
+\end{document}
+\fi

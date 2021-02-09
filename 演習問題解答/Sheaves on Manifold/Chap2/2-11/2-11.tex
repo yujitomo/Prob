@@ -1,0 +1,74 @@
+\ifcsname Chap\endcsname\else
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+\newcommand{\StylePath}{\ifcsname AllKS\endcsname KS-Style/KS-Style.sty\else
+\ifcsname Chap\endcsname ../KS-Style/KS-Style.sty\else
+../../KS-Style/KS-Style.sty\fi\fi}
+\input{\StylePath}
+
+\KSset{2}{11}
+\setcounter{section}{\value{KSS}-1}
+\begin{document}
+\maketitle
+\HeaderCommentA
+\section{\KSsection{section}}
+\setcounter{prob}{\value{KSP}-1}
+
+本文では、局所コンパクト空間であるという場合には、
+ハウスドルフ性を常に仮定していることに注意しておく
+(cf. 本文\cite[Proposition 2.5.1]{kashiwara2002sheaves}直前の記述)。
+\fi
+
+
+\begin{prob}\label{2.11}
+  \(f:Y\to X\)を局所コンパクトハウスドルフ空間の間の連続写像、
+  \(G\)を\(Y\)上の層とする。
+  以下の主張が同値であることを示せ：
+  \begin{enumerate}
+    \item \label{2.11.1}
+    任意の\(x\in X\)に対して
+    \(G|_{f^{-1}(x)}\)は\(c\)-softである。
+    \item \label{2.11.2}
+    任意の開集合\(V\subset Y\)と任意の\(j>0\)に対して
+    \(R^jf_!G_V=0\)である。
+  \end{enumerate}
+\end{prob}
+
+\begin{proof}
+  \ref{2.11.1} \(\Rightarrow\) \ref{2.11.2}
+  を示す。
+  任意の\(x\in X\)に対して
+  \(G|_{f^{-1}(x)}\)は \(c\)-soft であると仮定する。
+  開集合\(V\subset Y\)と点\(x\in X\)を任意にとる。
+  本文\cite[Proposition 2.6.7]{kashiwara2002sheaves}より、
+  各点\(x\in X\)に対して自然に
+  \((R^jf_!G_V)_x \cong H^j_c(f^{-1}(x)\cap V,G|_{f^{-1}(x)})\)
+  が成り立つ。
+  ここで\(G|_{f^{-1}(x)}\)は \(c\)-soft であるので、
+  \autoref{2.6.1}より、\(j>0\)に対して
+  \(H^j_c(f^{-1}(x)\cap V,G|_{f^{-1}(x)})=0\)が成り立つ。
+  よって層\(R^jf_!G_V\)の各点でのstalkは\(0\)であり、
+  従って\(R^jf_!G_V=0\)である。
+
+  \ref{2.11.2} \(\Rightarrow\) \ref{2.11.1}
+  を示す。
+  任意の開集合\(V\subset Y\)と任意の\(j>0\)に対して
+  \(R^jf_!G_V=0\)であると仮定する。
+  点\(x\in X\)と開集合\(V_x\subset f^{-1}(x)\)を任意にとる。
+  このとき、ある開集合\(V\subset Y\)が存在して
+  \(V_x = V\cap f^{-1}(x)\)が成り立つ。
+  本文\cite[Proposition 2.6.7]{kashiwara2002sheaves}より、各\(j>0\)に対して自然に
+  \(H^j_c(V_x,G|_{f^{-1}(x)}) \cong (R^jf_!G_V)_x = 0\)
+  が成り立つ。
+  よって\autoref{2.6.1}より、
+  \(G|_{f^{-1}(x)}\)は \(c\)-soft である。
+  以上で\autoref{2.11}の解答を完了する。
+\end{proof}
+
+
+
+
+
+\ifcsname Chap\endcsname\else
+\printbibliography
+\end{document}
+\fi

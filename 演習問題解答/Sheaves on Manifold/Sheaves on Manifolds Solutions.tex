@@ -1,0 +1,25 @@
+\newcommand{\AllKS}{AllKS}
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+\newcommand{\StylePath}{\ifcsname AllKS\endcsname KS-Style/KS-Style.sty\else
+\ifcsname Chap\endcsname ../KS-Style/KS-Style.sty\else
+../../KS-Style/KS-Style.sty\fi\fi}
+\input{\StylePath}
+\KSset{0}{0}
+
+\begin{document}
+
+\title{Sheaves on Manifolds \KStitle の解答}
+\author{ゆじとも}
+\date{\today}
+\maketitle
+
+Sheaves on Manifolds \cite[\KStitle]{kashiwara2002sheaves}の解答です。
+現時点 (=\today) で解いていない (\(\fallingdotseq\)解けていない) 問題：
+\autoref{1.30.2}、\autoref{2.16.2}、\autoref{2.21} 以降。
+\HeaderKS
+\KSLoopChapCount=0
+
+\KSChapPath{2}
+
+\printbibliography
+\end{document}

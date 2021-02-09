@@ -1,0 +1,15 @@
+[0] Config.pm:311> INFO - This is Biber 2.16
+[1] Config.pm:314> INFO - Logfile is 'Chap2.blg'
+[156] biber-darwin:340> INFO - === Tue Feb  9, 2021, 00:58:34
+[182] Biber.pm:415> INFO - Reading 'Chap2.bcf'
+[360] Biber.pm:952> INFO - Found 2 citekeys in bib section 0
+[385] Biber.pm:4340> INFO - Processing section 0
+[400] Biber.pm:4531> INFO - Looking for bibtex format file '../KS-Style/KS-Bib.bib' for section 0
+[402] bibtex.pm:1689> INFO - LaTeX decoding ...
+[408] bibtex.pm:1494> INFO - Found BibTeX data source '../KS-Style/KS-Bib.bib'
+[525] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[525] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[525] Biber.pm:4168> INFO - Sorting list 'anyt/global//global/global' of type 'entry' with template 'anyt' and locale 'en-US'
+[525] Biber.pm:4174> INFO - No sort tailoring available for locale 'en-US'
+[543] bbl.pm:654> INFO - Writing 'Chap2.bbl' with encoding 'UTF-8'
+[546] bbl.pm:757> INFO - Output to Chap2.bbl

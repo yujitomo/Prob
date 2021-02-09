@@ -1,0 +1,165 @@
+\ifcsname Chap\endcsname\else
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+\newcommand{\StylePath}{\ifcsname AllKS\endcsname KS-Style/KS-Style.sty\else
+\ifcsname Chap\endcsname ../KS-Style/KS-Style.sty\else
+../../KS-Style/KS-Style.sty\fi\fi}
+\input{\StylePath}
+
+\KSset{1}{39}
+\setcounter{section}{\value{KSS}-1}
+\begin{document}
+\maketitle
+\HeaderCommentA
+\section{\KSsection{section}}
+\setcounter{prob}{\value{KSP}-1}
+\fi
+
+
+\begin{prob}\label{1.39}
+  \(\mcC\)をアーベル圏とする。
+  \(X,Y\in \sfD^b(\mcC)\)に対して
+  \(\Ext^j(X,Y) \dfn \Hom_{\sfD(\mcC)}(X,Y[j])\)とおく。
+  \begin{enumerate}
+    \item \label{1.39.1}
+    \(X,Y\in \mcC\)として\(n\geq 1\)とする。
+    完全列
+    \[
+    E: 0 \to Y\to Z_n\to Z_{n-1} \to \cdots \to Z_1 \to X\to 0
+    \]
+    が元\(C(E) \in \Ext^n(X,Y)\)を定めることを示せ。
+    この完全列を\textbf{\(X\)の\(Y\)による\(n\)-拡大}という。
+    \item \label{1.39.2}
+    任意の\(\Ext^n(X,Y)\)の元は\(C(E)\)の形で表すことができることを示せ。
+    \item \label{1.39.3}
+    \(E':0\to Y\to Z'_n\to \cdots \to Z'_1\to X\to 0\)を別の拡大とする。
+    \(C(E) = C(E')\)であるための必要十分条件は、
+    ある拡大\(E'': 0\to Y\to Z''_n\to \cdots \to Z''_1\to X\to 0\)
+    と以下の可換図式が存在することであるということを示せ：
+    \[
+    \begin{CD}
+      Y @>>> Z_n @>>> \cdots @>>> Z_1 @>>> X \\
+      @| @AAA @. @AAA @| \\
+      Y @>>> Z''_n @>>> \cdots @>>> Z''_1 @>>> X \\
+      @| @VVV @. @VVV @| \\
+      Y @>>> Z'_n @>>> \cdots @>>> Z'_1 @>>> X.
+    \end{CD}
+    \]
+  \end{enumerate}
+  \(\Ext^n(X,Y)\)をしばしば\textbf{Yoneda extension}という。
+\end{prob}
+
+
+\begin{proof}
+  \ref{1.39.1}を示す。
+  \(Z^i \dfn Z_{-i+1}\)と定義して、完全列\(E\)から\(X,Y\)を取り除いた複体を
+  \[Z = (\cdots 0\to Z^{-n+1} \to \cdots \to Z^0\to 0 \to \cdots)\]
+  と表す。
+  このとき\(\tau^{\leq n-1}(Z) = Y[n-1]\)であり、
+  \(\tau^{\geq 0}(Z) = X\)である。
+  また、\(Z\)は\(-(n-2)\)次から\(-1\)次で完全なので、
+  \(Y[n-1]\to Z\to X\xrightarrow{+1}\)は完全三角である。
+  これに函手\(\Hom_{\sfD(\mcC)}(X,-)\)を適用することにより、
+  射\(\Hom_{\sfD(\mcC)}(X,X)\to \Hom_{\sfD(\mcC)}(X,Y[n]) = \Ext^n(X,Y)\)を得る。
+  \(\id_X\)の行き先を\(C(E)\)とすれば良い。
+  以上で\ref{1.39.1}の証明を完了する。
+
+  \ref{1.39.2}を示す。
+  \(f\in \Ext^n(X,Y)\)を一つとる。
+  定義より\(\Ext^n(X,Y) = \Hom_{\sfD(\mcC)}(X,Y[n])\)であるので、
+  \(f\)は\(\sfD(\mcC)\)の射\(f:X\to Y[n]\)とみなせる。
+  \(f\)を\(\sfD(\mcC)\)の完全三角
+  \(X\xrightarrow{f} Y[n]\to Z\xrightarrow{+1}\)に伸ばす。
+  このとき\(Y[n-1]\to Z[-1]\to X\xrightarrow{+1}\)も完全三角である。
+  コホモロジーをとれば、
+  \(H^i(Z[-1])\)は\(n-1\)次で\(H^{n-1}(Z[-1])\cong Y\)、
+  \(0\)次で\(H^0(Z[-1])\cong X\)、他は\(0\)である。
+  従って
+  \[E : 0\to [Y\cong H^n(Z)]\to Z^{-n} \to \cdots \to Z^{-1} \to [X\cong H^{-1}(Z)]\to 0\]
+  は完全である。
+  完全三角\(Y[n-1]\to Z[-1]\to X\xrightarrow{+1}\)は
+  \(X\xrightarrow{f} Y[n]\to Z\xrightarrow{+1}\)を
+  \(-1\)方向に二つずらした完全三角なので、
+  \(\Hom_{\sfD(\mcC)}(X,-)\)に入れると
+  \(\id_X\)の行き先は\(f:X\to Y[n]\)に他ならない。
+  このことは\(f = C(E)\)を意味している。
+  以上で\ref{1.39.2}の証明を完了する。
+
+  \ref{1.39.3}を示す。
+  \(E,E'\)から\ref{1.39.1}のように定義した複体をそれぞれ\(Z,Z'\)と表す。
+  十分性を示す。
+  \(E''\)から\ref{1.39.1}のように定義した複体を\(Z''\)と表す。
+  \ref{1.39.1}の証明より、\(\sfD(\mcC)\)の完全三角とその間の射
+  \[
+  \begin{CD}
+    Y[n-1] @>>> Z @>>> X @> +1 >> \\
+    @| @AAA @| @. \\
+    Y[n-1] @>>> Z'' @>>> X @> +1 >> \\
+    @| @VVV @| @. \\
+    Y[n-1] @>>> Z' @>>> X @> +1 >>
+  \end{CD}
+  \]
+  を得る。
+  これを\(\Hom_{\sfD(\mcC)}(X,-)\)に入れると、
+  アーベル群の可換図式
+  \[
+  \begin{CD}
+    \Hom_{\sfD(\mcC)}(X,X) @= \Hom_{\sfD(\mcC)}(X,X) @= \Hom_{\sfD(\mcC)}(X,X) \\
+    @V \delta VV @V \delta'' VV @VV \delta' V \\
+    \Hom_{\sfD(\mcC)}(X,Y[n]) @= \Hom_{\sfD(\mcC)}(X,Y[n]) @= \Hom_{\sfD(\mcC)}(X,Y[n])
+  \end{CD}
+  \]
+  を得る。
+  ここで定義より\(C(E) = \delta(\id_X), C(E') = \delta'(\id_X)\)であるが、
+  上の図式が可換であることは\(\delta = \delta'' = \delta'\)を意味するので、
+  よって\(C(E) = \delta(\id_X) = \delta'(\id_X) = C(E')\)が成り立つ。
+  以上で十分性の証明を完了する。
+
+  必要性を示す。
+  \(f = C(E) = C(E')\in \Ext^n(X,Y) = \Hom_{\sfD(\mcC)}(X,Y[n])\)とおく。
+  \(f:X\to Y[n]\)を\(\sfD(\mcC)\)の完全三角
+  \(X\xrightarrow{f} Y[n]\to Z'' \xrightarrow{+1}\)に伸ばす。
+  \ref{1.39.2}の証明と同様に、このとき
+  \[
+  0\to Y\to {Z''}^{-n} \to \cdots \to {Z''}^{-1} \to X\to 0
+  \]
+  は完全である。
+  \(Z''\)の\(-n-1\)次以下と\(0\)次以上を\(0\)で置き直した複体を再び\(Z''\)で表す。
+  すると上の完全列により
+  \(Y[n-1]\to Z'' [-1] \to X\xrightarrow{+1}\)が
+  \(\sfK(\mcC)\)の完全三角であることが従う。
+  \(f=C(E)\)であるから、三角圏の公理
+  (本文\cite[Proposition 1.4.4 (TR4)]{kashiwara2002sheaves}) より
+  \(\sfK(\mcC)\)の射\(Z''\to Z\)が存在して、
+  \(\id_X,\id_{Y[n]}\)によって
+  \(X\xrightarrow{f} Y[n]\to Z'' \xrightarrow{+1}\)から
+  \(X\xrightarrow{f} Y[n]\to Z \xrightarrow{+1}\)への完全三角の射を形成する。
+  同様に、\(f=C(E')\)であるから、完全三角の射を形成するような\(Z''\to Z'\)も存在する。
+  よって\(\sfK(\mcC)\)の擬同型からなる図式
+  \(Z \gets Z'' \to Z\)を得る。
+  これらの射を代表する\(\Ch(\mcC)\)の擬同型からなる図式
+  \(Z\gets Z'' \to Z\)を\(\mcC\)の図式として書き直すと、
+  可換図式
+  \[
+  \begin{CD}
+    H^{-n}(Z) @>>> Z^{-n} @>>> \cdots @>>> Z^{-1} @>>> H^{-1}(Z) \\
+    @AAA @AAA @. @AAA @AAA \\
+    H^{-n}(Z'') @>>> {Z''}^{-n} @>>> \cdots @>>> {Z''}^{-1} @>>> H^{-1}(Z'') \\
+    @VVV @VVV @. @VVV @VVV \\
+    H^{-n}(Z') @>>> {Z'}^{-n} @>>> \cdots @>>> {Z'}^{-1} @>>> H^{-1}(Z').
+  \end{CD}
+  \]
+  を得る。
+  \(H^{-n}(Z) \cong H^{-n}(Z'') \cong H^{-n}(Z') \cong Y\)と
+  \(H^{-1}(Z) \cong H^{-1}(Z'') \cong H^{-1}(Z') \cong X\)に注意すれば
+  所望の可換図式を得る。以上で必要性の証明を完了し、
+  \ref{1.39.3}の証明を完了し、
+  \autoref{1.39}の解答を完了する。
+\end{proof}
+
+
+
+
+\ifcsname Chap\endcsname\else
+\printbibliography
+\end{document}
+\fi

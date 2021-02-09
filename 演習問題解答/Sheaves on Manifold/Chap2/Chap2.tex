@@ -1,0 +1,35 @@
+\ifcsname AllKS\endcsname\else
+\newcommand{\Chap}{Chap}
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+\newcommand{\StylePath}{\ifcsname AllKS\endcsname KS-Style/KS-Style.sty\else
+\ifcsname Chap\endcsname ../KS-Style/KS-Style.sty\else
+../../KS-Style/KS-Style.sty\fi\fi}
+\input{\StylePath}
+
+\KSset{2}{0}
+\setcounter{section}{\value{KSS}}
+\begin{document}
+\maketitle
+
+Sheaves on Manifolds \cite[Chapter \Roman{KSS}]{kashiwara2002sheaves}の
+Exercise の解答です。
+現時点 (=\today) で解いていない (\(\fallingdotseq\)解けていない)
+\Roman{KSS}章の問題：\autoref{2.16.2}、\autoref{2.21}以降。
+\setcounter{section}{\value{KSS}-1}
+\HeaderKS
+\fi
+
+\newpage
+\section{\KSsection{section}}
+
+\LocParaCptRemark
+
+\KSLoopChapCount=\value{section}
+\KSLoopProbCount=0
+
+\KSProbPath{21}
+
+\ifcsname AllKS\endcsname\else
+\printbibliography
+\end{document}
+\fi

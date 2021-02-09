@@ -1,0 +1,85 @@
+\ifcsname Chap\endcsname\else
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+\newcommand{\StylePath}{\ifcsname AllKS\endcsname KS-Style/KS-Style.sty\else
+\ifcsname Chap\endcsname ../KS-Style/KS-Style.sty\else
+../../KS-Style/KS-Style.sty\fi\fi}
+\input{\StylePath}
+
+\KSset{2}{7}
+
+\setcounter{section}{\value{KSS}-1}
+\begin{document}
+\maketitle
+\HeaderCommentA
+\section{\KSsection{section}}
+\setcounter{prob}{\value{KSP}-1}
+
+本文では、局所コンパクト空間であるという場合には、
+ハウスドルフ性を常に仮定していることに注意しておく
+(cf. 本文\cite[Proposition 2.5.1]{kashiwara2002sheaves}直前の記述)。
+\fi
+
+\begin{prob}\label{2.7}
+  \(X\)を局所コンパクトハウスドルフ空間として、
+  \(R\)を\(X\)上の\(c\)-softな環の層とする。
+  このとき、任意の\(R\)-加群は\(c\)-softであることを示せ。
+\end{prob}
+
+\begin{rem*}
+  本文では\(X\)に関する仮定が何も書かれていないが、
+  \(c\)-softな層に関する話は局所コンパクトハウスドルフ空間上で展開することが、
+  本文では念頭に置かれているように思う。
+  (もちろん、\(X\)が局所コンパクトでなくてもこの問題を解くことが可能かもしれないが...)
+\end{rem*}
+
+\begin{proof}
+  \(M\)を\(R\)-加群とする。
+  \(X\)は局所コンパクト空間であるから、
+  閉包がコンパクトであるような開集合たちの和集合である。
+  従って、\autoref{2.6.3}より、
+  \(M\)が\(c\)-softであることを示すためには、
+  \(X\)をコンパクトハウスドルフ空間であると仮定しても一般性を失わない。
+  このとき、\(c\)-softであるという性質とsoftであるという性質は
+  同等であることに注意しておく。
+  とくに、\(R\)はsoftである。
+
+  コンパクト部分集合\(K\subset X\)と
+  切断\(m_K\in \Gamma(K,M)\)を任意にとる。
+  本文\cite[Proposition 2.5.1 (ii)]{kashiwara2002sheaves}より、
+  ある開集合\(K\subset U\subset X\)と
+  ある切断\(m_U\in \Gamma(U,M)\)が存在して、
+  \(m_K=m_U|_K\)となる。
+  \(K\subset V \subset \bar{V}\subset U\)となる開集合\(V\)を一つとる
+  (\(X\)は局所コンパクトであり、
+  \(K\)はコンパクトであるから、このような\(V\)が存在する)。
+  \(R\)はsoftであり、
+  \(K\cup (X\setminus V)\subset X\)は閉であるため、
+  ある\(f\in \Gamma(X,R)\)が存在して
+  \[
+  f|_{K\cup (X\setminus V)} = (1|_K,0_{X\setminus V})
+  \in \Gamma(K,R) \times \Gamma(X\setminus V,R)
+  \cong \Gamma(K\cup (X\setminus V), R)
+  \]
+  となる。
+  \(W\dfn X\setminus \bar{V}\)とおけば、
+  \(\bar{V}\subset U\)なので\(W\cup U = X\)である。
+  さらに\(U\cap W\subset X\setminus V\)であるから、
+  \(f|_{U\cap W} = 0\)であり、
+  とくに\(f|_{U\cap W} \times m_U|_{U\cap W} = 0\)である。
+  従って、\(M\)は層であるから、
+  \(W\)上での切断\(0\in \Gamma(W,M)\)を考えることにより、
+  ある\(m\in \Gamma(X,M)\)が存在して\(f|_U\times m_U = m|_U, m|_W=0\)となる。
+  \(f|_K=1\)なので、よって\(m|_K = f|_K\times m_U|_K = m_U|_K = m_K\)が従う。
+  以上より\(\Gamma(X,M)\to \Gamma(K,M)\)は全射であり、
+  \autoref{2.7}の証明を完了する。
+\end{proof}
+
+
+
+
+
+
+\ifcsname Chap\endcsname\else
+\printbibliography
+\end{document}
+\fi

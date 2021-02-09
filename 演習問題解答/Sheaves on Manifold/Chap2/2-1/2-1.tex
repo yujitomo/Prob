@@ -1,0 +1,148 @@
+\ifcsname Chap\endcsname\else
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+\newcommand{\StylePath}{\ifcsname AllKS\endcsname KS-Style/KS-Style.sty\else
+\ifcsname Chap\endcsname ../KS-Style/KS-Style.sty\else
+../../KS-Style/KS-Style.sty\fi\fi}
+\input{\StylePath}
+
+\KSset{2}{1}
+
+\setcounter{section}{\value{KSS}-1}
+
+\begin{document}
+\maketitle
+\HeaderCommentA
+\section{\KSsection{section}}
+\setcounter{prob}{\value{KSP}-1}
+\fi
+
+
+\begin{prob}\label{2.1}
+  \(\N\)を自然数の集合で、
+  \(\{0,\cdots, n\}, n\geq -1\)たちが開となる最も粗い位相を入れる。
+  このとき、\(\N\)上の前層\(F\)は
+  各\(n\)に対するアーベル群\(F_n\dfn F(\{0,\cdots,n\})\)と
+  \(n\geq m\)に対する開集合の包含
+  \(\{0,\cdots, m\} \subset \{0,\cdots ,n\}\)
+  により引き起こされる制限写像\(F_n\to F_m\)の族に
+  唯一のアーベル群\(F_{\infty}\dfn F(\N)\)を添加したものと同一視される。
+  \begin{enumerate}[start=0]
+    \item \label{2.1.0}
+    前層\(F\)が層であるための必要十分条件は
+    \(\Gamma(\N,F) \cong \lim_n F_n\)であることを示せ。
+    \item \label{2.1.1}
+    各\(j\neq 0,1\)に対して\(H^j(\N,F) = 0\)であることを示せ。
+    \item \label{2.1.2}
+    \(H^1(\N,F) \cong (\prod_n F_n)/I\)であることを示せ。
+    ただし\(I\)の定義は、
+    \(f_{i,j}:F_i\to F_j\)を層\(F\)の制限写像とするとき、
+    以下で定義される：
+    \[
+    I\dfn \left\{ (x_n)_{n\in \N}\in \prod_n F_n \middle|
+    \forall n\in \N, \exists y_n\in F_n, x_n = y_n - f_{n+1,n}(y_{n+1})\right\}.
+    \]
+  \end{enumerate}
+\end{prob}
+
+\begin{proof}
+  \ref{2.1.0}は自明。
+  \ref{2.1.1}を示す。
+  \(G_n \dfn \prod_{i\leq n}F_i\)と置く。
+  射影\(G_n\to G_{n-1}\)らにより定まる\(\N\)上の層を\(G\)と置くと、
+  構成からただちに\(G\)が脆弱層であることがわかる。
+  各\(n\geq i\)に対して制限写像
+  \(F_n \to F_i\)の族が単射
+  \(F_n \to \prod_{i\leq n}F_i = G_n\)
+  を引き起こす。
+  これは制限写像\(F_n\to F_{n-1}\)と射影\(G_n\to G_{n-1}\)と可換し、
+  よって層の単射\(F\to G\)を得る。
+
+  層\(G/F\)の構造を決定する。
+  層\(F\)の制限写像を\(f_{i,j}:F_i\to F_j\)と置く。
+  \[
+  \varphi_n ((x_i)_{i\leq n}) \dfn (x_i-f_{n,i}(x_n))_{i<n}
+  \]
+  で定まる射\(\varphi_n : G_n \to H_n \dfn \prod_{i<n}F_i\)
+  は全射であり、核はちょうど\(\im(F_n\to G_n)\)である。
+  また、\(m\leq n\)に対して\(h_{n,m}: H_n\to H_m\)を
+  \[
+  h_{n,m}((x_i)_{i<n}) \dfn (x_i - f_{m,i}(x_m))_{i<m}
+  \]
+  と定めれば、各\(i < m \leq n\)に対して
+  \[
+  (x_i - f_{n,i}(x_n)) - (f_{m,i}(x_m - f_{n,m}(x_n))
+  = x_i - f_{m,i}(x_m)
+  \]
+  となるので、図式
+  \[
+  \begin{CD}
+    G_n @> \varphi_n >> H_n \\
+    @V \text{proj.} VV @VV h_{n,m} V \\
+    G_m @> \varphi_m >> H_m
+  \end{CD}
+  \]
+  は可換である。
+  これらの\(H_n\)により定まる層\(H\)は\(G/F\)に他ならないが、
+  各\(h_{n,m}\)は全射であるから、\(H\)は脆弱層である。
+  以上より\(\N\)上の層の完全列
+  \[
+  \begin{CD}
+    0 @>>> F @>>> G @>>> H @>>> 0
+  \end{CD}
+  \]
+  で\(G,H\)が脆弱層となるものが構成できた。
+  このことは\(H^j(\N,F) = 0 , j\geq 2\)を示している。
+  以上で\ref{2.1.1}の証明を完了する。
+
+  \ref{2.1.2}を示す。
+  \ref{2.1.1}の証明中に得られた層\(H\)の大域切断を決定する。
+  それは\(\lim_n H_n\)であるから、このアーベル群を計算する。
+  \(\lim_nH_n\)は\(\prod_{n\in N}H_n\)の部分加群で、
+  \[
+  \left\{ (x^n \dfn (x_i^n)_{i<n})_{n\in N} \middle| x^n \in H_n,
+  \forall (m \leq n), h_{n,m}(x^n) = x^m \right\}
+  \]
+  となるものと自然に同型である。
+  従って各\(i < m\leq n\)に対して
+  \(x^m_i = x^n_i - h_{m,i}(x^n_m)\)
+  となる。
+  従って、このような元の族\(x^n\in H_n\)は\(x^n_{n-1}\in F_{n-1}\)によって
+  \(x^n_i = x^{n-1}_i + h_{n-1,i}(x^n_{n-1})\)
+  の形で一意的に決定される。
+  すなわち、
+  射影\(H_n\to F_{n-1}\)を並べて得られる射影
+  \(\prod_{n\in \N}H_n\to \prod_{n\in \N_{\geq 1}}F_{n-1} =
+  \prod_{n\in \N}F_n\)
+  を\(\lim_n H_n \subset \prod_{n\in \N}H_n\)へ制限すると同型射となる。
+  従って\(\Gamma(\N,H) \cong \prod_{n\in \N}F_n\)となる。
+  以上より、アーベル群の完全列
+  \[
+  \begin{CD}
+    0 @>>> H^0(\N,F) @>>> \prod_{n\in \N} F_n @> \varphi >> \prod_{n\in \N} F_n \\
+    @>>> H^1(\N,F) @>>> 0 @.
+  \end{CD}
+  \]
+  を得る。
+  問われていることは、\(\varphi\)の像を決定することである。
+  各\(n\)について、\(\varphi_n:G_n\to H_n\)の像の
+  \(F_{n-1}\)の成分を見ればそれは決定できる。
+  \((x_n)_{n\in \N}\in \Gamma(\N,G) \cong \prod_{n\in \N}F_n\)を任意にとると、
+  \(\varphi_n((x_i)_{i\leq n}) = (x_i-f_{n,i}(x_n))_{i<n}\)
+  であるから、
+  \(F_{n-1}\)の成分は\(x_{n-1}-f_{n,n-1}(x_n)\)である。
+  従って、
+  \[
+  \varphi((x_n)_{n\in \N}) = (x_n - f_{n+1,n}(x_{n+1}))_{n\in \N}
+  \]
+  となる。
+  従って\(\im(\varphi) = I\)がわかる。
+  よって\(H^1(\N,F) \cong (\prod_{n\in \N}F_n)/I\)が示された。
+  以上で解答を完了する。
+\end{proof}
+
+
+
+\ifcsname Chap\endcsname\else
+\printbibliography
+\end{document}
+\fi

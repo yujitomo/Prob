@@ -1,0 +1,100 @@
+\ifcsname Chap\endcsname\else
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+\newcommand{\StylePath}{\ifcsname AllKS\endcsname KS-Style/KS-Style.sty\else
+\ifcsname Chap\endcsname ../KS-Style/KS-Style.sty\else
+../../KS-Style/KS-Style.sty\fi\fi}
+\input{\StylePath}
+
+\KSset{1}{3}
+\setcounter{section}{\value{KSS}-1}
+\begin{document}
+\maketitle
+\HeaderCommentA
+\section{\KSsection{section}}
+\setcounter{prob}{\value{KSP}-1}
+\fi
+
+
+\begin{prob}\label{1.3}
+  \(\mcC\)を各\(\Hom\)がアーベル群の構造を持ち、
+  \(0\)対象を持ち、
+  さらに任意の二つの対象に対する積を持つ圏とする
+  (cf. \cite[Definition 1.2.1 (i),(ii),(iii)]{kashiwara2002sheaves})。
+  このとき、\(Z\in \mcC\)が函手
+  \(W\mapsto \Hom_{\mcC}(X,W)\oplus \Hom_{\mcC}(Y,W)\)
+  の表現対象であるための必要十分条件は、
+  射\(i_1:X\to Z, i_2:Y\to Z, p_1: Z\to X, p_2:Z\to Y\)が存在し、
+  \begin{align*}
+    p_2\circ i_1 = 0, \ p_1 \circ i_2 = 0, \
+    p_1\circ i_1 = \id_X, \ p_2\circ i_2 = \id_Y, \
+    i_1\circ p_1 + i_2 \circ p_2 = \id_Z
+  \end{align*}
+  となることである。
+\end{prob}
+
+\begin{proof}
+  必要性を示す。
+  \(Z\in \mcC\)が函手
+  \(W\mapsto \Hom_{\mcC}(X,W)\oplus \Hom_{\mcC}(Y,W)\)
+  の表現対象であると仮定する。自然な全単射
+  \(\Hom_{\mcC}(Z,Z) \xrightarrow{\sim} \Hom_{\mcC}(X,Z)\oplus \Hom_{\mcC}(Y,Z)\)
+  による\(\id_Z\)の送り先を\((i_1,i_2)\)とする。
+  自然な全単射
+  \(\Hom_{\mcC}(Z,X) \xrightarrow{\sim} \Hom_{\mcC}(X,X)\oplus \Hom_{\mcC}(Y,X)\)
+  により\((\id_X,0)\)へと写る射を\(p_1:Z\to X\)とし、
+  自然な全単射
+  \(\Hom_{\mcC}(Z,Y) \xrightarrow{\sim} \Hom_{\mcC}(X,Y)\oplus \Hom_{\mcC}(Y,Y)\)
+  により\((0,\id_Y)\)へと写る射を\(p_2:Z\to Y\)とする。
+  このとき、\(i_1,i_2,p_1,p_2\)の定義より、
+  \[
+  p_1\circ i_1 = \id_X, \ p_1\circ i_2 = 0, \
+  p_2\circ i_1 = 0, \ p_2\circ i_2 = \id_Y
+  \]
+  であることがわかる。
+  また、
+  \begin{align*}
+    &(i_1\circ p_1 + i_2\circ p_2) \circ i_1
+    = i_1\circ p_1 \circ i_1 + i_2\circ p_2 \circ i_1
+    = i_1 + 0 = i_1, \\
+    &(i_1\circ p_1 + i_2\circ p_2) \circ i_2
+    = i_1\circ p_1 \circ i_2 + i_2\circ p_2 \circ i_2
+    = 0 + i_2 = i_2
+  \end{align*}
+  であるが、このような性質を満たす射\(Z\to Z\)は
+  \(Z\)の普遍性によって\(\id_Z\)に限られる。
+  従って\(i_1\circ p_1 + i_2\circ p_2 = \id_Z\)もわかる。
+  以上で必要性の証明を完了する。
+
+  十分性を示す。
+  問いの条件を満たす射\(i_1,i_2,p_1,p_2\)が存在すると仮定する。
+  \(i_1,i_2,p_1,p_2\)を合成することにより、
+  \(W\)について自然な射
+  \begin{align*}
+    &\varphi: \Hom_{\mcC}(X,W) \oplus \Hom_{\mcC}(Y,W) \to \Hom_{\mcC}(Z,W),
+    &&\varphi(f,g) \dfn f\circ p_1 + g\circ p_2, \\
+    &\psi: \Hom_{\mcC}(Z,W) \to \Hom_{\mcC}(X,W) \oplus \Hom_{\mcC}(Y,W),
+    &&\psi(h) \dfn (h\circ i_1, h\circ i_2) \\
+  \end{align*}
+  を得る。
+  各\(f:X\to W, g:Y\to W, h:Z\to W\)について
+  \begin{align*}
+    \varphi(\psi(h)) &= \varphi(h\circ i_1, h\circ i_2)
+    = h\circ i_1 \circ p_1 + h\circ i_2\circ p_2
+    = h\circ (i_1 \circ p_1 + i_2 \circ p_2) = h\circ \id_Z = h \\
+    \psi(\varphi(f,g)) &= \psi(f\circ p_1 + g\circ p_2)
+    = ((f\circ p_1 + g\circ p_2)\circ i_1, (f\circ p_1 + g\circ p_2)\circ i_2) \\
+    &= (f\circ p_1\circ i_1 + g\circ p_2\circ i_1,
+    f\circ p_1\circ i_2 + g\circ p_2 \circ i_2)
+    = (f,g)
+  \end{align*}
+  となるので、\(\varphi,\psi\)は全単射である。
+  これは\(Z\)が所望の表現対象であることを示している。
+  以上で\autoref{1.3}の解答を完了する。
+\end{proof}
+
+
+
+\ifcsname Chap\endcsname\else
+\printbibliography
+\end{document}
+\fi

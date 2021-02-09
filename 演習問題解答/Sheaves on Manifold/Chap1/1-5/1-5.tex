@@ -1,0 +1,32 @@
+\ifcsname Chap\endcsname\else
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+\newcommand{\StylePath}{\ifcsname AllKS\endcsname KS-Style/KS-Style.sty\else
+\ifcsname Chap\endcsname ../KS-Style/KS-Style.sty\else
+../../KS-Style/KS-Style.sty\fi\fi}
+\input{\StylePath}
+
+\KSset{1}{5}
+\setcounter{section}{\value{KSS}-1}
+\begin{document}
+\maketitle
+\HeaderCommentA
+\section{\KSsection{section}}
+\setcounter{prob}{\value{KSP}-1}
+\fi
+
+\begin{prob}\label{1.5}
+  \(\mcC\)をアーベル圏、
+  \(0\to X\to Z\to Y\to 0\)を完全列とする。
+  \(X\)が入射的、または\(Y\)が射影的であれば、
+  この完全列は分裂する。
+\end{prob}
+
+\begin{proof}
+  \(\id_X\)を延長するか、\(\id_Y\)を持ち上げるか、をすれば良いだけ
+  (本文の\cite[Definition 1.2.8]{kashiwara2002sheaves}の直後の主張を用いる)。
+\end{proof}
+
+\ifcsname Chap\endcsname\else
+\printbibliography
+\end{document}
+\fi

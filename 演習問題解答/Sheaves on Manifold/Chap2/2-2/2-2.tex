@@ -1,0 +1,100 @@
+\ifcsname Chap\endcsname\else
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+\newcommand{\StylePath}{\ifcsname AllKS\endcsname KS-Style/KS-Style.sty\else
+\ifcsname Chap\endcsname ../KS-Style/KS-Style.sty\else
+../../KS-Style/KS-Style.sty\fi\fi}
+\input{\StylePath}
+
+\KSset{2}{2}
+
+\setcounter{section}{\value{KSS}-1}
+
+\begin{document}
+\maketitle
+\HeaderCommentA
+\section{\KSsection{section}}
+\setcounter{prob}{\value{KSP}-1}
+\fi
+
+\begin{prob}\label{2.2}
+  \(X\)を位相空間、\(A,B\subset X\)を閉集合とし、
+  \(X=A\cup B\)であるとする。
+  \(F\in \Ob(\mcD^+(X))\)に対して、
+  自然に\((R\Gamma_B(F))_A \cong R\Gamma_B(F_A)\)となることを示せ。
+\end{prob}
+
+\begin{proof}
+  函手\((-)_{X\setminus A}\)は完全なので、自然に
+  \(R\Gamma_{X\setminus B}(-)_{X\setminus A}\cong
+  R(\Gamma_{X\setminus B}(-)_{X\setminus A})\)
+  が成り立つ。
+  \((X\setminus A)\cap (X\setminus B) = \emptyset\)なので、
+  \(\Gamma_{X\setminus B}(-)_{X\setminus A}=0\)が成り立ち、
+  とくに\(R\Gamma_{X\setminus B}(-)_{X\setminus A}=0\)が成り立つ。
+  \(F\)を\(X\)上の層の上に有界な複体とする。
+  完全三角\(R\Gamma_B(F) \to F\to R\Gamma_{X\setminus B}(F)\xrightarrow{+1}\)
+  に\((-)_{X\setminus A}\)を施すことにより、
+  \(R\Gamma_B(F)_{X\setminus A}\xrightarrow{\sim}F_{X\setminus A}\)
+  が従う。
+  本文\cite[Proposition 2.4.10]{kashiwara2002sheaves}の直前の記述にあるとおり、
+  脆弱層のなす\(X\)の部分圏は
+  \(\Gamma_{X\setminus B}(-)\)-injective
+  である。
+  また本文\cite[Proposition 2.4.6 (i)]{kashiwara2002sheaves}より、
+  脆弱層に対して\((-)|_{X\setminus B}\)を施したものも脆弱層である。
+  よって\(i_B:X\setminus B\to X\)を包含射とすると、
+  \(R\Gamma_{X\setminus B} \cong Ri_{B,*}\circ i_B^{-1}\)が成り立つ。
+  \(i_B^{-1}((-)_{X\setminus A}) = 0\)であるから、
+  任意の層に対して函手\((-)_{X\setminus A}\)を施したものは
+  \(i_{B,*}\)に対してacyclicであり、
+  よって自然に
+  \(R\Gamma_{X\setminus B}((-)_{X\setminus A}) \cong
+  R(\Gamma_{X\setminus B}((-)_{X\setminus A}))\)
+  が成り立つ。
+  \((X\setminus A)\cap (X\setminus B) = \emptyset\)なので、
+  \(\Gamma_{X\setminus B}((-)_{X\setminus A}) = 0\)が成り立ち、
+  とくに\(R\Gamma_{X\setminus B}((-)_{X\setminus A}) = 0\)が成り立つ。
+  三角形
+  \(R\Gamma_B(F_{X\setminus A})\to F_{X\setminus A}\to
+  R\Gamma_{X\setminus B}(F_{X\setminus A})\xrightarrow{+1}\)
+  が完全であることから、
+  \(R\Gamma_B(F_{X\setminus A})\xrightarrow{\sim} F_{X\setminus A}\)
+  は同型である。
+  また、二つの図式
+  \[
+  \begin{CD}
+    R\Gamma_B(F_{X\setminus A}) @>\sim>> F_{X\setminus A} @. \ \ \ \ \  @.
+    R\Gamma_B(F)_{X\setminus A} @>\sim>> F_{X\setminus A} \\
+    @VVV @VVV @. @VVV @VVV \\
+    R\Gamma_B(F) @>>> F @. \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ @. R\Gamma_B(F) @>>> F
+  \end{CD}
+  \]
+  が可換であることから、
+  \[
+  \begin{CD}
+    R\Gamma_B(F_{X\setminus A}) @>\sim>> R\Gamma_B(F)_{X\setminus A} \\
+    @VVV @VVV  \\
+    R\Gamma_B(F) @= R\Gamma_B(F)
+  \end{CD}
+  \]
+  も可換である
+  (二つの同型射を逆に辿って得られる二つの射
+  \(F_{X\setminus A}\to R\Gamma_B(F)\)の差が\(0\)射である)。
+  従って完全三角の間の同型射
+  \[
+  \begin{CD}
+    R\Gamma_B(F_{X\setminus A}) @>>> R\Gamma_B(F) @>>> R\Gamma_B(F_A) @> +1 >> \\
+    @V \cong VV @| @VV \cong V @. \\
+    R\Gamma_B(F)_{X\setminus A} @>>> R\Gamma_B(F) @>>> R\Gamma_B(F)_A @> +1 >>
+  \end{CD}
+  \]
+  を得る。
+  以上で\autoref{2.2}の証明を完了する。
+\end{proof}
+
+
+
+\ifcsname Chap\endcsname\else
+\printbibliography
+\end{document}
+\fi

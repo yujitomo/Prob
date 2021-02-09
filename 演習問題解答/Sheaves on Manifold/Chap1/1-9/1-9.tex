@@ -1,0 +1,138 @@
+\ifcsname Chap\endcsname\else
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+\newcommand{\StylePath}{\ifcsname AllKS\endcsname KS-Style/KS-Style.sty\else
+\ifcsname Chap\endcsname ../KS-Style/KS-Style.sty\else
+../../KS-Style/KS-Style.sty\fi\fi}
+\input{\StylePath}
+
+\KSset{1}{9}
+\setcounter{section}{\value{KSS}-1}
+\begin{document}
+\maketitle
+\HeaderCommentA
+\section{\KSsection{section}}
+\setcounter{prob}{\value{KSP}-1}
+\fi
+
+
+\begin{prob}\label{1.9}
+  \(\mcC\)をアーベル圏とする。
+  \[
+  \begin{CD}
+    @. X @> f >> Y @> g >> Z @>>> 0 \\
+    @. @V \alpha VV @VV \beta V @VV \gamma V \\
+    0 @>>> X' @> f' >> Y' @> g' >> Z' @.
+  \end{CD}
+  \]
+  を\(\mcC\)の可換図式で、横向きが完全であるものとする。
+  \begin{enumerate}
+    \item \label{1.9.1}
+    自然な射\(\varphi:\ker(\gamma) \to \coker(\alpha)\)が存在して、
+    以下が完全となることを示せ：
+    \[
+    \ker(\alpha) \to \ker(\beta) \to \ker(\gamma) \xrightarrow{\varphi}
+    \coker(\alpha) \to \coker(\beta) \to \coker(\gamma).
+    \]
+    \item \label{1.9.2}
+    以下の図式が可換であることを示せ：
+    \[
+    \begin{CD}
+      @. Y @> g >> Z \\
+      @. @AAA @AAA \\
+      Y @<<< \ker(\gamma\circ g) @>>> \ker(\gamma) \\
+      @VVV @VVV @VV \varphi V \\
+      Y' @< f' << X' @>>> \coker(\alpha).
+    \end{CD}
+    \]
+  \end{enumerate}
+\end{prob}
+
+
+\begin{proof}
+  \(\varphi\)の構成ができれば、
+  \autoref{1.7}によって\ref{1.9.1}は\(\mcC=\Ab\)の場合に帰着され、
+  この場合は図式追跡によって初等的に証明できる。
+  従って、\ref{1.9.1}を示すためには\(\varphi\)を構成することが十分である。
+  以下、\(\varphi\)の構成と\ref{1.9.2}の証明を同時に行う。
+
+  核の普遍性により、以下の図式を可換にするような射
+  \(\psi_1:\ker(\gamma \circ g) \to \ker(\gamma)\)が一意的に存在する：
+  \[
+  \begin{CD}
+    0 @>>> \ker(\gamma\circ g) @>>> Y @> \gamma\circ g >> Z' \\
+    @. @V \psi_1 VV @VV g V @| \\
+    0 @>>> \ker(\gamma) @>>> Y' @> \gamma >> Z'.
+  \end{CD}
+  \]
+  これは\ref{1.9.2}の図式の右上の四角形の可換性を示している。
+  また、\autoref{1.8.2}より、\(\psi_1\)はエピである。
+  核の普遍性により、以下の図式を可換にするような射
+  \(\psi_2:\ker(\gamma\circ g) \to X'\)が一意的に存在する：
+  \[
+  \begin{CD}
+    0 @>>> \ker(\gamma\circ g) @>>> Y @> \gamma\circ g >> Z' \\
+    @. @V \psi_2 VV @VV \beta V @| \\
+    0 @>>> X' @> f' >> Y' @> g' >> Z'.
+  \end{CD}
+  \]
+  これは\ref{1.9.2}の図式の左下の四角形の可換性を示している。
+  自然な射\(X'\to \coker(\alpha)\)と\(\psi_2\)の合成を
+  \(\psi_3:\ker(\gamma\circ g) \to \coker(\alpha)\)と置く。
+  \(\ker(\psi_1) \to \ker(\gamma\circ g) \xrightarrow{\psi_3} \coker(\alpha)\)
+  の合成が\(0\)-射であることが証明できれば、
+  \(\psi_1\)がエピであることから、
+  \(\psi_3\)は\(\psi_1\)を一意的に経由して、
+  図式
+  \[
+  \begin{CD}
+    \ker(\gamma\circ g) @> \psi_1 >> \ker(\gamma) \\
+    @V \psi_2 VV @VV \varphi V \\
+    X' @>>> \coker(\alpha)
+  \end{CD}
+  \]
+  を可換にする射\(\varphi\)の存在が従う
+  (\ref{1.9.2}の図式の右下の四角形の可換性の証明と\(\varphi\)の構成が同時に終わる)。
+
+  \(p:X\to \im(f)\)を自然なエピ射、
+  \(j_1:\im(f)\cong \ker(g)\to Y\)を自然なモノ射とする。
+  このとき\(f = j_1\circ p\)である。
+  核の普遍性により引き起こされる一意的な射を
+  \(\alpha' : \im(f)\cong \ker(g)\to X'\)と置く。
+  \[
+  f'\circ \alpha
+  = \beta \circ f
+  = \beta \circ j_1 \circ p
+  = f'\circ \alpha' \circ p
+  \]
+  であることと\(f'\)がモノであることから、\(\alpha = \alpha'\circ p\)となる。
+  \(q:X'\to \coker(\alpha)\)を自然な射とすると、
+  \(q\circ \alpha' \circ p = q\circ \alpha = 0\)となるが、
+  \(p\)がエピであることから、\(q\circ \alpha' = 0\)となる。
+  \(T\dfn \ker(\psi_1)\)とおき、
+  \(i:T\to \ker(\gamma\circ g)\)を自然な射、
+  \(j_2:\ker(\gamma\circ g) \to Y\)を自然なモノ射とする。
+  \(\psi_1\circ i = 0\)であるから、
+  \(g\circ j_2\circ i = 0\)である。
+  よって、核の普遍性により、一意的な射
+  \(k:T\to \im(f)\)が存在して、
+  \(j_1\circ k = j_2\circ i\)となる。
+  以上より、
+  \[
+  f' \circ \psi_2 \circ i
+  = \beta\circ j_2\circ i
+  = \beta\circ j_1\circ k
+  = f'\circ \alpha' \circ k
+  \]
+  となる。
+  \(f'\)はモノなので\(\psi_2\circ i = \alpha'\circ k\)となる。
+  従って、\(q\circ \psi_2\circ i = q\circ \alpha' \circ k = 0\)
+  となって、示すべき等式を得る。
+  以上で\autoref{1.9}の証明を完了する。
+\end{proof}
+
+
+
+\ifcsname Chap\endcsname\else
+\printbibliography
+\end{document}
+\fi

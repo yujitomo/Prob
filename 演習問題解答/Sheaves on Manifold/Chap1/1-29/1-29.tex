@@ -1,0 +1,146 @@
+\ifcsname Chap\endcsname\else
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+\newcommand{\StylePath}{\ifcsname AllKS\endcsname KS-Style/KS-Style.sty\else
+\ifcsname Chap\endcsname ../KS-Style/KS-Style.sty\else
+../../KS-Style/KS-Style.sty\fi\fi}
+\input{\StylePath}
+
+\KSset{1}{29}
+\setcounter{section}{\value{KSS}-1}
+\begin{document}
+\maketitle\HeaderCommentA
+\section{\KSsection{section}}
+\setcounter{prob}{\value{KSP}-1}
+\fi
+
+
+\begin{prob}\label{1.29}
+  \(A\)を環とする。
+  \begin{enumerate}
+    \item \label{1.29.1}
+    任意の自由加群は射影的であることを示せ。
+    \item \label{1.29.2}
+    任意の射影加群はある自由加群の直和因子であることを示せ。
+    \item \label{1.29.3}
+    射影加群は平坦加群であることを示せ。
+    \item \label{1.29.4}
+    \(n\geq 0\)を自然数とする。
+    以下の条件が同値であることを示せ：
+    \begin{enumerate}
+      \item \label{1.29.4.1}
+      任意の右\(A\)-加群\(N\)と任意の左\(A\)-加群\(M\)と任意の\(j>n\)に対して
+      \(\Tor_j^A(N,M) = 0\)である。
+      \item \label{1.29.4.2}
+      任意の左\(A\)-加群\(M\)に対して
+      完全列\(0\to P^n \to \cdots \to P^0 \to M\to 0\)
+      であって各\(P^i\)が平坦加群となるものが存在する。
+      \item \label{1.29.4.3}
+      任意の右\(A\)-加群\(M\)に対して
+      完全列\(0\to P^n \to \cdots \to P^0 \to M\to 0\)
+      であって各\(P^i\)が平坦加群となるものが存在する。
+    \end{enumerate}
+    これらの同値な条件を満たす最小の\(n\in \N\cup\{\infty\}\)を
+    \(\wgld(A)\)と表し、
+    \(A\)の\textbf{弱大域次元} (weak global dimension) という。
+    \item \label{1.29.5}
+    \(\wgld(A) \leq \gld(A)\)であることを示せ。
+  \end{enumerate}
+\end{prob}
+
+\begin{proof}
+  \ref{1.29.1}は函手の同型
+  \(\Hom_A(A^{\oplus I},-) \cong \prod_I(-)\)
+  より従う。
+
+  \ref{1.29.2}を示す。
+  \(P\)を射影加群として
+  全射\(p:A^{\oplus I}\to P\)をとる。
+  \(P\)が射影加群であることから
+  射\(\id_P:P\to P\)がリフトして
+  \(p\circ s=\id_P\)となる
+  \(s:P\to A^{\oplus I}\)が存在する。
+  よって\autoref{1.4.4}より
+  \(P\)は\(A^{\oplus I}\)の直和因子である。
+  以上で\ref{1.29.2}の証明を完了する。
+
+  \ref{1.29.3}を示す。
+  \(P\)を射影加群として、
+  \(P\)が直和因子となるように射\(i:P\to A^{\oplus I}\)をとる。
+  \(p:A^{\oplus I}\to P\)を\(i\)の左逆射、
+  つまり\(p\circ i = \id_P\)となる射とする。
+  \(f:M\to N\)を\(A\)-加群の単射とする。
+  \ref{1.29.3}を示すためには、
+  \(f\otimes_A \id_P\)が単射であることを示すことが十分である。
+  可換図式
+  \[
+  \begin{CD}
+    M\otimes_A P @> \id \otimes i >>
+    M\otimes_A A^{\oplus I} @> \id \otimes p >> M\otimes_A P \\
+    @V f\otimes \id VV @V f\otimes \id VV @VV f\otimes \id V \\
+    N\otimes_A P @> \id \otimes i >>
+    N\otimes_A A^{\oplus I} @> \id \otimes p >> N\otimes_A P
+  \end{CD}
+  \]
+  において、上と下の合成は\(\id\)であり、
+  \(M\otimes_A A^{\oplus I}\cong M^{\oplus I}\)より真ん中は単射である。
+  従って両端も単射であることが従う。
+  以上で\ref{1.29.3}の証明を完了する。
+
+  \ref{1.29.4}を示す。
+  \ref{1.29.4.1} \(\iff\) \ref{1.29.4.2}
+  を示すことができれば、
+  \(A^{\op}\)に対して
+  \ref{1.29.4.1} \(\iff\) \ref{1.29.4.2}
+  を適用することで
+  \ref{1.29.4.1} \(\iff\) \ref{1.29.4.3}
+  が従う。
+  残っているのは
+  \ref{1.29.4.1} \(\iff\) \ref{1.29.4.2}
+  を示すことである。
+
+  \ref{1.29.4.1}が成り立つと仮定する。
+  自由分解\(\cdots \to P^n \xrightarrow{d_P^n} \cdots \to P^0 \xrightarrow{d_P^0} M\to 0\)
+  を一つとる。
+  任意の\(N\)と\(j>n\)に対して\(\Tor_j^A(N,M) = 0\)が成り立つので、
+  とくに任意の\(N\)と\(j>n-1\)に対して\(\Tor_j^A(N,\ker(d_P^0))=0\)が成り立つ。
+  \(\ker(d_P^0)\cong \im(d_P^1)\)に注意して繰り返すと、
+  繰り返して、任意の\(N\)と任意の\(j>0\)に対して
+  \(\Tor_j^A(N,\ker(d_P^{n-1})) = 0\)が成り立つ。
+  このことは\(\ker(d_P^{n-1})\)が平坦であることを意味していて、
+  完全列
+  \(0\to \ker(d_P^{n-1}) \to P^{n-1} \to \cdots \to P^0 \to M \to 0\)
+  は\(M\)の長さ\(n\)以下の平坦分解である。
+  以上で
+  \ref{1.29.4.1} \(\Rightarrow\) \ref{1.29.4.2}
+  が示された。
+
+  \ref{1.29.4.2}が成り立つと仮定する。
+  任意に左\(A\)-加群\(M\)と右\(A\)-加群\(N\)と\(j>n\)をとる。
+  仮定より\(M\)の平坦分解
+  \(0 \to P^n \xrightarrow{d_P^n} \cdots \to P^0 \xrightarrow{d_P^0} M\to 0\)
+  が存在する。
+  \(P^n,P^{n-1}\)は平坦であるから、
+  完全列\(0\to P^n \to P^{n-1} \to \im(d_P^{n-1})\to 0\)
+  に\(N\otimes_A(-)\)を施すことで、
+  任意の\(j>1\)に対して\(\Tor_j^A(N,\im(d_P^{n-1}))=0\)であることが従う。
+  完全列\(0\to \im(d_P^{n-1})\to P^{n-2}\to \im(d_P^{n-2}) \to 0\)
+  に\(N\otimes_A(-)\)を施すことで、
+  任意の\(j>2\)に対して\(\Tor_j^A(N,\im(d_P^{n-2}))=0\)であることが従う。
+  帰納的に、
+  任意の\(j>k\)に対して\(\Tor_j^A(N,\im(d_P^{n-k}))=0\)であることが従う。
+  \(n=k\)とすれば所望の結論を得る。
+  以上で
+  \ref{1.29.4.2} \(\Rightarrow\) \ref{1.29.4.1}
+  が示され、\ref{1.29.4}の証明を完了する。
+
+  \ref{1.29.5}は
+  \KSIffAutoref{1.28.1}{1.28.3}と
+  \ref{1.29.3}より従う。
+  以上で\autoref{1.29}の解答を完了する。
+\end{proof}
+
+
+\ifcsname Chap\endcsname\else
+\printbibliography
+\end{document}
+\fi
