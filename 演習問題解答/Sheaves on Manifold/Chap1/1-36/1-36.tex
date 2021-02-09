@@ -1,0 +1,141 @@
+\ifcsname Chap\endcsname\else
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+\newcommand{\StylePath}{\ifcsname AllKS\endcsname KS-Style/KS-Style.sty\else
+\ifcsname Chap\endcsname ../KS-Style/KS-Style.sty\else
+../../KS-Style/KS-Style.sty\fi\fi}
+\input{\StylePath}
+
+\KSset{1}{36}
+\setcounter{section}{\value{KSS}-1}
+\begin{document}
+\maketitle\HeaderCommentA
+\section{\KSsection{section}}
+\setcounter{prob}{\value{KSP}-1}
+\fi
+
+
+\begin{prob}\label{1.36}
+  \(A\)をネーター環、\(\Mod^f(A)\)を有限生成\(A\)-加群の圏とする。
+  \((X_i,\rho_{ij})\)を有向集合で添字付けられた\(\Mod^f(A)\)の図式とする。
+  \(\Mod(A)\)での余極限\(\colim_{i\in I}X_i\)が
+  \(\Mod^f(A)\)に属すると仮定すると、
+  それは\(``\colim"_{i\in I}X_i\)の表現対象であることを示せ。
+\end{prob}
+
+\begin{rem*}
+  もとの文を引用するとこうである (第一版)：
+
+  Let \(A\) be a Noetherian ring, and
+  let \(\mathfrak{Mod}^f(A)\) be the category of finitely generated \(A\)-modules.
+  Let \(\{X_i,\rho_{i,j}\}\) be an inductive system in this category,
+  indexed by a directed ordered set \(I\).
+  Prove that if \(\varinjlim_{j} X_j\) exists in \(\mathfrak{Mod}^f(A)\),
+  then it represents \(``\varinjlim_j" X_j\).
+
+  これをそのまま読むと、仮定されていることは
+  「\(\Mod^f(A)\)で余極限\(\colim_{i\in I}X_i\)が存在する」
+  ということである。
+  しかし、だとすると、\autoref{1.36}は本当に正しいだろうか。
+  たとえば\(A=\Z\)として、
+  有向集合として\(\Z\)のイデアルのなす集合を包含関係の逆向きで順序を入れたものを考え、
+  \(X_i\dfn (\frac{1}{n}\Z)/\Z\)と定義して、
+  \(\rho_{n,nm}\)を自然な包含射とする。
+  \(M\)を有限生成加群、\(f_n:X_n\to M\)を\(\rho_{n,nm}\)たちと両立的な射とする。
+  このとき、\(f_n(1/n)\)は\(M\)の可除元を与える。
+  \(M\)は有限生成加群であるから、従って\(f_n(1/n)=0\)である。
+  これは\(f_n=0\)を意味する。
+  従って、どのような\(\rho_{n,nm}\)たちと両立的な射の族\(f_n:X_n\to M\)も
+  \(0\)を一意的に経由する。
+  これは\(\Mod^f(A)\)における図式\(X_n\)の余極限が\(0\)であることを意味している。
+  とくに\(\Mod^f(A)\)における図式\(X_n\)には余極限が存在する。
+  一方で\(``\colim"_n X_n\)は自明な前層ではないので\(0\)はその表現対象ではない。
+  これは問われていることに反する。
+  従って、本当に仮定すべきことは、
+  「\(\Mod(A)\)における余極限が\(\Mod^f(A)\)に属する」
+  ということであろう。
+  実際には、(ここで示すように)
+  \(\Mod(A)\)における余極限を\(X\)としたとき、
+  \(\Mod^f(A)\)上の前層として
+  \(``\colim"_j X_j \cong \Hom_A(-,X)\)が成り立つ
+  (標語的に言えば、有限表示加群は加群の圏のコンパクト対象である、ということ)。
+\end{rem*}
+
+\begin{proof}
+  \(X\dfn \colim_{i\in I}X_i\) (\(\Mod(A)\)における余極限) とおいて、
+  \(\rho_i:X_i\to X\)を自然な射とする。
+  \autoref{1.36}を示すためには、
+  \(M\)を有限生成\(A\)-加群として、
+  自然な射\(\varphi: \colim_{i\in I}\Hom_A(M,X_i) \to \Hom_A(M,X)\)
+  が全単射であることを示すことが十分である。
+
+  まず\(\varphi\)が単射であることを示す。
+  \(\varphi\)で送って\(0\)である
+  \(\colim_{i\in I}\Hom_A(M,X_i)\)の元をとり、
+  \(f_i:M\to X_i\)を、その元を代表する射とする。
+  \(\varphi\)で送って\(0\)であるので、
+  \(\rho_i\circ f_i = 0\)である。
+  \(M\)は有限生成なので、
+  有限個の\(m_1,\cdots, m_r\in M\)によって生成される。
+  \(f_i(m_k)\in X_i, (k=1,\cdots r)\)は\(\rho_i\)で送って\(0\)になるので、
+  ある\(i_k \geq i\)が存在して\(X_{i_k}\)において
+  \(\rho_{i,i_k}(f_i(m_k)) = 0\)である。
+  \(I\)は有向集合であるから、
+  \(i_1,\cdots, i_r\)の上界\(j\)が存在する。
+  このとき\(\rho_{i,j}(f_i(m_k)) = 0, (\forall k =1,\cdots,r)\)
+  であるので、\(\rho_{i,j}\circ f_i = 0\)である。
+  \(f_i:M\to X_i\)によって代表される\(\colim_{i\in I}\Hom_A(M,X_i)\)の元は
+  \(\rho_{i,j}\circ f_i:M\to X_j\)によって代表される元でもあるので、
+  これは\(0\)である。
+  以上より\(\varphi\)が単射であることが従う
+  (ここまで\(A\)のネーター性は必要ない)。
+
+  \(\varphi\)が全射であることを示す。
+  \(f:M\to X\)を\(A\)-加群の射とする。
+  全射\(p:A^r\to M\)を一つとる。
+  \(A\)はネーターであるので、\(\ker(p)\)は有限生成である
+  (ネーター性が本質的に必要なのはこの部分、すなわち、有限生成加群が有限表示であるという部分)。
+  \(e_k\in A^r\)を\(k\)番目の座標のみ\(1\)で他が\(0\)となる元とする。
+  \(X\)は\(X_i\)たちの filtered colimit であるから、
+  \(f(p(e_k))\in X\)に対して
+  ある\(i_k\in I\)が存在して
+  \(f(p(e_k)) \in \rho_{i_k}(X_{i_k})\)が成り立つ。
+  \(I\)は有向集合であるので、
+  \(i_1,\cdots, i_r \leq j\)となる\(j\in I\)が存在する。
+  このとき\(f(p(A^r)) \subset \rho_j(X_j)\)が成り立つ。
+  \(A^r\)は射影加群であるから、
+  全射\(\rho_j:X_j\to \rho_j(X_j)\)に沿って
+  \(f\circ p:A^r\to \rho_j(X_j)\)がリフトして、
+  \(f\circ p = \rho_j \circ g\)となる射\(g:A^r\to X_j\)が存在する。
+  \(\ker(p)\)の生成元を\(a_1,\cdots,a_s\in \ker(p)\)とする。
+  \(a_k\in \ker(p)\)であるから、
+  \(\rho_j(g(a_k)) = f(p(a_k)) = f(0) = 0\)
+  が成り立つ。
+  従って、各\(k = 1,\cdots, s\)に対してある\(i'_k\geq j\)が存在して、
+  \(X_{i'_k}\)で\(\rho_{j,i'_k}(g(a_k)) = 0\)が成り立つ。
+  \(I\)は有向集合であるので、
+  \(i'_1,\cdots, i'_s \leq j'\)となる\(j'\in I\)が存在する。
+  このとき\(\rho_{j,j'}(g(a_k)) = 0, (\forall k = 1,\cdots ,s)\)が成り立つ。
+  従って、\(\rho_{j,j'}\circ g: A^r\to X_{j'}\)は
+  \(p:A^r\to M\)を一意的に経由して、
+  \(\rho_{j,j'}\circ g = h\circ p\)となる
+  射\(h:M\to X_{j'}\)を引き起こす。
+  このとき
+  \[
+  \rho_{j'}\circ h \circ p = \rho_{j'}\circ \rho_{j,j'}\circ g = \rho_j\circ g
+  = f\circ p
+  \]
+  が成り立つ。
+  \(p\)はエピなので、\(\rho_{j'}\circ h = f\)が成り立つ。
+  従って、\(h\)により代表される\(\colim_{i\in I}\Hom_A(M,X_i)\)の元を\([h]\)と書けば、
+  \(\varphi([h]) = f\)が成り立つ。
+  以上で\(\varphi\)が全射であることの証明を完了し、
+  \autoref{1.36}の解答を完了する。
+\end{proof}
+
+
+
+
+\ifcsname Chap\endcsname\else
+\printbibliography
+\end{document}
+\fi

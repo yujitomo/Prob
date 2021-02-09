@@ -1,0 +1,119 @@
+\ifcsname Chap\endcsname\else
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+\newcommand{\StylePath}{\ifcsname AllKS\endcsname KS-Style/KS-Style.sty\else
+\ifcsname Chap\endcsname ../KS-Style/KS-Style.sty\else
+../../KS-Style/KS-Style.sty\fi\fi}
+\input{\StylePath}
+
+\KSset{1}{13}
+\setcounter{section}{\value{KSS}-1}
+\begin{document}
+\maketitle
+\HeaderCommentA
+\section{\KSsection{section}}
+\setcounter{prob}{\value{KSP}-1}
+\fi
+
+
+
+\begin{prob}\label{1.13}
+  \(\mcC\)を三角圏、
+  \(X_i\to Y_i\to Z_i\to X_i[1], (i=1,2)\)を\(\mcC\)の二つの三角形とする。
+  これら二つの三角形が完全三角であるためには、
+  三角形
+  \[X_1\oplus X_2 \to Y_1\oplus Y_2 \to Z_1\oplus Z_2 \to X_1[1]\oplus X_2[1]\]
+  が完全三角であることが必要十分である、ということを示せ。
+\end{prob}
+
+\begin{proof}
+  必要性を証明する。
+  二つの三角形
+  \(X_i\to Y_i\to Z_i\to X_i[1], (i=1,2)\)
+  が完全三角であるとする。
+  \(M\dfn M(X_1\oplus X_2 \to Y_1\oplus Y_2)\)と置く (mapping cone)。
+  自然な射\(X_1\oplus X_2\to X_i\)と\(Y_1\oplus Y_2\to Y_i\)により
+  可換図式
+  \[
+  \begin{CD}
+    X_1\oplus X_2 @>>> Y_1\oplus Y_2 \\
+    @VVV @VVV \\
+    X_i @>>> Y_i
+  \end{CD}
+  \]
+  を得る。
+  よって、(TR4)より、ある射\(M\to Z_i\)が存在して、
+  これらが完全三角の間の射を形成する。
+  二つの射\(M\to Z_1,M\to Z_2\)により、
+  射\(M\to Z_1\oplus Z_2\)ができて、
+  可換図式
+  \[
+  \begin{CD}
+    X_1\oplus X_2 @>>> Y_1\oplus Y_2 @>>> M @>>> X_1[1]\oplus X_2[1] \\
+    @| @| @VVV @| \\
+    X_1\oplus X_2 @>>> Y_1\oplus Y_2 @>>> Z_1\oplus Z_2 @>>> X_1[1]\oplus X_2[1] \\
+  \end{CD}
+  \]
+  を得る。
+  任意に\(P\in \mcC\)を取って、函手\(\Hom(P,-)\)を適用すると、
+  各\(\Hom(P,X_i)\to \Hom(P,Y_i)\to \Hom(P,Z_i)\to \Hom(P,X_i[1])\)は完全であるから、
+  \[
+  \Hom(P,X_1\oplus X_2) \to \Hom(P,Y_1\oplus Y_2) \to
+  \Hom(P,Z_1\oplus Z_2) \to \Hom(P,X_1[1]\oplus X_2[1])
+  \]
+  も完全である。
+  よって\autoref{1.12}より
+  \[X_1\oplus X_2 \to Y_1\oplus Y_2 \to Z_1\oplus Z_2 \to X_1[1]\oplus X_2[1]\]
+  も完全三角であることが従う。
+  以上で必要性の証明を完了する。
+
+  十分性を証明する。
+  \[X_1\oplus X_2 \to Y_1\oplus Y_2 \to Z_1\oplus Z_2 \to X_1[1]\oplus X_2[1]\]
+  が完全三角であると仮定する。
+  \(M_i\dfn M(X_i\to Y_i)\)と置く。
+  自然な射\(X_i\to X_1\oplus X_2\)と\(Y_i\to Y_1\oplus Y_2\)により
+  可換図式
+  \[
+  \begin{CD}
+    X_i @>>> Y_i \\
+    @VVV @VVV \\
+    X_1\oplus X_2 @>>> Y_1\oplus Y_2
+  \end{CD}
+  \]
+  を得る。
+  よって、(TR4)より、ある射\(M_i\to Z_1\oplus Z_2\)が存在して、
+  これらが完全三角の間の射を形成する。
+  自然な射\(X_1\oplus X_2 \to X_i, Y_1\oplus Y_2 \to Y_i, Z_1\oplus Z_2\to Z_i\)
+  と合成することで、可換図式
+  \[
+  \begin{CD}
+    X_i @>>> Y_i @>>> M_i @>>> X_i[1] \\
+    @| @| @VVV @| \\
+    X_i @>>> Y_i @>>> Z_i @>>> X_i[1]
+  \end{CD}
+  \]
+  を得る。
+  任意に\(P\in \mcC\)を取って函手\(\Hom(P,-)\)を適用する。
+  \[X_1\oplus X_2 \to Y_1\oplus Y_2 \to Z_1\oplus Z_2 \to X_1[1]\oplus X_2[1]\]
+  が完全三角であることから、
+  \[
+  \Hom(P,X_1\oplus X_2) \to \Hom(P,Y_1\oplus Y_2) \to
+  \Hom(P,Z_1\oplus Z_2) \to \Hom(P,X_1[1]\oplus X_2[1])
+  \]
+  は完全であり、従って各\(i=1,2\)に対して
+  \[
+  \Hom(P,X_i) \to \Hom(P,Y_i) \to \Hom(P,Z_i) \to \Hom(P,X_i[1])
+  \]
+  も完全である。
+  よって\autoref{1.12}より
+  \(X_i\to Y_i\to Z_i\to X_i[1]\)も完全三角であることが従う。
+  以上で十分性の証明を完了し、
+  \autoref{1.13}の解答を完了する。
+\end{proof}
+
+
+
+
+\ifcsname Chap\endcsname\else
+\printbibliography
+\end{document}
+\fi

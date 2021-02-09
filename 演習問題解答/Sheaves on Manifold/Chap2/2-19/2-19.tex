@@ -1,0 +1,82 @@
+\ifcsname Chap\endcsname\else
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+\newcommand{\StylePath}{\ifcsname AllKS\endcsname KS-Style/KS-Style.sty\else
+\ifcsname Chap\endcsname ../KS-Style/KS-Style.sty\else
+../../KS-Style/KS-Style.sty\fi\fi}
+\input{\StylePath}
+
+\KSset{2}{19}
+\setcounter{section}{\value{KSS}-1}
+\begin{document}
+\maketitle
+\HeaderCommentA
+\section{\KSsection{section}}
+\setcounter{prob}{\value{KSP}-1}
+\LocCptRemark
+\fi
+
+
+\begin{prob}\label{2.19}
+  \(X\)を局所コンパクト空間として、
+  \(A\)を可換環で\(\wgld(A)<\infty\)であるものとする。
+  \(F\in \sfD^+(A_X)\)として、
+  \(\Omega,Z\subset X\)をそれぞれ開集合と閉集合とする。
+  \(a_X\)を一意的な射\(X\to \{\text{pt}\}\)とする。
+  以下を示せ：
+  \begin{align}
+    &R\Gamma(\Omega,F) \cong Ra_{X*}R\inHom(A_{\Omega},F),
+    \label{2.19.1} \\
+    &R\Gamma_c(\Omega,F) \cong Ra_{X!}(A_{\Omega}\otimes^L F),
+    \label{2.19.2} \\
+    &R\Gamma_Z(X,F) \cong Ra_{X*}R\inHom(A_Z,F),
+    \label{2.19.3} \\
+    &R\Gamma_c(Z,F) \cong Ra_{X!}(A_Z\otimes^L F).
+    \label{2.19.4}
+  \end{align}
+\end{prob}
+
+\begin{proof}
+  \eqref{2.19.1}と\eqref{2.19.3}を示す。
+  \(F\)を入射的とすると、本文\cite[Proposition 2.4.6 (vii)]{kashiwara2002sheaves}より、
+  \(\inHom(-,F)\)は脆弱層である。
+  従って、\(a_{X*}=\Gamma(X,-)\)に関して acyclic である。
+  よって
+  \[
+  R(a_{X*}\circ \inHom(A_{\Omega},-)) \cong Ra_{X*}\circ R\inHom(A_{\Omega},-), \ \
+  R(a_{X*}\circ \inHom(A_Z,-)) \cong Ra_{X*}\circ R\inHom(A_Z,-),
+  \]
+  が成り立つ。
+  ここで\(\Omega\subset X\)は開であるので、
+  \(a_{X*}\circ \inHom(A_{\Omega},-)\cong \Gamma(\Omega,-)\)が成り立ち、
+  \(Z\subset X\)は閉であるので、
+  \(a_{X*}\circ \inHom(A_Z,-)\cong \Gamma_Z(X,-)\)が成り立つ。
+  よって
+  \[
+  R\Gamma(\Omega,-) \cong Ra_{X*}\circ R\inHom(A_{\Omega},-), \ \
+  R\Gamma_Z(X,-) \cong Ra_{X*}\circ R\inHom(A_Z,-),
+  \]
+  が成り立つ。
+  以上で\eqref{2.19.1}と\eqref{2.19.3}の証明を完了する。
+
+  \eqref{2.19.2}と\eqref{2.19.4}を示す。
+  \(Z\)を局所閉集合とする。
+  \(A_Z\)は \(A_X\)-flat なので、
+  \(A_Z\otimes^L (-)\cong A_Z\otimes (-)\)
+  が成り立つ。
+  また、本文\cite[Proposition 2.3.10]{kashiwara2002sheaves}より、
+  \(A_Z\otimes (-)\cong (-)_Z\)が成り立つ。
+  さらに、\((-)_Z\)は完全函手であるので、従って、
+  \[Ra_{X!}\circ (-)_Z \cong R(a_{X!}\circ (-)_Z) \cong R\Gamma_c(Z,-)\]
+  が成り立つ。
+  \(Z\)を開または閉とすることにより、
+  \eqref{2.19.2}と\eqref{2.19.4}が従う。
+  以上で\autoref{2.19}の解答を完了する。
+\end{proof}
+
+
+
+
+\ifcsname Chap\endcsname\else
+\printbibliography
+\end{document}
+\fi

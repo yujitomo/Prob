@@ -1,0 +1,67 @@
+\ifcsname Chap\endcsname\else
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+\newcommand{\StylePath}{\ifcsname AllKS\endcsname KS-Style/KS-Style.sty\else
+\ifcsname Chap\endcsname ../KS-Style/KS-Style.sty\else
+../../KS-Style/KS-Style.sty\fi\fi}
+\input{\StylePath}
+
+\KSset{1}{18}
+\setcounter{section}{\value{KSS}-1}
+\begin{document}
+\maketitle
+\HeaderCommentA
+\section{\KSsection{section}}
+\setcounter{prob}{\value{KSP}-1}
+\fi
+
+
+\begin{prob}\label{1.18}
+  \(\mcC\)を\(\hd(\mcC) \leq 1\)のアーベル圏とする。
+  \(X\in \sfD^b(\mcC)\)を複体とするとき、
+  \(\sfD^b(\mcC)\)で
+  \[
+  X\cong \bigoplus_{k\in \Z}H^k(X)[-k]
+  \]
+  となることを示せ。
+\end{prob}
+
+\begin{proof}
+  シフトすることで、\(X^i = 0 ,(\forall i < 0)\)と仮定しても一般性を失わない。
+  \(X^n \neq 0\)となる最大の\(n\)に関する帰納法で証明する。
+  \(n=0\)であれば主張は自明であるので、
+  ある\(n=k\)に対して主張が成立するときに、
+  \(n=k+1\)の場合にも成立することを証明する。
+  帰納法の仮定より、
+  \[
+  \tau^{\leq n-1}(X)\cong \bigoplus_{k\in \Z}H^k(\tau^{\leq n-1}(X))[-k]
+  \cong \bigoplus_{k\leq n-1}H^k(X)[-k]
+  \]
+  である。
+  従って、所望の同型を証明するためには、
+  \(n=1\)の場合、さらに\(d_X^0:X^0\to X^1\)がモノ射である場合に、
+  \(\sfD^b(\mcC)\)で\(X\cong \coker(d_X^0)[-1]\)となることを証明することが十分である。
+
+  \(X\in \sfD^b(\mcC)\)は
+  \(X^i = 0, (i\in (-\infty,0]\cup (1,+\infty))\)であり、
+  さらに\(d_X^0:X^0\to X^1\)がモノ射であるとする。
+  \(X^1\to I\)を入射的対象\(I\)へのモノ射とすると、
+  \(\hd(\mcC)\leq 1\)であるから、
+  \(I/X^0,I/X^1\)はどちらも入射的対象となる。
+  複体\(J\)を\(J^0=J^1=I, d_J^0 = \id_I\)で定義し、
+  \(J_1\)を\(J_1^0=I/X^0,J_1^1=I/X^1\)で\(d_{J_1}^0\)を自然な射として定義すると、
+  \(J_1\)は\(X^1/X^0\)の入射分解であり、
+  \(0\to X \to J \to J_1 \to 0\)は\(\Ch(\mcC)\)の完全列である。
+  従って、\(X\to J\to J_1\to X[1]\)は\(\sfD(\mcC)\)の完全三角である。
+  \(J_1\)は\(X^1/X^0\)の入射分解であるから、
+  \(\sfD(\mcC)\)において\(J_1\cong X^1/X^0\)である。
+  以上より、\(\sfD(\mcC)\)の完全三角\(X\to J \to X^1/X^0\to X[1]\)を得る。
+  さらに、定義より\(\sfD(\mcC)\)において\(J\cong 0\)であるから、
+  これは\(\sfD(\mcC)\)において\(X\cong (X^1/X^0)[-1]\)となることを示している。
+  以上で\autoref{1.18}の解答を完了する。
+\end{proof}
+
+
+\ifcsname Chap\endcsname\else
+\printbibliography
+\end{document}
+\fi

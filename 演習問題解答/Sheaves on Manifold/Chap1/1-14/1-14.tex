@@ -1,0 +1,124 @@
+\ifcsname Chap\endcsname\else
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+\newcommand{\StylePath}{\ifcsname AllKS\endcsname KS-Style/KS-Style.sty\else
+\ifcsname Chap\endcsname ../KS-Style/KS-Style.sty\else
+../../KS-Style/KS-Style.sty\fi\fi}
+\input{\StylePath}
+
+\KSset{1}{14}
+\setcounter{section}{\value{KSS}-1}
+\begin{document}
+\maketitle
+\HeaderCommentA
+\section{\KSsection{section}}
+\setcounter{prob}{\value{KSP}-1}
+\fi
+
+
+
+\begin{prob}\label{1.14}
+  \(\mcC\)を圏、\(S\)を積閉系とする。
+  対象\(X\in \mcC\)に対して、圏\(S_X\)を次で定義する：
+  \begin{itemize}
+    \item
+    \(S_X\)の対象は\(S\)に属する射\(s:X'\to X\)である。
+    \item
+    対象\(s:X'\to X\)から対象\(s':X''\to X\)への射は、
+    \(\mcC\)の射\(h:X''\to X'\)であって
+    \(s'=s\circ h\)となるものとして定義する
+    (\(\mcC\)の射の向きとは逆向きであることに注意)。
+  \end{itemize}
+  このとき、以下を証明せよ：
+  \begin{enumerate}
+    \item \label{1.14.1}
+    \(S_X\)はfilteredである。
+    \item \label{1.14.2}
+    \(X,Y\in \mcC\)を対象とする。
+    このとき、以下が成り立つ：
+    \[\Hom_{\mcC_S}(X,Y) = \colim_{X'\in S_X}\Hom_{\mcC}(X',Y).\]
+    \item \label{1.14.3}
+    射を逆向きにすることで圏\(S_Y^a\)を定義し、次が成り立つことを示せ：
+    \[\Hom_{\mcC_S}(X,Y) = \colim_{Y'\in S_Y^a}\Hom_{\mcC}(X,Y').\]
+  \end{enumerate}
+\end{prob}
+
+\begin{rem*}
+  第一版の本文では、\ref{1.14.1}は、
+  \((S_X)^{\op}\)がfilteredであることを示す問題となっているが、
+  これは誤植であると思われる。
+  なお、\((S_X)^{\op}\)がfilteredであることは、
+  終対象\(\id_X:X\to X\)を持つことから自明である。
+\end{rem*}
+
+\begin{proof}
+  \ref{1.14.1}を示す。
+  \(S_X^{\op}\)がcofilteredであることを証明すれば良い。
+  \([s_1:X_1\to X], [s_2:X_2\to X]\)を\(S_X^{\op}\)の対象とする。
+  すると本文\cite[Definition 1.6.1 (S3)]{kashiwara2002sheaves}より、
+  ある\(S\)に属する射\(t:W\to X_1\)と\(\mcC\)の射\(f:W\to X_2\)が存在して
+  \(s_1\circ t = s_2\circ f\)となる。
+  \(s_1,t\in S\)なので、本文\cite[Definition 1.6.1 (S2)]{kashiwara2002sheaves}より、
+  \(u\dfn s_1\circ t\in S\)である。
+  従って、\([u:W\to X]\)は\(S_X^{\op}\)の対象であり、
+  \(f,t\)は\(S_X^{\op}\)の射である。
+  よって\(S_X\)は本文の条件
+  \cite[Definition 1.11.2 (1.11.1)]{kashiwara2002sheaves}を満たす。
+
+  次に、\([s_1:X_1\to X], [s_2:X_2\to X]\)を\(S_X^{\op}\)の対象とし、
+  \(f_1,f_2:s_1\to s_2\)を\(S_X^{\op}\)の二つの射とする。
+  このとき、\(s_2\circ f_1 = s_2\circ f_2\)であるから、
+  本文\cite[Definition 1.6.1 (S4)]{kashiwara2002sheaves}より、
+  \(S\)に属するある射\(t:Y\to X_1\)が存在して、
+  \(f_1\circ t = f_2\circ t\)となる。
+  \(u\dfn s_1\circ t\)とすれば、
+  本文\cite[Definition 1.6.1 (S2)]{kashiwara2002sheaves}より\(u\in S\)であるから、
+  \([u:Y\to X]\)は\(S_X^{\op}\)の対象であり、
+  \(t:u\to s_1\)は\(S_X^{\op}\)の射である。
+  よって\(S_X\)は本文の条件
+  \cite[Definition 1.11.2 (1.11.2)]{kashiwara2002sheaves}を満たす。
+  以上で\ref{1.14.1}の証明を完了する。
+
+  \ref{1.14.2}を示す。
+  \[
+  T \dfn \left\{ (X',s,f) \middle| X'\in \mcC, [s:X'\to X]\in S, f:X'\to Y\right\}
+  \]
+  と置く (本文\cite[Definition 1.6.2 (S3)]{kashiwara2002sheaves}のHom集合
+  の定義式の割る前の集合) と、
+  \[T = \coprod_{[s:X'\to X]\in S_X}\Hom_{\mcC}(X',Y)\]
+  である。
+  また、\(f\in \Hom_{\mcC}(X',Y), g\in \Hom_{\mcC}(X'',Y)\)に対して
+  本文\cite[Definition 1.6.2]{kashiwara2002sheaves}で定義されている関係は、
+  ある\(S_X\)の射\(X'\to X'''\gets X''\)が存在して、
+  \(f,g\)は\(\Hom_{\mcC}(X''',Y)\)において等しい、ということを意味している。
+  従って、集合の圏における余極限の具体的な構成を思い出すと、
+  \(\Hom_{\mcC_S}(X,Y) = \colim_{X'\in S_X}\Hom_{\mcC}(X',Y)\)となることがわかる。
+  以上で\ref{1.14.2}の証明を完了する。
+
+  \ref{1.14.3}を示す。
+  \(S_Y^a\dfn ((S^{\op})_Y)^{\op}\)とおく。
+  ただし\(S^{\op}\)は\(S\)に対応する圏\(\mcC^{\op}\)の積閉系である。
+  \ref{1.14.1}より\((S^{\op})_Y\)はcofilteredであるから、
+  \(((S^{\op})_Y)^{\op}\)はfilteredである。
+  また\ref{1.14.2}より
+  \[\Hom_{\mcC^{\op}_{S^{\op}}}(Y,X) =
+  \colim_{Y'\in (S^{\op})_Y}\Hom_{\mcC^{\op}}(Y',X)\]
+  である。
+  \(\op\)をとれば、
+  \[\Hom_{(\mcC^{\op}_{S^{\op}})^{\op}}(X,Y) =
+  \colim_{Y'\in S_Y^a}\Hom_{\mcC}(X,Y')\]
+  であることが従う。
+  \((\mcC^{\op}_{S^{\op}})^{\op} = \mcC_S\)であること
+  (cf. 本文\cite[Remark 1.6.4]{kashiwara2002sheaves})
+  に注意すれば、所望の等式を得る。
+  以上で\ref{1.14.3}の証明を完了し、
+  \autoref{1.14}の解答を完了する。
+\end{proof}
+
+
+
+
+
+\ifcsname Chap\endcsname\else
+\printbibliography
+\end{document}
+\fi

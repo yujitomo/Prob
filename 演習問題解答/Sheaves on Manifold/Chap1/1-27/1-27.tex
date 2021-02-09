@@ -1,0 +1,89 @@
+\ifcsname Chap\endcsname\else
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+\newcommand{\StylePath}{\ifcsname AllKS\endcsname KS-Style/KS-Style.sty\else
+\ifcsname Chap\endcsname ../KS-Style/KS-Style.sty\else
+../../KS-Style/KS-Style.sty\fi\fi}
+\input{\StylePath}
+
+\KSset{1}{27}
+\setcounter{section}{\value{KSS}-1}
+\begin{document}
+\maketitle\HeaderCommentA
+\section{\KSsection{section}}
+\setcounter{prob}{\value{KSP}-1}
+\fi
+
+
+
+\begin{prob}\label{1.27}
+  \(\mcC\)をアーベル圏 (resp. 三角圏) とする。
+  \[K(\mcC)\dfn \left(\bigoplus_{X\in \mcC} \Z\cdot [X]\right)/([X]=[X']+[X''])\]
+  と定義する。
+  ただしここで\([X]\)は\(\mcC\)の対象の同型類を表し、
+  商はすべての完全列\(0\to X'\to X\to X''\to 0\)
+  (resp. 完全三角\(X'\to X \to X'' \xrightarrow{+1}\))
+  に渡ってとるものとする。
+  \(K(\mcC)\)を\(\mcC\)の\textbf{Grothendieck群}と言う。
+  \(\mcC\)をアーベル圏とする。
+  \(i:\mcC \to \sfD^b(\mcC)\)は群の同型
+  \(K(\mcC) \xrightarrow{\sim} K(\sfD^b(X))\)
+  を引き起こすことを示せ。
+  また、逆射が
+  \(\varphi:X\mapsto \sum_j(-1)^j[H^j(X)]\)により与えられることを示せ。
+\end{prob}
+
+\begin{proof}
+  \(\mcC\)の完全列\(0\to X'\to X\to X''\to 0\)を\(i\)で送れば
+  \(\sfD^b(\mcC)\)の完全三角
+  \(X'\to X\to X''\xrightarrow{+1}\)を得るので、
+  \([X]\mapsto [i(X)]\)によって
+  \(K(\mcC)\to K(\sfD^b(\mcC))\)がwell-definedに定義される。
+  さらに\(X'\to X\to X''\xrightarrow{+1}\)が\(\sfD^b(\mcC)\)の完全三角であれば、
+  コホモロジーをとることで長い完全列
+  \[\cdots \to H^i(X')\to H^i(X) \to H^i(X'') \to \cdots\]
+  を得るので、
+  従って\(\sum_j(-1)^j[H^j(X)] = \sum_j(-1)^j[H^j(X')] + \sum_j(-1)^j[H^j(X'')]\)
+  が従い、\(\varphi\)もwell-definedである。
+  \(\varphi\circ i = \id_{K(\mcC)}\)は明らかであるから、
+  \(i\circ \varphi = \id_{K(\sfD^b(\mcC))}\)であることを確認する。
+  一般に、完全三角\(X'\to X\to X'' \xrightarrow{+1}\)に対して
+  三角形\(X\to X''\to X'[1] \xrightarrow{+1}\)も完全であることから
+  \([X''] = [X]+[X'[1]]\)かつ\([X] = [X']+[X'']\)であることが従い、
+  \([X'[1]] = [X'']-[X] = -([X]-[X'']) = -[X']\)であることが従う。
+  よって任意の\(X\in \sfD^b(\mcC)\)に対して\([X[1]] = -[X]\)である。
+  ある\(n\)で
+  \((i\circ \varphi)([\tau^{\leq n}(X)]) = [\tau^{\leq n}(X)]\)
+  が成り立つと仮定する
+  (これは十分小さい\(n\)に対して明らかに成り立つ)。
+  三角形
+  \(\tau^{\leq n}(X) \to \tau^{\leq n+1}(X) \to H^{n+1}(X)[-n-1]\xrightarrow{+1}\)
+  が完全であることから、
+  \begin{align*}
+    [\tau^{\leq n+1}(X)] &= [i(H^{n+1}(X))[-n-1]] + [\tau^{\leq n}(X)] \\
+    &= (-1)^{n+1}i([H^{n+1}(X)]) + (i\circ \varphi)([\tau^{\leq n}(X)]) \\
+    &= (-1)^{n+1}i([H^{n+1}(X)]) + \sum_j(-1)^ji([H^j(\tau^{\leq n}(X))]) \\
+    &= (-1)^{n+1}i([H^{n+1}(X)]) + \sum_{j\leq n}(-1)^ji([H^j(X)]) \\
+    &= \sum_{j\leq n+1}(-1)^ji([H^j(X)]) \\
+    &= \sum_j(-1)^ji([H^j(\tau^{\leq n+1}(X))]) \\
+    &= (i\circ \varphi)([\tau^{\leq n+1}(X)])
+  \end{align*}
+  が従う。
+  帰納法により、任意の\(n\)で
+  \((i\circ \varphi)([\tau^{\leq n}(X)]) = [X]\)
+  であることが従う。
+  \(X\in \sfD^b(\mcC)\)であるので、
+  十分大きい\(n\)を考えることで
+  \((i\circ\varphi)([X]) = [X]\)が従う。
+  以上で\(i\circ \varphi = \id_{K(\sfD^b(\mcC))}\)
+  であることが従い、
+  \autoref{1.27}の証明を完了する。
+\end{proof}
+
+
+
+
+
+\ifcsname Chap\endcsname\else
+\printbibliography
+\end{document}
+\fi

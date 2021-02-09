@@ -1,0 +1,109 @@
+\ifcsname Chap\endcsname\else
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+\newcommand{\StylePath}{\ifcsname AllKS\endcsname KS-Style/KS-Style.sty\else
+\ifcsname Chap\endcsname ../KS-Style/KS-Style.sty\else
+../../KS-Style/KS-Style.sty\fi\fi}
+\input{\StylePath}
+
+\KSset{1}{16}
+\setcounter{section}{\value{KSS}-1}
+\begin{document}
+\maketitle
+\HeaderCommentA
+\section{\KSsection{section}}
+\setcounter{prob}{\value{KSP}-1}
+\fi
+
+
+\begin{prob}\label{1.16}
+  \(\mcC\)を加法圏とする。
+  \begin{enumerate}
+    \item \label{1.16.1}
+    \(X\in \Ch^-(\mcC), Y\in \Ch^+(\mcC)\)とする。
+    以下の等式を証明せよ：
+    \begin{align*}
+      &Z^0(\Tot(\Hom_{\mcC}(X,Y))) = \Hom_{\Ch(\mcC)}(X,Y), \\
+      &B^0(\Tot(\Hom_{\mcC}(X,Y))) = \Ht(X,Y), \\
+      &H^0(\Tot(\Hom_{\mcC}(X,Y))) = \Hom_{\sfK(\mcC)}(X,Y).
+    \end{align*}
+    ただしここで\(\Hom_{\mcC}(X,Y)\)は二重複体とみなしている。
+    \item \label{1.16.2}
+    さらに\(\mcC\)がアーベル圏であり、
+    十分入射的対象を持つか、または十分射影的対象を持つと仮定する。
+    \(X\in \sfD^-(\mcC),Y\in \sfD^+(\mcC)\)に対して、
+    次の等式を示せ：
+    \[
+    H^0(R\Hom_{\mcC}(X,Y)) = \Hom_{\sfD(\mcC)}(X,Y).
+    \]
+  \end{enumerate}
+\end{prob}
+
+\begin{proof}
+  \ref{1.16.1}を示す。
+  \(H^{i,j} \dfn \Hom_{\mcC}(X^{-i},Y^j)\)とおけば、
+  \(X\in \Ch^-(\mcC), Y\in \Ch^+(\mcC)\)であることから、
+  二重複体\(H^{i,j}\)は本文の条件\cite[(1.9.2)]{kashiwara2002sheaves}を満たし、
+  \(\Ch^2_f(\mcC)\)に属する。
+  \(f:X\to Y\)を\(\Ch(\mcC)\)の射とすると、
+  \(f\)は\(\mcC\)の射の族\(f^n:X^n\to Y^n\)であって
+  \(f^n\circ d_X^{n-1} = d_Y^{n-1}\circ f^{n-1}\)を満たすものである。
+  よって、とくに\(f\in \bigoplus_{i+j = 0} H^{i,j} = \Tot^0(H^{\bullet,\bullet})\)であり、
+  等式\(f^n\circ d_X^{n-1} = d_Y^{n-1}\circ f^{n-1}\)はさらに
+  \(f\)が\(Z^0(\Tot(H^{\bullet,\bullet}))\)に属することを意味する。
+  以上で\ref{1.16.1}の一つ目の等式が従う。
+  \(f:X\to Y\)が homotopic to zero であるとする。
+  このとき、ある\(\mcC\)の射の族\(s^n:X^n\to Y^{n-1}\)が存在して
+  \(f^n = s^{n+1}\circ d_X^n + d_Y^{n-1} \circ s^n\)となる。
+  射の族\(s=(s^n)_{n\in \Z}\)は\(\bigoplus_{i+j=-1}H^{i,j}\)に属し、
+  等式\(f^n = s^{n+1}\circ d_X^n + d_Y^{n-1} \circ s^n\)は
+  \(\Tot^{-1}(H^{\bullet,\bullet}))\to \Tot^0(H^{\bullet,\bullet}))\)
+  での\(s\)の像が\(f\in \Tot^0(H^{\bullet,\bullet}))\)となることを意味する。
+  以上で\ref{1.16.1}の二つ目の等式が従う。
+  \ref{1.16.1}の三つ目の等式は\ref{1.16.1}の一つ目と二つ目の等式より直ちに従う。
+  以上で\ref{1.16.1}の証明を完了する。
+
+  \ref{1.16.2}を示す。
+  \(\mcC\)が十分射影的対象を持つ場合、
+  \(\mcC^{\op}\)を考えることによって、
+  \(\mcC\)が十分入射的対象を持つ場合に帰着される
+  (cf. \cite[Remark 1.10.10]{kashiwara2002sheaves})。
+  よって、\ref{1.16.2}を示すためには、
+  \(\mcC\)が十分入射的対象を持つと仮定しても一般性を失わない。
+  \autoref{1.15}の意味で\(S_Y\)という記号を用いる。
+  \(\mcC\)は十分入射的対象を持つので、
+  \autoref{1.15.1}より
+  \(\Hom_{\sfD(\mcC)}(X,Y) \cong \colim_{Y'\in S_Y}\Hom_{\sfK(\mcC)}(X,Y')\)
+  となり、また\autoref{1.15.2}より
+  \(R\Hom_{\mcC}(X,Y) \cong \colim_{Y'\in S_Y}\Tot(\Hom_{\sfK(\mcC)}(X,Y'))\)
+  となる。
+  \(H^0\)を取ることで、
+  \[
+  H^0(R\Hom_{\mcC}(X,Y))
+  \cong H^0(\colim_{Y'\in S_Y}\Tot(\Hom_{\sfK(\mcC)}(X,Y')))
+  \]
+  が従うが、\(S_Y\)はfilteredであるから、余極限は\(H^0\)と可換して、
+  \[
+  H^0(R\Hom_{\mcC}(X,Y)) \cong
+  \colim_{Y'\in S_Y}H^0(\Tot(\Hom_{\sfK(\mcC)}(X,Y')))
+  \]
+  が従う。
+  よって、\ref{1.16.1}の最後の等式で\(Y'\in S_Y\)に渡り余極限をとれば、
+  \begin{align*}
+    H^0(R\Hom_{\mcC}(X,Y))
+    &\cong \colim_{Y'\in S_Y}H^0(\Tot(\Hom_{\sfK(\mcC)}(X,Y'))) \\
+    &\cong \colim_{Y'\in S_Y}\Hom_{\sfK(\mcC)}(X,Y') \\
+    &\cong \Hom_{\sfD(\mcC)}(X,Y)
+  \end{align*}
+  が従う。
+  以上で\ref{1.16.2}の証明を完了し、
+  \autoref{1.16}の解答を完了する。
+\end{proof}
+
+
+
+
+
+\ifcsname Chap\endcsname\else
+\printbibliography
+\end{document}
+\fi

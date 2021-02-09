@@ -1,0 +1,48 @@
+\ifcsname Chap\endcsname\else
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+\newcommand{\StylePath}{\ifcsname AllKS\endcsname KS-Style/KS-Style.sty\else
+\ifcsname Chap\endcsname ../KS-Style/KS-Style.sty\else
+../../KS-Style/KS-Style.sty\fi\fi}
+\input{\StylePath}
+
+\KSset{1}{28}
+\setcounter{section}{\value{KSS}-1}
+\begin{document}
+\maketitle\HeaderCommentA
+\section{\KSsection{section}}
+\setcounter{prob}{\value{KSP}-1}
+\fi
+
+
+\begin{prob}\label{1.28}
+  \(A\)を環とする。
+  以下の条件が同値であることを証明せよ：
+  \begin{enumerate}
+    \item \label{1.28.1}
+    \(\Mod(A)\)はホモロジー次元\(\leq n\)を持つ。
+    \item \label{1.28.2}
+    任意の左\(A\)-加群\(M\)は長さ\(n\)以下の入射分解を持つ。
+    \item \label{1.28.3}
+    任意の左\(A\)-加群\(M\)は長さ\(n\)以下の射影分解を持つ。
+  \end{enumerate}
+  \(\Mod(A)\)のホモロジー次元か\(\Mod(A^{\op})\)のホモロジー次元のうち
+  大きい方を\(A\)の\textbf{大域ホモロジー次元}
+  (global homological dimension) と言い、
+  \(\gld(A)\)と表す。
+\end{prob}
+
+\begin{proof}
+  \KSIffAutoref{1.17.1}{1.17.2}より
+  \ref{1.28.1} \(\iff\) \ref{1.28.2}であることが従う。
+  さらに\(\mcC\)のホモロジー次元は定義より\(\mcC^{\op}\)のホモロジー次元と等しいので、
+  \(\Mod(A)^{\op}\)で考えると、再び
+  \KSIffAutoref{1.17.1}{1.17.2}より
+  \ref{1.28.1} \(\iff\) \ref{1.28.3}であることが従う。
+  以上で\autoref{1.28}の解答を完了する。
+\end{proof}
+
+
+\ifcsname Chap\endcsname\else
+\printbibliography
+\end{document}
+\fi

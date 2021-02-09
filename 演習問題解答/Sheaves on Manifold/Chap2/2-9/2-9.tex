@@ -1,0 +1,246 @@
+\ifcsname Chap\endcsname\else
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+\newcommand{\StylePath}{\ifcsname AllKS\endcsname KS-Style/KS-Style.sty\else
+\ifcsname Chap\endcsname ../KS-Style/KS-Style.sty\else
+../../KS-Style/KS-Style.sty\fi\fi}
+\input{\StylePath}
+
+\KSset{2}{9}
+\setcounter{section}{\value{KSS}-1}
+\begin{document}
+\maketitle
+\HeaderCommentA
+\section{\KSsection{section}}
+\setcounter{prob}{\value{KSP}-1}
+
+本文では、局所コンパクト空間であるという場合には、
+ハウスドルフ性を常に仮定していることに注意しておく
+(cf. 本文\cite[Proposition 2.5.1]{kashiwara2002sheaves}直前の記述)。
+\fi
+
+\begin{prob}\label{2.9}
+  \(X\)を位相空間とする。
+  \begin{enumerate}
+    \item \label{2.9.1}
+    \(F\)を\(X\)上の層として、
+    \(n \geq 0\)を自然数とする。
+    以下の条件が同値であることを示せ：
+    \begin{enumerate}
+      \item \label{2.9.1.1}
+      完全列
+      \(0\to F\to F^0\to \cdots \to F^n\to 0\)で
+      各\(j=0,\cdots,n\)に対して\(F^j\)が脆弱であるものが存在する。
+      \item \label{2.9.1.2}
+      \(0\to F\to F^0\to \cdots \to F^n\to 0\)が完全であり、
+      各\(j<n\)に対して\(F^j\)が脆弱であれば、\(F^n\)も脆弱である。
+      \item \label{2.9.1.3}
+      任意の閉部分集合\(Z\subset X\)と任意の\(k>n\)に対して
+      \(H^k_Z(X,F) = 0\)が成り立つ。
+      \item \label{2.9.1.4}
+      任意の局所閉部分集合\(Z\subset X\)と任意の\(k>n\)に対して
+      \(H^k_Z(X,F) = 0\)が成り立つ。
+      \item \label{2.9.1.5}
+      任意の閉部分集合\(Z\subset X\)と任意の\(k>n\)に対して
+      \(H^k_Z(F) = 0\)が成り立つ。
+      \item \label{2.9.1.6}
+      任意の局所閉部分集合\(Z\subset X\)と任意の\(k>n\)に対して
+      \(H^k_Z(F) = 0\)が成り立つ。
+    \end{enumerate}
+    これらの条件を満たす最小の\(n\geq 0\)を
+    \(F\)の\textbf{脆弱次元} (flabby dimension) と言い、
+    \(X\)上のすべての層\(F\)の脆弱次元のsupを\(X\)の\textbf{脆弱次元}と言う。
+    \item \label{2.9.2}
+    \(X\)を局所コンパクトハウスドルフであるとする。
+    \(X\)上の層\(F\)の\textbf{\(c\)-soft dimension}を同様に定義して、
+    この場合にも\ref{2.9.1}の条件
+    \ref{2.9.1.1}から\ref{2.9.1.4}に対応するものが同値であることを確認せよ。
+    \item \label{2.9.3}
+    \(X\)を局所コンパクトハウスドルフであるとする。
+    このとき、以下の不等式を証明せよ：
+    \[
+    \text{\(F\)の\(c\)-soft dimension} \leq \text{\(F\)の脆弱次元}
+    \leq \text{\(F\)の\(c\)-soft dimension} + 1.
+    \]
+  \end{enumerate}
+\end{prob}
+
+
+\begin{proof}
+  \ref{2.9.1}を示す。帰納法で証明する。
+  \(n=0\)とする。
+  条件\ref{2.9.1.1}と\ref{2.9.1.2}はどちらも
+  「\(F\)は脆弱層である」と読むことができるので明らかに同値である。
+  \ref{2.9.1.4} \(\Rightarrow\) \ref{2.9.1.3} と
+  \ref{2.9.1.6} \(\Rightarrow\) \ref{2.9.1.5} が成り立つことは明らかである。
+  また脆弱層は函手\(\Gamma_Z(X,-)\)や\(\Gamma_Z(-)\)に対してacyclicである
+  (cf. 本文\cite[Proposition 2.4.10]{kashiwara2002sheaves}の直前の記述) ので、
+  \ref{2.9.1.1} \(\Rightarrow\) \ref{2.9.1.4}, \ref{2.9.1.5} が成り立つ。
+  \(U\subset X\)を任意の開集合として、\(Z\dfn X\setminus U\)とおけば、
+  \begin{align*}
+    &0 \to H^0_Z(X,F) \to F(X) \to F(U) \to H^1_Z(X,F), \\
+    &0 \to H^0_Z(F) \to F \to \Gamma_U(F) \to H^1_Z(F)
+  \end{align*}
+  は完全であるから、上の列が完全であることから
+  \ref{2.9.1.3} \(\Rightarrow\) \ref{2.9.1.1}が成り立ち、
+  下の列が完全であることと
+  本文\cite[Proposition 2.4.10]{kashiwara2002sheaves}の証明中で示されている
+  主張 (2.4.1) より、
+  \ref{2.9.1.5} \(\Rightarrow\) \ref{2.9.1.1}が成り立つ。
+  以上で\(n=0\)の場合に
+  条件\ref{2.9.1.1}から\ref{2.9.1.6}が全て同値であることが示された。
+  ある\(n\)で所望の同値性が示されていると仮定して、
+  \(n+1\)に対して所望の同値性を示す。
+  \ref{2.9.1.4} \(\Rightarrow\) \ref{2.9.1.3} と
+  \ref{2.9.1.6} \(\Rightarrow\) \ref{2.9.1.5} はいつでも成立する。
+  また、\(n\)番目まで入射分解をとることによって、
+  \ref{2.9.1.2} \(\Rightarrow\) \ref{2.9.1.1} が成り立つ。
+  \(F\)が\(n+1\)に対して\ref{2.9.1.1}を満たすと仮定する。
+  脆弱層への単射\(f:F\to F_0\)を任意にとる。
+  \(\coker(f)\)は\(n\)に対して\ref{2.9.1.1}を満たすので、
+  帰納法の仮定より、\(\coker(f)\)は\(n\)に対して\ref{2.9.1.2}を満たす。
+  \(f\)の取り方は任意だったので、
+  これは\(F\)が\(n+1\)に対して\ref{2.9.1.2}を満たすことを意味する。
+  また、完全列\(0\to F\to F_0\to \coker(f) \to 0\)
+  で局所コホモロジーをとると、\(F_0\)が脆弱層であることから、
+  任意の局所閉集合\(Z\subset X\)と\(i\geq 1\)に対して同型射
+  \(H^i_Z(X,\coker(f)) \xrightarrow{\sim} H^{i+1}_Z(X,F)\)と
+  \(H^i_Z(\coker(f)) \xrightarrow{\sim} H^{i+1}_Z(F)\)を得る。
+  \(\coker(f)\)は\(n\)に対して\ref{2.9.1.1}を満たすので、
+  帰納法の仮定より、\(\coker(f)\)は\(n\)に対して\ref{2.9.1.4}と\ref{2.9.1.6}を満たす。
+  よって、\(F\)が\(n+1\)に対して\ref{2.9.1.4}と\ref{2.9.1.6}を満たすことが従う。
+  \(F\)が\(n+1\)に対して\ref{2.9.1.3}または\ref{2.9.1.5}を満たすと仮定する。
+  脆弱層への単射\(f:F\to F_0\)を任意にとれば、先ほどと同様にして、
+  \(\coker(f)\)が\(n\)に対して\ref{2.9.1.3}または\ref{2.9.1.5}を満たすことが従う。
+  帰納法の仮定より、\(\coker(f)\)が\(n\)に対して\ref{2.9.1.1}を満たすことが従い、
+  よって\(F\)が\(n\)に対して\ref{2.9.1.1}を満たすことが従う。
+  以上で\ref{2.9.1}の証明を完了する。
+
+  \ref{2.9.2}を示す。
+  \(X\)を局所コンパクトハウスドルフ空間とする。
+  \ref{2.9.1}の主張\ref{2.9.1.1}から\ref{2.9.1.4}に対応するのは
+  以下の主張である (ほんまか??)：
+  \begin{enumerate}
+    \item \label{2.9.2.1}
+    完全列
+    \(0\to F\to F^0\to \cdots \to F^n\to 0\)で
+    各\(j=0,\cdots,n\)に対して\(F^j\)が \(c\)-soft であるものが存在する。
+    \item \label{2.9.2.2}
+    \(0\to F\to F^0\to \cdots \to F^n\to 0\)が完全であり、
+    各\(j<n\)に対して\(F^j\)が \(c\)-soft であれば、\(F^n\)も \(c\)-soft である。
+    \item \label{2.9.2.3}
+    任意の開集合\(U\)と任意の\(k>n\)に対して
+    \(H^k_c(U,F|_U)=0\)が成り立つ。
+    \item \label{2.9.2.4}
+    任意の局所閉集合\(U\)と任意の\(k>n\)に対して
+    \(H^k_c(U,F|_U)=0\)が成り立つ。
+  \end{enumerate}
+  帰納法で証明する。まず\(n=0\)の場合にこれらの主張が同値であることを示す。
+  \ref{2.9.2.1}と\ref{2.9.2.2}が同値であることは明らかである。
+  また、\autoref{2.6.1}より、
+  \ref{2.9.2.1}と\ref{2.9.2.3}も同値である。
+  \ref{2.9.2.4}から\ref{2.9.2.3}が従うことは明らかである。
+  さらに、\(c\)-soft な層の局所閉部分集合への制限はまた\(c\)-softであるから、
+  \autoref{2.6.1}より、
+  \ref{2.9.2.1}と\ref{2.9.2.2}と\ref{2.9.2.3}のいずれかを仮定すれば
+  \ref{2.9.2.4}が導かれる。
+  以上で\(n=0\)の場合の証明を完了する。
+  ある\(n\)で所望の同値性が示されていると仮定して、
+  \(n+1\)に対して所望の同値性を示す。
+  \ref{2.9.2.4}から\ref{2.9.2.3}が従うことは明らかである。
+  また、\(n\)番目までの入射分解をとれば、
+  入射的な層は脆弱層であり、脆弱層は\(c\)-softであるから、
+  これは\(n\)番目までの \(c\)-soft 分解を与えるので、
+  その余核を考えることによって、
+  \ref{2.9.2.2}から\ref{2.9.2.1}が導かれる。
+  \(F\)が\(n+1\)に対して\ref{2.9.2.1}を満たすとする。
+  \(c\)-soft な層への単射\(f:F\to F_0\)を任意にとる。
+  このとき、\(\coker(f)\)は\(n\)に対して\ref{2.9.2.1}を満たす。
+  従って、帰納法の仮定より、
+  \(\coker(f)\)は\(n\)に対して\ref{2.9.2.2}を満たす。
+  \(f\)の取り方は任意だったので、
+  これは\(F\)が\(n+1\)に対して\ref{2.9.2.2}を満たすことを意味する。
+  さらに、帰納法の仮定より、\(\coker(f)\)は\(n\)に対して\ref{2.9.2.4}を満たす。
+  任意に局所閉集合\(U\)をとって、
+  \(U\)に制限したあとでコンパクト台つきコホモロジーをとることにより、
+  各\(i\geq 1\)に対して自然な同型射
+  \(H^i_c(U,\coker(f)) \xrightarrow{\sim} H^{i+1}_c(U,F)\)
+  を得る。
+  \(\coker(f)\)は\(n\)に対して\ref{2.9.2.4}を満たすので、
+  従って\(F\)は\(n+1\)に対して\ref{2.9.2.4}を満たす。
+  \(F\)が\(n+1\)に対して\ref{2.9.2.3}を満たすと仮定する。
+  \(c\)-soft な層への単射\(f:F\to F_0\)をとれば、
+  各\(i\geq 1\)に対して自然な射
+  \(H^i_c(U,\coker(f)) \xrightarrow{\sim} H^{i+1}_c(U,F)\)
+  は同型射であるから、
+  \(\coker(f)\)は\(n\)に対して\ref{2.9.2.3}を満たす。
+  従って、帰納法の仮定より、\(\coker(f)\)は\(n\)に対して\ref{2.9.2.1}を満たす。
+  \ref{2.9.2.1}によって存在が要請される
+  \(\coker(f)\)の \(c\)-soft な層による長さ\(n\)の分解を
+  \(f\)と繋げることにより、
+  \(F\)の \(c\)-soft な層 による長さ\(n+1\)の分解を得るので、
+  \(F\)は\(n+1\)に対して\ref{2.9.2.1}を満たす。
+  以上で\ref{2.9.2}の証明を完了する。
+
+  \ref{2.9.3}を示す。
+  脆弱層が\(c\)-softであることから、不等式
+  \(\text{\(F\)の\(c\)-soft dimension} \leq \text{\(F\)の脆弱次元}\)が従う。
+  もう一つの不等式を証明する。
+  \(F\)の \(c\)-soft dimension が\(n\)であるとする。
+  完全列
+  \(0\to F\to F^0\to \cdots \to F^n\)で
+  各\(j\)に対して\(F^j\)が脆弱層であるものをとる。
+  \(F\)の \(c\)-soft dimension が\(n\)であることから、
+  \(\im(F^{n-1}\to F^n)\)は \(c\)-soft である。
+  従って、\(F\)の脆弱次元が\(n+1\)以下であることを示すためには、
+  次を示すことが十分である：
+  \begin{enumerate}[label=(\fnsymbol*),start=2]
+    \item \label{2.9.3.p}
+    局所コンパクトハウスドルフな位相空間\(X\)上の層の完全列
+    \(0\to F\to G\to H\to 0\)に対して、
+    \(F\)が \(c\)-soft であり、
+    \(G\)が脆弱層であるとき、
+    \(H\)も脆弱層である。
+  \end{enumerate}
+  \(X\)は局所コンパクトであるので、
+  各\(x\in X\)に対して開近傍\(x\in V\subset X\)であって
+  \(\bar{V}\)がコンパクトとなるものが存在する。
+  本文\cite[Proposition 2.4.10]{kashiwara2002sheaves}の証明で示されている
+  主張 (2.4.1) より、
+  \ref{2.9.3.p}を示すためには、
+  \(H|_V\)が脆弱であることを示すことが十分である。
+  \(Z\subset V\)を閉集合とする。
+  \(K\dfn \bar{Z}\cup(\bar{V}\setminus V)\)とおく。
+  これはコンパクト空間\(\bar{V}\)の閉部分空間であるからコンパクトである。
+  \(F\)は\(c\)-softであるから、
+  \autoref{2.6.1}より、
+  \(H^i_c(X,F)=H^i_c(X\setminus K,F) = 0, (\forall i>0)\)が成り立つ。
+  各\(i\)に対して
+  \(H^i_c(X\setminus K,F) \to H^{i+1}_{c,K}(X,F) \to H^{i+1}_c(X,F)\)
+  は完全であるので、
+  \(H^i_{c,K}(X,F)=0,(\forall i\geq 2)\)が成り立つ。
+  \(K\)はコンパクトであるので、
+  \(H^i_{c,K}(X,-)\cong H^i_K(X,-)\)が成り立つ。
+  \(G\)は脆弱なので、\(H^i_K(X,G) = 0, (\forall i>0)\)が成り立ち、
+  従って、完全列\(0\to F\to G\to H\to 0\)に函手\(\Gamma_K(X,-)\)を適用すると、
+  \(H^i_K(X,H) = 0, (\forall i>0)\)が成り立つ。
+  \(H(X)\to H(X\setminus K) \to H^1_K(X,H)\)は完全なので、
+  従って、
+  \(H(X)\to H(X\setminus K)\)は全射である。
+  \(X\setminus K = (V\setminus Z)\cup (X\setminus \bar{V})\)
+  なので、\(H(X\setminus K)\cong H(V\setminus Z)\times H(X\setminus \bar{V})\)
+  が成り立つ。
+  よって\(H(X)\to H(V\setminus Z)\)は全射であり、
+  とくに\(H(V)\to H(V\setminus Z)\)も全射である。
+  以上より\(H|_V\)は脆弱である。
+
+  以上で\ref{2.9.3}の証明を完了し、
+  \autoref{2.9}の解答を完了する。
+\end{proof}
+
+
+
+
+\ifcsname Chap\endcsname\else
+\printbibliography
+\end{document}
+\fi

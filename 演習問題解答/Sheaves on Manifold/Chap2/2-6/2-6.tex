@@ -1,0 +1,186 @@
+\ifcsname Chap\endcsname\else
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+\newcommand{\StylePath}{\ifcsname AllKS\endcsname KS-Style/KS-Style.sty\else
+\ifcsname Chap\endcsname ../KS-Style/KS-Style.sty\else
+../../KS-Style/KS-Style.sty\fi\fi}
+\input{\StylePath}
+
+\KSset{2}{2}
+
+\setcounter{section}{\value{KSS}-1}
+\begin{document}
+\maketitle
+\HeaderCommentA
+\section{\KSsection{section}}
+\setcounter{prob}{\value{KSP}-1}
+
+本文では、局所コンパクト空間であるという場合には、
+ハウスドルフ性を常に仮定していることに注意しておく
+(cf. 本文\cite[Proposition 2.5.1]{kashiwara2002sheaves}直前の記述)。
+\fi
+
+
+\begin{prob}\label{2.6}
+  \(X\)を局所コンパクトハウスドルフ空間、
+  \(F\)を\(X\)上の層とする。
+  \begin{enumerate}
+    \item \label{2.6.1}
+    \(F\)が\(c\)-softであるための必要十分条件は
+    任意の\(i>0\)と任意の開集合\(U\)に対して
+    \(H^i_c(U,F) = 0\)となることである。
+    ただしここで\(H^i_c(U,F)\dfn H^i_c(U,F|_U)\)である。
+    \item \label{2.6.2}
+    \(X\)が可算個のコンパクト部分集合の和集合として表すことができるとき、
+    \(F\)が\(c\)-softであればsoftであることを示せ。
+    \item \label{2.6.3}
+    \(c\)-softであるという性質は局所的な性質であることを示せ。
+  \end{enumerate}
+\end{prob}
+
+\begin{proof}
+  \ref{2.6.1}を示す。
+  必要性を示す。
+  \(F\)を\(c\)-softであるとする。
+  本文\cite[Proposition 2.5.7 (i)]{kashiwara2002sheaves}より
+  \(F|_U\)は\(c\)-softである。
+  すると\(U\)上の\(c\)-softな層たちは
+  \(\Gamma_c(U,-)\)-injectiveな圏であるので、
+  とくに\(c\)-softな層は\(\Gamma_c(U,-)\)-acyclicである。
+  よって、とくに、任意の\(i>0\)に対して\(H^i_c(U,F|_U)=0\)である。
+  以上で必要性の証明を完了する。
+
+  十分性を示す。
+  任意の\(i>0\)と任意の開集合\(U\subset X\)に対して
+  \(H^i_c(U,F)=0\)と仮定する。
+  \(K\subset X\)をコンパクト部分集合とすれば、
+  \(X\)はハウスドルフなので、\(K\subset X\)は閉である。
+  従って\(U\dfn X\setminus K\)は開である。
+  よって\(H^1_c(U,F)=0\)である。
+  すると、本文\cite[Remark 2.6.10]{kashiwara2002sheaves}の最後の完全系列より、
+  射\(F(X)\to F(K)\)は全射である。
+  以上で\ref{2.6.1}の証明を完了する。
+
+  \ref{2.6.2}を示す。
+  \(F\)を\(X\)上の\(c\)-softな層であり、
+  \(Z\subset X\)を閉集合とする。
+  \(K_n\subset X, (n\in \N)\)をコンパクト部分集合の族で、
+  \(K_n\subset \mathrm{Int}(K_{n+1})\)と
+  \(X = \bigcup_{n\in \N}K_n\)を満たすものとする。
+  \(Z_n\dfn Z\cap K_n\)とおくと、\(Z_n\)はコンパクトである。
+  \(U_n\dfn K_n\setminus Z_n\)とおくと、\(U_n\subset X\)は局所閉集合である。
+  \(F\)は\(c\)-softなので、本文\cite[Proposition 2.5.7 (i)]{kashiwara2002sheaves}より
+  \(F|_{K_n}\)は\(K_n\)上の\(c\)-softな層であり、
+  \(F|_{U_n}\)は\(U_n\)上の\(c\)-softな層である。
+  \(K_n,Z_{n+1}\subset K_{n+1}\)はいずれもコンパクト部分集合であり、
+  \(F|_{K_{n+1}}\)は\(c\)-softなので、
+  可換図式
+  \[
+  \begin{CD}
+    F(K_{n+1}) @>>> F(Z_{n+1}) \\
+    @VVV @VVV \\
+    F(K_n) @>>> F(Z_n)
+  \end{CD}
+  \]
+  において、いずれの射も全射である。
+  \(K_n,Z_n\)はコンパクトであるから、
+  \(F(K_n) = \Gamma_c(K_n,F), F(Z_n) = \Gamma_c(Z_n,F)\)であることに注意する。
+  \(K_n\)上の層の完全列
+  \[
+  \begin{CD}
+    0 @>>> (F|_{K_n})_{U_n} @>>> F|_{K_n} @>>> (F|_{K_n})_{Z_n} @>>> 0
+  \end{CD}
+  \]
+  に函手\(\Gamma_c(K_n,-)\)を施すことにより、
+  \[
+  \begin{CD}
+    0 @>>> \Gamma_c(U_n,F) @>>> F(K_n) @>>> F(Z_n) @>>> 0
+  \end{CD}
+  \]
+  は完全であることが従うので、
+  以上より、完全列の間の射
+  \[
+  \begin{CD}
+    0 @>>> \Gamma_c(U_{n+1},F) @>>> F(K_{n+1}) @>>> F(Z_{n+1}) @>>> 0 \\
+    @. @VVV @VVV @VVV @. \\
+    0 @>>> \Gamma_c(U_n,F) @>>> F(K_n) @>>> F(Z_n) @>>> 0
+  \end{CD}
+  \]
+  を得る。
+  ただしここで、真ん中と右側の縦向きの射は全射である。
+  極限\(\lim_{n\in \N}\)をとると、完全列
+  \[
+  \begin{CD}
+    0 @>>> \lim_{n\in \N}\Gamma_c(U_n,F) @>>>
+    \lim_{n\in \N}F(K_n) @>>> \lim_{n\in \N}F(Z_n)
+  \end{CD}
+  \]
+  を得る。
+  \(F(X) \xrightarrow{\sim} \lim_{n\in \N} F(K_n),
+  F(Z) \xrightarrow{\sim} \lim_{n\in \N} F(Z_n)\)であるから、
+  この完全列は完全列
+  \[
+  \begin{CD}
+    0 @>>> \lim_{n\in \N}\Gamma_c(U_n,F) @>>> F(X) @>>> F(Z)
+  \end{CD}
+  \]
+  と自然に同型である。
+  従って、\(F(X)\to F(Z)\)が全射であるためには、
+  \((\Gamma_c(U_n,F))_{n\in \N}\)が Mittag-Leffler 条件を満たすことが十分である。
+  \(U_n\subset U_{n+1}\)は閉なので、
+  \(U_{n+1}\)上の層の列
+  \[
+  \begin{CD}
+    0 @>>> (F|_{U_{n+1}})_{U_{n+1}\setminus U_n}
+    @>>> F|_{U_{n+1}} @>>> (F|_{U_{n+1}})_{U_n} @>>> 0
+  \end{CD}
+  \]
+  は (本文\cite[Proposition 2.6.6 (v)]{kashiwara2002sheaves}より) 完全である。
+  \(F|_{U_{n+1}}\)は\(c\)-softであるので、
+  この完全列に函手\(\Gamma_c(U_{n+1},-)\)を施すことにより、
+  \(\Gamma_c(U_{n+1},F)\to \Gamma_c(U_n,F)\)は全射であることが従う。
+  よって、逆系\((\Gamma_c(U_n,F))_{n\in \N}\)は Mittag-Leffler 条件を満たす。
+  従って、射\(F(X)\to F(Z)\)は全射であり、
+  以上で\ref{2.6.2}の証明を完了する。
+
+  \ref{2.6.3}を示す。
+  \(X\)の開被覆\(X = \bigcup_{i\in I}U_i\)が存在して、
+  各\(i\)に対して\(F|_{U_i}\)が\(U_i\)上の\(c\)-softな層であると仮定する。
+  \(j:U_i\to X\)を包含射とする。
+  本文\cite[Proposition 2.5.4 (ii)]{kashiwara2002sheaves}より、
+  \(F_{U_i} = j_!(F|_{U_i})\)であるから、
+  \(F|_{U_i}\)が\(c\)-softであることから、
+  \(F_{U_i}\)も\(c\)-softであることが従う。
+  本文\cite[Proposition 2.3.6 (vii)]{kashiwara2002sheaves}の完全列
+  \[
+  \begin{CD}
+    0 @>>> F_{U_{i_1}\cap U_{i_2}} @>>> F_{U_{i_1}} \oplus F_{U_{i_2}}
+    @>>> F_{U_{i_1}\cup U_{i_2}} @>>> 0
+  \end{CD}
+  \]
+  において、左側と真ん中が\(c\)-softなので、
+  本文\cite[Corollary 2.5.9]{kashiwara2002sheaves}より
+  \(F_{U_{i_1}\cup U_{i_2}}\)も\(c\)-softである。
+  従って、有限部分集合\(I_1\subset I\)に対して
+  \(U_{I_1} \dfn \bigcup_{i\in I_1} U_i\)とおけば、
+  \(F_{U_{I_1}}\)は\(c\)-softである。
+  任意にコンパクト集合\(K\subset X\)をとれば、
+  ある有限部分集合\(I_1\subset I\)が存在して
+  \(K\subset U_{I_1}\)となる。
+  \(F|_{U_{I_1}} = (F_{U_{I_1}})|_{U_{I_1}}\)は\(c\)-softであるから、
+  \(\Gamma_c(U_{I_1},F|_{U_{I_1}}) = \Gamma_c(X,F_{U_{I_1}}) \to \Gamma_c(K,F)\)
+  は全射である。
+  また、\(F_{U_{I_1}}\)は\(F\)の部分層であるから、
+  従って、\(\Gamma_c(X,F) \to \Gamma_c(K,F)\)も全射である。
+  さらに\(\Gamma_c(X,F) \subset F(X)\)であり、
+  \(\Gamma_c(K,F) = F(K)\)であるので、
+  よって\(F(X) \to F(K)\)は全射である。
+  以上で\ref{2.6.3}の証明を完了し、
+  \autoref{2.6}の解答を完了する。
+\end{proof}
+
+
+
+\ifcsname Chap\endcsname\else
+\printbibliography
+\end{document}
+\fi

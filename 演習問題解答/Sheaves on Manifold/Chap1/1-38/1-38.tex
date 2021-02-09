@@ -1,0 +1,138 @@
+\ifcsname Chap\endcsname\else
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+\newcommand{\StylePath}{\ifcsname AllKS\endcsname KS-Style/KS-Style.sty\else
+\ifcsname Chap\endcsname ../KS-Style/KS-Style.sty\else
+../../KS-Style/KS-Style.sty\fi\fi}
+\input{\StylePath}
+
+\KSset{1}{38}
+\setcounter{section}{\value{KSS}-1}
+\begin{document}
+\maketitle\HeaderCommentA
+\section{\KSsection{section}}
+\setcounter{prob}{\value{KSP}-1}
+\fi
+
+
+
+\begin{prob}\label{1.38}
+  \(I,I'\)をfilteredな圏として、\(\varphi:I\to I'\)を函手とする。
+  \(\varphi\)が\textbf{cofinal}であるとは、
+  以下の条件を満たすことを言う：
+  \begin{enumerate}
+    \item
+    任意の\(i'\in I'\)に対してある\(i\in I\)と射\(i'\to \varphi(i)\)が存在する。
+    \item
+    任意の\(i\in I\)と\(i'\in I'\)と射\((f:\varphi(i)\to i')\in I'\)に対して
+    ある射\((g:i\to i_1)\in I\)と
+    \((h:i'\to \varphi(i_1))\in I'\)が存在して\(h\circ f = g\)となる。
+  \end{enumerate}
+  \(\mcC\)を圏、\(I,I_1\)をfilteredな圏、
+  \(F:I\to \mcC, G:I^{\op}\to \mcC\)を函手、
+  \(\varphi:I_1\to I\)をcofinalとする。
+  自然な射
+  \[
+  \colim (F\circ \varphi) \to \colim F, \ \
+  ``\colim" (F\circ \varphi) \to ``\colim" F, \ \
+  \lim G \to \lim (G\circ \varphi), \ \
+  ``\lim" G \to ``\lim" (G\circ \varphi)
+  \]
+  はいずれも同型射であることを示せ。
+\end{prob}
+
+\begin{proof}
+  \(\colim (F\circ \varphi) \to \colim F\)が同型射であることがわかれば、
+  \(\mcC\to \hat{\mcC}=\sfSet^{\mcC^{\op}}\)を合成して
+  函手\(I\to \hat{\mcC}\)に対してその事実を適用することにより
+  \(``\colim" (F\circ \varphi) \to ``\colim" F\)が同型射であることが従う。
+  \(\lim\)に関しても同様である。
+  さらに\(\colim (F\circ \varphi) \to \colim F\)が同型射であることがわかれば、
+  \(G^{\op}:I\to \mcC^{\op}\)に対してその事実を適用することにより
+  \(\lim G \to \lim (G\circ \varphi)\)が同型射であることが従う。
+  以上より、\autoref{1.38}を示すためには、
+  \(\colim (F\circ \varphi) \to \colim F\)が同型射であることを示すことが十分である。
+
+  \(X\in \mcC\)を任意にとる。
+  \(\colim (F\circ \varphi) \to \colim F\)が同型射であることを示すためには、
+  米田の補題より、
+  自然な射
+  \(\Psi:\lim_{i\in I}\Hom_{\mcC}(F(i),X) \to
+  \lim_{i_1\in I_1}\Hom_{\mcC}(F(\varphi(i_1)),X)\)
+  が全単射であることを示すことが十分である。
+  \((f_i),(g_i)\in \lim_{i\in I}\Hom_{\mcC}(F(i),X)\)が
+  \(\Psi((f_i)) = \Psi((g_i))\)を満たすとする。
+  このとき、各\(i_1\in I_1\)に対して
+  \(f_{\varphi(i_1)} = g_{\varphi(i_1)}\)が成り立つ。
+  \(i\in I\)を任意にとる。
+  \(\varphi:I_1\to I\)はcofinalであるから、一つめの条件より、
+  ある\(i_1\in I_1\)と射\(p:i\to \varphi(i_1)\)が存在する。
+  \((f_i),(g_i)\)はそれぞれ\(\lim_{i\in I}\Hom_{\mcC}(F(i),X)\)の元であるから、
+  \(f_{\varphi(i_1)}\circ F(p) = f_i, g_{\varphi(i_1)} \circ F(p) = g_i\)を満たす。
+  \(f_{\varphi(i_1)} = g_{\varphi(i_1)}\)であるので、
+  従って\(f_i = g_i\)が成り立つ。
+  これは\((f_i)=(g_i)\)を意味し、よって\(\Psi\)は単射である。
+
+  \(\Psi\)が全射であることを示す。
+  \((h_{\varphi(i_1)})_{i_1\in I_1}\in \lim_{i_1\in I_1}\Hom_{\mcC}(F(\varphi(i_1)),X)\)
+  を任意にとる。
+  各\(i\in I\)に対して一つ\(i_1\in I_1\)と射\(p_1:i\to \varphi(i_1)\)を選ぶ
+  (\(\varphi\)がcofinalであることの一つめの条件を用いる)。
+  \(h_i \dfn h_{i_1}\circ F(p_1)\)と定義する。
+  まずこれが\(i_1,p_1\)の取り方に依存しないことを示す。
+  そのためには、別の\(p_2:i\to \varphi(i_2)\)に対して
+  \(h_{i_1}\circ F(p_1) = h_{i_2}\circ F(p_2)\)が成り立つことが十分である。
+  \(I_1\)はfilteredであるから、
+  \(i_3\in I_1\)と\(a_1:i_1\to i_3,a_2:i_2\to i_3\)が存在する。
+  \(I\)はfilteredであるから、
+  二つの並行な射\(\varphi(a_1)\circ p_1, \varphi(a_2)\circ p_2: i \to \varphi(i_3)\)
+  に対してある射\(g:\varphi(i_3)\to i'\)が存在して
+  \(g\circ \varphi(a_1)\circ p_1 = g\circ \varphi(a_2)\circ p_2\)
+  が成り立つ。
+  さらに\(\varphi\)はcofinalであるから、
+  \(g:\varphi(i_3)\to i'\)に二つめの条件を用いることで、
+  ある\((b:i_3\to i_4)\in I_1\)と\((g':i'\to \varphi(i_4))\in I\)が存在して
+  \(g' \circ g = \varphi(b)\)が成り立つ。
+  このとき
+  \[
+  \varphi(b\circ a_1) \circ p_1
+  = g'\circ g \circ \varphi(a_1) \circ p_1
+  = g'\circ g \circ \varphi(a_2) \circ p_2
+  = \varphi(b\circ a_2) \circ p_2
+  \]
+  が成り立つ。
+  \(p_4 \dfn \varphi(b\circ a_1) \circ p_1\)とおけば、
+  \[
+  h_{i_1}\circ F(p_1)
+  = h_{i_4} \circ F(\varphi(b\circ a_1)\circ p_1)
+  = h_{i_4} \circ F(\varphi(b\circ a_2)\circ p_2)
+  = h_{i_2}\circ F(p_2)
+  \]
+  が成り立つ。
+  以上で\(h_i\)の定義が\(p_1:i\to \varphi(i_1)\)の取り方に依存しないことが示された。
+  次に\((h_i)_{i\in I}\)が\(\lim\Hom_{\mcC}(F(i),X)\)の元を定めることを示す。
+  射\((p:i\to i')\in I\)を任意にとる。
+  \(q:i'\to \varphi(i_1)\)を一つ選べば、
+  \(h_i\)の定義が\(p_1:i\to \varphi(i_1)\)の取り方に依存しないことから、
+  \[
+  h_i = h_{i_1}\circ F(q\circ p)
+  = h_{i_1}\circ F(q) \circ F(p)
+  = h_{i'} \circ F(p)
+  \]
+  が成り立つ。
+  これは\((h_i)_{i\in I}\)が\(F(p)\)たちと両立的であることを意味し、
+  従って\((h_i)_{i\in I}\)は\(\lim\Hom_{\mcC}(F(i),X)\)の元を定める。
+  各\(i_1\in I\)に対して\(h_{\varphi(i_1)} = h_{i_1}\)であるから、
+  \(\Psi((h_i)_{i\in I}) = (h_{i_1})_{i_1\in I_1}\)が成り立つ。
+  よって\(\Psi\)は全射である。
+  以上で\(\Psi\)が全単射であることが従い、
+  \autoref{1.38}の証明を完了する。
+\end{proof}
+
+
+
+
+
+\ifcsname Chap\endcsname\else
+\printbibliography
+\end{document}
+\fi

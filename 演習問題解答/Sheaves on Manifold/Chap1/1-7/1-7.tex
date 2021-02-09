@@ -1,0 +1,178 @@
+\ifcsname Chap\endcsname\else
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+\newcommand{\StylePath}{\ifcsname AllKS\endcsname KS-Style/KS-Style.sty\else
+\ifcsname Chap\endcsname ../KS-Style/KS-Style.sty\else
+../../KS-Style/KS-Style.sty\fi\fi}
+\input{\StylePath}
+
+\KSset{1}{7}
+\setcounter{section}{\value{KSS}-1}
+\begin{document}
+\maketitle\HeaderCommentA
+\section{\KSsection{section}}
+\setcounter{prob}{\value{KSP}-1}
+\fi
+
+
+\begin{prob}\label{1.7}
+  \(\mcC\)をアーベル圏とする。
+  \begin{enumerate}
+    \item \label{1.7.1}
+    \(Z\in \mcC\)を対象とする。
+    圏\(\mcP(Z)\)を次で定義する：
+    \begin{itemize}
+      \item 対象はエピ射\(f:X\to Z\)である。
+      \item 二つの対象\(f:X\to Z\)と\(g:Y\to Z\)の間の射\((f:X\to Z)\to (g:Y\to Z)\)は
+      \(\mcC\)のエピ射\(h:X\to Y\)であって\(f\circ h = g\)となるものである。
+      \item 合成は\(\mcC\)の合成によって定義する。
+    \end{itemize}
+    このとき、\(\mcP(Z)\)はcofilteredであることを示せ。
+    \item \label{1.7.2}
+    対象\(X\in \mcC\)に対し、
+    \(\tilde{h}_Z(X) \dfn \colim_{Z'\in \mcP(Z)}\Hom_{\mcC}(Z',X)\)
+    とおく。
+    以下を示せ：
+    \begin{enumerate}
+      \item \label{1.7.2.1}
+      函手\(\tilde{h}_Z:\mcC \to \mathsf{Ab}\)は完全函手である。
+      \item \label{1.7.2.2}
+      \(f,f'\in \Hom_{\mcC}(X,X')\)を二つの射とする。
+      任意の\(Z\in \mcC\)に対して
+      \(\tilde{h}_Z(f) = \tilde{h}_Z(f')\)が成り立つとき、
+      \(f=f'\)である。
+      \item \label{1.7.2.3}
+      すべての対象\(Z\in \mcC\)に対する\(\tilde{h}_Z\)での像が
+      \(\mathsf{Ab}\)において完全であるような\(\mcC\)の列は完全である。
+    \end{enumerate}
+  \end{enumerate}
+\end{prob}
+
+
+
+\begin{rem*}
+  \cite{kashiwara2002sheaves}第一版では、
+  \ref{1.7.1}の問題文は次のように表記されている (引用)：
+
+  For an object \(Z\) of \(\mcC\),
+  let \(\mathscr{P}(Z)\) be the category
+  whose objects are the epimorphisms \(f:Z'\to Z\),
+  a morphism \((f:Z'\to Z) \to (f':Z''\to Z)\)
+  being defined by \(h:Z'\to Z''\) with \(f'\circ h = f\).
+  Prove that \(\mathscr{P}(Z)\) is cofiltrant,
+  that is, \(\mathscr{P}(Z)^{\circ}\) is filtrant.
+
+  この文章をそのまま読むと、圏\(\mathscr{P}(Z)\)は、
+  \(Z\)への射がエピとなるものたちからなる圏\(\mcC_{/Z}\)の充満部分圏であると読める
+  (というか、この文章は\(h\)もエピであることが想定されているようには読めないと思う)。
+  しかし、このように読むと、
+  \(\mathscr{P}(Z)\)はcofilteredにはならない。
+  たとえば、\(k\)を標数が\(2\)でない体、
+  \(\mcC\)を\(k\)-線形空間の圏、
+  \(Z=k\)として、
+  \(\mcC_{/k}\)の対象として
+  \(p\dfn \id_k: X\dfn k\to Z\)と
+  \(q\dfn \mathrm{pr}_1:Y \dfn k\times k \to Z\)
+  を考え、\(p,q\)の間の射として
+  \(f_1:X\to Y\)を\(f_1(a) = (a,a)\)で定め、
+  \(f_2:X\to Y\)を\(f_2(a) = (a,-a)\)で定める。
+  このとき、線形空間\(V\)と射\(g:V\to X\)が
+  \(f_1\circ g = f_2\circ g\)を満たせば、
+  \(g\)が\(0\)-射であることが容易に従う (標数が\(2\)でないことを用いる)。
+  従って、とくに、\(g\)はエピとはならず、
+  従って、\(g:V\to k\)は\(\mathscr{P}(Z)\)の対象となることは決してない。
+  このことは\(\mathscr{P}(Z)^{\op}\)が
+  \cite[Definition 1.11.2 (1.11.2)]{kashiwara2002sheaves}を満たさない
+  (とくにcofilteredではない) ことを示している。
+\end{rem*}
+
+\begin{proof}
+  \ref{1.7.1}を示す。
+  \(\mcP(Z)\)の図式
+  \(h_1: (f_1:X_1\to Z) \to (g:Y\to Z) \gets (f_2:X_2\to Z) : h_2\)
+  を任意にとって、fiber積\(X_1\times_Y X_2\)を考える。
+  \(p_i: X_1\times_Y X_2\to X_i , (i=1,2)\)を射影とする。
+  このとき、\(f_1\circ p_1 = g\circ h_1\circ p_1 = g\circ h_2\circ p_2 = f_2\circ p_2\)
+  であるから、
+  \(f\dfn f_1\circ p_1\)とすれば、
+  \(f:X_1\times_Y X_2\to Z\)は圏\(\mcC_{/Z}\)におけるfiber積となる。
+  \(\mcP(Z)\)は終対象\(\id_Z:Z\to Z\)を持つので、
+  従って、\(\mcP(Z)\)がcofilteredであることを示すためには、
+  \(f:X_1\times_Y X_2 \to Z\)がエピ射であることを示すことが十分である。
+  \autoref{1.6.3}より、エピ射のpull-backはエピ射であるから、
+  \(p_i\)はエピ射であり、
+  エピ射の合成はエピ射であるから、
+  \(f = f_1\circ p_1\)もエピ射である。
+  以上で\ref{1.7.1}の解答を完了する。
+
+  \ref{1.7.2} \ref{1.7.2.1}を示す。
+  集合の間の写像の圏において、単射のfilered colimitは単射である。
+  従って\(\tilde{h}_Z\)は左完全函手である。
+  残っているのは\(\tilde{h}_Z\)の右完全性を証明することである。
+  \(g:X_1\to X_3\)を\(\mcC\)のエピ射とし、
+  \(\tilde{r}_3\in \tilde{h}_Z(X_3)\)を任意にとる。
+  \(\tilde{r}_3\)の代表元を\(r_3:Z_3\to X_3\)とする。
+  ここで\(Z_3\)はある\(\mcP(Z)\)の対象\(z_3:Z_3\to Z\)のdomainであり、
+  \(r_3:Z_3\to X_3\)は\(\mcC\)の射である。
+  図式\(r_3:Z_3\to X_3\gets X_1: g\)のfiber積を\(Z_1\)とし、
+  射影を\(h:Z_1\to Z_3, r_1:Z_1\to X_1\)とする。
+  エピ射のpull-backはエピ射であるから、\(h\)はエピである。
+  従って、\(z_1\dfn z_3\circ h:Z_1\to Z\)は\(\mcP(Z)\)の対象であり、
+  \(h\)は\(\mcP(Z)\)の射である。
+  さらに、\(g\circ r_1 = r_3\circ h\)であるから、
+  \(r_1:Z_1\to X_1\)により代表される元\(\tilde{r}_1\in \tilde{h}_Z(X_1)\)は
+  射\(\tilde{h}_Z(X_1)\to \tilde{h}_Z(X_3)\)により\(\tilde{r}_3\)へと写る。
+  従って\(\tilde{h}_Z(X_1)\to \tilde{h}_Z(X_3)\)は全射である。
+  以上で\ref{1.7.2} \ref{1.7.2.1}の解答を完了する。
+
+  \ref{1.7.2} \ref{1.7.2.2}を示す。
+  \(f,f':X\to X'\)が任意の\(Z\in \mcC\)に対して
+  \(\tilde{h}_Z(f) = \tilde{h}_Z(f')\)を満たしていると仮定する。
+  \(Z=X\)として、
+  \(\id_X:X\to X\)により代表される元を\(\tilde{i}\in \tilde{h}_Z(X)\)、
+  \(f,f':X\to X'\)により代表される元を\(\tilde{f},\tilde{f}'\in \tilde{h}_Z(X')\)とする。
+  このとき、
+  \[
+  \tilde{f} = \tilde{h}_Z(f)\circ \tilde{i}
+  = \tilde{h}_Z(f')\circ \tilde{i} = \tilde{f}'
+  \]
+  となる。
+  \(\mcP(Z)\)の各射はエピなので、
+  自然な射\(\Hom_{\mcC}(Z,X)\to \tilde{h}_Z(X)\)は単射である。
+  従って、等式\(\tilde{f}=\tilde{f}'\)は\(f=f'\)であることを意味する。
+  以上で\ref{1.7.2} \ref{1.7.2.2}の解答を完了する。
+
+  \ref{1.7.2} \ref{1.7.2.3}を示す。
+  \(\mcC\)を離散圏 (射が\(\id\)しかない圏) とみなした圏を\(\bar{\mcC}\)とおく。
+  \(\bar{\mcC}\)から\(\Ab\)への(加法的とは限らない)函手のなす圏
+  \([\bar{\mcC},\Ab]\)はアーベル圏である。
+  \(\tilde{h}:\mcC\to [\bar{\mcC},\Ab], X\mapsto [Z\mapsto \tilde{h}_Z(X)]\)
+  はアーベル圏の間の加法的函手である。
+  \ref{1.7.2} \ref{1.7.2.1}より、各\(\tilde{h}_Z\)は完全函手であるから、
+  \(\tilde{h}\)も完全函手である。
+  \ref{1.7.2} \ref{1.7.2.2}より\(\tilde{h}\)は忠実である。
+  従って、\ref{1.7.2} \ref{1.7.2.3}を示すためには、
+  アーベル圏の間の忠実な完全函手\(F:\mcC\to \mcD\)と
+  \(\mcC\)の射の列\(X\xrightarrow{f} Y \xrightarrow{g} Z\)に対して、
+  \(X\xrightarrow{f} Y \xrightarrow{g} Z\)が\(\mcC\)で完全であることと
+  \(F(X)\xrightarrow{F(f)}F(Y)\xrightarrow{F(g)}F(Z)\)が\(\mcD\)で完全であることが
+  同値であることを証明することが十分である。
+  \(F\)は忠実なので、\(g\circ f = 0\)であることと\(F(g)\circ F(f) = 0\)であることは同値である。
+  \(F\)は完全函手なので、\(\im(F(f))\)と\(F(\im(f))\)は自然に同型であり、
+  \(\ker(F(g))\)と\(F(\ker(g))\)も自然に同型である。
+  さらに\(F\)は忠実なので、
+  自然な射\(\im(f)\to \ker(g)\)が同型であることは
+  \(F\)での像\(F(\im(f))\to F(\ker(g))\)が同型であることと同値である。
+  よって、\(X\xrightarrow{f} Y \xrightarrow{g} Z\)が\(\mcC\)で完全であることと
+  \(F(X)\xrightarrow{F(f)}F(Y)\xrightarrow{F(g)}F(Z)\)が\(\mcD\)で完全であることは
+  同値である。
+  以上で\autoref{1.7}の証明を完了する。
+\end{proof}
+
+
+
+
+
+\ifcsname Chap\endcsname\else
+\printbibliography
+\end{document}
+\fi

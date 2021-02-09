@@ -1,0 +1,155 @@
+\ifcsname Chap\endcsname\else
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+\newcommand{\StylePath}{\ifcsname AllKS\endcsname KS-Style/KS-Style.sty\else
+\ifcsname Chap\endcsname ../KS-Style/KS-Style.sty\else
+../../KS-Style/KS-Style.sty\fi\fi}
+\input{\StylePath}
+
+\KSset{1}{31}
+\setcounter{section}{\value{KSS}-1}
+\begin{document}
+\maketitle\HeaderCommentA
+\section{\KSsection{section}}
+\setcounter{prob}{\value{KSP}-1}
+\fi
+
+
+\begin{prob}\label{1.31}
+  \(M\in \sfD^b(\Ab)\)とする。
+  \begin{enumerate}
+    \item \label{1.31.1}
+    \(M^* = R\Hom(M,\Z) = 0\)であるとき、\(M=0\)であることを示せ。
+    \item \label{1.31.2}
+    \(M^*\in \sfD^b_f(\Ab)\)であるとき、\(M\in \sfD^b_f(\Ab)\)であることを示せ。
+  \end{enumerate}
+\end{prob}
+
+\begin{rem*}
+  \ref{1.31.2}は\(M^*\in \sfD^b(\Mod^f(\Z))\)という仮定のもとで
+  \(M\in \sfD^b(\Mod^f(\Z))\)を示す問題であったが、
+  \(\sfD^b(\Mod^f(\Z))\)は\(\sfD^b(\Ab)\)の部分圏として
+  同型で閉じていないので、これはかなり微妙な問題設定であり
+  (成り立たないかもしれない)、
+  上記の設定がより適切であると思われる。
+\end{rem*}
+
+\begin{proof}
+  \ref{1.31.1}を示す。
+  まず\(M\in \Ab\)である場合に\ref{1.31.1}を証明する。
+  \(R\Hom(M\Z)=0\)は\(\Hom(M,\Z) = \Ext^1(M,\Z) = 0\)を意味する。
+  このときに\(M=0\)を示す。
+  単射\(\Z/n\Z \to M\)を任意にとると
+  \(0 = \Ext^1_{\Z}(M,\Z) \to \Ext^1_{\Z}(\Z/n\Z,\Z)\)は全射となるので
+  \(\Z/n\Z \cong \Ext^1_{\Z}(\Z/n\Z,\Z) = 0\)となって\(n=1\)となる。
+  従って\(M\)はねじれなし群である。
+  \(n\neq 0,1,-1\)とすれば\(M/nM\)はねじれ群であるが、
+  完全列\(0\to M\xrightarrow{n} M \to M/nM\to 0\)に
+  函手\(R\Hom(-,\Z)\)を施すことによって\(R\Hom(M/nM,\Z) = 0\)が従い、
+  よって\(M/nM\)はねじれなし群でもある。
+  これは\(M/nM=0\)を意味し、従って\(M\)は可除である。
+  \(M\)はねじれがないので\(M\to M\otimes \Q\)は単射であり、
+  \(M\)は可除なのでこれは全射でもある。
+  従って\(M\cong M\otimes \Q\)である。
+  もし\(M\neq 0\)なら、\(M\)は\(\Q\)を直和因子として持つ。
+  一方、完全列\(0\to \Z\to \Q\to \Q/\Z\to 0\)に
+  \(\Hom(\Q/\Z,-)\)を適用することにより、
+  \(\hat{\Z} \cong \End(\Q/\Z) \xrightarrow{\sim}\Ext^1(\Q/\Z,\Z)\)
+  を得るので、
+  同じ完全列に\(\Hom(-,\Z)\)を適用することで
+  \(\Ext^1(\Q,\Z) \cong \coker(\Hom(\Z,\Z) \to
+  \Ext^1(\Q/\Z,\Z)) \cong \hat{\Z}/\Z \neq 0\)
+  が従い、これは\(\Ext^1(M,\Z) = 0\)に反する。
+  以上で\(M\in \Ab\)の場合に示された。
+
+  一般の\(M\in \sfD^b(\Ab)\)に対して\ref{1.31.1}を示す。
+  \(H^n(M) \neq 0\)となる最大の\(n\)をとる。
+  このとき
+  \(\tau^{\leq n-1}(M) \to M \to H^n(M)[-n]\xrightarrow{+1}\)
+  は完全三角である。
+  \(R\Hom(-,\Z)\)を適用してコホモロジーをとることで、
+  アーベル群の完全列
+  \[
+  \begin{CD}
+    0 @>>> \Hom(H^n(M),\Z)
+    @>>> H^n(R\Hom(M,\Z)) @>>> H^n(R\Hom(\tau^{\leq n-1}(M),\Z)) \\
+    @>>> \Ext^1(H^n(M),\Z) @>>> H^{n+1}(R\Hom(M,\Z)) @>>> \cdots
+  \end{CD}
+  \]
+  を得る。
+  ここで、\(R\Hom(M,\Z)=0\)であるから、
+  \(H^n(R\Hom(M,\Z)) = 0, H^{n+1}(R\Hom(M,\Z)) = 0\)が成り立つ。
+  さらに、\autoref{1.21}を\(\tau^{\leq n-1}(M)\)と\(R\Hom(-,\Z)\)に対して適用することによって、
+  \(H^n(R\Hom(\tau^{\leq n-1}(M),\Z)) = 0\)であることが従う。
+  従って\(\Hom(H^n(M),\Z)=\Ext^1(H^n(M),\Z)=0\)が成り立つ。
+  すでに示している\(M\in \Ab\)の場合により\(H^n(M)=0\)が従い、
+  これは\(H^n(M)\neq 0\)に矛盾する。
+  以上で\ref{1.31.1}の証明を完了する。
+
+  \ref{1.31.2}を示す。
+  \ref{1.31.1}の証明と同様に、
+  \(H^n(M) \neq 0\)となる最大の\(n\)をとり、
+  アーベル群の完全列
+  \[
+  \begin{CD}
+    0 @>>> \Hom(H^n(M),\Z) @>>> H^n(R\Hom(M,\Z))
+    @>>> H^n(R\Hom(\tau^{\leq n-1}(M),\Z)) \\
+    @>>> \Ext^1(H^n(M),\Z) @>>> H^{n+1}(R\Hom(M,\Z)) @>>>
+    H^{n+1}(R\Hom(\tau^{\leq n-1}(M),\Z)) \\
+    @>>> 0 @. @.
+  \end{CD}
+  \]
+  について考える
+  (\(\Ext^2(H^n(M),\Z)=0\)であることに注意)。
+  \autoref{1.21}を\(\tau^{\leq n-1}(M)\)と\(R\Hom(-,\Z)\)に適用することにより、
+  \(H^n(R\Hom(\tau^{\leq n-1}(M),\Z)) = 0\)である。
+  また、\(R\Hom(M,\Z)\in \sfD_f^b(\Mod(\Z))\)であるので、
+  \(H^n(R\Hom(M,\Z)), H^{n+1}(R\Hom(M,\Z))\in \Mod^f(\Z)\)である。
+  従って、
+  \[\Hom(H^n(M),\Z), \ \Ext^1(H^n(M),\Z), \
+  H^{n+1}(R\Hom(\tau^{\leq n-1}(M),\Z)) \ \in \Mod^f(\Z)\]
+  である。
+  さらに、\(n\)より大きい部分のコホモロジーを見れば、
+  \[H^m(R\Hom(\tau^{\leq n-1}(M),\Z))\cong H^m(R\Hom(M,\Z)), \ (\forall m > n+1)\]
+  であるので、\(R\Hom(\tau^{\leq n-1}(M),\Z)\in \Mod^f(\Z)\)が従う。
+  以上より、帰納的に、
+  \ref{1.31.2}を示すためには、
+  アーベル群\(M\)が\(\Hom(M,\Z),\Ext^1(M,\Z)\in \Mod^f(\Z)\)を満たすとき
+  \(M\in \Mod^f(\Z)\)であることを示すことが十分である。
+
+  \(M\)をアーベル群であって
+  \(\Hom(M,\Z)\)と\(\Ext^1(M,\Z)\)がどちらも有限生成であると仮定する。
+  ねじれ部分を\(T(M)\subset M\)として、\(F(M)\dfn M/T(M)\)とおく。
+  自然な射\(M\to \Hom(\Hom(M,\Z),\Z)\)の像は\(F(M)\)と同型であり、
+  \(\Hom(M,\Z)\)が有限生成であることから
+  \(\Hom(\Hom(M,\Z),\Z)\)も有限生成であるため、
+  \(F(M)\)は有限生成アーベル群である。
+  従って、\ref{1.31.2}を示すためには、
+  \(T(M)\)が有限生成であることを示すことが十分である。
+  完全列
+  \(0\to T(M)\to M\to F(M)\to 0\)に
+  \(\Hom(-,\Z)\)を適用することにより、
+  全射\(\Ext^1(M,\Z)\to \Ext^1(T(M),\Z)\)を得る。
+  従って、\(\Ext^1(T(M),\Z)\)は有限生成アーベル群である。
+  完全列\(0\to \Z\to \Q\to \Q/\Z\to 0\)に
+  \(\Hom(T(M),-)\)を適用することにより、自然な同型
+  \(\Hom(T(M),\Q/\Z)\xrightarrow{\sim}\Ext^1(T(M),\Z)\)を得る。
+  \(T(M)\)に離散位相を入れて\(\Q/\Z\)に\(\R/\Z\)の双対位相を入れることにより、
+  \(\Hom(T(M),\Q/\Z) = \Hom_{\text{cont.}}(T(M),\Q/\Z)\)を連続準同型のなす位相群とみなすと、
+  \(\Hom_{\text{cont.}}(T(M),\Q/\Z)\)は副有限アーベル群である。
+  とくにコンパクトハウスドルフである。
+  一方、\(\Ext^1(T(M),\Z)\cong \Hom(T(M),\Q/\Z)\)はアーベル群として有限生成であるので、
+  \(\Hom_{\text{cont.}}(T(M),\Q/\Z)\)は有限アーベル群であることが従う。
+  Pontryagin双対により、
+  \(T(M)\cong \Hom_{\text{cont.}}(\Hom_{\text{cont.}}(T(M),\Q/\Z),\Q/\Z)
+  = \Hom(\Hom(T(M),\Q/\Z),\Q/\Z)\)
+  であり、これは有限生成ねじれアーベル群である。
+  以上で\ref{1.31.2}の証明を完了し
+  \autoref{1.31}の解答を完了する。
+\end{proof}
+
+
+
+\ifcsname Chap\endcsname\else
+\printbibliography
+\end{document}
+\fi

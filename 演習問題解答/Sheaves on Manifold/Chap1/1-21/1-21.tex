@@ -1,0 +1,75 @@
+\ifcsname Chap\endcsname\else
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+\newcommand{\StylePath}{\ifcsname AllKS\endcsname KS-Style/KS-Style.sty\else
+\ifcsname Chap\endcsname ../KS-Style/KS-Style.sty\else
+../../KS-Style/KS-Style.sty\fi\fi}
+\input{\StylePath}
+
+\KSset{1}{21}
+\setcounter{section}{\value{KSS}-1}
+\begin{document}
+\maketitle\HeaderCommentA
+\section{\KSsection{section}}
+\setcounter{prob}{\value{KSP}-1}
+\fi
+
+
+
+\begin{prob}\label{1.21}
+  \(F:\mcC\to\mcD\)をアーベル圏の間の左完全函手とする。
+  \(F\)-injectiveな\(\mcI\subset \mcC\)が存在すると仮定する。
+  \(X\in \sfD^+(\mcC)\)は\(i>0,j\leq j_0\)に対して
+  \(R^iF(H^j(X)) = 0\)を満たすとする。
+  このとき、\(j\leq j_0\)に対して\(R^jF(X) \cong F(H^j(X))\)
+  となることを示せ。
+\end{prob}
+
+\begin{proof}
+  \(X\in \sfD^+(\mcC)\)であるから、
+  \autoref{1.21}を示すためには\(j_0 \geq 0\)であると仮定しても一般性を失わない。
+  \(j_0\)に関する帰納法で\autoref{1.21}を示す。
+  \(j_0=0\)の場合、
+  \(R^0F(X)\cong \ker(F(d_X^0)) \cong F(\ker(d_X^0)) = F(H^0(X))\)
+  であるから主張は自明である。
+
+  \(j_0\)未満で\autoref{1.21}が成り立つと仮定する。
+  \(Y\dfn \tau^{\leq j_0-1}(X), Z\dfn \tau^{\geq j_0}(X)\)とすると
+  \(Y\to X\to Z\)は完全三角であり、
+  \(Z[-j_0]\in \sfD^+(\mcC)\)であり、
+  帰納法の仮定より、\(j\leq j_0-1\)に対して\(R^jF(Y) \cong F(H^j(Y))\)であり、
+  さらに\(\tau^{\geq j_0}(Y) = 0\)であるから\(R^jF(Y) = 0, (j\geq j_0)\)である。
+  \(X\)が今の\(j_0\)に対して\autoref{1.21}の仮定を満たすことから、
+  \(Z[-j_0]\)は\(j_0=0\)に対して\autoref{1.21}の仮定を満たし、
+  すでに示したことによって\(R^0f(Z[-j_0])\cong F(H^0(Z[-j_0]))\)となる。
+  従って、\(R^jF(Z) = 0, (j \leq j_0-1)\)かつ
+  \(R^{j_0}F(Z) \cong F(H^{j_0}(Z))\)である。
+  \(Z = \tau^{\geq j_0}(X)\)なので\(H^{j_0}(Z) \cong H^{j_0}(X)\)であり、
+  従って\(R^{j_0}F(Z) \cong F(H^{j_0}(X))\)が従う。
+
+  完全三角\(Y\to X\to Z\to Y[1]\)に\(RF\)を適用して得られる
+  完全三角\(RF(Y) \to RF(X) \to RF(Z)\to RF(Y)[1]\)の
+  コホモロジーをとることで、長完全列
+  \[
+  R^jF(Y) \to R^jF(X) \to R^jF(Z) \to R^{j+1}F(Y)
+  \]
+  を得る。
+  ここで\(j\leq j_0-1\)に対して\(R^jF(Y) \cong F(H^j(Y))\)であることと、
+  \(j\leq j_0-1\)に対して\(R^jF(Z) = 0\)であることから、
+  \(j\leq j_0-1\)に対して\(R^jF(Y)\to R^jF(X)\)は同型射である。
+  さらに、\(\tau^{\leq j_0-1}(Y) = Y\)であるから、
+  \(R^{j_0}F(Y) = 0\)である。
+  従って、\(R^{j_0}F(X)\to R^{j_0}F(Z)\)が同型射となる。
+  よって\(R^{j_0}F(X)\cong R^{j_0}F(Z) \cong F(H^{j_0}(X))\)が従う。
+  以上で\autoref{1.21}の解答を完了する。
+\end{proof}
+
+
+
+
+
+
+
+\ifcsname Chap\endcsname\else
+\printbibliography
+\end{document}
+\fi

@@ -1,0 +1,79 @@
+\ifcsname Chap\endcsname\else
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+\newcommand{\StylePath}{\ifcsname AllKS\endcsname KS-Style/KS-Style.sty\else
+\ifcsname Chap\endcsname ../KS-Style/KS-Style.sty\else
+../../KS-Style/KS-Style.sty\fi\fi}
+\input{\StylePath}
+
+\KSset{1}{11}
+\setcounter{section}{\value{KSS}-1}
+\begin{document}
+\maketitle
+\HeaderCommentA
+\section{\KSsection{section}}
+\setcounter{prob}{\value{KSP}-1}
+\fi
+
+
+
+\begin{prob}\label{1.11}
+  \(\mcC\)をアーベル圏、
+  \(X\in \Ch(\mcC)\)を複体であって、
+  任意の\(Y\in \mcC\)に対して
+  アーベル群の複体\(\Hom_{\mcC}(Y,X)\)が完全であるものとする。
+  このとき\(X\)は\(\sfK(\mcC)\)で\(0\)であることを示せ。
+\end{prob}
+
+
+\begin{proof}
+  \(\Hom_{\mcC}(Y,-)\)は左完全函手であるから、
+  任意の\(n\)に対して、自然に
+  \[
+  \Hom_{\mcC}(Y,\ker(d_X^n)) \xrightarrow{\sim}
+  \ker(d_X^n\circ (-): \Hom_{\mcC}(Y,X^n)\to \Hom_{\mcC}(Y,X^{n+1}))
+  \]
+  となる。
+  \(\Hom_{\mcC}(Y,X)\)は完全であるから、任意の\(n\)に対して、自然に
+  \[
+  \Hom_{\mcC}(Y,\im(d_X^n))
+  \cong \Hom_{\mcC}(Y,\ker(d_X^{n+1}))
+  \cong \ker(d_X^{n+1}\circ (-))
+  \cong \im(d_X^n\circ (-))
+  \]
+  となる。
+  従って、任意の\(n\)に対して、自然な射
+  \(\im(d_X^n\circ (-))\to \Hom_{\mcC}(Y,\im(d_X^n))\)
+  は同型射であり、
+  任意の\(n\)に対して、完全列
+  \[
+  \begin{CD}
+    0 @>>> \ker(d_X^n) @>>> X^n @>>> \im(d_X^n) @>>> 0
+  \end{CD}
+  \]
+  に\(\Hom_{\mcC}(Y,-)\)を施した後のアーベル群の列も完全である。
+  よって\autoref{1.4}より、任意の\(n\)に対して、
+  \(X^n \cong \im(d_X^n)\oplus \ker(d_X^n)\)となることが従う。
+
+  \(X\)が\(\sfK(\mcC)\)において\(0\)であるためには、
+  \(\id_X:X\to X\)が homotopic to zero であることが十分である。
+  \(s^n:X^n\to X^{n-1}\)を、
+  \(\ker(d_X^n)\to X^n\)の分裂\(p^n:X^n\to \ker(d_X^n)\)と、
+  同型射\(l^n:\im(d_X^{n-1})\xrightarrow{\sim}\ker(d_X^n)\)の逆射と、
+  \(X^{n-1}\to \im(d_X^{n-1})\)の分裂\(i^{n-1}:\im(d_X^{n-1})\to X^{n-1}\)の、
+  三つの射の合成射として\(s^n \dfn i^{n-1}\circ (l^n)^{-1}\circ p^n\)と定める。
+  このとき、\(s^{n+1}\circ d_X^n:X^n\to X^n\)は
+  自然なエピ射\(X^n\to \im(d_X^n)\)と\(i^n:\im(d_X^n)\to X^n\)の合成射に等しく、
+  \(d_X^{n-1}\circ s^n:X^n\to X^n\)は
+  \(p^n:X^n\to \ker(d_X^n)\)と自然なモノ射\(\ker(d_X^n)\to X^n\)の合成射に等しい。
+  従って\(\id_{X^n} = s^{n+1}\circ d_X^n + d_X^{n-1}\circ s^n\)となり、
+  \(\id_X\)は homotopic to zero であることがわかる。
+  以上で\autoref{1.11}の解答を完了する。
+\end{proof}
+
+
+
+
+\ifcsname Chap\endcsname\else
+\printbibliography
+\end{document}
+\fi

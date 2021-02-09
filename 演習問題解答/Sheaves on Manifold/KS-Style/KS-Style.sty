@@ -1,0 +1,570 @@
+
+%%%%BibTeXの設定
+\usepackage[backend=biber,style=alphabetic]{biblatex}
+\newcommand{\BibPath}{\ifcsname AllKS\endcsname KS-Style/KS-Bib.bib\else
+\ifcsname Chap\endcsname ../KS-Style/KS-Bib.bib\else
+../../KS-Style/KS-Bib.bib\fi\fi}
+\bibliography{\BibPath}
+%%%%BibTeXの設定
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+
+\usepackage{xcolor}
+\usepackage[dvipdfmx]{graphicx}
+
+
+%%%%%ハイパーリンク
+\usepackage[setpagesize=false]{hyperref}
+\usepackage{aliascnt}
+\hypersetup{
+    colorlinks=true,
+    citecolor=blue,
+    linkcolor=blue,
+    urlcolor=blue,
+}
+%%%%%ハイパーリンク
+
+
+
+
+%%%%%図式
+\usepackage{tikz}%%%図
+\usetikzlibrary{arrows}
+\usepackage{amscd}%%%簡単な図式
+%%%%%図式
+
+
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+
+
+\usepackage{amsthm}
+\theoremstyle{definition}
+\newtheorem{thm}{定理}[section]
+\newcommand{\thmautorefname}{定理}
+
+\newaliascnt{prop}{thm}%%%カウンター「prop」の定義（thmと同じ）
+\newtheorem{prop}[prop]{命題}
+\aliascntresetthe{prop}
+\newcommand{\propautorefname}{命題}%%%カウンター名propは「命題」で参照する
+
+\newaliascnt{cor}{thm}
+\newtheorem{cor}[cor]{系}
+\aliascntresetthe{cor}
+\newcommand{\corautorefname}{系}
+
+\newaliascnt{lem}{thm}
+\newtheorem{lem}[lem]{補題}
+\aliascntresetthe{lem}
+\newcommand{\lemautorefname}{補題}
+
+\newaliascnt{rem}{thm}
+\newtheorem{rem}[rem]{注意}
+\aliascntresetthe{rem}
+\newcommand{\remautorefname}{注意}
+
+\newaliascnt{defi}{thm}
+\newtheorem{defi}[defi]{定義}
+\aliascntresetthe{defi}
+\newcommand{\defiautorefname}{定義}
+
+\newaliascnt{eg}{thm}
+\newtheorem{eg}[eg]{例}
+\aliascntresetthe{eg}
+\newcommand{\egautorefname}{例}
+
+\newaliascnt{obs}{thm}
+\newtheorem{obs}[obs]{観察}
+\aliascntresetthe{obs}
+\newcommand{\obsautorefname}{観察}
+
+
+\newaliascnt{prob}{thm}
+\newtheorem{prob}[prob]{問題}
+\aliascntresetthe{prob}
+\newcommand{\probautorefname}{問題}
+
+
+%%%%%%%番号づけない定理環境
+\newtheorem*{exam*}{例}
+\newtheorem*{recall*}{Recall}
+\newtheorem*{rem*}{注意}
+\newtheorem*{kansou*}{感想}
+\newtheorem*{question*}{疑問}
+\newtheorem*{defi*}{定義}
+
+
+%%%証明環境の調整
+\makeatletter
+\renewenvironment{proof}[1][\proofname]{
+  \pushQED{\qed}%
+  \normalfont \topsep6\p@\@plus6\p@\relax
+  \trivlist
+  \item[\hskip\labelsep
+    #1\@addpunct{\textbf{.}}]\ignorespaces
+}{%
+  \popQED\endtrivlist\@endpefalse
+}
+\makeatother
+\renewcommand{\proofname}{\textbf{証明}}
+
+
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+
+
+
+
+%%%%%箇条書き環境
+\usepackage[]{enumitem}
+
+\makeatletter
+\AddEnumerateCounter{\fnsymbol}{\c@fnsymbol}{9}%%%%fnsymbolという文字をenumerate環境のパラメーターで使えるようにする。
+\makeatother
+\setlist[enumerate,1]{label = (\arabic*),ref = (\arabic*)}
+\setlist[enumerate,2]{label = (\roman*),ref = (\roman*)}
+%%%%%箇条書き環境
+
+
+
+
+\usepackage{latexsym}
+\DeclareMathOperator{\Hom}{\mathrm{Hom}}
+\newcommand{\inHom}{\mathcal{H}om}
+\DeclareMathOperator{\End}{\mathrm{End}}
+\DeclareMathOperator{\Isom}{Isom}
+\DeclareMathOperator{\ISOM}{\mathbf{Isom}}
+\DeclareMathOperator{\id}{\mathrm{id}}
+\DeclareMathOperator{\im}{\mathrm{Im}}
+\newcommand{\op}{\mathrm{op}}
+\newcommand{\Ob}{\mathrm{Ob}}
+\newcommand{\hd}{\mathrm{hd}}
+\DeclareMathOperator{\Tot}{\mathrm{Tot}}
+\DeclareMathOperator{\Ext}{\mathrm{Ext}}
+\DeclareMathOperator{\Tor}{\mathrm{Tor}}
+
+\DeclareMathOperator{\coker}{\mathrm{coker}}
+\DeclareMathOperator{\colim}{\mathrm{colim}}
+\DeclareMathOperator{\plim}{\mathrm{lim}}
+\DeclareMathOperator{\rank}{\mathrm{rank}}
+\DeclareMathOperator{\tr}{\mathrm{tr}}
+\DeclareMathOperator{\codim}{\mathrm{codim}}
+\DeclareMathOperator{\Ind}{\mathrm{Ind}}
+\DeclareMathOperator{\Int}{\mathrm{Int}}
+
+\DeclareMathOperator{\Spec}{\mathrm{Spec}}
+\DeclareMathOperator{\Supp}{\mathrm{Supp}}
+\DeclareMathOperator{\Proj}{\mathrm{Proj}}
+\DeclareMathOperator{\Sym}{\mathrm{Sym}}
+\DeclareMathOperator{\Sing}{\mathrm{Sing}}
+\DeclareMathOperator{\red}{\mathrm{red}}
+\DeclareMathOperator{\length}{\mathrm{length}}
+\DeclareMathOperator{\hight}{\mathrm{ht}}
+\DeclareMathOperator{\trdeg}{\mathrm{trdeg}}
+
+
+
+\newcommand{\Ch}{\mathsf{Ch}}
+\newcommand{\Sh}{\mathsf{Sh}}
+\newcommand{\Ab}{\mathsf{Ab}}
+\newcommand{\Mod}{\mathsf{Mod}}
+\newcommand{\sfK}{\mathsf{K}}
+\newcommand{\sfD}{\mathsf{D}}
+\newcommand{\Ht}{\mathrm{Ht}}
+
+
+\newcommand\C{\mathbb{C}}
+\newcommand\R{\mathbb{R}}
+\newcommand\Q{\mathbb{Q}}
+\newcommand\Z{\mathbb{Z}}
+\newcommand\N{\mathbb{N}}
+\renewcommand\P{\mathbb{P}}
+\newcommand\A{\mathbb{A}}
+\renewcommand\L{\mathbb{L}}
+
+
+\newcommand\sfSet{\mathsf{Set}}
+\newcommand\sfTop{\mathsf{Top}}
+\newcommand\sfRing{\mathsf{Ring}}
+
+
+
+\newcommand\mcA{\mathcal{A}}
+\newcommand\mcB{\mathcal{B}}
+\newcommand\mcC{\mathcal{C}}
+\newcommand\mcD{\mathcal{D}}
+\newcommand\mcE{\mathcal{E}}
+\newcommand\mcF{\mathcal{F}}
+\newcommand\mcG{\mathcal{G}}
+\newcommand\mcH{\mathcal{H}}
+\newcommand\mcI{\mathcal{I}}
+\newcommand\mcJ{\mathcal{J}}
+\newcommand\mcK{\mathcal{K}}
+\newcommand\mcM{\mathcal{M}}
+\newcommand\mcN{\mathcal{N}}
+\newcommand\mcO{\mathcal{O}}
+\newcommand\mcP{\mathcal{P}}
+\newcommand\mcQ{\mathcal{Q}}
+\newcommand\mcR{\mathcal{R}}
+\newcommand\mcS{\mathcal{S}}
+\newcommand\mcT{\mathcal{T}}
+\newcommand\mcU{\mathcal{U}}
+\newcommand\mcW{\mathcal{W}}
+\newcommand\mcX{\mathcal{X}}
+\newcommand\mcY{\mathcal{Y}}
+
+
+
+\newcommand\mfa{\mathfrak{a}}
+\newcommand\mfb{\mathfrak{b}}
+\newcommand\mfm{\mathfrak{m}}
+\newcommand\mfn{\mathfrak{n}}
+\newcommand\mfp{\mathfrak{p}}
+\newcommand\mfq{\mathfrak{q}}
+\newcommand\mfr{\mathfrak{r}}
+
+
+\DeclareMathOperator{\OOO}{\mcO}
+
+\newcommand\OA{\OOO_A}
+\newcommand\OB{\OOO_B}
+\newcommand\OC{\OOO_C}
+\newcommand\OD{\OOO_D}
+\renewcommand\OE{\OOO_E}
+\newcommand\OF{\OOO_F}
+\newcommand\OG{\OOO_G}
+\newcommand\OH{\OOO_H}
+\newcommand\OI{\OOO_I}
+\newcommand\OJ{\OOO_J}
+\newcommand\OK{\OOO_K}
+\newcommand\OL{\OOO_L}
+\newcommand\OM{\OOO_M}
+\newcommand\ON{\OOO_N}
+\newcommand\OP{\OOO_P}
+\newcommand\OQ{\OOO_Q}
+\newcommand\OR{\OOO_R}
+\newcommand\OS{\OOO_S}
+\newcommand\OT{\OOO_T}
+\newcommand\OU{\OOO_U}
+\newcommand\OV{\OOO_V}
+\newcommand\OX{\OOO_X}
+\newcommand\OY{\OOO_Y}
+\newcommand\OZ{\OOO_Z}
+\newcommand{\OO}[1]{\OOO_{#1}}
+\newcommand{\OOP}[1]{\OO{\P({#1})}}
+\newcommand{\OOA}[1]{\OO{\A({#1})}}
+
+\newcommand{\loc}{\mathrm{loc}}
+
+
+\newcommand{\gld}{\mathrm{gld}}
+\newcommand{\wgld}{\mathrm{wgld}}
+
+\newcommand{\rsa}{\rightsquigarrow}
+\newcommand{\dto}{\dashrightarrow}
+\renewcommand{\emptyset}{\varnothing}
+
+\def\dfn{:\overset{\mbox{{\scriptsize def}}}{=}}
+\newcommand{\deff}{:\hspace{-3pt}\overset{\text{def}}{\iff}}
+
+
+
+
+
+
+
+
+%%%%%autorefの振る舞い
+
+\let\KSLetAutoref\autoref
+\let\KSLetRef\ref
+\let\KSLetCite\cite
+
+\renewcommand{\cite}[2][]{\KSLetCite[#1,][]{#2}}
+
+\def\KSFirstRelax#1.{\relax#1\else}
+\newcommand{\KSFirstNumber}[1]{\expandafter\ifx\expandafter\relax\KSFirstRelax#1.\fi}
+
+\def\KSSecondRelax#1.#2.{\relax#2\else}
+\newcommand{\KSSecondNumber}[1]{\expandafter\ifx\expandafter\relax\KSSecondRelax#1.\fi}
+
+\def\KSFirstTwoRelax#1.#2.{\relax#1.#2\else}
+\newcommand{\KSFirstTwo}[1]{\expandafter\ifx\expandafter\relax\KSFirstTwoRelax#1.\fi}
+
+\def\KSTwoRelaxifing#1.#2.{\relax}
+\newcommand{\KSIfLengthTwo}[1]{%
+\expandafter\ifx\KSTwoRelaxifing#1.\relax%
+true\else%
+false\fi}
+
+\def\KSThirdRelax#1.#2.#3.{\relax#3\else}
+\newcommand{\KSThirdNumber}[1]{\expandafter\ifx\expandafter\relax\KSThirdRelax#1.\fi}
+
+\def\KSFirstThreeRelax#1.#2.#3.{\relax#1.#2.#3\else}
+\newcommand{\KSFirstThree}[1]{\expandafter\ifx\expandafter\relax\KSFirstThreeRelax#1.\fi}
+
+\def\KSThreeRelaxifing#1.#2.#3.{\relax}
+\newcommand{\KSIfLengthThree}[1]{%
+\expandafter\ifx\KSThreeRelaxifing#1.\relax%
+true\else%
+false\fi}
+
+\newcommand{\KSFourthNumber}[1]{\expandafter\ifx\expandafter\relax\KSThreeRelaxifing#1\fi}
+
+
+
+\newcommand{\KSTrueNumberingChap}[1]{%
+\ifnum\KSFirstNumber{#1}=\value{section}%
+true\else%
+false\fi}
+\newcommand{\KSTrueNumberingProb}[1]{%
+\ifnum\KSSecondNumber{#1}=\value{prob}%
+true\else%
+false\fi}
+\newcommand{\KSTrueNumbering}[1]{%
+\csname if\KSTrueNumberingChap{#1}\endcsname\KSTrueNumberingProb{#1}\else%
+false\fi}
+
+
+\newcommand{\KSTrueThreeAutoref}[1]{%
+\csname if\KSIfLengthThree{#1}\endcsname%
+\KSLetAutoref{\KSFirstTwo{#1}} \KSLetRef{\KSFirstThree{#1}}\else%
+\KSLetAutoref{\KSFirstTwo{#1}} \KSLetRef{\KSFirstThree{#1}} \KSLetRef{#1}\fi}
+
+\newcommand{\KSTrueAutoref}[1]{%
+\csname if\KSIfLengthTwo{#1}\endcsname%
+\KSLetAutoref{\KSFirstTwo{#1}}\else\KSTrueThreeAutoref{#1}\fi}
+
+\newcounter{KSCounterSmallProb}
+\newcounter{KSCounterSSmallProb}
+\newcommand{\KSTrueThreeCite}[1]{%
+\setcounter{KSCounterSmallProb}{\KSThirdNumber{#1}}%
+\csname if\KSIfLengthThree{#1}\endcsname%
+\KSLetCite[Exercise \KSFirstTwo{#1} (\arabic{KSCounterSmallProb}),][]{kashiwara2002sheaves}\else%
+\setcounter{KSCounterSSmallProb}{\KSFourthNumber{#1}}%
+\KSLetCite[Exercise \KSFirstTwo{#1} (\arabic{KSCounterSmallProb}) (\roman{KSCounterSSmallProb}),][]{kashiwara2002sheaves}\fi}
+
+\newcommand{\KSTrueCite}[1]{%
+\csname if\KSIfLengthTwo{#1}\endcsname%
+\KSLetCite[Exercise \KSFirstTwo{#1},][]{kashiwara2002sheaves}\else%
+\KSTrueThreeCite{#1}\fi}
+
+
+\newcommand{\KSChapDefnedAutoref}[1]{%
+\csname if\KSTrueNumberingChap{#1}\endcsname%
+\KSTrueAutoref{#1}\else\KSTrueCite{#1}\fi}
+
+\newcommand{\KSChapUnDefAutoref}[1]{%
+\csname if\KSTrueNumbering{#1}\endcsname%
+\KSTrueAutoref{#1}\else\KSTrueCite{#1}\fi}
+
+
+\newcommand{\KSAutoref}[1]{%
+\ifcsname AllKS\endcsname\KSTrueAutoref{#1}\,\else%
+\ifcsname Chap\endcsname\KSChapDefnedAutoref{#1}\,\else\KSChapUnDefAutoref{#1}\,\fi%
+\fi}
+
+\renewcommand{\autoref}[1]{\KSAutoref{#1}}
+
+
+
+
+
+
+\newcommand{\KSTrueDoubleAutoref}[2]{%
+\csname if\KSIfLengthThree{#1}\endcsname%
+\KSLetAutoref{\KSFirstTwo{#1}} \KSLetRef{#1} \KSLetRef{#2}\else%
+\KSLetAutoref{\KSFirstTwo{#1}} \KSLetRef{\KSFirstThree{#1}} \KSLetRef{#1} \KSLetRef{#2}\fi}
+
+\newcounter{KSCounterDoubleSmallProbA}
+\newcounter{KSCounterDoubleSmallProbB}
+\newcounter{KSCounterDoubleSSmallProbA}
+\newcounter{KSCounterDoubleSSmallProbB}
+\newcommand{\KSTrueDoubleCite}[2]{%
+\setcounter{KSCounterDoubleSmallProbA}{\KSThirdNumber{#1}}%
+\setcounter{KSCounterDoubleSmallProbB}{\KSThirdNumber{#2}}%
+\csname if\KSIfLengthThree{#1}\endcsname%
+\KSLetCite[Exercise \KSFirstTwo{#1} (\arabic{KSCounterDoubleSmallProbA}) (\arabic{KSCounterDoubleSmallProbB}),][]{kashiwara2002sheaves}\else%
+\setcounter{KSCounterDoubleSSmallProbA}{\KSFourthNumber{#1}}%
+\setcounter{KSCounterDoubleSSmallProbB}{\KSFourthNumber{#2}}%
+\KSLetCite[Exercise \KSFirstTwo{#1} (\arabic{KSCounterSmallProbA}) (\roman{KSCounterDoubleSSmallProbA}) (\roman{KSCounterDoubleSSmallProbB}),][]{kashiwara2002sheaves}\fi}
+
+\newcommand{\KSChapDefnedDoubleAutoref}[2]{%
+\csname if\KSTrueNumberingChap{#1}\endcsname%
+\KSTrueDoubleAutoref{#1}{#2}\else\KSTrueDoubleCite{#1}{#2}\fi}
+
+\newcommand{\KSChapUnDefDoubleAutoref}[2]{%
+\csname if\KSTrueNumbering{#1}\endcsname%
+\KSTrueDoubleAutoref{#1}{#2}\else\KSTrueDoubleCite{#1}{#2}\fi}
+
+\newcommand{\KSDoubleAutoref}[2]{%
+\ifcsname AllKS\endcsname\KSTrueDoubleAutoref{#1}{#2}\,\else%
+\ifcsname Chap\endcsname\KSChapDefnedDoubleAutoref{#1}{#2}\,\else%
+\KSChapUnDefDoubleAutoref{#1}{#2}\,\fi\fi}
+
+
+
+
+\renewcommand{\iff}{\Leftrightarrow}
+
+
+\newcommand{\KSTrueIffAutoref}[2]{%
+\csname if\KSIfLengthThree{#1}\endcsname%
+\KSLetAutoref{\KSFirstTwo{#1}} \KSLetRef{#1} \(\iff\) \KSLetRef{#2}\else%
+\KSLetAutoref{\KSFirstTwo{#1}} \KSLetRef{\KSFirstThree{#1}} \KSLetRef{#1} \(\iff\) \KSLetRef{#2}\fi}
+
+\newcounter{KSCounterIffSmallProbA}
+\newcounter{KSCounterIffSmallProbB}
+\newcounter{KSCounterIffSSmallProbA}
+\newcounter{KSCounterIffSSmallProbB}
+\newcommand{\KSTrueIffCite}[2]{%
+\setcounter{KSCounterIffSmallProbA}{\KSThirdNumber{#1}}%
+\setcounter{KSCounterIffSmallProbB}{\KSThirdNumber{#2}}%
+\csname if\KSIfLengthThree{#1}\endcsname%
+\KSLetCite[Exercise \KSFirstTwo{#1} (\arabic{KSCounterIffSmallProbA}) \(\iff\) (\arabic{KSCounterIffSmallProbB}),][]{kashiwara2002sheaves}\else%
+\setcounter{KSCounterIffSSmallProbA}{\KSFourthNumber{#1}}%
+\setcounter{KSCounterIffSSmallProbB}{\KSFourthNumber{#2}}%
+\KSLetCite[Exercise \KSFirstTwo{#1} (\arabic{KSCounterSmallProbA}) (\roman{KSCounterIffSSmallProbA}) \(\iff\) (\roman{KSCounterIffSSmallProbB}),][]{kashiwara2002sheaves}\fi}
+
+\newcommand{\KSChapDefnedIffAutoref}[2]{%
+\csname if\KSTrueNumberingChap{#1}\endcsname%
+\KSTrueIffAutoref{#1}{#2}\else\KSTrueIffCite{#1}{#2}\fi}
+
+\newcommand{\KSChapUnDefIffAutoref}[2]{%
+\csname if\KSTrueNumbering{#1}\endcsname%
+\KSTrueIffAutoref{#1}{#2}\else\KSTrueIffCite{#1}{#2}\fi}
+
+\newcommand{\KSIffAutoref}[2]{%
+\ifcsname AllKS\endcsname\KSTrueIffAutoref{#1}{#2}\,\else%
+\ifcsname Chap\endcsname\KSChapDefnedIffAutoref{#1}{#2}\,\else%
+\KSChapUnDefIffAutoref{#1}{#2}\,\fi\fi}
+
+%%%%%autorefの振る舞いおわり
+
+
+
+
+
+
+
+%%%%%%ChapとProbのPath
+
+\newcommand{\KSTrueChapterPath}[1]{Chap#1/Chap#1}
+\newcommand{\KSTrueProblemPath}[2]{\ifcsname AllKS\endcsname%
+Chap#1/#1-#2/#1-#2\else%
+#1-#2/#1-#2\fi}
+
+\newcount\KSLoopProbCount
+\newcount\KSLoopChapCount
+\newcommand{\KSLoopProblemPath}{\KSTrueProblemPath{\the\KSLoopChapCount}{\the\KSLoopProbCount}}
+\newcommand{\KSLoopChapterPath}{\KSTrueChapterPath{\the\KSLoopChapCount}}
+
+\def\KSProbPath#1{%
+{\loop\ifnum\KSLoopProbCount<#1%
+\advance\KSLoopProbCount by1%
+\input{\KSLoopProblemPath}%
+\repeat}}
+
+\def\KSChapPath#1{%
+{\loop\ifnum\KSLoopChapCount<#1%
+\advance\KSLoopChapCount by1%
+\input{\KSLoopChapterPath}%
+\repeat}}
+
+%%%%%%ChapとProbのPathおわり
+
+
+
+
+
+
+
+%%%%%%%タイトルとか
+
+\makeatletter
+\newcommand*{\@KSsection}[1]{
+\ifcase #1\or Homological Algebra
+\or Sheaves
+\or Poincar\`{e}-Verdier Duality and Fourier-Sato Transformation
+\or Specialization and Microlocalization
+\or Micro-support of Sheaves
+\or Micro-support and Microlocalization
+\or Contact Transformations and Pure Sheaves
+\or Constructible sheaves
+\or Characteristic cycles
+\or Perverse sheaves
+\or Applications to \(\mcO\)-modules and \(\mcD\)-modules
+\else \@ctrerr \fi\relax}
+\newcommand*{\KSsection}[1]{%
+\expandafter\@KSsection\csname c@#1\endcsname
+}
+\makeatother
+
+\newcounter{KSS}
+\newcounter{KSP}
+\renewcommand{\thesection}{\Roman{section}}
+\newcommand*{\KSset}[2]{\setcounter{KSS}{#1}\setcounter{KSP}{#2}}
+\newcommand*{\KSEx}{Exercise \Roman{KSS}.\arabic{KSP}}
+\newcommand*{\KSExChap}{Chapter \Roman{KSS} の Exercise}
+\newcommand*{\KSExAll}{Exercise}
+
+\newcommand*{\KStitle}{%
+\ifnum \value{KSP}>0%
+\KSEx\else\ifnum \value{KSS}>0%
+\KSExChap\else\KSExAll\fi\fi}
+
+\title{Sheaves on Manifolds \KStitle の解答}
+\author{ゆじとも}
+\date{\today}
+
+\newcommand{\HeaderCommentA}{%
+Sheaves on Manifolds \cite[\KStitle]{kashiwara2002sheaves}の解答です。}
+
+\newcommand{\LocCptRemark}{%
+本文では、局所コンパクト空間であるという場合には、
+ハウスドルフ性を常に仮定していることに注意しておく
+(cf. 本文\cite[Proposition 2.5.1]{kashiwara2002sheaves}直前の記述)。}
+
+\newcommand{\ParaCptRemark}{%
+本文では、パラコンパクト空間であるという場合には、
+ハウスドルフ性を常に仮定していることに注意しておく
+(cf. 本文\cite[Proposition 2.5.1]{kashiwara2002sheaves}直後の記述)。}
+
+\newcommand{\LocParaCptRemark}{%
+本文では、局所コンパクト空間であるという場合には、
+ハウスドルフ性を常に仮定していることに注意しておく
+(cf. 本文\cite[Proposition 2.5.1]{kashiwara2002sheaves}直前の記述)。
+同様に、本文では、パラコンパクト空間であるという場合には、
+ハウスドルフ性を常に仮定している
+(cf. 本文\cite[Proposition 2.5.1]{kashiwara2002sheaves}直後の記述)。}
+
+\newcommand{\HeaderKS}{
+\begin{itemize}
+  \item
+  解きっぱなしで見直してないのでいっぱいミスがあると思います。
+  参考にする場合は注意してください。
+  ミスを発見した方は指摘していただければ幸いです。
+  \item
+  自然そうな仮定が本文中に書かれていないように見えた場合は、
+  そのような仮定を置いた上で解いています。
+  なので、その場合は問題文を少し変更して書いて、
+  問題文の直後に Remark を置くようにしました。
+  そのような問題であって、
+  本文の指示通りの仮定で解くことができるものがあれば、
+  指摘していただければ幸いです。
+  \item
+  私はこの分野の専門家ではありませんので、
+  重ねて申し上げますが、
+  本当にヤバいミスをしたまま放置している可能性は十分あります。
+  また、解答も「最適解」から程遠いものもたくさんあるかと思います。
+  そのようなもののうち、
+  あまりに目に余るものがあれば、
+  指摘していただければ幸いです。
+\end{itemize}
+}

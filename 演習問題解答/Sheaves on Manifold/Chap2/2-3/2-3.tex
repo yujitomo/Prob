@@ -1,0 +1,83 @@
+\ifcsname Chap\endcsname\else
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+\newcommand{\StylePath}{\ifcsname AllKS\endcsname KS-Style/KS-Style.sty\else
+\ifcsname Chap\endcsname ../KS-Style/KS-Style.sty\else
+../../KS-Style/KS-Style.sty\fi\fi}
+\input{\StylePath}
+
+\KSset{2}{3}
+
+\setcounter{section}{\value{KSS}-1}
+
+\begin{document}
+\maketitle
+\HeaderCommentA
+\section{\KSsection{section}}
+\setcounter{prob}{\value{KSP}-1}
+\fi
+
+\begin{prob}\label{2.3}
+  \begin{enumerate}
+    \item \label{2.3.1}
+    \(U\subset X\)を開部分集合、
+    \(x\in\bar{U}\setminus U\)として、
+    層\(\Z_U\)について考えることによって
+    \(\inHom(F,G)_x\cong \Hom(F_x,G_x)\)は一般には正しくないことを示せ。
+    \item \label{2.3.2}
+    次を満たす\(X\)上の層\(F\)と閉部分集合\(Z\subset X\)と開部分集合\(U\)の例を与えよ：
+    \(Z\cap U=\emptyset\)であり、
+    \(R\Gamma_Z(F_U)\neq 0\)である。
+    \(\Gamma_Z(F_U)\)であることを確認し、
+    このことから、一般に合成函手の導来函手が
+    導来函手の合成とは異なることを帰結せよ。
+  \end{enumerate}
+\end{prob}
+
+\begin{proof}
+  \ref{2.3.1}を示す。
+  \(F=\Z_U\)とおき、\(G\)は任意の層とする。
+  \(x\not\in U\)なので\(F_x=0\)であり、
+  従って、このとき、\(\Hom(F_x,G_x)=0\)が成り立つ。
+  また、各開集合\(V\subset X\)に対して自然に
+  \[
+  \inHom(F,G)(V) = \inHom(\Z_U,G)(V) = \Hom(\Z_U|_V,G|_V)
+  = \Hom(\Z_{U\cap V},G|_V) \cong G(U\cap V)
+  \]
+  が成り立つので、
+  \(\inHom(F,G)\cong \Gamma_U(G)\)が成り立つ。
+  従って、たとえば\(X=\R,U=\R\setminus \{0\},x=0,G=\Z\)とすると、
+  \[
+  \inHom(\Z_U,\Z)_x \cong \Gamma_U(G)_x
+  \cong \Z\oplus\Z \neq 0 = \Hom(F_x,G_x)
+  \]
+  である。
+  以上で\ref{2.3.1}の証明を完了する。
+
+  \ref{2.3.2}を示す。
+  まず一般に\(Z\cap U=\emptyset\)であれば、
+  \(F_U\)の各切断は\(U\)の中に台を持つので
+  \(\Gamma_Z(F_U)=0\)が成り立つ。
+  \(X=\R_{\geq 0}, U=\R_{>0}\subset X, Z=\{0\}\)
+  として\(F=\Z_X\)を定数層とする。
+  このとき、\(F\)は定数層なので、
+  各開集合\(V\subset X\)に対して
+  \(s\in F(V)\)で\(Z\)の外で\(0\)となるものは\(0\)しかない
+  (\(0\in V\)であり、\(s_0=n\neq 0\)であれば、
+  \(0\)を含む\(V\)の連結成分の上で\(s=n\)である)。
+  従って\(\Gamma_Z(F)=0\)である。
+  完全列\(0\to F_U\to F\to F_Z\to 0\)に函手\(\Gamma_Z(-)\)を施すことにより、
+  同型射
+  \(\Z_x \cong \Gamma_Z(F_Z)\xrightarrow{\sim} H^1_Z(F_U)\)を得る。
+  従ってこれが所望の例を与える。
+  以上で\ref{2.3.2}の証明を完了し、
+  \autoref{2.3}の解答を完了する。
+\end{proof}
+
+
+
+
+
+\ifcsname Chap\endcsname\else
+\printbibliography
+\end{document}
+\fi

@@ -1,0 +1,141 @@
+\ifcsname Chap\endcsname\else
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+\newcommand{\StylePath}{\ifcsname AllKS\endcsname KS-Style/KS-Style.sty\else
+\ifcsname Chap\endcsname ../KS-Style/KS-Style.sty\else
+../../KS-Style/KS-Style.sty\fi\fi}
+\input{\StylePath}
+
+\KSset{1}{24}
+\setcounter{section}{\value{KSS}-1}
+\begin{document}
+\maketitle\HeaderCommentA
+\section{\KSsection{section}}
+\setcounter{prob}{\value{KSP}-1}
+\fi
+
+
+\begin{prob}\label{1.24}
+  \
+  \begin{enumerate}
+    \item \label{1.24.1}
+    \(F:\mcC\to \mcD\)をアーベル圏の間の左完全函手、
+    \(\mcI\subset \mcC\)を\(F\)-injectiveな充満部分圏として、
+    \(X\in \sfD^+(\mcC)\)を対象とする。
+    各\(j\in \Z\)に対して自然な射\(H^j(RF(X)) \to F(H^j(X))\)を構成せよ。
+    \item \label{1.24.2}
+    \(\mcC,\mcD,\mcE\)をアーベル圏、
+    \(F:\mcC\times \mcD\to \mcE\)を加法的な双函手、
+    \(X\in \sfD^*(\mcC), Y\in \sfD^*(\mcD)\)を対象とする。
+    ここで\(*\)は\(+\)か\(-\)であるとする。
+    \begin{enumerate}
+      \item \label{1.24.2.1}
+      \(F\)が左完全で\(*=+\)
+      (resp. \(F\)が右完全で\(*=-\))
+      であるとせよ。
+      各\(p,q\in \Z\)に対して自然な射\(H^{p+q}(RF(X,Y)) \to F(H^p(X),H^q(Y))\)
+      (resp. \(F(H^p(X),H^q(Y)) \to H^{p+q}(LF(X,Y))\)
+      を構成せよ。
+      \item \label{1.24.2.2}
+      \(F\)が完全であるとせよ。
+      各\(n\in \Z\)に対して
+      以下の同型を示せ：
+      \[
+      H^n(F(X,Y)) \cong \bigoplus_{p+q=n}F(H^p(X),H^q(Y)).
+      \]
+    \end{enumerate}
+  \end{enumerate}
+\end{prob}
+
+\begin{rem*}
+  \(\mcI\)のような部分圏の存在に関して本文中では全く仮定がなかったが、
+  右導来函手の存在のみから証明できることなんだろうか。
+  もしそうなら、\autoref{1.21}でも仮定する必要がなかったはずだけど...
+\end{rem*}
+
+\begin{proof}
+  \ref{1.24.1}を示す。
+  余核の普遍性によって自然な射\(\coker(F(d_X^j)) \to F(\coker(d_X^j))\)を得る。
+  さらに核の普遍性によって自然な射
+  \(H^j(F(X)) \to \ker(F(\coker(d_X^{j-1}))\to F(X^j))\)を得る。
+  ここで\(F\)は左完全であるから、自然な同型
+  \(\ker(F(\coker(d_X^{j-1}))\to F(X^j)) \cong
+  F(\ker(\coker(d_X^{j-1})\to X^j)) \cong F(H^j(X))\)を得る。
+  以上より、自然な射
+  \(H^j(F(X)) \to F(H^j(X))\)を得る
+  (自然、の意味は、複体\(X\)に対して函手的、という意味。
+  余核の間の射も核の間の射も核を\(F\)の中に入れる同型射もすべて\(X\)について函手的)。
+  本文\cite[Proposition 1.7.7]{kashiwara2002sheaves}または\autoref{1.23.1}より、
+  モノな擬同型\(X\to I, (I\in \sfK^+(\mcI))\)が存在する。
+  \(RF(I)\cong F(I)\)が成り立つので、
+  自然な射
+  \[R^jF(X) \cong R^jF(I) \cong H^j(F(I)) \to F(H^j(I)) \cong F(H^j(X))\]
+  を得る。
+  以上で\ref{1.24.1}が示された。
+
+  \ref{1.24.2}を示す。
+  \ref{1.24.2.1}を示す。
+  \(*=+\)で\(F\)が左完全である場合を証明できれば、
+  \(\mcC^{\op},\mcD^{\op}\)を考えることによって
+  \(*=-\)で\(F\)が右完全である場合も正しいことが従う。
+  よって、\ref{1.24.2.1}を示すためには、
+  \(*=+\)で\(F\)が左完全であると仮定しても一般性を失わない。
+  \ref{1.24.1}の証明と同様に、
+  各\(Y^q\)について自然な\(\mcE\)の射
+  \(H_I^p(F(X,Y^q)) \to F(H^p(X),Y^q)\)を得る。
+  これらを\(q\)に関する複体と考えることで、
+  \ref{1.24.1}の証明と同様に、
+  各\(p,q\)について自然な\(\mcE\)の可換図式
+  \[
+  \begin{CD}
+    H^q(H_I^p(F(X,Y))) @>>> H^q(F(H^p(X),Y)) \\
+    @VVV @VVV \\
+    H^p(F(X,H^q(Y))) @>>> F(H^p(X),H^q(Y))
+  \end{CD}
+  \]
+  を得る。
+  \(Z\in \Ch^{2,+}(\mcE)\)を二重複体とする。
+  複体の射\(\Tot(Z) \to Z^q_{II}[-p]\)で\(n=p+q\)次のコホモロジーをとれば
+  \(\mcE\)の射\(H^n(\Tot(Z)) \to H_I^p(Z)\)を得る。
+  \(H_I^p(Z^{\bullet,*})\)は\(*\)に関して複体を成し、
+  合成\(H^n(\Tot(Z)) \to H_I^p(Z^{\bullet,q})\to H_I^p(Z^{\bullet,q+1})\)は\(0\)-射である。
+  従って、\(\mcE\)の射\(H^n(\Tot(Z)) \to H^q(H_I^p(Z))\)を得る。
+  よって、もとの二重複体\(F(X,Y)\)に対しても、
+  \(\mcE\)の射
+  \(H^{p+q}(F(X,Y)) \to H^q(H_I^p(F(X,Y)))\)を得る。
+  以上より自然な射\(H^{p+q}(F(X,Y))\to F(H^p(X),H^q(Y))\)を得る。
+  ここで擬同型\(X\to I,I\in\sfK^+(\mcI)\)をとれば、
+  \(\sfD^+(\mcE)\)において
+  \(RF(X,Y)\cong F(I,Y)\)であるため、
+  よって自然な射
+  \[H^{p+q}(RF(X,Y)) \cong H^{p+q}(F(X,Y)) \to F(H^p(I),H^q(Y)) \cong F(H^p(X),H^q(Y))\]
+  を得る。
+  以上で\ref{1.24.2.1}の証明を完了する。
+
+  \ref{1.24.2.2}を示す。
+  \ref{1.24.2.1}の証明と同様にして、
+  \(H_{II}^q(H_I^p(F(X,Y)))\cong F(H^p(X),H^q(Y))\)であることが従うので、
+  \ref{1.24.2.2}を示すためには、
+  \(\mcE\)の二重複体\(Z\)であって
+  \(\tau_I^{\leq n}(Z)=\tau_{II}^{\leq n}(Z) = 0, (\forall n \ll 0)\)
+  を満たすものに対して、
+  \(H^n(\Tot(Z)) \cong \bigoplus_{p+q=n}H_{II}^q(H_I^p(Z))\)
+  であることを証明することが十分である。
+  しかしこれは、\(Z\)として\(\tau^{\leq n}(Z)\)をとることで
+  任意の\(n\ll 0\)に対して成立し、さらに
+  \autoref{1.25.1}を用いることで帰納的に任意の\(n\)に対する
+  \(\tau^{\leq n}(Z)\)に対して成立するので、
+  \(n\to \infty\)の極限をとることで\(Z\)に対して成立することが従う。
+  以上で\ref{1.24.2.2}の証明を完了し、
+  \ref{1.24.2}の証明を完了し、
+  \autoref{1.24}の解答を完了する。
+\end{proof}
+
+
+
+
+
+
+\ifcsname Chap\endcsname\else
+\printbibliography
+\end{document}
+\fi

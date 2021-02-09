@@ -1,0 +1,163 @@
+\ifcsname Chap\endcsname\else
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+\newcommand{\StylePath}{\ifcsname AllKS\endcsname KS-Style/KS-Style.sty\else
+\ifcsname Chap\endcsname ../KS-Style/KS-Style.sty\else
+../../KS-Style/KS-Style.sty\fi\fi}
+\input{\StylePath}
+
+\KSset{1}{2}
+\setcounter{section}{\value{KSS}-1}
+\begin{document}
+\maketitle
+\HeaderCommentA
+\section{\KSsection{section}}
+\setcounter{prob}{\value{KSP}-1}
+\fi
+
+\begin{prob}\label{1.2}
+  \(\mcC,\mcC'\)を二つの圏、
+  \(F:\mcC\to \mcC', G:\mcC'\to \mcC\)を二つの函手とする。
+  \begin{enumerate}
+    \item \label{1.2.1}
+    次の二つの条件は同値であることを示せ：
+    \begin{enumerate}
+      \item \label{1.2.1.1}
+      函手の射\(\alpha:F\circ G \to \id_{\mcC'}, \beta:G\circ F \to \id_{\mcC}\)
+      が存在して、任意の\(X\in \mcC, Y\in \mcC'\)に対し
+      \[
+      \id_{G(Y)} = G(\alpha_Y) \circ \beta_{G(Y)} \ , \
+      \id_{F(X)} = \alpha_{F(X)} \circ F(\beta_X)
+      \]
+      となる。
+      \item \label{1.2.1.2}
+      \(\Hom_{\mcC'}(F(-),?),\Hom_{\mcC}(-,G(?))\)
+      は函手\(\mcC^{\op}\times \mcC' \to \sfSet\)として同型である。
+    \end{enumerate}
+    \item \label{1.2.2}
+    任意の函手\(F:\mcC\to \mcC'\)に対して、
+    \(F\)の左 (または右) 随伴は、存在すれば、どの二つも函手として同型となる。
+    \item \label{1.2.3}
+    任意の函手\(F:\mcC\to \mcC'\)に対して、
+    \(F\)の左 (または右) 随伴が存在するための必要十分条件は、
+    任意の対象\(Y\in \mcC'\)に対して
+    函手\(X\mapsto \Hom_{\mcC'}(F(X),Y)\)
+    (または\(X\mapsto \Hom_{\mcC'}(Y,F(X))\))
+    が表現可能であることである。
+  \end{enumerate}
+\end{prob}
+
+\begin{proof}
+  \ref{1.2.1}を示す。
+  \ref{1.2.1.1}を仮定する。
+  \(F:\mcC\to \mcC'\)は函手なので、
+  \(\mcC^{\op}\times\mcC\)から\(\sfSet\)への二つの函手の間の射
+  \(\Hom_{\mcC}(-,?) \to \Hom_{\mcC'}(F(-),F(?))\)
+  を引き起こす。
+  これを\(\bar{F}\)と書く。
+  同じく\(\bar{G}\)を定義する。
+  函手の射
+  \begin{align*}
+    &P: \Hom_{\mcC'}(F(-),?) \xrightarrow{\bar{G}} \Hom_{\mcC}(G(F(-)),G(?))
+    \xrightarrow{(??)\circ \beta_{(-)}} \Hom_{\mcC}(-,G(?)) \\
+    &Q: \Hom_{\mcC}(-,G(?)) \xrightarrow{\bar{F}} \Hom_{\mcC'}(F(-),F(G(?)))
+    \xrightarrow{\alpha_{(?)} \circ (??)} \Hom_{\mcC'}(F(-),?)
+  \end{align*}
+  を合成で定義する。
+  すると、各対象\((X,Y)\in \mcC^{\op}\times \mcC'\)と
+  \(f\in \Hom_{\mcC'}(F(X),Y), g\in \Hom_{\mcC}(X,G(Y))\)に対し、
+  \begin{align*}
+    Q_{(X,Y)}(P_{(X,Y)}(f))
+    &= \alpha_Y \circ F(G(f)\circ \beta_X))
+    & P_{(X,Y)}(Q_{(X,Y)}(g))
+    &= G(\alpha_Y \circ F(g)) \circ \beta_X \\
+    &= \alpha_Y \circ F(G(f)) \circ F(\beta_X)
+    &&= G(\alpha_Y) \circ G(F(g)) \circ \beta_X \\
+    &\overset{\bigstar}{=} f \circ \alpha_{F(X)} \circ F(\beta_X)
+    &&\overset{\bigstar}{=} G(\alpha_Y) \circ \beta_{G(Y)} \circ g \\
+    &\overset{*}{=} f \circ \id_{F(X)} \ = f,
+    &&\overset{*}{=} \id_{G(Y)} \circ g \ = g
+  \end{align*}
+  となる。
+  ただし、\(\bigstar\)の箇所で\(\alpha,\beta\)が自然変換であることを用い、
+  \(*\)の箇所で\ref{1.2.1.1}で仮定されている条件を用いた。
+  以上より\(P,Q\)は函手の同型射である。
+  よって\ref{1.2.1.2}が示された。
+
+  逆に\ref{1.2.1.2}を仮定する。
+  \(P:\Hom_{\mcC'}(F(-),?) \xrightarrow{\sim} \Hom_{\mcC}(-,G(?))\)
+  を函手の同型射として、\(Q\dfn P^{-1}\)と置く。
+  \(P\)が函手の射であることは、各射
+  \([f:F(X) \to Y],[f':F(X')\to Y]\in \mcC',
+  [g:Y\to Y']\in \mcC', [h:X\to X']\in \mcC\)
+  に対して
+  \(P_{(X,Y')}(g\circ f) = G(g)\circ P_{(X,Y)}(f),
+  P_{(X',Y)}(f')\circ h = P_{(X,Y)}(f'\circ F(h))\)
+  となることを意味する
+  (以下の図式が可換である)：
+  \[
+  \begin{CD}
+    \Hom_{\mcC'}(F(X'),Y) @> (-)\circ F(h) >>
+    \Hom_{\mcC'}(F(X),Y) @> g\circ (-) >>
+    \Hom_{\mcC'}(F(X),Y') \\
+    @V P_{(X',Y)} VV @V P_{(X,Y)} VV @VV P_{(X,Y')} V \\
+    \Hom_{\mcC'}(X',G(Y)) @> (-)\circ h >>
+    \Hom_{\mcC}(X,G(Y)) @> G(g) \circ (-) >>
+    \Hom_{\mcC}(X,G(Y')).
+  \end{CD}
+  \]
+  \(Q\)についても同様の等式が成立する
+  (上の図式で縦向きの射が逆になったものが\(Q\)の場合)。
+  次のように自然変換を定義する：
+  \begin{align*}
+    \alpha_{(?)} &\dfn Q_{(G(?),?)}(\id_{G(?)}): F(G(?)) \to (?), \\
+    \beta_{(-)} &\dfn P_{(-,F(-))}(\id_{F(-)}): (-) \to G(F(-)).
+  \end{align*}
+  すると各\((X,Y)\in \mcC^{\op}\times \mcC'\)に対して
+  \begin{align*}
+    \alpha_{F(X)} \circ F(\beta_X)
+    &= Q_{(G(F(X)),F(X))}(\id_{G(F(X))}) \circ F(\beta_X) \\
+    &\overset{\bigstar_l}{=} Q_{(X,F(X))}(\id_{F(X)}) \circ \beta_X) \\
+    &= Q_{(X,F(X))}(P_{(X,F(X))}(\id_{F(X)})) \ = \id_{F(X)} \\
+    G(\alpha_Y)\circ \beta_{G(Y)}
+    &= G(\alpha_Y) \circ P_{(G(Y),F(G(Y)))}(\id_{F(G(Y))})  \\
+    &\overset{\bigstar_r}{=} P_{(G(Y),Y)}(\alpha_Y \circ \id_{F(G(Y))})  \\
+    &= P_{(G(Y),Y)}(Q_{(G(Y),Y)}(\id_{G(Y)})) \ = \id_{G(Y)}
+  \end{align*}
+  となる。ただし\(\bigstar_l,\bigstar_r\)の箇所で上の図式の可換性を用いた
+  (\(l\)は左、\(r\)は右側の四角形の可換性を用いている)。
+  以上で\ref{1.2.1}の証明を完了する。
+
+  \ref{1.2.2}を示す。
+  \(G,G'\)がどちらも\(F\)の右随伴であれば、
+  \ref{1.2.1}における函手の自然同型を用いて
+  \[
+  \Hom_{\mcC}(-,G(?)) \cong \Hom_{\mcC'}(F(-),?) \cong \Hom_{\mcC}(-,G'(?))
+  \]
+  となるので、米田の補題によって\(G\cong G'\)がわかる。
+  左随伴についても同様である。
+
+  \ref{1.2.3}を示す。
+  各\(Y\in \mcC'\)について
+  \(X\mapsto \Hom_{\mcC'}(F(X),Y)\)が表現可能であるとし、
+  その表現対象を\(G(Y)\)と置く。
+  すると\(X\)について自然な同型
+  \(\Hom_{\mcC'}(F(X),Y)\cong \Hom_{\mcC}(X,G(Y))\)を得る。
+  \(g:Y\to Y'\)を任意の\(\mcC'\)の射とする。
+  すると\(g\)を合成することによって函手の射
+  \(\Hom_{\mcC'}(F(-),Y) \to \Hom_{\mcC'}(F(-),Y')\)を得る。
+  よって米田の補題によって一意的に射\(G(Y)\to G(Y')\)を得る。
+  この射を\(G(g)\)と書く。
+  すると\(G\)は函手であり、
+  \(X\)について自然な同型\(\Hom_{\mcC'}(F(X),Y)\cong \Hom_{\mcC}(X,G(Y))\)は
+  構成から\(Y\)についても自然である。
+  これによって\(F\)の右随伴\(G\)を得る。
+  左随伴に関しても同様である。
+  以上で\autoref{1.2}の解答を完了する。
+\end{proof}
+
+
+
+\ifcsname Chap\endcsname\else
+\printbibliography
+\end{document}
+\fi

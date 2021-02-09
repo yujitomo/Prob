@@ -1,0 +1,241 @@
+\ifcsname Chap\endcsname\else
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+\newcommand{\StylePath}{\ifcsname AllKS\endcsname KS-Style/KS-Style.sty\else
+\ifcsname Chap\endcsname ../KS-Style/KS-Style.sty\else
+../../KS-Style/KS-Style.sty\fi\fi}
+\input{\StylePath}
+
+\KSset{1}{23}
+\setcounter{section}{\value{KSS}-1}
+\begin{document}
+\maketitle\HeaderCommentA
+\section{\KSsection{section}}
+\setcounter{prob}{\value{KSP}-1}
+\fi
+
+
+\begin{prob}\label{1.23}
+  \(\mcC\)をアーベル圏、\(\mcI\subset \mcC\)を充満部分圏とする。
+  \(\mcI\)が本文の条件\cite[(1.7.5),(1.7.6)]{kashiwara2002sheaves}を満たすとし、
+  さらに次を条件を満たすと仮定せよ：
+  \begin{enumerate}[label=(\fnsymbol*),start=2]
+    \item \label{1.23.c}
+    \(0\to X'\to X\to X''\to 0\)を\(\mcC\)の完全列であって、
+    \(X'\in \mcI\)であると仮定する。
+    このとき、\(X\in \mcI\)であることは\(X''\in \mcI\)であることと同値である。
+  \end{enumerate}
+  \(*=\empty,b,-,+\)とする。
+  \begin{enumerate}
+    \item \label{1.23.1}
+    任意の対象\(X\in \Ch^*(\mcC)\)は
+    ある\(Y\in \Ch^*(\mcI)\)と擬同型であることを示せ。
+    \item \label{1.23.2}
+    \(\mcD\)を別のアーベル圏、\(F:\mcC\to \mcD\)を左完全函手とする。
+    \(\mcI\)が\(F\)-injectiveであると仮定する。
+    このとき\(F\)の右導来函手\(RF:\sfD^*(\mcC)\to \sfD^*(\mcD)\)が存在することを示せ。
+    \item \label{1.23.3}
+    \(\mcE\)をさらに別のアーベル圏、
+    \(G:\mcC\times \mcD \to \mcE\)を左完全な双函手とする。
+    各\(Y\in \mcD\)に対して\(\mcI\)は\(G(-,Y)\)-injectiveであるとし、
+    さらに各\(I\in \mcI\)と\(0\)と擬同型な\(Y\in \Ch^{\star}(\mcD)\)に対して
+    \(G(I,Y)\)は\(0\)と擬同型であるとする。
+    このとき、\((*,\star) = (-,-)\)の場合と\((*,\star) = (*,b)\)の場合で、
+    \(G\)の右導来函手
+    \(RG:\sfD^*(\mcC)\times \sfD^{\star}(\mcD) \to \sfD^*(\mcE)\)
+    が存在することを示せ。
+  \end{enumerate}
+\end{prob}
+
+\begin{rem*}
+  少なくとも第一版では\ref{1.23.3}の仮定に
+  「各\(I\in \mcI\)と\(0\)と擬同型な\(Y\in \Ch^{\star}(\mcD)\)に対して
+  \(G(I,Y)\)は\(0\)と擬同型である」
+  というものはなかった。
+  なくても証明できるのか？
+  本文\cite[Corollary 1.10.5]{kashiwara2002sheaves}とパラレルであることを想定すればこの仮定がなければ微妙になると思うが...
+\end{rem*}
+
+\begin{proof}
+  \ref{1.23.1}を示す。
+  \(*=b\)の場合は本文\cite[Corollary 1.7.8]{kashiwara2002sheaves}より、
+  \(*=+\)の場合は本文\cite[Corollary 1.7.7]{kashiwara2002sheaves}より従う。
+  \(*=\emptyset\)の場合を証明すれば、
+  本文\cite[Corollary 1.7.8]{kashiwara2002sheaves}と全く同様の議論により、\(*=-\)の場合が従う。
+  残っているのは、\(*=\emptyset\)の場合に\ref{1.23.1}を示すことである。
+  \(*=+\)の場合の構成を詳細に見るため、
+  \(*=+\)の場合の証明を思い出す。
+  \(Z\in \Ch(\mcC)\)に対して、
+  複体\(\tilde{\tau}^{\leq n}(Z)\)を次で定義する：
+  \[
+  \cdots \to Z^i \to \cdots \to Z^n \xrightarrow{d_Z^n} Z^{n+1}
+  \to \coker(d_Z^n) \to 0 \to \cdots \to 0 \to \cdots.
+  \]
+  このとき、自然な全射の列
+  \(Z\to \tilde{\tau}^{\leq n}(Z)\to \tilde{\tau}^{\leq n-1}(Z)\)
+  が存在して、
+  合成\(\tau^{\leq n}(Z) \to Z \to \tilde{\tau}^{\leq n}(Z)\)は擬同型であり、
+  さらに自然な射
+  \(Z \xrightarrow{\sim} \lim_{n\to \infty}\tilde{\tau}^{\leq n}(Z)\)
+  は同型射である (極限が存在することに注意)。
+  また、\(Z^{\leq n}\)を次で定義する (\(Z^{\geq n}\)も同様に定義する)：
+  \[
+  \cdots \to Z^i \to \cdots \to Z^n \to 0 \to \cdots \to 0 \to \cdots.
+  \]
+  このとき、自然な複体のモノ射
+  \(\tilde{\tau}^{\leq n-1}(Z) \to Z^{\leq n+1}\)
+  が存在する。
+  \(X\in \Ch^+(\mcC)\)とする。
+  ある\(n\)に対して次の条件が成り立つと仮定する：
+  任意の\(m\leq n\)に対して、
+  \begin{itemize}
+    \item 複体\(I_m\in \Ch^+(\mcI)\)であって\(I_n = I_n^{\leq n}\)を満たすもの、
+    \item 複体のモノ射\(f_m:X^{\leq m}\to I_m\)であって
+    \(\tilde{\tau}^{\leq m-1}(f_m):
+    \tilde{\tau}^{\leq m-1}(X) \to \tilde{\tau}^{\leq m-1}(I_m)\)
+    がモノな擬同型となるもの、
+  \end{itemize}
+  が存在し、任意の\(m_1\leq m_2\leq n\)に対して
+  \(I_{m_2}^{\leq m_1} = I_{m_1}, f_{m_1}^i = f_{m_2}^i, (\forall i\leq m_1)\)
+  を満たすと仮定する。
+  この条件は十分小さい\(n\ll 0\)に対してはつねに満たされる
+  (\(n\ll 0\)に対しては\(X^{\leq n} = 0\)なので\(I_n=0\)とすれば良い)。
+  \(Y_{n+1} \dfn \tilde{\tau}^{\leq n-1}(I_n)
+  \coprod_{\tilde{\tau}^{\leq n-1}(X)} X^{\leq n+1}\)とおくと、
+  自然な射\(X^{\leq n+1}\to Y_{n+1}\)は
+  モノな擬同型によるpush-outであるのでモノな擬同型である。
+  さらに各\(i\leq n\)に対して
+  \((\tilde{\tau}^{\leq n}(X))^i \to (X^{\leq n+1})^i\)は同型射なので、
+  各\(i\leq n\)に対して\(I_n^i \to Y_{n+1}^i\)も同型射である。
+  \(\mcI\)は本文の条件\cite[(1.7.5)]{kashiwara2002sheaves}を満たすので、
+  あるモノ射\(Y_{n+1}^{n+1} \to J\)が存在する。
+  複体\(I_{n+1}\)を、
+  各\(i\leq n\)に対して\(I_{n+1}^i \dfn Y_{n+1}^i \cong I_n^i\)、
+  \(i > n+1\)に対して\(I_{n+1}\dfn 0\)、
+  \(I_{n+1}^{n+1} \dfn J\)と定めることで、
+  モノ射の列\(X^{\leq n+1}\to Y_{n+1} \to I_{n+1}\)を得る。
+  この合成を\(f_{n+1}\)とおく。
+  すると構成より各\(i\leq n\)に対して\(f_{n+1}^i = f_n\)である。
+  また、図式
+  \[
+  \begin{CD}
+    \tilde{\tau}^{\leq n-1}(X) @>>> \tilde{\tau}^{\leq n-1}(I_n) \\
+    @VVV @VVV \\
+    X^{\leq n+1} @>>> I_{n+1}
+  \end{CD}
+  \]
+  で\KSDoubleAutoref{1.6.3}{1.6.4}を用いることで
+  \(\tilde{\tau}^{\leq n}(f_{n+1})\)がモノな擬同型であることが従う。
+  こうして任意の\(n\)に対してモノ射
+  \(f_n:X^{\leq n}\to I_n, I_n=I_n^{\leq n} \in \Ch^+(\mcI)\)であって
+  \(\tilde{\tau}^{\leq n-1}(f_n)\)がモノな擬同型となるものが存在することがわかったので、
+  あとは\(\lim_{n\to \infty}\tilde{\tau}^{\leq n}(f_n)\)をとれば
+  所望の擬同型\(f:X\to I, I\in \Ch^+(\mcI)\)を得る。
+  構成から、\(f\)はモノ射であり、
+  \(X^i = 0\)なら\(f^i = 0\)、となるようにとれる。
+
+  \(\mcI\)が自然数\(d\geq 0\)に対して本文の
+  条件\cite[(1.7.6)]{kashiwara2002sheaves}を満たすとする。
+  複体\(Z\)と各\(n\)に対して、
+  モノな擬同型\(Z_{\geq n}\to I, (I\in \Ch(\mcI))\)
+  をとって\(Z_{\leq -n-1}\)と繋げることで、
+  新しい複体\(Z'\)と
+  モノな擬同型\(f_0:Z\to Z'\)であって
+  \((Z')^i=Z^i,f_0^i = \id_{Z^i},(\forall i < n)\)
+  であり、さらに\((Z')^i\in \mcI, (\forall i \geq n)\)
+  となるものが存在することが従う。
+  この複体\(Z'\)を\(I_n(Z)\)で表す。
+
+  複体\(Z\)が、ある\(i_0\)以上の全ての\(i\geq i_0\)に対して
+  \(Z^i\in \mcI\)を満たすと仮定する。
+  \(Z_1 \dfn I_{i_0-1}(Z)\)とおくと、
+  \(C\dfn \coker(Z\to Z_1)\)は完全であり、
+  さらに\(\mcI\)が条件\ref{1.23.c}を満たすことより、
+  \(C^i\in \mcI,(\forall i \geq i_0)\)である。
+  また、\(C\)が完全であることと
+  \(\mcI\)が\(d\)に対して本文の条件\cite[(1.7.6)]{kashiwara2002sheaves}を満たすことより、
+  各\(i \geq i_0+d-1\)に対して\(\im(d_C^i) \in \mcI\)である。
+  従って、\(C\)が完全であることより、
+  \(\tau^{\leq i_0+d}(C)\)は任意の\(i \geq i_0\)に対して
+  \((\tau^{\leq i_0+d}(C))^i\in \mcI\)を満たす。
+  \(J_{i_0}(Z)\dfn Z_1\times_C\tau^{\leq i_0+d}(C)\)
+  (複体の圏でのfiber積) とおくと、
+  \(Z\to Z_1\)がモノであることから、
+  \[
+  \begin{CD}
+    0 @>>> Z @>>> J_{i_0}(Z) @>>> \tau^{\leq i_0+d}(C) @>>> 0
+  \end{CD}
+  \]
+  は (複体の圏で) 完全である。
+  任意の\(i \geq i_0\)に対して
+  \((\tau^{\leq i_0+d}(C))^i\in \mcI\)を満たすことと
+  \(\mcI\)は条件\ref{1.23.c}を満たすことより、
+  任意の\(i\geq i_0\)に対して\((J_{i_0}(Z)^i\in \mcI\)である。
+  さらに\(i > i_0+d\)に対して\((\tau^{\leq i_0+d}(C))^i=0\)なので、
+  \(i > i_0+d\)に対して\(Z^i\xrightarrow{\sim}(J_{i_0}(Z))^i\)であり、
+  \(i < i_0+d\)に対して\((\tau^{\leq i_0+d}(C))^i\xrightarrow{\sim}C^i\)なので、
+  \(i < i_0+d\)に対して\((J_{i_0}(Z))^i\xrightarrow{\sim}Z_1^i\)である。
+  従って、とくに\(J_{i_0}(Z)^{i_0-1}\cong Z_1^{i_0-1}\in \mcI\)が従う。
+  まとめると、モノな擬同型\(Z\to J_{i_0}(Z)\)であって、
+  \(i > i_0+d\)に対して\(Z^i\xrightarrow{\sim}(J_{i_0}(Z))^i\)であり、
+  \(i \geq i_0-1\)に対して\((J_{i_0}(Z))^i \in \mcI\)となるものが存在する。
+
+  \(I_0,J_n\)を用いて\ref{1.23.1}の証明を行う。
+  複体\(X\in \Ch(\mcC)\)を任意にとる。
+  \(X_0\dfn I_0(X)\)とおく。
+  各\(n < 0\)に対して、
+  \(X_n\dfn J_{n+1}(X_{n+1})\)と定義して、
+  モノな擬同型\(X_{n+1}\to X_n\)たちの余極限をとる。
+  このとき、各\(i\geq n+d\)に対して\(X_n^i \to X_{n-1}^i\)は同型射であるから、
+  \(Y \dfn \colim_{n\to -\infty}X_n\)は圏\(\Ch(\mcC)\)に存在して、
+  各\(i\in \Z\)に対して\(Y^i\cong X_{-|i|-d}^i\in \mcI\)となる。
+  さらに各\(X_n\to X_{n-1}\)と\(X\to X_0\)はすべて擬同型であるから、
+  \(X\to Y\)も擬同型である。
+  よって所望の複体と擬同型が構成できた。
+  以上で\ref{1.23.1}の証明を完了する。
+
+  \ref{1.23.2}を示す。
+  \(\mcN\)を\(\sfK^*(\mcC)\)の充満部分三角圏であって
+  \(0\)と擬同型な複体すべてからなるものとする。
+  \(\mcN'\dfn \mcN \cap \sfK^*(\mcI)\)とおく。
+  すると\ref{1.23.1}より、自然な射
+  \(\sfK^*(\mcI)/\mcN' \to \sfD^*(\mcC)\)
+  は圏同値である。
+  また、\(\mcI\)が\(F\)-injectiveであることから、
+  \(\sfK^*(\mcI)\)の\(0\)と擬同型な対象は\(F\)によってacyclicな対象へと写される。
+  従って、\(\sfK^*(\mcI) \subset \sfK^*(\mcC)\)と
+  \(F:\sfK^*(\mcC)\to \sfK^*(\mcD)\)の合成は
+  \(\sfK^*(\mcI)/\mcN'\cong \sfD^*(\mcC)\)を一意的に経由する。
+  このことは右導来函手\(RF\)が存在することを意味する。
+  以上で\ref{1.23.2}の証明を完了する。
+
+  \ref{1.23.3}を示す。
+  \((*,\star)\)は\((*,b)\)または\((-,-)\)を表すとする。
+  \(\mcI\)は各\(Y\in \mcD\)に対して\(G(-,Y)\)-injectiveであるから、
+  \(I\in \Ch^*(\mcI)\)が完全な複体であれば、
+  \(Y\in \Ch^{\star}(\mcD)\)と各\(i\in \Z\)に対して
+  \(G(I,Y^i)\in \Ch^*(\mcE)\)も完全な複体であり、
+  従って\(G(I,Y)\)は一つ目の添字に関して完全な二重複体となる。
+  よって本文\cite[Theorem 1.9.3]{kashiwara2002sheaves}より、
+  \(Y\in \Ch^{\star}(\mcD)\)と\(I\in \Ch^*(\mcI)\)の一方が
+  \(0\)と擬同型 (完全) な複体であれば、
+  \(\Tot(G(I,Y))\)も\(0\)と擬同型となる。
+  このことは、
+  \(\Tot(G(-,-)):\sfK^*(\mcI) \times \sfK^{\star}(\mcD) \to \sfD^*(\mcE)\)
+  が\(\sfD^*(\mcI) \times \sfD^{\star}(\mcD)\)を一意的に経由することを意味する。
+  従って三角函手\(\sfD^*(\mcI) \times \sfD^{\star}(\mcD)\to \sfD^*(\mcE)\)を得る。
+  ここで\ref{1.23.1}より
+  \(\sfD^*(\mcI)\xrightarrow{\sim} \sfD^*(\mcC)\)は圏同値であるので、
+  こうして得られた三角函手
+  \(\sfD^*(\mcC)\times \sfD^{\star}(\mcD)\to \sfD^*(\mcE)\)は
+  所望の右導来函手であることが従う。
+  以上で\autoref{1.23}の解答を完了する。
+\end{proof}
+
+
+
+
+
+\ifcsname Chap\endcsname\else
+\printbibliography
+\end{document}
+\fi

@@ -1,0 +1,96 @@
+\ifcsname Chap\endcsname\else
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+\newcommand{\StylePath}{\ifcsname AllKS\endcsname KS-Style/KS-Style.sty\else
+\ifcsname Chap\endcsname ../KS-Style/KS-Style.sty\else
+../../KS-Style/KS-Style.sty\fi\fi}
+\input{\StylePath}
+
+\KSset{1}{30}
+\setcounter{section}{\value{KSS}-1}
+\begin{document}
+\maketitle\HeaderCommentA
+\section{\KSsection{section}}
+\setcounter{prob}{\value{KSP}-1}
+\fi
+
+
+\begin{prob}\label{1.30}
+  \(A\)を可換環とする。
+  \(X\in \sfD^b(\Mod(A))\)が\textbf{perfect}であるとは、
+  有限生成射影加群からなる有界な複体と擬同型であることを言う。
+  \begin{enumerate}
+    \item \label{1.30.1}
+    \(X\to Y\to Z\xrightarrow{+1}\)が\(\sfD^b(\Mod(A))\)の完全三角であるとする。
+    \(X,Y\)がperfectであるとき、\(Z\)もperfectであることを示せ。
+    \item \label{1.30.2}
+    \(P\)がperfectであるとき、\(P\)の直和因子もperfectであることを示せ。
+    \item \label{1.30.3}
+    \(X\in \sfD^b(\Mod(A))\)がperfectであるとする。
+    \(X^*\dfn R\Hom(X,A)\)とおくと、\(X^*\)もperfectであり、
+    自然な射\(X\to X^{**}\)は同型射であることを示せ。
+    \item \label{1.30.4}
+    \(A\)をネーター環で\(\gld(A) < \infty\)と仮定する。
+    \(\Mod^f(A)\)を有限生成\(A\)-加群のなすアーベル圏とする。
+    \(\sfD^b(\Mod^f(A))\)の任意の対象はperfectであることを示せ。
+    \item \label{1.30.5}
+    \(A\)をネーター環で\(\gld(A) < \infty\)と仮定する。
+    すべてのコホモロジーが\(\Mod^f(A)\)に属する複体からなる
+    充満部分圏を\(\sfD^b_f(\Mod(A))\subset \sfD^b(\Mod(A))\)で表す。
+    このとき自然な射\(\sfD^b(\Mod^f(A)) \to \sfD^b_f(\Mod(A))\)
+    は圏同値であることを示せ。
+  \end{enumerate}
+\end{prob}
+
+\begin{proof}
+  \ref{1.30.1}を示す。
+  \(X,Y\)はperfectなので、
+  \ref{1.30.1}を示すためには、
+  \(X,Y\)はどちらも有限生成射影加群からなる有界複体であると仮定しても一般性を失わない。
+  このとき\(Z\)は\(i\)次が\(Y^i\oplus X^{i+1}\)である複体と擬同型であり、
+  \(Y^i,X^{i+1}\)はどちらも有限生成射影加群なので\(Y^i\oplus X^{i+1}\)も有限生成射影加群である。
+  従って、\(Z\)もperfectである。
+  以上で\ref{1.30.1}の証明を完了する。
+
+  \ref{1.30.2}より先に\ref{1.30.3}を示す。
+  \(X\)はperfectであるから、\ref{1.30.3}を示すためには、
+  各\(i\)に対して\(X^i\)は有限生成射影加群であり、
+  \(X^i=0, (|i| \gg 0)\)であると仮定しても一般性を失わない。
+  このとき本文\cite[Proposition 1.10.4]{kashiwara2002sheaves}より、
+  \(\sfD^b(\Mod(A))\)において\(R\Hom(X,A) \cong \Hom(X,A)\)である。
+  各\(i\)に対して\(\Hom(X,A)^i = \Hom(X^{-i},A)\)は射影加群であり、
+  \(|i|\gg 0\)となる\(i\)に対して\(\Hom(X,A)^i = \Hom(X^{-i},A) = 0\)であるから、
+  \(\Hom(X,A)\)はperfectであり、従って\(R\Hom(X,A)\)もperfectである。
+  有限生成射影加群\(X\)に対して
+  自然な射\(X\to \Hom(\Hom(X,A),A)\)が同型射であることから
+  自然な射\(X\to \Hom(\Hom(X,A),A)\)は複体の同型射であり、
+  従って\(\sfD^b(\Mod(A))\)においても同型射である。
+  \(\Hom(X,A)\cong R\Hom(X,A)\)はperfectであるので、
+  \(X^{**}\cong \Hom(X^*,A)\cong \Hom(\Hom(X,A),A)\)であり、
+  従って自然な射\(X\to X^{**}\)は同型射である。
+  以上で\ref{1.30.3}の証明を完了する。
+
+  \ref{1.30.4}を示す。
+  任意の有限生成加群は有限生成自由加群のある商と同型であるから、
+  アーベル圏\(\Mod^f(A)^{\op}\)は
+  \(\mcI\)を有限生成射影加群からなる充満部分圏とするときに本文の
+  条件\cite[(1.7.5)]{kashiwara2002sheaves}を満たす。
+  また\(\gld(A) < \infty\)であるから、\autoref{1.28}より、
+  アーベル圏\(\Mod^f(A)^{\op}\)は同じ\(\mcI\)に対して本文の
+  条件\cite[(1.7.6)]{kashiwara2002sheaves}を満たす。
+  従って本文の\cite[Corollary 1.7.8]{kashiwara2002sheaves}より\ref{1.30.4}が従う。
+  以上で\ref{1.30.4}の証明を完了する。
+
+  \ref{1.30.5}は\(\Mod(A)^{\op}\)とその
+  thick full abelian subcategory
+  \(\Mod^f(A)^{\op}\subset \Mod(A)^{\op}\)に対して
+  本文\cite[Proposition 1.7.11]{kashiwara2002sheaves}を適用することにより直ちに従う
+  (\(\Mod^f(A)^{\op}\)が本文\cite[Proposition 1.7.11]{kashiwara2002sheaves}の条件
+  を満たすことは容易に確認できる)。
+\end{proof}
+
+
+
+\ifcsname Chap\endcsname\else
+\printbibliography
+\end{document}
+\fi

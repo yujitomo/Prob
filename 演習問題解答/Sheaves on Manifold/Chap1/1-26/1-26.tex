@@ -1,0 +1,70 @@
+\ifcsname Chap\endcsname\else
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+\newcommand{\StylePath}{\ifcsname AllKS\endcsname KS-Style/KS-Style.sty\else
+\ifcsname Chap\endcsname ../KS-Style/KS-Style.sty\else
+../../KS-Style/KS-Style.sty\fi\fi}
+\input{\StylePath}
+
+\KSset{1}{26}
+\setcounter{section}{\value{KSS}-1}
+\begin{document}
+\maketitle\HeaderCommentA
+\section{\KSsection{section}}
+\setcounter{prob}{\value{KSP}-1}
+\fi
+
+
+
+\begin{prob}\label{1.26}
+  \(\mcC\)をアーベル圏、
+  \(X\)を\(\mcC\)の複体で、
+  各\(n\)に対して
+  \(X^{p,q}\neq 0, p+q=n\)となる\((p,q)\)は高々有限個であるとする。
+  さらに\(q_0 < q_1\)が存在して、
+  \(q\neq q_0,q_1\)に対して\(\sfD(\mcC)\)において
+  \(H_{II}^q(X) \cong 0\)であると仮定する。
+  このとき次の三角形が完全であることを示せ：
+  \[
+  H_{II}^{q_0}(X)[-q_0] \to \Tot(X) \to H_{II}^{q_1}[-q_1]
+  \xrightarrow{+1}.
+  \]
+\end{prob}
+
+\begin{proof}
+  \autoref{1.25.1}より、
+  \(n\neq q_0,q_1\)に対して
+  \(\Tot(\tau_{II}^{\leq n-1}(X)) \to \Tot(\tau_{II}^{\leq n}(X))\)と
+  \(\Tot(\tau_{II}^{\geq n}(X)) \to \Tot(\tau_{II}^{\geq n+1}(X))\)は
+  どちらも擬同型である。
+  従って、\autoref{1.25.3}より、
+  任意の\(n < q_0\)に対して\(\sfD(\mcC)\)において
+  \(\Tot(\tau_{II}^{\leq n}(X)) \cong 0\)であり、
+  任意の\(n > q_1\)に対して\(\sfD(\mcC)\)において
+  \(\Tot(\tau_{II}^{\geq n}(X)) \cong 0\)である。
+  再び\autoref{1.25.1}を用いると、
+  任意の\(q_0 \leq n < q_1\)に対して\(\sfD(\mcC)\)において
+  \(\Tot(\tau_{II}^{\leq n}(X)) \cong H_{II}^{q_0}[-q_0]\)であり、
+  任意の\(q_0 < n \leq q_1\)に対して\(\sfD(\mcC)\)において
+  \(H_{II}^{q_1}[-q_1] \cong \Tot(\tau_{II}^{\geq n}(X))\)であることが従う。
+  各\(n\)に対して
+  \(\tau_{II}^{\leq n}(X) \to X \to \tau_{II}^{\geq n+1}(X)\xrightarrow{+1}\)
+  は\(\sfD(\Ch(\mcC))\)の完全三角なので、
+  \[
+  \Tot(\tau_{II}^{\leq n}(X)) \to \Tot(X)
+  \to \Tot(\tau_{II}^{\geq n+1}(X)) \xrightarrow{+1}
+  \]
+  は\(\sfD(\mcC)\)の完全三角である。
+  \(n=q_0\)とすると、\(n+1\leq q_1\)であるので、従って
+  \[
+  H_{II}^{q_0}[-q_0] \to \Tot(X) \to H_{II}^{q_1}[-q_1] \xrightarrow{+1}
+  \]
+  は\(\sfD(\mcC)\)の完全三角である。
+  以上で\autoref{1.26}の解答を完了する。
+\end{proof}
+
+
+
+\ifcsname Chap\endcsname\else
+\printbibliography
+\end{document}
+\fi

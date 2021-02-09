@@ -1,0 +1,135 @@
+\ifcsname Chap\endcsname\else
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+\newcommand{\StylePath}{\ifcsname AllKS\endcsname KS-Style/KS-Style.sty\else
+\ifcsname Chap\endcsname ../KS-Style/KS-Style.sty\else
+../../KS-Style/KS-Style.sty\fi\fi}
+\input{\StylePath}
+
+\KSset{2}{18}
+\setcounter{section}{\value{KSS}-1}
+\begin{document}
+\maketitle
+\HeaderCommentA
+\section{\KSsection{section}}
+\setcounter{prob}{\value{KSP}-1}
+\LocCptRemark
+\fi
+
+
+\begin{prob}\label{2.18}
+  \(S\)を位相空間、
+  \(X_1,X_2,Y_1,Y_2\)を\(S\)上の局所コンパクトハウスドルフ空間、
+  \(f_i:Y_i\to X_i,(i=1,2)\)を\(S\)上の射とする。
+  \(p_{Y_i}:Y_i\to S\)を構造射として、
+  \(f=f_1\times_Sf_2:Y_1\times_S Y_2 \to X_1\times_S X_2\)とおく。
+  \(\mcR\)を\(S\)上の可換環の層で、
+  \(\wgld(\mcR) < \infty\)と仮定する。
+  \(G_i\in \sfD^+(p_{Y_i}^{-1}\mcR)\)とする。
+  \begin{enumerate}
+    \item \label{2.18.1}
+    以下の同型射の存在を示せ：
+    \[
+    Rf_{1!}G_1 \boxtimes_{S,\mcR}^L Rf_{2!}G_2
+    \xrightarrow{\sim} Rf_!(G_1 \boxtimes_{S,\mcR}^L G_2).
+    \]
+    この同型射は\textbf{K\"{u}nnethの公式}として知られている。
+    \item \label{2.18.2}
+    \(S=X_1=X_2=\{\mathrm{pt}\}\)として、
+    \(\mcR\)を体とする。
+    以下を示せ：
+    \[
+    H^n_c(Y_1\times Y_2,G_1\boxtimes G_2) \cong
+    \bigoplus_{p+q=n}(H^p_c(Y_1,G_1)\otimes H^q_c(Y_2,G_2)).
+    \]
+  \end{enumerate}
+\end{prob}
+
+\begin{proof}
+  \ref{2.18.1}を示す。
+  以下のように射に名前をつける
+  (それぞれの四角形は Cartesian である)：
+  \[
+  \begin{CD}
+    Y_1\times_S Y_2 @>{f_1''}>> X_1\times_S Y_2 @>{q_2'}>> Y_2 \\
+    @V{f_2''}VV @VV{f_2'}V @VV{f_2}V \\
+    Y_1\times_S X_2 @>{f_1'}>> X_1\times_S X_2 @>{q_2'}>> X_2 \\
+    @V{q_1'}VV @VV{q_1}V @VVV \\
+    Y_1 @>{f_1}>> X_1 @>>> S.
+  \end{CD}
+  \]
+  また、\(r_1\dfn q_1'\circ f_2'', r_2\dfn q_2'\circ f_1''\)とおき、
+  \(X_1\times_S X_2 \to S\)を\(g\)とおいて、
+  \(h\dfn g\circ f\)とおく。
+  示すべきことは、自然な同型射
+  \[
+  q_1^{-1}Rf_{1!}G_1 \otimes_{g^{-1}\mcR}^L q_2^{-1}Rf_{2!}G_2
+  \xrightarrow{\sim} Rf_!(r_1^{-1}G_1\otimes_{h^{-1}\mcR}^L r_2^{-1}G_2)
+  \]
+  の存在であるが、それは以下のように示される：
+  \begin{align}
+    q_1^{-1}Rf_{1!}G_1 \otimes_{g^{-1}\mcR}^L q_2^{-1}Rf_{2!}G_2
+    &\xrightarrow{\sim}
+    Rf_{1!}'{q_1'}^{-1}G_1 \otimes_{g^{-1}\mcR}^L Rf_{2!}'{q_2'}^{-1}G_2
+    \label{eq: 2.18.1.1} \\
+    &\xrightarrow{\sim}
+    Rf_{1!}'({q_1'}^{-1}G_1 \otimes_{{f_1'}^{-1}g^{-1}\mcR}^L
+    {f_1'}^{-1} Rf_{2!}'{q_2'}^{-1}G_2)
+    \label{eq: 2.18.1.2} \\
+    &\xrightarrow{\sim}
+    Rf_{1!}'({q_1'}^{-1}G_1 \otimes_{{f_1'}^{-1}g^{-1}\mcR}^L
+    Rf_{2!}''{f_1''}^{-1}{q_2'}^{-1}G_2)
+    \label{eq: 2.18.1.3} \\
+    &= Rf_{1!}'({q_1'}^{-1}G_1 \otimes_{{f_1'}^{-1}g^{-1}\mcR}^L
+    Rf_{2!}''r_2^{-1}G_2)
+    \label{eq: 2.18.1.4} \\
+    &\xrightarrow{\sim} Rf_{1!}'Rf_{2!}''
+    ({f_2''}^{-1}{q_1'}^{-1}G_1 \otimes_{{f_2''}^{-1}{f_1'}^{-1}g^{-1}\mcR}^L r_2^{-1}G_2)
+    \label{eq: 2.18.1.5} \\
+    &\xrightarrow{\sim} Rf_!(r_1^{-1}G_1 \otimes_{h^{-1}\mcR}^L r_2^{-1}G_2),
+    \label{eq: 2.18.1.6}
+  \end{align}
+  ただしここで、
+  \eqref{eq: 2.18.1.1}の部分に本文\cite[Proposition 2.6.7]{kashiwara2002sheaves}を用い、
+  \eqref{eq: 2.18.1.2}の部分に本文\cite[Proposition 2.6.6]{kashiwara2002sheaves}を用い、
+  \eqref{eq: 2.18.1.3}の部分に本文\cite[Proposition 2.6.7]{kashiwara2002sheaves}を用い、
+  \eqref{eq: 2.18.1.4}の部分に等式\(r_2=q_2'\circ f_1''\)を用い、
+  \eqref{eq: 2.18.1.5}の部分に本文\cite[Proposition 2.6.6]{kashiwara2002sheaves}を用い、
+  \eqref{eq: 2.18.1.6}の部分に等式
+  \(f = f_1'\circ f_2'', r_1 = q_1'\circ f_2'', h = g\circ f_1'\circ f_2''\)を用いた。
+  以上で\ref{2.18.1}の証明を完了する。
+
+  \ref{2.18.2}を示す。
+  \(\mcR\)は体なので、
+  任意の\(\mcR\)-加群 (\(f^{-1}\mcR\)-加群) は平坦であり、
+  従って\(\otimes^L\cong \otimes, \boxtimes^L\cong \boxtimes\)が成り立つ。
+  また、\ref{2.18.1}で\(S=X_1=X_2=\{\mathrm{pt}\}\)とすることで、同型射
+  \[
+  R\Gamma_c(X,G_1)\otimes R\Gamma_c(X,G_2) \xrightarrow{\sim}
+  R\Gamma_c(X,G_1\boxtimes G_2)
+  \]
+  を得る。
+  ここで \autoref{1.24.2} を
+  \(F=\otimes, X=R\Gamma_c(X,G_1), Y=R\Gamma_c(X,G_2)\)として適用することにより、
+  \[
+  \bigoplus_{p+q=n}(H^p_c(X,G_1)\otimes H^q_c(X,G_2))
+  \cong H^n(R\Gamma_c(X,G_1)\otimes R\Gamma_c(X,G_2))
+  \xrightarrow{\sim} H^n_c(X,G_1\boxtimes G_2)
+  \]
+  を得る。
+  以上で\ref{2.18.2}の証明を完了し、
+  \autoref{2.18}の解答を完了する。
+\end{proof}
+
+\begin{kansou*}
+  \ref{2.18.1}の本文のヒント、何あれ??
+\end{kansou*}
+
+
+
+
+
+
+\ifcsname Chap\endcsname\else
+\printbibliography
+\end{document}
+\fi

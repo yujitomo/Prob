@@ -1,0 +1,48 @@
+\ifcsname Chap\endcsname\else
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+\newcommand{\StylePath}{\ifcsname AllKS\endcsname KS-Style/KS-Style.sty\else
+\ifcsname Chap\endcsname ../KS-Style/KS-Style.sty\else
+../../KS-Style/KS-Style.sty\fi\fi}
+\input{\StylePath}
+
+\KSset{2}{13}
+\setcounter{section}{\value{KSS}-1}
+\begin{document}
+\maketitle
+\HeaderCommentA
+\section{\KSsection{section}}
+\setcounter{prob}{\value{KSP}-1}
+
+\fi
+
+
+\begin{prob}\label{2.13}
+  \(G\)を\(X\)上の層として、
+  \(Z\subset X\)を局所閉集合とする。
+  \(j<n\)に対して\(R^j\Gamma_Z(G)=0\)が成り立つと仮定せよ。
+  このとき、前層\(U\mapsto H^n_Z(U,G)\)は層であり、
+  さらにこれが\(R^n\Gamma_Z(G)\)と等しいことを示せ。
+\end{prob}
+
+\begin{proof}
+  \(R^n\Gamma_Z(G)\)は層なので、
+  \autoref{2.13}を示すためには、
+  開集合\(U\subset X\)に対して自然に
+  \(H^n_Z(U,G)\cong \Gamma(U,R^n\Gamma_Z(G))\)
+  が成り立つことを証明することが十分である。
+  \(F=\Gamma_Z(-), F'=\Gamma(U,-)\)として\autoref{1.22}を適用することにより、
+  \(R^n(\Gamma(U,\Gamma_Z(-)))(G)\cong \Gamma(U,R^n\Gamma_Z(G))\)
+  が成り立つ。
+  ここで\(\Gamma(U,\Gamma_Z(-))\cong \Gamma_Z(U,-)\)であるので、
+  よって\(H^n_Z(U,G)\cong \Gamma(U,R^n\Gamma_Z(G))\)が成り立つ。
+  以上で\autoref{2.13}の解答を完了する。
+\end{proof}
+
+
+
+
+
+\ifcsname Chap\endcsname\else
+\printbibliography
+\end{document}
+\fi

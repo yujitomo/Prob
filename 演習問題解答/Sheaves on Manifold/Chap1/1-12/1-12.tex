@@ -1,0 +1,63 @@
+\ifcsname Chap\endcsname\else
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+\newcommand{\StylePath}{\ifcsname AllKS\endcsname KS-Style/KS-Style.sty\else
+\ifcsname Chap\endcsname ../KS-Style/KS-Style.sty\else
+../../KS-Style/KS-Style.sty\fi\fi}
+\input{\StylePath}
+
+\KSset{1}{12}
+\setcounter{section}{\value{KSS}-1}
+\begin{document}
+\maketitle
+\HeaderCommentA
+\section{\KSsection{section}}
+\setcounter{prob}{\value{KSP}-1}
+\fi
+
+
+
+\begin{prob}\label{1.12}
+  \(\mcC\)を三角圏とし、
+  \[
+  \begin{CD}
+    X @>>> Y @>>> Z @>>> X[1] \\
+    @| @| @VVV @| \\
+    X @>>> Y @>>> Z' @>>> X[1]
+  \end{CD}
+  \]
+  を\(\mcC\)の可換図式で、上の列が完全三角であるものとする。
+  このとき、以下の条件のうちの一方が成り立つとき、
+  下の列も完全三角であることを示せ：
+  \begin{enumerate}
+    \item \label{1.12.1}
+    任意の対象\(P\in \mcC\)に対して、以下の列は完全である：
+    \[
+    \Hom(P,X) \to \Hom(P,Y) \to \Hom(P,Z') \to \Hom(P,X[1]).
+    \]
+    \item \label{1.12.2}
+    任意の対象\(Q\in \mcC\)に対して、以下の列は完全である：
+    \[
+    \Hom(X,Q) \gets \Hom(Y,Q) \gets \Hom(Z',Q) \gets \Hom(X[1],Q).
+    \]
+  \end{enumerate}
+\end{prob}
+
+
+\begin{proof}
+  \(\Hom(P,-)\)と\(\Hom(-,Q)\)はそれぞれ cohomological functor であるから、
+  \ref{1.12.1}を仮定すれば、射\(\Hom(P,Z) \to \Hom(P,Z')\)は同型射であることが従い、
+  \ref{1.12.2}を仮定すれば、射\(\Hom(Z',Q) \to \Hom(Z,Q)\)は同型射であることが従う。
+  すると、米田の補題より、
+  \ref{1.12.1}と\ref{1.12.2}のいずれかを仮定すれば、射\(Z\to Z'\)は同型射であることが従う。
+  \(\mcC\)は三角圏なので、
+  \cite[Proposition 1.4.4 (TR0)]{kashiwara2002sheaves}を満たし、
+  従って所望の完全性を得る。
+\end{proof}
+
+
+
+
+\ifcsname Chap\endcsname\else
+\printbibliography
+\end{document}
+\fi

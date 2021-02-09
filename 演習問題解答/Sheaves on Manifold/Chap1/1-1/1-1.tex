@@ -1,0 +1,59 @@
+\ifcsname Chap\endcsname\else
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+\newcommand{\StylePath}{\ifcsname AllKS\endcsname KS-Style/KS-Style.sty\else
+\ifcsname Chap\endcsname ../KS-Style/KS-Style.sty\else
+../../KS-Style/KS-Style.sty\fi\fi}
+\input{\StylePath}
+
+\KSset{1}{1}
+
+\setcounter{section}{\value{KSS}-1}
+
+\begin{document}
+\maketitle
+\HeaderCommentA
+\section{\KSsection{section}}
+\setcounter{prob}{\value{KSP}-1}
+\fi
+
+\begin{prob}\label{1.1}
+  \(\mcC\)を加法圏とする。
+  このとき、合成が双線型となるような各\(\Hom_{\mcC}\)に入るアーベル群の構造は一意的であることを示せ。
+\end{prob}
+
+\begin{proof}
+  \(\mcC\)の加法圏の定義による\(\Hom\)の加法をたんに\(+\)で表し、
+  問いの性質を満たす加法を\(+_1\)で表すことにする。
+  \(X,Y\in \mcC\)とする。
+  合成\(\Hom_{\mcC}(X,0)\times \Hom_{\mcC}(0,Y)\to \Hom_{\mcC}(X,Y)\)
+  は\(+_1\)に関して (\(+\)に関しても) 双線型であるから、
+  その像として定まる合成射\(X\to 0 \to Y\)は
+  \(+_1\)に関する (同様に、\(+\)に関する) 単位元である。
+  よって\(0\)は\(+_1\)に関する単位元である。
+  自然な同型と加法
+  \[
+  \Hom_{\mcC}(X,Y\times Y) \xrightarrow{\sim}
+  \Hom_{\mcC}(X,Y) \times \Hom_{\mcC}(X,Y) \xrightarrow{+} \Hom_{\mcC}(X,Y)
+  \]
+  により射\(m:Y\times Y\to Y\)を得る。
+  二つの射\(f,g\in \Hom_{\mcC}(X,Y)\)に対して、
+  \((f,g)\in \Hom_{\mcC}(X,Y\times Y)\)と\(m\)を合成すると、
+  \(m\)の定義により\(m\circ (f,g) = f+g\)である。
+  一方、\(m\)を合成する射
+  \(\Hom_{\mcC}(X,Y\times Y) \to \Hom_{\mcC}(X,Y)\)は、
+  \(+_1\)の定義により\(+_1\)と可換する。
+  \(0\)が\(+_1\)の単位元であることから、\((f,g) = (f,0) +_1 (0,g)\)であるので、
+  従って、
+  \[
+  f+g = m\circ (f,g) = m\circ [(f,0)+_1(0,g)]
+  = m\circ (f,0) +_1 m\circ (0,g)
+  = f+_1 g
+  \]
+  がわかる。
+  以上で\autoref{1.1}の証明を完了する。
+\end{proof}
+
+\ifcsname Chap\endcsname\else
+\printbibliography
+\end{document}
+\fi

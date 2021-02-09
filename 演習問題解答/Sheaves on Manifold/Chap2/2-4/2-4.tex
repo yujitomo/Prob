@@ -1,0 +1,77 @@
+\ifcsname Chap\endcsname\else
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+\newcommand{\StylePath}{\ifcsname AllKS\endcsname KS-Style/KS-Style.sty\else
+\ifcsname Chap\endcsname ../KS-Style/KS-Style.sty\else
+../../KS-Style/KS-Style.sty\fi\fi}
+\input{\StylePath}
+
+\KSset{2}{4}
+
+\setcounter{section}{\value{KSS}-1}
+
+\begin{document}
+\maketitle
+\HeaderCommentA
+\section{\KSsection{section}}
+\setcounter{prob}{\value{KSP}-1}
+\fi
+
+
+\begin{prob}\label{2.4}
+  可縮な位相空間の上の局所定数層は定数層であることを示せ。
+\end{prob}
+
+\begin{proof}
+  \(X\)を可縮な位相空間、\(F_1\)を\(X\)上の局所定数層とする。
+  \(C(X)\)を\(X\)の錐とし、
+  \(i:X\to C(X)\)を包含射とする。
+  \(X\)は可縮なので、ある\(r:C(X)\to X\)が存在して、
+  \(r\circ i = \id_X\)となる。
+  従って\(i^{-1}(r^{-1}F_1) \cong F_1\)となる。
+  よって\(r^{-1}F_1\)が定数層であることを証明すれば良い。
+  \(v\in C(X)\)を錐の頂点とする。
+  \(p:F\to C(X)\)を層\(r^{-1}F_1\)のエタール空間
+  (cf. \cite[Exercise 1.13]{hartshorne2013algebraic}) とする。
+  \(r^{-1}F_1\)は局所定数層であるから、\(p\)は\(C(X)\)の被覆空間である。
+  \(r^{-1}F_1\)が定数層であることを証明するためには、
+  \(p\)が自明な被覆空間であることを証明すれば良い。
+
+  \(F\)の連結成分のなす集合を\(F_c\)とおき、
+  \(F_c\)には離散位相を入れる。
+  また、\(F_v\dfn p^{-1}(v)\)とおく。
+  このとき、\(F_v\)の各点に対して、
+  その点の属する連結成分を対応させることにより、
+  写像\(F_v\to F_c\)を得る。
+  各元\([Y]\in F_c\)に対して\(Y\subset F\)で対応する連結成分を表すとする。
+  元\([Y]\in F_c\)と点\(y\in Y\)に対して、
+  \(p(y)\)と\(v\)を結ぶ直線は\(F\)内のpathへと一意的にリフトする、
+  すなわち、\(C(X)\)内の直線
+  \(l:[0,1]\to C(X), l(0)=v,l(1)=p(y)\)に対して、
+  あるpath \(l':[0,1]\to F\)が一意的に存在して、
+  \(p\circ l' = l\)となる。
+  \(l'\)の像は連結であり、\(y\in Y\)であり、\(Y\)は連結成分であるから、
+  \(l'\)は\(Y\)を一意的に経由する
+  (これは\([0,1]\)上の被覆空間が自明なものに限ることから従う)。
+  従って、このことから、写像\(F_v\to F_c\)は全単射であり、
+  さらに各元\([Y]\in F_c\)に対して
+  合成射\(Y\subset F\to C(X)\)は全単射であることが従う。
+
+  \(F\to F_c\)を各点に対してその点の属する連結成分を対応させる (連続) 写像とすると、
+  この (連続) 写像と\(p:F\to C(X)\)によって、
+  \(C(X)\)上の連続写像\(F\to F_c\times C(X)\)を得る。
+  \(F_v\to F_c\)が全単射であることと、
+  各元\([Y]\in F_c\)に対して
+  合成射\(Y\subset F\to C(X)\)は全単射であることから、
+  \(F\to F_c\times C(X)\)は\(C(X)\)上の被覆空間の間の全単射であることが従う。
+  とくに同相写像である。
+  よって\(p:F\to C(X)\)は自明な被覆空間である。
+  以上で\autoref{2.4}の解答を完了する。
+\end{proof}
+
+
+
+
+\ifcsname Chap\endcsname\else
+\printbibliography
+\end{document}
+\fi

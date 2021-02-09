@@ -1,0 +1,93 @@
+\ifcsname Chap\endcsname\else
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+\newcommand{\StylePath}{\ifcsname AllKS\endcsname KS-Style/KS-Style.sty\else
+\ifcsname Chap\endcsname ../KS-Style/KS-Style.sty\else
+../../KS-Style/KS-Style.sty\fi\fi}
+\input{\StylePath}
+
+\KSset{1}{17}
+\setcounter{section}{\value{KSS}-1}
+\begin{document}
+\maketitle
+\HeaderCommentA
+\section{\KSsection{section}}
+\setcounter{prob}{\value{KSP}-1}
+\fi
+
+
+\begin{prob}\label{1.17}
+  \(\mcC\)をアーベル圏とする。
+  \(\mcC\)が\textbf{ホモロジー次元\(\leq n\)である}
+  ということを、任意の\(X,Y\in \mcC\)に対して
+  \(\Ext^i(X,Y) = 0 ,(\forall i > n)\)となることによって定義する。
+  ただし、ここで\(\Ext^i(X,Y) \dfn \Hom_{\sfD(\mcC)}(X,Y[i])\)である。
+  自然数\(n\)であって、
+  \(\mcC\)がホモロジー次元\(\leq n\)となるもののうち、
+  最小のものを\(\hd(\mcC)\)と表し、
+  \(\mcC\)の\textbf{ホモロジー次元}と言う。
+
+  \(\mcC\)は十分入射的対象を持つと仮定する。
+  このとき、自然数\(n\)に対して、以下の主張が同値であることを示せ：
+  \begin{enumerate}
+    \item \label{1.17.1}
+    \(\hd(\mcC) \leq n\)である。
+    \item \label{1.17.2}
+    任意の対象\(X\in \mcC\)に対して、
+    \(X\)の入射分解\(X\to I\)であって、
+    \(i > n\)に対して\(I^i = 0\)となるものが存在する。
+  \end{enumerate}
+\end{prob}
+
+\begin{proof}
+  \ref{1.17.1}\(\Rightarrow\)\ref{1.17.2}を示す。
+  \(\hd(\mcC)\leq n\)であるとする。
+  任意に対象\(X\in \mcC\)をとり、
+  \(X\to I\)を入射分解とする。
+  \(Y\in \mcC\)を任意の対象とすると、
+  \autoref{1.16.2}より、
+  \(H^i(\Hom_{\mcC}(Y,I)) \cong \Hom_{\sfD(\mcC)}(Y,X[i]) = \Ext^i(Y,X)\)
+  である。
+  \(\hd(\mcC)\leq n\)なので、
+  \(H^{n+1}(\Hom_{\mcC}(Y,I)) = 0\)であり、
+  従って
+  \begin{align*}
+    \im(\Hom_{\mcC}(Y,I^n)\to \Hom_{\mcC}(Y,I^{n+1}))
+    &\cong \ker(\Hom_{\mcC}(Y,I^{n+1})\to \Hom_{\mcC}(Y,I^{n+2})) \\
+    &\cong \Hom_{\mcC}(Y,\ker(d_I^{n+1})) \\
+    &\cong \Hom_{\mcC}(Y,\im(d_I^n))
+  \end{align*}
+  となる。
+  よって、完全列
+  \[
+  \begin{CD}
+    0 @>>> \ker(d_I^n) @>>> I^n @>>> \im(d_I^n) @>>> 0
+  \end{CD}
+  \]
+  は任意の\(Y\)に対する
+  \(\Hom_{\mcC}(Y,-)\)を適用したあとも完全である。
+  従って、\autoref{1.4}より、
+  \(I^n\cong \ker(d_I^n) \oplus \im(d_I^n)\)となることがわかる。
+  \(I^n\)は入射的対象であるから、
+  その直和因子である\(\ker(d_I^n)\)も入射的対象である。
+  従って、\(X\to \tau^{\leq n}(I)\)は長さが\(n\)以下の入射分解となる。
+  以上で\ref{1.17.1}\(\Rightarrow\)\ref{1.17.2}の証明を完了する。
+
+  \ref{1.17.2}\(\Rightarrow\)\ref{1.17.1}を示す。
+  任意に対象\(X\in \mcC\)をとり、
+  \(X\to I\)を長さ\(n\)以下の入射分解とする。
+  \(Y\in \mcC\)を任意の対象とすると、
+  \autoref{1.16.2}より、
+  \(H^i(\Hom_{\mcC}(Y,I)) \cong \Hom_{\sfD(\mcC)}(Y,X[i]) = \Ext^i(Y,X)\)
+  であるので、\(I^i = 0, (i>n)\)より、\(i>n\)に対して
+  \(\Ext^i(Y,X) = 0\)となることがわかる。
+  以上で\autoref{1.17}の解答を完了する。
+\end{proof}
+
+
+
+
+
+\ifcsname Chap\endcsname\else
+\printbibliography
+\end{document}
+\fi

@@ -1,0 +1,143 @@
+\ifcsname Chap\endcsname\else
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+\newcommand{\StylePath}{\ifcsname AllKS\endcsname KS-Style/KS-Style.sty\else
+\ifcsname Chap\endcsname ../KS-Style/KS-Style.sty\else
+../../KS-Style/KS-Style.sty\fi\fi}
+\input{\StylePath}
+
+\KSset{2}{14}
+\setcounter{section}{\value{KSS}-1}
+\begin{document}
+\maketitle
+\HeaderCommentA
+\section{\KSsection{section}}
+\setcounter{prob}{\value{KSP}-1}
+
+\fi
+
+
+\begin{prob}\label{2.14}
+  \(X = \bigcup_{i\in I}U_i\)を\(X\)の開被覆とする。
+  各\(i\in I\)に対して\(F_i\)を\(U_i\)上の層として、
+  各\((i,j)\in I^2\)に対して同型射
+  \(\varphi_{ij}:F_j|_{U_i\cap U_j} \xrightarrow{\sim} F_i|_{U_i\cap U_j}\)
+  が与えられているとする。
+  \(\varphi_{ii}=\id_{F_i}\)であり、
+  さらに任意の\((i,j,k)\in I^3\)に対して
+  \(U_i\cap U_j\cap U_k\)上で
+  \(\varphi_{ij}\circ \varphi_{jk}=\varphi_{ik}\)
+  が成り立つと仮定せよ。
+  このとき、\(X\)上の層\(F\)と
+  各\(i\in I\)に対する同型射
+  \(\varphi_i:F|_{U_i}\xrightarrow{\sim} F_i\)であって、
+  任意の\((i,j)\in I^2\)に対して\(U_i\cap U_j\)上で
+  \(\varphi_{ij} = \varphi_i\circ \varphi_j^{-1}\)
+  が成り立つもの、が up to isomorphism で一意的に存在することを示せ。
+\end{prob}
+
+
+\begin{proof}
+  圏\(\mcI\)を次で定義する：
+  \begin{itemize}
+    \item
+    対象の集合は\(\mathrm{Ob}(\mcI) \dfn I^3\).
+    \item
+    \(\Hom_{\mcI}((i,j,k),(i',j',k'))\)は
+    \(\{i,j,k\} \supset \{i',j',k'\}\)である場合は一点集合で、
+    そうでない場合は\(\emptyset\)と定める。
+  \end{itemize}
+  \(\{i,j,k\} = \{i',j',k'\}\)
+  である場合、またその場合に限り\((i,j,k)\to (i',j',k')\)は同型射である。
+
+  \(U_{ij}\dfn U_i\cap U_j, U_{ijk}\dfn U_i\cap U_j\cap U_k\)とおき、
+  \(f_i:U_i\to X, f_{ij}:U_{ij} \to X, f_{ijk}:U_{ijk}\to X\)
+  をそれぞれ包含射とする。
+  各\((i,j,k)\in \mcI\)に対して\(X\)上の層\(F(i,j,k)\)を
+  \(P(i,j,k)\dfn f_{ijk,!}(F_i|_{U_{ijk}})\)と定義する
+  (\(P(i,i,i) = f_{i!}F_i\)である)。
+  各\(\mcI\)の射\(p:(i,j,k)\to (i',j',k')\)に対して
+  \(U_{ijk}\subset U_{i'j'k'}\)であるので、
+  自然な包含射
+  \(\psi(p)(-):f_{i'j'k',!}((-))|_{U_{ijk}}) \subset
+  f_{i'j'k',!}((-)|_{U_{i'j'k'}})\)
+  がある。
+  また、\(i'\in \{i,j,k\}\)であるので\(U_{ijk}\subset U_{ii'}\)である。
+  \(P(p)\dfn \psi(p)(F_{i'})\circ f_{ijk,!}(\varphi_{i'i}|_{U_{ijk}})\)と定義する。
+  この対応によって、\(P:\mcI\to \Ab(X)\)は函手になる。
+  それを確かめるために、\(\mcI\)の射の列
+  \((i,j,k)\xrightarrow{p}(i',j',k')\xrightarrow{q}(i'',j'',k'')\)
+  を任意にとる。
+  \(P\)が函手であるためには、
+  \(P(q\circ p) = P(q)\circ P(p)\)が成り立つことが十分である。
+  \(i''\in \{i',j',k'\}\subset \{i,j,k\}\)であるので、
+  \(U_{ijk}\subset U_{ii'}\cap U_{i'i''}\)が成り立つ。
+  従って
+  \[
+  f_{ijk,!}(\varphi_{i''i}|_{U_{ijk}})
+  = f_{ijk,!}(\varphi_{i''i'}|_{U_{ijk}}\circ \varphi_{i'i}|_{U_{ijk}})
+  = f_{ijk,!}(\varphi_{i''i'}|_{U_{ijk}})\circ f_{ijk,!}(\varphi_{i'i}|_{U_{ijk}})
+  \]
+  が成り立つ。
+  また、定義より、函手の射として\(\psi(q\circ p)=\psi(q)\circ \psi(p)\)が成り立つ。
+  また、\(\psi(p)\)が自然変換であることから、図式
+  \[
+  \begin{CD}
+    f_{ijk,!}(F_{i'}|_{U_{ijk}})
+    @> f_{ijk,!}(\varphi_{i''i'}|_{U_{ijk}})>>
+    f_{ijk,!}(F_{i''}|_{U_{ijk}}) \\
+    @V{\psi(p)(F_{i'})}VV
+    @VV{\psi(p)(F_{i''})}V \\
+    f_{i'j'k',!}(F_{i'}|_{U_{i'j'k'}})
+    @> f_{i'j'k',!}(\varphi_{i''i'}|_{U_{i'j'k'}})>>
+    f_{i'j'k',!}(F_{i''}|_{U_{i'j'k'}})
+  \end{CD}
+  \]
+  は可換である。
+  以上より、
+  \begin{align*}
+    P(q\circ p)
+    &= \psi(q\circ p)(F_{i''}) \circ f_{ijk,!}(\varphi_{i''i'}|_{U_{ijk}}) \\
+    &= \psi(q)(F_{i''}) \circ \psi(p)(F_{i''}) \circ
+    f_{ijk,!}(\varphi_{i''i'}|_{U_{ijk}})\circ f_{ijk,!}(\varphi_{i'i}|_{U_{ijk}}) \\
+    &= \psi(q)(F_{i''}) \circ f_{i'j'k',!}(\varphi_{i''i'}|_{U_{i'j'k'}})
+    \circ \psi(p)(F_{i'}) \circ f_{ijk,!}(\varphi_{i'i}|_{U_{ijk}}) \\
+    &= P(q)\circ P(p)
+  \end{align*}
+  が成り立つ。
+  よって\(P:\mcI\to \Ab(X)\)は函手である。
+
+  \(F\dfn \colim P\)とおく。
+  各\(x\in X\)で stalk をとると図式\(P\)の射は\(0\)射と同型射の図式となる。
+  従って、自然な射\(P_i:P(i,i,i)=f_{i,!}F_i\to F\)を\(U_i\)へと制限したものは
+  層の同型射である。
+  その逆射を\(\varphi_i\dfn P_i^{-1}:F|_{U_i}\to F_i\)とおく。
+  図式
+  \[
+  \begin{CD}
+    P(j,j,i) @>>> P(j,j,j) @> P_j >> F \\
+    @V f_{ij,!}(\varphi_{ij}) VV @. @| \\
+    P(i,j,j) @>>> P(i,i,i) @> P_i >> F
+  \end{CD}
+  \]
+  は可換であり、
+  \(P(j,j,i)\to P(j,j,j)\)と\(P(i,j,j)\to P(i,i,i)\)を\(U_{ij}\)へと制限すると
+  \(\id_{F_j|_{U_{ij}}}\)と\(\id_{F_i|_{U_{ij}}}\)になるので、
+  従って\(U_{ij}\)上で
+  \(\varphi_{ij} = \varphi_i\circ \varphi_j^{-1}\)が成り立つ。
+
+  別の\(F'\)がこの性質を満たせば、
+  余極限の普遍性により射\(F\to F'\)が得られ、
+  これは各点の stalk で同型射であるので、
+  このような\(F\)は up to isom. で一意的に存在する。
+  以上で\autoref{2.14}の証明を完了する。
+\end{proof}
+
+
+
+
+
+
+\ifcsname Chap\endcsname\else
+\printbibliography
+\end{document}
+\fi

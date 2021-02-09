@@ -1,0 +1,261 @@
+\ifcsname Chap\endcsname\else
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+\newcommand{\StylePath}{\ifcsname AllKS\endcsname KS-Style/KS-Style.sty\else
+\ifcsname Chap\endcsname ../KS-Style/KS-Style.sty\else
+../../KS-Style/KS-Style.sty\fi\fi}
+\input{\StylePath}
+
+\KSset{2}{12}
+\setcounter{section}{\value{KSS}-1}
+\begin{document}
+\maketitle
+\HeaderCommentA
+\section{\KSsection{section}}
+\setcounter{prob}{\value{KSP}-1}
+
+\fi
+
+
+
+\begin{prob}\label{2.12}
+  \(X\)を位相空間とする。
+  \begin{enumerate}
+    \item \label{2.12.1}
+    \((F_{\lambda})_{\lambda\in \Lambda}\)
+    を有向集合\(\Lambda\)で添字づけられた
+    \(X\)上の層の順系とする。
+    \(X\)がコンパクトハウスドルフであると仮定せよ。
+    このとき、任意の\(k\in \N\)に対して
+    \(\colim_{\lambda}H^k(X,F_{\lambda}) \cong
+    H^k(X,\colim_{\lambda}F_{\lambda})\)
+    が成り立つことを示せ。
+    \item \label{2.12.2}
+    \((F_n)_{n\in \N}\)を\(X\)上の層の逆系で、
+    \textbf{各\(F_{n+1}\to F_n\)は全射である}とする。
+    \(Z\subset X\)を局所閉部分集合とする。
+    \(\{H^{k-1}_Z(X,F_n)\}_{n\in \N}\)が Mittag-Leffler 条件を満たすと仮定せよ。
+    このとき、自然な同型射
+    \(H^k_Z(X,\lim_nF_n)\xrightarrow{\sim} \lim_nH^k_Z(X,F_n)\)
+    が存在することを示せ。
+  \end{enumerate}
+\end{prob}
+
+
+\begin{rem*}
+  \ref{2.12.2}は本文にはない仮定を置いている。
+  本文を引用すると以下の通りである：
+
+  Let \((F_n)_{n\in \N}\) be a projective system of sheaves on \(X\) and
+  let \(Z\) be a locally closed subset of \(X\).
+  Assuming that \(\{H^{k-1}_Z(X,F_n)\}_n\) satisfies the M-L condition,
+  prove the isomorphism
+  \(H^k_Z(X,\lim_n F_n) \xrightarrow{\sim} \lim_n H^k_Z(X,F_n)\).
+
+  しかしこのままだと反例がある。
+  \(X=Z=[0,1]\)とする。
+  \(X=Z\)なので\(H^i_Z(X,-)\cong H^i(X,-)\)である。
+  \(U_n=(1/2-1/(n+2),1/2)\cup (1/2,1/2+1/(n+2))\)とおき、
+  \(F_n\dfn \Z_{U_n}\)と定める。
+  \(U_{n+1}\subset U_n\)であるから\(F_{n+1}\subset F_n\)であり、
+  これによって層の逆系\((F_n)_{n\in \N}\)ができる。
+  \(k=1\)とする。
+  定数層\(\Z_X\)の大域切断であって\(U_n\)に台を持つものは\(0\)しかないので
+  \(H^0_Z(X,F_n)=H^0(X,F_n)=0\)が成り立ち、
+  従って\(\{H^0_Z(X,F_n)\}_n\)は Mittag-Leffler 条件を満たす。
+  \(\bigcap_{n=0}^{\infty}U_n=\emptyset\)であるので、
+  各\(X\)の点で stalk をとることによって\(\lim F_n=0\)が成り立つ。
+  従って\(H^1_Z(X,\lim F_n)=0\)である。
+  さらに層の完全列
+  \[0\to \Z_{U_n}\to \Z_X\to \Z_{X\setminus U_n}\to 0\]
+  でコホモロジーをとる。
+  \(X=[0,1]\)なので、命題2.7.3 (ii), (iii) より\(H^1(X,\Z_X)=0\)である。
+  \(X\setminus U_n\)は連結成分が3つなので
+  \(H^0(X,\Z_{X\setminus U_n})=\Z^3\)である。
+  よって完全列
+  \[
+  0\to 0\to \Z \to \Z^3 \to H^1(X,F_n) \to 0
+  \]
+  を得る。
+  従って\(H^1(X,F_n)\cong \Z^2\)が成り立つ。
+  また、この同型射は\(H^1(X,F_{n+1})\to H^1(X,F_n)\)と可換するので、
+  よって\(\lim H^1(X,F_n)\cong \Z^2\)が成り立つ。
+  以上で\(\{H^0_Z(X,F_n)=0\}_n\)が Mittag-Leffler 条件を満たすのにもかかわらず
+  \(0=H^1_Z(X,\lim F_n) \not\cong \Z^2\cong \lim H^1_Z(X,F_n)\)
+  となる例が構成できた。
+\end{rem*}
+
+
+
+\begin{proof}
+  \ref{2.12.1}を示す。
+  \(X=\bigcup_{i=1}^r U_i\)を有限開被覆とする。
+  Filtered colimitは有限極限と可換するので、
+  \[
+  \begin{CD}
+    0 @>>> (\colim F_{\lambda})(X) @>>> \prod_{i=1}^r (\colim F_{\lambda})(U_i)
+    @>>> \prod_{i,j=1}^r (\colim F_{\lambda})(U_i\cap U_j)
+  \end{CD}
+  \]
+  は完全である。
+  \(X=\bigcup_{i\in I}U_i\)を任意の開被覆とする。
+  \(X\)はコンパクトであるから、
+  \[S\dfn \left\{I_0\subset I\middle| X=\bigcup_{i\in I_0}U_i, |I_0|<\infty\right\}\]
+  は空でない有向集合である。
+  各\(I_0\subset I_1, I_0,I_1\in S\)に対して完全列の射
+  \[
+  \begin{CD}
+    0 @>>> (\colim F_{\lambda})(X) @>>> \prod_{i\in I_1} (\colim F_{\lambda})(U_i)
+    @>>> \prod_{i,j\in I_1} (\colim F_{\lambda})(U_i\cap U_j) \\
+    @. @| @VVV @VVV \\
+    0 @>>> (\colim F_{\lambda})(X) @>>> \prod_{i\in I_0} (\colim F_{\lambda})(U_i)
+    @>>> \prod_{i,j\in I_0} (\colim F_{\lambda})(U_i\cap U_j)
+  \end{CD}
+  \]
+  ができるので、\(I_0\in S\)に渡って逆極限をとることにより、
+  \[
+  \begin{CD}
+    0 @>>> (\colim F_{\lambda})(X) @>>> \prod_{i\in I} (\colim F_{\lambda})(U_i)
+    @>>> \prod_{i,j\in I} (\colim F_{\lambda})(U_i\cap U_j)
+  \end{CD}
+  \]
+  が完全であることが従う。
+  よって
+  \(\colim_{\lambda}H^0(X,F_{\lambda}) \cong H^0(X,\colim_{\lambda}F_{\lambda})\)
+  が成り立つ。
+
+  \((I_{\lambda})_{\lambda\in \Lambda}\)を函手圏\([\Lambda,\Ab(X)]\)の入射的対象とする。
+  任意の\(0\in \Lambda\)と任意の層の単射\(M\to N\)と任意の射\(f:M\to I_0\)に対し、
+  \(M,N\)を\(0\)番目に配置して\(\Ab(X)\)の図式と考えると、
+  \((I_{\lambda})_{\lambda\in \Lambda}\)が函手圏で入射的対象であるので、
+  \(\lambda\)に関して函手的に\(f\)のリフト\(N_{\lambda}\to I_{\lambda}\)
+  が得られるので、\(0\)番目をみることで、\(f\)のリフト\(N\to I_0\)を得る。
+  従って、各\(\lambda\)に対して\(I_{\lambda}\)は入射的層である。
+  とくに (\(c\)-)soft である。
+  \(F\subset X\)を閉集合とすると、
+  各\(I_{\lambda}(X)\to I_{\lambda}(F)\)は全射であるので、
+  \(\colim(I_{\lambda}(X))\to \colim(I_{\lambda}(F))\)も全射であるが、
+  ここで\(X,F\)はどちらもコンパクト (かつハウスドルフ) なので、
+  すでに証明したことから、
+  \(\colim(I_{\lambda}(X))\cong (\colim I_{\lambda})(X),
+  \colim(I_{\lambda}(F))\cong (\colim I_{\lambda})(F)\)
+  が成り立つ。
+  従って\(\colim I_{\lambda}\)も (\(c\)-)soft であることが従う。
+  \(X\)はコンパクトハウスドルフなので、
+  従って\(\colim I_{\lambda}\)は大域切断函手に対して acyclic である。
+  Filtered colimit をとる函手
+  \(\colim:[\Lambda,\Ab(X)]\to \Ab(X)\)は完全函手であるから、
+  以上より、函手
+  \[
+  [\Lambda,\Ab(X)]\to \Ab, \ \
+  (F_{\lambda})_{\lambda\in \Lambda}\mapsto \Gamma(X,\colim F_{\lambda})
+  \]
+  の右導来函手は\(R\Gamma(X,-)\circ \colim\)と自然に同型である。
+  同様に、\(\colim:[\Lambda,\Ab]\to \Ab\)は完全函手なので、函手
+  \[
+  [\Lambda,\Ab(X)]\to \Ab, \ \
+  (F_{\lambda})_{\lambda\in \Lambda}\mapsto \colim \Gamma(X,F_{\lambda})
+  \]
+  の右導来函手は
+  \(\colim \circ R\Gamma(X,(-)_{\lambda})\)
+  と自然に同型である。
+  ただし
+  \(R\Gamma(X,(-)_{\lambda})\)は
+  \(\sfD^{\geq 0}([\Lambda,\Ab(X)])\)から
+  \(\sfD^{\geq 0}([\Lambda,\Ab])\)への函手である
+  (\([\Lambda,\sfD^+(\Ab)]\)に値を持つのではない！)。
+  すでに証明した\(0\)次の場合より、自然に
+  \(\Gamma(X,\colim (-)_{\lambda}) \cong \colim \Gamma(X,(-)_{\lambda})\)
+  が成り立つので、これらの右導来函手も自然に同型であり、
+  \(R\Gamma(X,\colim (-)_{\lambda}) \cong \colim R\Gamma(X,(-)_{\lambda})\)
+  が成り立つ
+  (右辺の\(\colim\)は通常の余極限をとる函手の導来函手であり、
+  \([\Lambda,\sfD^+(\Ab)]\)における余極限とは異なる)。
+  \((F_{\lambda})_{\lambda\in \Lambda}\)を代入してコホモロジーをとると、
+  余極限をとる函手が完全であることから
+  \[
+  H^i(X,\colim F_{\lambda})\cong
+  H^i(\colim R\Gamma(X,F_{\lambda})) \cong
+  \colim H^i(X,F_{\lambda})
+  \]
+  を得る。
+  以上で\ref{2.12.1}の証明を完了する。
+
+  \ref{2.12.2}を示す。
+  \((I_n)_{n\in \N}\)を圏\([\N,\Ab(X)]\)の入射的対象とする。
+  局所閉集合\(Z\subset X\)と\(n\)に対して切断\(s\in \Gamma_Z(X,I_n)\)を一つ選ぶと、
+  \(s\)は層の射\(\Z_Z\to I_n\)を定める。
+  \(n\)番目以前が\(\Z_Z\)でそれ以降\(0\)である逆系を\(\Z_Z(n)\)とおくと、
+  \(s\)は逆系の射\(\Z_Z(n)\to (I_n)_{n\in \N}\)を定める。
+  \((I_n)_{n\in \N}\)は入射的なので、
+  逆系の単射\(\Z_Z(n)\subset \Z_Z(n+1)\)に沿って
+  \(\Z_Z(n)\to (I_n)_{n\in \N}\)をリフトさせることにより、
+  \(\Gamma_Z(X,I_{n+1})\to \Gamma_Z(X,I_n)\)
+  が全射であることが従う。
+  特に、各開集合\(U\subset X\)に対して\((\Gamma_Z(X,I_n))_{n\in \N}\)は
+  Mittag-Leffler 条件を満たす、すなわち、\(\lim_n\)に対して acyclic である。
+  よって\(R(\lim_n\circ\Gamma_Z(X,-)) \cong R\lim_n \circ R\Gamma_Z(X,-)\)
+  が成り立ち、逆系\((F_n)_{n\in \N}\)に対してスペクトル系列
+  \[
+  E_2^{p,q}=R^p\lim_n H^q_Z(X,F_n) \ \Rightarrow \
+  E^{p+q}=R^{p+q}(\lim_n\circ \Gamma_Z(X,-))(F_n)
+  \]
+  を得る。
+  \(R^p\lim_n = 0, (p\neq 0,1)\)であるので、完全列
+  \[
+  0\to R^1\lim_n H^q_Z(X,F_n) \to E^{1+q} \to \lim_n H^{q+1}_Z(X,F_n)\to 0
+  \]
+  を得る。
+  \(q=k-1\)とすれば、
+  \((H^{k-1}_Z(X,F_n))_{n\in \N}\)が Mittag-Leffler 条件を満たすという仮定より、
+  同型射\(E^k\xrightarrow{\sim} \lim_n H^{q+1}_Z(X,F_n)\)を得る。
+
+  次に、\((I_n)_{n\in \N}\)を再び\([\N,\Ab(X)]\)の入射的対象とし、
+  \(U\subset X\)を開集合として、切断\(s\in \lim_n I_n(U)\)を任意にとる。
+  これは層の射\(\Z_U\to \lim_n I_n\)と対応するが、
+  これは各番号に\(\Z_U\)が対応している自明な逆系\((\Z_U)_{n\in \N}\)からの逆系の射
+  \((\Z_U)_{n\in \N}\to (I_n)_{n\in \N}\)と対応する。
+  これを単射\((\Z_U)_{n\in \N}\to (\Z_X)_{n\in \N}\)に沿ってリフトさせることにより、
+  \(\lim_nI_n(X)\to \lim_nI_n(U)\)が全射であることが従う。
+  従って\(\lim_n I_n\)は脆弱層であり、
+  とくに任意の局所閉集合\(Z\subset X\)に対する\(\Gamma_Z(X,-)\)に対して acyclic である。
+  よって\(R(\Gamma_Z(X,-)\circ \lim_n) \cong R\Gamma_Z(X,-)\circ R\lim_n\)
+  が成り立ち、逆系\((F_n)_{n\in \N}\)に対してスペクトル系列
+  \[
+  \bar{E}_2^{p,q}=H^p_Z(X,R^q\lim_n F_n) \ \Rightarrow \
+  \bar{E}^{p+q}=R^{p+q}(\Gamma_Z(X,-)\circ \lim_n)(F_n)
+  \]
+  を得る。
+  \(\Gamma_Z(X,-)\circ \lim_n\cong \lim_n\circ \Gamma_Z(X,-)\)
+  であるので、自然に\(\bar{E}^{p+q}\cong E^{p+q}\)である。
+  また、\(R^q\lim_n = 0, (q=0,1)\)であるので、
+  完全列
+  \[
+  \cdots \to \bar{E}_2^{p-2,1} \to \bar{E}_2^{p,0} \to E^p
+  \to \bar{E}_2^{p-1,1}\to \bar{E}_2^{p+1,0} \to E^{p+1} \to \cdots
+  \]
+  を得る。
+  ここで各\(F_{n+1}\to F_n\)が全射であるという仮定より、
+  \(R^1\lim_n F_n=0\)が成り立つので、
+  \(\bar{E}_2^{\bullet,1}=0\)が成り立つ。
+  従って各\(\bar{E}_2^{p,0} \xrightarrow{\sim} E^p\)は同型射である、
+  すなわち、各\(p\)に対して
+  \(H^p_Z(X,\lim_n F_n) \xrightarrow{\sim} E^p\)は同型射である。
+  \(p=k\)とすることにより、同型射
+  \[
+  H^k_Z(X,\lim_n F_n) \xrightarrow{\sim}
+  R^k(\lim_n\circ \Gamma_Z(X,-))(F_n) \xrightarrow{\sim}
+  \lim_n H^k_Z(X,F_n)
+  \]
+  を得る。
+  以上で\ref{2.12.2}の証明を完了し、
+  \autoref{2.12}の解答を完了する。
+\end{proof}
+
+
+
+
+
+\ifcsname Chap\endcsname\else
+\printbibliography
+\end{document}
+\fi

@@ -1,0 +1,275 @@
+\ifcsname Chap\endcsname\else
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+\newcommand{\StylePath}{\ifcsname AllKS\endcsname KS-Style/KS-Style.sty\else
+\ifcsname Chap\endcsname ../KS-Style/KS-Style.sty\else
+../../KS-Style/KS-Style.sty\fi\fi}
+\input{\StylePath}
+
+\KSset{1}{37}
+\setcounter{section}{\value{KSS}-1}
+\begin{document}
+\maketitle\HeaderCommentA
+\section{\KSsection{section}}
+\setcounter{prob}{\value{KSP}-1}
+\fi
+
+
+\begin{prob}\label{1.37}
+  \(\mcC\)を加法圏とする。
+  \(\End(\mcC)\)を\(\id_{\mcC}:\mcC\to \mcC\)の自己射のなす集合とする。
+  すなわち、\(\End(\mcC) \dfn \Hom_{[\mcC,\mcC]}(\id_{\mcC})\)とする。
+  \begin{enumerate}
+    \item \label{1.37.1}
+    \(\End(\mcC)\)は可換環であることを示せ。
+    \item \label{1.37.2}
+    \(A\)を環とする。
+    \(\End(\Mod(A))\)は\(A\)の中心\(Z(A)\)と同型であることを示せ。
+    \item \label{1.37.3}
+    \(A\)を可換環として、
+    環準同型\(A\to \End(\mcC)\)が与えられているとする。
+    このとき加法圏\(\mcC\)を\textbf{\(A\)上の加法圏}という。
+    \(\mcC\)が\(A\)上の加法圏であるとき、
+    \(\Hom_{\mcC}(X,Y)\)は合成が双線型となるような\(A\)-加群の構造を持つことを示せ。
+    \item \label{1.37.4}
+    \(A\)をネーター環、
+    \(\mcC\)を\(A\)上の\textbf{アーベル}圏とする。
+    \begin{enumerate}
+      \item \label{1.37.4.1}
+      \(M\in \Mod^f(A)\)と\(X\in \mcC\)に対して
+      函手\(Y\mapsto \Hom_A(M,\Hom_{\mcC}(X,Y)), (Y\in \mcC)\)
+      は表現可能であることを示せ。
+      この表現対象を\(X\otimes_A M\)と書く。
+      \item \label{1.37.4.2}
+      \(\otimes_A:\mcC\times\Mod^f(A)\to \mcC\)は右完全な双函手であることを示せ。
+      \item \label{1.37.4.3}
+      \(\otimes_A\)は左導来函手
+      \(\otimes_A^L:\sfD^-(\mcC)\times \sfD^-(\Mod^f(A))\to \sfD^-(\mcC)\)
+      を持つことを示せ。
+      \item \label{1.37.4.4}
+      \(\Hom_A(-,-):\Mod^f(A)^{\op}\times \mcC\to \mcC\)
+      についても同様の議論を行え。
+    \end{enumerate}
+  \end{enumerate}
+\end{prob}
+
+
+\begin{proof}
+  \ref{1.37.1}を示す。
+  \(f:\id_{\mcC}\to \id_{\mcC}\)は
+  各\(M\in \mcC\)に対する自己射\(f_M:M\to M\)の族で
+  \(g:M\to N\)に対して\(g\circ f_M = f_N\circ g\)を満たすものである。
+  従って、二つの\(f^1,f^2:\id_{\mcC}\to \id_{\mcC}\)に対して
+  族\((f^1_M+f^2_M)_{M\in \mcC}\)は\(\id_{\mcC}\)の自己射となるので、
+  これによって加法が定義される。
+  乗法を合成によって定義すると、\(\mcC\)が加法圏であること、
+  すなわち合成が双線型であることから、\(\End(\mcC)\)は環の公理を満たす。
+  可換であることを示すことが残っている。
+  \(f,g:\id_{\mcC}\to \id_{\mcC}\)と
+  \(M\in \mcC\)を任意にとると、
+  \(g\)が自然変換であることから、
+  射\(f_M:M\to M\)に対して等式\(f_M\circ g_M = g_M\circ f_M\)を満たす。
+  従って\(f\circ g = g\circ f\)が成り立ち、
+  \(\End(\mcC)\)は合成を乗法として可換である。
+  以上で\ref{1.37.1}の証明を完了する。
+
+  \ref{1.37.2}を示す。
+  \(a\in Z(A)\)に対して、
+  一斉に\(a\)倍をする射\(M\to M\)は
+  任意の\(g:M\to N\)と\(m\in M\)に対して
+  \(g(am) = ag(m)\)を満たすので
+  \(\End(\Mod(A))\)の元を定める。
+  こうして写像\(Z(A)\to \End(\Mod(A))\)ができる。
+  この写像は明らかに環準同型である。
+  単射であることを示すために、\(a\in Z(A)\)が\(\End(\Mod(A))\)で\(0\)であると仮定する。
+  すると\(a\)倍写像\(A\to A\)が\(0\)射であるため、\(a=0\)が従う。
+  よって\(Z(A)\to \End(\Mod(A))\)は単射である。
+  全射であることを示すために、
+  \(f:\id_{\Mod(A)}\to \id_{\Mod(A)}\)を任意にとる。
+  \(f_A:A\to A\)によって\(a\dfn f_A(1)\)とおく。
+  \(f_M\)が\(a\)倍写像であることを示せば、
+  \(Z(A)\to \End(\Mod(A))\)が全射であることが従う。
+  \(M\in \Mod(A)\)を任意にとる。
+  全射\(p:A^{\oplus I}\to M\)をひとつ選ぶ。
+  \(f:\id_{\Mod(A)}\to \id_{\Mod(A)}\)が自然変換であることから、
+  \(f_{A^{\oplus I}}\)は各座標ごとに\(f_A\)が並んでいる射であり、
+  それは\(a\)倍写像に他ならない。
+  また\(f_M\circ p = p\circ f_{A^{\oplus I}} = p(a\text{倍}) = ap\)
+  が成り立つ。
+  ここで\(p\)はエピなので、\(f_M\)も\(a\)-倍写像であることが従う。
+  以上で\(Z(A)\to \End(\Mod(A))\)が全射であることが従い、
+  \ref{1.37.2}の証明を完了する。
+
+  \ref{1.37.3}を示す。
+  \(\varphi:A\to \End(\mcC)\)を環準同型とする。
+  \(a\in A\)に対して自然変換\(\varphi(a):\id_{\mcC}\to \id_{\mcC}\)が対応している。
+  \(\Hom_{\mcC}(X,Y)\)に\(\varphi(a)_Y:Y\to Y\)を合成することによって
+  \(A\)-加群の構造を入れる
+  (これが\(\Hom_{\mcC}(X,Y)\)の加法と両立的であることは明らかである)。
+  このとき、\(f:X\to Y\)に対して
+  \(f\circ \varphi(a)_X = \varphi(a)_Y\circ f\)であるから、
+  この\(A\)-加群の構造は\(\varphi(a)_X:X\to X\)を合成することによる\(A\)-加群の構造と等しい。
+  また、\(X,Y,Z\in \mcC\)と
+  \(a\in A, f\in \Hom_{\mcC}(X,Y), g\in \Hom_{\mcC}(Y,Z)\)に対して、
+  \[
+  g\circ (a\cdot f) = g\circ (f\circ \varphi(a)_X)
+  = (g\circ f)\circ \varphi(a)_X = a\cdot (g\circ f)
+  \]
+  が成り立つので、
+  \(g\)を合成する射\(\Hom_{\mcC}(X,Y) \to \Hom_{\mcC}(X,Z)\)
+  は\(A\)-加群の構造と両立的である。
+  同じく
+  \[
+  (a\cdot g)\circ f = (\varphi(a)_Z\circ g) \circ f
+  = \varphi(a)_Z\circ (g\circ f) = a\cdot (g\circ f)
+  \]
+  が成り立つので、\(f\)を合成する射\(\Hom_{\mcC}(Y,Z) \to \Hom_{\mcC}(X,Z)\)
+  は\(A\)-加群の構造と両立的である。
+  以上より\(\mcC\)の合成は\(A\)-双線型であり、
+  \ref{1.37.3}の証明を完了する。
+
+  \ref{1.37.4}を示す。
+  \ref{1.37.4.1}を示す。
+  \(M=A\)のときは自然に
+  \(\Hom_A(A,\Hom_{\mcC}(X,Y)) \cong \Hom_{\mcC}(X,Y)\)
+  であるから明らかにこの函手が表現可能であり\(X\otimes_A A\cong X\)が成り立つ。
+  \(M\)が\(A\)の有限直和の場合も同様にして
+  \(\Hom_A(A^n,\Hom_{\mcC}(X,Y))\cong \Hom_{\mcC}(X,Y)^n \cong \Hom_{\mcC}(X^n,Y)\)
+  が成り立つので、この函手は表現可能であり\(X\otimes_A A^n \cong X^n\)が成り立つ。
+  一般の有限生成加群\(M\)に対して、所望の表現可能性を証明する。
+  \(A\)はネーターであるから、完全列
+  \(A^n\to A^m\to M\to 0\)が存在する。
+  このとき
+  \[
+  0 \to \Hom_A(M,\Hom_{\mcC}(X,Y)) \to \Hom_A(A^m,\Hom_{\mcC}(X,Y))
+  \to \Hom_A(A^n,\Hom_{\mcC}(X,Y))
+  \]
+  も完全である。
+  \(Y\)に関して函手的に
+  \(\Hom_A(A^m,\Hom_{\mcC}(X,Y)) \cong \Hom_{\mcC}(X^m,Y)\)
+  が成り立つので、
+  \(A\)-加群の完全列
+  \[
+  0\to \Hom_A(M,\Hom_{\mcC}(X,Y)) \to \Hom_{\mcC}(X^m,Y)\to \Hom_{\mcC}(X^n,Y)
+  \]
+  を得る。
+  従って\(Y\)に関して函手的に
+  \(\Hom_A(M,\Hom_{\mcC}(X,Y)) \cong \Hom_{\mcC}(\coker(X^m\to X^n),Y)\)
+  が成り立つ。
+  よって\(Y\mapsto \Hom_A(M,\Hom_{\mcC}(X,Y))\)は表現可能であることが従う。
+  以上で\ref{1.37.4.1}の証明を完了する。
+
+  \ref{1.37.4.2}を示す。
+  \(M,X\)に関しての双函手
+  \[
+  \mcC\times \Mod^f(A) \to \Hom(\mcC,\Mod(A)), \ \
+  (X,M)\mapsto [Y\mapsto \Hom_A(M,\Hom_{\mcC}(X,Y))]\]
+  の表現対象として\(X\otimes_A M\)が定義されているので、
+  米田の補題より\(\otimes_A:\mcC\times \Mod^f(A)\to \mcC\)
+  は双函手である。
+  さらに\(\Hom_A(-,*)\)が左完全であることと\(\Hom_{\mcC}(-,Y)\)が左完全であることから、
+  \(\otimes_A\)はいずれの成分についても右完全であることが従う。
+  以上で\ref{1.37.4.2}の証明を完了する。
+
+  \ref{1.37.4.3}を示す。
+  \(\mcP\subset \Mod^f(A)^{\op}\)を射影加群からなる部分圏とする。
+  \(X\in \mcC\)とする。
+  \(\mcP\)が\((X\otimes_A (-))^{\op}:\Mod^f(A)^{\op}\to \mcC^{\op}\)
+  に対してinjectiveであることを示す。
+  まず\(\mcP\subset \Mod^f(A)^{\op}\)は明らかに本文の
+  条件\cite[(1.7.5)]{kashiwara2002sheaves}
+  (=本文\cite[Definition 1.8.2 (i)]{kashiwara2002sheaves}) を満たす。
+  次に有限生成加群の完全列\(0\to M_1\to M_2\to M_3\to 0\)で
+  \(M_2,M_3\)が射影加群であるとき、
+  この完全列は分裂して\(M_1\)は射影加群\(M_2\)の直和因子となるので\(M_1\)も射影加群である。
+  従って\(\mcP\)は本文\cite[Definition 1.8.2 (ii)]{kashiwara2002sheaves}を満たす。
+  \(0\to P_1\to P_2\to P_3\to 0\)を射影加群の完全列とする。
+  これは分裂するので、
+  各\(Y\)に対して
+  \[
+  0\to \Hom_A(P_3,\Hom_{\mcC}(X,Y))
+  \to \Hom_A(P_2,\Hom_{\mcC}(X,Y))
+  \to \Hom_A(P_1,\Hom_{\mcC}(X,Y)) \to 0
+  \]
+  も分裂完全列である。
+  従って、
+  \[0\to X\otimes_A P_1\to X\otimes_A P_2\to X\otimes_A P_3\to 0\]
+  も分裂完全列であり、\(\mcP\)は
+  本文\cite[Definition 1.8.2 (iii)]{kashiwara2002sheaves}を満たす。
+  以上より\(\mcP\)は\((X\otimes_A (-))^{\op}:\Mod^f(A)^{\op}\to \mcC^{\op}\)
+  に対してinjectiveな\(\Mod^f(A)\)の部分圏である。
+  \(X\in \Ch^-(\mcC)\)を\(0\)と擬同型な複体、
+  \(P\)を射影加群とする。
+  \(P\)は\(A^n\)の直和因子であるとする。
+  すると\(X\otimes_A P\)は\(X^n\)の直和因子であるから、
+  \(X\)が\(0\)と擬同型であることから、\(X\otimes_A P\)も\(0\)と擬同型である。
+  従って、函手\((\otimes_A)^{\op}:\mcC^{\op}\times \Mod^f(A)^{\op}\to \mcC^{\op}\)
+  の引き起こす三角函手
+  \(\sfK^+(\mcC^{\op}) \times \sfK^+(\Mod^f(A)^{\op})\to \sfK^+(\mcC^{\op})\)
+  と\(\mcI = \sfK^+(\mcP)\subset \sfK^+(\Mod^f(A)^{\op})\)
+  に対して本文\cite[Corollary 1.10.5]{kashiwara2002sheaves}を用いることにより、
+  \((\otimes_A)^{\op}\)の右導来函手
+  \(\sfD^+(\mcC^{\op}) \times \sfD^+(\Mod^f(A)^{\op})\to \sfD^+(\mcC^{\op})\)
+  が存在することが従う。
+  よって\(\otimes_A\)の左導来函手
+  \(\otimes_A^L:\sfD^-(\mcC) \times \sfD^-(\Mod^f(A))\to \sfD^-(\mcC)\)
+  が存在することが従い、
+  \ref{1.37.4.3}の証明を完了する。
+
+  \ref{1.37.4.4}を示す。
+  \(M\in \Mod^f(A)^{\op}\)と\(X\in \mcC\)に対して
+  \(\mcC^{\op}\to \Mod(A), Y\mapsto \Hom_A(M,\Hom_{\mcC}(Y,X))\)
+  が表現可能であることを示す。
+  まず\(M=A\)のときは明らかに\(X\)が表現対象であり、
+  \(M=A^n\)の場合も明らかに\(X^n\)が表現対象である。
+  一般の\(M\)に対して完全列\(A^n\to A^m\to M\to 0\)をとって
+  完全列
+  \[
+  0\to \Hom_A(M,\Hom_{\mcC}(Y,X))\to \Hom_A(A^m,\Hom_{\mcC}(Y,X))\to
+  \Hom_A(A^n,\Hom_{\mcC}(Y,X))
+  \]
+  作ると、完全列
+  \[
+  0\to \Hom_A(M,\Hom_{\mcC}(Y,X)) \to \Hom_{\mcC}(Y,X^m)\to \Hom_{\mcC}(Y,X^n)
+  \]
+  を得るので、\(\Hom\)の左完全性より
+  \(Y\)についての自然な同型
+  \(\Hom_A(M,\Hom_{\mcC}(Y,X))\cong \Hom_{\mcC}(Y,\ker(X^m\to X^n))\)
+  を得る。
+  従って\(\mcC^{\op}\to \Mod(A), Y\mapsto \Hom_A(M,\Hom_{\mcC}(Y,X))\)
+  は表現可能函手である。
+  この表現対象を\(\Hom_A(M,X)\)と表す。
+  \(X,Y,M\)についての自然な同型
+  \(\Hom_{\mcC}(X\otimes_AM,Y) \cong \Hom_{\mcC}(X,\Hom_A(M,Y))\)
+  が存在するので、
+  \(\Hom_A(M,-)\)は\((-)\otimes_AM\)の右随伴函手であり、
+  従って左完全である。
+  また\(X,Y\)についての自然な同型
+  \(\Hom_{\mcC}(X,\Hom_A(-,Y))\cong \Hom_A(-,\Hom_{\mcC}(X,Y))\)
+  は\(\Hom_A(-,Y)\)の左完全性を示している。
+  従って\(\Hom_A(-,-)\)は左完全な双函手である。
+  射影加群のなす部分圏\(\mcP\subset \Mod^f(A)^{\op}\)が
+  本文\cite[Definition 1.8.2 (i) (ii)]{kashiwara2002sheaves}を満たすことは
+  すでに\ref{1.37.4.3}の証明の中で確認している。
+  射影加群の完全列は分裂するので、
+  それを\(\Hom_A(-,\Hom_{\mcC}(X,Y))\)に入れて得られる列も分裂完全列である。
+  従って\(\Hom_A(-,Y)\)に射影加群の完全列を入れると分裂完全列が得られる。
+  このことは\(\mcP\)が本文\cite[Definition 1.8.2 (iii)]{kashiwara2002sheaves}を
+  \(\Hom_A(-,Y)\)に対して満たすことを意味している。
+  従って\(\mcP\subset \Mod^f(A)^{\op}\)は\(\Hom_A(-,Y)\)-injectiveである。
+  さらに\(Y\)が\(0\)と擬同型で\(P\)が射影加群であるとき、
+  \(P\subset A^n\)が直和因子であるとすれば、
+  \(\Hom_A(P,Y)\subset Y^n\)も直和因子であるから、
+  \(Y\)が\(0\)と擬同型であることから、\(\Hom_A(P,Y)\)も\(0\)と擬同型であることが従う。
+  よって本文\cite[Corollary 1.10.5]{kashiwara2002sheaves}を適用することで、
+  \(\Hom_A(-,-)\)の右導来函手\(R\Hom_A(-,-)\)が存在することが従う。
+  以上で\ref{1.37.4.4}の証明を完了し、
+  \ref{1.37.4}の証明を完了し、
+  \autoref{1.37}の解答を完了する。
+\end{proof}
+
+
+
+\ifcsname Chap\endcsname\else
+\printbibliography
+\end{document}
+\fi

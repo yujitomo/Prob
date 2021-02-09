@@ -1,0 +1,1355 @@
+\documentclass[uplatex]{jsarticle}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+
+\usepackage{xcolor}
+\usepackage[dvipdfmx]{graphicx}
+
+
+%%%%%ハイパーリンク
+\usepackage[setpagesize=false]{hyperref}
+\usepackage{aliascnt}
+\hypersetup{
+    colorlinks=true,
+    citecolor=blue,
+    linkcolor=blue,
+    urlcolor=blue,
+}
+%%%%%ハイパーリンク
+
+
+
+
+%%%%%図式
+\usepackage{tikz}%%%図
+\usetikzlibrary{arrows}
+\usepackage{amscd}%%%簡単な図式
+%%%%%図式
+
+
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+
+
+\usepackage{amsthm}
+\theoremstyle{definition}
+\newtheorem{thm}{定理}[subsection]
+\newcommand{\thmautorefname}{定理}
+
+\newaliascnt{prop}{thm}%%%カウンター「prop」の定義（thmと同じ）
+\newtheorem{prop}[prop]{命題}
+\aliascntresetthe{prop}
+\newcommand{\propautorefname}{命題}%%%カウンター名propは「命題」で参照する
+
+\newaliascnt{cor}{thm}
+\newtheorem{cor}[cor]{系}
+\aliascntresetthe{cor}
+\newcommand{\corautorefname}{系}
+
+\newaliascnt{lem}{thm}
+\newtheorem{lem}[lem]{補題}
+\aliascntresetthe{lem}
+\newcommand{\lemautorefname}{補題}
+
+\newaliascnt{rem}{thm}
+\newtheorem{rem}[rem]{注意}
+\aliascntresetthe{rem}
+\newcommand{\remautorefname}{注意}
+
+\newaliascnt{defi}{thm}
+\newtheorem{defi}[defi]{定義}
+\aliascntresetthe{defi}
+\newcommand{\defiautorefname}{定義}
+
+\newaliascnt{eg}{thm}
+\newtheorem{eg}[eg]{例}
+\aliascntresetthe{eg}
+\newcommand{\egautorefname}{例}
+
+\newaliascnt{obs}{thm}
+\newtheorem{obs}[obs]{観察}
+\aliascntresetthe{obs}
+\newcommand{\obsautorefname}{観察}
+
+
+\newaliascnt{prob}{thm}
+\newtheorem{prob}[prob]{問題}
+\aliascntresetthe{prob}
+\newcommand{\probautorefname}{問題}
+
+
+%%%%%%%番号づけない定理環境
+\newtheorem*{exam*}{例}
+\newtheorem*{recall*}{Recall}
+\newtheorem*{rrem*}{注意}
+\newtheorem*{question*}{疑問}
+\newtheorem*{defi*}{定義}
+\newtheorem*{nikki*}{日記}
+
+
+%%%証明環境の調整
+\makeatletter
+\renewenvironment{proof}[1][\proofname]{
+  \pushQED{\qed}%
+  \normalfont \topsep6\p@\@plus6\p@\relax
+  \trivlist
+  \item[\hskip\labelsep
+    #1\@addpunct{\textbf{.}}]\ignorespaces
+}{%
+  \popQED\endtrivlist\@endpefalse
+}
+\makeatother
+\providecommand{\proofname}{証明}
+
+
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+
+
+
+
+%%%%%箇条書き環境
+\usepackage[]{enumitem}
+
+\makeatletter
+\AddEnumerateCounter{\fnsymbol}{\c@fnsymbol}{9}%%%%fnsymbolという文字をenumerate環境のパラメーターで使えるようにする。
+\makeatother
+
+\renewcommand{\theenumi}{(\arabic{enumi})}%%%%%itemは(1),(2),(3)で番号付ける。
+\renewcommand{\theenumii}{(\roman{enumii})}
+\renewcommand{\labelenumi}{\theenumi}
+\renewcommand{\labelenumii}{\theenumii}
+%%%%%箇条書き環境
+
+
+
+
+\usepackage{latexsym}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\End}{\mathrm{End}}
+\DeclareMathOperator{\Isom}{Isom}
+\DeclareMathOperator{\ISOM}{\mathbf{Isom}}
+\DeclareMathOperator{\id}{\mathrm{id}}
+\DeclareMathOperator{\im}{\mathrm{Im}}
+
+\DeclareMathOperator{\coker}{\mathrm{coker}}
+\DeclareMathOperator{\colim}{\mathrm{colim}}
+\DeclareMathOperator{\plim}{\mathrm{lim}}
+\DeclareMathOperator{\rank}{\mathrm{rank}}
+\DeclareMathOperator{\codim}{\mathrm{codim}}
+
+\DeclareMathOperator{\Spec}{\mathrm{Spec}}
+\DeclareMathOperator{\Supp}{\mathrm{Supp}}
+\DeclareMathOperator{\Proj}{\mathrm{Proj}}
+\DeclareMathOperator{\Sym}{\mathrm{Sym}}
+\DeclareMathOperator{\Ext}{\mathrm{Ext}}
+\DeclareMathOperator{\Sing}{\mathrm{Sing}}
+\DeclareMathOperator{\red}{\mathrm{red}}
+\DeclareMathOperator{\length}{\mathrm{length}}
+\DeclareMathOperator{\hight}{\mathrm{ht}}
+\DeclareMathOperator{\trdeg}{\mathrm{trdeg}}
+
+
+\newcommand\C{\mathbb{C}}
+\newcommand\R{\mathbb{R}}
+\newcommand\Q{\mathbb{Q}}
+\newcommand\Z{\mathbb{Z}}
+\newcommand\N{\mathbb{N}}
+\renewcommand\P{\mathbb{P}}
+\newcommand\A{\mathbb{A}}
+\renewcommand\L{\mathbb{L}}
+
+
+
+
+\newcommand\mcA{\mathcal{A}}
+\newcommand\mcB{\mathcal{B}}
+\newcommand\mcC{\mathcal{C}}
+\newcommand\mcD{\mathcal{D}}
+\newcommand\mcE{\mathcal{E}}
+\newcommand\mcF{\mathcal{F}}
+\newcommand\mcG{\mathcal{G}}
+\newcommand\mcH{\mathcal{H}}
+\newcommand\mcI{\mathcal{I}}
+\newcommand\mcJ{\mathcal{J}}
+\newcommand\mcK{\mathcal{K}}
+\newcommand\mcM{\mathcal{M}}
+\newcommand\mcN{\mathcal{N}}
+\newcommand\mcO{\mathcal{O}}
+\newcommand\mcP{\mathcal{P}}
+\newcommand\mcQ{\mathcal{Q}}
+\newcommand\mcR{\mathcal{R}}
+\newcommand\mcS{\mathcal{S}}
+\newcommand\mcT{\mathcal{T}}
+\newcommand\mcU{\mathcal{U}}
+\newcommand\mcW{\mathcal{W}}
+\newcommand\mcX{\mathcal{X}}
+\newcommand\mcY{\mathcal{Y}}
+
+
+
+\newcommand\mfa{\mathfrak{a}}
+\newcommand\mfb{\mathfrak{b}}
+\newcommand\mfm{\mathfrak{m}}
+\newcommand\mfn{\mathfrak{n}}
+\newcommand\mfp{\mathfrak{p}}
+\newcommand\mfq{\mathfrak{q}}
+\newcommand\mfr{\mathfrak{r}}
+
+
+\DeclareMathOperator{\OOO}{\mcO}
+
+\newcommand\OA{\OOO_A}
+\newcommand\OB{\OOO_B}
+\newcommand\OC{\OOO_C}
+\newcommand\OD{\OOO_D}
+\renewcommand\OE{\OOO_E}
+\newcommand\OF{\OOO_F}
+\newcommand\OG{\OOO_G}
+\newcommand\OH{\OOO_H}
+\newcommand\OI{\OOO_I}
+\newcommand\OJ{\OOO_J}
+\newcommand\OK{\OOO_K}
+\newcommand\OL{\OOO_L}
+\newcommand\OM{\OOO_M}
+\newcommand\ON{\OOO_N}
+\newcommand\OP{\OOO_P}
+\newcommand\OQ{\OOO_Q}
+\newcommand\OR{\OOO_R}
+\newcommand\OS{\OOO_S}
+\newcommand\OT{\OOO_T}
+\newcommand\OU{\OOO_U}
+\newcommand\OV{\OOO_V}
+\newcommand\OX{\OOO_X}
+\newcommand\OY{\OOO_Y}
+\newcommand\OZ{\OOO_Z}
+\newcommand{\OO}[1]{\OOO_{#1}}
+\newcommand{\OOP}[1]{\OO{\P({#1})}}
+\newcommand{\OOA}[1]{\OO{\A({#1})}}
+
+\newcommand{\loc}{\mathrm{loc}}
+
+\newcommand{\rsa}{\rightsquigarrow}
+\newcommand{\dto}{\dashrightarrow}
+\renewcommand{\emptyset}{\varnothing}
+
+\def\dfn{:\overset{\mbox{{\scriptsize def}}}{=}}
+
+
+
+
+%%%%%%%%%タイトル
+\title{永田 可換環論 解答}
+\author{ゆじとも}
+\date{\today}
+
+\begin{document}
+\maketitle
+\setcounter{subsection}{-1}
+
+
+用語が古い部分もあるので、
+\cite{stacks-project}で用いられている用語 (の和訳) に置き換えてます
+(タイトルで用いられている用語だけ本文のままにしてます)。
+また、たとえば、本文での「問題6.0の1番」の問題は、
+このノートでは「問題6.0.1」という表記で表されます。
+
+このノートでは以下の記号を用います：
+
+\begin{itemize}
+  \item
+  環は\(A,B,R\)などで表す。
+  係数環であることを強く意識する場合には、
+  \(k\)という記号を用いるかもしれない。
+  \item
+  加群は\(M,N,P,Q\)などで表す。
+  \item
+  イデアルは\(I,J\)などで表す。
+  \(\mathfrak{a,b}\)などを用いることもあるかもしれない。
+  \item
+  素イデアルは\(\mathfrak{p,q}\)などで表す。
+  \item
+  体は\(k,K,L\)などで表す。
+  \item
+  環\(A\)の全商環を\(Q(A)\)で表す。
+  これはべき零でない元すべての集合による局所化であり、
+  \(A\)がネーター環なら\(Q(A)\)はアルティン環となる。
+  \item
+  環\(A,B\)の直積を\(A\times B\)で表す。
+  （本文中では\(A\oplus B\)という記号が使われている）
+  \item
+  環\(A\)と\(A\)-加群\(M\)に対し、
+  \(M\)のイデアル化を
+  \[A\ltimes M \dfn \mathrm{Sym}_A(M)/\mathrm{Sym}_A^{\geq 2}(M)\]
+  で表す (半直積)。
+  \item
+  \(A\)のKrull次元のことを単に次元と言い、
+  \(\dim A\)や\(\dim(A)\)などで表す。
+\end{itemize}
+
+
+\section{加群}
+
+\label{section 1}
+
+
+\subsection{環と体}
+
+\begin{prob}\label{prob: 1.0.1}
+  整域の標数は\(0\)か素数であることを示せ。
+\end{prob}
+
+\begin{proof}
+  \(A\)を整域とすると、
+  射\(\Z\to A\)の像は整域であるから、
+  \(\Z\to A\)の核は素イデアルである。
+  これは\(A\)の標数が素数または\(0\)であることを示している。
+\end{proof}
+
+\begin{prob}\label{prob: 1.0.2}
+  環\(A\)とそのイデアル\(I_1,\cdots, I_r\)について、以下を示せ：
+  \begin{enumerate}
+    \item \label{enumi: 1.0.2.1}
+    \(I_1 + I_2 = A\)ならば、次が成り立つ：
+    \begin{enumerate}
+      \item \label{enumii: 1.0.2.1.1}
+      \(I_1\cap I_2 = I_1I_2\)
+      \item \label{enumii: 1.0.2.1.2}
+      任意の自然数\(m_1,m_2 \geq 1\)に対し、
+      \(I_1^{m_1} + I_2^{m_2} = A\)
+      \item \label{enumii: 1.0.2.1.3}
+      \(A/(I_1\cap I_2) \cong A/I_1 \times A/I_2\)
+    \end{enumerate}
+    \item \label{enumi: 1.0.2.2}
+    \(i\neq j\)ならば\(I_i+I_j = A\)、が成立すれば、
+    \(A/(I_1^{m_1}\cap \cdots \cap I_n^{m_r}) \cong
+    A/I_1^{m_1}\times \cdots \times A/I_r^{m_r}\)である。
+  \end{enumerate}
+\end{prob}
+
+\begin{proof}
+  \ref{enumi: 1.0.2.1}も\ref{enumi: 1.0.2.2}も
+  本文の定理1.0.5 (中国剰余定理) を用いればわかる。
+\end{proof}
+
+
+\begin{prob}\label{prob: 1.0.3}
+  元の個数が有限である整域は体である。
+\end{prob}
+
+\begin{proof}
+  \(A\)を元の個数が有限な整域であるとする。
+  \(a\in A\setminus (0)\)とすると、
+  \(A\)の元の個数が有限であるから、
+  \(\{a^n | n\in \N\}\subset A\)は有限集合であり、
+  従ってある\(n > m\)が存在して\(a^n = a^m\)となる。
+  \(A\)は整域なので\(a^{n-m} = 1\)となり、
+  これは\(a\)が可逆元であることを意味する。
+  以上で証明を完了する。
+\end{proof}
+
+
+
+\subsection{加群}
+
+
+\begin{prob}\label{prob: 1.1.1}
+  \begin{enumerate}
+    \item \label{enumi: 1.1.1.1}
+    \(A = A_1\times \cdots \times A_r\)であるとき、
+    \(e_i = (0,\cdots, 0, 1, 0 ,\cdots, 0)\)は冪等元であり、
+    \(e_1+\cdots +e_r\)は\(A\)の単位元である。
+    \item \label{enumi: 1.1.1.2}
+    逆に\(A\)の単位元\(1\)が冪等元\(e_1,\cdots,e_r\)の和で、
+    各\(i\neq j\)に対して\(e_ie_j = 0\)が成り立つとき、
+    \(A = (e_1) + \cdots + (e_r)\)である。
+    \item \label{enumi: 1.1.1.3}
+    \ref{enumi: 1.1.1.2}の状況で、
+    \(A_i = A/(e_1,\cdots, e_{i-1},e_{i+1},\cdots ,e_r)\)と置き、
+    \(M\)が\(A\)-加群であるとき、
+    \(e_iM\)は\(A_i\)-加群であり、
+    \(M\)は\(A\)-加群として
+    \(M\cong \bigoplus_{i=1}^r e_iM\)である。
+  \end{enumerate}
+\end{prob}
+
+\begin{proof}
+  \ref{enumi: 1.1.1.1}は自明、
+  \ref{enumi: 1.1.1.2}は定義より従い、
+  \ref{enumi: 1.1.1.3}は中国剰余と同様に証明できる。
+\end{proof}
+
+
+
+\begin{prob}\label{prob: 1.1.2}
+  環\(A\)は自然に\(\Z\)-代数であり、
+  \(A\)-加群\(M\)は自然に\(\Z\)-加群である。
+\end{prob}
+
+\begin{proof}
+  自明である。
+\end{proof}
+
+
+
+\begin{prob}\label{prob: 1.1.3}
+  \(M\)を長さ有限\(A\)-加群
+  \footnote{本文では長さ有限\(A\)-加群のことをArtin加群と定義しており、
+  これは\cite{stacks-project}などで用いられている用語と違うので注意が必要である。}、
+  \(N\subset M\)を部分\(A\)-加群とすると、
+  \(N\)も長さ有限\(A\)-加群であり、以下が成り立つ：
+  \[\length(M) = \length(M/N) + \length(N).\]
+\end{prob}
+
+\begin{proof}
+  \(N\)が長さ有限であることも
+  長さに関する等式もすべて
+  本文定理1.1.6 (Jordan-H\"{o}lderの定理) より従う。
+\end{proof}
+
+
+\begin{prob}\label{prob: 1.1.4}
+  環\(R,A\)について、\(A\)が\(R\)-加群であり、
+  さらに\(R\)の作用が\(r(ab) =(ra)b\)を満たしている
+  \footnote{これは\(A\)が\(R\)-多元環であるということの本文での定義である}
+  ことと、\(A\)が\(R\)-代数である
+  \footnote{こちらは通常の意味}
+  ということは、同値である。
+\end{prob}
+
+\begin{proof}
+  自明である。
+\end{proof}
+
+
+
+\subsection{多項式環}
+
+\begin{prob}\label{prob: 1.2.1}
+  \(A\)が整域なら、\(A\)の上の\(n\)変数多項式環\(A[x_1,\cdots,x_n]\)も整域である。
+\end{prob}
+
+\begin{proof}
+  二つの\(0\)でない多項式\(f,g\)について
+  \(fg = 0\)であれば最高次係数 (これは\(0\)でない\(A\)の元である)
+  の積が\(0\)となるので、
+  これは\(A\)が整域であることに反する。
+\end{proof}
+
+\begin{prob}\label{prob: 1.2.2}
+  積\(\prod_{i=1}^n (x-a_i)\)を\(x\)の多項式として展開して
+  \(x^n + c_1x^{n-1} + \cdots + c_n \)とすれば、
+  \(a_1,\cdots, a_n\)の基本対象式は
+  \((-1)^rc_r, (r=1,\cdots ,n)\)である。
+\end{prob}
+
+\begin{proof}
+  ただの計算。
+\end{proof}
+
+
+
+\subsection{テンサー積}
+
+\begin{prob}\label{prob: 1.3.1}
+  \(A\)が環、\(M,N\)が\(A\)-加群であるとき、次が成り立つ。
+  \begin{enumerate}
+    \item \label{enumi: 1.3.1.1}
+    \(M\otimes N \cong N\otimes M\)
+    \item \label{enumi: 1.3.1.2}
+    \(0\otimes n = m\otimes 0 = 0\)
+  \end{enumerate}
+\end{prob}
+
+\begin{proof}
+  \ref{enumi: 1.3.1.2}は自明ある。
+  \ref{enumi: 1.3.1.1}は函手の自然な同型
+  \(\Hom_A(M,\Hom_A(N,-)) \cong \Hom_A(N,\Hom_A(M,-))\)
+  に注目すれば証明できる。
+\end{proof}
+
+
+
+\begin{prob}\label{prob: 1.3.2}
+  \(A\)が環、\(I,J\subset A\)がイデアルであるとき、
+  \((A/I)\otimes_A(A/J)\cong A/(I+J)\)である。
+\end{prob}
+
+\begin{proof}
+  完全列
+  \[
+  \begin{CD}
+    I @>>> A @>>> A/I @>>> 0
+  \end{CD}
+  \]
+  に\(A/J\)をテンソルすると
+  \[
+  \begin{CD}
+    I\otimes_A (A/J) @>>> A/J @>>> (A/I) \otimes_A A/J @>>> 0
+  \end{CD}
+  \]
+  を得るが、
+  \(\im(I\otimes_A (A/J) \to A/J) = (I+J)/J\)
+  であるから、所望の同型を得る。
+\end{proof}
+
+
+\begin{prob}\label{prob: 1.3.3}
+  \(A\)を環、\(M,N\)を長さ有限\(A\)-加群、
+  \(m\dfn \length_A(M), n\dfn \length_A(N)\)とする。
+  このとき\(M\otimes_A N\)も長さ有限\(A\)-加群であり、
+  \(\length_A(M\otimes_A N)\leq mn\)であることを示せ。
+  \(A\)が体であれば等号が成立し、
+  必ずしも一般には等号が成立するとは限らないことを例示せよ。
+\end{prob}
+
+\begin{proof}
+  \(M\)の長さが\(1\)である場合には
+  ある極大イデアル\(\mathfrak{m}\subset A\)により
+  \(M\cong A/\mathfrak{m}\)となるので、
+  \(M\otimes_A N \cong N/\mathfrak{m}N\)も長さ有限であり、
+  \(\length_A(M\otimes_A N) \leq 1\times n\)である。
+  \(\length_A(M) < m\)となる\(M\)に対して主張が正しいと仮定すれば、
+  長さ\(M\)の長さが\(m\)であるとき、
+  長さ\(m-1\)の部分加群\(M'\)を取れば、
+  \(M'\otimes_A N\)は長さ有限で、その長さは\((m-1)n\)以下である。
+  また、\(M/M'\)は長さ\(1\)であるから、
+  \((M/M')\otimes_A N\)は長さ有限で、その長さは\(n\)以下である。
+  完全列
+  \[
+  \begin{CD}
+    M' \otimes_A N @>>> M\otimes_A N @>>> (M/M') \otimes_A N @>>> 0
+  \end{CD}
+  \]
+  に注目することで、\(M\otimes_A N\)も長さ有限であり、
+  その長さは\((m-1)n + n = mn\)以下であることがわかる。
+  \(A\)が体であるときに所望の等号が成立することは自明である。
+  そうでない場合に等号が成立しない例としては、例えば
+  \(A=k[x]/(x^2), M=N=A\)
+  とすれば\(m=n=2\)であるが\(M\otimes_A N \cong A\)の長さは\(2 < 4\)である、
+  というものが挙げられる。
+\end{proof}
+
+
+
+
+\subsection{完全系列}
+
+\begin{prob}\label{prob: 1.4.1}
+  自由加群は平坦である。
+\end{prob}
+
+\begin{proof}
+  短完全列の族の直和が短完全列であることからただちに従う。
+\end{proof}
+
+
+
+
+\begin{prob}\label{prob: 1.4.2}
+  二つの平坦\(A\)-加群\(M,N\)に対し\(M\oplus N\)も平坦であることを示せ。
+\end{prob}
+
+\begin{proof}
+  これも二つの短完全列の直和が完全であることからただちに従う。
+\end{proof}
+
+
+\begin{prob}\label{prob: 1.4.3}
+  \(R\)-代数\(A\)が\(R\)上平坦で、\(A\)-加群\(M\)が平坦\(A\)-加群であれば、
+  \(R\)-加群としても平坦である。
+\end{prob}
+
+\begin{proof}
+  \(R\)-加群\(N\)に対して
+  \(N\otimes_R M \cong (N\otimes_A A)\otimes_A M\)
+  であることから直ちに従う。
+\end{proof}
+
+\begin{prob}\label{prob: 1.4.4}
+  \(A\)-加群の完全列
+  \[
+  \begin{CD}
+    0 @>>> M_1 @>>> M_2 @>>> M_3 @>>> 0
+  \end{CD}
+  \]
+  に対し、\(M_3\)が平坦であれば、
+  任意の\(A\)-加群\(N\)に対して
+  \[
+  \begin{CD}
+    0 @>>> M_1\otimes_A N @>>> M_2\otimes_A N @>>> M_3\otimes_A N @>>> 0
+  \end{CD}
+  \]
+  も完全である。
+\end{prob}
+
+\begin{proof}
+  完全列\(0\to K\to A^{\oplus J} \to N\to 0\)をとれば、
+  図式
+  \[
+  \begin{CD}
+    @. M_1\otimes_A K @>>> M_2\otimes_A K @>>> M_3\otimes_A K @>>> 0 \\
+    @. @VVV @VVV @VVV @. \\
+    0 @>>> M_1\otimes_A A^{\oplus J} @>>> M_2\otimes_A A^{\oplus J}
+    @>>> M_3\otimes_A A^{\oplus J} @>>> 0
+  \end{CD}
+  \]
+  を得るが、
+  \(M_3\)は平坦であるから
+  \(\ker(M_3\otimes_A K \to M_3\otimes_A A^{\oplus J}) = 0\)であり、
+  従って蛇の補題より
+  \[
+  \ker(M_1\otimes_A N\to M_2\otimes_A N) =
+  \ker(M_3\otimes_A K \to M_3\otimes_A A^{\oplus J})/ (\text{何らか}) = 0
+  \]
+  であることがわかる。
+\end{proof}
+
+
+
+
+
+\subsection{体}
+
+\begin{prob}\label{prob: 1.5.1}
+  \(k\subset K\subset L\)が体の拡大の列であるとき、
+  次の等式が成立する：
+  \[
+  \trdeg_k(L) = \trdeg_k(K) + \trdeg_k(L).
+  \]
+\end{prob}
+
+\begin{proof}
+  \(K/k\)の超越基底を\(B_1\subset K\setminus k\)として
+  \(L/K\)の超越基底を\(B_2\subset L\setminus K\)として
+  \(B\dfn B_1\cup B_2\subset L\)と定める。
+  このとき\(k(B)\subset K(B_2)\subset L\)は代数拡大の列であるから
+  \(L/k(B)\)は代数拡大であり、
+  さらにどんな真の部分集合\(B'\subsetneq B\)に対しても
+  \(k(B'\cap B_1)\subset K\)か
+  \(K(B'\cap B_2)\subset L\)のいずれかが代数拡大とはならないので、
+  \(k(B')\subsetneq k(B)\)は代数拡大とはならない。
+  このことから所望の等式を得る。
+\end{proof}
+
+
+
+\begin{prob}\label{prob: 1.5.2}
+  \begin{enumerate}
+    \item \label{enumi: 1.5.2.1}
+    標数\(0\)の体は完全体であることを示せ。
+    \item \label{enumi: 1.5.2.2}
+    標数\(p\neq 0\)の体\(k\)については、以下の主張が同値であることを示せ：
+    \begin{enumerate}
+      \item \label{enumii: 1.5.2.2.1}
+      \(k\)は完全体である。
+      \item \label{enumii: 1.5.2.2.2}
+      任意の\(a\in k\)に対してある\(b\in k\)が存在して\(a=b^p\)となる。
+      \item \label{enumii: 1.5.2.2.3}
+      \(k^p \dfn \{a^p| a\in k\} = k\)である。
+    \end{enumerate}
+  \end{enumerate}
+\end{prob}
+
+\begin{proof}
+  \ref{enumi: 1.5.2.1}は標数\(0\)の体上の\(1\)次以上の多項式の微分が
+  決して\(0\)とはならないことからただちに従う。
+  \ref{enumi: 1.5.2.2}のうち \ref{enumii: 1.5.2.2.2} \(\Leftrightarrow\)
+  \ref{enumii: 1.5.2.2.3} は\(k^p\)の定義よりただちに従う。
+  \ref{enumii: 1.5.2.2.2}の否定、すなわち
+  \(p\)乗根がとれない元\(a\in k\)が存在するということが成り立てば、
+  \(k[x]/(x^p - a)\)は\(k\)の純非分離拡大であるから、
+  主張\ref{enumii: 1.5.2.2.1}が否定される。
+  また主張\ref{enumii: 1.5.2.2.1}の否定が成り立てば、
+  純非分離拡大\(k'/k\)が存在するので、
+  \(b\in k'\setminus k\)をとって
+  \(b^{p^r} \in k\)となる最小の\(r > 0\)をとることで
+  \(a\dfn b^{p^{r-1}}\)とすることで主張\ref{enumii: 1.5.2.2.2}が否定される。
+  以上で全て示された。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{イデアルの一般論}
+\label{section: 2}
+
+\subsection{整域と素イデアル}
+
+
+\begin{prob}\label{prob: 2.0.1}
+  \(A\)を環、\(\mfp\)を素イデアルとするとき、
+  \(A[t_1,\cdots,t_r]\)において
+  \(\mfp\)で生成されたイデアル\(\mfp A[t_1,\cdots, t_r]\)は
+  \(A[t_1,\cdots, t_r]\)の素イデアルであることを示せ。
+  より一般に、イデアル\(I\)に対して以下が成り立つことを示せ。
+  \[(A/I)[t_1,\cdots, t_r]\cong A[t_1,\cdots, t_r]/IA[t_1,\cdots ,t_r].\]
+\end{prob}
+
+\begin{proof}
+  自然な射\(A[t_1,\cdots, t_r] \to (A/I)[t_1,\cdots, t_r]\)
+  の核はちょうど各係数が\(I\)に属する多項式全体のなす集合であり、
+  それは\(IA[t_1,\cdots, t_r]\)に他ならない。
+\end{proof}
+
+
+\begin{prob}\label{prob: 2.0.2}
+  \(S\subset A\)を積閉集合で\(0\not\in S\)、
+  \(I\dfn \ker(A\to S^{-1}A)\)、
+  \(\mfq\)を準素イデアルとする。
+  このとき\(\mfq\cap S = \emptyset\)ならば\(\mfq\supset I\)となることを示せ。
+\end{prob}
+
+\begin{proof}
+  \(\mfp = \sqrt{\mfq}\)と置く。
+  \(\mfq\)は準素イデアルなので\(\mfp\)は素イデアルであり、
+  \(\mfq\cap S = \emptyset\)なので\(\mfp\cap S = \emptyset\)である。
+  \(B\dfn A_{\mfp}/\mfq A_\mfp\)と置く。
+  自然な射\(A\to B\)が得られるが、
+  \(\mfp\cap S = \emptyset\)であるから、
+  この射によって\(S\)の元は単元へと写される。
+  従って一意的に\(A\)-代数の射\(S^{-1}A \to B\)を得る。
+  \(\mfq\)は\(\mfp\)-準素イデアルなので\(\ker(A\to B) = \mfq\)であり、
+  従って\(\mfq\supset I\)がわかる。
+\end{proof}
+
+
+
+\subsection{イデアルについての演算、根基}
+
+この小節に演習問題はついてない。
+
+\subsection{準素イデアル}
+
+\begin{prob}\label{2.2.1}
+  \(A\)を環、\(B\dfn A[t_1,\cdots, t_r]\)とする。
+  次を示せ：
+  \begin{enumerate}
+    \item \label{2.2.1.1}
+    \(\mfq\)が\(A\)の\(\mfp\)-準素イデアルであれば、
+    \(\mfq B\)は\(\mfp B\)-準素イデアルである。
+    \item \label{2.2.1.2}
+    \(f\in B\)に対して\(\mathrm{Inh}(f)\subset A\)により
+    \(f\)の係数全体で生成したイデアルを表すとする。
+    このとき、二つの元\(f,g\in B\)に対して以下が成り立つ：
+    \[\sqrt{\mathrm{Inh}(fg)} = \sqrt{\mathrm{Inh}(f)}\cap \sqrt{\mathrm{Inh}(g)}.\]
+  \end{enumerate}
+\end{prob}
+
+\begin{proof}
+  \ref{2.2.1.1}を示す。
+  \(k\dfn A_{\mfp}/\mfq A_\mfp\)と置くと、
+  \(\mfq\)は準素イデアルなので\(\mfq = \ker (A\to k)\)であり、
+  さらに\(\Z[t_1,\cdots,t_r]\)は平坦\(\Z\)-加群なので、
+  \(\otimes A\)することで
+  \(\mfq B = \ker (B \to B[t_1,\cdots, t_r])\)
+  となることがわかる。
+  \(k\)の零因子はすべてべき零であるので、
+  \(k[t_1,\cdots, t_r]\)の零因子もすべてべき零であり、
+  従って\(\mfq B\)は準素イデアルとなる。
+  明らかに\(\sqrt{\mfq B} = \mfp B\)である。
+  以上で証明を完了する。
+
+  \ref{2.2.1.2}を示す。
+  \(fg\)の係数は\(f\)の係数と\(g\)の係数の積と和によって表すことができ、
+  このことは
+  \(\mathrm{Inh}(fg)\subset \mathrm{Inh}(f)\cap \mathrm{Inh}(g)\)
+  を示している。
+  従ってとくに
+  \[
+  \sqrt{\mathrm{Inh}(fg)} \subset \sqrt{\mathrm{Inh}(f)}\cap \sqrt{\mathrm{Inh}(g)}
+  \]
+  が成り立つ。
+  \(\mfp\)を\(\mathrm{Inh}(fg)\)を含む素イデアルとすると、
+  \((A/\mfp)[t_1,\cdots, t_r]\)において\(fg=0\)であるが、
+  \((A/\mfp)[t_1,\cdots, t_r]\)は整域であるから、
+  この環において\(f=0\)または\(g=0\)である。
+  従って\(\mfp\)は\(\mathrm{Inh}(f)\)または\(\mathrm{Inh}(g)\)の一方を含む。
+  特に\(\mathrm{Inh}(f)\cap \mathrm{Inh}(g)\)を含む。
+  このことは
+  \[
+  \sqrt{\mathrm{Inh}(fg)} \supset \sqrt{\mathrm{Inh}(f)}\cap \sqrt{\mathrm{Inh}(g)}
+  \]
+  が成り立つことを意味している。
+  以上で証明を完了する。
+\end{proof}
+
+
+
+
+\begin{prob}\label{prob: 2.2.2}
+  \(f:A\to B\)を環準同型、\(I\subset A, J\subset B\)をイデアルとする。
+  \begin{enumerate}
+    \item \label{enumi: 2.2.2.1}
+    \(J\)が\(B\)の準素イデアルであれば、
+    逆像\(f^{-1}(J)\subset A\)は\(A\)の準素イデアルである。
+    \(J\)が\(B\)の素イデアルであれば、
+    逆像\(f^{-1}(J)\subset A\)は\(A\)の素イデアルである。
+    \item \label{enumi: 2.2.2.2}
+    \(I\)が準素イデアルであっても、像\(f(I)\)が準素イデアルであるとは限らない。
+    \(f\)が全射であれば、\(\ker(f)\subset I\)であれば、
+    \(I\)が準素であることと\(f(I)\)が準素であることは同値である。
+  \end{enumerate}
+\end{prob}
+
+\begin{proof}
+  \ref{enumi: 2.2.2.1}を示すには、
+  整域の部分環が整域であることと、
+  零因子がすべてべき零であるような環の部分環の零因子はすべてべき零であることに注意すれば良い。
+  \ref{enumi: 2.2.2.2}の二つ目の主張は先ほどと同様である。
+  \(f(I)\)が準素ではないような例は
+  \(k = \Q, A=B=k[t], I=(t-1)\)として
+  \(f:A\to B\)を\(f(t)=t^2\)で定めれば
+  \(f(I) = (t^2-1)\)は根基が二つの異なる素イデアル\((t-1),(t+1)\)の共通部分となるので
+  準素ではない。
+\end{proof}
+
+
+
+
+\begin{prob}\label{prob: 2.2.3}
+  \(\mfp\subset A\)が素イデアル、
+  \(\mfq\)が\(\mfp\)-準素イデアル、
+  \(a\in A\setminus \mfq\)であるとき、
+  \([\mfq:a]\)は\(\mfp\)-準素イデアルである。
+\end{prob}
+
+\begin{proof}
+  \(a'\in [\mfq:a]\)なら\(aa'\in \mfq\)なので
+  \(a\not\in \mfq\)であることから\(a'\in\sqrt{\mfq} = \mfp\)がわかり、
+  従って\([\mfq:a]\subset \mfp\)である。
+  これは特に\(A\neq [\mfq:a]\)であることを意味する。
+  また、\(\mfq\subset [\mfq:a]\subset\mfp\)であるから、
+  \(\sqrt{[\mfq:a]} = \mfp\)である。
+
+  \(bc\in [\mfq:a], b\not\in [\mfq:a]\)とすると、
+  \(abc\in \mfq\)かつ\(ab\not\in \mfq\)であるから、
+  \(\mfq\)が準素であることから\(c\in \mfp\)となる。
+  これは\([\mfq:a]\)が準素であることを意味する。
+\end{proof}
+
+
+
+\subsection{商環}
+
+\begin{prob}\label{prob: 2.3.1}
+  \(S\subset A\)を積閉集合とする。
+  商環\(S^{-1}A\)は次のように定義しても同型なものが定まることを確かめよ：
+  \begin{itemize}
+    \item
+    積集合\(A\times S\)に
+    \[
+    (a,s) \sim (a',s') \ \iff \
+    \exists t\in S, as't = a'st
+    \]
+    で同値関係を定義する。
+    同値類\((A\times S)/\sim\)における\((a,s)\)の同値類を\(a/s\)と表し、
+    演算を次で定義する：
+    \begin{align*}
+      a_1/s_1 + a_2/s_2 &\dfn (a_1s_2+a_2s_1)/s_1s_2, \\
+      a_1/s_1 \times a_2/s_2 &\dfn a_1a_2/s_1s_2.
+    \end{align*}
+  \end{itemize}
+\end{prob}
+
+\begin{proof}
+  なんかまじでやるだけなので省略します。
+\end{proof}
+
+
+
+\begin{prob}\label{prob: 2.3.2}
+  \(A\)を環、
+  \(0\not\in S_i\subset A, i\in I\)を積閉集合の族として、
+  各極大イデアル\(\mfm\)に対してある\(i\)が存在して
+  \(S_i\cap \mfm = \emptyset\)となるとする。
+  このとき、\(A\)-加群\(M\)について、
+  任意の\(i\)で\(M\otimes_A S_i^{-1}A = 0\)が成り立てば\(M=0\)となる。
+\end{prob}
+
+\begin{proof}
+  問いの条件はスキームの射\(\coprod_{i\in I}\Spec(S^{-1}_i A) \to \Spec(A)\)
+  が全射であることを主張しているが、
+  この射はいつでも平坦射であるから、特に問いの状況においては忠実平坦射となり、
+  すると主張は明らかである。
+\end{proof}
+
+
+
+
+
+
+
+\subsection{整拡大}
+
+
+
+\begin{prob}\label{prob: 2.4.1}
+  \(I\)をイデアル、\(S\)を積閉集合、
+  \(I\cap S = \emptyset\)とするとき、
+  \(\hight(I)\)と\(\hight(I S^{-1}A)\)の関係は？
+\end{prob}
+
+\begin{proof}
+  \(S^{-1}A\)は平坦\(A\)-代数であるから下降性質を満たし、
+  また\(\Spec(S^{-1}A) \to \Spec(A)\)は単射であるから、
+  これら二つの事実により\(\hight(I) = \hight(IS^{-1}A)\)となる。
+\end{proof}
+
+
+
+
+\begin{prob}\label{prob: 2.4.2}
+
+\end{prob}
+
+
+
+\begin{prob}\label{prob: 2.4.3}
+
+\end{prob}
+
+
+
+
+\subsection{素元分解の一意性}
+
+
+\begin{prob}\label{prob: 2.5.1}
+  \(\Z\)の素イデアルは\((0)\)または素数\(p\)に対する\((p)\)である。
+  \(p\)が素数なら\((p)\)は極大イデアルであり、
+  \(\Z/p\Z\)は\(p\)個の元からなる体である。
+\end{prob}
+
+\begin{proof}
+  今までこれよりよっぽど難しい問題や主張が並べてあっただろ。略。
+\end{proof}
+
+
+\begin{prob}\label{prob: 2.5.2}
+  \(A\)をPIDとすると、\(0\)でない素イデアルは極大である。
+\end{prob}
+
+\begin{proof}
+  \(\mfp\)を\(0\)でない素イデアルとする。
+  \(A\)はPIDなのである\(a\in \mfp\)によって\(\mfp = (a)\)と表すことができる。
+  \(\mfp \subsetneq I\)となるイデアル\(I\)を任意にとると、
+  ある元\(b\in I\)によって\(I=(b)\)と表すことができる。
+  \(\mfp \subset I\)なのである\(c\in A\)によって\(a=bc\)と表すことができる。
+  \(\mfp \subsetneq I\)なので\(b\not\in \mfp\)であるが、
+  \(\mfp\)が素イデアルであることと、\(bc=a\in \mfp\)であることから、
+  \(c\in \mfp = (a)\)がわかる。
+  よってある元\(d\in A\)が存在して\(c=ad\)となり、
+  \(a=bc=abd\)となる。
+  \(A\)は整域なので、\(bd=1\)となり、
+  従って\(I=A\)がわかる。
+  これは\(\mfp\)が極大であることを意味する。
+\end{proof}
+
+
+
+\begin{prob}\label{prob: 2.5.3}
+  \(A,B\)を単項イデアル環\footnote{すべてのイデアルが単項である環}とするとき、
+  \(A\times B\)も単項イデアル環となることを示せ。
+  \autoref{prob: 2.5.2}において、
+  「PID」を「単項イデアル環」に変更すると、反例があることを示せ。　
+\end{prob}
+
+\begin{proof}
+  \(I\subset A\times B\)をイデアル、
+  \(p:A\times B\to A, q:A\times B \to B\)を射影とする。
+  このとき、\(A,B\)は単項イデアル環なので、
+  \(p(I)\subset A, q(I)\subset B\)はそれぞれある元\(a\in A,b\in B\)によって
+  \(p(I) = (a), q(I) = (b)\)と表すことができる。
+  これにより、\(((a,b)) = I\)であることがわかる。
+  よって\(A\times B\)は単項イデアル環である。
+  \autoref{prob: 2.5.2}の単項イデアル環の場合の反例は、
+  \(A,B\)を二つのPIDとした場合に
+  \(A\times B\)は単項イデアル環であり、
+  \(((1,0))\)はその極大でない素イデアルとなることによって得られる
+  (この場合、当然、\((0)\)は素イデアルではない)。
+\end{proof}
+
+
+
+
+\begin{prob}\label{prob: 2.5.4}
+  整域\(A\)がUFDであるための必要十分条件は以下の条件が成り立つことである：
+  \begin{enumerate}
+    \item \label{enumi: 2.5.4.1}
+    単項イデアルについての極大条件が成立する、
+    すなわち、単項イデアルからなる任意の集合は包含に関して極大元を持つ。
+    \item \label{enumi: 2.5.4.2}
+    \(A\)以外のすべての単項イデアルはある高さ\(1\)の素イデアルに含まれる。
+    \item \label{enumi: 2.5.4.3}
+    高さ\(1\)の素イデアルはすべて単項である。
+  \end{enumerate}
+  (特にネーター整域がUFDであることの必要十分条件は
+  高さ\(1\)の素イデアルがすべて単項となることである)
+\end{prob}
+
+\begin{proof}
+  必要性を証明する。\(A\)をUFDとする。
+  \ref{enumi: 2.5.4.3}から確認する。
+  \(\mfp\subset A\)を高さ\(1\)の素イデアルとする。
+  すると\((0)\neq \mfp\)である。
+  よって元\(0\neq a\in \mfp\)が存在する。
+  \(a\)を素元分解して\(a=p_1^{n_1}\cdots p_r^{n_r}\)とする。
+  \(\mfp\)は素イデアルであるから、
+  ある\(i\)が存在して\(p_i\in \mfp\)となる。
+  \(p_i\)は素元であるから、
+  \((p_i)\)は素イデアルであり、
+  \(\mfp\)は高さ\(1\)であるから、
+  \((p_i) = \mfp\)であることがわかる。
+  以上で\ref{enumi: 2.5.4.3}が確認できた。
+
+  \ref{enumi: 2.5.4.2}を確認する。
+  \((a)\subsetneq A\)を単項イデアル、
+  \(\mfp\)を\((a)\)の極小素イデアルとする。
+  素元分解\(a=p_1^{n_1}\cdots p_r^{n_r}\)を考えれば、
+  \(\mfp\)が素イデアルであることから、
+  ある\(i\)が存在して\((p_i)\subset \mfp\)となる。
+  \((a)\subset (p_i)\)であることと\(\mfp\)が\((a)\)の極小素イデアルであることから、
+  \(\mfp = (p_i)\)がわかる。
+  (特に、単項イデアルの極小素イデアルはいずれも単項イデアルであることがわかった。)
+  \(\mfq\)を\(\mfp\)に含まれる高さ\(1\)の素イデアルとすると、
+  すでに確認済みの\ref{enumi: 2.5.4.3}により、
+  \(\mfq = (q)\)となる\(q\in \mfq\)が存在する。
+  \((q) = \mfq \subset \mfp = (p_i)\)であるから、
+  ある\(c\in A\)によって\(q=cp_i\)と表すことができるが、
+  \(p_i,q\)は素元であり\(A\)はUFDであるから\(c\)は単元でなければならない。
+  これは\(\mfp = (p_i)\)を意味し、特に\((p_i)\)は高さ\(1\)である。
+  (ここで行われている手続きによって、
+  UFDの単項な素イデアルは\(0\)でなければ高さ\(1\)であることがわかる。)
+  以上で\ref{enumi: 2.5.4.2}が確認できた。
+
+  \ref{enumi: 2.5.4.1}を確認する。
+  単項イデアルからなる昇鎖
+  \(0\neq (a_1)\subsetneq \cdots \subsetneq (a_r) \subsetneq \cdots \)
+  が存在すると仮定する。
+  \(I\)をそれらの和集合とすれば、\(I\)はイデアルである。
+  各\(i\geq 1\)について、
+  \((a_i)\)の極小素イデアルの集合を\(P_i\)とおく。
+  既に示したことにより、\(P_i\)は\(a_i\)を含む高さ\(1\)の素イデアルの集合と等しく、
+  \(A\)がUFDであることにより\(P_i\)はそれぞれ有限集合である。
+  各\(i\geq 1\)について、ある単元でない\(b_i\in A\)が存在して
+  \(a_{i+1} b_i = a_i\)となるので、\(P_{i+1}\subset P_i\)がわかる。
+  \(P_i\)は有限集合であるから、十分大きい\(N_1\)が存在して
+  任意の\(n\geq N\)で\(P_n = P_{N_1}\)となる。
+  \(P \dfn P_{N_1} = \{(p_1),\cdots, (p_r)\}\)と置く。
+  各\(n\)に対してある単元\(u_n\)と自然数\(m_1,\cdots, m_r\)が存在して
+  \(a_n = u_np_1^{m_1}\cdots p_r^{m_r}\)と表すことができ、
+  このとき\(c_n \dfn m_1+\cdots m_r \geq 0\)は\(u_n\)の取り方に依存しない。
+  各\(i\)について\((a_i)\subsetneq (a_{i+1})\)であることから
+  各\(i\geq N_1\)について\(c_i > c_{i+1} > \cdots\)である。
+  しかしこれは\(c_i\geq 0\)に反する。
+  以上で\ref{enumi: 2.5.4.1}が確認できた。
+  これで必要性の証明を完了する。
+
+  十分性を示す。
+  \(A\)は条件\ref{enumi: 2.5.4.1} \ref{enumi: 2.5.4.2} \ref{enumi: 2.5.4.3}
+  を満たすとする。
+  任意に\(0\neq a\in A\)をとる。
+  \(a\)の極小素イデアルの集合を\(P\)とする。
+  \(P\)が無限集合であるとすると、
+  \(\{\mfp_1,\cdots, \mfp_r\}\)と表す。
+\end{proof}
+
+
+
+
+
+\begin{prob}\label{prob: 2.5.5}
+  UFDは整閉整域である。
+\end{prob}
+
+\begin{proof}
+  \(A\)をUFD、\(K\)をその商体とする。
+  \(\mfp\)を\(A\)の高さ\(1\)の素イデアルとする。
+  \ref{prob: 2.5.4}より\(\mfp = (p)\)となる素元\(p\)が存在する。
+  \(A_{\mfp}\)が整閉整域であることを確認する。
+\end{proof}
+
+
+
+
+\section{Noether環、付値環、およびDedekind環}
+
+
+\subsection{Noether環}
+
+\begin{prob}\label{3.0.1}
+  \(A\)を環、\(M\)を有限生成加群とする。
+  \begin{enumerate}
+    \item \label{3.0.1.1}
+    \(A\)-加群の準同型\(f:M\to M'\)に対して、
+    \(\im(f)\)は有限生成である。
+    \item \label{3.0.1.2}
+    \(I\dfn \{ a\in A | aM = 0\}\)とおけば、
+    \(A/I\)はネーター環であり、\(M\)は\(A/I\)-加群とみなせる。
+    \item \label{3.0.1.3}
+    \(M\)の部分加群は一般に有限生成であるとは限らないことを例示せよ。
+    \(A\)がネーター環であるときには\(M\)の部分加群は有限生成加群である。
+  \end{enumerate}
+\end{prob}
+
+\begin{proof}
+  \ref{3.0.1.1}を示すには全射\(A^n\to M\)と\(f\)を合成して
+  全射\(A^n\to \im(f)\)を作れば良い。
+
+  \ref{3.0.1.2}はこのままでは間違っている：
+  ネーターでない整域\(A\)に対して\(M=A\)は有限生成\(A\)-加群であり、
+  \(I=0\)であるが、
+  \(A/I\cong A\)はネーター環ではない。
+  \(M\)がネーター加群であれば正しい：
+  \(A/I\subset \End_A(M)\)であるが\(\End_A(M)\)は\(A\)-加群としてネーターであるから
+  その部分加群\(A/I\)も\(A\)-加群としてネーターであり、
+  とくに\(A/I\)-加群としてもネーターである。
+
+  \ref{3.0.1.3}を示す。
+  \(A\)がネーター環であれば、本文定理3.0.2より有限生成加群\(M\)はネーター加群であり、
+  従ってその任意の部分加群もネーター加群なので、
+  再び本文定理3.0.2を用いれば任意の部分加群の有限生成性がわかる。
+  \(A\)がネーターでないとき、
+  たとえば無限次元\(k\)-線形空間\(V\)に対して
+  そのイデアル化を\(A\dfn k\ltimes V\)とすれば、
+  \(A\)-加群\(A\)は有限生成加群であるが、
+  その部分加群\(V\)は有限生成\(A\)-加群ではない。
+  なぜなら、
+  \(A\)-加群の射\(A\to V\)の像の\(k\)-線形空間としての次元は\(1\)または\(0\)であるから、
+  全射\(A^n\to V\)が存在することは\(V\)の無限次元性に反する。
+  以上で解答を完了する。
+\end{proof}
+
+
+
+\begin{prob}\label{3.0.2}
+  \(A\)-加群\(M\)の部分加群\(N_1,N_2\)がネーター加群であるとき、
+  \(N_1+N_2\)もネーター加群である。
+\end{prob}
+
+\begin{proof}
+  \(N_1\)がネーターであること、
+  \(N_2/(N_1\cap N_2)\)がネーターであること (ネーター加群の商だから)、
+  さらに
+  \[
+  \begin{CD}
+    0 @>>> N_1 @>>> N_1+N_2 @>>> N_2/(N_1\cap N_2) @>>> 0
+  \end{CD}
+  \]
+  は完全であり、
+  短完全列の両端がネーターであれば真ん中もネーターであることから従う。
+\end{proof}
+
+
+\begin{prob}\label{3.0.3}
+  \(A\)がネーター環、
+  \(I\subset A\)がイデアル、
+  \(x\in A\)、\(M\)が有限生成\(A\)-加群、
+  \(N\subset M\)であるとき、
+  自然数\(r\)が存在して、
+  任意の\(n\geq r\)に対して次が成り立つ：
+  \[
+  [(N+I^nM) : x] \subset [N:x] + I^{n-r}M.
+  \]
+\end{prob}
+
+\begin{proof}
+  よくわからないけど、本文系3.1.9そのまんまじゃないのかな。
+\end{proof}
+
+
+\subsection{準素イデアル分解}
+
+
+\begin{prob}\label{3.1.1}
+  \(A\)をネーター環、\(I\subset A\)をイデアル、
+  \(\mfp\)を\(I\)の極小でない素因子とする。
+  \(I\)の二つの最短準素分解
+  \[
+  I = \mfq_1 \cap \cdots \cap \mfq_r
+  = \mfq_1' \cap \cdots \cap \mfq_r'
+  \]
+  で\(\sqrt{\mfq_1} = \sqrt{\mfq_1'} = \mfp\)かつ
+  \(\mfq_1 \neq \mfq_1'\)となるものが存在することを示せ。
+\end{prob}
+
+\begin{proof}
+
+\end{proof}
+
+
+
+\begin{prob}\label{3.1.2}
+  \(M\)が環\(A\)上の加群であるとき、
+  部分加群\(N\subset M\)が\textbf{準素}であるとは、
+  次の条件が成り立つことを言う：
+  \begin{itemize}
+    \item
+    \(a\in A\)が\(M/N\)の零因子なら、
+    ある自然数\(n\)が存在して\(a^nM \subset N\)が成り立つ。
+  \end{itemize}
+  以下を示せ：
+  \begin{enumerate}
+    \item \label{3.1.2.1}
+    \(M\)のイデアル化を\(B\dfn A\ltimes M\)とするとき、
+    \(N\subset M\)が準素であるための必要十分条件は
+    \(B\)のある準素イデアル\(\mfq\)が存在して\(N = \mfq \cap M\)となることである。
+    \item \label{3.1.2.2}
+    \(M\)がネーター加群であれば、
+    \(M\)の任意の部分加群は有限子の準素部分加群の共通部分となる。
+  \end{enumerate}
+\end{prob}
+
+
+\begin{proof}
+  \ref{3.1.2.1}を示す。
+
+  \ref{3.1.2.2}を示す。
+  \(A/\mathrm{Ann}_A(M)\)がネーター環であること
+  (cf. \autoref{3.0.1} \ref{3.0.1.2})
+  より\(A\)をネーターであると仮定してよい。
+  この場合\(B = A\ltimes M\)もネーター環であるから、
+  \ref{3.1.2.1}と本文定理3.1.1と定理3.1.2を用いることで
+  \ref{3.1.2.2}がわかる。
+  以上で解答を完了する。
+\end{proof}
+
+
+
+
+\subsection{局所環の定義}
+\subsection{付値環}
+\subsection{Noether環の整拡大}
+\subsection{いくつかの商環の共通部分}
+
+\section{有限生成環}
+\subsection{正規化定理}
+\subsection{正規化定理の応用例}
+\subsection{正則性}
+\subsection{幾何学的意義}
+
+\section{局所環の完備化}
+\subsection{イデアルによる位相}
+\subsection{べき級数環}
+\subsection{半局所環の完備化}
+\subsection{完備化の平坦性}
+\subsection{平坦性続論}
+
+\section{重複度}
+
+\subsection{Hilbert特性多項式}
+\subsection{\(\lambda\)多項式}
+\subsection{上表元}
+\subsection{重複度の定義}
+\subsection{パラメーター系で生成されるイデアル}
+\subsection{Cohen-Macaulay環}
+\subsection{Krull-秋月の定理}
+
+\begin{prob}
+  \label{prob: 6.6.1}
+  \(A\)が次元\(1\)の被約なNoether環であり、
+  \(A\subset B\subset Q(A)\)を中間の環であるとする。
+  以下が成り立つ：
+  \begin{enumerate}
+    \item \label{enumi: 6.6.1.1}
+    \(J\subset B\)がイデアルであり、\(J\)が非零因子を含めば、
+    \(\length_A(B/J)<\infty\)である。
+    \item \label{enumi: 6.6.1.2}
+    \(B\)はNoether環であり、\(\dim(B)\leq 1\)である。
+  \end{enumerate}
+\end{prob}
+
+\begin{proof}
+  \ref{enumi: 6.6.1.1}。
+  \(J\)が単元を含めば\(B/J=0\)でありこの場合は自明である。
+  よって\(J\)は単元を含まないとして良い。
+  \(A\)は被約なので、\(Q(A)\)は有限個の体の直積であり、
+  \(B\)はその部分環なので、\(B\)も被約となる。
+  \(J\)は非零因子を含むので、\(B\)のどの極小素イデアルにも含まれない。
+  従って、\(I\dfn J\cap A\)も\(A\)のどの極小素イデアルにも含まれない。
+
+  Krull-秋月の定理を追っていけば良い。
+  \(J\)は非零因子を含むので、
+  \(I\dfn J\cap A\)とする。
+  \(\dim(A)\leq 1\)なので\(I\)を含む\(A\)の素イデアルはすべて
+\end{proof}
+
+
+
+\section{syzyzy}
+\subsection{syzyzyの定義}
+\subsection{正則列}
+\subsection{正則局所環}
+
+\section{完備局所環とその応用}
+\subsection{完備局所環の性質}
+\subsection{完備局所環の構造定理}
+\subsection{整閉包の有限性}
+\subsection{Noether整域の整閉包}
+\subsection{素イデアル鎖の長さ}
+
+\section{幾何学的局所環}
+\subsection{局所域}
+\subsection{解析的不分岐性}
+\subsection{解析的正規性}
+
+\section{Hensel環}
+\subsection{不分岐拡大}
+\subsection{Hensel化}
+\subsection{べき級数環}
+
+
+
+
+
+
+
+\appendix
+
+\section{日記}
+
+\begin{nikki*}[2020.12.12. (土)]
+  面白そうなやつだけのつもりだったけど、やっぱ頭から解く。
+  正直クソめんどいが、そう決めないと、
+  どれを解くか迷っているうちに時間だけ経ってしまうという無駄なアレが何年も続くと思った。
+  どうせ最初の方とかは秒だろうし、手の運動だと思うことにしよう。
+  \autoref{section 1}の問題を全て解いた。
+\end{nikki*}
+
+
+\begin{nikki*}[2020.12.14. (月)]
+  昨日は実家に帰ってだらだらする日だったので休み。
+
+\end{nikki*}
+
+
+\begin{thebibliography}{9}
+  \bibitem[永田]{Nag}
+  永田 雅宜「可換環論」
+  紀伊國屋数学叢書 1
+  \bibitem[Stacks]{stacks-project}
+  The Stacks Project Authors,
+  \href{https://stacks.math.columbia.edu/}{\textit{Stacks Project}}.
+\end{thebibliography}
+
+
+
+
+\end{document}
