@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 This is e-upTeX, Version 3.14159265-p3.8.3-u1.26-191112-2.6 (utf8.uptex) (TeX Live 2020) (preloaded format=uplatex 2021.2.6)  10 FEB 2021 09:03
+=======
+This is e-upTeX, Version 3.14159265-p3.8.3-u1.26-191112-2.6 (utf8.uptex) (TeX Live 2020) (preloaded format=uplatex 2021.2.6)  9 FEB 2021 00:57
+>>>>>>> origin/master
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -868,6 +872,7 @@ LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
 
 ] [2]
 LaTeX Font Info:    Font shape `JT2/gt/m/it' in size <10> not available
+<<<<<<< HEAD
 (Font)              Font shape `JT2/gt/m/n' tried instead on input line 241.
 LaTeX Font Info:    Font shape `JT2/gt/m/n' will be
 (Font)              scaled to size 9.24683pt on input line 241.
@@ -883,6 +888,23 @@ LaTeX Font Info:    Font shape `JY2/mc/m/sc' in size <10> not available
 (Font)              Font shape `JY2/mc/m/n' tried instead on input line 241.
 LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
 (Font)              scaled to size 9.24683pt on input line 241.
+=======
+(Font)              Font shape `JT2/gt/m/n' tried instead on input line 237.
+LaTeX Font Info:    Font shape `JT2/gt/m/n' will be
+(Font)              scaled to size 9.24683pt on input line 237.
+LaTeX Font Info:    Font shape `JY2/gt/m/it' in size <10> not available
+(Font)              Font shape `JY2/gt/m/n' tried instead on input line 237.
+LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
+(Font)              scaled to size 9.24683pt on input line 237.
+LaTeX Font Info:    Font shape `JT2/mc/m/sc' in size <10> not available
+(Font)              Font shape `JT2/mc/m/n' tried instead on input line 237.
+LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
+(Font)              scaled to size 9.24683pt on input line 237.
+LaTeX Font Info:    Font shape `JY2/mc/m/sc' in size <10> not available
+(Font)              Font shape `JY2/mc/m/n' tried instead on input line 237.
+LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
+(Font)              scaled to size 9.24683pt on input line 237.
+>>>>>>> origin/master
  [3] (./2-21.aux)
 Package rerunfilecheck Info: File `2-21.out' has not changed.
 (rerunfilecheck)             Checksum: 8F3D2AD4F502313B253F06C9708E93A9;44.
@@ -890,14 +912,26 @@ Package logreq Info: Writing requests to '2-21.run.xml'.
 \openout1 = `2-21.run.xml'.
 
  )
+<<<<<<< HEAD
 (\end occurred when \ifcsname on line 240 was incomplete) 
 Here is how much of TeX's memory you used:
  25520 strings out of 479769
  489934 string characters out of 5879522
  1222061 words of memory out of 5000000
+=======
+(\end occurred when \ifcsname on line 236 was incomplete) 
+Here is how much of TeX's memory you used:
+ 25520 strings out of 479769
+ 489934 string characters out of 5879522
+ 1222084 words of memory out of 5000000
+>>>>>>> origin/master
  42482 multiletter control sequences out of 15000+600000
  419624 words of font info for 111 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
  92i,17n,91p,737b,1316s stack positions out of 5000i,500n,10000p,200000b,80000s
 
+<<<<<<< HEAD
 Output written on 2-21.dvi (3 pages, 20620 bytes).
+=======
+Output written on 2-21.dvi (3 pages, 20588 bytes).
+>>>>>>> origin/master
