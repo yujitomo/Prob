@@ -1,31 +1,16 @@
 # Fdb version 3
-<<<<<<< HEAD
-["biber 2-15"] 1612795080 "2-15.bcf" "2-15.bbl" "2-15" 1612859285
+["biber 2-15"] 1612795080 "2-15.bcf" "2-15.bbl" "2-15" 1612918467
   "../../KS-Style/KS-Bib.bib" 1612609002 578 b90be0635bcfda77f570f4a647a949a1 ""
-  "2-15.bcf" 1612859282 107082 5f2eab8617f52358bc9b8456b110e132 "latex"
+  "2-15.bcf" 1612918463 107082 5f2eab8617f52358bc9b8456b110e132 "latex"
   (generated)
   "2-15.blg"
   "2-15.bbl"
-["dvipdf"] 1612859282 "2-15.dvi" "2-15.pdf" "2-15" 1612859285
-  "2-15.dvi" 1612859282 6864 b3c70edb16c6922055d52b31891b587f "latex"
+["dvipdf"] 1612918464 "2-15.dvi" "2-15.pdf" "2-15" 1612918467
+  "2-15.dvi" 1612918463 7004 f5bec5be68fef166da046a18aced8cb3 "latex"
   (generated)
   "2-15.pdf"
-["latex"] 1612859277 "2-15.tex" "2-15.dvi" "2-15" 1612859285
+["latex"] 1612918458 "2-15.tex" "2-15.dvi" "2-15" 1612918467
   "../../KS-Style/KS-Style.sty" 1612826742 16869 b1f1dcd164a781631c2a91b74878a370 ""
-=======
-["biber 2-15"] 1612795080 "2-15.bcf" "2-15.bbl" "2-15" 1612799673
-  "../../KS-Style/KS-Bib.bib" 1612609002 578 b90be0635bcfda77f570f4a647a949a1 ""
-  "2-15.bcf" 1612799670 107082 5f2eab8617f52358bc9b8456b110e132 "latex"
-  (generated)
-  "2-15.blg"
-  "2-15.bbl"
-["dvipdf"] 1612799670 "2-15.dvi" "2-15.pdf" "2-15" 1612799673
-  "2-15.dvi" 1612799670 6872 7ae9db466bf27f326a62f2428eca2921 "latex"
-  (generated)
-  "2-15.pdf"
-["latex"] 1612799664 "2-15.tex" "2-15.dvi" "2-15" 1612799673
-  "../../KS-Style/KS-Style.sty" 1612798148 16891 6cf58736da34028702a4ddca1f94e621 ""
->>>>>>> origin/master
   "/usr/local/texlive/2020/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2020/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2020/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -211,30 +196,15 @@
   "/usr/local/texlive/2020/texmf-dist/web2c/texmf.cnf" 1598393674 39451 15a3ebee027466ecb89701aa91dfebaf ""
   "/usr/local/texlive/2020/texmf-var/web2c/euptex/uplatex.fmt" 1612588651 2601022 3103c869a551589ae42dff66c95df6e7 ""
   "/usr/local/texlive/2020/texmf.cnf" 1586288231 577 d60164b4589a341208aff7a667fbbdcb ""
-<<<<<<< HEAD
-  "2-15.aux" 1612859282 1689 c891ae8a4216935a31615f0ea71e6c4a "latex"
+  "2-15.aux" 1612918463 1689 c891ae8a4216935a31615f0ea71e6c4a "latex"
   "2-15.bbl" 1612795087 2000 48ba374303e45acc99b22418326f6a5a "biber 2-15"
-  "2-15.out" 1612859282 44 8f3d2ad4f502313b253f06c9708e93a9 "latex"
-  "2-15.run.xml" 1612859282 2322 11e5b2962baf899f30763f2e2e96aabd "latex"
-  "2-15.tex" 1612859276 2373 b6ae4d0cf6d4bf1574a815f1a9d2d603 ""
+  "2-15.out" 1612918463 44 8f3d2ad4f502313b253f06c9708e93a9 "latex"
+  "2-15.run.xml" 1612918463 2322 11e5b2962baf899f30763f2e2e96aabd "latex"
+  "2-15.tex" 1612918457 2455 232486387e6ae8266f871bc37abee834 "latex"
   (generated)
-  "2-15.aux"
-  "2-15.run.xml"
-  "2-15.bcf"
-  "2-15.log"
   "2-15.out"
-  "2-15.dvi"
-=======
-  "2-15.aux" 1612799670 1689 c891ae8a4216935a31615f0ea71e6c4a "latex"
-  "2-15.bbl" 1612795087 2000 48ba374303e45acc99b22418326f6a5a "biber 2-15"
-  "2-15.out" 1612799670 44 8f3d2ad4f502313b253f06c9708e93a9 "latex"
-  "2-15.run.xml" 1612799670 2322 11e5b2962baf899f30763f2e2e96aabd "latex"
-  "2-15.tex" 1612799664 2374 5a6d610a9a9506d7686730bebf7f7a1d ""
-  (generated)
   "2-15.aux"
   "2-15.bcf"
   "2-15.dvi"
-  "2-15.out"
-  "2-15.run.xml"
   "2-15.log"
->>>>>>> origin/master
+  "2-15.run.xml"
