@@ -1,0 +1,59 @@
+\ifcsname MainFile\endcsname\else
+\ifcsname SubFile\endcsname\else
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+\input{../../TestStyle/TestStyle.sty}
+\begin{document}
+\fi\fi
+
+%\SetTrueSecNumber{section: subsub section}
+\section{孫ファイル}\label{section: subsub section}
+い
+\begin{thm}\label{thm: subsub theorem}
+  え？
+  \begin{enumerate}
+    \item \label{enumi: subsub assertion}
+    ふぉ〜
+    \begin{equation}
+      \label{eq: subsub hoge}
+      \sum_{n=1}^{\infty}\frac{1}{n^2}dt = \text{謎}.
+      \tag{\(\spadesuit\)}
+    \end{equation}
+  \end{enumerate}
+\end{thm}
+
+\autoref{section: main section},
+\autoref{section: sub section},
+\autoref{section: subsub section},
+\autoref{thm: main theorem},
+\autoref{thm: sub theorem},
+\autoref{thm: subsub theorem},
+\autoref{enumi: main assertion},
+\autoref{enumi: sub assertion},
+\autoref{enumi: subsub assertion},
+\autoref{eq: main hoge},
+\autoref{eq: sub hoge},
+\autoref{eq: subsub hoge},
+
+\ref{section: main section},
+\ref{section: sub section},
+\ref{section: subsub section},
+\ref{thm: main theorem},
+\ref{thm: sub theorem},
+\ref{thm: subsub theorem},
+\ref{enumi: main assertion},
+\ref{enumi: sub assertion},
+\ref{enumi: subsub assertion},
+\ref{eq: main hoge},
+\ref{eq: sub hoge},
+\ref{eq: subsub hoge},
+
+\eqref{eq: main hoge},
+\eqref{eq: sub hoge},
+\eqref{eq: subsub hoge},
+
+\cite{kashiwara2002sheaves},
+
+\ifcsname MainFile\endcsname\else
+\printbibliography
+\end{document}
+\fi

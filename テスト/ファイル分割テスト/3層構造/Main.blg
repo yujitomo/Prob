@@ -1,0 +1,15 @@
+[0] Config.pm:311> INFO - This is Biber 2.16
+[0] Config.pm:314> INFO - Logfile is 'Main.blg'
+[284] biber-darwin:340> INFO - === Sat Feb 13, 2021, 11:12:34
+[311] Biber.pm:415> INFO - Reading 'Main.bcf'
+[835] Biber.pm:952> INFO - Found 1 citekeys in bib section 0
+[876] Biber.pm:4340> INFO - Processing section 0
+[916] Biber.pm:4531> INFO - Looking for bibtex format file 'TestStyle/TestBib.bib' for section 0
+[923] bibtex.pm:1689> INFO - LaTeX decoding ...
+[942] bibtex.pm:1494> INFO - Found BibTeX data source 'TestStyle/TestBib.bib'
+[1306] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[1306] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[1307] Biber.pm:4168> INFO - Sorting list 'anyt/global//global/global' of type 'entry' with template 'anyt' and locale 'en-US'
+[1307] Biber.pm:4174> INFO - No sort tailoring available for locale 'en-US'
+[1359] bbl.pm:654> INFO - Writing 'Main.bbl' with encoding 'UTF-8'
+[1365] bbl.pm:757> INFO - Output to Main.bbl

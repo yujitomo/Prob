@@ -1,0 +1,104 @@
+%TestStyle.TeX
+
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage[setpagesize=false]{hyperref}
+\usepackage{aliascnt}
+\hypersetup{
+    colorlinks=true,
+    citecolor=blue,
+    linkcolor=blue,
+    urlcolor=blue,
+}
+
+\usepackage{amsthm}
+\theoremstyle{definition}
+\newtheorem{thm}{定理}[section]
+\newaliascnt{lem}{thm}
+\newtheorem{lem}[lem]{補題}
+\aliascntresetthe{lem}
+\renewcommand{\sectionautorefname}{節}
+\newcommand{\thmautorefname}{定理}
+\newcommand{\lemautorefname}{補題}
+
+
+\usepackage{letltxmacro}
+\makeatletter
+\newcommand{\Test@FirstGroup}[5]{#1}
+\newcommand{\Test@FourthGroup}[5]{#4}
+
+\newcommand{\Test@NumberingPrint}[1]{%
+\expandafter\Test@FirstGroup%
+\romannumeral-`0\csname r@MainFile: #1\endcsname%
+}
+\def\Test@@NamingPrint#1.{%
+  \csname #1autorefname\endcsname%
+}
+\newcommand{\Test@NamingPrint}[1]{%
+  \expandafter\Test@@NamingPrint%
+  \romannumeral-`0\expandafter\Test@FourthGroup%
+  \romannumeral-`0\csname r@MainFile: #1\endcsname%
+}
+
+\AtBeginDocument{%
+  \LetLtxMacro{\Test@LetLabel}{\label}
+  \LetLtxMacro{\Test@LetAutoref}{\autoref}
+  \LetLtxMacro{\Test@LetRef}{\ref}
+
+  \newcommand{\Test@TrueLabel}[1]{%
+    \ifcsname MainFile\endcsname%
+    \Test@LetLabel{MainFile: #1}%
+    \else%
+    \Test@LetLabel{SubFile: #1}%
+    \fi%
+  }
+
+
+  \newcommand{\Test@SubFile@TrueRef}[1]{%
+    \ifcsname r@SubFile: #1\endcsname%
+    \Test@LetRef{SubFile: #1}%
+    \else%
+    \textcolor{magenta}{\Test@NumberingPrint{#1}}%
+    \fi%
+  }
+  \newcommand{\Test@TrueRef}[1]{%
+    \ifcsname MainFile\endcsname%
+    \Test@LetRef{MainFile: #1}%
+    \else%
+    \Test@SubFile@TrueRef{#1}%
+    \fi%
+  }
+
+
+  \newcommand{\Test@SubFile@TrueAutoref}[1]{%
+    \ifcsname r@SubFile: #1\endcsname%
+    \Test@LetAutoref{SubFile: #1}%
+    \else%
+    \textcolor{magenta}{\Test@NamingPrint{#1}}%
+    \fi%
+  }
+  \newcommand{\Test@TrueAutoref}[1]{%
+    \ifcsname MainFile\endcsname%
+    \Test@LetAutoref{MainFile: #1}%
+    \else%
+    \Test@SubFile@TrueAutoref{#1}%
+    \fi%
+  }
+
+  \renewcommand{\label}[1]{\Test@TrueLabel{#1}}
+  \renewcommand{\autoref}[1]{\Test@TrueAutoref{#1}}
+  \renewcommand{\ref}[1]{\Test@TrueRef{#1}}
+}
+
+\newcommand{\SetTrueSecNumber}[1]{%
+  \expandafter\newcount\csname Count@#1\endcsname
+  \csname Count@#1\endcsname=\Test@NumberingPrint{#1}
+  \expandafter\advance\csname Count@#1\endcsname by -1
+  \setcounter{section}{\csname Count@#1\endcsname}
+}
+
+\ifcsname MainFile\endcsname%
+\else%
+\input{../MainFile.aux}
+\fi
+\makeatother

@@ -1,0 +1,58 @@
+\newcommand{\MainFile}{MainFile}
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+\input{TestStyle/TestStyle.sty}
+\begin{document}
+
+ん
+
+\section{親ファイル}\label{section: main section}
+あ
+\begin{thm}\label{thm: main theorem}
+  え？
+  \begin{enumerate}
+    \item \label{enumi: main assertion}
+    うん。
+  \end{enumerate}
+\end{thm}
+
+\begin{equation}\label{eq: main hoge}
+  a + b = c
+  \tag{\(\dagger\)}
+\end{equation}
+
+\autoref{section: main section},
+\autoref{section: sub section},
+\autoref{section: subsub section},
+\autoref{thm: main theorem},
+\autoref{thm: sub theorem},
+\autoref{thm: subsub theorem},
+\autoref{enumi: main assertion},
+\autoref{enumi: sub assertion},
+\autoref{enumi: subsub assertion},
+\autoref{eq: main hoge},
+\autoref{eq: sub hoge},
+\autoref{eq: subsub hoge},
+
+\ref{section: main section},
+\ref{section: sub section},
+\ref{section: subsub section},
+\ref{thm: main theorem},
+\ref{thm: sub theorem},
+\ref{thm: subsub theorem},
+\ref{enumi: main assertion},
+\ref{enumi: sub assertion},
+\ref{enumi: subsub assertion},
+\ref{eq: main hoge},
+\ref{eq: sub hoge},
+\ref{eq: subsub hoge},
+
+\eqref{eq: main hoge},
+\eqref{eq: sub hoge},
+\eqref{eq: subsub hoge},
+
+\cite{kashiwara2002sheaves},
+
+\input{Sub/Sub.tex}
+
+\printbibliography
+\end{document}

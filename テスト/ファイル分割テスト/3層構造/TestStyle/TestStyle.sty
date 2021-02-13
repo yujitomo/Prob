@@ -1,0 +1,163 @@
+%TestStyle.TeX
+
+%%%%BibTeXの設定
+\usepackage[backend=biber,style=alphabetic]{biblatex}
+\newcommand{\TestBibPath}{\ifcsname MainFile\endcsname TestStyle/TestBib.bib\else%
+\ifcsname SubFile\endcsname ../TestStyle/TestBib.bib\else%
+../../TestStyle/TestBib.bib\fi}
+\bibliography{\TestBibPath}
+%%%%BibTeXの設定
+
+
+\newcommand{\SubSubPath}{\ifcsname MainFile\endcsname Sub/SubSub/SubSub.tex\else%
+SubSub/SubSub.tex\fi}
+
+\usepackage{letltxmacro}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage[setpagesize=false]{hyperref}
+\usepackage{aliascnt}
+\hypersetup{
+    colorlinks=true,
+    citecolor=blue,
+    linkcolor=blue,
+    urlcolor=blue,
+}
+
+\usepackage{amsthm}
+\theoremstyle{definition}
+\newtheorem{thm}{定理}[section]
+\newcommand{\thmautorefname}{定理}
+
+%%%%%箇条書き環境
+\usepackage[]{enumitem}
+
+\makeatletter
+\AddEnumerateCounter{\fnsymbol}{\c@fnsymbol}{9}
+\makeatother
+\setlist[enumerate,1]{label = (\arabic*),ref = (\arabic*)}
+\setlist[enumerate,2]{label = (\roman*),ref = (\roman*)}
+%%%%%箇条書き環境
+
+
+
+
+
+
+\makeatletter
+\newcommand{\Test@FirstGroup}[5]{#1}
+\newcommand{\Test@FourthGroup}[5]{#4}
+
+\AtBeginDocument{%
+  \LetLtxMacro{\Test@LetLabel}{\label}
+  \LetLtxMacro{\Test@LetAutoref}{\autoref}
+  \LetLtxMacro{\Test@LetRef}{\ref}
+  %\LetLtxMacro{\Test@LetEqRef}{\eqref}
+
+  \newcommand{\Test@TrueLabel}[1]{%
+    \ifcsname MainFile\endcsname%
+    \Test@LetLabel{MainFile: #1}%
+    \else%
+      \ifcsname SubFile\endcsname%
+      \Test@LetLabel{SubFile: #1}%
+      \else%
+      \Test@LetLabel{SubSubFile: #1}%
+      \fi%
+    \fi%
+  }
+
+
+  \newcommand{\Test@NumberingPrint}[1]{%
+  \expandafter\Test@FirstGroup%
+  \romannumeral-`0\csname r@MainFile: #1\endcsname%
+  }
+  \def\Test@@NamingPrint#1.{%
+    \csname #1autorefname\endcsname%
+  }
+  \newcommand{\Test@NamingPrint}[1]{%
+    \expandafter\Test@@NamingPrint%
+    \romannumeral-`0\expandafter\Test@FourthGroup%
+    \romannumeral-`0\csname r@MainFile: #1\endcsname%
+  }
+
+
+  \newcommand{\Test@SubFile@TrueRef}[1]{%
+    \ifcsname r@SubFile: #1\endcsname%
+    \Test@LetRef{SubFile: #1}%
+    \else%
+    \textcolor{magenta}{\Test@NumberingPrint{#1}}%
+    \fi%
+  }
+  \newcommand{\Test@SubSubFile@TrueRef}[1]{%
+    \ifcsname r@SubSubFile: #1\endcsname%
+    \Test@LetRef{SubSubFile: #1}%
+    \else%
+    \textcolor{magenta}{\Test@NumberingPrint{#1}}%
+    \fi%
+  }
+  \newcommand{\Test@TrueRef}[1]{%
+    \ifcsname MainFile\endcsname%
+    \Test@LetRef{MainFile: #1}%
+    \else%
+      \ifcsname SubFile\endcsname%
+      \Test@SubFile@TrueRef{#1}%
+      \else%
+      \Test@SubSubFile@TrueRef{#1}%
+      \fi%
+    \fi%
+  }
+
+
+  \newcommand{\Test@SubFile@TrueAutoref}[1]{%
+    \ifcsname r@SubFile: #1\endcsname%
+    \Test@LetAutoref{SubFile: #1}%
+    \else%
+    \textcolor{magenta}{\Test@NamingPrint{#1}}%
+    \fi%
+  }
+  \newcommand{\Test@SubSubFile@TrueAutoref}[1]{%
+    \ifcsname r@SubSubFile: #1\endcsname%
+    \Test@LetAutoref{SubSubFile: #1}%
+    \else%
+    \textcolor{magenta}{\Test@NamingPrint{#1}}%
+    \fi%
+  }
+  \newcommand{\Test@TrueAutoref}[1]{%
+    \ifcsname MainFile\endcsname%
+    \Test@LetAutoref{MainFile: #1}%
+    \else%
+      \ifcsname SubFile\endcsname%
+      \Test@SubFile@TrueAutoref{#1}%
+      \else%
+      \Test@SubSubFile@TrueAutoref{#1}%
+      \fi%
+    \fi%
+  }
+
+  \renewcommand{\label}[1]{\Test@TrueLabel{#1}}
+  \renewcommand{\ltx@label}[1]{\Test@TrueLabel{#1}}
+  \renewcommand{\autoref}[1]{\Test@TrueAutoref{#1}}
+  \renewcommand{\ref}[1]{\Test@TrueRef{#1}}
+}
+
+
+\newcommand{\SetTrueSecNumber}[1]{%
+  \expandafter\newcount\csname Count@#1\endcsname
+  \csname Count@#1\endcsname=\Test@NumberingPrint{#1}
+  \expandafter\advance\csname Count@#1\endcsname by -1
+  \setcounter{section}{\csname Count@#1\endcsname}
+}
+
+\newcommand{\Test@MainAuxPath}{%
+  \ifcsname SubFile\endcsname%
+  ../Main.aux%
+  \else%
+  ../../Main.aux%
+  \fi%
+}
+\ifcsname MainFile\endcsname%
+\else%
+\input{\Test@MainAuxPath}%
+\fi
+\makeatother

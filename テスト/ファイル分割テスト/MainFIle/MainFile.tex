@@ -1,0 +1,29 @@
+\newcommand{\MainFile}{MainFile}
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+\input{Style/Test.sty}
+\begin{document}
+\section{親ファイル}\label{section: Main section}
+あ
+\begin{thm}\label{thm: main theorem}
+  え？
+\end{thm}
+\begin{lem}\label{lem: main lemma}
+  え？
+\end{lem}
+
+\input{Sub/SubFile.tex}
+
+\autoref{section: Main section},
+\autoref{section: sub section},
+\autoref{thm: main theorem},
+\autoref{thm: sub theorem},
+\autoref{lem: main lemma},
+\autoref{lem: sub lemma},
+\ref{section: Main section},
+\ref{section: sub section},
+\ref{thm: main theorem},
+\ref{thm: sub theorem},
+\ref{lem: main lemma},
+\ref{lem: sub lemma},
+
+\end{document}

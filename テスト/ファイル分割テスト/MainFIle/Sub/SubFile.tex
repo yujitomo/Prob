@@ -1,0 +1,32 @@
+\ifcsname MainFile\endcsname\else
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+\input{../Style/Test.sty}
+\begin{document}
+\fi
+
+\SetTrueSecNumber{section: sub section}
+\section{子ファイル}\label{section: sub section}
+い
+\begin{thm}\label{thm: sub theorem}
+  え？
+\end{thm}
+\begin{lem}\label{lem: sub lemma}
+  え？
+\end{lem}
+
+\autoref{section: Main section},
+\autoref{section: sub section},
+\autoref{thm: main theorem},
+\autoref{thm: sub theorem},
+\autoref{lem: main lemma},
+\autoref{lem: sub lemma},
+\ref{section: Main section},
+\ref{section: sub section},
+\ref{thm: main theorem},
+\ref{thm: sub theorem},
+\ref{lem: main lemma},
+\ref{lem: sub lemma},
+
+\ifcsname MainFile\endcsname\else
+\end{document}
+\fi
