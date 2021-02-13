@@ -1,4 +1,4 @@
-This is e-upTeX, Version 3.14159265-p3.8.3-u1.26-191112-2.6 (utf8.uptex) (TeX Live 2020) (preloaded format=uplatex 2021.2.6)  13 FEB 2021 11:13
+This is e-upTeX, Version 3.14159265-p3.8.3-u1.26-191112-2.6 (utf8.uptex) (TeX Live 2020) (preloaded format=uplatex 2021.2.6)  13 FEB 2021 11:25
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -451,7 +451,7 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 28
 ) (/usr/local/texlive/2020/texmf-dist/tex/latex/oberdiek/aliascnt.sty
 Package: aliascnt 2018/09/07 v1.5 Alias counters (HO)
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 25.
+Package hyperref Info: Option `colorlinks' set `true' on input line 26.
  (/usr/local/texlive/2020/texmf-dist/tex/latex/amscls/amsthm.sty
 Package: amsthm 2020/05/29 v2.20.6
 \thm@style=\toks22
@@ -553,6 +553,7 @@ LaTeX Info: Redefining \nameref on input line 5.
 \@outlinefile=\write4
 \openout4 = `Sub.out'.
 
+\Count@section: sub section=\count413
 LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
 (Font)              scaled to size 13.31541pt on input line 9.
 LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
@@ -577,23 +578,42 @@ LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
 (Font)              scaled to size 6.47278pt on input line 18.
 LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
 (Font)              scaled to size 4.62341pt on input line 18.
- (./SubSub/SubSub.tex [1
+ (./SubSub/SubSub.tex
+\Count@section: subsub section=\count414
+LaTeX Font Info:    Font shape `JT2/gt/m/it' in size <10> not available
+(Font)              Font shape `JT2/gt/m/n' tried instead on input line 57.
+LaTeX Font Info:    Font shape `JT2/gt/m/n' will be
+(Font)              scaled to size 9.24683pt on input line 57.
+LaTeX Font Info:    Font shape `JY2/gt/m/it' in size <10> not available
+(Font)              Font shape `JY2/gt/m/n' tried instead on input line 57.
+LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
+(Font)              scaled to size 9.24683pt on input line 57.
+LaTeX Font Info:    Font shape `JT2/mc/m/sc' in size <10> not available
+(Font)              Font shape `JT2/mc/m/n' tried instead on input line 57.
+LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
+(Font)              scaled to size 9.24683pt on input line 57.
+LaTeX Font Info:    Font shape `JY2/mc/m/sc' in size <10> not available
+(Font)              Font shape `JY2/mc/m/n' tried instead on input line 57.
+LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
+(Font)              scaled to size 9.24683pt on input line 57.
+ [1
 
 ] (./Sub.aux)
 Package rerunfilecheck Info: File `Sub.out' has not changed.
-(rerunfilecheck)             Checksum: 194D5847FE90443C7D9F7A5F76181FF0;100.
+(rerunfilecheck)             Checksum: 352DC2126898DEE863B6CD639458FBED;100.
 Package logreq Info: Writing requests to 'Sub.run.xml'.
 \openout1 = `Sub.run.xml'.
 
  ) )
-(\end occurred when \ifcsname on line 56 was incomplete) 
+(\end occurred when \ifcsname on line 56 was incomplete)
+(\end occurred when \ifcsname on line 1 was incomplete) 
 Here is how much of TeX's memory you used:
- 13673 strings out of 479769
- 239890 string characters out of 5879522
- 981816 words of memory out of 5000000
- 30908 multiletter control sequences out of 15000+600000
- 409746 words of font info for 65 fonts, out of 8000000 for 9000
+ 13688 strings out of 479769
+ 240098 string characters out of 5879522
+ 983853 words of memory out of 5000000
+ 30920 multiletter control sequences out of 15000+600000
+ 410561 words of font info for 68 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
- 76i,5n,80p,736b,1154s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 76i,5n,80p,736b,1304s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Sub.dvi (1 page, 8840 bytes).
+Output written on Sub.dvi (1 page, 9792 bytes).

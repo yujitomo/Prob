@@ -690,6 +690,9 @@ INPUT ./SubSub/SubSub.tex
 INPUT SubSub/SubSub.tex
 INPUT ./SubSub/SubSub.tex
 INPUT SubSub/SubSub.tex
+INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/cm/cmti10.tfm
+INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/cm/cmcsc10.tfm
+INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/cm/cmtt10.tfm
 OUTPUT Sub.dvi
 INPUT Sub.aux
 INPUT ./Sub.out
