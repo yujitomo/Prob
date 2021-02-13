@@ -1,4 +1,4 @@
-This is e-upTeX, Version 3.14159265-p3.8.3-u1.26-191112-2.6 (utf8.uptex) (TeX Live 2020) (preloaded format=uplatex 2021.2.6)  13 FEB 2021 11:25
+This is e-upTeX, Version 3.14159265-p3.8.3-u1.26-191112-2.6 (utf8.uptex) (TeX Live 2020) (preloaded format=uplatex 2021.2.6)  13 FEB 2021 12:33
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -605,12 +605,11 @@ Package logreq Info: Writing requests to 'Sub.run.xml'.
 \openout1 = `Sub.run.xml'.
 
  ) )
-(\end occurred when \ifcsname on line 56 was incomplete)
-(\end occurred when \ifcsname on line 1 was incomplete) 
+(\end occurred when \ifcsname on line 56 was incomplete) 
 Here is how much of TeX's memory you used:
  13688 strings out of 479769
  240098 string characters out of 5879522
- 983853 words of memory out of 5000000
+ 983854 words of memory out of 5000000
  30920 multiletter control sequences out of 15000+600000
  410561 words of font info for 68 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191

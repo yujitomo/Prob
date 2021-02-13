@@ -4,7 +4,7 @@
 \usepackage[backend=biber,style=alphabetic]{biblatex}
 \newcommand{\TestBibPath}{\ifcsname MainFile\endcsname TestStyle/TestBib.bib\else%
 \ifcsname SubFile\endcsname ../TestStyle/TestBib.bib\else%
-../../TestStyle/TestBib.bib\fi}
+../../TestStyle/TestBib.bib\fi\fi}
 \bibliography{\TestBibPath}
 %%%%BibTeXの設定
 
