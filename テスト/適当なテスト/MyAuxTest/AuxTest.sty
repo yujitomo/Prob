@@ -1,0 +1,20 @@
+%TestStyle.TeX
+
+\usepackage{letltxmacro}
+
+
+\makeatletter
+\newwrite\Test@thmAux
+
+\immediate\openout\Test@thmAux\jobname.myaux\relax
+\immediate\write\Test@thmAux{\relax}
+
+
+\if@filesw
+\immediate\write\Test@thmAux{hoge}
+\fi
+
+\AtEndDocument{\if@filesw
+  \immediate\closeout\Test@thmAux
+\fi}
+\makeatother

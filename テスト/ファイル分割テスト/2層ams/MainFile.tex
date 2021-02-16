@@ -1,14 +1,18 @@
 \newcommand{\MainFile}{MainFile}
 \documentclass[uplatex,dvipdfmx]{jsarticle}
+%\documentclass{amsart}
 \input{Style/Test.sty}
 \begin{document}
-\section{親ファイル}\label{section: Main section}
-あ
+
+\tableofcontents
+
+\section{Main}\label{section: Main section}
+a
 \begin{thm}\label{thm: main theorem}
-  え？
+  b
 \end{thm}
 \begin{lem}\label{lem: main lemma}
-  え？
+  b
 \end{lem}
 
 \input{Sub/SubFile.tex}
@@ -26,4 +30,7 @@
 \ref{lem: main lemma},
 \ref{lem: sub lemma},
 
+\cite{Ha}
+
+\printbibliography
 \end{document}

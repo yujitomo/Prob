@@ -1,0 +1,37 @@
+\ifcsname MainFile\endcsname\else
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+%\documentclass{amsart}
+\input{../Style/Test.sty}
+\begin{document}
+\SetTrueSecNumber{section: sub section}
+\fi
+\section{sub}\label{section: sub section}
+i
+\begin{thm}
+  \label{thm: sub theorem}
+  o
+\end{thm}
+\begin{lem}\label{lem: sub lemma}
+  u
+\end{lem}
+
+\autoref{section: Main section},
+\autoref{section: sub section},
+\autoref{thm: main theorem},
+\autoref{thm: sub theorem},
+\autoref{lem: main lemma},
+\autoref{lem: sub lemma},
+\ref{section: Main section},
+\ref{section: sub section},
+\ref{thm: main theorem},
+\ref{thm: sub theorem},
+\ref{lem: main lemma},
+\ref{lem: sub lemma},
+
+
+\cite{Ha}
+
+\ifcsname MainFile\endcsname\else
+\printbibliography
+\end{document}
+\fi

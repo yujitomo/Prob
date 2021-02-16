@@ -1,4 +1,4 @@
-This is e-upTeX, Version 3.14159265-p3.8.3-u1.26-191112-2.6 (utf8.uptex) (TeX Live 2020) (preloaded format=uplatex 2021.2.6)  13 FEB 2021 02:34
+This is e-upTeX, Version 3.14159265-p3.8.3-u1.26-191112-2.6 (utf8.uptex) (TeX Live 2020) (preloaded format=uplatex 2021.2.6)  13 FEB 2021 14:11
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -249,35 +249,45 @@ LaTeX Info: Redefining \nameref on input line 4.
 \@outlinefile=\write3
 \openout3 = `MainFile.out'.
 
+LaTeX Font Info:    Font shape `JT2/gt/m/n' will be
+(Font)              scaled to size 9.24683pt on input line 6.
+LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
+(Font)              scaled to size 9.24683pt on input line 6.
 LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
-(Font)              scaled to size 13.31541pt on input line 5.
+(Font)              scaled to size 13.31541pt on input line 6.
 LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
-(Font)              scaled to size 13.31541pt on input line 5.
+(Font)              scaled to size 13.31541pt on input line 6.
 LaTeX Font Info:    Font shape `JT2/gt/m/n' will be
-(Font)              scaled to size 13.31541pt on input line 5.
+(Font)              scaled to size 13.31541pt on input line 6.
 LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
-(Font)              scaled to size 13.31541pt on input line 5.
+(Font)              scaled to size 13.31541pt on input line 6.
+ (./MainFile.toc)
+\tf@toc=\write4
+\openout4 = `MainFile.toc'.
+
 LaTeX Font Info:    Font shape `JT2/mc/bx/n' in size <10> not available
-(Font)              Font shape `JT2/gt/m/n' tried instead on input line 7.
+(Font)              Font shape `JT2/gt/m/n' tried instead on input line 10.
 LaTeX Font Info:    Font shape `JT2/gt/m/n' will be
-(Font)              scaled to size 9.24683pt on input line 7.
+(Font)              scaled to size 9.24683pt on input line 10.
 LaTeX Font Info:    Font shape `JY2/mc/bx/n' in size <10> not available
-(Font)              Font shape `JY2/gt/m/n' tried instead on input line 7.
+(Font)              Font shape `JY2/gt/m/n' tried instead on input line 10.
 LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
-(Font)              scaled to size 9.24683pt on input line 7.
- (./Sub/SubFile.tex) [1
+(Font)              scaled to size 9.24683pt on input line 10.
+ (./Sub/SubFile.tex
+\Count@section: sub section=\count271
+) [1
 
 ] (./MainFile.aux)
 Package rerunfilecheck Info: File `MainFile.out' has not changed.
-(rerunfilecheck)             Checksum: EE660960DF07110FD9FC3321206E32DA;100.
+(rerunfilecheck)             Checksum: 20C93D9C589C557AEACD407FE03780CF;100.
  ) 
 Here is how much of TeX's memory you used:
- 5562 strings out of 479769
- 84980 string characters out of 5879522
- 401335 words of memory out of 5000000
- 22886 multiletter control sequences out of 15000+600000
- 408718 words of font info for 59 fonts, out of 8000000 for 9000
+ 5570 strings out of 479769
+ 85075 string characters out of 5879522
+ 402335 words of memory out of 5000000
+ 22890 multiletter control sequences out of 15000+600000
+ 409023 words of font info for 60 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
  76i,5n,80p,248b,331s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on MainFile.dvi (1 page, 5104 bytes).
+Output written on MainFile.dvi (1 page, 5572 bytes).

@@ -1,0 +1,130 @@
+%TestStyle.TeX
+\usepackage[backend=biber,style=alphabetic,sorting=ynt]{biblatex}
+\makeatletter
+\newcommand{\My@BibPath}{%
+  \ifcsname MainFile\endcsname%
+    Style/TestBib.bib%
+  \else%
+    ../Style/TestBib.bib%
+  \fi%
+}
+\addbibresource{\My@BibPath}
+\makeatother
+
+\usepackage{graphicx}
+%\usepackage[pdftex]{graphicx}
+\usepackage{hyperref}
+\usepackage{aliascnt}
+\hypersetup{
+    colorlinks=true,
+    citecolor=blue,
+    linkcolor=blue,
+    urlcolor=blue,
+}
+
+\usepackage{amsthm}
+\theoremstyle{definition}
+\newtheorem{thm}{Theorem}[section]
+\newaliascnt{lem}{thm}
+\newtheorem{lem}[lem]{Lemma}
+\aliascntresetthe{lem}
+\renewcommand{\sectionautorefname}{Section}
+\newcommand{\thmautorefname}{Theorem}
+\newcommand{\lemautorefname}{Lemma}
+
+
+\usepackage{letltxmacro}
+\makeatletter
+\newcommand{\Test@FirstGroup}[5]{#1}
+\newcommand{\Test@FourthGroup}[5]{#4}
+
+\newcommand{\Test@NumberingPrint}[1]{%
+\expandafter\Test@FirstGroup%
+\romannumeral-`0\csname r@MainFile: #1\endcsname%
+}
+\def\Test@@NamingPrint#1.{%
+  \csname #1autorefname\endcsname\space%
+}
+\newcommand{\Test@NamingPrint}[1]{%
+  \expandafter\Test@@NamingPrint%
+  \romannumeral-`0\expandafter\Test@FourthGroup%
+  \romannumeral-`0\csname r@MainFile: #1\endcsname%
+}
+
+\AtBeginDocument{%
+  \LetLtxMacro{\Test@LetAutoref}{\autoref}
+  \LetLtxMacro{\Test@LetRef}{\ref}
+
+  \newcommand{\Test@SubFile@TrueRef}[1]{%
+    \ifcsname r@SubFile: #1\endcsname%
+      \Test@LetRef{SubFile: #1}%
+    \else%
+      \textcolor{magenta}{\Test@NumberingPrint{#1}}%
+    \fi%
+  }
+  \newcommand{\Test@TrueRef}[1]{%
+    \ifcsname MainFile\endcsname%
+      \Test@LetRef{MainFile: #1}%
+    \else%
+      \Test@SubFile@TrueRef{#1}%
+    \fi%
+  }
+
+
+  \newcommand{\Test@SubFile@TrueAutoref}[1]{%
+    \ifcsname r@SubFile: #1\endcsname%
+      \Test@LetAutoref{SubFile: #1}%
+    \else%
+      \textcolor{magenta}{\Test@NamingPrint{#1}}%
+    \fi%
+  }
+  \newcommand{\Test@TrueAutoref}[1]{%
+    \ifcsname MainFile\endcsname%
+      \Test@LetAutoref{MainFile: #1}%
+    \else%
+      \Test@SubFile@TrueAutoref{#1}%
+    \fi%
+  }
+
+  \renewcommand{\autoref}[1]{\Test@TrueAutoref{#1}}
+  \renewcommand{\ref}[1]{\Test@TrueRef{#1}}
+}
+
+
+\newcommand{\SetTrueSecNumber}[1]{%
+  \expandafter\newcount\csname Count@#1\endcsname
+  \csname Count@#1\endcsname=\Test@NumberingPrint{#1}
+  \expandafter\advance\csname Count@#1\endcsname by -1
+  \setcounter{section}{\csname Count@#1\endcsname}
+}
+
+
+\newwrite\Test@Label@Aux\relax%%%%%新しい「書き込み用コマンド」
+\newcommand{\Test@Label@Aux@Write}[1]{%
+  \protected@write\Test@Label@Aux{}{%%%%ここは\immediate\writeではなく\protected@writeにしておかないとeqrefの振る舞いがおかしくなります。
+    \string\newlabel{#1}{{\@currentlabel}{\thepage}{\@currentlabelname}{\@currentHref}{}}%
+  }%%%%文字として書き出す
+}
+
+\AtBeginDocument{
+  \LetLtxMacro{\Test@LetLabel}{\label}%%%%\labelをコピー
+  \newcommand{\Test@TrueLabel}[1]{%
+    \ifcsname MainFile\endcsname%
+    \Test@LetLabel{MainFile: #1}
+    \Test@Label@Aux@Write{MainFile: #1}%%%%%MainFileコンパイル時は.myauxに定理番号などの情報を書き出すようにします。
+    \else%
+    \Test@LetLabel{SubFile: #1}%
+    \fi%
+  }
+  \renewcommand{\label}[1]{\Test@TrueLabel{#1}}%%%%再定義
+  \renewcommand{\ltx@label}[1]{\Test@TrueLabel{#1}}%%%%再定義、これはeqrefの方を良い感じにするための再定義です。
+}
+
+\ifcsname MainFile\endcsname%
+  \immediate\openout\Test@Label@Aux\jobname.myaux\relax%%%%拡張子.myauxで新しいファイルを作る。
+  \immediate\write\Test@Label@Aux{\relax}%%%%.myauxに\relaxと書く。
+\else%
+  \@input{../MainFile.myaux}%%%%SubFileコンパイル時に、定理番号などの情報が書かれた.myauxをinputします。
+\fi
+
+\makeatother
