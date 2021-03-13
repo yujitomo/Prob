@@ -1,4 +1,4 @@
-This is e-upTeX, Version 3.14159265-p3.8.3-u1.26-191112-2.6 (utf8.uptex) (TeX Live 2020) (preloaded format=uplatex 2021.2.6)  9 FEB 2021 01:17
+This is e-upTeX, Version 3.14159265-p3.8.3-u1.26-191112-2.6 (utf8.uptex) (TeX Live 2020) (preloaded format=uplatex 2021.2.6)  17 FEB 2021 10:42
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -868,38 +868,39 @@ LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
 LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
 (Font)              scaled to size 6.47278pt on input line 121.
 LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
-(Font)              scaled to size 4.62341pt on input line 137.
+(Font)              scaled to size 4.62341pt on input line 131.
+ [2]
 LaTeX Font Info:    Font shape `JT2/gt/m/it' in size <10> not available
-(Font)              Font shape `JT2/gt/m/n' tried instead on input line 153.
+(Font)              Font shape `JT2/gt/m/n' tried instead on input line 229.
 LaTeX Font Info:    Font shape `JT2/gt/m/n' will be
-(Font)              scaled to size 9.24683pt on input line 153.
+(Font)              scaled to size 9.24683pt on input line 229.
 LaTeX Font Info:    Font shape `JY2/gt/m/it' in size <10> not available
-(Font)              Font shape `JY2/gt/m/n' tried instead on input line 153.
+(Font)              Font shape `JY2/gt/m/n' tried instead on input line 229.
 LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
-(Font)              scaled to size 9.24683pt on input line 153.
+(Font)              scaled to size 9.24683pt on input line 229.
 LaTeX Font Info:    Font shape `JT2/mc/m/sc' in size <10> not available
-(Font)              Font shape `JT2/mc/m/n' tried instead on input line 153.
+(Font)              Font shape `JT2/mc/m/n' tried instead on input line 229.
 LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
-(Font)              scaled to size 9.24683pt on input line 153.
+(Font)              scaled to size 9.24683pt on input line 229.
 LaTeX Font Info:    Font shape `JY2/mc/m/sc' in size <10> not available
-(Font)              Font shape `JY2/mc/m/n' tried instead on input line 153.
+(Font)              Font shape `JY2/mc/m/n' tried instead on input line 229.
 LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
-(Font)              scaled to size 9.24683pt on input line 153.
- [2] (./1-31.aux)
+(Font)              scaled to size 9.24683pt on input line 229.
+ [3] (./1-31.aux)
 Package rerunfilecheck Info: File `1-31.out' has not changed.
 (rerunfilecheck)             Checksum: 3286888B1395F8F13FAC8B2C2119722A;56.
 Package logreq Info: Writing requests to '1-31.run.xml'.
 \openout1 = `1-31.run.xml'.
 
  )
-(\end occurred when \ifcsname on line 152 was incomplete) 
+(\end occurred when \ifcsname on line 228 was incomplete) 
 Here is how much of TeX's memory you used:
  25519 strings out of 479769
  489926 string characters out of 5879522
- 1211031 words of memory out of 5000000
+ 1215036 words of memory out of 5000000
  42481 multiletter control sequences out of 15000+600000
  419733 words of font info for 112 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
  92i,17n,91p,737b,1316s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on 1-31.dvi (2 pages, 17800 bytes).
+Output written on 1-31.dvi (3 pages, 24728 bytes).

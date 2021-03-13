@@ -1,15 +1,15 @@
-[2] Config.pm:311> INFO - This is Biber 2.16
-[2] Config.pm:314> INFO - Logfile is '1-31.blg'
-[242] biber-darwin:340> INFO - === Mon Feb  8, 2021, 22:12:25
-[274] Biber.pm:415> INFO - Reading '1-31.bcf'
-[597] Biber.pm:952> INFO - Found 1 citekeys in bib section 0
-[649] Biber.pm:4340> INFO - Processing section 0
-[673] Biber.pm:4531> INFO - Looking for bibtex format file '../../KS-Style/KS-Bib.bib' for section 0
-[678] bibtex.pm:1689> INFO - LaTeX decoding ...
-[691] bibtex.pm:1494> INFO - Found BibTeX data source '../../KS-Style/KS-Bib.bib'
-[794] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[794] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[795] Biber.pm:4168> INFO - Sorting list 'anyt/global//global/global' of type 'entry' with template 'anyt' and locale 'en-US'
-[795] Biber.pm:4174> INFO - No sort tailoring available for locale 'en-US'
-[810] bbl.pm:654> INFO - Writing '1-31.bbl' with encoding 'UTF-8'
-[811] bbl.pm:757> INFO - Output to 1-31.bbl
+[0] Config.pm:311> INFO - This is Biber 2.16
+[1] Config.pm:314> INFO - Logfile is '1-31.blg'
+[261] biber-darwin:340> INFO - === Wed Feb 17, 2021, 10:42:33
+[318] Biber.pm:415> INFO - Reading '1-31.bcf'
+[803] Biber.pm:952> INFO - Found 1 citekeys in bib section 0
+[1028] Biber.pm:4340> INFO - Processing section 0
+[1060] Biber.pm:4531> INFO - Looking for bibtex format file '../../KS-Style/KS-Bib.bib' for section 0
+[1078] bibtex.pm:1689> INFO - LaTeX decoding ...
+[1108] bibtex.pm:1494> INFO - Found BibTeX data source '../../KS-Style/KS-Bib.bib'
+[1466] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[1466] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[1466] Biber.pm:4168> INFO - Sorting list 'anyt/global//global/global' of type 'entry' with template 'anyt' and locale 'en-US'
+[1466] Biber.pm:4174> INFO - No sort tailoring available for locale 'en-US'
+[1509] bbl.pm:654> INFO - Writing '1-31.bbl' with encoding 'UTF-8'
+[1514] bbl.pm:757> INFO - Output to 1-31.bbl
