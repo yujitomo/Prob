@@ -35,7 +35,6 @@ Temporary Items
 *.log
 *.lot
 *.fls
-*.toc
 *.fmt
 *.fot
 *.cb
@@ -345,12 +344,10 @@ Temporary Items
 ### https://raw.github.com/github/gitignore/218a941be92679ce67d0484547e3e142b2f5f6f0/TeX.gitignore
 
 ## Core latex/pdflatex auxiliary files:
-*.aux
 *.lof
 *.log
 *.lot
 *.fls
-*.out
 *.toc
 *.fmt
 *.fot
@@ -628,5 +625,3 @@ TSWLatexianTemp*
 # option is specified. Footnotes are the stored in a file with suffix Notes.bib.
 # Uncomment the next line to have this generated file ignored.
 #*Notes.bib
-
-
