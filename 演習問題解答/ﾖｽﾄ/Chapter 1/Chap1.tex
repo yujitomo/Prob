@@ -1,0 +1,121 @@
+\ifcsname MainFile\endcsname\else
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+\input{../ZZStyle/Jost_Style.sty}
+\begin{document}
+\SetTrueSecNumber{chapter1}
+
+\cite{jost2017riemannian}の Chapter 1 の解答PDFです。
+
+私は代数幾何 (スキーム論) 既習の人間なので、そういう感じの考え方をします。
+
+\fi
+
+\section{Riemannian Manifolds}
+\label{chapter1}
+
+
+
+
+\begin{prob}\label{1.1}
+  この本 \cite{jost2017riemannian} で議論されている例の他に可微分多様体の例を5つ挙げよ。
+\end{prob}
+
+\begin{proof}
+  \(\P^n_{\C}\)や、
+  \(\P^N_{\C}\)の適当な滑らかな閉部分スキームでの爆発や、
+  種数\(g\)のコンパクトリーマン面や、
+  \(SL_n\)などの線形代数群や、
+  適当なベクトル束に付随する射影束や、
+  グラスマン多様体や、旗多様体など...
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+\begin{prob}\label{1.2}
+  \(S^n\)の接空間を決定せよ
+  (\(S^n\)の接束を\(S^n\times \R^{n+1}\)の部分多様体として具体的に記述せよ)。
+\end{prob}
+
+\begin{proof}
+  \(M\dfn \R^{n+1}\)の標準的な座標関数 (すなわち射影)
+  を\(x^0,\cdots,x^n : M \to \R\)とする。
+  \(N\dfn S^n\subset M\)は\(C^{\infty}\)-関数
+  \(f\dfn \sum_i (x^i)^2 - 1 : M\to \R\)の\(0\)での逆像である
+  (以下の図式がpull-back図式)：
+  \[
+  \begin{CD}
+    N @>{\subset}>> M \\
+    @VVV @VV{f}V \\
+    \{ 0 \} @>>> \R.
+  \end{CD}
+  \]
+  \(f\)により\(M\)上のベクトル束の完全列
+  \[
+  \begin{CD}
+    0 @>>> [f^*\Omega_{\R}\cong M\times \R] @>{df}>> \Omega_M @>>> \Omega_f @>>> 0
+  \end{CD}
+  \]
+  が引き起こされる。
+  ここで\(df\)は自明束\(M\times \R\)からの射
+  \(M\times \R\to \Omega_M\)が定める大域切断 (大域的な\(1\)-form) である。
+  上の図式がpull-back図式であることから自然に\(\Omega_f|_N\cong \Omega_N\)が成立し、
+  したがって\(T_N\cong \ker(df|_N)\)が成り立つ。
+  ここで\(df|_N:T_M|_N\to N\times \R\)は
+  \(M\)上の\(1\)-form \(df\)の定義するベクトル束の間の射の\(N\)への制限である。
+
+  さて、\(\del_i = \del/\del x^i\)を\(M = \R^{n+1}\)の
+  接束\(TM = T\R^{n+1} = \R^{n+1}\times \R^{n+1}\)の
+  座標関数\(x_0,\cdots,x_n\)に対するframeとする。
+  \(df=\sum_i2x^idx^i\)であるから、このとき、
+  各点\(p = (p^0,\cdots,p^n)\in S^n\subset \R^{n+1}\)に対して、
+  点\(p\in \R^{n+1}\)での接ベクトル\(v = \sum_i a^i\del_i\in T_p\R^{n+1}\)が
+  \(T_pS^n\subset T_p\R^{n+1}\)に属するためには
+  \[
+  0 = df_p(v) = df_p(\sum_i a^i\del_i)
+  = \sum_i a^idf_p(\del_i)
+  = \sum_i a^i(\del_if)(p)
+  = \sum_i a^i(2x^i)(p)
+  = 2 \sum_i a^ip^i
+  \]
+  が成り立つことが必要充分である。
+  したがって、
+  \begin{align*}
+    TS^n &= \ker(T\R^{n+1} \xrightarrow{df} S^n\times \R) \\
+    &\cong \left\{ (x^0,\cdots,x^n;\sum_i a^i\del_i) \in T\R^{n+1} \middle|%
+    \sum_i(x^i)^2 = 1,%
+    \sum_i a^ix^i = 0 \right\}
+  \end{align*}
+  となる。
+\end{proof}
+
+
+
+
+
+\begin{prob}\label{1.3}
+  \(M\)を可微分多様体、\(\tau:M\to M\)を固定点のないinvolution、
+  すなわち、\(\tau\circ \tau = \id_M\)かつ\(\tau(x)\neq x (\forall x\in M)\)
+  を満たす射とする。
+  二点\(x,y\in M\)に対して\(y=\tau(x)\)であることによって同値関係を定義する
+  このとき、同値類\(M/\tau\)には標準射影\(M\to M/\tau\)が
+  局所微分同相写像となる一意的な可微分構造が存在することを示せ。
+\end{prob}
+
+\begin{proof}
+
+\end{proof}
+
+
+
+
+\ifcsname MainFile\endcsname\else
+\printbibliography
+\end{document}
+\fi
