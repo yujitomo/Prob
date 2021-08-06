@@ -1,0 +1,1508 @@
+\documentclass[uplatex]{jsarticle}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+
+\usepackage{xcolor}
+\usepackage[dvipdfmx]{graphicx}
+
+
+
+\usepackage{ulem}
+
+\usepackage{braket}
+
+%%%%%ハイパーリンク
+%\usepackage[colorlinks=true,urlcolor=blue!70!black,citecolor=blue!60!black,linkcolor=blue!60!black]{hyperref}
+%\usepackage{aliascnt} %for creating different biblatex references for different theoremstyles
+\usepackage[setpagesize=false,dvipdfmx]{hyperref}
+\usepackage{aliascnt}
+\hypersetup{
+    colorlinks=true,
+    citecolor=blue,
+    linkcolor=blue,
+    urlcolor=blue,
+}
+
+\renewcommand{\eqref}[1]{\textcolor{blue}{(\ref{#1})}}
+
+%%%%%%ハイパーリンク
+
+
+%%%%%図式
+%\usepackage{tikz}%%%図
+\usepackage{amscd}%%%簡単な図式
+
+\usepackage{tikz}
+\usepackage{tikz-cd} %commutative diagrams in TikZ
+\usetikzlibrary{calc}
+\usetikzlibrary{matrix,arrows}
+\usetikzlibrary{decorations.markings}
+
+%%%%%図式
+
+
+
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+
+\usepackage{amsthm}
+
+%%%%%%%%%%%%Plain型%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%definition型%%%%%%%%%%%%
+
+\theoremstyle{definition}
+
+\renewcommand{\sectionautorefname}{Section}
+
+\newtheorem{thm}{Theorem}[section]
+\newcommand{\thmautorefname}{Theorem}
+
+
+\newaliascnt{prop}{thm}%%%カウンター「prop」の定義（thmと同じ）
+\newtheorem{prop}[prop]{Proposition}
+\aliascntresetthe{prop}
+\newcommand{\propautorefname}{Proposition}%%%カウンター名propは「命題」で参照する
+
+\newaliascnt{cor}{thm}
+\newtheorem{cor}[cor]{Corollary}
+\aliascntresetthe{cor}
+\newcommand{\corautorefname}{Corollary}
+
+\newaliascnt{lem}{thm}
+\newtheorem{lem}[lem]{Lemma}
+\aliascntresetthe{lem}
+\newcommand{\lemautorefname}{Lemma}
+
+\newaliascnt{defi}{thm}
+\newtheorem{defi}[defi]{Definition}
+\aliascntresetthe{defi}
+\newcommand{\defiautorefname}{Definition}
+
+\newaliascnt{rem}{thm}
+\newtheorem{rem}[rem]{Remark}
+\aliascntresetthe{rem}
+\newcommand{\remautorefname}{Remark}
+
+
+\newaliascnt{exam}{thm}
+\newtheorem{exam}[exam]{Example}
+\aliascntresetthe{exam}
+\newcommand{\examautorefname}{Example}
+
+\newaliascnt{reconstruction}{thm}
+\newtheorem{reconstruction}[reconstruction]{Reconstruction}
+\aliascntresetthe{reconstruction}
+\newcommand{\reconstructionautorefname}{Reconstruction}
+
+%%%%%%%番号づけない定理環境
+\newtheorem*{exam*}{Example}
+\newtheorem*{rrem*}{Remark}
+\newtheorem*{defi*}{Definition}
+
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+
+
+
+
+
+%%%%%箇条書き環境
+\usepackage[]{enumitem}
+
+\makeatletter
+\AddEnumerateCounter{\fnsymbol}{\c@fnsymbol}{9}%%%%fnsymbolという文字をenumerate環境のパラメーターで使えるようにする。
+\makeatother
+
+\makeatletter
+\renewcommand{\p@enumii}{}
+\makeatother
+
+\renewcommand{\theenumi}{(\roman{enumi})}%%%%%itemは(1),(2),(3)で番号付ける。
+\renewcommand{\labelenumi}{\theenumi}
+
+\renewcommand{\theenumii}{(\alph{enumii})}%%%%%itemは(1),(2),(3)で番号付ける。
+\renewcommand{\labelenumii}{\theenumii}
+
+\usepackage{moreenum}
+%%%%%箇条書き環境
+
+
+
+\usepackage{mandorasymb}
+\usepackage{applekeys}
+\renewcommand{\qedsymbol}{\pencilkey}
+%\renewcommand{\qedsymbol}{\kinoposymbniko}
+
+
+
+
+\usepackage{latexsym}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Isom}{Isom}
+\DeclareMathOperator{\ISOM}{\mathbf{Isom}}
+\DeclareMathOperator{\id}{\mathrm{id}}
+\DeclareMathOperator{\im}{\mathrm{Im}}
+\DeclareMathOperator{\Spec}{\mathrm{Spec}}
+\newcommand{\Supp}{\mathrm{Supp}}
+\DeclareMathOperator{\Aut}{\mathrm{Aut}}
+
+\newcommand{\coker}{\mathrm{coker}}
+
+\DeclareMathOperator{\Tor}{\mathrm{Tor}}
+\DeclareMathOperator{\Ext}{\mathrm{Ext}}
+
+\DeclareMathOperator{\colim}{\mathrm{colim}}
+\DeclareMathOperator{\plim}{\mathrm{lim}}
+
+\newcommand{\Ob}{\mathrm{Ob}}
+
+\newcommand{\rsa}{\rightsquigarrow}
+\renewcommand{\coprod}{\amalg}
+\renewcommand{\emptyset}{\varnothing}
+\newcommand{\ep}{\varepsilon}
+\newcommand{\op}{\mathrm{op}}
+
+\newcommand{\dfn}{:\overset{\mbox{{\scriptsize def}}}{=}}
+\newcommand{\deff}{:\hspace{-3pt}\overset{\text{def}}{\iff}}
+\newcommand{\dl}{\partial}
+
+\newcommand{\Qcoh}{\mathsf{Qcoh}}
+\newcommand{\Coh}{\mathsf{Coh}}
+\newcommand{\Pic}{\mathrm{Pic}}
+\newcommand{\Sym}{\mathrm{Sym}}
+\newcommand{\Mod}{\mathsf{Mod}}
+
+
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+
+
+
+\newcommand{\mcA}{\mathcal{A}}
+\newcommand{\mcB}{\mathcal{B}}
+\newcommand{\mcC}{\mathcal{C}}
+\newcommand{\mcD}{\mathcal{D}}
+\newcommand{\mcE}{\mathcal{E}}
+\newcommand{\mcF}{\mathcal{F}}
+\newcommand{\mcG}{\mathcal{G}}
+\newcommand{\mcH}{\mathcal{H}}
+\newcommand{\mcI}{\mathcal{I}}
+\newcommand{\mcJ}{\mathcal{J}}
+\newcommand{\mcK}{\mathcal{K}}
+\newcommand{\mcL}{\mathcal{L}}
+\newcommand{\mcM}{\mathcal{M}}
+\newcommand{\mcN}{\mathcal{N}}
+\newcommand{\mcO}{\mathcal{O}}
+\newcommand{\mcP}{\mathcal{P}}
+\newcommand{\mcQ}{\mathcal{Q}}
+\newcommand{\mcR}{\mathcal{R}}
+\newcommand{\mcS}{\mathcal{S}}
+\newcommand{\mcT}{\mathcal{T}}
+\newcommand{\mcU}{\mathcal{U}}
+\newcommand{\mcV}{\mathcal{V}}
+\newcommand{\mcW}{\mathcal{W}}
+\newcommand{\mcX}{\mathcal{X}}
+\newcommand{\mcY}{\mathcal{Y}}
+\newcommand{\mcZ}{\mathcal{Z}}
+
+\DeclareMathOperator{\OOO}{\mcO}
+
+\newcommand{\OC}{{\OOO_C}}
+\newcommand{\OD}{{\OOO_D}}
+\renewcommand{\OE}{{\OOO_E}}
+\newcommand{\OF}{{\OOO_F}}
+\newcommand{\OH}{{\OOO_H}}
+\newcommand{\OM}{{\OOO_N}}
+\newcommand{\ON}{{\OOO_N}}
+\newcommand{\OS}{{\OOO_S}}
+\newcommand{\OT}{{\OOO_T}}
+\newcommand{\OU}{{\OOO_U}}
+\newcommand{\OV}{{\OOO_V}}
+\newcommand{\OW}{{\OOO_W}}
+\newcommand{\OX}{{\OOO_X}}
+\newcommand{\OY}{{\OOO_Y}}
+\newcommand{\OZ}{{\OOO_Z}}
+
+\newcommand{\OO}[1]{\OOO_{#1}}
+
+
+\newcommand{\resol}{\mathrm{Resol}}
+\newcommand{\spectm}{\mathrm{Sp}}
+
+
+
+
+\title{関数空間}
+
+\author{ゆじ}
+
+\begin{document}
+
+\maketitle
+
+
+
+
+%
+%\section{Motivation}
+%
+%
+%この節では\(\R\)上の線型空間についてのみ考える。
+%完備なノルムが付随している\(\R\)-線型空間を\textbf{Banach空間}といい、
+%内積が付随している\(\R\)-線型空間で対応するノルムが完備であるものを\textbf{Hilbert空間}という。
+%
+%\(\Omega\subset \R^n\)を有界領域 (有界な開集合) として\(\mu\)を標準的な測度とする。
+%\(\Omega\)上の二乗可積分な可測関数の空間は\(L^2(\Omega)\)で表され、
+%これはHilbert空間となることが知られている。
+%ここでは単に\(L^2\)で表す。
+%関数\(f\in L^2\)は一般に全くもって偏微分できない (連続かどうかすらわからない) が、
+%微分に対応する関数\(g\in L^2\)が存在することがある。
+%これはつまり、\(\Omega\)に台を持つ任意の\(C^{\infty}\)関数\(\varphi\)に対して
+%\[\int_{\Omega}f\varphi d\mu = -\int_{\Omega}g\dl_i\varphi d\mu\]
+%が成り立つ、ということである。
+%このような\(g\)を\(f\)の\(i\)方向の\textbf{弱微分}と言い、\(\dl_if\)で表す。
+%もちろん、\(f\)が可微分であれば、部分積分することで\(f'\)は\(f\)の弱微分であることがわかる。
+%弱微分可能な\(L^2\)関数であり、弱微分がまた\(L^2\)となるようなものを
+%\(W^{1,2}\subset L^2\)で表し、
+%これを\textbf{ソボレフ空間}と言う。
+%\(W^{1,2}\)上には
+%\[
+%\|f\|_{W^{1,2}} \dfn \|f\|_{L^2} + \sum_i \|\dl_if\|_{L^2}
+%\]
+%で定義されるノルムによってBanach空間となる。
+%
+%さて、\(\Omega\)上の関数\(a_{ij},b_i,c\)に対し、2階偏微分方程式
+%\[
+%\sum_{ij}a_{ij}\dl_i\dl_jf + \sum_ib_i\dl_if + cf = 0
+%\]
+%を考える。
+%\(L\dfn \sum_{ij}a_{ij}\dl_i\dl_j + \sum_ib_i + c\)と置いて、
+%上の方程式はしばしば\(Lf=0\)などと書かれる。
+%作用素\(L\)に関して何らかの条件が与えられている場合 (たとえば、\textbf{楕円型}であるなど)、
+%方程式\(Lf=0\)の解の存在や一意性などの主張を証明する際には、
+%次のような手順を踏むことが多い：
+%
+%\begin{itemize}
+  %\item まず
+%\end{itemize}
+
+
+%\(a_{ij},b_i,c\)に関して何らかの関係があるとする。
+
+
+
+
+
+\section{ノルム空間、Banach空間、Hilbert空間}
+
+
+\subsection{定義}
+
+
+係数体\(\K\)は\(\R\)や\(\C\)や\(\Q_p\)などの完備ノルム体とする。
+
+\begin{defi}
+  \
+  \begin{itemize}
+    \item \textbf{ノルム空間}：ノルム\(\|-\|\)が付随している\(\K\)-線形空間のこと。
+    \item \textbf{Banach空間}：完備なノルムが付随しているノルム空間のこと。
+    \item \textbf{Hilbert空間}：完備な内積\((-,*)\)が付随している\(\C\)-線形空間のこと。
+  \end{itemize}
+  とくに、\(\K=\C\)なら、
+  Hilbert空間\(\Rightarrow\)Banach空間\(\Rightarrow\)ノルム空間。
+
+  \(X\)をノルム空間とする。
+  \(r>0\)に対し、\(B_r^X,B_r\subset X\)などの記号で半径\(r\)の\textbf{開球}を表す：
+  \[
+  B_r = B_r^X \dfn \{ x\in X | \|x\| < r \} \subset X.
+  \]
+  二つのノルム\(\|-\|_1,\|-\|_2\)が\textbf{同値}であるとは、
+  ある\(a,b>0\)が存在してすべての元\(x\)に対して
+  \(a\|x\|_1 \leq \|x\|_2\leq b\|x\|_1\)が成り立つことを言う。
+  このとき\(\|-\|_1,\|-\|_2\)の定める位相は同じである。
+  \(\bar{B}_r\)で\textbf{閉球}、
+  \(\dl B_r\)で\textbf{球面}を表す。
+
+  \(H\)をHilbert空間、\(F\subset H\)を閉 (線形) 部分空間とする。
+  \[
+  F^{\bot} \dfn \{ v\in H | (v,w)=0, \forall w\in F\}
+  \]
+  と書き、これを\(F\)の\textbf{直交補空間}という。
+\end{defi}
+
+
+\begin{rem}[\textbf{有限次元ノルム空間は完備}]
+  有限次元ノルム空間は完備である。
+  実際、どんな線型空間の同型\(\cong \K^r\)をとっても、
+  右辺の標準的なノルムから定まる位相に関して同相になる。
+  右辺は完備である。
+  特に、任意のノルム空間の\textbf{有限次元部分空間は閉部分空間}である。
+\end{rem}
+
+
+\begin{rem}[\textbf{直交補空間は閉}]
+  直交補空間は閉である。
+  実際、\(v\in \overline{F^{\bot}}\)となるCauchy列\(v_n\in F^{\bot}\)に対して
+  \(0 = (v_n,w) \to (\lim v_n,w) = 0\)がわかって\(\lim v_n\in F^{\bot}\)となる。
+\end{rem}
+
+
+\begin{exam}
+  \begin{itemize}
+    \item 二つのノルム空間\(X,Y\)に対して
+    \(X\oplus Y\)も\textbf{積ノルム}\(\|x\|_X+\|y\|_Y\)によってノルム空間となる。
+    \(X,Y\)がBanach空間であれば、\(X\oplus Y\)もBanach空間となる。
+    \item ノルム空間\(X\)の閉部分空間\(Y\subset X\)に対して、
+    \(X/Y\)は\textbf{商ノルム}\(\|x+Y\| = \inf\{\|x+y\| | y\in Y\}\)によってノルム空間となる。
+    実際、\(x+y_n\to 0\)であれば\(-y_n\to x\)となって\(Y\)が閉であることから
+    \(x\in Y\)となることがわかるので、このセミノルムはノルムとなる。
+    \(X\)がBanach空間であれば\(X/Y\)もBanach空間となる。
+    \item
+    \(X\)を距離空間、\(Y\)をノルム空間とする。
+    \(Y\)に値を持つ連続写像のなす空間\(C(X,Y)\)上の一様ノルム
+    \(\|f\|_{\infty} \dfn \sup_{x\in X}\|f(x)\|_Y\)を考える。
+    \(x\mapsto \|f(x)\|_Y\)は連続であるから、
+    \(X\)がコンパクトであれば、有界であり、
+    従って一様ノルムが\(C(X,Y)\)のノルムを定める。
+    さらに\(Y\)がBanach空間であれば、
+    一様ノルムに関するCauchy列の各点収束極限が存在し、
+    一様ノルムに関するCauchy列の極限であることから連続となり、
+    \(C(X,Y)\)がBanach空間であることも従う。
+    \item
+    \((\Omega,\mu)\)を測度空間、
+    \(1\leq p < \infty\)とする。
+    \(\Omega\)上の\(p\)乗可積分な可測関数のなす\(\K\)-線形空間を\(\mcL^p(\Omega)\)と書き、
+    \[\|f\|_p\dfn \int_{\Omega}fd\mu\]
+    でセミノルムを定め、
+    \(L^p(\Omega) \dfn \mcL^p(\Omega)/(\|-\|_p=0)\)
+    と定めると、\(L^p(\Omega)\)はノルム空間となる。
+    可測関数の各点収束極限は可測であることに注意する。
+    従って、\(f_n\in \mcL^p(\Omega)\)が\(L^p(\Omega)\)のCauchy列を代表する可測関数の列であるとき、
+    \(f \dfn \lim f_n , a.e.\)
+    により可測関数\(f:\Omega \to \K\)が定義される。
+    ここで\(\forall \ep>0, \exists N, \forall n,m > N\)で
+    \[ | \|f_n\|_p - \|f_m\|_p| \leq \|f_n-f_m\|_p < \ep\]
+    となるので\(\|f_n\|_p\)は\(\K\)のCauchy列となり、収束する。
+    以上より\(\|f\|_p < \infty\)がわかって\(f\in \mcL^p(\Omega)\)となる。
+    すなわち\(L^p(\Omega)\)はBanach空間である。
+    \item
+    直前の例と同様に、\(\Omega\)上の有界可測関数の\(\K\)-線形空間を
+    \(\mcL^{\infty}(\Omega)\)と書き、
+    一様ノルム\(\|-\|_{\infty}\)でセミノルムを定め、
+    \(L^{\infty}(\Omega) \dfn \mcL^{\infty}(\Omega)/(\|-\|_{\infty}=0)\)
+    と定めることでBanach空間\(L^{\infty}(\Omega)\)を得る。
+  \end{itemize}
+\end{exam}
+
+
+
+
+
+\begin{defi}\label{defi: operators}
+  \(X,Y\)：ノルム空間とする。
+  \textbf{作用素}\(A:X\to Y\)とは、線形写像のことを意味する (連続とは言ってない)。
+  \textbf{線形汎関数}とは、行き先が\(\K\)である線形作用素のことを意味する。
+  以下、\(X,Y\)をBanach空間とする。
+  \begin{itemize}
+    \item \textbf{有界作用素}：\(\exists M>0, \forall x\in X, \|Ax\|_X \leq M\|x\|_Y\). \\
+    つまり、単位球の行き先がノルム\(M\)以下の部分、ということ。
+    \item \textbf{閉作用素}：\(X\)がノルム\(\|x\|_X + \|Ax\|_Y\)に関して完備、ということ。\\
+    このノルムを\textbf{グラフノルム}と言う。
+    \item \textbf{コンパクト作用素}：単位球の像が相対コンパクト (閉包がコンパクト)、ということ。
+    \item \textbf{Fredholm作用素}：\(\dim(\ker(A)),\dim(\coker(A))<\infty\)かつ\(\im(A)\subset Y\)が閉、ということ。
+  \end{itemize}
+  有界作用素\(A\)に対して\(\|A\|\dfn \sup\{Ax|x\in X, \|x\|=1\}\)と定め、
+  これを\textbf{作用素ノルム}という。
+  有界作用素全体のなす線形空間をたんに\(\Hom(X,Y)\)で表し、
+  \(X\)上の有界な線形汎関数全体の空間を\(X^* \dfn \Hom(X,\K)\)で表す。
+  \(\Hom(X,Y)\)は作用素ノルムによってノルム空間となり、
+  さらに\(Y\)がBanach空間であれば\(\Hom(X,Y)\)もBanach空間となる。
+  とくに、係数体が完備であることから、
+  ノルム空間\(X\)に対して\(X^*\)はBanach空間となる。
+  \(X\otimes Y\dfn \Hom(X^*,Y)\)と定め、これを\textbf{テンソル積}と言う。
+
+  \(A:X\to Y\)がHilbert空間の間の作用素であるとき、
+  \(A^*\dfn (-)\circ A: Y^*\to X^*\)を\(A\)の\textbf{共役作用素}と言う。
+  さらに、Hilbert空間上の作用素\(A:X\to X\)が任意の\(u,v\in X\)に対して
+  \((Au,v) = (u,A^*v)\)を満たすとき、
+  \textbf{自己共役作用素}と言う。
+\end{defi}
+
+
+\begin{rem}
+  ここでは作用素の定義域はつねに全体であるとする。
+\end{rem}
+
+
+
+\begin{rem}[\textbf{有界\(\iff\)連続}]
+  有界作用素は連続である。
+  実際\autoref{defi: operators}の記号で、\(x_n\in X\)がCauchy列であれば、
+  \(|\|Ax_n\|-\|Ax_m\|| \leq \|A(x_n-x_m)\| \leq M\|x_n-x_m\|\)
+  なので\(Ax_n\in Y\)もCauchy列である。
+  逆に連続な線形作用素は有界である。
+  実際、有界でないとすれば、
+  \(\|Ax_n\|\geq 2^n, \|x_n\|=1\)となる\(x_n\in X\)が取れて、
+  \(2^{-n}x_n \to 0\)であるが\(A(2^{-n}x_n)\to 0\)とはならず、
+  連続でない。
+
+  すぐ後で示すように、Banach空間の間の全射有界作用素は開写像である
+  (開写像定理)。
+\end{rem}
+
+
+
+
+\begin{rem}[閉\(\Rightarrow\)連続]
+  閉作用素の定義には連続性は含まれていないが、
+  後で示すように、Banach空間の間の閉作用素は連続 (従って有界) となる
+  (閉グラフ定理)。
+  定義域が全体ではない場合、閉作用素は有界とは限らない。
+\end{rem}
+
+
+
+
+\begin{rem}
+  コンパクト距離空間は全有界、とくに有界であるので、
+  コンパクト作用素は定義より有界作用素 (特に連続) である。
+\end{rem}
+
+
+
+
+\begin{rem}[合成について]
+  \label{rem: comp}
+  有界作用素の合成は有界作用素である。
+  また、定義より、\(A:X\to Y\)が有界、\(B:Y\to Z\)がコンパクト作用素であれば、
+  \(B\circ A:X\to Z\)はコンパクト作用素となる。
+  また、二つの有界作用素\(A:X\to Y,B:Y\to Z\)に対し、
+  \(|A(B(-))|\leq \|A\||B(-)| \leq \|A\|\|B\|\|-\|\)
+  となるので、\(\|A\circ B\| \leq \|A\|\|B\|\)となる。
+  とくに、\(Y=X\)、\(A\)が全単射、\(A^{-1}\)が有界作用素、であれば、
+  \(\|A\|^{-1}\leq \|A^{-1}\|\)となる。
+\end{rem}
+
+
+
+
+
+\begin{exam}[Hilbert-Schmidt作用素]
+  \(\Omega\subset \R^N\)を有界領域、\(\mu\)を\(\Omega\)の通常の測度、
+  \(L^2(\Omega)\)を\(\Omega\)上の二乗可積分関数のなすBanach空間とする。
+  第一変数に関して一様連続な二乗可積分関数
+  \([K:\Omega\times\Omega\to \R]\in L^2(\Omega\times\Omega)\)と
+  \(f\in L^2(\Omega),x\in X\)に対して
+  \[U_Kf(x) \dfn \int_{\Omega}K(x,y)f(y)d\mu(y)\]
+  と定義すれば、作用素
+  \[
+  U_K: L^2(\Omega)\to L^2(\Omega)
+  \]
+  が定まる。
+  これを\textbf{Hilbert-Schmidt作用素}という。
+  %\(U_K\)がコンパクト作用素であることを示す。
+%
+  %\(B\subset L^2(\Omega)\)を\(L^2\)ノルムに関して有界な集合として、
+  %\(b > 0\)を\(B\)の元の\(L^2\)ノルムの上界とする。
+  %各\(x\in\overline{\Omega}\)に対して\(\{f(x)|f\in B\}\subset \R\)は明らかに相対コンパクトである。
+  %よって、Ascoliの定理より、\(U_K(B)\)が相対コンパクトであるためには、
+  %\(U_K(B)\)が同程度一様連続であることが十分である。
+  %\(F\)の一様連続性から、
+  %\[
+  %\forall \ep>0, \exists \delta>0, \ \
+  %|x_1-x_2| < \delta \ \Rightarrow \ |K(x_1,y)-K(x_2,y)|<\ep
+  %\]
+  %が成り立つので、よって
+  %\[
+  %|U_Kf(x_1) - U_Kf(x_2)| \leq \int_{\Omega}|(K(x_1,y)-K(x_2,y)||f(y)|d\mu(y)
+  %\leq \ep\int_{\Omega}|f|d\mu \leq \ep \|f\|_p < b\ep
+  %\]
+  %が成り立つ。
+  %従って\(U_K(B)\)は同程度一様連続である。
+  %以上で\(U_K\)がコンパクト作用素であることがわかった。
+\end{exam}
+
+
+
+
+
+
+\subsection{ノルム空間の基本的な性質}
+
+
+\begin{thm}[Hahn-Banach]
+  \label{H-B}
+  \(\K=\R,\C\)とする。
+  \begin{enumerate}
+    \item \label{H-B, R}
+    (\textbf{Hahn-Banach}の拡張定理、\(\R\)版).
+    \(X\)を\(\R\)線形位相空間、
+    \(Y\subset X\)を部分線形空間、
+    \(p:E\to \R\)を\textbf{劣線形写像}、
+    つまり\(p(x_1+x_2)\geq p(x_1)+p(x_2), p(ax)\geq ap(x), (\forall a\geq 0, x,x_1,x_2\in E)\)
+    を満たす写像、
+    \(f:Y\to \R\)を線形写像とする。
+    \(\forall y\in Y, f(y) \leq p(y)\)、と仮定する。
+    このとき、\(f\)は\(\tilde{f}(x)\leq p(x)\)を満たすように\(X\)全体に延長できる。
+    つまり、\(\exists \tilde{f}:X\to \R\), s.t.,
+    \(f=\tilde{f}|_F, \forall x\in X, \tilde{f}(x) \leq p(x)\).
+    \item \label{H-B, C}
+    (\textbf{Hahn-Banach}の拡張定理、\(\C\)版).
+    \(X\)を\(\C\)線形位相空間、
+    \(Y\subset X\)を部分線形空間、
+    \(p:E\to \R_{\geq 0}\)を\textbf{劣線形写像}、
+    つまり\(p(x_1+x_2)\geq p(x_1)+p(x_2), p(ax)\geq |a|p(x), (\forall a\in \C, x,x_1,x_2\in E)\)
+    を満たす写像、
+    \(f:Y\to \R\)を線形写像とする。
+    \(\forall y\in Y, f(y) \leq p(y)\)、と仮定する。
+    このとき、\(f\)は\(\tilde{f}(x)\leq p(x)\)を満たすように\(X\)全体に延長できる。
+    つまり、\(\exists \tilde{f}:X\to \R\), s.t.,
+    \(f=\tilde{f}|_F, \forall x\in X, |\tilde{f}(x)| \leq |p(x)|\).
+    \item \label{functional ext}
+    (\textbf{連続汎関数は同じノルムのまま全体に拡張できる}).
+    \(X\)をノルム空間、\(F\subset X\)を閉部分空間、\(f:F\to \K\)を連続汎関数とすると、
+    \(f\)は連続汎関数\(\tilde{f}:X\to \K\)へとノルムを保って拡張できる。
+    すなわち、\(\tilde{f}|_F=f, \|\tilde{f}\| = \|f\|\)となる\(\tilde{f}\)が存在する。
+    \item \label{locally conv dual}
+    (\textbf{\(\neq 0\)な局所凸空間の双対空間は\(\neq 0\)}).
+    \(X\neq 0\)を\textbf{局所凸空間} (\(\deff\)凸集合からなる\(0\)の基本近傍系を持つ線形位相空間)、
+    \(u,v\in X\)を異なる元とすると、
+    ある連続汎関数\(f:X\to \K\)が存在して\(f(u)\neq f(v)\)となる。
+    とくに\(X^*\neq 0\)が成り立つ。
+    \item \label{norm eq}
+    \(X\)をノルム空間、\(v\in X\)を元とするとき、次が成り立つ：
+    \[
+    \|v\| = \sup\{|f(v)| \ | \ f\in X^*, \|f\| \leq 1\}.
+    \]
+    \item \label{2dual inj}
+    \(X\)をノルム空間とすると、自然な射\(X\to X^{**}\)は等長埋め込みである。
+  \end{enumerate}
+\end{thm}
+
+
+
+\begin{proof}
+  \ref{H-B, R} (\(\R\)版\textbf{Hahn-Banach}) を示す。
+  部分的な\(f\)の延長全体にZornの補題を使う。
+  \(F\subset F'\subset E\)を線形空間、
+  \(f':F'\to\R\)を線型写像で\(f'|_F=f\)と
+  \(f'(x) \leq p(x), (\forall x\in F')\)を満たすものとして、
+  ペア\((F',f')\)たちの間に
+  \(F'_1\subset F'_2, f'_2|_{F'_1} = f'_1\)を満たすことで順序を入れる。
+  Zornの補題より極大元\((F_0,f_0)\)が存在する。
+  もし\(x\in F\setminus F_0\)が存在すれば、
+  \(\tilde{f}_0(x) \dfn \inf\{p(x+x_0)-f_0(x_0)|x_0\in F_0\} \geq 0\)
+  と定義することで、\(f_0\)は\(F_0 + \R x_0\subset E\)へと延長される。
+  \(a\geq 0\)なら
+  \[
+  \tilde{f}_0(ax+bx_0) \leq a(p(x+x_0) - f_0(x_0)) + f_0(bx_0)
+  \leq p(a(x+x_0)) + f_0((b-a)x_0)
+  \leq p(ax+bx_0),
+  \]
+  \(a\leq 0\)でも同様にして、\(\tilde{f}_0(ax+bx_0)\leq p(ax+bx_0)\)がわかり、
+  \(\tilde{f}_0(x)\leq p(x)\)を満たす。
+  これは\((F_0,f_0)\)の極大性に反する。
+  以上で\(\R\)版Hahn-Banachの証明を完了する。
+
+  \ref{H-B, C} (\(\C\)版\textbf{Hahn-Banach}) を示す。
+  \(f\)の実部\(g\)を\(\R\)線形写像と見て\(\R\)版Hahn-Banachを用いて
+  \(\tilde{g}\)へと延長する。
+  \(\tilde{f}(x) \dfn \tilde{g}(x)-i\tilde{g}(ix)\)
+  と定める。\(\tilde{f}\)は\(f\)の延長である。また
+  \[
+  \tilde{f}((a+ib)x) = \tilde{g}((a+ib)x)-i\tilde{g}(i(a+ib)x)
+  = a\tilde{g}(x) + b\tilde{g}(ix) - ia\tilde{g}(ix) + ib\tilde{g}(x)
+  = a\tilde{f}(x) + ib\tilde{f}(x)
+  \]
+  なので\(\tilde{f}\)は\(\C\)-線形である。
+  さらに\(|\tilde{f}(x)| = z\tilde{f}(x)\)となる\(z\in \C,|z|=1\)をとれば
+  \[
+  |\tilde{f}(x)| = |\tilde{f}(zx)|
+  = |\tilde{g}(zx)| \leq p(zx) \leq |z|p(x) = p(x)
+  \]
+  となる。
+  よって\(\tilde{f}\)は所望の\(f\)の延長である。
+  以上で\(\C\)版Hahn-Banachの証明を完了する。
+
+  \ref{functional ext}
+  (\textbf{連続汎関数は全体に拡張できること})
+  を示すには、劣線形写像\(\|f(-)\|: F\to \R_{\geq 0}\)に対してHahn-Banach
+  (cf. \ref{H-B, R}, \ref{H-B, C}) を適用すれば良い。
+  \ref{locally conv dual}
+  (\textbf{\(\neq 0\)な局所凸空間の双対空間は\(\neq 0\)であること})
+  を示すには、閉部分空間\(\K(u-v)\subset X\)上の線形写像
+  \(\K(u-v)\to \K, a(u-v)\mapsto a\)
+  をノルムを保ったまま全体に拡張 (cf. \ref{functional ext}) すれば良い。
+  \ref{norm eq}
+  を示すには、\(\|v\|\neq 0\)としてから、
+  閉部分空間\(\K v\subset X\)上の線形写像
+  \(\K v\to \K, av\mapsto a\)をノルムを保ったまま全体に拡張
+  (cf. \ref{functional ext}) すれば良い。
+  \ref{2dual inj}は\ref{norm eq}より従う。
+  以上で全ての主張の証明を完了する。
+\end{proof}
+
+
+
+
+
+\begin{lem}[局所コンパクト性]
+  \label{lem: loc cpt norm sp}
+  \
+  \begin{enumerate}
+    \item \label{existence good vector}
+    \(E\)をノルム空間、
+    \(F\subsetneq E\)を閉部分空間とする。
+    このとき、
+    \(\|v\| = 1, \|v+F\| > 1/2\)
+    となる\(v\in E\setminus F\)が存在する。
+    \item \label{loc cpt norm is fd}
+    局所コンパクトなノルム空間は有限次元である。
+  \end{enumerate}
+\end{lem}
+
+\begin{proof}
+  \ref{existence good vector}を示す。
+  \(v\in \dl B_1 \cap (E\setminus F)\)を一つとる。
+  \(F\)は閉、\(v\not\in F\)なので、\(d \dfn \|v+F\| > 0\)である。
+  \(d = \|v+F\|\)の定義より、\(\exists w\in F, \|v-w\| < d+d = 2d\)である。
+  \(v'\dfn \|v-w\|^{-1}(v-w)\in \dl B_1 \cap (E\setminus V)\)とおく。
+  任意の\(w'\in V\)に対して
+  \[
+  \|v'-w'\| = \|v-w\|^{-1}\| v - (w + \|v-w\|w')\| > d/2d = 1/2
+  \]
+  が成り立つので、\(\|v'+F\| \geq 1/2\)となる。
+  以上で\ref{existence good vector}の証明を完了する。
+
+  \ref{loc cpt norm is fd}を示す。
+  \(E\)を局所コンパクトなノルム空間とする。
+  このとき、単位閉球\(\bar{B}_1\)はコンパクトであるので、
+  \(a_1,\cdots,a_r\in \bar{B}_1\)が存在して
+  \(\bar{B}_1\subset \bigcup (a_i + B_{1/2})\)となる。
+  \(F\dfn \sum a_i\K\subset E\)と置く。
+  もし\(E\setminus F\neq \emptyset\)なら、
+  \ref{existence good vector}より、
+  \(\|v+F\| \geq 1/2\)となる\(v\in \dl B_1\cap (E\setminus F)\)が存在するが、
+  \(v\in \dl B_1\subset \bar{B}_1\)であるから\(v\in a_i + B_{1/2}, (\exists i)\)、
+  すなわち\(\|v+F\| \leq \|v-a_i\| < 1/2\)が成り立ち、矛盾する。
+  よって\(E=F\)であり、\(E\)は有限次元となる。
+  以上で\ref{loc cpt norm is fd}の証明を完了する。
+\end{proof}
+
+
+
+
+\subsection{Banach空間の基本的な性質}
+
+
+
+\begin{thm}\label{Banach prop}
+  Baire範疇性：cf. \autoref{Baire category}.
+  \begin{enumerate}
+    \item \label{B-S}
+    (\textbf{一様有界性}, Banach-Steinhaus).
+    \(X\)をBanach空間、\(Y\)をノルム空間とし、
+    \(\Phi\)を有界線型写像\(X\to Y\)からなる集合とする。
+    任意の\(x\in X\)に対して\(\{\|Ax\| | A\in \Phi\}\)は有界
+    (つまり\(\forall x\in X, \sup\{\|Ax\||x\in X\}<\infty\)) であるとする。
+    このとき\(\{\|A\| | A\in \Phi\}\)は有界
+    (つまり\(\sup\{\|A\| | A\in\Phi\} < \infty\))
+    である。
+    \item \label{B-op}
+    (\textbf{開写像定理}).
+    \(f:X\to Y\)をBanach空間の間の\textbf{全射な}有界作用素とすると、
+    \(f\)は開写像である。
+    \item \label{B-cl}
+    (\textbf{閉グラフ定理}).
+    \(f:X\to Y\)をBanach空間の間の閉作用素とすると、
+    \(f\)は連続写像 (つまり、有界作用素) である。
+  \end{enumerate}
+\end{thm}
+
+
+\begin{proof}
+  \ref{B-S} (\textbf{一様有界性}) はBaire範疇性を用いることで証明できる。
+  \(n\in \N\)に対して、ボールの逆像の共通部分を
+  \(X_n\dfn \bigcap_{A\in \Phi}A^{-1}(B_n^Y)\)
+  とおけば、各\(x\in X\)ごとの有界性から\(\bigcup X_n = X\)が従う。
+  よって\(X\)の完備性とBaire範疇性よりある\(n\)に対する\(X_n\)が内点を持つ。
+  すると\(X_{2n}\)は原点のある\(\ep\)近傍を含み、
+  \(\sup\{\|A\| | A\in\Phi\} \leq 2n/\ep < \infty\)が従う。
+  以上で一様有界性の証明を完了する。
+
+  \ref{B-op} (\textbf{開写像定理}) を示す。
+  \(f:X \to Y\)をBanach空間の間の全射な有界作用素とする。
+  \(f\)が開写像であるためには、
+  \(\exists r,s > 0, B_s^Y\subset f(B_r^X)\)
+  が成り立つことが十分である。
+  \(\bigcup_{n\in \N} B_n^X = X\)と\(f\)の全射性から、
+  \(\bigcup_{n\in \N} f(B_n^X) = Y\)が成り立つ。ここでBaire範疇性より、
+  \[
+  \exists n\in \N, \exists \eta \in \overline{f(B_n)} = n\overline{f(B_1)}, \exists \delta > 0, \
+  \eta + B^Y_{\delta}\subset n\overline{f(B_1^X)}
+  \]
+  が成り立つ。よって
+  \(B^Y_{\delta} = (\eta + B^Y_{\delta}) - \eta \subset 2n\overline{f(B_1^X)}\)
+  が成り立つ。
+  \(\eta\in B_Y^{\delta}\cap (2n\overline{f(B_1^X)}\setminus 2nf(B_1^X))\)
+  という点が存在すると仮定する。
+  このとき\(\eta\)中心で半径\(2^{-l}\)の開球が\(2nf(B_1^X) = f(B_{2n}^X)\)と交わるため、
+  また、有界性よりある\(M > 0\)が存在して\(f(B_1^X) \subset B_M^Y\)となる。
+  もし\(B^Y_{\delta}\not\subset 2nf(B_1^X)\)であるなら、
+  ある\(\eta_0\in \overline{f(B_1^X)}\setminus f(B_1^X)\)が存在して、
+  \(\|\eta_0\| < \delta/2n\)が成り立つ。
+
+
+  \ref{B-cl} (\textbf{閉グラフ定理}) を示す。
+  \(f:X\to Y\)を閉作用素とする。
+  \(f\)のグラフ\(\Gamma_f\dfn \{(x,f(x))|x\in X\}\subset X\oplus Y\)
+  に積ノルムを入れると、\(\Gamma_f\)はノルム空間である。
+  射影\(\Gamma_f\to X\)は全単射であり、\(X\)のグラフノルムに関して等長的なので、
+  仮定より\(\Gamma_f\)はBanach空間である。
+  すると開写像定理により射影\(\Gamma_f\to X\)は
+  (\(X\)のもとのノルムに関して)
+  同相写像であることが従う。
+  射\(X\to \Gamma_f, x\mapsto (x,f(x))\)
+  は射影の逆射であるから連続であり、
+  従って合成
+  \(X\to \Gamma_f\subset X\oplus Y \to Y\)も連続であるが、
+  これは\(f\)に他ならない。
+  以上ですべての主張の証明を完了する。
+\end{proof}
+
+
+
+
+
+
+\subsection{Hilbert空間の基本的な性質}
+
+\begin{thm}
+  \(H\)をHilbert空間とする。
+  \begin{enumerate}
+    \item \label{elem decomp}
+    (\textbf{直交射影分解}).
+    \(F\subset H\)を閉部分空間、\(v\in H\)を元とするとき、
+    \(v=w+u\)となる元\(w\in F, u\in F^{\bot}\)が一意的に存在する。
+    \item \label{orthog not 0}
+    (\textbf{直交補空間が0でないこと}).
+    閉部分空間\(F\neq H\)の直交補空間は\(F^{\bot}\neq 0\)である。
+    \item \label{exists onb}
+    (\textbf{完全正規直交系の存在}).
+    \(H\)には完全正規直交系が存在する。
+    すなわち、部分集合\(\{v_{\lambda}|\lambda\in \Lambda\}\subset H\)であって、
+    各\(\lambda,\mu\in \Lambda\)に対して
+    \((v_{\lambda},v_{\mu}) = 0, (\lambda\neq \mu), (v_{\lambda},v_{\lambda}) = 1\)
+    となって、さらに\(\{v_{\lambda}|\lambda\in \Lambda\}\)の生成する閉部分空間が全体であるものが存在する。
+    \item \label{Riesz rep}
+    (\textbf{Rieszの表現定理}).
+    \(f:H\to \C\)を連続線形汎関数とするとき、
+    ある\(v\in H\)が存在して\(f = (-,v)\)が成り立つ。
+    特に、反線形写像\(H\to H^*,v\mapsto \overline{(-,v)}\)は同型である。
+  \end{enumerate}
+\end{thm}
+
+
+\begin{proof}
+  \ref{elem decomp} (\textbf{直交射影分解}) を示す。
+  \(F\cap F^{\bot} = 0\)なので一意性は明らかである。
+  \(\|v-w_n\| \to \|v+F\|\)となる点列\(w_n\in F\)を取れば、
+  \[
+  \|w_m-w_n\|^2 = 2\|v-w_n\|^2 + 2\|v-w_m\|^2 - \|2(v-(w_n+w_m)/2)\|^2 \to 0, \
+  (n,m\to \infty)
+  \]
+  となるので\(w_n\)はCauchy列である。
+  \(F\)は閉なので\(w_n\to \exists w\in F\)であり、
+  よってとくに\(\|v+F\| = \|v-w\|\)が成り立つ。
+  \(u\dfn v-w\in F^{\bot}\)を示す。
+  \(w'\in F\)と\(a>0\)を任意にとると
+  \[
+  \|u\|^2 = \|v+F\|^2 \leq \|v - w - aw'\|^2 = \| u - aw'\|^2
+  = \|u\|^2 - 2a\mathrm{Re}(u,w') + a^2\|w'\|^2
+  \]
+  が成り立つので、整理して、
+  \(2\mathrm{Re}(u,w') \leq a\|w'\|^2 \to 0, (a\to 0)\),
+  ここで\(-w'\)や\(\sqrt{-1}w'\)で同じことをすれば
+  \((u,w')=0\)が従い、\(u\in F^{\bot}\)がわかる。
+  以上で\ref{elem decomp}の証明を完了する。
+
+  \ref{orthog not 0} (\textbf{直交補空間が0でないこと}) は、
+  \ref{elem decomp}を元\(v\in H\setminus F\)に対して適用することで
+  \(F^{\bot}\)に属する\(\neq 0\)な元を得るので、これより従う。
+
+  \ref{exists onb} (\textbf{完全正規直交系の存在}) を示す。
+  正規直交系の集合全体に包含関係で順序を入れる。て
+  Zornの補題を適用すると極大な正規直交系\(B\subset H\)を得る。
+  \(B\)がもし\(H\)を生成しなければ、
+  直交補空間からノルム\(1\)の元をとることで極大性に矛盾する。
+  よって\(B\)は完全正規直交系である。
+  以上で\ref{exists onb}の証明を完了する。
+
+  \ref{Riesz rep} (\textbf{Rieszの表現定理}) を示す。
+  \(f=0\)なら\(v=0\)と取れば良い。
+  \(f\neq 0\)とする。
+  \(f\)は連続で\(\{0\}\subset \C\)は閉なので\(\ker(f)\subset H\)は閉である。
+  \(f\neq 0\)なので\(\ker(f)^{\bot}\neq 0\) (cf. \ref{elem decomp}) であり、
+  ゆえに\(\exists v\in\ker(f)^{\bot}, f(v) = 1\)となる。
+  任意の元\(u\in H\)を直交射影分解すると、
+  \[\exists u_0\in \ker(f), \ \ u = u_0 + (u,v)v\]
+  となる。
+  よって\(f(u) = f(u_0) + (u,v)f(v) = (u,v)\)が成り立ち、
+  特に\(f=(-,v)\)となる。
+  以上で全ての主張の証明を完了する。
+\end{proof}
+
+
+
+\subsection{コンパクト作用素の性質}
+
+
+\begin{prop}[\textbf{コンパクト作用素の双対はコンパクト}]
+  \label{cpt dual}
+  \(A:X\to Y\)をBanach空間の間の作用素とする。
+  このとき、\(A\)がコンパクト作用素であることと
+  \(A^*:Y^*\to X^*\)がコンパクト作用素であることは同値である。
+\end{prop}
+
+\begin{proof}
+  \(A\)がコンパクト作用素であるとする。
+  各\(x\in \overline{A(\bar{B}_1^X)}\)に対して、
+  \(\{f(Ax) | f\in Y^*, \|f\| = 1\}\subset \{a\in \K| |a|\leq 1\}\)は相対コンパクトであり、
+  \(A\)の有界性から\(\bar{B}_1^{Y^*}\)は\(\overline{A(\bar{B}_1^X)}\)上の関数の族として同程度連続である。
+  \(A\)はコンパクト作用素であるから、\(\overline{A(\bar{B}_1^X)}\)はコンパクトで、
+  よってAscoli-Arzel\'{a} (cf. \autoref{Ascoli}) より
+  \(\bar{B}_1^{Y^*}\)は\(A(\bar{B}_1^X)\)上の連続関数の空間の中で相対コンパクトである。
+  ゆえに\(A^*(\bar{B}_1^{Y^*})\)は\(\bar{B}_1^X\)上の連続関数の空間
+  (これは\(X^*\)を含む) の中で相対コンパクトであり、
+  特に\(X^*\)の中で相対コンパクトである。
+  以上より\(A^*\)はコンパクト作用素である。
+
+  \(A^*\)がコンパクト作用素であるとすると、
+  \(A^{**}:X^{**}\to Y^{**}\)はコンパクト作用素であるから、
+  その制限\(A = A^{**}|_X:X \to Y\)もコンパクト作用素である。
+  以上で証明を完了する。
+\end{proof}
+
+
+
+
+
+\begin{prop}[\textbf{\(\id\)とコンパクト作用素の差}]
+  \label{id - cpt is Fredholm}
+  \(X\)をBanach空間、\(A:X\to X\)をコンパクト作用素とする。
+  \begin{enumerate}
+    \item \label{power cpt}
+    \(1-(1-A)^k\)は任意の\(k\)に対してコンパクト作用素である。
+    \item \label{ker fin}
+    \(\ker(1-A)^k\)は任意の\(k\)に対して有限次元である。
+    \item \label{coker fin}
+    \(\coker(1-A)^k\)は任意の\(k\)に対して有限次元である。
+    \item \label{ker stable}
+    \(\ker(1-A)^k = \ker(1-A)^{k+1} = \cdots, (k\gg 0)\)である。
+    このような\(k\)のうち最小のものを\(k_0\)とする。
+    \item \label{ker cap im}
+    \(k \geq k_0\)に対して
+    \(\ker(1-A)^k\cap \im(1-A)^k = 0\)が成り立つ。
+    \item \label{im stable}
+    \(k \geq k_0\)に対して
+    \(\im(1-A)^k = \im(1-A)^{k+1} = \cdots\)となる。
+    \item \label{X decomp}
+    \(k \geq k_0\)に対して
+    \(\ker(1-A)^k \oplus \im(1-A)^k\xrightarrow{\sim} X\)
+    (線形位相空間の同型) となる。
+    \item \label{im cl}
+    \(\im(1-A)^k\subset X\)は任意の\(k\)に対して閉部分空間である。
+    \item \label{rest isom}
+    \(k \geq k_0\)に対して
+    \((1-A)|_{\im(1-A)^k}: \im(1-A)^k \xrightarrow{\sim} \im(1-A)^{k+1} = \im(1-A)^k\)
+    は位相線形空間の同型である。
+  \end{enumerate}
+  とくに\(1-A\)はFredholm作用素である。
+\end{prop}
+
+\begin{proof}
+  \(A_k\dfn 1-(1-A)^k, N_k\dfn \ker(1-A_k), F_k\dfn \im(1-A_k)\)と置く。
+  \(N_k\subset N_{k+1}\subset \cdots\)であり、
+  \(F_k\supset F_{k+1}\supset \cdots\)である。
+
+  \ref{power cpt}を示すには
+  \(1-A_k = 1-(1-A)^k = A\circ (\cdots)\)と整理すれば良い
+  (cf. \autoref{rem: comp})。
+
+  \ref{ker fin}を示す。
+  \((1-A_k)(N_k)=0\)なので\(A_k(N_k)=N_k\)であり、
+  とくに\(A(\bar{B}_k^{N_k}) = \bar{B}_k^{N_k}\)となる。
+  \ref{power cpt}より、\(A(\bar{B}_k^{N_k}) = \bar{B}_k^{N_k}\)はコンパクトである。
+  よって\(N_k\)は局所コンパクトとなり、有限次元
+  (cf. \autoref{lem: loc cpt norm sp} \ref{loc cpt norm is fd})
+  である。
+  以上で\ref{ker fin}の証明を完了する。
+
+  \ref{coker fin}はコンパクト作用素\((1-A_k)^*:X^*\to X^*\)
+  (cf. \autoref{cpt dual}) に対して
+  \ref{ker fin}を用いることでただちに従う。
+
+  \ref{ker stable}を示す。
+  すべての\(k\)で\(N_{k-1}\neq N_k\)となるとする。
+  \autoref{lem: loc cpt norm sp} \ref{existence good vector}より、
+  \(\|v_k\|=1, \|v_k+N_k\| \geq 1/2\)となる
+  \(v_k\in N_k\setminus N_{k-1}\)が存在する。
+  また、\(N_k\)の定義より\((1-A)v_k\in N_{k-1}\)が成り立つので、
+  よって\(k>l\)に対して\(-v_l+(1-A)v_k+(1-A)v_l\in N_{k-1}\)が成り立ち、
+  \[\|A(v_k-v_l)\| = \|v_k + (-v_l-(1-A)v_k+(1-A)v_l)\| \geq 1/2\]
+  が従う。
+  よって\(Av_k\)はCauchy列ではないため収束せず、
+  \(A\)がコンパクト作用素であることに反する。
+  以上で\ref{ker stable}の証明を完了する。
+
+  \ref{ker cap im}を示す。
+  \(v\in N_k\cap F_k\)をとれば、
+  \(v\in F_k\)より、\(u\in X\)があって\((1-A)^ku = v\)となる。
+  \(v\in N_k\)より\(u\in N_{2k}=N_k\)が成り立つので、
+  \(v = (1-A)^ku = 0\)が成り立つ。
+  以上より\(N_k\cap F_k=0\)である。
+
+  \ref{im stable}を示す。
+  \ref{ker stable}と同様にして、
+  \(F_l = F_{l+1} = \cdots\)となる\(l\)の存在がわかる。
+  そのような\(l\)のうち最小のものを\(l_0\)とする。
+  \(F_{l_0} = F_{l_0+1} = \cdots \)となる。
+  \(l_0 \leq k_0\)を示せば良い。\(l_0 > k_0\)と仮定する。
+  \(v\in F_{l_0-1}\setminus F_{l_0}\subset F_{k_0}\)に対し、
+  \((1-A) v\in F_{l_0} = (1-A)(F_{l_0})\)なので、
+  \((1-A) u = (1-A)v\)となる\(u\in F_{l_0}\)が存在する。
+  このとき\((1-A)(u-v) = 0, u-v\neq 0, u-v\in F_{l_0-1}\)となる。
+  とくに\(u-v\in N_1\subset N_{l_0-1}\)なので\(u-v\in N_{l_0-1}\cap F_{l_0-1} = 0\)となる。
+  これは矛盾。よって\(l_0 \leq k_0\)である。
+  以上で\ref{im stable}の証明を完了する。
+
+  \ref{X decomp}を示す。
+  \(v\in X\)を任意にとる。
+  \((1-A)^k v \in F_k = F_{2k} = (1-A)^k(F_k)\)
+  なので\(\exists u\in F_k, (1-A)^k v = (1-A)^k u\)となる。
+  ここで\(v-u\in N_k\)なので、\(v = u+(v-u) \in F_k + N_k\)となる。
+  よって\ref{ker cap im}より線型空間として\(X\cong F_k\oplus N_k\)となる。
+  \(N_k\)は有限次元なので、これは線形位相空間としての同型となる。
+  以上で\ref{X decomp}の証明を完了する。
+
+  \ref{im cl}を示す。
+  \(k\geq k_0, l \geq 1\)とする。
+  \(N_k\cong X/F_k\)は有限次元なので、部分空間
+  \(F_l/F_{k_0}\subset X/F_k\)は閉であり、
+  その逆像\(F_l\subset X\)も閉である。
+  以上で\ref{im cl}の証明を完了する。
+
+  \ref{rest isom}は
+  \((1-A)^k|_{\im(1-A)^k}\)が連続全単射であること (cf. \ref{ker cap im}) と
+  開写像定理 (cf. \autoref{Banach prop} \ref{B-op}) より従う。
+  以上ですべての主張の証明を完了する。
+\end{proof}
+
+
+\begin{rem}
+  上の証明では、\ref{coker fin}と\ref{rest isom}以外は完備性を用いていない。
+\end{rem}
+
+
+\begin{rem}
+  \(A|_{\ker(1-A)^k}\)は\(\ker(1-A)^k\)に値を持ち、
+  \(A|_{\im(1-A)^k}\)は\(\im(1-A)^k\)に値を持つ。
+\end{rem}
+
+
+
+\begin{rem}
+  \label{rem: cpt inj isom}
+  \(1-A\)が単射なら、任意の\(k\)で\(\ker(1-A)^k = 0\)であるので、
+  \ref{X decomp}より\(1-A\)は全射となる。
+\end{rem}
+
+
+
+
+
+
+
+
+
+
+\subsection{スペクトル、Fredholm Alternative}
+
+
+\begin{defi}[スペクトル]
+  \label{defi: spectm}
+  \(\K=\C\)とする。
+  \(A:X\to X\)をノルム空間上の有界作用素とする。
+  \(z\in \C\)に対して\(z\)-倍写像\(X\to X\)をたんに\(z\)で表す。
+  \begin{itemize}
+    \item
+    \(\resol(A)\dfn \{z\in \C | \text{\(z-A\)は全単射で、\((z-A)^{-1}\)は有界作用素}\}\subset \C\)
+    を\(A\)の\textbf{レゾルベント集合}と言い、
+    \(R_A(z)\dfn (z-A)^{-1}\)を\textbf{レゾルベント}という。
+    \item
+    \(\spectm(A) \dfn \C\setminus \resol(A)\)を\(A\)の\textbf{スペクトル}という。
+    \item
+    \(z-A\)が全単射でないとき、\(z\)を\(A\)の\textbf{固有値}という。
+    \item
+    \(\spectm(A)\subset \C\)が相対位相で離散であるとき、
+    \(A\)は\textbf{離散スペクトルを持つ}という。
+  \end{itemize}
+  \(A\)がコンパクト作用素であれば、
+  \(z\neq 0\)に対して\(z^{-1}A\)もコンパクト作用素である。
+  従って、\autoref{id - cpt is Fredholm} \ref{ker stable}より、
+  ある\(k\)が存在して
+  \[V_z\dfn \ker(z-A)^k = \ker(1-z^{-1}A)^k = \ker(1-z^{-1}A)^{k+1} = \cdots\]
+  が成り立つ (一般固有空間)。
+  \((z-A)|_{V_z}^k=0\)となる最小の値を\(n_z\)と書く。
+  \(F_z\dfn \im(1-z^{-1}A)^{n_z}\subset X\)と置く。
+\end{defi}
+
+
+
+\begin{rem}
+  定義より、\textbf{固有値はスペクトルの元}である。
+\end{rem}
+
+
+
+
+\begin{rem}
+  \(A:X\to X\)がコンパクト作用素で\(0\in \resol(A)\)と仮定する。
+  このとき\(A\)は同相となる。
+  よって単位球の像 (\(A\)はコンパクト作用素なのでこれはコンパクト) が\(0\)の近傍となり、
+  \(X\)は局所コンパクトである。
+  よって\(X\)は有限次元
+  (cf. \autoref{lem: loc cpt norm sp} \ref{loc cpt norm is fd}) となる。
+  対偶を取れば、\(X\)が無限次元なら\(0\in \spectm(A)\)となることが従う。
+\end{rem}
+
+
+
+\begin{rem}
+  \(X\)がBanach空間で\(A\)がコンパクト作用素である場合、
+  もし\(0\neq z\in \C\)が固有値でなければ、
+  \autoref{rem: cpt inj isom}より
+  \(1-z^{-1}A = z^{-1}(z-A)\)は同相である。
+  従って\(z\in\resol(A)\)となる。
+  特に、\(X\)が無限次元であれば、
+  \textbf{コンパクト作用素のスペクトルは\(0\)と固有値からなる}。
+  一般には、固有値とならないスペクトルの元が存在する。
+\end{rem}
+
+
+
+
+\begin{rem}[\textbf{一般固有空間はたがいにバラバラ}]
+  \(A:X\to X\)がコンパクト作用素であれば、
+  \(z\in \spectm(A)\setminus \{0\}\)に対し、
+  \(\dim V_z < \infty\)である
+  (cf. \autoref{id - cpt is Fredholm} \ref{ker fin})。
+  よって、\(V_z\)の定義より、
+  任意の\(z'\neq z\)に対して\(z'-A\)は\(V_z\)上で可逆である。
+
+  さらに\(z\neq z'\in \spectm(A)\)とする。
+  \(v\in V_{z'}\)を\(v = w + w', (w\in V_z, w'\in F_z)\)と分解すると、
+  \[
+  0 = (z'-A)^{n_{z'}}v = (z'-A)^{n_{z'}}w + (z'-A)^{n_{z'}}w', \ \
+  (z'-A)^{n_{z'}}w \in V_z, \ (z'-A)^{n_{z'}}w'\in F_z
+  \]
+  より\((z'-A)^{n_{z'}}w = 0\)がわかり、\(w=0\)が従う。
+  特に、\(V_{z'}\subset F_z\)となる。
+\end{rem}
+
+
+
+\begin{rem}[\textbf{レゾルベントは無限遠で\(0\)に収束}]
+  \label{resol infty 0}
+  \(z\in \resol(A)\)に対し、
+  \[\|(z-A)^{-1}\| \leq |z|^{-1}\cdot \|1-(z^{-1}A)\|^{-1} \to 0, \ (|z| \to \infty)\]
+  となるので、
+  特にノルム空間\(\Hom(X,X)\)の元として
+  \(R_A(z) \to 0, (|z|\to \infty)\)となる。
+\end{rem}
+
+
+
+\begin{rem}[\textbf{レゾルベント方程式}]
+  \label{rem: resol eq}
+  \(z_1,z_2\in \resol(A)\)に対して
+  \[
+  R_A(z_1)-R_A(z_2) = (z_2-z_1)R_A(z_1)R_A(z_2) = (z_2-z_1)R_A(z_2)R_A(z_1)
+  \]
+  が成り立つ。
+  この方程式を\textbf{レゾルベント方程式}と呼ぶ。
+  実際、任意の\(v\in X\)に対して、
+  \begin{align*}
+    (R_A(z_1)-R_A(z_2))v &= ((z_1-A)^{-1} - (z_2-A)^{-1})v \\
+    &= (1 - (z_2-A)^{-1}(z_1-A))(z_1-A)^{-1}v \\
+    &= ((z_2-A) - (z_1-A))(z_2-A)^{-1}(z_1-A)^{-1}v \\
+    &= (z_2-z_1)(z_2-A)^{-1}(z_1-A)^{-1}v
+  \end{align*}
+  となる。同様にして左側に寄せていけばもう一つの等式も従う。
+  レゾルベント方程式より、
+  \(\Hom(X,X)\)に値を持つ関数\(R_A:\resol(A)\to \Hom(X,X)\)は\textbf{連続}であるだけでなく
+  \textbf{微分可能}であり、その導関数は\(-R_A(z)^2\)であることが従う。
+\end{rem}
+
+
+
+
+\begin{prop}
+  \label{spectm top}
+  \(X\)をノルム空間、\(A:X\to X\)を有界作用素とする。
+  \begin{enumerate}
+    \item \label{spectm cpt}
+    (\textbf{スペクトルは空でない有界閉集合}).
+    \(\spectm(A)\)は空でない有界閉集合である。
+    \item \label{cpt op spectm disc}
+    (\textbf{コンパクト作用素のスペクトルは\(0\)以外孤立点}).
+    \(X\)がBanach空間、\(A\)がコンパクト作用素であるとき、
+    \(0\)以外の点\(a\in \spectm(A)\)は孤立点である。
+    とくに、\(\spectm(A)\)は可算集合である。
+    \item \label{resolv pole}
+    (\textbf{レゾルベントの極の位数}).
+    \(X\)がBanach空間、\(A\)がコンパクト作用素であるとき、
+    \(0\)以外の点\(a\in \spectm(A)\)での\(R_A(z)\)の位数は\(n_a+1\)である。
+  \end{enumerate}
+\end{prop}
+
+\begin{proof}
+  \ref{spectm cpt} (\textbf{スペクトルは空でない有界閉集合}であること) を示す。
+  まずスペクトルが有界集合であることを示す。
+  \(z\in \C, \|A\| < |z|\)とする。
+  \(X\)の完備性より、
+  \(1+(1/z)A+(1/z^2)A^2+\cdots\)は有界作用素\(X\to X\)となる。
+  また
+  \[
+  (z-A)\circ \frac{1}{z}\left(1+\frac{1}{z}A+\frac{1}{z^2}A^2+ \cdots \right) = \id_Z
+  \]
+  となるので\(z-A\)は全単射である。
+  よって\(\{|z| > \|A\|\} \subset \resol(A)\)、すなわち、
+  \(\spectm(A) \subset \{\|z\| \leq \|A\|\}\)となる。
+  以上でスペクトルの有界性が示された。
+
+  次にスペクトルが閉であることを示す。
+  \(a\in \resol(A), z\in \C\)に対して、
+  \(w\dfn a-z, B\dfn (a-A)^{-1}\)とおく。
+  \(\|w\| < \|B^{-1}\|^{-1}\)であれば、
+  \(1 + wB^{-1} + w^2B^{-2} + \cdots\)は有界作用素\(X\to X\)となる。
+  \(z-A = (a-A)(1 - wB)\)なので、
+  従って\(z\in \resol(A)\)となる。
+  以上より、レゾルベント集合は開であり、
+  スペクトルは閉であることが示された。
+
+  最後にスペクトルが\(\emptyset\)でないことを示す。
+  \(\resol(A)=\C\)と仮定する。
+  \(0\neq v\in X\)をとる。
+  任意の\(z\in \C\)に対して\(z-A\)は全単射であるから\(R_A(z)v\neq 0\)となる。
+  よってある\(z\in \C\)に対して、
+  \(\exists f\in X^*, f(R_A(z)v)\neq 0\)となる。
+  関数\(z\mapsto f(R_A(z)v)\)は正則 (cf. \autoref{rem: resol eq}) であるから、
+  Liouvilleの定理より\(f(R_A(z)v)\)は定数関数となるが、
+  これは\(R_A(z)\)は無限遠点で\(0\)に収束 (cf. \autoref{resol infty 0}) するので、
+  任意の\(z\)で\(f(R_A(z)v) = 0\)となる。
+  これは\(f\)の取り方に反する。
+  よって\(\resol(A)\neq \C\)であり、
+  とくに\(\spectm(A)\neq \emptyset\)となる。
+  以上で\ref{spectm cpt}の証明を完了する。
+
+  \ref{cpt op spectm disc}
+  (\textbf{コンパクト作用素のスペクトルは\(0\)以外孤立点}であること)
+  を示す。
+  \(0\neq a\in \spectm(A)\)を任意にとる。
+  まず、\(V_a\)の有限次元性 (cf. \autoref{id - cpt is Fredholm} \ref{ker fin}) より、
+  任意の\(z\neq a\)に対して\(z-A\)は\(V_a\)上で可逆である。
+  \(a-A\)は\(F_a\)上で同相 (cf. \autoref{id - cpt is Fredholm} \ref{rest isom}) なので、
+  \((a-A)|_{F_a}^{-1}\)は\(F_a\)上の有界作用素である。
+  \(c\dfn \min\{\|(a-A)|_{F_a}^{-1}\|^{-1},|a|\} > 0\)と置く。
+  \(0 < |z-a| < c\)とする。このとき\(z\neq 0\)であり、
+  さらに任意の\(0\neq v\in F_a\)に対して
+  \[
+  |z-a|\|v\| < c\|v\| \leq \|(a-A)|_{F_a}^{-1}\|^{-1}\|v\| \leq \|(a-A)v\|
+  \]
+  が成り立つ。よって
+  \[
+  |(z-A)v| = |(z-a)v + (a-A)v| \geq
+  \left| |z-a|\|v\| - \|(a-A)v\|\right| > 0
+  \]
+  がわかり\(z-A:F_a\to F_a\)は単射、
+  \autoref{rem: cpt inj isom}より同相となる。
+  特に\(\{|a-z|<c\}\cap \spectm(A) = \{a\}\)となって\(a\)は孤立点である。
+  以上で\ref{cpt op spectm disc}の証明を完了する。
+
+  最後に\ref{resolv pole}
+  (\textbf{レゾルベントの極の位数}が\(n_a\)であること) を示す。
+  \(a\)のまわり半径\(c\)の範囲では
+  \begin{align*}
+    R_A(z) &= (z-A)|_{V_a}^{-1} + (z-A)|_{F_a}^{-1} \\
+    &= (z-a)^{-1}(1+(z-a)^{-1}(a-A)|_{V_a})^{-1} + (z-A)|_{F_a}^{-1} \\
+    &= \sum_{n\geq 0}(z-a)^{-n-1}(a-A)|_{V_a}^n + (z-A)|_{F_a}^{-1}
+  \end{align*}
+  と展開できるが、
+  ここで\((a-A)|_{V_a}^n = 0, (n\geq n_a)\)であるから、
+  このローラン級数展開は\(-n_a-1\)からスタートする。
+  特に、極の位数は\(n_a+1\)である。
+  以上ですべての証明を完了する。
+\end{proof}
+
+
+
+\begin{cor}[Hilbert空間上のコンパクト作用素のスペクトル]
+  \label{Hilb cpt spectm}
+  \(X\)をHilbert空間、\(A:X\to X\)をコンパクト作用素とする。
+  \(A^*:X\to X\)を共役作用素とする。
+  \begin{enumerate}
+    \item \label{conj spectm}
+    \(\spectm(A^*) = \{ \bar{z} | z\in \spectm(A)\}\)である。
+    とくに\(A\)が自己共役作用素であれば、
+    \(\spectm(A)\subset \R\)となる。
+    \item \label{Fredholm alt}
+    (\textbf{Fredholm Alternative}).
+    任意の\(0\neq z\in \spectm(A)\)に対し、
+    \[\im((z-A)^*)\oplus \ker(z-A)\xrightarrow{\sim} X\]
+    が直交分解を与える。
+    特に、\(A\)が自己共役作用素であれば、
+    任意の\(0\neq z\in \spectm(A)\)に対し、
+    \[\im(z-A)\oplus \ker(z-A)\xrightarrow{\sim} X\]
+    が直交分解を与える。
+  \end{enumerate}
+\end{cor}
+
+
+\begin{rem}
+  Fredholm Alternativeを口語的に言い換えると、次のようになる：
+  \(X\)をHilbert空間、\(A\)を\(X\)上の自己共役作用素、\(v\in X\)、
+  \(0\neq z\in \spectm(A)\)とする。
+  このとき次は同値である：
+  \begin{itemize}
+    \item 方程式\((z-A)u = v\)は解\(u\in X\)を持つ。
+    \item \(v\)は\(\ker(z-A)\)と直交する。
+  \end{itemize}
+  \(z\in \resol(A)\)である場合、
+  \(z-A\)は同相なので、方程式\((z-A)u = v\)はいつでもただ一つの解を持つ。
+\end{rem}
+
+
+\begin{proof}
+  \((z-A)^* = \bar{z} - A^*\)より、
+  \(z\in \spectm(A)\setminus \{0\}\)\(\iff\)
+  \(z\)が\(A\)の固有値\(\iff\)
+  \(\bar{z}\)が\(A^*\)の固有値\(\iff\)
+  \(\bar{z}\in \spectm(A^*)\setminus \{0\}\)となり\ref{conj spectm}が従う。
+
+  \ref{Fredholm alt}を示す。
+  任意の\(v\in X,w\in \ker(z-A)\)に対して
+  \(((z-A)^*v,w) = (v,(z-A)w) = 0\)となるので、
+  \(\im((z-A)^*)\bot \ker(z-A)\)が成り立つ。
+  よって、残っているのは、\(\dim(z-A)=\dim((z-A)^*)\)を示すことである。
+  \(A^*\)の固有値\(\bar{z}\)に対する一般固有空間を\(V_{\bar{z}}(A^*)\)として、
+  \(W_{\bar{z}}(A^*)\dfn \im(\bar{z}-A^*)^k, (k\gg 0)\)と置くと、
+  \autoref{id - cpt is Fredholm} \ref{rest isom}より
+  \[\im((z-A)^*) = \im(\bar{z}-A^*) = W_{\bar{z}}(A^*) \oplus (\bar{z}-A^*)(V_{\bar{z}}(A^*))\]
+  となる。
+  \(\im((z-A)^*)\bot\ker(z-A)\)より、特に、
+  \(\dim(z-A)\leq \dim(\bar{z}-A^*)\)が成り立つ。
+  \(A^*\)で同じことをすると
+  \(\dim(\bar{z}-A^*)\leq \dim(\bar{\bar{z}}-A^{**}) = \dim(z-A)\)
+  となって\(\dim(z-A)=\dim(\bar{z}-A^*)\)が従う。
+  以上で証明を完了する。
+\end{proof}
+
+
+
+
+
+\appendix
+
+
+\section{位相空間論}
+
+
+
+\begin{prop}[Baire範疇性]
+  \label{Baire category}
+  \((X,d)\)を完備距離空間とする。
+  このとき、\(X\)は\textbf{第二類}である、すなわち、
+  \(X\)は疎な部分集合 (\(\deff\)閉包の内部が空となる部分集合)
+  の可算和とならない。
+  特に、\(X = \bigcup X_n\)であれば、
+  ある\(n\)が存在して\(\overline{X}_n\)が内点を持つ。
+\end{prop}
+
+\begin{rem}
+  もし\(X\)が離散であれば、疎な部分集合は空集合しかありえない。
+  この場合もやはりBaire範疇性が成り立っている。
+\end{rem}
+
+\begin{proof}
+  \(X=\bigcup_{n\in \N} X_n\), \(X_n\)は疎、とする。
+  \(X_n\)を\(\bigcup_{i\leq n}\overline{X}_i\)とみなし、
+  \(X_n\subset X_{n+1}\subset \cdots\), \(X_n\)は閉かつ疎、として良い。
+  \(X_n\)は疎なので\(X\setminus X_n\)は稠密開で、とくに\(\neq \emptyset\)。
+  \(x_1\in X\setminus X_1\)をとって、\(r_0 = \infty\)として、
+  \(x_n\in X\setminus X_n\)と\(0 < r_n < \infty\)を以下のように帰納的にとる：
+  \begin{itemize}
+    \item
+    \(\overline{B}(x_n,r_n)\subset (X\setminus X_n)\cap B(x_{n-1},r_{n-1}/2)\)
+    (ただし\(B\)は開球、\(\overline{B}\)は閉球)
+    \item
+    \(x_{n+1}\in (X\setminus X_{n+1})\cap B(x_n,r_n/2)\)
+    (\(X\setminus X_{n+1}\)は稠密なので必ずとれる)
+  \end{itemize}
+  すると\(m\geq n\)に対して\(r_n \leq r_{n-1}/2 \leq \cdots \leq r_1/2^{n-1}\),
+  \begin{align*}
+    d(x_n,x_m)&\leq d(x_n,x_{m-1}) + d(x_{m-1},x_m) \\
+    &\leq d(x_n,x_{m-1}) + r_{m-1}/2 \\
+    &\leq \cdots \\
+    &\leq r_n/2 + \cdots + r_{m-1}/2 \\
+    &\leq r_n \leq r_1/2^{n-1}
+  \end{align*}
+  となって\((x_n)\)はCauchy列で、
+  ゆえに完備性から\(x\in X\)に収束する。
+  さらに\(d(x_n,x_m) \leq r_n\)より\(x_m\in B(x_n,r_n)\)
+  となって任意の\(n\)で\(x\in \overline{B}(x_n,r_n)\subset X\setminus X_n\)、
+  これは\(x\in \bigcap (X\setminus X_n) = X\setminus \bigcup X_n = \emptyset\)を意味し、
+  矛盾である。
+  以上でBaire範疇性の証明を完了する。
+\end{proof}
+
+
+
+
+
+\begin{prop}[Ascoli-Arzel\'{a}]
+  \label{Ascoli}
+  \((X,d)\)をコンパクト距離空間、
+  \(Y\)をBanach空間とする。
+  \(B\subset C(X,Y)\)を連続写像からなる集合とする。
+  このとき以下は同値である：
+  \begin{enumerate}
+    \item \label{enumi: rel cpt prop: Ascoli}
+    \(B\subset C(X,Y)\)は
+    相対コンパクト (\(\deff\)閉包がコンパクト) である。
+    \item \label{enumi: equi conti prop: Ascoli}
+    任意の\(x\in X\)に対して、以下が成り立つ：
+    \begin{itemize}
+      \item
+      \(\{f(x) | f\in B\} \subset Y\)
+      は相対コンパクトである。
+      \item
+      \(B\)は\(x\)で同程度連続である。
+      ただし\(x\)で\textbf{同程度連続}であるとは、以下を満たすことを言う：
+      \[
+      \forall \ep>0, \exists \delta > 0, \ \
+      \sup_{f\in B}\sup_{d(x',x)<\delta}\|f(x')-f(x)\|_Y < \ep.
+      \]
+    \end{itemize}
+    \item \label{enumi: equi unif prop: Ascoli}
+    以下が成り立つ：
+    \begin{itemize}
+      \item
+      任意の\(x\in X\)に対して
+      \(\{f(x) | f\in B\}\subset Y\)
+      は相対コンパクトである。
+      \item
+      \(B\)は同程度一様連続である。
+      ただし\textbf{同程度一様連続}であるとは、以下を満たすことを言う：
+      \[
+      \forall \ep>0, \exists \delta > 0, \ \
+      \sup_{f\in B}\sup_{d(x,y)<\delta}\|f(x)-f(y)\|_Y < \ep.
+      \]
+    \end{itemize}
+  \end{enumerate}
+\end{prop}
+
+\begin{proof}
+  コンパクト空間上の連続関数が一様連続であることと同様に
+  \ref{enumi: equi conti prop: Ascoli} \(\iff\)
+  \ref{enumi: equi unif prop: Ascoli}
+  が従う。
+
+  \ref{enumi: rel cpt prop: Ascoli} \(\iff\)
+  \ref{enumi: equi conti prop: Ascoli}を示す。
+  \ref{enumi: rel cpt prop: Ascoli}を仮定する。
+  代入写像\(X\times C(X,Y)\to Y\)は連続であるから、
+  これを\(\{x\}\times B\)という相対コンパクトな部分集合へと制限することで、
+  その像\(\{f(x) | f\in B\}\subset Y\)
+  の相対コンパクト性が従う。
+  \(\ep > 0\)を任意に固定する。
+  仮定より\(B\subset C(X,Y)\)
+  は相対コンパクトなので全有界であり、
+  従ってある有限個の\(f_1,\cdots, f_n\in B\)が存在して次を満たす：
+  \[\forall f\in B, \exists i, \ \ \|f-f_i\|_{\infty} < \ep/3.\]
+  \(X\)のコンパクト性から、各\(f_i\)は一様連続であり、
+  従って各\(i\)に対して次が成り立つ：
+  \[\exists \delta_i>0, \forall x,y\in X, \ \
+  d(x,y) < \delta \ \Rightarrow \ \|f_i(x) - f_i(y)\|_Y < \ep/3.\]
+  \(i\)は有限個なので、\(\delta \dfn \min \delta_i\)とすれば、
+  \(d(x,y)<\delta \ (\leq \delta_i)\)に対して次が成り立つ：
+  \begin{align*}
+    \|f(x) - f(y)\|_Y
+    &\leq \| f(x) - f_i(x)\|_Y +
+    \| f_i(x) - f_i(y)\|_Y +
+    \| f_i(y) - f(y)\|_Y \\
+    &\leq 2\| f - f_i\|_{\infty} + \ep/3 < \ep.
+  \end{align*}
+  以上で同程度連続性が示され、
+  \ref{enumi: rel cpt prop: Ascoli} \(\Rightarrow\)
+  \ref{enumi: equi conti prop: Ascoli}の証明を完了する。
+
+  \ref{enumi: equi unif prop: Ascoli} \(\iff\)
+  \ref{enumi: rel cpt prop: Ascoli}を示す。
+  \ref{enumi: equi unif prop: Ascoli}を仮定する。
+  \ref{enumi: rel cpt prop: Ascoli}が成り立つためには、
+  \(B\)が全有界であることが十分である。
+  \(\ep > 0\)を任意にとる。
+  \(B\)は同程度一様連続なので、次が成り立つ：
+  \[
+  \forall f\in B, \exists \delta > 0, \ \
+  d(x,y) < \delta \ \Rightarrow \ \| f(x) - f(y)\|_Y < \ep/3.
+  \]
+  \(X\)はコンパクトなので、距離空間としては全有界であり、
+  従ってある\(x_1,\cdots,x_r\in X\)が存在して次が成り立つ：
+  \[
+  \forall x\in X, \exists i, \ \ d(x,x_i) < \delta.
+  \]
+  仮定より、各\(i\)に対して\(\{f(x_i)|f\in B\}\subset Y\)は相対コンパクトであり、
+  従って全有界なので、
+  ある有限個の\(f_{ij}\in B\)が存在して次が成り立つ：
+  \[
+  \forall i, \forall f\in B, \exists j, \ \
+  \| f(x_i) - f_{ij}(x_i)\|_Y < \ep/3.
+  \]
+  \(x\in X\)と\(f\in B\)を任意にとる。
+  すると、\(d(x,x_i) < \delta\)となる\(x_i\in X\)と、
+  \(\| f(x_i) - f_{ij}(x_i)\|_Y < \ep/3\)
+  となる\(f_{ij}\in B\)が存在する。
+  従って、以下が成り立つ：
+  \begin{align*}
+    \|f(x)-f_{ij}(x)\|_Y
+    &\leq \| f(x) - f(x_i) \|_Y + \| f(x_i) - f_{ij}(x_i)\|_Y + \| f_{ij}(x_i) - f_{ij}(x)\|_Y \\
+    &< \ep/3 + \ep/3 + \ep/3 = \ep.
+  \end{align*}
+  とくに、任意の\(f\in B\)に対してある\(i,j\)が存在して
+  \(\|f-f_{ij}\|_{\infty} < \ep\)が成り立つ。
+  これは\(B\)の全有界性を示している。
+  以上で証明を完了する。
+\end{proof}
+
+
+
+
+
+
+\end{document}

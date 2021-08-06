@@ -1,0 +1,426 @@
+\usepackage[backend=biber,style=alphabetic,sorting=ynt]{biblatex}
+\makeatletter
+\newcommand{\My@BibPath}{%
+  \ifcsname Main\endcsname%
+    Styles/RingSch.bib%
+  \else%
+    ../Styles/RingSch.bib%
+  \fi%
+}
+\addbibresource{\My@BibPath}
+\makeatother
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+%\usepackage[pdftex]{color}
+\usepackage[pdftex]{graphicx}
+
+%\usepackage{ulem}
+\usepackage{braket}
+
+%%%%%ハイパーリンク
+\usepackage{hyperref}
+\usepackage{aliascnt}
+\hypersetup{
+    colorlinks=true,
+    citecolor=blue,
+    linkcolor=blue,
+    urlcolor=blue,
+}
+
+\renewcommand{\eqref}[1]{\textcolor{blue}{(\ref{#1})}}
+
+%%%%%%ハイパーリンク
+
+
+
+%%%%%図式
+%\usepackage{tikz}%%%図
+\usepackage{amscd}%%%簡単な図式
+
+\usepackage{tikz}
+\usepackage{tikz-cd} %commutative diagrams in TikZ
+\usetikzlibrary{calc}
+\usetikzlibrary{matrix,arrows}
+\usetikzlibrary{decorations.markings}
+
+%%%%%図式
+
+
+
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+
+\usepackage{amsthm}
+
+%%%%%%%%%%%%Plain型%%%%%%%%%%%%
+
+\theoremstyle{plain}
+
+\renewcommand{\sectionautorefname}{Section}
+
+\newtheorem{thm}{Theorem}[section]
+\newcommand{\thmautorefname}{Theorem}
+
+
+\newaliascnt{prop}{thm}%%%カウンター「prop」の定義（thmと同じ）
+\newtheorem{prop}[prop]{Proposition}
+\aliascntresetthe{prop}
+\newcommand{\propautorefname}{Proposition}%%%カウンター名propは「命題」で参照する
+
+\newaliascnt{cor}{thm}
+\newtheorem{cor}[cor]{Corollary}
+\aliascntresetthe{cor}
+\newcommand{\corautorefname}{Corollary}
+
+\newaliascnt{lem}{thm}
+\newtheorem{lem}[lem]{Lemma}
+\aliascntresetthe{lem}
+\newcommand{\lemautorefname}{Lemma}
+
+%%%%%%%アルファベットで番号づける定理環境
+\newtheorem{thmA}{Theorem}[section]
+\newcommand{\thmAautorefname}{Theorem}
+\renewcommand\thethmA{\Alph{thmA}}
+\newtheorem{corA}{Theorem}[section]
+\newcommand{\corAautorefname}{Corollary}
+\renewcommand\thecorA{\Alph{corA}}
+
+%%%%%%%%%%%%definition型%%%%%%%%%%%%
+
+\theoremstyle{definition}
+
+\newaliascnt{defi}{thm}
+\newtheorem{defi}[defi]{Definition}
+\aliascntresetthe{defi}
+\newcommand{\defiautorefname}{Definition}
+
+\newaliascnt{rem}{thm}
+\newtheorem{rem}[rem]{Remark}
+\aliascntresetthe{rem}
+\newcommand{\remautorefname}{Remark}
+
+\newaliascnt{reconstruction}{thm}
+\newtheorem{reconstruction}[reconstruction]{Reconstruction}
+\aliascntresetthe{reconstruction}
+\newcommand{\reconstructionautorefname}{Reconstruction}
+
+%%%%%%%番号づけない定理環境
+\newtheorem*{thmA*}{Main Theorem}
+\newtheorem*{corA*}{Corollary A}
+\newtheorem*{exam*}{Example}
+\newtheorem*{rrem*}{Remark}
+\newtheorem*{defi*}{Definition}
+
+
+\usepackage{applekeys}
+\usepackage{mandorasymb}
+%\renewcommand{\qedsymbol}{\mandorasymbmaru}
+%\renewcommand{\qedsymbol}{\kinoposymbniko}
+\renewcommand{\qedsymbol}{\nekostampsymb}
+%\renewcommand{\qedsymbol}{\totorosymb}
+%\renewcommand{\qedsymbol}{\mandorasymbpan}
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+
+
+
+
+
+%%%%%箇条書き環境
+\usepackage[]{enumitem}
+
+\makeatletter
+\AddEnumerateCounter{\fnsymbol}{\c@fnsymbol}{9}%%%%fnsymbolという文字をenumerate環境のパラメーターで使えるようにする。
+\makeatother
+
+\renewcommand{\theenumi}{(\roman{enumi})}%%%%%itemは(1),(2),(3)で番号付ける。
+\renewcommand{\labelenumi}{\theenumi}
+\usepackage{moreenum}
+
+%%%%%箇条書き環境
+
+
+
+
+\usepackage{latexsym}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Isom}{Isom}
+\DeclareMathOperator{\ISOM}{\mathbf{Isom}}
+\DeclareMathOperator{\id}{\mathrm{id}}
+\DeclareMathOperator{\im}{\mathrm{Im}}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\Spec}{\mathrm{Spec}}
+\DeclareMathOperator{\Aut}{\mathrm{Aut}}
+\DeclareMathOperator{\Supp}{\mathrm{Supp}}
+\DeclareMathOperator{\Ob}{\mathrm{Ob}}
+
+\DeclareMathOperator{\colim}{\mathrm{colim}}
+\DeclareMathOperator{\plim}{\mathrm{lim}}
+\newcommand{\red}{\mathrm{red}}
+
+\newcommand{\op}{\mathrm{op}}
+
+%\let\originaloplus\oplus
+%\renewcommand\oplus{\originaloplus\,\,}
+
+
+\newcommand{\rsa}{\rightsquigarrow}
+\renewcommand{\emptyset}{\varnothing}
+
+\newcommand{\dfn}{:\overset{\mbox{{\scriptsize def}}}{=}}
+\newcommand{\ndf}{\overset{\mbox{{\scriptsize def}}}{=}:}
+\newcommand{\deff}{:\hspace{-3pt}\overset{\text{def}}{\iff}}
+
+
+\newcommand{\univ}[1]{\mathbf{#1}}
+\newcommand{\usm}{\(\univ{U}\)-small}
+\newcommand{\vsm}{\(\univ{V}\)-small}
+
+\DeclareMathOperator{\ring}{\mathsf{rg}}
+
+\DeclareMathOperator{\sfSet}{\mathsf{Set}}
+\newcommand{\SetU}{\sfSet}
+\newcommand{\SetV}{\sfSet_{\univ{V}}}
+\DeclareMathOperator{\sfTop}{\mathsf{Top}}
+\newcommand{\TopU}{\sfTop}
+\newcommand{\TopV}{\sfTop_{\univ{V}}}
+\DeclareMathOperator{\sfSch}{\mathsf{Sch}}
+\newcommand{\SchU}{\sfSch}
+\newcommand{\SchV}{\Sch{\univ{V}}}
+\newcommand{\Sch}[1]{\sfSch_{#1}}
+\newcommand{\FSch}[1]{\sfSch_{\mathsf{F}/#1}}
+\newcommand{\PSch}[1]{\sfSch_{\mathsf{P}/#1}}
+
+\newcommand{\bbbullet}{\lozenge}
+\newcommand{\bbullet}{\blacklozenge}
+\newcommand{\mbullet}{\textcolor{magenta}{\blacklozenge}}
+\newcommand{\Schb}[1]{\sfSch_{\bbullet/#1}}
+\newcommand{\Schc}[1]{\sfSch_{\bbbullet/#1}}
+\newcommand{\Schm}[1]{\sfSch_{\mbullet/#1}}
+
+\DeclareMathOperator{\sfGp}{\mathsf{Gp}}
+
+\DeclareMathOperator{\rmSet}{\mathrm{Set}}
+\DeclareMathOperator{\rmTop}{\mathrm{Top}}
+\DeclareMathOperator{\rmSch}{\mathrm{Sch}}
+
+\newcommand{\bCL}[1]{\mathsf{Cl}_{\bbullet/#1}^{\mathsf{lat}}}
+
+\newcommand{\bCl}[1]{\mathsf{Cl}_{\bbullet/#1}}
+\newcommand{\cCl}[1]{\mathsf{Cl}_{\bbbullet/#1}}
+\newcommand{\bOp}[1]{\mathsf{Op}_{\bbullet/#1}}
+\newcommand{\cOp}[1]{\mathsf{Op}_{\bbbullet/#1}}
+\newcommand{\bSh}[1]{\mathsf{Sh}_{\bbullet/#1}}
+\newcommand{\cSh}[1]{\mathsf{Sh}_{\bbbullet/#1}}
+\newcommand{\bPt}[1]{\mathsf{Pt}_{\bbullet/#1}}
+\newcommand{\cPt}[1]{\mathsf{Pt}_{\bbbullet/#1}}
+\newcommand{\bSp}[1]{\mathsf{Sp}_{\bbullet/#1}}
+\newcommand{\cSp}[1]{\mathsf{Sp}_{\bbbullet/#1}}
+\newcommand{\bO}[2]{\mathcal{O}_{\bbullet,#1}^{#2}}
+\newcommand{\cO}[2]{\mathcal{O}_{\bbbullet,#1}^{#2}}
+\newcommand{\bSch}[2]{\mathsf{Tch}_{\bbullet/#1}^{#2}}
+\newcommand{\bbSch}[2]{\mathsf{Rch}_{\bbullet/#1}^{#2}}
+\newcommand{\cSch}[2]{\mathsf{Tch}_{\bbbullet/#1}^{#2}}
+\newcommand{\ccSch}[2]{\mathsf{Rch}_{\bbbullet/#1}^{#2}}
+
+\newcommand{\bEnd}[2]{\End_{#2}^{\bbullet/#1}}
+\newcommand{\cEnd}[2]{\End_{#2}^{\bbbullet/#1}}
+
+
+\DeclareMathOperator{\sfFin}{\mathsf{Fin}}
+\newcommand{\Fin}[1]{\sfFin_{/#1}}
+\DeclareMathOperator{\Topos}{\mathsf{Topos}}
+\DeclareMathOperator{\coAb}{\mathsf{coAb}}
+\newcommand{\cab}{\mathsf{cab}}
+\DeclareMathOperator{\Coh}{\mathsf{Coh}}
+\newcommand{\bQcoAb}[1]{\mathsf{Quot}^{\bbullet,\cab}_{#1}}
+\newcommand{\cQcoAb}[1]{\mathsf{Quot}^{\bbbullet,\cab}_{#1}}
+\newcommand{\bRescab}[2]{\mathsf{Res}_{#1;#2}^{\bbullet,\cab}}
+\newcommand{\cRescab}[2]{\mathsf{Res}_{#1;#2}^{\bbbullet,\cab}}
+\newcommand{\Qoh}[1]{\mathsf{Quot}^{\mathsf{coh}}_{#1}}
+\newcommand{\Rescoh}[2]{\mathsf{Res}_{#1}^{\mathsf{coh},#2}}
+\newcommand{\bcabcoh}[1]{\eta_{#1}^{\cab,\bbullet}}
+\newcommand{\ccabcoh}[1]{\eta_{#1}^{\cab,\bbbullet}}
+\newcommand{\bSpeta}[1]{\eta_{#1}^{\bbullet}}
+\newcommand{\cSpeta}[1]{\eta_{#1}^{\bbbullet}}
+\newcommand{\buleta}{\eta^{\bbullet}}
+\newcommand{\bbuleta}{\eta^{\bbbullet}}
+\newcommand{\coheta}[1]{\eta_{#1}^{\mathsf{coh}}}
+\newcommand{\betaSh}[2]{\eta_{#2}^{#1,\bbullet,\#}}
+\newcommand{\cetaSh}[2]{\eta_{#2}^{#1,\bbbullet,\#}}
+\newcommand{\betaSch}[2]{\eta_{#2}^{#1,\bbullet}}
+\newcommand{\cetaSch}[2]{\eta_{#2}^{#1,\bbbullet}}
+
+\newcommand{\bcompbc}[2]{\mathfrak{c}_{#1}^{#2,\bbullet}}
+\newcommand{\ccompbc}[2]{\mathfrak{c}_{#1}^{#2,\bbbullet}}
+
+
+\DeclareMathOperator{\QQ}{\mathsf{QQ}}
+\DeclareMathOperator{\CCoh}{\mathsf{CCoh}}
+\DeclareMathOperator{\AbCat}{\mathbb{A}\mathsf{b}\mathbb{C}\mathsf{at}_{\mathbf{V}}}
+%\DeclareMathOperator{\AbCat}{\mathbb{Abcat}}
+
+
+\newcommand{\sfE}{\mathsf{E}}
+
+\newcommand{\mcA}{\mathcal{A}}
+\newcommand{\mcB}{\mathcal{B}}
+\newcommand{\mcC}{\mathcal{C}}
+\newcommand{\mcD}{\mathcal{D}}
+\newcommand{\mcE}{\mathcal{E}}
+\newcommand{\mcF}{\mathcal{F}}
+\newcommand{\mcG}{\mathcal{G}}
+\newcommand{\mcH}{\mathcal{H}}
+\newcommand{\mcI}{\mathcal{I}}
+\newcommand{\mcJ}{\mathcal{J}}
+\newcommand{\mcK}{\mathcal{K}}
+\newcommand{\mcL}{\mathcal{L}}
+\newcommand{\mcM}{\mathcal{M}}
+\newcommand{\mcN}{\mathcal{N}}
+\newcommand{\mcO}{\mathcal{O}}
+\newcommand{\mcP}{\mathcal{P}}
+\newcommand{\mcQ}{\mathcal{Q}}
+\newcommand{\mcR}{\mathcal{R}}
+\newcommand{\mcS}{\mathcal{S}}
+\newcommand{\mcT}{\mathcal{T}}
+\newcommand{\mcU}{\mathcal{U}}
+\newcommand{\mcV}{\mathcal{V}}
+\newcommand{\mcW}{\mathcal{W}}
+\newcommand{\mcX}{\mathcal{X}}
+\newcommand{\mcY}{\mathcal{Y}}
+\newcommand{\mcZ}{\mathcal{Z}}
+
+\DeclareMathOperator{\OOO}{\mcO}
+
+\newcommand{\OC}{{\OOO_C}}
+\newcommand{\OD}{{\OOO_D}}
+\renewcommand{\OE}{{\OOO_E}}
+\newcommand{\OF}{{\OOO_F}}
+\newcommand{\OH}{{\OOO_H}}
+\newcommand{\OS}{{\OOO_S}}
+\newcommand{\OT}{{\OOO_T}}
+\newcommand{\OU}{{\OOO_U}}
+\newcommand{\OV}{{\OOO_V}}
+\newcommand{\OW}{{\OOO_W}}
+\newcommand{\OX}{{\OOO_X}}
+\newcommand{\OY}{{\OOO_Y}}
+\newcommand{\OZ}{{\OOO_Z}}
+
+\newcommand{\OO}[1]{\OOO_{#1}}
+\renewcommand{\AA}[1]{\mathcal{A}_{#1}}
+\newcommand{\BB}[1]{\mathcal{B}_{#1}}
+
+\newcommand{\INN}{\mathrm{Inn}}
+
+
+
+
+\usepackage{letltxmacro}
+\makeatletter
+
+\newwrite\Test@Label@Aux\relax
+\newcommand{\Test@Label@Aux@Write}[1]{%
+  \protected@write\Test@Label@Aux{}{%
+    \string\newlabel{#1}{%
+      {\@currentlabel}%
+      {\thepage}%
+      {\@currentlabelname}%
+      {\@currentHref}{}%
+    }%
+  }%
+}
+
+\newcommand{\Test@FirstGroup}[5]{#1}
+\newcommand{\Test@FourthGroup}[5]{#4}
+
+\newcommand{\Test@NumberingPrint}[1]{%
+\expandafter\Test@FirstGroup%
+\romannumeral-`0\csname r@MainFile: #1\endcsname%
+}
+\def\Test@@NamingPrint#1.{%
+  \csname#1autorefname\endcsname\space
+}
+\newcommand{\Test@NamingPrint}[1]{%
+  \expandafter\Test@@NamingPrint%
+  \romannumeral-`0\expandafter\Test@FourthGroup%
+  \romannumeral-`0\csname r@MainFile: #1\endcsname%
+}
+
+
+\AtBeginDocument{%
+  \LetLtxMacro{\Test@LetLabel}{\label}
+  \LetLtxMacro{\Test@LetAutoref}{\autoref}
+  \LetLtxMacro{\Test@LetRef}{\ref}
+
+  \newcommand{\Test@TrueLabel}[1]{%
+    \ifcsname MainFile\endcsname%
+    \Test@Label@Aux@Write{MainFile: #1}
+    \Test@LetLabel{MainFile: #1}
+    \else%
+    \Test@LetLabel{SubFile: #1}
+    \fi%
+  }
+
+
+  \newcommand{\Test@SubFile@TrueRef}[1]{%
+    \ifcsname r@SubFile: #1\endcsname%
+    \Test@LetRef{SubFile: #1}%
+    \else%
+    \textcolor{magenta}{\Test@NumberingPrint{#1}}%
+    \fi%
+  }
+  \newcommand{\Test@TrueRef}[1]{%
+    \ifcsname MainFile\endcsname%
+    \Test@LetRef{MainFile: #1}%
+    \else%
+    \Test@SubFile@TrueRef{#1}%
+    \fi%
+  }
+
+
+  \newcommand{\Test@SubFile@TrueAutoref}[1]{%
+    \ifcsname r@SubFile: #1\endcsname%
+    \Test@LetAutoref{SubFile: #1}%
+    \else%
+    \textcolor{magenta}{\Test@NamingPrint{#1}}%
+    \fi%
+  }
+  \newcommand{\Test@TrueAutoref}[1]{%
+    \ifcsname MainFile\endcsname%
+    \Test@LetAutoref{MainFile: #1}%
+    \else%
+    \Test@SubFile@TrueAutoref{#1}%
+    \fi%
+  }
+
+  \renewcommand{\label}[1]{\Test@TrueLabel{#1}}
+  \renewcommand{\ltx@label}[1]{\Test@TrueLabel{#1}}
+  \renewcommand{\autoref}[1]{\Test@TrueAutoref{#1}}
+  \renewcommand{\ref}[1]{\Test@TrueRef{#1}}
+}
+
+\newcommand{\SetTrueSecNumber}[1]{%
+  \expandafter\newcount\csname Count@#1\endcsname
+  \csname Count@#1\endcsname=\Test@NumberingPrint{#1}
+  \expandafter\advance\csname Count@#1\endcsname by -1
+  \setcounter{section}{\csname Count@#1\endcsname}
+}
+
+
+
+
+\ifcsname MainFile\endcsname%
+  \immediate\openout\Test@Label@Aux\jobname.myaux\relax
+  \immediate\write\Test@Label@Aux{\relax}
+\else%
+  \renewcommand{\@writetocindents}{\relax}
+  \@input{../Main.myaux}
+\fi
+\makeatother

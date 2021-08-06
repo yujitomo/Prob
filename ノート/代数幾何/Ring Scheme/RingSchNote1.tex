@@ -1,0 +1,91 @@
+\documentclass{amsart}
+\input{RingSchStyle.sty}
+\begin{document}
+
+
+Let \(S\) be a scheme,
+\(p:A\to S\) a ring scheme over \(S\).
+Write \(m:A\times_S A \to A\) for the multiplication morphism of \(A\),
+\(1_S:S\to A\) for the identity section of the multiplication, and
+\(p_1:A\times_S A \to A\) for the first projection.
+For any ring \(R\),
+we shall write
+\(R^{\times}\dfn \left\{ r\in R\middle| \text{\(r\) is invertible}\right\}\).
+In this note, we prove that
+if \(p:A\to S\) is flat and of finite presentation,
+then the functor \(\Hom_S(-,A)^{\times}\)
+is representable by an open subscheme of \(A\).
+
+
+It is clearly that the following lemma holds:
+
+\begin{lem}\label{lem: grp rep}
+  The functor
+  \begin{align*}
+    \Hom_S(-,A)^{\times}:&\Sch{S} \to \mathsf{Grp} \\
+    &T \mapsto \Hom_S(T,A)^{\times}
+  \end{align*}
+  is representable
+  by \(A^{\times} \dfn (A\times_S A)\times_{m,A,1_S}A\).
+\end{lem}
+
+Write \(i:A^{\times}\to A\times_S A\) for the first projection.
+Then, since \(\Hom_S(T,A)^{\times}\) is a subset of \(\Hom_S(T,A)\),
+the following assertions hold:
+
+\begin{lem}\label{lem: grp mono}
+  The morphism
+  \(p_1\circ i:A^{\times} \to A\)
+  is a monomorphism of schemes.
+\end{lem}
+
+
+For any \(S\)-scheme \(X\) and any \(S\)-scheme \(T\),
+we shall write \(X(T)\dfn \Hom_S(T,X)\) for
+the set of \(T\)-valued points. 
+The following lemma follows from elementary scheme theory:
+
+\begin{lem}\label{lem: sq nil}
+  Let
+  \[
+  \begin{CD}
+    T_0 @>{t_0}>> X \\
+    @V{i}VV @VVV \\
+    T @>>> S
+  \end{CD}
+  \]
+  be a commutative diagram of schemes
+  such that \(i\) is a square nilpotent closed immersion,
+  i.e., the ideal sheaf \(\mcI\) of \(i\) satisfies \(\mcI^2 = 0\).
+  Then
+\end{lem}
+
+
+
+\begin{prop}\label{prop: grp open}
+  Assume that \(p:A\to S\) is flat and of finite presentation.
+  Then the morphism \(p_1\circ i:A^{\times} \to A\) is an open immersion.
+\end{prop}
+
+\begin{proof}
+  By \autoref{lem: grp mono}, to prove \autoref{prop: grp open},
+  it suffices to prove that \(p_1\circ i\) is smooth.
+  Let \(a:T\to A\) be a morphism of \(S\)-schemes,
+  \(j:T_0\to T\) a square nilpotent closed immersion, and
+  \(a_0:T_0\to A^{\times}\) a morphism of \(A\)-schemes:
+  \[
+  \begin{CD}
+    T_0 @>{a_0}>> A^{\times} \\
+    @V{j}VV @VV{p_1\circ i}V \\
+    T @>{a}>> A.
+  \end{CD}
+  \]
+
+\end{proof}
+
+
+
+
+
+\printbibliography
+\end{document}

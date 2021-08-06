@@ -1,0 +1,1330 @@
+\documentclass[uplatex]{jsarticle}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage{stmaryrd}%%%%%べき級数のカッコ
+
+\usepackage{xcolor}
+\usepackage[dvipdfmx]{graphicx}
+
+
+
+\usepackage{ulem}
+
+\usepackage{braket}
+
+%%%%%ハイパーリンク
+%\usepackage[colorlinks=true,urlcolor=blue!70!black,citecolor=blue!60!black,linkcolor=blue!60!black]{hyperref}
+%\usepackage{aliascnt} %for creating different biblatex references for different theoremstyles
+\usepackage[setpagesize=false,dvipdfmx]{hyperref}
+\usepackage{aliascnt}
+\hypersetup{
+    colorlinks=true,
+    citecolor=blue,
+    linkcolor=blue,
+    urlcolor=blue,
+}
+
+\renewcommand{\eqref}[1]{\textcolor{blue}{(\ref{#1})}}
+
+%%%%%%ハイパーリンク
+
+
+%%%%%図式
+%\usepackage{tikz}%%%図
+\usepackage{amscd}%%%簡単な図式
+
+\usepackage{tikz}
+\usepackage{tikz-cd} %commutative diagrams in TikZ
+\usetikzlibrary{calc}
+\usetikzlibrary{matrix,arrows}
+\usetikzlibrary{decorations.markings}
+
+%%%%%図式
+
+
+
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+
+\usepackage{amsthm}
+
+%%%%%%%%%%%%Plain型%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%definition型%%%%%%%%%%%%
+
+\theoremstyle{definition}
+
+\renewcommand{\sectionautorefname}{Section}
+
+\newtheorem{thm}{Theorem}[section]
+\newcommand{\thmautorefname}{定理}
+
+
+\newaliascnt{prop}{thm}%%%カウンター「prop」の定義（thmと同じ）
+\newtheorem{prop}[prop]{命題}
+\aliascntresetthe{prop}
+\newcommand{\propautorefname}{命題}%%%カウンター名propは「命題」で参照する
+
+\newaliascnt{cor}{thm}
+\newtheorem{cor}[cor]{系}
+\aliascntresetthe{cor}
+\newcommand{\corautorefname}{系}
+
+\newaliascnt{lem}{thm}
+\newtheorem{lem}[lem]{補題}
+\aliascntresetthe{lem}
+\newcommand{\lemautorefname}{補題}
+
+
+\newaliascnt{prob}{thm}
+\newtheorem{prob}[prob]{問題}
+\aliascntresetthe{prob}
+\newcommand{\probautorefname}{問題}
+
+\newaliascnt{defi}{thm}
+\newtheorem{defi}[defi]{定義}
+\aliascntresetthe{defi}
+\newcommand{\defiautorefname}{定義}
+
+
+
+\newaliascnt{exam}{thm}
+\newtheorem{exam}[exam]{例}
+\aliascntresetthe{exam}
+\newcommand{\examautorefname}{例}
+
+%%%%%%%番号づけない定理環境
+\newtheorem*{exam*}{例}
+\newtheorem*{rem*}{注意}
+\newtheorem*{defi*}{定義}
+
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+
+
+
+
+
+%%%%%箇条書き環境
+\usepackage[]{enumitem}
+
+\makeatletter
+\AddEnumerateCounter{\fnsymbol}{\c@fnsymbol}{9}%%%%fnsymbolという文字をenumerate環境のパラメーターで使えるようにする。
+\makeatother
+
+\makeatletter
+\renewcommand{\p@enumii}{}
+\makeatother
+
+\renewcommand{\theenumi}{(\roman{enumi})}%%%%%itemは(1),(2),(3)で番号付ける。
+\renewcommand{\labelenumi}{\theenumi}
+
+\renewcommand{\theenumii}{(\alph{enumii})}%%%%%itemは(1),(2),(3)で番号付ける。
+\renewcommand{\labelenumii}{\theenumii}
+
+\usepackage{moreenum}
+%%%%%箇条書き環境
+
+
+
+\usepackage{mandorasymb}
+\usepackage{applekeys}
+\renewcommand{\qedsymbol}{\pencilkey}
+%\renewcommand{\qedsymbol}{\kinoposymbniko}
+
+
+
+
+\usepackage{latexsym}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Isom}{Isom}
+\DeclareMathOperator{\ISOM}{\mathbf{Isom}}
+\DeclareMathOperator{\id}{\mathrm{id}}
+\DeclareMathOperator{\im}{\mathrm{Im}}
+\DeclareMathOperator{\Spec}{\mathrm{Spec}}
+\newcommand{\Supp}{\mathrm{Supp}}
+\DeclareMathOperator{\Aut}{\mathrm{Aut}}
+
+\newcommand{\coker}{\mathrm{coker}}
+
+\DeclareMathOperator{\Tor}{\mathrm{Tor}}
+\DeclareMathOperator{\Ext}{\mathrm{Ext}}
+
+\DeclareMathOperator{\colim}{\mathrm{colim}}
+\DeclareMathOperator{\plim}{\mathrm{lim}}
+\newcommand{\Ob}{\mathrm{Ob}}
+
+\newcommand{\rsa}{\rightsquigarrow}
+\renewcommand{\coprod}{\amalg}
+\renewcommand{\emptyset}{\varnothing}
+\newcommand{\ep}{\varepsilon}
+
+\newcommand{\dfn}{:\overset{\mbox{{\scriptsize def}}}{=}}
+\newcommand{\deff}{:\hspace{-3pt}\overset{\text{def}}{\iff}}
+\newcommand{\lb}[1]{\llbracket #1\rrbracket}
+
+\newcommand{\Sym}{\mathrm{Sym}}
+\newcommand{\Mod}{\mathsf{Mod}}
+
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+
+
+
+\newcommand{\mcA}{\mathcal{A}}
+\newcommand{\mcB}{\mathcal{B}}
+\newcommand{\mcC}{\mathcal{C}}
+\newcommand{\mcD}{\mathcal{D}}
+\newcommand{\mcE}{\mathcal{E}}
+\newcommand{\mcF}{\mathcal{F}}
+\newcommand{\mcG}{\mathcal{G}}
+\newcommand{\mcH}{\mathcal{H}}
+\newcommand{\mcI}{\mathcal{I}}
+\newcommand{\mcJ}{\mathcal{J}}
+\newcommand{\mcK}{\mathcal{K}}
+\newcommand{\mcL}{\mathcal{L}}
+\newcommand{\mcM}{\mathcal{M}}
+\newcommand{\mcN}{\mathcal{N}}
+\newcommand{\mcO}{\mathcal{O}}
+\newcommand{\mcP}{\mathcal{P}}
+\newcommand{\mcQ}{\mathcal{Q}}
+\newcommand{\mcR}{\mathcal{R}}
+\newcommand{\mcS}{\mathcal{S}}
+\newcommand{\mcT}{\mathcal{T}}
+\newcommand{\mcU}{\mathcal{U}}
+\newcommand{\mcV}{\mathcal{V}}
+\newcommand{\mcW}{\mathcal{W}}
+\newcommand{\mcX}{\mathcal{X}}
+\newcommand{\mcY}{\mathcal{Y}}
+\newcommand{\mcZ}{\mathcal{Z}}
+
+
+
+\newcommand{\mfa}{\mathfrak{a}}
+\newcommand{\mfb}{\mathfrak{b}}
+\newcommand{\mfc}{\mathfrak{c}}
+\newcommand{\mfd}{\mathfrak{d}}
+\newcommand{\mfe}{\mathfrak{e}}
+\newcommand{\mff}{\mathfrak{f}}
+\newcommand{\mfg}{\mathfrak{g}}
+\newcommand{\mfh}{\mathfrak{h}}
+\newcommand{\mfi}{\mathfrak{i}}
+\newcommand{\mfj}{\mathfrak{j}}
+\newcommand{\mfk}{\mathfrak{k}}
+\newcommand{\mfl}{\mathfrak{l}}
+\newcommand{\mfm}{\mathfrak{m}}
+\newcommand{\mfn}{\mathfrak{n}}
+\newcommand{\mfo}{\mathfrak{o}}
+\newcommand{\mfp}{\mathfrak{p}}
+\newcommand{\mfq}{\mathfrak{q}}
+\newcommand{\mfr}{\mathfrak{r}}
+\newcommand{\mfs}{\mathfrak{s}}
+\newcommand{\mft}{\mathfrak{t}}
+\newcommand{\mfu}{\mathfrak{u}}
+\newcommand{\mfv}{\mathfrak{v}}
+\newcommand{\mfw}{\mathfrak{w}}
+\newcommand{\mfx}{\mathfrak{x}}
+\newcommand{\mfy}{\mathfrak{y}}
+\newcommand{\mfz}{\mathfrak{z}}
+
+\DeclareMathOperator{\OOO}{\mcO}
+
+\newcommand{\OC}{{\OOO_C}}
+\newcommand{\OD}{{\OOO_D}}
+\renewcommand{\OE}{{\OOO_E}}
+\newcommand{\OF}{{\OOO_F}}
+\newcommand{\OH}{{\OOO_H}}
+\newcommand{\OS}{{\OOO_S}}
+\newcommand{\OT}{{\OOO_T}}
+\newcommand{\OU}{{\OOO_U}}
+\newcommand{\OV}{{\OOO_V}}
+\newcommand{\OW}{{\OOO_W}}
+\newcommand{\OX}{{\OOO_X}}
+\newcommand{\OY}{{\OOO_Y}}
+\newcommand{\OZ}{{\OOO_Z}}
+
+\newcommand{\OO}[1]{\OOO_{#1}}
+
+
+
+\title{2021年度 学部セミナー}
+
+\author{ゆじ}
+
+\begin{document}
+
+\maketitle
+
+
+
+\appendix
+
+
+\newpage
+\section{位相空間論}
+
+\renewcommand{\thesection}{\Alph{section}}
+
+
+
+\begin{prob}
+  \begin{enumerate}
+    \item
+    \(f:X\to Y\)をコンパクトハウスドルフ空間の間の連続写像とする。
+    このとき\(f\)は閉写像であることを証明しなさい。
+    \item
+    \(X\)をコンパクト空間、\(Y\)をハウスドルフ空間とする。
+    標準射影\(p:X\times Y\to Y\)は閉写像であることを証明しなさい。
+  \end{enumerate}
+\end{prob}
+
+
+
+\begin{prob}[具体例その1]
+  \
+  \begin{enumerate}
+    \item
+    連続写像\(f:\R\times [0,1]\to \R\)であって、
+    \(f(x,0) = x, f(x,1) = 0\)を満たすものを構成しなさい。
+    \item
+    同相写像\(\R \xrightarrow{\sim} (0,1)\)を構成しなさい。
+    \item
+    \(X\dfn [0,1]\times [0,1]\),
+    \(Y\dfn \{(x,y)\in \R^2 | x^2+y^2 \leq 1\}\)とする。
+    同相写像\(X \xrightarrow{\sim} Y\)を構成しなさい。
+    \item
+    \(X\dfn [0,1]\times [0,1)\),
+    \(Y\dfn [0,1)\times [0,1)\)とする。
+    同相写像\(X \xrightarrow{\sim} Y\)を構成しなさい。
+    \item
+    \(-1< x < 0 < y < 1\)を実数とする。
+    同相写像\(f:(-1,1)\xrightarrow{\sim} (-1,1)\)で
+    \(f(x) = -1/2, f(0) = 0, f(y) = 1/2\)を満たすものを構成しなさい。
+    \item
+    \(x,y,z,w\in (-1,1)\times (-1,1)\)を異なる四点とする。
+    同相写像\(f:(-1,1)\times (-1,1)\xrightarrow{\sim} (-1,1) \times (-1,1)\)
+    であって、\(f(x) = (1/2,1/2), f(y) = (1/2,-1/2), f(z) = (-1/2,-1/2), f(w) = (-1/2,1/2)\)
+    を満たすものを構成しなさい。
+    \item
+    \(\{(x,\sin (1/x)) | x > 0\} \cup \{(0,y) | y\in \R\}\)
+    は\(\R^2\)の相対位相で連結であるが弧状連結とはならない。
+    これを証明しなさい。
+    \item
+    \((\{0,1\}\times [0,1])\cup \bigcup_{n\in \N}\{(x,1/n) | 0\leq x \leq 1-1/n\}\)
+    は\(\R^2\)の相対位相で連結であるが弧状連結とはならない。
+    これを証明しなさい。
+    \item
+    \(\R\)と\(\R^2\)は同相ではない。なぜでしょう。
+    \item
+    \(X \dfn \{re^{\sqrt{-1}\pi/n} | 0\leq r\leq 1, n\in \N\}\subset \C\),
+    \(Y \dfn \left( [0,1]\times \N\right)/ [(0,n)\sim (0,m), (n,m\in \N)]\)
+    とする (\(Y\)は\(0\)側を全部一点に潰して繋げた商空間です)。
+    \(X\)と\(Y\)は同相ではない。なぜでしょう。
+  \end{enumerate}
+\end{prob}
+
+
+
+
+
+\begin{prob}
+  位相空間\(X\)が\textbf{可算コンパクト}であるとは、
+  任意の可算な開被覆が有限部分被覆を持つことを言う。
+  \(X\)をハウスドルフ空間とする。
+  以下の主張が同値であることを証明しなさい：
+  \begin{enumerate}
+    \item
+    \(X\)は可算コンパクト空間である。
+    \item
+    \(X\)のどんな可算無限部分集合も相対位相に関して離散集合でない。
+  \end{enumerate}
+\end{prob}
+
+
+
+
+
+\begin{prob}[いろいろな可算性]
+  位相空間\(X\)が\textbf{Lindel\"{o}f}であるとは、
+  任意の開被覆が可算部分被覆を持つことを言う。
+  位相空間\(X\)が\textbf{可分}であるとは、
+  可算濃度の稠密部分集合が存在することを言う。
+  位相空間\(X\)が\textbf{可算鎖条件を満たす}または\textbf{c.c.c.を満たす}とは、
+  互いに交わらない開集合の族の濃度が高々可算であることを言う。
+  \begin{enumerate}
+    \item
+    Lindel\"{o}f空間が可算コンパクトであれば、コンパクトであることを証明しなさい。
+    \item
+    Lindel\"{o}f空間の閉部分空間はLindel\"{o}f空間であることを証明しなさい。
+    \item
+    第二可算な位相空間はLindel\"{o}fであることを証明しなさい。
+    \item
+    第二可算な位相空間は可分であることを証明しなさい。
+    \item
+    可分な位相空間はc.c.c.を満たすことを証明しなさい。
+    \item
+    距離空間が可分であれば第二可算であることを証明しなさい。
+    \item
+    可算コンパクトな距離空間はコンパクトであることを証明しなさい。
+    \item
+    (やや難).
+    距離空間がLindel\"{o}f空間であれば、第二可算であることを証明しなさい。
+    \item
+    (難).
+    距離空間がc.c.c.を満たすとき、第二可算であることを証明しなさい。
+    (Hint: 各\(A\subset X\)と\(n\)に対して
+    \(\mcB_n(A) \dfn \{\text{\(x\)中心半径\(1/n\)の開球} | x\in A\}\)と置き、
+    \(\{\mcB_n(A) | \text{\(\mcB_n(A)\)は交わらない開集合の族}\}\)の極大元を与える
+    \(A_n\subset X\)を各\(n\)で取ってきて、\(\bigcup_n A_n\subset X\)を考えてみましょう).
+    特に、距離空間に対しては、第二可算性、Lindel\"{o}f性、可分性、c.c.c.を満たすこと、
+    はどれも同値となります。
+  \end{enumerate}
+\end{prob}
+
+\begin{rem*}
+  可分であるがLindel\"{o}fでない空間の例は\autoref{Sorgenfrey}を参照してください。
+  \(2^{2^{2^{\N}}}\)はLindel\"{o}fであってc.c.c.を満たすが可分ではない位相空間の例
+  になっています (\autoref{Tychonoff}, \autoref{power separable}, \autoref{prod c.c.c.})。
+\end{rem*}
+
+
+
+
+
+\begin{prob}[積空間の可分性]\label{power separable}
+  \(I\)を集合、\(i\)で添字付けられた二点集合の族\(2_i\dfn \{0,1\}\)を考える。
+  各\(2_i\)には離散位相を入れて、位相空間とみなす。
+  \(2^I\dfn \prod_{i\in \N}2_i\)を直積位相で位相空間とみなす。
+  \begin{enumerate}
+    \item
+    全単射\(I\to 2^I\)は存在しない。これを示しなさい。
+    とくに、\(2^{\N}\)は可算集合ではない。
+    \item
+    \(2^{\N}\)は可分である。これを示しなさい。
+    \item (難).
+    \(2^{2^{\N}}\)は可分である。これを示しなさい。
+    \item (難).
+    \(2^{2^{2^{\N}}}\)は可分でない。これを示しなさい。
+    (cf. キューネン「集合論」第II章 演習[4])
+  \end{enumerate}
+\end{prob}
+
+
+
+\begin{rem*}
+  一般に基数\(\alpha\)に対して
+  \(2^{2^{\alpha}}\)は濃度\(\alpha\)の稠密部分集合を持つことが知られています。
+\end{rem*}
+
+
+
+\begin{prob}[c.c.c.を満たす空間の積]\label{prod c.c.c.}
+  \
+  \begin{enumerate}
+    \item
+    \(X\)を集合、\(\mcA\)を、濃度\(n\)の\(X\)の有限部分集合からなる、
+    非可算濃度の部分集合族とする。
+    すべての点\(x\in X\)に対して\(\{A\in \mcA | x\in A\}\)が可算集合であれば、
+    非可算濃度の部分集合\(\mcB\subset \mcA\)が存在して
+    任意の\(A,B\in \mcB, (A,B\subset X)\)に対して\(A\cap B = \emptyset\)が成り立つ。
+    これを示しなさい。
+    \item (\(\Delta\)-system lemma).
+    \(X\)を集合、\(\mcA\)を\(X\)の有限部分集合からなる非可算な集合族とする。
+    このとき、ある非可算濃度の部分族\(\mcB\subset \mcA\)と
+    ある部分集合\(R\subset X\)が存在し、
+    任意の\(A,B\in \mcB, A\neq B\)に対して\(A\cap B = R\)が成り立つ。
+    (Hint: \(\mcA\)に属する集合の濃度がすべて\(n\)である場合に帰着し、帰納法で示しなさい).
+    \item
+    \(X_i, (i\in I)\)をc.c.c.を持つ空間の族として、
+    任意の有限部分集合\(J\subset I\)に対して
+    \(\prod_{j\in J}X_j\)がc.c.c.を持つと仮定する。
+    このとき、\(\prod_{i\in I}X_i\)はc.c.c.を持つことを示しなさい。
+  \end{enumerate}
+\end{prob}
+
+
+\begin{rem*}
+  「任意のc.c.c.を持つ位相空間二つの直積はまたc.c.c.を持つ」
+  という言明はZFCと独立であることが知られています (Suslin仮説)。
+\end{rem*}
+
+
+
+
+\begin{prob}
+  位相空間\(X\)に対し、
+  その開集合すべてからなる集合を\(\mathsf{Open}(X)\)と表す。
+  連続写像\(f:X\to Y\)に対し、逆像をとることによって写像
+  \(f^{-1}: \mathsf{Open}(Y) \to \mathsf{Open}(X)\)
+  が定義される。
+  位相空間\(X,Y\)に対し、
+  \(X\)から\(Y\)への連続写像全体のなす集合を\(\Hom_{\mathsf{Top}}(X,Y)\)で表す。
+  連続写像\(f':X'\to X\)に対して、\(f'\)を合成することによって得られる写像
+  \(\Hom_{\mathsf{Top}}(X,Y)\to \Hom_{\mathsf{Top}}(X',Y)\)を
+  \(\tilde{f}'\)で表す。
+  \begin{enumerate}
+    \item
+    \(\{\emptyset,\{0\},\{0,1\}\}\)は\(\{0,1\}\)の開集合系を与える。これを確認しなさい。
+    この位相によって位相空間と思った二点集合\(\{0,1\}\)を\(S\)で表す。
+    \item
+    位相空間\(X\)たちで添字付けられた全単射の族
+    \(\rho_X: \Hom_{\mathsf{Top}}(X,S) \xrightarrow{\sim} \mathsf{Open}(X)\)
+    であって、任意の連続写像\(f:X\to Y\)に対して
+    \(\rho_X \circ \tilde{f} = f^{-1}\circ \rho_Y\)
+    を満たすものが存在する。
+    これを証明しなさい。
+    \item
+    上のような全単射の族は一つしか存在しない。これを証明しなさい。
+  \end{enumerate}
+\end{prob}
+
+
+
+\begin{rem*}
+  圏論的な言葉で言うと、
+  \(S\)が函手\(X\mapsto \mathsf{Open}(X)\)の表現対象である、
+  ということです。
+\end{rem*}
+
+
+
+
+\begin{prob}[フィルターを用いたチコノフの定理の証明]\label{Tychonoff}
+  集合\(X\)の部分集合族\(\mcF\)が\textbf{フィルター}であるとは、
+  次の条件を満たすことを言う：
+  \begin{itemize}
+    \item \(\emptyset\not\in \mcF, X\in \mcF\)である。
+    \item \(A\in \mcF, B\in \mcF\)ならば\(A\cap B\in \mcF\)である。
+    \item \(A\in \mcF, A\subset B\)ならば\(B\in \mcF\)である。
+  \end{itemize}
+  包含関係でフィルター全体の集合に順序を入れる。
+  以下の問いに答えなさい：
+  \begin{enumerate}
+    \item
+    フィルター全体の集合には極大元が存在することを証明しなさい
+    (Zornの補題を用いる)。
+    極大なフィルターのこと\textbf{超フィルター}と言う。
+    \item
+    \(\mcF\)が超フィルターであることは、次が成り立つことと同値であることを示しなさい：
+    任意の部分集合\(A\subset X\)に対し、\(A\in \mcF\)であるか、または
+    \(X\setminus A \in \mcF\)であるか、どちらか一方のみが成り立つ。
+    \item \label{image filter}
+    \(f:X\to Y\)が全射であり、\(\mcF\)が\(X\)の超フィルターであるとき、
+    \(f(\mcF)\dfn \{f(A)|A\in \mcF\}\)は\(Y\)の超フィルターであることを示しなさい。
+    \item
+    \(X\)が位相空間であるとする。
+    点\(x\)の近傍すべてからなる集合はフィルターであることを確認しなさい。
+    このフィルターのことを\textbf{近傍フィルター}と言い、\(\mcV(x)\)で表す。
+    \item \label{cpt filter equiv}
+    位相空間\(X\)に対して、以下の主張が同値であることを証明しなさい：
+    \begin{itemize}
+      \item \(X\)はコンパクトである。
+      \item 閉部分集合族\(F_i\subset X,(i\in I)\)は、
+      任意の有限部分集合\(I_0\)に対して\(\bigcap_{i\in I_0}F_i \neq \emptyset\)を満たせば、
+      \(\bigcap_{i\in I}F_i \neq \emptyset\)となる。
+      \item \(X\)の任意の超フィルター\(\mcF\)に対してある点\(x\in X\)が存在して\(\mcV(x)\subset \mcF\)となる
+      (このときフィルター\(\mcF\)は点\(x\)に\textbf{収束する}という)。
+    \end{itemize}
+  \end{enumerate}
+  以上の準備のもと、チコノフの定理を証明する。
+  \(X_i, (i\in I)\)をコンパクト空間の族とする。
+  \(X\dfn \prod_{i\in I}X_i\)に積位相を入れる。
+  \(p_i:X\to X_i\)を射影とする。これは連続な全射である。
+  \(\mcF\)を\(X\)の超フィルターとして、
+  \(\mcF_i\dfn p_i(\mcF)\)を\(X_i\)の超フィルターとする (cf. \ref{image filter})。
+  \ref{cpt filter equiv}より、\(\mcF_i\)はある点\(x_i\in X_i\)に収束する。
+  \(\mcF\)が\(x\dfn (x_i)_{i\in I}\in X\)に収束することを示しなさい。
+\end{prob}
+
+
+
+
+\begin{prob}[超フィルターの個数]\label{cardinality of ultra filters}
+  \(X\)を集合、\(\mathsf{Ult}(X)\)を\(X\)の超フィルターすべてのなす集合とする。
+  集合の濃度を\(\#(-)\)で表し、
+  べき集合を\(2^{(-)}\)で表す。
+  この問題では、\(\#(\mathsf{Ult}(X)) = \#(2^{2^X})\)を証明する。
+  \begin{enumerate}
+    \item
+    \(\#(\mathsf{Ult}(X)) \leq \#(2^{2^X})\)である。理由を説明しなさい。
+    \item
+    \(X\)が無限集合であるとき、\(X\)と\(X\times X\)の間に全単射が存在することを示しなさい。
+    \item
+    集合\(X\)の有限部分集合全体の集合を\(\mcP_{<\infty}(X)\)で表す。
+    \(X\)が無限集合であるとき、
+    \(X\)と\(\mcP_{<\infty}(X)\)の間に全単射が存在することを示しなさい。
+  \end{enumerate}
+  \(\mcP\dfn \mcP_{<\infty}(X) \subset 2^X\),
+  \(\mathfrak{P}\dfn \mcP_{<\infty}(\mcP_{<\infty}(X))\subset 2^{2^X}\)と置く。
+  \(Y\subset X\)に対して、
+  \begin{align*}
+    &\alpha(Y) \dfn \{(A,\mcA)\in \mcP\times \mathfrak{P} | A\cap Y\in \mcA\}
+    \subset \mcP \times \mathfrak{P}, \\
+    &\beta(Y) \dfn (\mcP \times \mathfrak{P}) \setminus \alpha(Y),
+  \end{align*}
+  と置く。
+  \begin{enumerate}[start=3]
+    \item
+    \(X\)を無限集合として、
+    \(\mcE \subset 2^X\)を部分集合族であって\(\#(\mcE) = \#(2^X)\)となるものとする。
+    違いに異なる有限個の\(Y_1,\cdots, Y_r\in \mcE\)と
+    違いに異なる有限個の\(Z_1,\cdots, Z_s\not\in 2^X\setminus \mcE\)に対し、
+    \[
+    \left( \bigcap_{i=1}^r \alpha(Y_i)\right) \cap
+    \left( \bigcap_{j=1}^s \beta(Z_j)\right) \neq \emptyset
+    \]
+    となることを示しなさい。
+    \item
+    \(\#(\mcE) = \#(2^X)\)となる各\(\mcE\subset 2^X\)に対して
+    \[
+    \{ \alpha(Y) | Y\in \mcE\} \cup \{ \beta(Z) | Z\in 2^X \setminus \mcE\}
+    \subset 2^{\mcP\times \mathfrak{P}}
+    \]
+    を含む超フィルターは唯一であることを証明しなさい。
+    その超フィルターを\(\Phi(\mcE)\)で表す。
+    \item
+    濃度が\(\#(2^X)\)となる異なる\(\mcE, \mcF \subset 2^X\)に対し、
+    \(\Phi(\mcE)\neq \Phi(\mcF)\)となることを示しなさい。
+    結論として、\(\mcP \times \mathfrak{P}\)のすべての超フィルターからなる集合の濃度は
+    \(\#(2^{2^X})\)となり、
+    さらに\(X\)と\(\mcP \times \mathfrak{P}\)は濃度が等しいことから、
+    \(X\)のすべての超フィルターからなる集合の濃度も\(\#(2^{2^X})\)となることがわかります。
+  \end{enumerate}
+\end{prob}
+
+
+
+
+
+
+\begin{prob}\label{met cut 1}
+  距離空間に関して以下の問題に答えなさい。
+  \begin{enumerate}
+    \item
+    \((X,d)\)を距離空間とする。
+    \(\bar{d}:X\times X \to \R_{\geq 0}\)を
+    \[
+    \bar{d}(x,y) \dfn \min\{d(x,y),1\}
+    \]
+    と定義する。
+    このとき、\(\bar{d}\)が距離であり、
+    さらに\(\bar{d}\)によって定まる位相は
+    \(d\)によって定まる位相と同じであることを証明しなさい。
+    \item \label{met prod infinite}
+    \((X_n,d_n),n\in \N\)を距離空間とする。
+    \(X\dfn \prod_{n\in \N}X_n\)として、
+    点\(x=(x_n), y=(y_n)\in X\)に対して
+    \[
+    d(x,y) \dfn \sum_{n\in \N} 2^{-n}\min\{d_n(x_n,y_n),1\}
+    \]
+    と定めることで、\(d:X\times X \to \R_{\geq 0}\)を定義する。
+    \(d\)は距離であり、
+    さらに\(d\)によって定まる位相は\(X = \prod_{n\in \N}X_n\)の積位相と同じであることを証明しなさい。
+    各\(d_n\)が完備な距離であれば、\(d\)も完備な距離であることを証明しなさい。
+  \end{enumerate}
+\end{prob}
+
+
+
+
+\begin{prob}
+  \
+  \begin{enumerate}
+    \item
+    \(\R\setminus \{0\}\)上の完備な距離\(d\)であって、
+    \(d\)から定まる位相が\(\R\)の相対位相と等しくなるようなものを一つ構成しなさい。
+    \item
+    \(\R\setminus \{0,1,2,3,4,5,\cdots,n\}\)上の完備な距離\(d\)であって、
+    \(d\)から定まる位相が\(\R\)の相対位相と等しくなるようなものを一つ構成しなさい。
+    \item
+    \(\R\setminus \Z\)上の完備な距離\(d\)であって、
+    \(d\)から定まる位相が\(\R\)の相対位相と等しくなるようなものを一つ構成しなさい。
+    \item
+    \(\R\setminus \Q\)上の完備な距離\(d\)であって、
+    \(d\)から定まる位相が\(\R\)の相対位相と等しくなるようなものを一つ構成しなさい。
+  \end{enumerate}
+\end{prob}
+
+
+
+
+\begin{prob}[Baire範疇性]
+  位相空間\(X\)とその部分集合\(F\subset X\)に対し、
+  \(F\)が\textbf{疎}であるとは、閉包\(\overline{F}\)が内部を持たないことを言う。
+  \begin{enumerate}
+    \item (Baire範疇性).
+    \(X\)を完備な距離空間とするとき、\(X\)は可算個の疎な部分集合の和とはならない。
+    これを示しなさい。
+    特に、\(X = \bigcup_n X_n\)となっていれば、
+    ある\(n\)が存在して\(X_n\)の閉包が内部を持つことになります。
+    \item
+    同じ位相を定めるどんな距離を入れても完備な距離とはならないような距離空間の例を一つ挙げなさい。
+    \item
+    \(X,Y\)をノルム空間とする (定義は
+    \href{https://ja.wikipedia.org/wiki/%E3%83%8E%E3%83%AB%E3%83%A0%E7%B7%9A%E5%9E%8B%E7%A9%BA%E9%96%93}{Wikipedia}を参照)。
+    \(f:X\to Y\)が連続な線形写像であれば、
+    ある\(M>0\)が存在して、
+    任意の\(x\in X\)に対して\(\|f(x)\| \leq M\|x\|\)が成り立つことを示しなさい。
+    特に、\(\|f\|\dfn \sup\{\|f(x)\| | x\in X, \|x\|=1\}\)によって\(f\)のノルムが定まり、
+    連続線型写像のなす線型空間\(\Hom_{\mathrm{conti}}(X,Y)\)はノルム空間となる。
+    \item (一様有界性).
+    \(X,Y\)をノルム空間として、\(X\)はさらにこのノルムに関して完備であるとする。
+    \(\Phi\)を連続な線型写像\(X\to Y\)からなる集合で
+    各\(x\in X\)に対して\(\{f(x)|f\in \Phi\}\subset Y\)が有界集合であるとき、
+    \(\Phi\)はノルム空間\(\Hom_{\mathrm{conti}}(X,Y)\)の中で有界集合であることを示しなさい。
+    %\(X_n\dfn \bigcap_{f\in \Phi}f^{-1}(\text{半径\(n\)の開球})\subset X\)
+    %とおいて、Baire範疇性を用いると良い
+    \item (開写像定理).
+    \(f:X\to Y\)を完備なノルム空間の間の全射連続線型写像とすると、\(f\)は開写像である。
+    これを示しなさい。
+    %(Hint: \(X\)の半径\(n\)の開球の像で\(Y\)が被覆される。Baire範疇性を使って、
+    %ある半径の開球の像が内点を持つことが従う。それが\(Y\)の小さな開球を含むことを示しなさい。)
+  \end{enumerate}
+\end{prob}
+
+
+
+
+\begin{prob}
+  ハウスドルフ空間\(X\)が\textbf{正規}であるとは、
+  任意の閉部分集合\(F,H\subset X, F\cap H = \emptyset\)に対し、
+  ある開集合\(U,V\subset X\)が存在して、
+  \(F\subset U, H\subset V, U\cap V = \emptyset\)
+  となることを言う。
+  ハウスドルフ空間\(X\)が\textbf{正則}であるとは、
+  任意の点\(x\in X\)と閉集合\(F\subset X\)に対し、
+  \(x\not\in F\)であれば、ある開集合\(U,V\subset X\)が存在して
+  \(x\in U, F\subset V, U\cap V = \emptyset\)が成り立つことを言う。
+  \begin{enumerate}
+    \item 距離空間は正規である。これを証明しなさい。
+    \item コンパクトハウスドルフ空間は正規である。これを証明しなさい。
+    \item (難). 正則Lindel\"{o}f空間は正規である。これを証明しなさい。
+  \end{enumerate}
+\end{prob}
+
+
+
+
+\begin{prob}
+  距離空間は必ず正規であることを証明しなさい。
+\end{prob}
+
+
+
+
+
+\begin{prob}[難]
+  濃度が可算なコンパクトハウスドルフ空間は必ず孤立点を持つことを証明しなさい。
+  %背理法。二点から出発。正規性を使って閉包が交わらない開近傍を取ってその閉包をとる。
+  %孤立点を持たないことからこれらは初めと同じ状況を満たす。
+  %可算無限に繰り返すと濃度の可算性に反する。
+\end{prob}
+
+
+
+
+
+\begin{prob}[Urysohnの距離化定理]\label{Urysohn metrizable}
+  \(X\)を正規な位相空間とする。
+  \begin{enumerate}
+    \item
+    二つの\(\emptyset\)でない開集合\(U,V\subset X\)が、
+    \(\overline{U}\subsetneq V\)を満たしているとする。
+    このとき、\(\overline{U}\subsetneq W, \overline{W}\subsetneq V\)
+    を満たす開集合\(W\subset X\)が存在することを示しなさい。
+    \item
+    閉部分集合\(F,H\subset X, F\cap H = \emptyset\)に対して、
+    可算個の開集合からなる集合\(\{U_a\subset X | (a=n/2^m,0\leq n\leq 2^m)\}\)
+    であって、次を満たすものを構成しなさい：
+    \(F\subset U_0, \overline{U}_1\subset X\setminus H\)であり、
+    さらに任意の\(0\leq a\leq b\leq 1\)に対して\(\overline{U}_a\subset U_b\)である。
+    (Hint: まず\(U_0,U_1\)を作り、次に\(U_{1/2}\)を作り、次に\(U_{1/4},U_{3/4}\)を作り、...とすると良い)
+    \item (Urysohnの補題).
+    \label{Urysohn lem}
+    上の\(\{U_a\subset X | (a=n/2^m,0\leq n\leq 2^m)\}\)に対して、
+    写像\(f:X\to [0,1]\)を、
+    \[f(x) \dfn \inf\{a\in [0,1]| 1\geq n/2^m\geq a \Rightarrow x\in U_{n/2^m}\}\]
+    で定義する。
+    \(f\)が連続であることを証明しなさい。
+    構成から、\(F\subset f^{-1}(\{0\}), H\subset f^{-1}(\{1\})\)となる。
+    \item
+    \(X\)は\textbf{第二可算}、つまり可算個の開集合からなる開基が存在すると仮定する。
+    このとき\(X\)は可算な稠密部分集合を持つことを示しなさい。
+    \item
+    \(X\)は第二可算であるとする。
+    \(X_0\subset X\)を可算な稠密部分集合、\(\mcB\subset \mathsf{Open}(X)\)を可算開基として、
+    \(I\dfn \{(p,U)|p\in X_0,U\in\mcB,p\in U\}\)と定義する。
+    定義より、\(I\)は可算集合である。
+    各\((p,U)\in I\)に対して
+    連続関数\(f_{(p,U)}:X\to [0,1]\)を
+    \(f_{(p,U)}(p) = 0, X\setminus U\subset f_{(p,U)}^{-1}(\{1\})\)
+    となるように一つとる (このような\(f_{(p,U)}\)の存在は (iii) より従う)。
+    このとき、\(f(x)\dfn (f_{(p,U)}(x))\in \prod_I [0,1]\)
+    で定まる写像\(f:X\to \prod_I [0,1]\)は、
+    像\(\im(f)\)への同相写像であることを証明しなさい。
+    \(\prod_I [0,1]\)は距離 (化可能) 空間である
+    (cf. \autoref{met cut 1} \ref{met prod infinite}) から、
+    \(X\)も距離化可能であることが従う。
+  \end{enumerate}
+\end{prob}
+
+
+
+
+\begin{prob}[Tietzeの拡張定理]
+  ハウスドルフ空間\(X\)について、以下の主張が同値であることを証明しなさい：
+  \begin{enumerate}
+    \item \label{Tietze T4}
+    \(X\)は正規である。
+    \item \label{Tietze bound ext}
+    任意の閉集合\(F\subset X\)と任意の有界連続関数\(f:F\to \R\)に対し、
+    ある有界連続関数\(\tilde{f}:X\to \R\)が存在して\(f=\tilde{f}|_F\)が成り立つ。
+    \item \label{Tietze ext}
+    任意の閉集合\(F\subset X\)と任意の連続関数\(f:F\to \R\)に対し、
+    ある連続関数\(\tilde{f}:X\to \R\)が存在して\(f=\tilde{f}|_F\)が成り立つ。
+  \end{enumerate}
+  (Hint:「\ref{Tietze T4} \(\Rightarrow\) \ref{Tietze bound ext}」は
+  \autoref{Urysohn metrizable} \ref{Urysohn lem}を使うと良い。
+  「\ref{Tietze bound ext} \(\Rightarrow\) \ref{Tietze ext}」は\(f\)に
+  同相写像\(\R\xrightarrow{\sim} (-1,1)\)と埋め込み\((-1,1)\subset \R\)を合成してみると良い。)
+\end{prob}
+
+
+
+
+\begin{prob}[Sorgenfrey直線]\label{Sorgenfrey}
+  実数直線\(\R^1\)に、
+  \(\{[a,b) | a,b\in \R^1\}\)を開基として位相を入れたものを\(S\)で表す。
+  \begin{enumerate}
+    \item
+    \(X\subset S\)を任意の部分集合とする。
+    \(X\)は相対位相で正規であることを示しなさい。
+    \item
+    \(S\)は可分であり、Lindel\"{o}fである。
+    これを証明しなさい。
+    \item \label{Sorgenfrey line sep not Lind}
+    \(F\dfn \{(x,-x)|x\not\in Q\}\subset S\times S\)と置く。
+    \(F\)は相対位相で離散な閉部分集合であることを示しなさい。
+    特に、\(S\times S\)は可分であるがLindel\"{o}fではない。
+    \item
+    \(S\times S\)は正則であるが正規ではない。これを証明しなさい。
+    (Hint: \(F\)上の連続関数を\(S\times S\)上に拡張することを考えてみなさい)
+  \end{enumerate}
+  この\(S\)は\textbf{ゾルゲンフライ直線} (Sorgenfrey line) と呼ばれています。
+\end{prob}
+
+
+
+
+\begin{prob}\label{countably cpt and pseudo cpt}
+  \(X\)が正規であるとする。以下の主張が同値であることを証明しなさい：
+  \begin{enumerate}
+    \item
+    \(X\)は可算コンパクトである。
+    \item
+    任意の連続関数\(f:X\to \R\)は有界である。
+  \end{enumerate}
+  %上から下はRの可算コンパクトsubがコンパクトであることから従う。
+  %下から上は対偶を示す。もし可算コンパクトじゃないなら可算離散閉部分空間が存在するから
+  %その上の非有界関数をTiezeで拡張すれば非有界関数を得る。
+\end{prob}
+
+
+
+
+
+\begin{prob}[一点コンパクト化]
+  ハウスドルフ空間\(X\)が\textbf{局所コンパクト}であるとは、
+  \(X\)の各点がコンパクト近傍を持つことを言う。
+  \begin{enumerate}
+    \item
+    \(X\)を局所コンパクト空間とする。
+    \(\infty \dfn X\)、
+    \(\alpha X\dfn X\cup \{\infty\}\)と定義する。
+    \[
+    \{ (X\setminus K)\cup \{\infty\} | K\subset X,\text{コンパクト}\}
+    \]
+    とすると、これは\(\infty\)の近傍系となり、
+    \(\alpha X\)はコンパクトハウスドルフ空間となる。
+    このことを証明しなさい。
+    \(\alpha X\)を\(X\)の\textbf{一点コンパクト化}と言う。
+    \item
+    \(X\)を局所コンパクト空間とする。
+    このとき\(X\)は正則であることを示しなさい。
+    (Hint: \autoref{Urysohn metrizable} \ref{Urysohn lem})
+  \end{enumerate}
+\end{prob}
+
+\begin{rem*}
+  私はあまりよく知りませんが、ハウスドルフでない場合の局所コンパクト性の定義にはいろいろな流儀があるようです。
+  ここでは、\textbf{局所コンパクト空間といえばつねにハウスドルフである}とします。
+\end{rem*}
+
+
+
+
+\begin{prob}[Stone-\v{C}echコンパクト化]
+  \label{SC cpt}
+  \
+  \begin{enumerate}
+    \item \label{unit interval is cogenerator of cpt T2}
+    \(X,Y\)をコンパクトハウスドルフ空間、
+    \(f,g:X\to Y\)を連続写像とする。
+    次の主張を証明しなさい：
+    任意の連続写像\(h:Y\to [0,1]\)に対して
+    \(h\circ f = h\circ g\)となるなら、
+    \(f=g\)が成り立つ。
+    (Hint: \autoref{Urysohn metrizable} \ref{Urysohn lem})
+    \item \label{SC cpt construct}
+    \(X\)を局所コンパクト空間とする。
+    \([0,1]\)への連続写像の集合をたんに
+    \(\Hom(X)\dfn \Hom_{\mathsf{Top}}(X,[0,1])\)で表すことにする。
+    \[
+    \varphi_X: X\to \prod_{f\in \Hom(X)} [0,1], \ \ x\mapsto (f(x))_{f\in \Hom(X)}
+    \]
+    によって写像\(\varphi_X\)を定義する。
+    \(\varphi_X\)は連続写像であり、さらに\(\im(\varphi_X)\)への同相写像であることを証明しなさい。
+
+    \(\im(\varphi_X)\)の閉包を\(\beta X\)で表す。
+    \(\varphi_X\)によって\(X\subset \beta X\)を開部分集合とみなす。
+    チコノフの定理より\(\prod_{f\in \Hom(X)} [0,1]\)はコンパクトであるから、
+    \(\beta X\)もコンパクト空間であることに注意しておく。
+    \(\beta X\)を\(X\)の\textbf{Stone-\v{C}echコンパクト化}と呼ぶ。
+    \(X\)がコンパクトであれば\(X = \beta X\)であることを確認しなさい。
+    \item \label{SC cpt funct}
+    \(f:X\to Y\)を局所コンパクト空間の間の連続写像とする。
+    このとき、連続写像\(\beta f:\beta X \to \beta Y\)であって、
+    \(\beta f|_X = f\)となるものが存在することを証明しなさい。
+    \item
+    \(X,Y\)を局所コンパクト空間、
+    \(f:X\to Y\)を像への同相として、\(\im(f)\subset Y\)が稠密であると仮定する。
+    連続写像\(\beta f:\beta X \to \beta Y\)が同相であるためには、
+    任意の連続関数\(g:X\to [0,1]\)に対してある連続関数\(h:Y\to [0,1]\)が存在して
+    \(h\circ f = g\)となることが必要十分である。
+    これを示しなさい。
+  \end{enumerate}
+\end{prob}
+
+
+\begin{rem*}
+  圏論の言葉で言えば、
+  \ref{unit interval is cogenerator of cpt T2}は、
+  単位閉区間\([0,1]\)がコンパクトハウスドルフ空間のなす圏の\textbf{cogenerator}である、
+  ということを意味していて、
+  \ref{SC cpt construct}と\ref{SC cpt funct}は、
+  Stone-\v{C}echコンパクト化をする操作が、
+  コンパクトハウスドルフ空間の圏から局所コンパクト空間の圏への忘却函手の左随伴函手である、
+  ということを意味しています。
+\end{rem*}
+
+
+
+\begin{rem*}
+  通常、Stone-\v{C}echコンパクト化は、局所コンパクト空間のクラスより広い
+  \textbf{完全正則空間}というクラスに対して定義されるものです。
+  ここでは簡単のため局所コンパクト空間に対してのみ定式化しました。
+  (\(\beta \Q\)や\(\beta (\R\setminus \Q)\)がどうなるのかは興味深いです)
+\end{rem*}
+
+
+
+
+
+\begin{prob}[具体例その2]
+  \
+  \begin{enumerate}
+    \item
+    \([0,1]\)と\([0,1)\)と\((0,1)\)はどの二つも同相ではない。
+    なぜでしょう。
+    \item (難).
+    \([0,1]\cap \Q\)と
+    \([0,1)\cap \Q\)と
+    \((0,1)\cap \Q\)は
+    どれも同相である。なぜでしょう。
+    \item
+    \(X_1 \dfn \{(0,a) | 0\leq a \leq 1\}\),
+    \(X_2 \dfn \{(a,0) | 0\leq a \leq 1\}\),
+    \(X_3 \dfn \{(0,a) | -1\leq a \leq 0\}\),
+    \(X_4 \dfn \{(a,0) | -1\leq a \leq 0\}\),
+    と置いて、\(\R\times \R\)の部分集合
+    \(Y_n\dfn \bigcup_{i=1}^n X_i, (n=1,2,3,4)\)
+    に相対位相を入れる。
+    どれが同相でどれが同相じゃないか決定しなさい。
+    \item (難).
+    \([0,1]\times [0,1]\)と
+    \([0,1]\times [0,1)\)と
+    \([0,1]\times (0,1)\)と
+    \((0,1)\times (0,1)\)は
+    どの二つも同相ではない。
+    なぜでしょう。
+    %一点コンパクト化の無限遠点の近傍系で、もとの空間との共通部分が連結となるものがとれるかとれないか
+    %四つ目はどの四点も好きに動かせるけど、二つ目は境界の四点を好きに動かせない。
+    %理由は、ABCDの順のものをACBDにしたら、
+    %ABとCDを結ぶ交わらないpathの行き先が必ず交わる（中間値の定理）ので矛盾。
+    %これで二つ目と四つ目も区別できる。
+    \item (難).
+    \(A\dfn [0,1]\times (-1,1)\)とするとき、
+    二つの商空間
+    \(X\dfn A/[(0,a) \sim (1,a)]\) (円柱の側面)と
+    \(Y\dfn A/[(0,a) \sim (1,-a)]\) (メビウスの帯) は同相ではない。
+    なぜでしょう。
+    %一点コンパクト化の無限遠点の近傍系が違う
+    \item (やや難).
+    \(([0,1]\times [0,1])\setminus (\Q\times \{0\})\)と
+    \(([0,1]\times [0,1])\setminus ((\R\setminus \Q)\times \{0\})\)
+    は同相ではない。
+    なぜでしょう。
+    %コンパクト近傍を持たない点の濃度が違う
+    %完備距離化可能かどうかが違う
+    \item (難).
+    \(([0,1]\times [0,1))\setminus ((\R\setminus \Q)\times \{0\})\)と
+    \(([0,1)\times [0,1))\setminus ((\R\setminus \Q)\times \{0\})\)と
+    \(((0,1)\times [0,1))\setminus ((\R\setminus \Q)\times \{0\})\)は
+    どの二つも同相ではない。
+    なぜでしょう。
+    %コンパクト近傍を持つ点の集合が同相ではない
+    \item (難).
+    \(A\dfn \Q\times \{0,1\}\),
+    \(B\dfn (\Q\times \{0\}) \cup ((\R\setminus \Q) \times \{1\})\),
+    \(C\dfn \{0,1\} \cup (\R\setminus \Q)\)と置く。
+    \(([0,1]\times [0,1])\setminus (A\cup C)\)と
+    \(([0,1]\times [0,1))\setminus (B\cup C)\)は
+    同相ではない。
+    なぜでしょう。
+    %コンパクト近傍を持たない点の集合が境界である。
+    %境界を、境界の中で可算な近傍を持つものと持たないものに分けるとQ側とR引くQ側にわけれる。
+    %これをQ,Rとおく。
+    %Qを含んでRを含まない弧状連結集合と、
+    %Rを含んでQを含まない弧状連結集合の、
+    %二つのdisjoint unionにわけれるかどうかで区別できる。
+  \end{enumerate}
+\end{prob}
+
+\begin{rem*}
+  \([0,1]\times [0,1)\)と
+  \((0,1)\times (0,1)\)が同相でないことの証明は、
+  Twitterである人に教えてもらいました。
+\end{rem*}
+
+
+\begin{rem*}
+  一般に、可算濃度の距離空間は孤立点を持たなければ\(\Q\)と同相であることが知られています。
+  特に、\(\Q\)と\(\Q\times \Q\)は同相です。
+\end{rem*}
+
+
+
+
+
+\begin{prob}[チコノフの板]\label{Tychonoff plank}
+  順序集合\((X,\leq)\)が\textbf{全順序集合}または\textbf{線形順序集合}であるとは、
+  任意の\(x,y\in X\)に対して\(x\leq y\)または\(y\leq x\)のいずれか一方が成り立つことを言う。
+  順序集合\(\alpha\)が\textbf{整列集合}であるとは、
+  任意の元\(x\in \alpha\)に対して\(x\)より真に大きい最小の元
+  (このような元を\textbf{後者}と呼び、\(x+1\)で表す)
+  が存在することを言う。
+
+  全順序集合\((X,\leq)\)とその元\(a\in X\)に対して、
+  \((-\infty,a]\dfn \{x\in X|x\leq a\}\)などの記号を用いる。
+  \((-\infty,a),(a,b),[a,b]\)など...
+  \begin{enumerate}
+    \item
+    整列集合\(\alpha\)に対して、
+    \(\alpha + 1 \dfn \alpha \cup \{\alpha\}\)として、
+    \(\alpha\in \alpha + 1\)は最大限であるとすることによって、
+    新しい整列集合\(\alpha + 1\)が定義される。
+    このことを確認しなさい。
+    \item
+    \((X,\leq)\)が全順序集合であるとする。
+    \(\{(a,b)\subset X|a,b\in X\}\)は\(X\)の開基となる。
+    これを示しなさい。
+    全順序集合をこの手続きによって位相空間とみなすとき、
+    その位相を\textbf{線形順序位相}と言う。
+    \item
+    \(\alpha\)を整列集合とする。
+    もし\(\alpha\)に最大限が存在すれば、
+    \(\alpha\)は線形順序位相でコンパクトハウスドルフ空間である。
+    これを証明しなさい。
+    \item \label{omega1}
+    (難).
+    以下を満たす整列集合を\(\omega_1\)で表す：
+    \begin{itemize}
+      \item \(\omega_1\)は非可算集合であり、最大限を持たない。
+      \item 任意の\(x\in \omega_1\)に対して、
+      \((-\infty,x]\)は可算集合である。
+    \end{itemize}
+    この\(\omega_1\)について、任意の可算部分集合\(A\subset \omega_1\)に対して
+    上限\(\sup A\in \omega_1\)が存在することを証明しなさい。
+    さらに、\(\omega_1\)は線形順序位相で可算コンパクトであるがコンパクトではないことを証明しなさい。
+    \item (難).
+    また、以下を満たす整列集合を\(\omega_0\)で表す：
+    \begin{itemize}
+      \item \(\omega_0\)は非可算集合であり、最大限を持たない。
+      \item 任意の\(x\in \omega_0\)に対して、
+      \((-\infty,x]\)は可算集合である。
+    \end{itemize}
+    \(X\dfn (\omega_1 + 1)\times (\omega_0 + 1) \setminus \{(\omega_1,\omega_0)\}\)
+    に積位相の相対位相を入れる。
+    \(X\)は正則であるが正規でないことを証明しなさい。
+    (Hint: 正規でないことを示すためには、閉部分集合
+    \(F\dfn X\cap \left((\omega_1 + 1)\times\{\omega_0\}\right)\),
+    \(H\dfn X\cap \left(\{\omega_1\}\times (\omega_0 + 1)\right)\)
+    を考え、これらをそれぞれ含む開集合が必ず交わることを証明すると良い)
+    この\(X\)は\textbf{チコノフの板}と呼ばれています。
+    \item
+    チコノフの板\(X\)は、可算コンパクトでないことを示しなさい。
+    また、\(X\)上の任意の連続関数\(f:X\to \R\)は有界であることを示しなさい。
+    (\autoref{countably cpt and pseudo cpt}と見比べてみてください)
+  \end{enumerate}
+\end{prob}
+
+
+
+
+
+\begin{prob}[離散空間のStone-\v{C}echコンパクト化]
+  \(X\)を離散位相の入った位相空間とする。
+  \(X\)の濃度を\(\#(X)\)で表し、
+  \(2^X\)で\(X\)の部分集合の集合を表す。
+  \begin{enumerate}
+    \item
+    \(x\in X\)に対し、
+    \(V(x) \dfn \{A\subset X | x\in A\}\)は超フィルターとなることを証明しなさい。
+    \item
+    \(f:Y\to Z\)が集合の間の単射であるとする。
+    \(Y,Z\)に離散位相を入れて、\(f\)を連続写像と考える。
+    このとき\(\beta f:\beta Y \to \beta Z\)は単射であることを証明しなさい。
+    (Hint: \(g:Z\to Y\)を\(g\circ f = \id_Y\)となるように選ぶと...)
+    \item
+    任意の点\(x\in \beta X\setminus X\)に対し、
+    \[\mcF_x\dfn \{U\cap X| \text{\(U\subset \beta X\)は\(x\)の近傍}\}\]
+    とすればこれは\(X\)の超フィルターであることを証明しなさい。
+    \item
+    \(X\)の超フィルターと\(\beta X\)の点の間の1:1対応を作りなさい。
+    特に、\(\beta X\)の濃度は\(\#(2^{2^X})\)になります
+    (cf. \autoref{cardinality of ultra filters})。
+  \end{enumerate}
+\end{prob}
+
+
+
+
+\begin{prob}[いろいろなStone-\v{C}echコンパクト化]
+  \
+  \begin{enumerate}
+    \item
+    \(X\)が局所コンパクトであるとき、
+    \(\beta X\setminus X\)は\(\beta X\)の閉集合であることを示しなさい。
+    \item
+    \(X\)が局所コンパクト、\(F\subset \beta X \setminus X\)が閉集合、
+    \(Y\dfn \beta X \setminus F\)であるとき、
+    自然な同相\(\beta Y \cong \beta X\)が存在することを示しなさい。
+    \item
+    \(X\)が局所コンパクト、\(F\subset \beta X \setminus X\)が閉集合であるとき、
+    任意のコンパクト部分集合\(K\subset X\)と任意の開近傍\(F\subset V\)に対して、
+    \(V\cap (X\setminus K) \neq \emptyset\)であることを示しなさい。
+    \item
+    \(X\dfn [0,\infty)\subset \R\)とする。
+    \(\beta X \setminus X = F_0\cup F_1, F_0\cap F_1 = \emptyset\)
+    となる\(\beta X \setminus X\)の二つの閉部分集合\(F_0,F_1\)が存在すると仮定する
+    (つまり、\(\beta X \setminus X\)は連結でないと仮定する)。
+    \(f(F_0) = \{0\}, f(F_1) = \{1\}\)となる連続関数
+    \(f:\beta X \setminus X\to [0,1]\)を
+    \(\beta X\)上の連続関数へと延長することを考えて矛盾を導きなさい。
+    結論として、\(\beta X \setminus X\)は連結となります。
+    \item
+    \(\beta (\R^N) \setminus \R^N, (N\geq 2)\)は連結であることを示しなさい。
+    \item
+    \(\beta \R \setminus \R\)は二つの連結成分を持つことを示しなさい。
+    \item
+    \(\beta \omega_1 = \omega_1 + 1\)であることを示しなさい。
+  \end{enumerate}
+\end{prob}
+
+
+
+
+\begin{prob}[第一可算性とStone-\v{C}echコンパクト化]
+  \
+  \begin{enumerate}
+    \item
+    \(X\)がコンパクトであるとする。
+    もし点\(x\in X\)が可算濃度の開近傍基を持てば、
+    連続関数\(f:X\to [0,1]\)であって\(f^{-1}(0) = \{x\}\)となるものが存在する。
+    これを示しなさい。
+    \item
+    \(X\)を局所コンパクト空間、
+    \(U\subset X\)を稠密開集合、
+    \(f:X \to [0,1]\)を連続関数で
+    \(F\dfn f^{-1}(0)\subset X\setminus U\)となるものとする。
+    このとき、\(X\setminus F\)の離散閉部分集合\(E\subset X\setminus F\)が存在して、
+    \(X\)での閉包\(\overline{E}\)が\(\overline{E}\setminus E\subset F\)
+    を満たす。
+    これを示しなさい。
+    \item
+    \(X\)を局所コンパクト空間、
+    \(f:\beta X \to \R\)を連続関数とする。
+    \(F\dfn f^{-1}(0)\subset \beta X \setminus X\)となると仮定する。
+    このとき\(\#(F) \geq \#(2^{2^{\N}})\)であることを示しなさい。
+    (Hint: 上のような\(E\)に対して\(\overline{E}\cong \beta \N\)となることを示しなさい)
+    \item
+    \(X\)をコンパクトではない局所コンパクト空間とする。
+    \(\beta X\setminus X\)の任意の点は可算濃度の開近傍基を持たないことを示しなさい。
+    結論として、\(\beta X\)が第一可算であれば、\(X\)はコンパクトとなる。
+    \item
+    \(X,Y\)を第一可算局所コンパクト空間であって、
+    \(\beta X\)と\(\beta Y\)が同相となるものとする。
+    このとき、\(X,Y\)は同相であることを示しなさい。
+  \end{enumerate}
+\end{prob}
+
+
+
+
+
+\begin{prob}[可算コンパクト空間の積]
+  この問題では、可算コンパクト空間二つの積が可算コンパクトとはならない例を与える。
+
+  集合\(X\)に対して、その可算無限部分集合全体の集合を\(\mcP_{0,\infty}(X)\)で表す
+  (\(0\)は\(\aleph_0\)的な気持ちです)。
+  \(\beta \N\)はコンパクトなので、
+  各\(A\in \mcP_{0,\infty}(\beta \N)\)は集積点を持つ。
+  そのうちの一つを\(x_A\in \beta \N\)で表すとする。
+  \(0\in\omega_1\)を最小元とする。
+  以下の問いの答えなさい：
+  \begin{enumerate}
+    \item
+    \(A\subset \beta \N\)を可算無限部分集合とする。
+    \(\overline{A}\subset \beta \N\)の濃度は\(\#(2^{2^{\N}})\)であることを示しなさい。
+    (Hint: \(A\subset \beta \N\setminus \N\)である場合に帰着しなさい。
+    相対位相で離散閉な無限部分集合\(A_0\subset A\)を取り、
+    \(A_0\)上の関数を拡張することを考えて
+    \(\overline{A}_0\cong \beta A_0 \cong \beta \N\)を示しなさい)
+    \item
+    \(E_0\dfn \N\subset \beta \N\)として、
+    各\(\alpha \in \omega_1\)に対して、帰納的に
+    \begin{align*}
+      \tilde{E}_{\alpha} &\dfn \bigcup_{\beta<\alpha}E_{\beta}, \\
+      E_{\alpha} &\dfn \tilde{E}_{\alpha} \cup
+      \left\{ x_A \middle| A \in \mcP_{0,\infty}(\tilde{E}_{\alpha})\right\},
+    \end{align*}
+    と定義して\(E\dfn \bigcup_{\alpha\in\omega_1} E_{\alpha}\subset \beta \N\)と置く。
+    \(E\)が可算コンパクトであることを示しなさい。
+    (Hint: \(E\)の可算部分集合の集積点について考えなさい。
+    \autoref{Tychonoff plank} \ref{omega1}も参照すると良いでしょう)
+    \item
+    各\(\alpha\in\omega_1\)に対して
+    \(\#(E_{\alpha}) \leq \#(2^{\N})\)
+    が成り立つことを示しなさい。
+    特に、\(\#(E) \leq \#(2^{\N})\)が成り立ちます。
+    \item
+    \(F \dfn (\beta \N \setminus E)\cup \N\)とする。
+    \(F\)が可算コンパクトであることを示しなさい。
+    \item
+    \(\N\times \N\subset E\times F\)は離散閉部分集合であることを確認しなさい。
+    結論として、\(E\)と\(F\)は可算コンパクトであるにもかかわらず、
+    \(E\times F\)は可算コンパクトにはなっていないことが従います。
+  \end{enumerate}
+\end{prob}
+
+
+
+
+
+\begin{prob}[Alexandroffの問題, Arhangel'ski\u{\i}の定理]
+  この問題では、第一可算なコンパクトハウスドルフ空間の濃度が
+  連続濃度\(\#(2^{\N}) = \#(\R)\)以下であることを証明する。
+
+  \(X\)を第一可算なコンパクトハウスドルフ空間とする。
+  各点\(x\in X\)に対して、可算な開近傍基\(\mcV_x\)を一つとる。
+  \(0\in \omega_1\)を最小元とする。
+  \begin{enumerate}
+    \item
+    \(A\subset X\)を部分集合とする。
+    \(A\)の濃度は\(\#(\R)\)以下であると仮定する。
+    このとき、\(A\)の閉包の濃度も\(\#(\R)\)以下であることを証明しなさい。
+    (Hint: \(\overline{A}\)の点の開近傍はある\(A\)の点の開近傍でもあるので、
+    可算個の「\(A\)の点と開近傍の組」によってすべて区別できることに注意しなさい)
+    \item
+    \(F_{\alpha}\subset X, (\alpha \in \omega_1)\)を閉部分集合の族であり、
+    単調増大列である、すなわち、
+    \(\alpha \leq \beta \Rightarrow F_{\alpha} \subset F_{\beta}\)、
+    が成り立つと仮定する。
+    このとき、\(F\dfn \bigcup_{\alpha\in \omega_1}F_{\alpha}\subset X\)が閉部分集合であることを証明しなさい。
+    (cf. \autoref{Tychonoff plank} \ref{omega1})
+    \item
+    上の状況で、\(y\in X\setminus F\)が存在すると仮定する。
+    このとき、ある\(\alpha \in \omega_1\)と
+    可算部分集合\(\mcU\subset \bigcup_{x\in F_{\alpha}}\mcV_x\)が存在して、
+    \(y\not\in \bigcup_{U\in \mcU}U\)かつ
+    \(F\subset \bigcup_{U\in \mcU}U\)となることを示しなさい。
+  \end{enumerate}
+  次に、適当に一点\(p\in X\)を取り、\(F_0\dfn \{p\}\)と置く。
+  濃度が\(\#(\R)\)以下の閉部分集合の単調増大列
+  \((F_{\alpha})_{\alpha\in\omega_1}\),
+  \(\#(F_{\alpha})\leq \#(\R)\),
+  \(F_0 = \{p\} \subset F_1\subset \cdots \subset F_{\alpha}\subset \cdots\)であって、
+  任意の\(\alpha\in \omega_1\)に対して
+  次の条件\(\mathscr{P}(\alpha)\)を満たすものを、
+  \(\alpha\in \omega_1\)に関する超限帰納法で構成する：
+  \begin{itemize}
+    \item
+    \textbf{条件}\(\mathscr{P}(\alpha)\)：
+    任意の\(\beta < \alpha\)と
+    任意の可算部分集合\(\mcU\subset \bigcup_{x\in F_{\beta}}\mcV_x\)に対して、
+    \(X\neq \left(\bigcup_{U\in \mcU} U\right)\)ならば
+    \(F_{\alpha}\not\subset \left(\bigcup_{U\in \mcU} U\right)\)である。
+  \end{itemize}
+  ある\(\alpha\in \omega_1\)に対して、
+  濃度\(\#(\R)\)以下の閉部分集合からなる単調増大列\(F_{\beta},\beta < \alpha\)が存在して、
+  任意の\(\beta < \alpha\)に対して
+  \((F_{\gamma})_{\gamma \leq \beta}\)が条件\(\mathscr{P}(\beta)\)を満たしていると仮定する。
+  \begin{align*}
+    \mcV &\dfn \bigcup_{\beta < \alpha}\bigcup_{x\in F_{\beta}}\mcV_x, \\
+    \mcH &\dfn \left\{ X \setminus \bigcup_{V\in \mcV'} V \middle|
+    \mcV'\subset \mcV, \text{\(\mcV'\)は可算}, X\neq \bigcup_{V\in \mcV'} V\right\},
+  \end{align*}
+  と置く (\(\#(\mcV),\#(\mcH)\leq \#(\R)\)であることに注意しなさい)。
+  各\(H\in \mcH\)に対して元\(p_H\in H\)を一つずつ選ぶ。
+  \(F_{\alpha}\)を\(\{p_H|H\in \mcH\}\cup \bigcup_{\beta<\alpha} F_{\beta}\subset X\)
+  の閉包とする。
+  \begin{enumerate}[start=4]
+    \item \((F_{\beta})_{\beta \leq \alpha}\)は
+    濃度が\(\#(\R)\)以下の閉部分集合の増大列であって
+    条件\(\mathscr{P}(\alpha)\)を満たす。これを示しなさい。
+  \end{enumerate}
+  これにより、超限帰納法で所望の閉部分集合族\((F_{\alpha})_{\alpha\in\omega_1}\)を得る。
+  最後に、
+  \begin{enumerate}[start=5]
+    \item \(X = \bigcup_{\alpha\in\omega_1}F_{\alpha}\)を示しなさい。
+  \end{enumerate}
+  各\(F_{\alpha}\)は濃度が\(\#(\R)\) (これは\(\#(\omega_1)\)以上の基数)
+  なので、右辺の濃度は高々\(\#(\R)\)である。
+  以上で証明を完了する。
+\end{prob}
+
+
+
+\begin{rem*}
+  Alexandroffの問題は、1923年にAlexandroffとUrysohnによって提起され、
+  その後約50年もの間、1969年になってA. Arhangel'ski\u{\i}が解決するまで、
+  誰も解くことのできなかった位相空間論の難問です。
+  私はあまり詳しくありませんが、
+  集合論における\textbf{初等部分モデル}という概念を上手に使う別証明もあるようです。
+\end{rem*}
+
+
+\end{document}

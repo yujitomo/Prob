@@ -1,0 +1,697 @@
+\documentclass[uplatex]{jsarticle}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+
+\usepackage{xcolor}
+\usepackage[dvipdfmx]{graphicx}
+
+
+
+\usepackage{ulem}
+
+\usepackage{braket}
+
+%%%%%ハイパーリンク
+%\usepackage[colorlinks=true,urlcolor=blue!70!black,citecolor=blue!60!black,linkcolor=blue!60!black]{hyperref}
+%\usepackage{aliascnt} %for creating different biblatex references for different theoremstyles
+\usepackage[setpagesize=false,dvipdfmx]{hyperref}
+\usepackage{aliascnt}
+\hypersetup{
+    colorlinks=true,
+    citecolor=blue,
+    linkcolor=blue,
+    urlcolor=blue,
+}
+
+\renewcommand{\eqref}[1]{\textcolor{blue}{(\ref{#1})}}
+
+%%%%%%ハイパーリンク
+
+
+%%%%%図式
+%\usepackage{tikz}%%%図
+\usepackage{amscd}%%%簡単な図式
+
+\usepackage{tikz}
+\usepackage{tikz-cd} %commutative diagrams in TikZ
+\usetikzlibrary{calc}
+\usetikzlibrary{matrix,arrows}
+\usetikzlibrary{decorations.markings}
+
+%%%%%図式
+
+
+
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+
+\usepackage{amsthm}
+
+%%%%%%%%%%%%Plain型%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%definition型%%%%%%%%%%%%
+
+\theoremstyle{definition}
+
+\renewcommand{\sectionautorefname}{Section}
+
+\newtheorem{thm}{Theorem}[section]
+\newcommand{\thmautorefname}{Theorem}
+
+
+\newaliascnt{prop}{thm}%%%カウンター「prop」の定義（thmと同じ）
+\newtheorem{prop}[prop]{Proposition}
+\aliascntresetthe{prop}
+\newcommand{\propautorefname}{Proposition}%%%カウンター名propは「命題」で参照する
+
+\newaliascnt{cor}{thm}
+\newtheorem{cor}[cor]{Corollary}
+\aliascntresetthe{cor}
+\newcommand{\corautorefname}{Corollary}
+
+\newaliascnt{lem}{thm}
+\newtheorem{lem}[lem]{Lemma}
+\aliascntresetthe{lem}
+\newcommand{\lemautorefname}{Lemma}
+
+%%%%%%%アルファベットで番号づける定理環境
+\newtheorem{thmA}{Theorem}[section]
+\newcommand{\thmAautorefname}{Theorem}
+\renewcommand\thethmA{\Alph{thmA}}
+
+\newtheorem{corA}{Theorem}[section]
+\newcommand{\corAautorefname}{Corollary}
+\renewcommand\thecorA{\Alph{corA}}
+
+\newaliascnt{defi}{thm}
+\newtheorem{defi}[defi]{Definition}
+\aliascntresetthe{defi}
+\newcommand{\defiautorefname}{Definition}
+
+\newaliascnt{rem}{thm}
+\newtheorem{rem}[rem]{Remark}
+\aliascntresetthe{rem}
+\newcommand{\remautorefname}{Remark}
+
+\newaliascnt{reconstruction}{thm}
+\newtheorem{reconstruction}[reconstruction]{Reconstruction}
+\aliascntresetthe{reconstruction}
+\newcommand{\reconstructionautorefname}{Reconstruction}
+
+%%%%%%%番号づけない定理環境
+\newtheorem*{exam*}{Example}
+\newtheorem*{rrem*}{Remark}
+\newtheorem*{defi*}{Definition}
+
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+
+
+
+
+
+%%%%%箇条書き環境
+\usepackage[]{enumitem}
+
+\makeatletter
+\AddEnumerateCounter{\fnsymbol}{\c@fnsymbol}{9}%%%%fnsymbolという文字をenumerate環境のパラメーターで使えるようにする。
+\makeatother
+
+\makeatletter
+\renewcommand{\p@enumii}{}
+\makeatother
+
+\renewcommand{\theenumi}{(\roman{enumi})}%%%%%itemは(1),(2),(3)で番号付ける。
+\renewcommand{\labelenumi}{\theenumi}
+
+\renewcommand{\theenumii}{(\alph{enumii})}%%%%%itemは(1),(2),(3)で番号付ける。
+\renewcommand{\labelenumii}{\theenumii}
+
+\usepackage{moreenum}
+%%%%%箇条書き環境
+
+
+
+\usepackage{mandorasymb}
+\usepackage{applekeys}
+\renewcommand{\qedsymbol}{\pencilkey}
+%\renewcommand{\qedsymbol}{\kinoposymbniko}
+
+
+
+
+\usepackage{latexsym}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Isom}{Isom}
+\DeclareMathOperator{\ISOM}{\mathbf{Isom}}
+\DeclareMathOperator{\id}{\mathrm{id}}
+\DeclareMathOperator{\im}{\mathrm{Im}}
+\DeclareMathOperator{\Spec}{\mathrm{Spec}}
+\newcommand{\Supp}{\mathrm{Supp}}
+\DeclareMathOperator{\Aut}{\mathrm{Aut}}
+
+\newcommand{\coker}{\mathrm{coker}}
+
+\DeclareMathOperator{\Tor}{\mathrm{Tor}}
+\DeclareMathOperator{\Ext}{\mathrm{Ext}}
+
+\DeclareMathOperator{\colim}{\mathrm{colim}}
+\DeclareMathOperator{\plim}{\mathrm{lim}}
+\newcommand{\Lotimes}[1]{\mathop{\otimes^{\mathbf{L}}_{#1}}}
+\newcommand{\bLotimes}[1]{\mathop{\bar{\otimes}^{\mathbf{L}}_{#1}}}
+\DeclareMathOperator{\RHom}{\mathbf{R}Hom}
+\DeclareMathOperator{\bRHom}{\underline{\mathbf{R}Hom}}
+\DeclareMathOperator{\inHom}{\mathcal{H}om}
+\newcommand{\Ob}{\mathrm{Ob}}
+\newcommand{\FP}[1]{\mathsf{FP}_{/#1}}
+
+\newcommand{\rsa}{\rightsquigarrow}
+\renewcommand{\coprod}{\amalg}
+\renewcommand{\emptyset}{\varnothing}
+\newcommand{\ep}{\varepsilon}
+\newcommand{\dg}{\mathrm{dg}}
+\newcommand{\op}{\mathrm{op}}
+
+\newcommand{\dfn}{:\overset{\mbox{{\scriptsize def}}}{=}}
+\newcommand{\deff}{:\hspace{-3pt}\overset{\text{def}}{\iff}}
+
+\newcommand{\univ}[1]{\mathbb{#1}}
+\newcommand{\usm}{\(\univ{U}\)-small}
+\newcommand{\vsm}{\(\univ{V}\)-small}
+\newcommand{\unit}[1]{\mathbf{1}_{\mathcal{#1}}}
+
+\newcommand{\Qcoh}{\mathsf{Qcoh}}
+\newcommand{\Coh}{\mathsf{Coh}}
+\newcommand{\Pic}{\mathrm{Pic}}
+\newcommand{\Sym}{\mathrm{Sym}}
+\newcommand{\Mod}{\mathsf{Mod}}
+
+
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\C}{\mathbb{C}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+
+
+
+\newcommand{\mcA}{\mathcal{A}}
+\newcommand{\mcB}{\mathcal{B}}
+\newcommand{\mcC}{\mathcal{C}}
+\newcommand{\mcD}{\mathcal{D}}
+\newcommand{\mcE}{\mathcal{E}}
+\newcommand{\mcF}{\mathcal{F}}
+\newcommand{\mcG}{\mathcal{G}}
+\newcommand{\mcH}{\mathcal{H}}
+\newcommand{\mcI}{\mathcal{I}}
+\newcommand{\mcJ}{\mathcal{J}}
+\newcommand{\mcK}{\mathcal{K}}
+\newcommand{\mcL}{\mathcal{L}}
+\newcommand{\mcM}{\mathcal{M}}
+\newcommand{\mcN}{\mathcal{N}}
+\newcommand{\mcO}{\mathcal{O}}
+\newcommand{\mcP}{\mathcal{P}}
+\newcommand{\mcQ}{\mathcal{Q}}
+\newcommand{\mcR}{\mathcal{R}}
+\newcommand{\mcS}{\mathcal{S}}
+\newcommand{\mcT}{\mathcal{T}}
+\newcommand{\mcU}{\mathcal{U}}
+\newcommand{\mcV}{\mathcal{V}}
+\newcommand{\mcW}{\mathcal{W}}
+\newcommand{\mcX}{\mathcal{X}}
+\newcommand{\mcY}{\mathcal{Y}}
+\newcommand{\mcZ}{\mathcal{Z}}
+
+\DeclareMathOperator{\OOO}{\mcO}
+
+\newcommand{\OC}{{\OOO_C}}
+\newcommand{\OD}{{\OOO_D}}
+\renewcommand{\OE}{{\OOO_E}}
+\newcommand{\OF}{{\OOO_F}}
+\newcommand{\OH}{{\OOO_H}}
+\newcommand{\OM}{{\OOO_N}}
+\newcommand{\ON}{{\OOO_N}}
+\newcommand{\OS}{{\OOO_S}}
+\newcommand{\OT}{{\OOO_T}}
+\newcommand{\OU}{{\OOO_U}}
+\newcommand{\OV}{{\OOO_V}}
+\newcommand{\OW}{{\OOO_W}}
+\newcommand{\OX}{{\OOO_X}}
+\newcommand{\OY}{{\OOO_Y}}
+\newcommand{\OZ}{{\OOO_Z}}
+
+\newcommand{\OO}[1]{\OOO_{#1}}
+
+
+
+\title{接続に関する基礎事項をjetバンドルの用語で書き直す}
+
+\author{ゆじ}
+
+\begin{document}
+
+\maketitle
+
+これは接続に関する基礎事項をjetバンドル (のような何か) を用いて線形に書き直したノートである。
+
+
+
+
+\section{スキーム論的な視点で見たjet}
+
+
+\(X\)が\(S\)-スキームであるときには、
+\(X\times_SX\)の対角の\(r\)-次無限小近傍を\(X^{(r)}\)と書き、
+第一、第二射影を\(p,q:X^{(r)}\to X\)で表す。
+
+\begin{defi}
+  \(J^r(E) \dfn q_*p^*E\)
+\end{defi}
+
+
+\begin{rem}
+  \(J^r(-)\)という操作は函手的である。
+\end{rem}
+
+
+\subsection{基本的な完全系列}
+
+\(r\)-次無限小部分を\(0\)にすることによって
+自然な完全列
+\[
+\begin{CD}
+  0 @>>> \Sym^r(\Omega_{X/S}) \otimes E @>>> J^r(E) @>>> J^{r-1}(E) @>>> 0
+\end{CD}
+\]
+を得る。
+とくに\(r=1\)とすることで完全列
+\[
+\begin{CD}
+  0 @>>> \Omega_{X/S} \otimes E @>>> J^1(E) @>>> E @>>> 0
+\end{CD}
+\]
+を得る。
+
+後で見るように、\(E\)上の接続とは、
+この (\(r=1\)の場合の) 完全系列の分裂\(E\to J^1(E)\)のことである
+(cf. \autoref{sub: conn 1-jet})。
+
+
+
+\subsection{テンソル}
+
+二つのベクトル束\(E_1,E_2\)に対して、自然な射
+\[q^*q_*p^*E_i \to p^*E_i\]
+をテンソルすることで、射
+\[
+q^*(J^r(E_1) \otimes_{\mcO_X} J^r(E_2))
+= q^*((q_*p^*E_1) \otimes_{\mcO_X} (q_*p^*E^2)) \xrightarrow{\sim}
+(q^*q_*p^*E_1)\otimes_{\mcO_{X^{(1)}}} (q^*q_*p^*E_2)
+\to p^*E_1\otimes_{\mcO_{X^{(1)}}} p^*E_2
+\to p^*(E_1\otimes_{\mcO_{X^{(1)}}} E_2)
+\]
+を得る。
+\(q_*\)は\(q^*\)の右随伴であるから、射
+\[
+J^r(E_1) \otimes_{\mcO_X} J^r(E_2) \to J^r(E_1\otimes E_2)
+\]
+を得る。
+この射は\(r\)を小さくすることによって得られる全射と可換であり、
+さらに\(E_1,E_2\)について函手的である。
+
+
+
+
+
+\subsection{アーベル群の層としての直和分解}
+
+
+\(p,q:X^{(r)}\to X\)は、下部位相空間の間の射はどちらも\(\id_{|X|}\)であるため、
+アーベル群の層としては\(q_*(-) = p_*(-)\)となる。
+従って、アーベル群の層としては
+\(q_*p^*E = p_*p^*E\)であり、
+自然な全射\(J^r(E) \to E\)のアーベル群の層としての自然な分裂
+\(E\to J^r(E)\)を得る。
+これを\(d^r\)で表す。
+\(d^r\)は\(\OX\)-線形ではない。
+
+\(r=1\)とする。
+このとき、\(J^1(E)\)はアーベル群として
+\(E\oplus (\Omega_X\otimes E)\)
+と直和分解する。
+
+
+
+
+
+
+
+
+
+\section{接続}
+
+
+\begin{defi}[接続]
+  \(M\)を多様体、
+  \(E\)をベクトル束とする。
+  \(E\)上の\textbf{接続}とは、
+  \(\R\)-線形写像\(\nabla:E\to \Omega\otimes E\)であって、
+  任意の\(s\in E\)と\(f\in \OM\)に対して
+  \(\nabla(fs) = df\otimes s + f\nabla(s)\)が成り立つもののことを言う。
+\end{defi}
+
+
+\subsection{Jetによる解釈}
+\label{sub: conn 1-jet}
+
+
+
+
+
+
+\subsection{双対接続}
+\label{sub: dual conn}
+
+
+\begin{defi}[双対接続]
+  \(\nabla:E\to J^1(E)\)を接続とする。
+  \(\nabla\)は\(X^{(1)}\)上の層の射
+  \(\tilde{\nabla}: q^*E \xrightarrow{\sim} p^*E\)と対応する。
+  \(\tilde{\nabla}\)の双対の逆射
+  \((\tilde{\nabla}^*)^{-1}: q^*E^* \xrightarrow{\sim} p^*E^*\)
+  と対応する射
+  \(E^* \to J^1(E^*)\)を
+  \(\nabla\)の\textbf{双対接続}という。
+\end{defi}
+
+
+\begin{rem}
+  
+\end{rem}
+
+
+
+
+
+\subsection{テンソル積}
+
+
+
+
+\subsection{計量}
+
+
+ベクトル束\(E\)上に計量を与えることは、同型射
+\(h:E\xrightarrow{\sim}E^*\)
+を与えることと等しい。
+
+\begin{lem}\label{lem: met comm}
+  \(h\)を\(E\)上の計量、
+  \(\nabla\)をベクトル束\(E\)上の接続、
+  \(\nabla^*\)を双対接続とする。
+  \(\nabla\)が\(h\)と可換であるための必要十分条件は、
+  以下の図式が可換であることである：
+  \[
+  \begin{CD}
+    E @>{\nabla}>> J^1(E) \\
+    @V{h}VV @VV{J^1(h)}V \\
+    E^* @>{\nabla^*}>> J^1(E^*).
+  \end{CD}
+  \]
+\end{lem}
+
+\begin{proof}
+  \(\{e_a\}\)を局所frame,
+  \(\{e_*^a\}\)をその双対frame,
+  \(h(e_a) = h_{ab}e_*^b\),
+  \(\underline{\nabla}(e_a) = A_a^b\otimes e_b\)
+  (ここで\(A_a^b\)はこのframeをとっている開集合上の1-form)
+  とおいて計算すると、
+  \begin{align*}
+    (J^1(h)\circ \nabla) (e_a) &= J^1(h)(e_a,\underline{\nabla}(e_a)) \\
+    &= (h_{ab}e_*^b, h_{bc}A_a^b\otimes e_*^c), \\
+    (\nabla^*\circ h) (e_a) &= \nabla^*(h_{ab}e_*^b) \\
+    &= (h_{ab}e_*^b, \underline{\nabla}^*(h_{ab}e_*^b)) \\
+    &= (h_{ab}e_*^b, dh_{ab}\otimes e_*^b - h_{ab}A_b^c \otimes e_*^c)
+  \end{align*}
+  となる。
+  従って、上記の図式の可換性は
+  \(dh_{ab} = h_{ab}A_b^c + h_{bc}A_a^b\)
+  が成り立つことと同値であり、これは\(h\)が\(\nabla\)と可換であることに他ならない。
+\end{proof}
+
+
+
+
+
+\section{\(J^1J^1\)}
+
+
+
+\subsection{共変外微分}
+
+
+
+\subsection{曲率}
+
+
+
+
+
+
+
+
+
+
+
+\section{Gaussの方程式}
+
+このsectionでは、
+\[
+\begin{CD}
+  0 @>>> E_1 @>{i}>> E @>{p}>> E_2 @>>> 0
+\end{CD}
+\]
+をベクトル束の完全列とし、
+\(\nabla:E\to J^1(E)\)
+を接続とする。
+
+
+\subsection{第二基本形式とシェイプ作用素}
+
+
+\begin{defi}[第二基本形式]
+  \(S^{\nabla}\dfn J^1(p)\circ \nabla \circ i : E_1 \to J^1(E_2)\)
+  を\textbf{第二基本形式}という
+  (たんに\(S\)と書くこともある)。
+\end{defi}
+
+\begin{rem}
+  自然な全射を\(p_E:J^1(E)\to E, p_{E_2}:J^1(E_2)\to E_2\)と書くと、
+  \[
+  p_{E_2}\circ S = p_{E_2}\circ J^1(p)\circ \nabla \circ i
+  = p\circ p_E \circ \nabla \circ i
+  = p\circ i = 0
+  \]
+  となるので、\(S:E_1\to J^1(E_2)\)は実際には
+  \(\Omega\otimes E_2 \subset J^1(E_2)\)
+  を一意的に経由する。
+\end{rem}
+
+
+\begin{rem}
+  第二基本形式は、\(E\)の計量によらない。
+  実際、この節ではまだ\(E\)に計量が入っていることを仮定していない。
+\end{rem}
+
+
+
+\(h:E\xrightarrow{\sim} E^*\)を\(E\)の計量とする。
+さらに、
+\begin{itemize}
+  \item
+  \(h_1\dfn i^* \circ h \circ i : E_1 \xrightarrow{\sim} E_1^*\)を
+  \(E_1\)上の誘導計量、
+  \item
+  \(h_2 \dfn (q\circ h^{-1}\circ q^*)^{-1}: E_2 \xrightarrow{\sim} E_2^*\)を
+  \(E_2\)上の誘導計量、
+  \item
+  \(p\dfn h_1^{-1}\circ i^*\circ h : E\to E_1\)を
+  \(h\)が定める\(i:E_1 \to E\)のretract、
+  \item
+  \(j\dfn h^{-1}\circ q^*\circ h_2 : E_2 \to E\)を
+  \(h\)が定める\(q:E\to E_2\)のsplit
+\end{itemize}
+とする。
+このとき、定義より、
+\(h_1\circ p = i^*\circ h, h\circ j = q^*\circ h_2\)
+が成り立つ。
+
+
+\begin{defi}[シェイプ作用素]
+  \(A^{\nabla}\dfn J^1(p) \circ \nabla \circ j : E_2 \to J^1(E_1)\)
+  を\textbf{シェイプ作用素} (shape operator) という。
+  しばしば\(\nabla\)を省略してたんに\(A\)と書く。
+\end{defi}
+
+
+\begin{rem}
+  第二基本形式の場合と同様に、
+  実際には、\(A:E_2\to J^1(E_1)\)は
+  \(\Omega\otimes E_1\subset J^1(E_1)\)を一意的に経由する。
+\end{rem}
+
+
+\begin{prop}\label{prop: second and shape}
+  \(S\)を\(\nabla\)の第二基本形式、
+  \(A\)を\(\nabla\)のシェイプ作用素、
+  \(\nabla^*:E^*\to J^1(E^*)\)を双対接続、
+  \(S^*\)を\(\nabla^*\)の第二基本形式、
+  \(A^*\)を\(\nabla^*\)のシェイプ作用素とする。
+  \begin{enumerate}
+    \item \label{enumi: 1 prop: second and shape}
+    \(S^* = J^1(i^*) \circ \nabla^* \circ q^* : E_2^* \to J^1(E_1^*)\)
+    である。
+    \item \label{enumi: 2 prop: second and shape}
+    \(A^* = J^1(j^*) \circ \nabla^* \circ p^* : E_1^* \to J^1(E_2^*)\)
+    である。
+    \item \label{enumi: 3 prop: second and shape}
+    以下の図式は可換である：
+    \[
+    \begin{CD}
+      E_1 @>{S}>> J^1(E_2) \\
+      @V{h_1}VV @VV{J^1(h_2)}V \\
+      E_1^* @>{A^*}>> J^1(E_2^*).
+    \end{CD}
+    \]
+    \item \label{enumi: 4 prop: second and shape}
+    以下の図式は可換である：
+    \[
+    \begin{CD}
+      E_2 @>{A}>> J^1(E_1) \\
+      @V{h_2}VV @VV{J^1(h_1)}V \\
+      E_2^* @>{S^*}>> J^1(E_1^*).
+    \end{CD}
+    \]
+  \end{enumerate}
+\end{prop}
+
+
+\begin{proof}
+  \ref{enumi: 1 prop: second and shape}と
+  \ref{enumi: 2 prop: second and shape}は定義より従う。
+  \ref{enumi: 3 prop: second and shape}を示す。
+  計算すると、
+  \begin{align*}
+    J^1(h_2) \circ S &= J^1(h_2) \circ J^1(q) \circ \nabla \circ i \\
+    &= J^1(j^*) \circ J^1(h) \circ \nabla \circ i \\
+    &= J^1(j^*) \circ \nabla^* \circ h \circ i \\
+    &= J^1(j^*) \circ \nabla^* \circ p^* \circ h_1 \\
+    &= A^* \circ h_1
+  \end{align*}
+  となる。
+  以上で\ref{enumi: 3 prop: second and shape}が示された。
+  \ref{enumi: 4 prop: second and shape}を示す。
+  計算すると、
+  \begin{align*}
+    J^1(h_1) \circ A &= J^1(h_1) \circ J^1(p) \circ \nabla \circ j \\
+    &= J^1(i^*) \circ J^1(h) \circ \nabla \circ j \\
+    &= J^1(i^*) \circ \nabla^* \circ h \circ j \\
+    &= J^1(i^*) \circ \nabla^* \circ q^* \circ h_2 \\
+    &= S^* \circ h_2
+  \end{align*}
+  となる。
+  以上で\ref{prop: second and shape}の証明を完了する。
+\end{proof}
+
+
+\begin{rem}
+  \(\Omega\otimes E_1\subset J^1(E_1)\)と
+  \(\Omega\otimes E_2\subset J^1(E_2)\)の成分を見れば、
+  \[
+  h(S(e_1),e_2) = h(e_1,A^*(e_2))
+  \]
+  となる。
+\end{rem}
+
+
+
+\subsection{Gaussの方程式}
+
+\(E\)上の接続\(\nabla\)と計量\(h\)によって定まる\(E_1\)の誘導接続を
+\(\nabla^{\top}\dfn J^1(p)\circ \nabla \circ i :E_1 \to J^1(E_1)\)
+と表す。
+
+\(E\)上の接続\(\nabla\)の曲率
+\(R:E\to J^1(J^1(E))\)の\(E_1\)の成分を
+\(E_1\)上の誘導接続\(\nabla^{\top}\)の曲率\(R^{\top}\)と比較したものを
+\textbf{Gaussの方程式}と言う。
+
+
+\begin{lem}\label{lem: nabla E_1}
+  \(\nabla\circ i = J^1(i) \circ \nabla^{\top} + J^1(j) \circ S\).
+\end{lem}
+
+\begin{proof}
+  \(\id_{J^1(E)} = J^1(i)\circ J^1(p) + J^1(j) \circ J^1(q)\)
+  であるから、計算すれば
+  \begin{align*}
+    \nabla\circ i &= \id_{J^1(E)} \circ \nabla \circ i \\
+    &= J^1(i)\circ J^1(p) \circ \nabla \circ i
+    + J^1(j) \circ J^1(q) \circ \nabla \circ i \\
+    &= J^1(i)\circ \nabla^{\top} + J^1(j) \circ S
+  \end{align*}
+  となる。
+\end{proof}
+
+
+\begin{thm}[Gaussの方程式]
+  \label{thm: Gauss eq}
+  \(h_2:E_2 \xrightarrow{\sim} E_2^*\)を誘導計量とする。
+  このとき、以下の等式が成り立つ：
+  \[
+  J^1(J^1(i^*)) \circ J^1(J^1(h)) \circ R \circ i
+  = J^1(S^*) \circ J^1(h_2) \circ S + J^1(J^1(h_1))\circ R^{\top}.
+  \]
+\end{thm}
+
+\begin{proof}
+  \(\nabla^*\)を双対接続とする。
+  計算すると、
+  \begin{align*}
+    &J^1(J^1(i^*)) \circ J^1(J^1(h)) \circ R \circ i \\
+    &= J^1(J^1(i^*)) \circ J^1(J^1(h)) \circ J^1(\nabla) \circ \nabla \circ i \\
+    &\overset{\bigstar}{=}
+    J^1(J^1(i^*)) \circ J^1(J^1(h)) \circ J^1(\nabla) \circ J^1(i) \circ \nabla^{\top}
+    + J^1(J^1(i^*)) \circ J^1(J^1(h)) \circ J^1(\nabla) \circ J^1(j) \circ S \\
+    &\overset{\spadesuit}{=}
+    J^1(J^1(i^*)) \circ J^1(J^1(h)) \circ J^1(\nabla) \circ J^1(i) \circ \nabla^{\top}
+    + J^1(J^1(i^*)) \circ J^1(\nabla^*) \circ J^1(h) \circ J^1(j) \circ S \\
+    &\overset{\clubsuit}{=}
+    J^1(J^1(h_1)) \circ J^1(J^1(p)) \circ J^1(\nabla) \circ J^1(i) \circ \nabla^{\top}
+    + J^1(J^1(i^*)) \circ J^1(\nabla^*) \circ J^1(q^*) \circ J^1(h_2) \circ S \\
+    &= J^1(J^1(h_1)) \circ J^1(\nabla^{\top}) \circ \nabla^{\top}
+    + J^1(S^*) \circ J^1(h_1) \circ S \\
+    &= J^1(J^1(h_1)) \circ R^{\top} + J^1(S^*) \circ J^1(h_1) \circ S
+  \end{align*}
+  となる。
+  ただし\(\bigstar\)の箇所で\autoref{lem: nabla E_1}を用い、
+  \(\spadesuit\)の箇所で\autoref{lem: nabla E_1}を用い、
+  \(\clubsuit\)の箇所で等式
+  \(i^*\circ h = h_1\circ p\)と\(h\circ j = q^* \circ h_2\)を用いた。
+  以上で\autoref{thm: Gauss eq}の証明を完了する。
+\end{proof}
+
+
+
+
+\end{document}

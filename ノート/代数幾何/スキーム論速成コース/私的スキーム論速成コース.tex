@@ -1,0 +1,656 @@
+\documentclass[uplatex]{jsarticle}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+
+\usepackage{xcolor}
+\usepackage[dvipdfmx]{graphicx}
+
+
+
+\usepackage{ulem}
+
+\usepackage{braket}
+
+%%%%%ハイパーリンク
+%\usepackage[colorlinks=true,urlcolor=blue!70!black,citecolor=blue!60!black,linkcolor=blue!60!black]{hyperref}
+%\usepackage{aliascnt} %for creating different biblatex references for different theoremstyles
+\usepackage[setpagesize=false,dvipdfmx]{hyperref}
+\usepackage{aliascnt}
+\hypersetup{
+    colorlinks=true,
+    citecolor=blue,
+    linkcolor=blue,
+    urlcolor=blue,
+}
+
+\renewcommand{\eqref}[1]{\textcolor{blue}{(\ref{#1})}}
+
+%%%%%%ハイパーリンク
+
+
+%%%%%図式
+%\usepackage{tikz}%%%図
+\usepackage{amscd}%%%簡単な図式
+
+\usepackage{tikz}
+\usepackage{tikz-cd} %commutative diagrams in TikZ
+\usetikzlibrary{calc}
+\usetikzlibrary{matrix,arrows}
+\usetikzlibrary{decorations.markings}
+
+%%%%%図式
+
+
+
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+
+\usepackage{amsthm}
+
+%%%%%%%%%%%%Plain型%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%definition型%%%%%%%%%%%%
+
+\theoremstyle{definition}
+
+\renewcommand{\sectionautorefname}{Section}
+
+\newtheorem{thm}{Theorem}[section]
+\newcommand{\thmautorefname}{Theorem}
+
+
+\newaliascnt{prop}{thm}%%%カウンター「prop」の定義（thmと同じ）
+\newtheorem{prop}[prop]{Proposition}
+\aliascntresetthe{prop}
+\newcommand{\propautorefname}{Proposition}%%%カウンター名propは「命題」で参照する
+
+\newaliascnt{cor}{thm}
+\newtheorem{cor}[cor]{Corollary}
+\aliascntresetthe{cor}
+\newcommand{\corautorefname}{Corollary}
+
+\newaliascnt{lem}{thm}
+\newtheorem{lem}[lem]{Lemma}
+\aliascntresetthe{lem}
+\newcommand{\lemautorefname}{Lemma}
+
+%%%%%%%アルファベットで番号づける定理環境
+\newtheorem{thmA}{Theorem}[section]
+\newcommand{\thmAautorefname}{Theorem}
+\renewcommand\thethmA{\Alph{thmA}}
+
+\newtheorem{corA}{Theorem}[section]
+\newcommand{\corAautorefname}{Corollary}
+\renewcommand\thecorA{\Alph{corA}}
+
+\newaliascnt{defi}{thm}
+\newtheorem{defi}[defi]{Definition}
+\aliascntresetthe{defi}
+\newcommand{\defiautorefname}{Definition}
+
+\newaliascnt{rem}{thm}
+\newtheorem{rem}[rem]{Remark}
+\aliascntresetthe{rem}
+\newcommand{\remautorefname}{Remark}
+
+
+\newaliascnt{exam}{thm}
+\newtheorem{exam}[exam]{Examplpe}
+\aliascntresetthe{exam}
+\newcommand{\examautorefname}{Examplpe}
+
+%%%%%%%番号づけない定理環境
+\newtheorem*{exam*}{Example}
+\newtheorem*{rrem*}{Remark}
+\newtheorem*{defi*}{Definition}
+
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+
+
+
+
+
+%%%%%箇条書き環境
+\usepackage[]{enumitem}
+
+\makeatletter
+\AddEnumerateCounter{\fnsymbol}{\c@fnsymbol}{9}%%%%fnsymbolという文字をenumerate環境のパラメーターで使えるようにする。
+\makeatother
+
+\makeatletter
+\renewcommand{\p@enumii}{}
+\makeatother
+
+\renewcommand{\theenumi}{(\roman{enumi})}%%%%%itemは(1),(2),(3)で番号付ける。
+\renewcommand{\labelenumi}{\theenumi}
+
+\renewcommand{\theenumii}{(\alph{enumii})}%%%%%itemは(1),(2),(3)で番号付ける。
+\renewcommand{\labelenumii}{\theenumii}
+
+\usepackage{moreenum}
+%%%%%箇条書き環境
+
+
+
+\usepackage{mandorasymb}
+\usepackage{applekeys}
+\renewcommand{\qedsymbol}{\pencilkey}
+%\renewcommand{\qedsymbol}{\kinoposymbniko}
+
+
+
+
+\usepackage{latexsym}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Isom}{Isom}
+\DeclareMathOperator{\ISOM}{\mathbf{Isom}}
+\DeclareMathOperator{\id}{\mathrm{id}}
+\DeclareMathOperator{\im}{\mathrm{Im}}
+\DeclareMathOperator{\Spec}{\mathrm{Spec}}
+\newcommand{\Supp}{\mathrm{Supp}}
+\DeclareMathOperator{\Aut}{\mathrm{Aut}}
+
+\newcommand{\coker}{\mathrm{coker}}
+
+\DeclareMathOperator{\Tor}{\mathrm{Tor}}
+\DeclareMathOperator{\Ext}{\mathrm{Ext}}
+
+\DeclareMathOperator{\colim}{\mathrm{colim}}
+\DeclareMathOperator{\plim}{\mathrm{lim}}
+\newcommand{\Lotimes}[1]{\mathop{\otimes^{\mathbf{L}}_{#1}}}
+\newcommand{\bLotimes}[1]{\mathop{\bar{\otimes}^{\mathbf{L}}_{#1}}}
+\DeclareMathOperator{\RHom}{\mathbf{R}Hom}
+\DeclareMathOperator{\bRHom}{\underline{\mathbf{R}Hom}}
+\DeclareMathOperator{\inHom}{\mathcal{H}om}
+\newcommand{\Ob}{\mathrm{Ob}}
+\newcommand{\FP}[1]{\mathsf{FP}_{/#1}}
+
+\newcommand{\rsa}{\rightsquigarrow}
+\renewcommand{\coprod}{\amalg}
+\renewcommand{\emptyset}{\varnothing}
+\newcommand{\ep}{\varepsilon}
+\newcommand{\dg}{\mathrm{dg}}
+\newcommand{\op}{\mathrm{op}}
+
+\newcommand{\dfn}{:\overset{\mbox{{\scriptsize def}}}{=}}
+\newcommand{\deff}{:\hspace{-3pt}\overset{\text{def}}{\iff}}
+
+\newcommand{\univ}[1]{\mathbb{#1}}
+\newcommand{\usm}{\(\univ{U}\)-small}
+\newcommand{\vsm}{\(\univ{V}\)-small}
+\newcommand{\unit}[1]{\mathbf{1}_{\mathcal{#1}}}
+
+\newcommand{\Qcoh}{\mathsf{Qcoh}}
+\newcommand{\Coh}{\mathsf{Coh}}
+\newcommand{\Pic}{\mathrm{Pic}}
+\newcommand{\Sym}{\mathrm{Sym}}
+\newcommand{\Mod}{\mathsf{Mod}}
+
+
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\C}{\mathbb{C}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+
+
+
+\newcommand{\mcA}{\mathcal{A}}
+\newcommand{\mcB}{\mathcal{B}}
+\newcommand{\mcC}{\mathcal{C}}
+\newcommand{\mcD}{\mathcal{D}}
+\newcommand{\mcE}{\mathcal{E}}
+\newcommand{\mcF}{\mathcal{F}}
+\newcommand{\mcG}{\mathcal{G}}
+\newcommand{\mcH}{\mathcal{H}}
+\newcommand{\mcI}{\mathcal{I}}
+\newcommand{\mcJ}{\mathcal{J}}
+\newcommand{\mcK}{\mathcal{K}}
+\newcommand{\mcL}{\mathcal{L}}
+\newcommand{\mcM}{\mathcal{M}}
+\newcommand{\mcN}{\mathcal{N}}
+\newcommand{\mcO}{\mathcal{O}}
+\newcommand{\mcP}{\mathcal{P}}
+\newcommand{\mcQ}{\mathcal{Q}}
+\newcommand{\mcR}{\mathcal{R}}
+\newcommand{\mcS}{\mathcal{S}}
+\newcommand{\mcT}{\mathcal{T}}
+\newcommand{\mcU}{\mathcal{U}}
+\newcommand{\mcV}{\mathcal{V}}
+\newcommand{\mcW}{\mathcal{W}}
+\newcommand{\mcX}{\mathcal{X}}
+\newcommand{\mcY}{\mathcal{Y}}
+\newcommand{\mcZ}{\mathcal{Z}}
+
+
+
+\newcommand{\mfa}{\mathfrak{a}}
+\newcommand{\mfb}{\mathfrak{b}}
+\newcommand{\mfc}{\mathfrak{c}}
+\newcommand{\mfd}{\mathfrak{d}}
+\newcommand{\mfe}{\mathfrak{e}}
+\newcommand{\mff}{\mathfrak{f}}
+\newcommand{\mfg}{\mathfrak{g}}
+\newcommand{\mfh}{\mathfrak{h}}
+\newcommand{\mfi}{\mathfrak{i}}
+\newcommand{\mfj}{\mathfrak{j}}
+\newcommand{\mfk}{\mathfrak{k}}
+\newcommand{\mfl}{\mathfrak{l}}
+\newcommand{\mfm}{\mathfrak{m}}
+\newcommand{\mfn}{\mathfrak{n}}
+\newcommand{\mfo}{\mathfrak{o}}
+\newcommand{\mfp}{\mathfrak{p}}
+\newcommand{\mfq}{\mathfrak{q}}
+\newcommand{\mfr}{\mathfrak{r}}
+\newcommand{\mfs}{\mathfrak{s}}
+\newcommand{\mft}{\mathfrak{t}}
+\newcommand{\mfu}{\mathfrak{u}}
+\newcommand{\mfv}{\mathfrak{v}}
+\newcommand{\mfw}{\mathfrak{w}}
+\newcommand{\mfx}{\mathfrak{x}}
+\newcommand{\mfy}{\mathfrak{y}}
+\newcommand{\mfz}{\mathfrak{z}}
+
+\DeclareMathOperator{\OOO}{\mcO}
+
+\newcommand{\OC}{{\OOO_C}}
+\newcommand{\OD}{{\OOO_D}}
+\renewcommand{\OE}{{\OOO_E}}
+\newcommand{\OF}{{\OOO_F}}
+\newcommand{\OH}{{\OOO_H}}
+\newcommand{\OS}{{\OOO_S}}
+\newcommand{\OT}{{\OOO_T}}
+\newcommand{\OU}{{\OOO_U}}
+\newcommand{\OV}{{\OOO_V}}
+\newcommand{\OW}{{\OOO_W}}
+\newcommand{\OX}{{\OOO_X}}
+\newcommand{\OY}{{\OOO_Y}}
+\newcommand{\OZ}{{\OOO_Z}}
+
+\newcommand{\OO}[1]{\OOO_{#1}}
+
+
+
+\title{スキーム論速成コース}
+
+\author{ゆじ}
+
+\begin{document}
+
+\maketitle
+
+
+
+\section{定義周辺}
+
+
+\subsection{最低限の可換環論}
+
+
+\subsubsection{中山の補題}
+
+
+
+
+\begin{lem}
+  \(M\)を有限生成\(A\)-加群とすると、
+  \(M\)は極大部分加群を持つ、
+  すなわち、\(M/N\)が非自明な部分加群を持たないような
+  部分加群\(N\subset M\)が存在する。
+  とくに、環\(A\)には極大イデアルが存在する。
+\end{lem}
+
+\begin{proof}
+  生成元を\(m_1,\cdots, m_r\in M\)として
+  部分加群の集合
+  \[
+  \left\{ N \subset M \middle| \exists i, m_i \not\in N\right\}
+  \]
+  にZornの補題を使えば示せる。
+\end{proof}
+
+
+
+\begin{thm}[中山の補題]
+  \(A\)を局所環、\(k\)を\(A\)の剰余体、
+  \(M\)を有限生成\(A\)-加群とする。
+  このとき、\(M=0\)であるための必要十分条件は\(M\otimes_A k=0\)である。
+\end{thm}
+
+\begin{proof}
+  必要性は明らかである。
+  十分性は極大部分加群の存在より従う。
+\end{proof}
+
+
+\begin{rem}
+  \(M\)が有限生成でない場合は反例がある。
+  たとえば\(A\)がDVRで\(M=K\)が商体である場合、
+  \(K\otimes_Ak=0\)である。
+\end{rem}
+
+
+\begin{cor}
+  \(A\)を環、\(M\)を有限生成加群、
+  \(\mfp\)を\(A\)の素イデアルとするとき、
+  \(\mfp \in \Supp(M)\)であるための必要十分条件は
+  \(M\otimes_A k(\mfp) \neq 0\)である。
+\end{cor}
+
+
+
+
+
+
+\subsubsection{平坦性}
+
+
+\begin{defi}
+  \(A\)を環とする。
+  \begin{itemize}
+    \item \(A\)-加群\(M\)が\textbf{平坦}であるとは、
+    函手\((-)\otimes_A M\)が完全函手であることを意味する。
+    \item 環の射\(A\to B\)が\textbf{平坦}であるとは、
+    \(B\)が\(A\)-加群として平坦であることを意味する。
+    \item 環の射\(A\to B\)が\textbf{忠実平坦}であるとは、
+    \(0\)でない任意の\(A\)-加群\(M\neq 0\)に対し、
+    \(M\otimes_AB \neq 0\)となることを意味する。
+  \end{itemize}
+\end{defi}
+
+
+\begin{exam}
+  \(A\)を環とする。
+  \begin{itemize}
+    \item
+    元\(f\in A\)での局所化\(A\to A_f\)や
+    素イデアル\(\mfp\subset A\)での局所化\(A\to A_{\mfp}\)は平坦である。
+    \item
+    \(0\)は平坦\(A\)-加群である。
+    \item
+    体の拡大は忠実平坦な環の射である。
+  \end{itemize}
+\end{exam}
+
+
+
+
+
+\begin{lem}\label{lem: ff kihon}
+  \(\varphi:A\to B\)を環の射とする。
+  \begin{enumerate}
+    \item \label{enumi: ff0}
+    \(\varphi\)が忠実平坦であるとする。
+    \(p:M\to N\)を\(A\)-加群の射とする。
+    このとき、\(p\otimes \id: M\otimes_A B \to N\otimes_A B\)が単射 (resp. 全射) であれば、
+    \(p\)も単射 (resp. 全射) となる。
+    とくに、\(A\)-加群の複体が完全であることの必要十分条件は、
+    \(B\)への基底変換のあとで完全となることである。
+    \item \label{enumi: ff1}
+    \(\varphi\)が忠実平坦であるとする。
+    このとき、\(\varphi\)は単射である。
+    \item \label{enumi: ff2}
+    \(\varphi\)が平坦であるとする。
+    このとき、\(\varphi\)が忠実平坦であるための必要十分条件は、
+    \(\varphi\)が引き起こす射
+    \(f:\Spec(B)\to \Spec(A)\)が全射となることである。
+  \end{enumerate}
+\end{lem}
+
+\begin{proof}
+  \ref{enumi: ff0}を示す。
+  \(\varphi\)は平坦であるから、自然な射
+  \(\ker(p)\otimes_A B \xrightarrow{\sim} \ker(p\otimes \id)\)
+  (resp. \(\coker(p\otimes \id) \xrightarrow{\sim} \coker(p)\otimes_A B\))
+  は同型射である。
+  これと\(\varphi\)が忠実平坦であることから\ref{enumi: ff0}が従う。
+
+  \ref{enumi: ff1}を示す。
+  \(\varphi\otimes \id:B\to B\otimes_A B\)
+  は掛け算写像\(B\otimes_A B\to B\)というレトラクトを持つので単射である。
+  従って、\ref{enumi: ff0}より、
+  \(\varphi\)は単射である。
+
+  \ref{enumi: ff2}を示す。
+  必要性を示す。\(\varphi\)が忠実平坦であると仮定する。
+  \(\mfp\)を\(A\)の素イデアルとすると、
+  \(k(\mfp)\neq 0\)なので、
+  \(\varphi\)が忠実平坦であることから、
+  \(k(\mfp)\otimes_A B \neq 0\)となる。
+  これは\(f^{-1}(\mfp)\neq \emptyset\)、すなわち\(f\)の全射性を示している。
+  以上で必要性の証明を完了する。
+  十分性を示す。\(\varphi\)が平坦であり、さらに\(f\)が全射であると仮定する。
+  \(M\neq 0\)を\(0\)でない\(A\)-加群とする。
+  \(\varphi\)が忠実平坦であることを示すためには、
+  \(M\otimes_A B\neq 0\)を示せばよい。
+  \(M\neq 0\)であるから、\(0\)でない有限生成部分加群\(0\neq N \subset M\)が存在する。
+  \(N\neq 0\)であるから、\(\Supp(N)\neq \emptyset\)である。
+  さらに、\(f\)は全射であるから、
+  点\(\mfq\in f^{-1}(\Supp(N))\subset \Spec(B)\)が存在する。
+  \(\mfp \dfn f(\mfq) \in \Supp(N)\)と書く。
+  \begin{itemize}
+    \item \(\mfp\in \Supp(N)\)なので、中山の補題より、\(N\otimes_A k(\mfp)\neq 0\)である。
+    \item 体の拡大\(k(\mfp)\subset k(\mfq)\)はいつでも忠実平坦なので、
+    \[
+    N\otimes_A B \otimes_B k(\mfq) \cong
+    N\otimes_A k(\mfp) \otimes_{k(\mfp)} k(\mfq) \neq 0
+    \]
+    となる。
+    \item とくに、\(N\otimes_AB\neq 0\)である。
+  \end{itemize}
+  \(\varphi\)は平坦なので、射
+  \(0\neq N\otimes_A B\hookrightarrow M\otimes_A B\)は単射である。
+  従って、\(M\otimes_A B \neq 0\)となる。
+  以上ですべての主張の証明が完了した。
+\end{proof}
+
+
+\begin{exam}\label{exam: Zar cov ff}
+  \(A\)を環、\(f_1,\cdots, f_r\in A\)を元とする。
+  \(\bigcup_{i=1}^r D(f_i) = \Spec(A)\)であると仮定する。
+  このとき、\(\Spec(\prod_{i=1}^r A_{f_i}) = \coprod_{i=1}^r \Spec(A_{f_i})\)であるので、
+  \autoref{lem: ff kihon} \ref{enumi: ff2}より、自然な射
+  \(A\to \prod_{i=1}^r A_{f_i}\)は忠実平坦である。
+\end{exam}
+
+
+
+\begin{cor}\label{cor: ff exact}
+  \(\varphi: A\to B\)を忠実平坦な環の射とする。
+  このとき、
+  \[
+  \begin{tikzpicture}[auto]
+    \node (a) at (0, 0) {\(M\)};
+    \node (b) at (5, 0) {\(M\otimes_A B\)};
+    \node (c) at (10, 0) {\(M\otimes_A B\otimes_A B\)};
+    \draw[->] (a) to node {\(\scriptstyle m\mapsto m\otimes 1\)} (b);
+    \draw[->, transform canvas={yshift=2pt}]
+    (b) to node {\(\scriptstyle m\otimes b\mapsto m\otimes b\otimes 1\)} (c);
+    \draw[->, transform canvas={yshift=-2pt}]
+    (b) to node[swap] {\(\scriptstyle m\otimes b\mapsto m\otimes 1\otimes b\)} (c);
+  \end{tikzpicture}
+  \]
+  はイコライザーの図式である。
+\end{cor}
+
+\begin{proof}
+  \autoref{lem: ff kihon} \ref{enumi: ff0}より、
+  主張を示すためには、
+  \[
+  \begin{tikzpicture}[auto]
+    \node (a) at (0, 0) {\(M\otimes_AB\)};
+    \node (b) at (5, 0) {\(M\otimes_AB\otimes_AB\)};
+    \node (c) at (12, 0) {\(M\otimes_AB\otimes_AB\otimes_AB\)};
+    \draw[->] (a) to node {\(\scriptstyle m\otimes b\mapsto m\otimes 1\otimes b\)} (b);
+    \draw[->, transform canvas={yshift=2pt}]
+    (b) to node {\(\scriptstyle m\otimes b_1 \otimes b_2 \mapsto m\otimes b_1\otimes 1 \otimes b_2\)} (c);
+    \draw[->, transform canvas={yshift=-2pt}]
+    (b) to node[swap] {\(\scriptstyle m\otimes b_1 \otimes b_2 \mapsto m \otimes 1 \otimes b_1\otimes b_2\)} (c);
+  \end{tikzpicture}
+  \]
+  がイコライザーの図式であることを示せば十分である。
+  左側の射を\(f\)とおき、右上の射を\(f_1\)、右下の射を\(f_2\)とおく。
+  掛け算射を\(\varphi :B \otimes_A B\to B\)とする。
+  \(f\)は\(\id_M \otimes \varphi\)というレトラクトを持つので単射である。
+  \(\psi \dfn \id_M \otimes \id_B \otimes \varphi\)とおくと、
+  \begin{align*}
+    \psi(f_1(m\otimes b_1 \otimes b_2))
+    &= \psi(m\otimes b_1\otimes 1 \otimes b_2) = m\otimes b_1\otimes b_2, \\
+    \psi(f_2(m\otimes b_1 \otimes b_2))
+    &= \psi(m\otimes 1 \otimes b_1 \otimes b_2))
+    = m\otimes 1 \otimes b_1b_2 = f(m\otimes b_1b_2)
+  \end{align*}
+  となるので、
+  \(f_1(m\otimes b_1\otimes b_2) = f_2(m\otimes b_1\otimes b_2)\)であれば、
+  \(m\otimes b_1\otimes b_2 = f(m\otimes b_1b_2)\)となる。
+  以上より、上記の図式がイコライザーの図式であることが示された。
+\end{proof}
+
+
+
+
+\begin{cor}\label{cor: Zar cov exact}
+  \(A\)を環、\(f_1,\cdots, f_r\in A\)を元とする。
+  \(\Spec(A) = \bigcup_{i=1}^rD(f_i)\)と仮定する。
+  このとき、
+  \[
+  \begin{tikzpicture}[auto]
+    \node (a) at (0, 0) {\(M\)};
+    \node (b) at (5, 0) {\(\prod_{i=1}^r M_{f_i}\)};
+    \node (c) at (10, 0) {\(\prod_{i,j} M_{f_if_j}\)};
+    \draw[->] (a) to node {\(\scriptstyle m\mapsto m/1\)} (b);
+    \draw[->, transform canvas={yshift=2pt}]
+    (b) to node {\(\scriptstyle m/f_i\mapsto mf_j/(f_if_j)\)} (c);
+    \draw[->, transform canvas={yshift=-2pt}]
+    (b) to node[swap] {\(\scriptstyle m/f_j\mapsto mf_i/(f_if_j)\)} (c);
+  \end{tikzpicture}
+  \]
+  はイコライザーの図式である。
+\end{cor}
+
+\begin{proof}
+  \autoref{exam: Zar cov ff}と\autoref{cor: ff exact}より従う。
+\end{proof}
+
+
+
+
+\section{スキームの定義と基本性質}
+
+
+
+\subsection{スキームの定義}
+
+
+\begin{lem}\label{lem: B-sh}
+  \(X\)を位相空間、
+  \(\mcB \dfn \{B_i\subset X\}_{i\in I}\)を (有限交差で閉じる) 開基とする。
+  \(\mcB\)は包含関係によって圏とみなす。
+  \(F:\mcB^{\op} \to \mathsf{Set}\)を函手とする。
+  任意の\(B\in \mcB\)と\(\mcB\)の元による\(B\)の開被覆
+  \(\{B_j\in \mcB\}_{j\in J}\)に対し、
+  \[
+  \begin{tikzpicture}[auto]
+    \node (a) at (0, 0) {\(F(B)\)};
+    \node (b) at (5, 0) {\(\prod_j F(B_j)\)};
+    \node (c) at (10, 0) {\(\prod_{j_1,j_2} F(B_{j_1j_2})\)};
+    \draw[->] (a) to (b);
+    \draw[->, transform canvas={yshift=2pt}]
+    (b) to (c);
+    \draw[->, transform canvas={yshift=-2pt}]
+    (b) to (c);
+  \end{tikzpicture}
+  \]
+  がイコライザーの図式であるとする。
+  このとき、任意の開集合\(U\subset X\)に対して、
+  \(U\)に属する\(\mcB\)の元からなる\(\mcB\)の充満部分圏を\(\mcB|_U\)と表すとき、
+  \[
+  \tilde{F}(U) \dfn \lim_{B\in \mcB|_U}F(B)
+  \]
+  とおけば、\(\tilde{F}\)は\(X\)上の層となる。
+\end{lem}
+
+
+\begin{proof}
+  開集合の包含関係\(U_1\supset U_2\)があれば、
+  函手\(\mcB|_{U_2} \to \mcB|_{U_1}\)ができるので、
+  これによって\(F\)は前層となる。
+  極限どうしの順序交換によって層であることが確認できる。
+\end{proof}
+
+
+\begin{defi}
+  \(A\)を環、\(M\)を\(A\)-加群とする。
+  \(\mcB\dfn \{D(f)|f\in A\}\)と置く。
+  \(f\in A\)に対して、
+  \(S_f\dfn \bigcap_{\mfp\in D(f)}(A\setminus \mfp)\)とおくと、
+  これは積閉集合である。
+  また、\(S_f\)は開集合\(D(f)\)のみにより決定され、\(f\)のとり方によらない。
+  \(F(D(f))\dfn (S_f)^{-1}M\)
+  とするとき、
+  \(F\)は\autoref{lem: B-sh}の仮定を満たし、
+  \(\Spec(A)\)上の層を定める。
+  とくに\(M=A\)の場合、
+  \(\Spec(A)\)上の環の層が定まる。
+  これを\textbf{構造層}といい、
+  \(\mcO_{\Spec(A)}\)で表す。
+  一般の\(M\)に対して上の手続きにより構成される層を\(\tilde{M}\)で表す。
+  これは\(\mcO_{\Spec(A)}\)-加群である。
+\end{defi}
+
+\begin{rem}
+  \begin{itemize}
+    \item
+    \((S_f)^{-1}M \cong M_f\)である。
+    \item
+    構成より、\(\tilde{M}(D(f)) \cong M_f\)である。
+    とくに、\(\Gamma(\Spec(A),\tilde{M}) \cong M\)である。
+    \item
+    各点\(\mfp\in \Spec(A)\)に対して、stalkは
+    \(\tilde{M}_{\mfp} \cong \colim_{\mfp\in D(f)} M_f \cong M_{\mfp}\)
+    となる。
+    特に、環つき空間\((\Spec(A),\mcO_{\Spec(A)})\)は局所環つき空間である。
+  \end{itemize}
+\end{rem}
+
+
+
+\begin{defi}
+  \((\Spec(A),\mcO_{\Spec(A)})\)と同型な局所環つき空間のことを
+  \textbf{アフィンスキーム}という。
+  局所環つき空間\((X,\mcO_X)\)が\textbf{スキーム}であるとは、
+  ある開被覆\(X = \bigcup_i U_i\)が存在し、
+  \((U_i,\mcO_X|_{U_i})\)がアフィンスキームとなることを言う。
+  スキーム\(X\)上の\(\mcO_X\)-加群\(F\)が\textbf{準連接層}であるとは、
+  各アフィン開集合\(U\subset X\)に対して、
+  ある\(\mcO_X(U)\)-加群\(M\)が存在し、
+  \(F|_U\cong \tilde{M}\)となることを言う。
+  さらにこの\(M\)がいつも有限表示となるとき、
+  \(F\)は\textbf{連接層}であると言う。
+\end{defi}
+
+
+\subsection{スキームの張り合わせ}
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

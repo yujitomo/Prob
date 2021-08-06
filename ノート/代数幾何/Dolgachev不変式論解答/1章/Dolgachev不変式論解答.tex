@@ -1,0 +1,306 @@
+\documentclass[uplatex]{jsarticle}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+
+\usepackage{xcolor}
+\usepackage[dvipdfmx]{graphicx}
+
+
+
+\usepackage{ulem}
+
+\usepackage{braket}
+
+%%%%%ハイパーリンク
+%\usepackage[colorlinks=true,urlcolor=blue!70!black,citecolor=blue!60!black,linkcolor=blue!60!black]{hyperref}
+%\usepackage{aliascnt} %for creating different biblatex references for different theoremstyles
+\usepackage[setpagesize=false,dvipdfmx]{hyperref}
+\usepackage{aliascnt}
+\hypersetup{
+    colorlinks=true,
+    citecolor=blue,
+    linkcolor=blue,
+    urlcolor=blue,
+}
+
+\renewcommand{\eqref}[1]{\textcolor{blue}{(\ref{#1})}}
+
+%%%%%%ハイパーリンク
+
+
+%%%%%図式
+%\usepackage{tikz}%%%図
+\usepackage{amscd}%%%簡単な図式
+
+\usepackage{tikz}
+\usepackage{tikz-cd} %commutative diagrams in TikZ
+\usetikzlibrary{calc}
+\usetikzlibrary{matrix,arrows}
+\usetikzlibrary{decorations.markings}
+
+%%%%%図式
+
+
+
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+
+\usepackage{amsthm}
+
+%%%%%%%%%%%%Plain型%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%definition型%%%%%%%%%%%%
+
+\theoremstyle{definition}
+
+\renewcommand{\sectionautorefname}{Section}
+
+\newtheorem{thm}{Theorem}[section]
+\newcommand{\thmautorefname}{Theorem}
+
+
+\newaliascnt{prop}{thm}%%%カウンター「prop」の定義（thmと同じ）
+\newtheorem{prop}[prop]{Proposition}
+\aliascntresetthe{prop}
+\newcommand{\propautorefname}{Proposition}%%%カウンター名propは「命題」で参照する
+
+\newaliascnt{cor}{thm}
+\newtheorem{cor}[cor]{Corollary}
+\aliascntresetthe{cor}
+\newcommand{\corautorefname}{Corollary}
+
+\newaliascnt{lem}{thm}
+\newtheorem{lem}[lem]{Lemma}
+\aliascntresetthe{lem}
+\newcommand{\lemautorefname}{Lemma}
+
+\newaliascnt{defi}{thm}
+\newtheorem{defi}[defi]{Definition}
+\aliascntresetthe{defi}
+\newcommand{\defiautorefname}{Definition}
+
+\newaliascnt{rem}{thm}
+\newtheorem{rem}[rem]{Remark}
+\aliascntresetthe{rem}
+\newcommand{\remautorefname}{Remark}
+
+
+\newaliascnt{exam}{thm}
+\newtheorem{exam}[exam]{Example}
+\aliascntresetthe{exam}
+\newcommand{\examautorefname}{Example}
+
+
+\newaliascnt{prob}{thm}
+\newtheorem{prob}[prob]{問題}
+\aliascntresetthe{prob}
+\newcommand{\probautorefname}{問題}
+
+%%%%%%%番号づけない定理環境
+\newtheorem*{exam*}{Example}
+\newtheorem*{rrem*}{Remark}
+\newtheorem*{defi*}{Definition}
+
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+
+
+
+
+
+%%%%%箇条書き環境
+\usepackage[]{enumitem}
+
+\makeatletter
+\AddEnumerateCounter{\fnsymbol}{\c@fnsymbol}{9}%%%%fnsymbolという文字をenumerate環境のパラメーターで使えるようにする。
+\makeatother
+
+\makeatletter
+\renewcommand{\p@enumii}{}
+\makeatother
+
+\renewcommand{\theenumi}{(\roman{enumi})}%%%%%itemは(1),(2),(3)で番号付ける。
+\renewcommand{\labelenumi}{\theenumi}
+
+\renewcommand{\theenumii}{(\alph{enumii})}%%%%%itemは(1),(2),(3)で番号付ける。
+\renewcommand{\labelenumii}{\theenumii}
+
+\usepackage{moreenum}
+%%%%%箇条書き環境
+
+
+
+\usepackage{mandorasymb}
+\usepackage{applekeys}
+\renewcommand{\qedsymbol}{\pencilkey}
+%\renewcommand{\qedsymbol}{\kinoposymbniko}
+
+
+
+
+\usepackage{latexsym}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Isom}{Isom}
+\DeclareMathOperator{\ISOM}{\mathbf{Isom}}
+\DeclareMathOperator{\id}{\mathrm{id}}
+\DeclareMathOperator{\im}{\mathrm{Im}}
+\DeclareMathOperator{\Spec}{\mathrm{Spec}}
+\newcommand{\Supp}{\mathrm{Supp}}
+\DeclareMathOperator{\Aut}{\mathrm{Aut}}
+
+\newcommand{\coker}{\mathrm{coker}}
+
+\DeclareMathOperator{\Tor}{\mathrm{Tor}}
+\DeclareMathOperator{\Ext}{\mathrm{Ext}}
+
+\DeclareMathOperator{\colim}{\mathrm{colim}}
+\DeclareMathOperator{\plim}{\mathrm{lim}}
+
+\newcommand{\Ob}{\mathrm{Ob}}
+
+\newcommand{\rsa}{\rightsquigarrow}
+\renewcommand{\coprod}{\amalg}
+\renewcommand{\emptyset}{\varnothing}
+\newcommand{\ep}{\varepsilon}
+\newcommand{\op}{\mathrm{op}}
+
+
+\newcommand{\dfn}{:\overset{\mbox{{\scriptsize def}}}{=}}
+\newcommand{\deff}{:\hspace{-3pt}\overset{\text{def}}{\iff}}
+\newcommand{\dl}{\partial}
+
+\newcommand{\Qcoh}{\mathsf{Qcoh}}
+\newcommand{\Coh}{\mathsf{Coh}}
+\newcommand{\Pic}{\mathrm{Pic}}
+\newcommand{\Sym}{\mathrm{Sym}}
+\newcommand{\Mod}{\mathsf{Mod}}
+
+
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+
+
+
+\newcommand{\mcA}{\mathcal{A}}
+\newcommand{\mcB}{\mathcal{B}}
+\newcommand{\mcC}{\mathcal{C}}
+\newcommand{\mcD}{\mathcal{D}}
+\newcommand{\mcE}{\mathcal{E}}
+\newcommand{\mcF}{\mathcal{F}}
+\newcommand{\mcG}{\mathcal{G}}
+\newcommand{\mcH}{\mathcal{H}}
+\newcommand{\mcI}{\mathcal{I}}
+\newcommand{\mcJ}{\mathcal{J}}
+\newcommand{\mcK}{\mathcal{K}}
+\newcommand{\mcL}{\mathcal{L}}
+\newcommand{\mcM}{\mathcal{M}}
+\newcommand{\mcN}{\mathcal{N}}
+\newcommand{\mcO}{\mathcal{O}}
+\newcommand{\mcP}{\mathcal{P}}
+\newcommand{\mcQ}{\mathcal{Q}}
+\newcommand{\mcR}{\mathcal{R}}
+\newcommand{\mcS}{\mathcal{S}}
+\newcommand{\mcT}{\mathcal{T}}
+\newcommand{\mcU}{\mathcal{U}}
+\newcommand{\mcV}{\mathcal{V}}
+\newcommand{\mcW}{\mathcal{W}}
+\newcommand{\mcX}{\mathcal{X}}
+\newcommand{\mcY}{\mathcal{Y}}
+\newcommand{\mcZ}{\mathcal{Z}}
+
+\DeclareMathOperator{\OOO}{\mcO}
+
+\newcommand{\OC}{{\OOO_C}}
+\newcommand{\OD}{{\OOO_D}}
+\renewcommand{\OE}{{\OOO_E}}
+\newcommand{\OF}{{\OOO_F}}
+\newcommand{\OH}{{\OOO_H}}
+\newcommand{\OM}{{\OOO_N}}
+\newcommand{\ON}{{\OOO_N}}
+\newcommand{\OS}{{\OOO_S}}
+\newcommand{\OT}{{\OOO_T}}
+\newcommand{\OU}{{\OOO_U}}
+\newcommand{\OV}{{\OOO_V}}
+\newcommand{\OW}{{\OOO_W}}
+\newcommand{\OX}{{\OOO_X}}
+\newcommand{\OY}{{\OOO_Y}}
+\newcommand{\OZ}{{\OOO_Z}}
+
+\newcommand{\OO}[1]{\OOO_{#1}}
+
+
+\newcommand{\ch}{\mathrm{char}}
+\newcommand{\Pol}{\mathrm{Pol}}
+\newcommand{\Mat}{\mathrm{Mat}}
+
+
+
+
+\title{Lectures on  Invariant Theory (I. Dolgachev) 1章解答}
+
+\author{ゆじ}
+
+\begin{document}
+
+\maketitle
+
+\section{The Symbolic Method}
+
+\begin{prob}
+  \(\sum_{i=1}^m d_i \neq \sum_{j=1}^r w_j\)であるとき、
+  \(\Pol(\Mat_{r,m})_{d_1,\cdots,d_r;w_1,\cdots,w_m} = \{0\}\)
+  であることを示せ。
+\end{prob}
+
+\begin{proof}
+  \(d\dfn \sum_{i=1}^m d_i, w\dfn \sum_{j=1}^r w_j\)とおく。
+  不定元からなる行列\(A\)の縦ベクトルを\(h_1,\cdots, h_m\)、
+  横ベクトルを\(v_1,\cdots, v_r\)で表す。
+  \(P \in \Pol(\Mat_{r,m})_{d_1,\cdots,d_r;w_1,\cdots,w_m}\)
+  とする。任意に\(a\in k^{\times}\)をとる。
+  \(P\)は縦ベクトルに関して多重次数\((d_1,\cdots,d_r)\)の多重斉次多項式であるので
+  \[P(aA) = P(ah_1,\cdots, ah_r) = a^dP(A)\]
+  が成り立つ。
+  一方、\(P\)は横ベクトルに関して多重次数\((w_1,\cdots,w_m)\)の多重斉次多項式であるので
+  \[
+  P(aA) = P((av_1^T,\cdots,av_m^T)^T) = a^wP(A)
+  \]
+  が成り立つ (ここで\((-)^T\)は行列の転置を表す)。
+  従って、\(a^dP(A) = a^wP(A)\)が任意の\(a\in k^{\times}\)について成り立つ。
+  仮定より\(d\neq w\)であるので、これは\(P(A)=0\)を意味する。
+  以上で解答を完了する。
+\end{proof}
+
+
+
+
+\begin{prob}
+  \(\dim (V) = r\)として、\(W\dfn \Pol_2(V)\)とする。
+  \(W\)は\(V\)上の二次形式のなす線型空間である。
+  \begin{enumerate}
+    \item
+    \(\ch(k) \neq 2\)であることと\(r\)が奇数であることを仮定する。
+    \(\Pol(W)^{SL(V)}\)が\(k\)-代数として、
+    二次形式の表現行列の行列式を与える関数で生成されることを示せ。
+    \item
+
+  \end{enumerate}
+\end{prob}
+
+
+
+
+\end{document}
