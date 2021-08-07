@@ -352,8 +352,14 @@
     \item
     \(X\)は可算コンパクト空間である。
     \item
-    \(X\)のどんな可算無限部分集合も相対位相に関して離散集合でない。
+    \(X\)のどんな可算無限閉部分集合も相対位相に関して離散集合でない。
   \end{enumerate}
+  %下から上が問題。
+  %有限部分集合を持たない可算開被覆U_iに対して、
+  %V_i = cup U_j, j<i, として、
+  %x_i in V_i minus V_i-1を一つずつとれば、
+  %x_iたちは離散になるから、仮定より閉じゃない
+  %集積点はどのV_iにも属さない点になってこれは矛盾。
 \end{prob}
 
 
@@ -399,8 +405,9 @@
 
 \begin{rem*}
   可分であるがLindel\"{o}fでない空間の例は\autoref{Sorgenfrey}を参照してください。
-  \(2^{2^{2^{\N}}}\)はLindel\"{o}fであってc.c.c.を満たすが可分ではない位相空間の例
-  になっています (\autoref{Tychonoff}, \autoref{power separable}, \autoref{prod c.c.c.})。
+  \(2^{2^{2^{\N}}}\)はコンパクト (とくにLindel\"{o}f) であってc.c.c.を満たすが可分ではない位相空間の例
+  になっています (\autoref{power separable}, \autoref{prod c.c.c.}, \autoref{Tychonoff})。
+  コンパクトであってc.c.c.を満たさない位相空間の例は\autoref{cpt but not ccc}を参照してください。
 \end{rem*}
 
 
@@ -408,9 +415,8 @@
 
 
 \begin{prob}[積空間の可分性]\label{power separable}
-  \(I\)を集合、\(i\)で添字付けられた二点集合の族\(2_i\dfn \{0,1\}\)を考える。
-  各\(2_i\)には離散位相を入れて、位相空間とみなす。
-  \(2^I\dfn \prod_{i\in \N}2_i\)を直積位相で位相空間とみなす。
+  \(I\)を集合として、二点集合\(2\dfn \{0,1\}\)に離散位相を考える。
+  \(2^I\dfn \prod_{i\in \N}(2\times \{i\})\)を直積位相で位相空間とみなす。
   \begin{enumerate}
     \item
     全単射\(I\to 2^I\)は存在しない。これを示しなさい。
@@ -434,8 +440,15 @@
 
 
 
-\begin{prob}[c.c.c.を満たす空間の積]\label{prod c.c.c.}
+\begin{prob}[c.c.c.を満たす空間の持つ性質]\label{prod c.c.c.}
   \
+  \begin{enumerate}
+    \item
+    コンパクト空間はc.c.c.を満たす。これを示しなさい。
+    \item \(f:X\to Y\)を連続な全射とする。
+    \(X\)がc.c.c.を満たせば、\(Y\)もc.c.c.を満たす。これを示しなさい。
+  \end{enumerate}
+  次に、c.c.c.を満たす空間の族の積について考える。
   \begin{enumerate}
     \item
     \(X\)を集合、\(\mcA\)を、濃度\(n\)の\(X\)の有限部分集合からなる、
@@ -463,6 +476,27 @@
   「任意のc.c.c.を持つ位相空間二つの直積はまたc.c.c.を持つ」
   という言明はZFCと独立であることが知られています (Suslin仮説)。
 \end{rem*}
+
+
+
+\begin{prob}[カントール集合]
+  \
+  \begin{enumerate}
+    \item
+    \(X\dfn [0,1]\setminus \bigcup_{n\geq 1}\bigcup_{m=1}^{(3^n-1)/2} ((2m-1)/3^{-n},2m/3^{-n})\)
+    に\([0,1]\)の相対位相を入れる。
+    \(X\)は\(2^{\N}\)と同相であることを示しなさい。
+    このような\(X\)を\textbf{カントール集合}と言います。
+    \item
+    上の\(X\)はコンパクトであり、完全不連結であることを示しなさい。
+    \item
+    \(I\)を集合、\(F\subset 2^I\)を空でない閉部分集合とする。
+    このとき、連続写像\(r:2^X \to F\)であって、
+    \(r|_F = \id_F\)となるものが存在することを示しなさい。
+    特に、カントール集合\(X\)の任意の空でない閉部分集合\(F\subset X\)に対して
+    \(r:X\to F, r|_F = \id_F\)となる連続写像が存在します。
+  \end{enumerate}
+\end{prob}
 
 
 
@@ -701,6 +735,39 @@
 
 
 
+\begin{prob}[Arens--Eellsの埋め込み定理]
+  \(X\)を距離空間とする。
+  \(Y\)を\(X\subsetneq Y\)となる別の距離空間として、
+  これが等長埋め込みであるようなものとする。
+  \(y_0\in Y\)を任意にとる。
+  \(Y\)の距離を\(\rho\)とする。
+  \begin{align*}
+    E &\dfn \{f:Y\to \R | \text{\(f\):連続}, f(y_0) = 0, \
+    \forall x,y\in Y, \exists K_{x,y} > 0, |f(x)-f(y)|\leq K_{x,y}\rho(x,y)\}, \\
+    \|f\| &\dfn \inf\{K_{x,y}|x,y\in Y\},
+  \end{align*}
+  と定める。
+  \(x\in X\)に対して\(\mathrm{Ev}_x:E\to \R\)を\(f\mapsto f(x)\)と定義する
+  (evaluationのevのつもりです)。
+  \begin{enumerate}
+    \item
+    \((E,\|-\|)\)はノルム空間であることを示しなさい。
+    双対ノルム空間を\(E^*\)で表す。
+    \item
+    \(h:X\to E^*\)を\(h(x)\dfn \mathrm{Ev}_x\)で定める。
+    \(h\)は等長埋め込みであり、
+    \(\im(h)\)は線型空間\(E^*\)の一次独立な部分集合であることを示しなさい。
+  \end{enumerate}
+  結論として、
+  任意の距離空間\(X\)からあるノルム空間への等長写像で、像が一次独立な部分集合となるものが存在することが従う。
+  最後に、このことから、
+  任意の距離空間\(X\)からあるノルム空間への等長写像で、
+  像が一次独立な\textbf{閉}部分集合となるものが存在することを示しなさい。
+\end{prob}
+
+
+
+
 \begin{prob}
   ハウスドルフ空間\(X\)が\textbf{正規}であるとは、
   任意の閉部分集合\(F,H\subset X, F\cap H = \emptyset\)に対し、
@@ -724,6 +791,61 @@
 \begin{prob}
   距離空間は必ず正規であることを証明しなさい。
 \end{prob}
+
+
+
+
+\begin{prob}[コンパクト距離空間はカントール集合の連続像である]
+  この問題では、任意のコンパクト距離空間\(X\)に対して、
+  連続な全射\(f:2^{\N}\to X\)が存在することを示します。
+
+  \(X\)は第二可算なので、可算濃度の開基\(\{U_i\}_{i\in \N}\)が存在する。
+  各点\((x_i)_{i\in \N}\in 2^{\N}\)に対し、
+  \(x_i = 0\)なら\(A(x_i)\dfn U_i\)で、
+  \(x_i = 1\)なら\(A(x_i)\dfn X\setminus \overline{U}_i\)とすることにより、
+  \(A((x_i)_{i\in \N}) \dfn \bigcap_{i\in \N}A(x_i)\subset X\)
+  という集合が定義される。
+  \begin{enumerate}
+    \item
+    各点\(\mathbf{x}\in 2^{\N}\)に対し、
+    \(A(\mathbf{x})\)は空集合か、一点集合であることを示しなさい。
+    \item
+    \(F\dfn \{\mathbf{x}\in 2^{\N} | A(\mathbf{x})\neq \emptyset\)と置く。
+    \(F\subset 2^{\N}\)が閉集合であることを示しなさい。
+    \item
+    各\(\mathbf{x}\in F\)に対して、
+    \(f(\mathbf{x})\in A(\mathbf{x}) (\subset X)\)
+    となる点を一つずつ選ぶ。
+    \(f:F\to X\)が全射連続写像であることを示しなさい。
+    \item
+    全射連続写像\(g:2^{\N}\to X\)が存在することを示しなさい。
+  \end{enumerate}
+\end{prob}
+
+
+
+\begin{prob}\label{cpt but not ccc}
+  この問題では、コンパクトハウスドルフ空間\(X\)であって、
+  どんな集合\(I\)に対しても連続な全射\(2^I\to X\)が存在しないような例を構成する。
+
+  \(X\dfn [0,1]\times \{0,1\}\)に位相を定義する。
+  混乱を避けるため、この問題では開区間を\(]a,b[\)で表す。
+  まず各一点集合\(\{(a,1)\}\)は開であるとする。
+  次に点\((a,0)\)の近傍系を、十分小さい\(\ep > 0\)に対する
+  \(\{ (]a-\ep,a+\ep[ \times \{0,1\}) \setminus \{(a,1)\}\)
+  によって定義する。
+  \(X\)の位相は、これらを開基とすることによって定める。
+  \begin{enumerate}
+    \item
+    \(X\)はコンパクトであるがc.c.c.を満たさない。
+    これを示しなさい。
+    特に、\(X\)は可分ではありません。
+    \item
+    どんな集合\(I\)をとっても、
+    連続な全射\(2^I\to X\)が存在しないことを示しなさい。
+  \end{enumerate}
+\end{prob}
+
 
 
 
@@ -763,9 +885,6 @@
     で定義する。
     \(f\)が連続であることを証明しなさい。
     構成から、\(F\subset f^{-1}(\{0\}), H\subset f^{-1}(\{1\})\)となる。
-    \item
-    \(X\)は\textbf{第二可算}、つまり可算個の開集合からなる開基が存在すると仮定する。
-    このとき\(X\)は可算な稠密部分集合を持つことを示しなさい。
     \item
     \(X\)は第二可算であるとする。
     \(X_0\subset X\)を可算な稠密部分集合、\(\mcB\subset \mathsf{Open}(X)\)を可算開基として、
@@ -929,7 +1048,7 @@
   ということを意味していて、
   \ref{SC cpt construct}と\ref{SC cpt funct}は、
   Stone-\v{C}echコンパクト化をする操作が、
-  コンパクトハウスドルフ空間の圏から局所コンパクト空間の圏への忘却函手の左随伴函手である、
+  コンパクトハウスドルフ空間の圏から局所コンパクト空間の圏への忘却函手の\textbf{左随伴函手}である、
   ということを意味しています。
 \end{rem*}
 
@@ -1027,6 +1146,200 @@
   一般に、可算濃度の距離空間は孤立点を持たなければ\(\Q\)と同相であることが知られています。
   特に、\(\Q\)と\(\Q\times \Q\)は同相です。
 \end{rem*}
+
+
+
+
+\begin{prob}[パラコンパクト性]\label{paracpt}
+  位相空間\(X\)の部分集合族\(\{U_{\alpha}\}_{\alpha\in A}\)が
+  \textbf{局所有限}であるとは、
+  任意の点\(x\in X\)に対してある近傍\(x\in V\subset X\)が存在して
+  \(V\cap U_{\alpha} \neq \emptyset\)となる\(\alpha\)が有限個に限ることを言う。
+  位相空間\(X\)の二つの部分集合族
+  \(\mcU \dfn \{U_{\alpha}\}_{\alpha\in A}\)と
+  \(\mcV \dfn \{V_{\beta}\}_{\beta\in B}\)に対して、
+  \(\mcU\)が\(\mcV\)の\textbf{細分}であるとは、
+  任意の\(\alpha\in A\)に対してある\(\beta\in B\)が存在して
+  \(U_{\alpha}\subset V_{\beta}\)が成り立つことを言う。
+  さらに\(A=B\)であって\(U_{\alpha}\subset V_{\alpha}\)となるとき、
+  \(\mcU\)は\(\mcV\)の\textbf{1:1細分}であると言う。
+  位相空間\(X\)が\textbf{パラコンパクト}であるとは、
+  任意の開被覆が局所有限な開被覆によって細分されることを言う。
+  \begin{enumerate}
+    \item コンパクトな位相空間はパラコンパクトであることを示しなさい。
+    \item パラコンパクトな位相空間の閉部分空間はパラコンパクトであることを示しなさい。
+    \item パラコンパクトかつハウスドルフな位相空間は正規であることを示しなさい。
+    \item
+    \(\{(1/n,1/(n+1))\subset \R | n\in\N\}\)
+    は局所有限な集合族ではない。これを示しなさい。
+    \item \(X\)を位相空間、
+    \(\{F_{\alpha}\}_{\alpha\in A}\)を\(X\)の局所有限な閉集合族とする。
+    このとき、\(\bigcup_{\alpha\in A}F_{\alpha}\)は閉集合であることを示しなさい。
+    \item \(X\)を位相空間、
+    \(\{C_{\alpha}\}_{\alpha\in A}\)を\(X\)の局所有限な部分集合族とする。
+    このとき、\(\{\overline{C}_{\alpha}\}_{\alpha\in A}\)は\(X\)の局所有限な閉集合族であることを示しなさい。
+    \item \(X\)を位相空間、
+    \(\{C_{\alpha}\}_{\alpha\in A}\)を\(X\)の局所有限な部分集合族とする。
+    このとき、
+    \(\overline{\bigcup_{\alpha\in A}C_{\alpha}} = \bigcup_{\alpha\in A}\overline{C}_{\alpha}\)
+    が成り立つことを示しなさい。
+    \item \label{1:1 refinement}
+    集合族\(\mcU\)は局所有限な集合族\(\mcV\)により細分されるとする。
+    このとき\(\mcU\)を1:1細分する局所有限な集合族が存在することを示しなさい。
+    さらに\(\mcV\)が閉集合族であるとき、
+    \(\mcU\)を1:1細分する局所有限な閉集合族が存在することを示しなさい。
+    \item
+    \(X\)を位相空間、
+    \(\{U_{\alpha}\}_{\alpha\in A}\)を\(X\)の局所有限な開被覆、
+    \(f_{\alpha}:X\to \R, (\alpha\in A)\)を連続関数の族であって
+    \(f_{\alpha}(X\setminus U_{\alpha}) = \{0\}\)となるものとする。
+    各\(x\in X\)に対して\(f(x)\dfn \sum_{\alpha\in A} f_{\alpha}(x)\)と定めることで、
+    連続関数\(f:X\to \R\)が定義されることを示しなさい。
+    \item
+    \(X\)をパラコンパクトハウスドルフ空間とする。
+    このとき、任意の開被覆\(\{U_{\alpha}\}_{\alpha\in A}\)に対して、
+    連続関数の族\(f_{\alpha}:X\to \R, (\alpha\in A)\)であって、
+    \(f_{\alpha}(X\setminus U_{\alpha}) = \{0\}\)かつ
+    \(\sum_{\alpha\in A}f_{\alpha}(x) = 1, (\forall x\in X)\)
+    となるものが存在することを示しなさい。
+    このような連続関数の族\((f_{\alpha})_{\alpha\in A}\)を
+    開被覆\(\{U_{\alpha}\}_{\alpha\in A}\)に従属する\textbf{1の分割}と呼ぶ。
+    (Hint: パラコンパクトハウスドルフ空間は正規だったことを思い出しましょう)
+  \end{enumerate}
+\end{prob}
+
+
+
+\begin{prob}\label{paracpt closed refinement}
+  この問題では、性質
+  「任意の開被覆が局所有限な\textbf{閉}被覆によって細分できる」
+  を満たす位相空間がパラコンパクトであることを示す。
+
+  \(X\)を位相空間とする。
+  \(X\)の任意の開被覆が局所有限な閉被覆によって細分できると仮定する。
+  \(X\)の開被覆\(\mcU = \{U_{\alpha}\}_{\alpha\in A}\)を任意にとる。
+  仮定と\autoref{paracpt} \ref{1:1 refinement}より、
+  \(\mcU\)を1:1細分する閉被覆\(\mcF = \{F_{\alpha}\}_{\alpha\in A}\)が存在する。
+  各\(x\in X\)に対し、有限個の\(\mcF\)の元とのみ交わる開近傍\(V_x\)を一つ取る。
+  仮定より、開被覆\(\{V_x| x\in X\}\)を細分する
+  局所有限閉被覆\(\mcH\)が存在する。
+  \begin{enumerate}
+    \item 各\(H\in \mcH\)は高々有限個の\(\mcF\)の元としか交わらない。なぜでしょう。
+  \end{enumerate}
+  次に、\(W_{\alpha} \dfn X\setminus \bigcup_{H\in \mcH, H\cap F_{\alpha} = \emptyset} H\)
+  と定義する。
+  \begin{enumerate}[start=2]
+    \item
+    \(W_{\alpha}\)は\(F_{\alpha}\)の開近傍である。なぜでしょう。
+    \item
+    各\(H\in \mcH\)に対して、
+    \(W_{\alpha} \cap H = \emptyset \iff F_{\alpha} \cap H = \emptyset\)である。
+    なぜでしょう。
+    \item
+    \(\{W_{\alpha}\}_{\alpha\in A}\)は\(X\)の局所有限開被覆であることを示しなさい。
+    \item
+    \(\{U_{\alpha} \cap W_{\alpha}\}_{\alpha\in A}\)は
+    \(\mcU = \{U_{\alpha}\}_{\alpha\in A}\)を細分する局所有限開被覆であることを確認しなさい。
+    結論として、\(\mcU\)を細分する開被覆の存在がわかったことになり、
+    \(X\)はパラコンパクトであることが従います。
+  \end{enumerate}
+  最後に、位相空間\(X\)が、
+  条件「任意の開被覆が局所有限な (開でも閉でもないかもしれない) 被覆によって細分される」
+  を満たすとき、パラコンパクトであることを示しなさい。
+\end{prob}
+
+
+
+\begin{prob}
+  位相空間\(X\)の集合族\(\mcA\)が\textbf{\(\sigma\)-局所有限}であるとは、
+  ある可算個の局所有限な部分族\(\mcA_n\subset \mcA,(n\in \N)\)が存在して
+  \(\mcA = \bigcup_{n\in \N}\mcA_n\)となることを言う。
+  局所有限な集合族は\(\sigma\)-局所有限であることに注意しなさい。
+
+  \(X\)を正則空間とする。
+  \(X\)の開被覆\(\mcU\)は\(\sigma\)-局所有限) な開被覆
+  \(\mcV = \bigcup_{n\in \N}\mcV_n\) (各\(\mcV_n\)は局所有限)
+  によって細分されると仮定する。
+  \[
+  \mcW_n \dfn \{ V \setminus \bigcup_{i < n}\bigcup_{V'\in \mcV_i} V' | V\in \mcV_n \}
+  \]
+  と定義する。
+  このとき、\(\bigcup_{n\in \N}\mcW_n\)は\(\mcU\)を細分する局所有限被覆であることを証明しなさい。
+
+  \autoref{paracpt closed refinement}と組み合わせると、結論として、
+  正則空間に対しては、パラコンパクトであることと
+  条件「任意の開被覆が\(\sigma\)-局所有限な開被覆により細分される」
+  を満たすことは同値であることが従います。
+\end{prob}
+
+
+
+
+\begin{prob}[距離空間のパラコンパクト性]
+  この問題では、距離空間がパラコンパクトであることを証明する。
+
+  \((X,d)\)を距離空間、\(\{U_{\alpha}\}_{\alpha\in A}\)をその開被覆とする。
+  中心\(x\in X\)半径\(r>0\)の開球を\(B(x,r)\)で表す。
+  整列可能定理によって\(\alpha\)を整列集合と考える。
+  また、自然数\(n \geq 1\)と\(\alpha\in A\)に対して
+  \[
+  U_{\alpha,n}\dfn \{x\in U_{\alpha} | B(x,1/2^n)\subset U_{\alpha}\}
+  \]
+  と定める。
+  以下の問いに答えなさい。
+  \begin{enumerate}
+    \item
+    \(\bigcup_{n\geq 1} U_{\alpha,n} = U_{\alpha}\)であることを示しなさい。
+    \item
+    \(x\in U_{\alpha,n}, y\not\in U_{\alpha,n+1}\)
+    となる点\(x,y\)に対して
+    \(d(x,y) > 1/2^{n+1}\)が成り立つことを示しなさい。
+    \item
+    各\(\alpha\in A, n \geq 1\)に対して
+    \(U_{\alpha,n}^*\dfn U_{\alpha,n}\setminus \bigcup_{\beta < \alpha}U_{\beta,n+1}\)
+    と定義する。
+    このとき、任意の\(n\geq 1\),
+    \(\alpha\neq \beta\),
+    \(x\in U_{\alpha,n}^*\),
+    \(y\in U_{\beta,n}^*\)に対して
+    \(d(x,y) > 1/2^{n+1}\)が成り立つことを示しなさい。
+    \item
+    \(X = \bigcup_{\alpha\in A,n\geq 1}U_{\alpha,n}^*\)であることを示しなさい。
+    \item
+    \(U_{\alpha,n}^{\dagger}\dfn \{x\in X|\exists y\in U_{\alpha,n}^*, d(x,y) < 1/2^{n+3}\}\)
+    と定義する。
+    このとき、任意の\(n\geq 1\),
+    \(\alpha\neq \beta\),
+    \(x\in U_{\alpha,n}^{\dagger}\),
+    \(y\in U_{\beta,n}^{\dagger}\)に対して\(d(x,y) \geq 1/2^{n+2}\)が成り立つことを示しなさい。
+    \item
+    \(\{U_{\alpha,n}^{\dagger}|\alpha\in A,n\geq 1\}\)は
+    \(\{U_{\alpha}\}_{\alpha\in A}\)を細分する\(\sigma\)-局所有限な開被覆であることを示しなさい。
+    \autoref{paracpt closed refinement}と組み合わせると、結論として、
+    距離空間はパラコンパクトであることが従います。
+  \end{enumerate}
+\end{prob}
+
+
+
+
+\begin{prob}[長田-Smirnovの距離化定理]
+  この問題では、
+  距離空間の下部位相空間と同相であるための必要十分条件を与える
+  長田-Smirnovの距離化定理を証明する。
+
+  \(X\)を正則空間とする。以下の主張は同値であることを示しなさい。
+  \begin{enumerate}
+    \item \label{Nagata-Smirnov 1}
+    \(X\)上にある距離\(d\)が存在し、
+    \(d\)の定める位相はもとの位相と同じとなる。
+    \item \label{Nagata-Smirnov 2}
+    \(X\)は\(\sigma\)-局所有限な開基を持つ。
+  \end{enumerate}
+  (Hint: \ref{Nagata-Smirnov 1}\(\Rightarrow\)\ref{Nagata-Smirnov 2}は半径\(1/n\)の開球からなる被覆の細分を考えなさい。
+  \ref{Nagata-Smirnov 2}\(\Rightarrow\)\ref{Nagata-Smirnov 1}はまずパラコンパクトであることを示しなさい。
+  次にUrysohnの補題を使って...)
+\end{prob}
 
 
 
