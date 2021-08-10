@@ -1,0 +1,503 @@
+\documentclass[uplatex]{jsarticle}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+
+\usepackage{xcolor}
+\usepackage[dvipdfmx]{graphicx}
+
+
+
+\usepackage{ulem}
+
+\usepackage{braket}
+
+%%%%%ハイパーリンク
+%\usepackage[colorlinks=true,urlcolor=blue!70!black,citecolor=blue!60!black,linkcolor=blue!60!black]{hyperref}
+%\usepackage{aliascnt} %for creating different biblatex references for different theoremstyles
+\usepackage[setpagesize=false,dvipdfmx]{hyperref}
+\usepackage{aliascnt}
+\hypersetup{
+    colorlinks=true,
+    citecolor=blue,
+    linkcolor=blue,
+    urlcolor=blue,
+}
+
+\renewcommand{\eqref}[1]{\textcolor{blue}{(\ref{#1})}}
+
+%%%%%%ハイパーリンク
+
+
+%%%%%図式
+%\usepackage{tikz}%%%図
+\usepackage{amscd}%%%簡単な図式
+
+\usepackage{tikz}
+\usepackage{tikz-cd} %commutative diagrams in TikZ
+\usetikzlibrary{calc}
+\usetikzlibrary{matrix,arrows}
+\usetikzlibrary{decorations.markings}
+
+%%%%%図式
+
+
+
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+
+\usepackage{amsthm}
+
+%%%%%%%%%%%%Plain型%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%definition型%%%%%%%%%%%%
+
+\theoremstyle{definition}
+
+\renewcommand{\sectionautorefname}{Section}
+
+\newtheorem{thm}{Theorem}[section]
+\newcommand{\thmautorefname}{Theorem}
+
+
+\newaliascnt{prop}{thm}%%%カウンター「prop」の定義（thmと同じ）
+\newtheorem{prop}[prop]{Proposition}
+\aliascntresetthe{prop}
+\newcommand{\propautorefname}{Proposition}%%%カウンター名propは「命題」で参照する
+
+\newaliascnt{cor}{thm}
+\newtheorem{cor}[cor]{Corollary}
+\aliascntresetthe{cor}
+\newcommand{\corautorefname}{Corollary}
+
+\newaliascnt{lem}{thm}
+\newtheorem{lem}[lem]{Lemma}
+\aliascntresetthe{lem}
+\newcommand{\lemautorefname}{Lemma}
+
+\newaliascnt{defi}{thm}
+\newtheorem{defi}[defi]{Definition}
+\aliascntresetthe{defi}
+\newcommand{\defiautorefname}{Definition}
+
+\newaliascnt{rem}{thm}
+\newtheorem{rem}[rem]{Remark}
+\aliascntresetthe{rem}
+\newcommand{\remautorefname}{Remark}
+
+
+\newaliascnt{exam}{thm}
+\newtheorem{exam}[exam]{Example}
+\aliascntresetthe{exam}
+\newcommand{\examautorefname}{Example}
+
+\newaliascnt{reconstruction}{thm}
+\newtheorem{reconstruction}[reconstruction]{Reconstruction}
+\aliascntresetthe{reconstruction}
+\newcommand{\reconstructionautorefname}{Reconstruction}
+
+%%%%%%%番号づけない定理環境
+\newtheorem*{exam*}{Example}
+\newtheorem*{rem*}{Remark}
+\newtheorem*{defi*}{Definition}
+
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+
+
+
+
+
+%%%%%箇条書き環境
+\usepackage[]{enumitem}
+
+\makeatletter
+\AddEnumerateCounter{\fnsymbol}{\c@fnsymbol}{9}%%%%fnsymbolという文字をenumerate環境のパラメーターで使えるようにする。
+\makeatother
+
+\makeatletter
+\renewcommand{\p@enumii}{}
+\makeatother
+
+\renewcommand{\theenumi}{(\roman{enumi})}%%%%%itemは(1),(2),(3)で番号付ける。
+\renewcommand{\labelenumi}{\theenumi}
+
+\renewcommand{\theenumii}{(\alph{enumii})}%%%%%itemは(1),(2),(3)で番号付ける。
+\renewcommand{\labelenumii}{\theenumii}
+
+\usepackage{moreenum}
+%%%%%箇条書き環境
+
+
+
+\usepackage{mandorasymb}
+\usepackage{applekeys}
+\renewcommand{\qedsymbol}{\pencilkey}
+%\renewcommand{\qedsymbol}{\kinoposymbniko}
+
+
+
+
+\usepackage{latexsym}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Isom}{Isom}
+\DeclareMathOperator{\ISOM}{\mathbf{Isom}}
+\DeclareMathOperator{\id}{\mathrm{id}}
+\DeclareMathOperator{\im}{\mathrm{Im}}
+\DeclareMathOperator{\Spec}{\mathrm{Spec}}
+\newcommand{\Supp}{\mathrm{Supp}}
+\DeclareMathOperator{\Aut}{\mathrm{Aut}}
+
+\newcommand{\coker}{\mathrm{coker}}
+
+\DeclareMathOperator{\Tor}{\mathrm{Tor}}
+\DeclareMathOperator{\Ext}{\mathrm{Ext}}
+
+\DeclareMathOperator{\colim}{\mathrm{colim}}
+\DeclareMathOperator{\plim}{\mathrm{lim}}
+
+\newcommand{\Ob}{\mathrm{Ob}}
+
+\newcommand{\rsa}{\rightsquigarrow}
+\renewcommand{\coprod}{\amalg}
+\renewcommand{\emptyset}{\varnothing}
+\newcommand{\ep}{\varepsilon}
+\newcommand{\op}{\mathrm{op}}
+
+\newcommand{\dfn}{:\overset{\mbox{{\scriptsize def}}}{=}}
+\newcommand{\deff}{:\hspace{-3pt}\overset{\text{def}}{\iff}}
+\newcommand{\dl}{\partial}
+
+\newcommand{\Qcoh}{\mathsf{Qcoh}}
+\newcommand{\Coh}{\mathsf{Coh}}
+\newcommand{\Pic}{\mathrm{Pic}}
+\newcommand{\Sym}{\mathrm{Sym}}
+\newcommand{\Mod}{\mathsf{Mod}}
+
+
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+
+
+
+\newcommand{\mcA}{\mathcal{A}}
+\newcommand{\mcB}{\mathcal{B}}
+\newcommand{\mcC}{\mathcal{C}}
+\newcommand{\mcD}{\mathcal{D}}
+\newcommand{\mcE}{\mathcal{E}}
+\newcommand{\mcF}{\mathcal{F}}
+\newcommand{\mcG}{\mathcal{G}}
+\newcommand{\mcH}{\mathcal{H}}
+\newcommand{\mcI}{\mathcal{I}}
+\newcommand{\mcJ}{\mathcal{J}}
+\newcommand{\mcK}{\mathcal{K}}
+\newcommand{\mcL}{\mathcal{L}}
+\newcommand{\mcM}{\mathcal{M}}
+\newcommand{\mcN}{\mathcal{N}}
+\newcommand{\mcO}{\mathcal{O}}
+\newcommand{\mcP}{\mathcal{P}}
+\newcommand{\mcQ}{\mathcal{Q}}
+\newcommand{\mcR}{\mathcal{R}}
+\newcommand{\mcS}{\mathcal{S}}
+\newcommand{\mcT}{\mathcal{T}}
+\newcommand{\mcU}{\mathcal{U}}
+\newcommand{\mcV}{\mathcal{V}}
+\newcommand{\mcW}{\mathcal{W}}
+\newcommand{\mcX}{\mathcal{X}}
+\newcommand{\mcY}{\mathcal{Y}}
+\newcommand{\mcZ}{\mathcal{Z}}
+
+
+
+
+
+\newcommand{\bfA}{\mathbf{A}}
+\newcommand{\bfB}{\mathbf{B}}
+\newcommand{\bfC}{\mathbf{C}}
+\newcommand{\bfD}{\mathbf{D}}
+\newcommand{\bfE}{\mathbf{E}}
+\newcommand{\bfF}{\mathbf{F}}
+\newcommand{\bfG}{\mathbf{G}}
+\newcommand{\bfH}{\mathbf{H}}
+\newcommand{\bfI}{\mathbf{I}}
+\newcommand{\bfJ}{\mathbf{J}}
+\newcommand{\bfK}{\mathbf{K}}
+\newcommand{\bfL}{\mathbf{L}}
+\newcommand{\bfM}{\mathbf{M}}
+\newcommand{\bfN}{\mathbf{N}}
+\newcommand{\bfO}{\mathbf{O}}
+\newcommand{\bfP}{\mathbf{P}}
+\newcommand{\bfQ}{\mathbf{Q}}
+\newcommand{\bfR}{\mathbf{R}}
+\newcommand{\bfS}{\mathbf{S}}
+\newcommand{\bfT}{\mathbf{T}}
+\newcommand{\bfU}{\mathbf{U}}
+\newcommand{\bfV}{\mathbf{V}}
+\newcommand{\bfW}{\mathbf{W}}
+\newcommand{\bfX}{\mathbf{X}}
+\newcommand{\bfY}{\mathbf{Y}}
+\newcommand{\bfZ}{\mathbf{Z}}
+
+\DeclareMathOperator{\OOO}{\mcO}
+
+\newcommand{\OC}{{\OOO_C}}
+\newcommand{\OD}{{\OOO_D}}
+\renewcommand{\OE}{{\OOO_E}}
+\newcommand{\OF}{{\OOO_F}}
+\newcommand{\OH}{{\OOO_H}}
+\newcommand{\OM}{{\OOO_N}}
+\newcommand{\ON}{{\OOO_N}}
+\newcommand{\OS}{{\OOO_S}}
+\newcommand{\OT}{{\OOO_T}}
+\newcommand{\OU}{{\OOO_U}}
+\newcommand{\OV}{{\OOO_V}}
+\newcommand{\OW}{{\OOO_W}}
+\newcommand{\OX}{{\OOO_X}}
+\newcommand{\OY}{{\OOO_Y}}
+\newcommand{\OZ}{{\OOO_Z}}
+
+\newcommand{\OO}[1]{\OOO_{#1}}
+
+
+\newcommand{\resol}{\mathrm{Resol}}
+\newcommand{\spectm}{\mathrm{Sp}}
+
+
+
+
+\title{Munford GIT ノート}
+
+\author{ゆじ}
+
+\begin{document}
+
+\maketitle
+
+
+\section{Definitions}
+
+
+\begin{defi}[群スキーム]
+  \(S\)-スキーム\(G\)が\textbf{群スキーム}であるとは...
+\end{defi}
+
+\begin{defi}[代数群]
+  体\(k\)上の代数多様体\(G\)が\textbf{代数群}であるとは、
+  \(k\)上の群スキームであって、さらに滑らかな\(k\)-多様体であることを言う。
+\end{defi}
+
+\begin{defi}[群スキームの作用]
+  \(S\)上の群スキーム\(G\)の\(S\)-スキーム\(X\)への\textbf{作用}とは...
+\end{defi}
+
+
+\begin{defi}[orbit]
+  \(S\)上の群スキーム\(G\)が\(S\)-スキーム\(X\)に作用しているとする。
+  \(T\)-値点\(T\to X\)の\textbf{orbit}とは...
+  \textbf{stabilizer}とは...
+\end{defi}
+
+
+\begin{defi}[Categorical Quotient]
+  \(S\)上の群スキーム\(G\)が\(S\)-スキーム\(X\)に作用しているとする。
+  \(S\)-スキーム\(Y\)と射\(q:X\to Y\)のペア\((Y,q)\)が\textbf{categorical quotient}であるとは、
+  次を満たすことを言う：
+  \begin{enumerate}
+    \item
+    以下の図式は可換である：
+    \[
+    \begin{CD}
+      G\times X @>{\text{作用} \sigma}>> X \\
+      @V{\text{第二射影} p_2}VV @VV{q}V \\
+      X @>{q}>> Y
+    \end{CD}
+    \]
+    \item
+    任意の\(S\)-スキーム\(Z\)と射\(r:X\to Z\)に対し、
+    \(r\circ p_2 = r \circ \sigma\)なら、
+    一意的に\(f:Y\to Z\)が存在して、\(r = f\circ q\)が成り立つ。
+  \end{enumerate}
+\end{defi}
+
+
+
+
+
+\begin{defi}[Geometric Quotient]
+  \(S\)上の群スキーム\(G\)が\(S\)-スキーム\(X\)に作用しているとする。
+  \(S\)-スキーム\(Y\)と射\(q:X\to Y\)のペア\((Y,q)\)が\textbf{geometric quotient}であるとは、
+  次を満たすことを言う：
+  \begin{enumerate}
+    \item
+    \(q\circ p_2 = q \circ \sigma\)である。
+    \item
+    \(q\)は全射であり、
+    \((\sigma,p_2): G\times_S X \to X\times_S X\)の像は\(X\times_Y X\)となる。
+    \item
+    \(q\)は\textbf{submersive}である。
+    すなわち、
+    \(V\subset Y\)が開であることと\(q^{-1}(Y)\subset X\)が開であることは同値である。
+    \item
+    \(q^{\#}:\mcO_Y \to q_*\mcO_X\)は単射であり、
+    その像は\( = (q_*\mcO_X)^G\)に等しい。
+  \end{enumerate}
+\end{defi}
+
+
+
+\begin{rem*}
+  最後の条件以外はどんな\(Y'\to Y\)での基底変換のあとでも満たされる。
+  最後の条件は開埋め込みでの基底変換 (\(Y\)の開部分集合の上への制限) のあとでは満たされる。
+\end{rem*}
+
+
+
+
+\begin{defi}[Universal Categorical (Geometric) Quotient, Uniform Categorical (Geometric) Quotient]
+  \(X\to Y\)は、任意の射\(Y'\to Y\)での基底変換\(X'\to Y'\)が
+  categorical (geometric) quotientであるとき、
+  \textbf{universal categorical (geometric) quotient}と言う。
+  \(X\to Y\)は、任意の平坦射\(Y'\to Y\)での基底変換\(X'\to Y'\)が
+  categorical (geometric) quotientであるとき、
+  \textbf{uniform categorical (geometric) quotient}と言う。
+\end{defi}
+
+
+
+
+
+
+
+
+
+\section{First Properties}
+
+
+
+
+\begin{prop}[\textbf{Geom.\(\Rightarrow\)Cat.}]
+  \(\sigma\)を\(G/S\)の\(X/S\)への作用とする。
+  \(q:X\to Y\)がgeometric quotientであるとき、
+  それはcategorical quotientである。
+  さらに、\(q\)がuniversal geometric quotientであれば、
+  それはuniversal categorical quotientである。
+\end{prop}
+
+\begin{proof}
+  \(r:X\to Z\)が\(r \circ \sigma = r \circ p_2\)を満たすとする。
+  \(Z\)のアフィン開集合\(W = \Spec(C)\subset Z\)を任意にとる。
+  \(q\)は全射であり、\(r^{-1}(W)\subset X\)は\(G\)-invariantなので、
+  ある部分集合\(V\subset Y\)が存在して (集合として) \(q^{-1}(V) = r^{-1}(W)\)となる。
+  ここで\(W\subset Z\)は開なので、\(r^{-1}(W)\)も開である。
+  \(q\)がsubmersiveであることから、よって\(V\)は開となる。
+  以上より、開部分スキーム\(V\subset Y\)が存在して
+  \(U \dfn q^{-1}(V) = r^{-1}(W)\)が成り立つことがわかった。
+
+  次に環の図式
+  \[
+  \begin{CD}
+    C @. \Gamma(V,\mcO_V) \\
+    @V{r^{\#}|_W}VV @VV{q^{\#}|_V}V \\
+    \Gamma(U,\mcO_U) @= \Gamma(U,\mcO_U)
+  \end{CD}
+  \]
+  について考える。
+  \(q\)はgeometric quotientなので、4つめの条件より、
+  \(\im(q^{\#}|_V) = \Gamma(U,\mcO_U)^G\)が成り立つ。
+  仮定より、\(r^{\#}|_W\)は\(G\)-不変部分を経由するので、
+  以上より上の図式を可換にする射\(C\to \Gamma(V,\mcO_V)\)が一意的に存在する。
+  これによって射\(V\to W\)を得る。
+
+  最後に\(W\)をより小さいアフィン開集合\(W'\)へと制限することを考えると、
+  上の\(C\to \Gamma(V,\mcO_V)\)の一意性は、
+  \(V'\to W'\)が\(V\to W\)の制限として得られることを示している。
+  以上より、これら\(W\)上で射が貼りあって\(Y\to W\)を得る。
+\end{proof}
+
+
+\begin{rem*}
+
+\end{rem*}
+
+
+
+
+\begin{rem*}
+  このRemarkに登場するスキームはすべてネーターであるとする。
+  \(S\)が正規であると仮定しなさい。
+  このとき、Chevalleyの判定法により、
+  \(G\)が\(S\)上普遍開であることは、
+  \(G\to S\)が開写像であること、もしくは、
+  \(G\to S\)のすべてのfiberの次元が等しいことと同値である。
+  このことは、「\(G\to S\)が開写像であって
+  \((Y,q)\)がgeometric quotientであれば、
+  \(q\)が普遍開写像となる」
+  ということをimplyする。
+  それを見てみよう。
+
+  \(q\)が開であることを示すために、
+  \(U\subset X\)を任意の開集合とする。
+  \(G\)は\(S\)上普遍開であるので、
+  \(p_2:G\times X \to X\)は普遍開である。
+  さらに\(\sigma\)を
+  \[
+  G\times X \xrightarrow{(p_1,\sigma)} G\times X \xrightarrow{p_2} X
+  \]
+  と分解すると、
+  \((p_1,\sigma)\)は同型であるから、
+  \(\sigma\)も普遍開であることが従う。
+  \(p_2(G\times U)\subset X\)は開であり、
+  \(q(U) = q(p_2(G\times U))\)となるが、
+  \(p_2(G\times U)\)は\(G\)-invariantであるので、
+  \(p_2(G\times U) = q^{-1}(q(U))\)が成り立つ。
+  \(q\)はsubmersiveであるから、
+  \(q^{-1}(q(U)) = p_2(G\times U)\)が開であることは
+  \(q(U)\)が開であることを意味する。
+\end{rem*}
+
+\begin{rem*}
+  上のRemarkに関連して、次元に関する別の帰結を述べる。
+\end{rem*}
+
+\begin{prop}
+  \(X,Y\)を\(S\)-スキーム、
+  \(q:X\to Y\)を\(S\)-スキームの射、
+  \(G\)を\(S\)上の群スキームで
+  \(\sigma:G\times_S X \to X\)により作用しているとする。
+  以下が成り立つことを仮定する：
+  \begin{enumerate}
+    \item \(X,Y\)は正規既約ネータースキームであり、
+    \(Y\)の生成点の商体は標数\(0\)である。
+    \item \(G\)は\(S\)上有限型普遍開である。
+    \item \(q\)は支配的な有限型の射であって、
+    \(q\circ \sigma = q\circ p_2\)を満たす。
+    \item 任意の代数閉体\(k\)と任意の\(k\)-valued point \(\Spec(k)\to Y\)に対し、
+    \(\Spec(k)\)のfiberは高々一つの\(G_k\dfn G\times_S \Spec(k)\)-orbitからなる。
+  \end{enumerate}
+  このとき\(q\)は普遍開写像であり、
+  \((\im(q),q)\)は\(X\)の\(G\)によるgeometric quotientである。
+\end{prop}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+
+
+
+\end{document}

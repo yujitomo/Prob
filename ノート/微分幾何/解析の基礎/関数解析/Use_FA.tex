@@ -219,6 +219,37 @@
 \newcommand{\mcY}{\mathcal{Y}}
 \newcommand{\mcZ}{\mathcal{Z}}
 
+
+
+
+
+\newcommand{\bfA}{\mathbf{A}}
+\newcommand{\bfB}{\mathbf{B}}
+\newcommand{\bfC}{\mathbf{C}}
+\newcommand{\bfD}{\mathbf{D}}
+\newcommand{\bfE}{\mathbf{E}}
+\newcommand{\bfF}{\mathbf{F}}
+\newcommand{\bfG}{\mathbf{G}}
+\newcommand{\bfH}{\mathbf{H}}
+\newcommand{\bfI}{\mathbf{I}}
+\newcommand{\bfJ}{\mathbf{J}}
+\newcommand{\bfK}{\mathbf{K}}
+\newcommand{\bfL}{\mathbf{L}}
+\newcommand{\bfM}{\mathbf{M}}
+\newcommand{\bfN}{\mathbf{N}}
+\newcommand{\bfO}{\mathbf{O}}
+\newcommand{\bfP}{\mathbf{P}}
+\newcommand{\bfQ}{\mathbf{Q}}
+\newcommand{\bfR}{\mathbf{R}}
+\newcommand{\bfS}{\mathbf{S}}
+\newcommand{\bfT}{\mathbf{T}}
+\newcommand{\bfU}{\mathbf{U}}
+\newcommand{\bfV}{\mathbf{V}}
+\newcommand{\bfW}{\mathbf{W}}
+\newcommand{\bfX}{\mathbf{X}}
+\newcommand{\bfY}{\mathbf{Y}}
+\newcommand{\bfZ}{\mathbf{Z}}
+
 \DeclareMathOperator{\OOO}{\mcO}
 
 \newcommand{\OC}{{\OOO_C}}
@@ -1326,6 +1357,340 @@
 
 
 
+
+
+
+
+
+
+
+\section{関数空間}
+
+多様体\(M\)は位相空間であるから、
+開集合系を含む最小の\(\sigma\)-加法族をとることで可測空間とみなせる
+(以後、位相空間はしばしばこの操作によって可測空間とみなされる)。
+リーマン計量\(g\)が付随していれば、
+体積要素\(\mathrm{vol}_g\)を用いて定義関数を積分をすることで\(M\)上に測度が定義される
+(実際には、開集合や閉集合上の定義関数を\(C^{\infty}\)関数で一様に近似して積分を実行し、
+こうして得られた部分的な測度をすべての可測集合上に拡張する)。
+この測度を\(\mu_g\)で表す。
+
+
+
+
+
+
+\subsection{各種ノルムの基本的な性質}
+
+
+\begin{rem}
+  \((M,g)\)を向きづけ可能なリーマン多様体、
+  \(E\)をその上の複素ベクトル束、
+  \(h\)を\(E\)上のエルミート計量として、
+  \(\mu_g\)を自然な測度とする。
+  可測関数としての\(E\to M\)の右逆元\(s:M\to E\)のことを
+  単に\textbf{可測section}と言うことにする。
+  可測sectionのなす線形空間を\(\mcL(E)\)で表す。
+  \(\mcL(E)\)上に計量\(h\)を延長でき、
+  \(h: \mcL(E)\times \mcL(E) \to \mcL(M)\)となる。
+  ここで\(\mcL(M)\)は\(M\)上の可測関数のなす環である。
+\end{rem}
+
+
+
+
+\begin{defi}[\(L^p\)-空間]\label{Lp def}
+  \(1\leq p\leq \infty\)、
+  \((M,g)\)を向きづけ可能なリーマン多様体、
+  \(E\)をその上の複素ベクトル束、
+  \(h\)を\(E\)上のエルミート計量として、
+  \(\mu_g\)を自然な測度とする。
+  可測section \(s:M\to E\)
+  (可測関数であって\(E\to M\)の右逆元になっている関数)
+  に対して、
+  \begin{align*}
+    \|s\|_{L^p(E)} &\dfn \left( \int_M h(s,s)^{p/2}d\mu_g \right)^{1/p}, &(p\neq \infty), \\
+    \|s\|_{L^{\infty}(E)} &\dfn \inf\{C\geq 0 | \|h(s,s)\|\leq C, (a.e.)\}, &(p=\infty),
+  \end{align*}
+  と置く。
+  これを\textbf{\(L^p\)-ノルム}と言う。
+  \begin{align*}
+    \mcL^p(E) &\dfn \left\{ s:M\to E \middle| \text{\(\|s\|_p<\infty\)となる可測section}\right\}, \\
+    L^p(E) &\dfn \mcL^p(E)/(\|-\|_{L^p}=0),
+  \end{align*}
+  と定める。
+  ペア\((L^p(E),\|-\|_{L^p})\)を\textbf{\(L^p\)-空間}と言う。
+  \(L^p(M)\dfn L^p(M\times \C)\)と書く。
+  定義より、
+  \(\|s\|_{L^p(E)} = \|h(s,s)\|_{L^p(M)}\)
+  が成り立つ。
+
+  \(p=2\)とする。
+  \[
+  (s,t)_{L^2(E)} \dfn \int_M h(s,t)d\mu
+  \]
+  と定義し、これを\(L^2\)-内積と言う。
+  定義より、\(\|s\|_{L^2(E)} = \sqrt{(s,s)_{L^2(E)}}\)が成り立つ。
+\end{defi}
+
+
+
+\begin{rem}
+  \(L^p(E)\)の元は実際には\(\mcL^p(E)\)の元であるかのように扱うが、
+  実際には代表元の取り方はほとんど至るところ\(0\)な関数を除いて一意的なので、
+  問題は生じない。
+\end{rem}
+
+
+\begin{lem}
+  \autoref{Lp def}の状況設定のもとで以下の主張が成り立つ：
+  \begin{enumerate}
+    \item \label{Schwarz ineq}
+    (\textbf{Schwarzの不等式}).
+    \(s,t\in L^2(E)\)に対して、
+    \(|(s,t)_{L^2(E)}| \leq \|s\|_{L^2(E)}\|t\|_{L^2(E)}\)が成り立つ。
+    特に、\(L^2(E)\)ノルムはノルムである。
+    \item \label{L2 is Hilbert}
+    \(L^2(E)\)はHilbert空間である。
+    \item \label{Holder ineq}
+    (\textbf{H\"{o}lderの不等式}).
+    \(p,q,r\geq 1\)は\(1/p+1/q=1/r\)を満たす実数であるとする。
+    このとき、任意の\(f\in \mcL^p(M), g\in \mcL^q(M)\)に対し
+    \(\|fg\|_{L^r}\leq \|f\|_{L^p}\|g\|_{L^q}\)が成り立つ。
+    特に、\(st\in \mcL^r(E)\)である。
+    \item \label{Lp is Banach}
+    任意の\(1\leq p\leq \infty\)に対して\((L^p(E),\|-\|_{L^p}\)はBanach空間である。
+  \end{enumerate}
+\end{lem}
+
+\begin{proof}
+  \ref{Schwarz ineq}を示す。
+  まず適当に\(e^{i\theta}\)倍を施すことによって
+  \((s,t)_{L^2(E)}\in \R\)であると仮定して良い。
+  次に任意の実数\(\lambda\in \R\)に対して
+  \[
+  0\leq \|\lambda s+t\|_{L^2(E)}^2
+  = \int_M h(\lambda s+t,\lambda s+t)d\mu
+  = \lambda^2 \|s\|_{L^2(E)}^2 + 2\lambda (s,t)_{L^2(E)} + \|t\|_{L^2(E)}^2
+  \]
+  が成り立つので、これを\(\lambda\)に関する二次関数と見ると、
+  判別式\(=\|s\|_{L^2(E)}^2\|t\|_{L^2(E)}^2 - (s,t)_{L^2(E)}^2 \geq 0\)となる。
+  以上で\ref{Schwarz ineq}の証明を完了する。
+
+  \ref{L2 is Hilbert}を示す。
+  \(L^2(E)\)ノルムに関して\(s_n\to s, t_n\to t\)であるとすると、
+  \[
+  |(s_n,t_n)_{L^2(E)} - (s,t)_{L^2(E)}|
+  = |(s_n-s,t_n)_{L^2(E)} + (s,t_n-t)_{L^2(E)}|
+  \leq \|s_n-s\|_{L^2(E)}\|t_n\|_{L^2(E)} + \|s\|_{L^2(E)}\|t_n-t\|_{L^2(E)}
+  \to 0, \ \ (n\to\infty)
+  \]
+  となるので\((s_n,t_n)_{L^2(E)}\to (s,t)_{L^2(E)}\)が成り立つ。
+  以上で\ref{L2 is Hilbert}の証明を完了する。
+
+  \ref{Holder ineq}を示す。
+  \(a\dfn \|s\|_{L^p} \neq 0, b\dfn \|t\|_{L^q}\neq 0\)と置く。
+  もし\(a,b\)のうちの一方が\(0\)なら、
+  \(s,t\)のうちの一方はほとんど至る所で\(0\)であるため、
+  \(st = 0, (a.e.)\)となる。
+  よって\(a,b > 0\)として良い。
+
+  \(\log\)は上に凸なので、任意の\(x,y > 0\)に対して
+  \(\log(rx^p/p+ry^q/q) \geq (r/p)\log x^p + (r/q)\log y^q = \log (xy)^r\)
+  が成り立つ。
+  \(\log\)は単調増加なので、よって
+  \(x^p/p + y^q/q \geq (xy)^r/r\)が成り立つ。
+  従って、
+  \[
+  \int_M \left| \frac{fg}{ab} \right|^r d\mu_g
+  \leq \int_M \frac{r}{p}\left| \frac{f}{a} \right|^p d\mu_g
+  + \int_M \frac{r}{q}\left| \frac{g}{b} \right|^q d\mu_g
+  = \frac{r}{p} + \frac{r}{q} = 1
+  \]
+  が成り立つ。
+  整理すると、\(\|fg\|_{L^r(M)} \leq ab = \|f\|_{L^p(M)}\|g\|_{L^q(M)}\)が従う。
+  以上で\ref{Holder ineq}の証明を完了する。
+
+  \ref{Lp is Banach}を示す。
+  まず\(c\in \R\) (または\(\in \C\)) と\(s\in \mcL^p(E)\)に対して
+  \(\|cs\|_{L^p(E)} = |c|\|s\|_{L^p(E)}\)が成り立つので\(cs\in \mcL^p(E)\)である。
+  次に\(s,t\in \mcL^p(E)\)に対して、
+  関数\((-)^p\)の凸性、
+  \(\sqrt{a+b} \leq \sqrt{a}+\sqrt{b}, (\forall a,b\geq 0)\)、
+  より、
+  \begin{align*}
+    \|s+t\|_{L^p(E)}^p
+    &= \left(\int_M (\sqrt{h(s,s) + 2\Re h(s,t) + h(t,t)})^p d\mu_g\right)^{1/p} \\
+    &\overset{\leq}{\bigstar}
+    \left(\int_M \sqrt{4^{-p+1}(h(s,s)^p + 2(\Re h(s,t))^p + h(t,t)^p)} d\mu_g \right)^{1/p} \\
+    &\leq
+    2^{-1+1/p}\left(\int_M \sqrt{h(s,s)^p + 2|h(s,t)|^p + h(t,t)^p} d\mu_g \right)^{1/p} \\
+    &\overset{\leq}{\spadesuit}
+    2^{-1+1/p}\left(\int_M \sqrt{h(s,s)}^p d\mu_g + \int_M \sqrt{2|h(s,t)|^p} d\mu_g
+    + \int_M \sqrt{h(t,t)}^p d\mu_g \right)^{1/p} \\
+    &\overset{\leq}{\clubsuit}
+    2^{-1+1/p}\left( \|s\|_{L^p(E)}^p + \|t\|_{L^p(E)}^p + \int_M \sqrt{2|h(s,t)|^p} d\mu_g \right)^{1/p} \\
+    2^{p-1}(\|s\|_{L^p(E)}^p + \|t\|_{L^p(E)}^p) < \infty
+  \end{align*}
+  が成り立つ。
+  ただしここで\(\bigstar\)の箇所で関数\(x^p)\)の凸性を使い、
+  \(\spadesuit\)の箇所で不等式\(\sqrt{\sum a_i} \leq \sum \sqrt{a_i},(\forall a_i \geq 0)\)を使い、
+  \(\clubsuit\)の箇所でSchwartの不等式を使い、
+  が成り立ち、\(s+t\in \mcL^p(E)\)となる。
+  次に、任意の\(s,t\in \mcL^p(E)\)に対して、H\"{o}lderの不等式より、
+  \begin{align*}
+    \|s+t\|_{L^p(E)}^p &= \|h(s+t,s+t)^{1/p}h(s+t,s+t)^{(p-1)/p}\|_{L^p(M)}^p \\
+    &\leq \|h(s+t,s+t)^{1/p}\|_{L^p(M)}^p
+    \int_M |s+t| &\leq
+  \end{align*}
+\end{proof}
+
+
+\begin{rem}
+  合成\(\Gamma(M,E)\xrightarrow{\subset} \mcL^p(E) \to L^p(E)\)は単射である。
+  それは、連続で\(\neq 0\)な切断\(s:M\to E\)は
+  ある点\(x\in M\)の近傍上でつねに\(s\neq 0\)であるので、
+  \(h(s,s)\)の積分は正となる。
+  実際には、軟化することによって、
+  \(\Gamma(M,E)\subset L^p(E)\)は稠密部分集合であることが示される。
+  とくに、\(L^p(E)\)は\(\Gamma(E)\)の\(L^p\)-ノルムによる完備化と自然に同型である。
+\end{rem}
+
+
+
+\begin{defi}[弱微分]
+  \((M,g)\)をリーマン多様体 (複素の場合はK\"{a}hler)、
+  \((E,h)\)を計量ベクトル束 (複素の場合はエルミート)、
+  \(\nabla\)を\(h\)と可換な\(E\)上の接続とする。
+  \(p\)乗可積分な可測切断\(s\in L^p(E)\)と
+  ベクトル場\(X\in \Gamma(TM)\)に対し、
+  \(s\)の\(X\)-方向の\textbf{偏弱微分}\(\nabla_Xs\)とは、
+  \(p\)乗可積分な可測切断\(\nabla_Xs\in L^p(E)\)であって、
+  任意の\(C^{\infty}\)-級切断\(t\in \Gamma(E)\)に対して
+  \[
+  \int_M h(\nabla_Xs,t) d\mu + \int_M h(s,\nabla_Xt) d\mu = 0
+  \]
+  が成り立つことを言う。
+  任意のベクトル場\(X\in \Gamma(TM)\)に対して偏弱微分が存在するとき、
+  \textbf{弱微分可能}と言う。
+  \(k\)階弱微分可能であり、さらにすべての\(k\)-階偏弱微分が\(p\)乗可積分である可測切断全体を
+  \(W^{k,p}(E)\)で表す。
+
+  \(k\)個のベクトル場の組\(\bfX \dfn (X_1,\cdots,X_k)\)と
+  \(s\in W^{k,p}(E)\)に対して、次の記号を用いる：
+  \[
+  [\bfX] \dfn k, \ \
+  \|\bfX\|_p \dfn \frac{1}{[\bfX]}\sum \|X_i\|_p, \ \
+  \nabla_{\bfX} \dfn \nabla_{X_1}\cdots \nabla_{X_k}, \ \
+  \bfX_i \dfn (X_1,\cdots,X_i).
+  \]
+  そして
+  \(
+  \|s\|_{W^{k,p}} \dfn \sup_{[\bfX] = k,X_i\neq 0}\sum_{i=0}^k \frac{\|\nabla_{\bfX_i}s\|_p}{\|\bfX_i\|_p},
+  \)
+  と定義する。
+  ノルム空間\((W^{k,p}(E),\|-\|_{W^{k,p}})\)を\textbf{Sobolev空間}と言う。
+\end{defi}
+
+\begin{rem}
+  \(s\)が\(C^{\infty}\)-級の切断であれば、
+  \(\nabla\)が計量\(E\)と可換であることから、
+  \[
+  h(\nabla_Xs,t) + h(s,\nabla_Xt) = X(h(s,t))
+  \]
+  が成り立つ。
+  体積形式\(d\mu\)と外積すると、右辺は\(=0\)である。
+  従って、
+  \[
+  \int_M h(\nabla_Xs,t) d\mu + \int_M h(s,\nabla_Xt) d\mu = 0
+  \]
+  が成り立つ。
+  以上より、通常の共変微分\(\nabla_Xs\)は弱微分である。
+\end{rem}
+
+\begin{rem}
+  Sobolev空間はBanach空間である。
+\end{rem}
+
+
+
+
+
+\begin{defi}[H\"{o}lderノルム]
+  \((M,g)\)をリーマン多様体 (複素の場合はK\"{a}hler)、
+  \((E,h)\)を計量ベクトル束 (複素の場合はエルミート)、
+  \(\nabla\)を\(h\)と可換な\(E\)上の接続、
+  \(\ep > 0\)を正の実数とする。
+  \[
+  \|s\|_{C^{k,\ep}} \dfn \sup_{[\bfX] = k, X_i\neq 0}
+  \left( \sum_{i=0}^k \sup_{x\in M} \frac{|(\nabla_{\bfX_i}s)(x)|}{\|\bfX_i\|_{L^2}} +
+  \sup_{x,y\in M, x\neq y}\frac{|(\nabla_{\bfX}s)(x) - (\nabla_{\bfX}s)(y)|}{|x-y|^{\ep}\|\bfX\|_{L^2}}\right)
+  \]
+  を階数\(k\)指数\(\ep\)の\textbf{H\"{o}lderノルム}と言う。
+\end{defi}
+
+
+
+
+
+\subsection{軟化}
+
+
+\begin{lem}
+  \(p\in L^1(\R^N), f\in L^2(\R^N)\)とする。
+  \[
+  (p*f)(x) \dfn \int_{\R^N}p(x-y)f(y)dy
+  \]
+  で定義される関数\(p*f\)について、
+  \(\|p*f\|_{L^2} \leq \|p\|_{L^1}\|f\|_{L^2}\)が成り立つ。
+  特に、\(p*f\in L^2(\R^N)\)が成り立つ。
+\end{lem}
+
+\begin{proof}
+  \(|p(x-y)f(y)|^2 = |p(x-y)||p(x-y)f(y)^2|\)と分解して
+  \begin{align*}
+    \|p*f\|_{L^2}^2
+    &= \int_{\R^N}p(x-y)^2f(y)^2dy \\
+    &\leq \int_{\R^N}|p(x-y)|dy \times \int_{\R^N}|p(x-y)f(y)^2|dy \\
+    &\leq \|p\|_{L^1} \int_{\R^N}|p(x-y)f(y)^2|dy
+  \end{align*}
+  が成り立つ。
+  ここで
+\end{proof}
+
+
+
+
+
+
+\subsection{Sobolev埋め込み}
+
+
+\subsection{Rellichの定理}
+
+
+\subsection{アプリオリ評価}
+
+\subsection{正則性 (弱解の微分可能性)}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \appendix
 
 
@@ -1500,6 +1865,20 @@
   以上で証明を完了する。
 \end{proof}
 
+
+
+\section{測度論}
+
+
+
+
+\begin{rem}
+  \((\Omega,\mu)\)を可測空間とする。
+  \(\Omega\)上の可測関数の列\(f_n:\Omega\to \R\)が
+  ある写像\(f:\Omega\to \R\)に各点収束するとき、
+  \(f\)は可測関数である。
+  特に、可積分関数のなすノルム空間は完備である。
+\end{rem}
 
 
 

@@ -5,4 +5,12 @@
 \BOOKMARK [2][-]{subsection.1.4}{Hilbert空間の基本的な性質}{section.1}% 5
 \BOOKMARK [2][-]{subsection.1.5}{コンパクト作用素の性質}{section.1}% 6
 \BOOKMARK [2][-]{subsection.1.6}{スペクトル、Fredholm Alternative}{section.1}% 7
-\BOOKMARK [1][-]{appendix.A}{位相空間論}{}% 8
+\BOOKMARK [1][-]{section.2}{関数空間}{}% 8
+\BOOKMARK [2][-]{subsection.2.1}{各種ノルムの基本的な性質}{section.2}% 9
+\BOOKMARK [2][-]{subsection.2.2}{軟化}{section.2}% 10
+\BOOKMARK [2][-]{subsection.2.3}{Sobolev埋め込み}{section.2}% 11
+\BOOKMARK [2][-]{subsection.2.4}{Rellichの定理}{section.2}% 12
+\BOOKMARK [2][-]{subsection.2.5}{アプリオリ評価}{section.2}% 13
+\BOOKMARK [2][-]{subsection.2.6}{正則性 \(弱解の微分可能性\)}{section.2}% 14
+\BOOKMARK [1][-]{appendix.A}{位相空間論}{}% 15
+\BOOKMARK [1][-]{appendix.B}{測度論}{}% 16
