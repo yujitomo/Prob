@@ -150,6 +150,7 @@
 \DeclareMathOperator{\ISOM}{\mathbf{Isom}}
 \DeclareMathOperator{\id}{\mathrm{id}}
 \DeclareMathOperator{\im}{\mathrm{Im}}
+\renewcommand{\Re}{\mathrm{Re}}
 \DeclareMathOperator{\Spec}{\mathrm{Spec}}
 \newcommand{\Supp}{\mathrm{Supp}}
 \DeclareMathOperator{\Aut}{\mathrm{Aut}}
@@ -1521,14 +1522,14 @@
   \begin{align*}
     \|s+t\|_{L^p(E)}^p
     &= \left(\int_M (\sqrt{h(s,s) + 2\Re h(s,t) + h(t,t)})^p d\mu_g\right)^{1/p} \\
-    &\overset{\leq}{\bigstar}
+    &\overset{\bigstar}{\leq}
     \left(\int_M \sqrt{4^{-p+1}(h(s,s)^p + 2(\Re h(s,t))^p + h(t,t)^p)} d\mu_g \right)^{1/p} \\
     &\leq
     2^{-1+1/p}\left(\int_M \sqrt{h(s,s)^p + 2|h(s,t)|^p + h(t,t)^p} d\mu_g \right)^{1/p} \\
-    &\overset{\leq}{\spadesuit}
+    &\overset{\spadesuit}{\leq}
     2^{-1+1/p}\left(\int_M \sqrt{h(s,s)}^p d\mu_g + \int_M \sqrt{2|h(s,t)|^p} d\mu_g
     + \int_M \sqrt{h(t,t)}^p d\mu_g \right)^{1/p} \\
-    &\overset{\leq}{\clubsuit}
+    &\overset{\clubsuit}{\leq}
     2^{-1+1/p}\left( \|s\|_{L^p(E)}^p + \|t\|_{L^p(E)}^p + \int_M \sqrt{2|h(s,t)|^p} d\mu_g \right)^{1/p} \\
     2^{p-1}(\|s\|_{L^p(E)}^p + \|t\|_{L^p(E)}^p) < \infty
   \end{align*}
