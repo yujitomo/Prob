@@ -1,0 +1,1485 @@
+\documentclass[uplatex]{jsreport}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage{stmaryrd}%%%%%べき級数のカッコ
+
+\usepackage{xcolor}
+\usepackage[dvipdfmx]{graphicx}
+
+
+
+\usepackage{ulem}
+
+\usepackage{braket}
+
+%%%%%ハイパーリンク
+%\usepackage[colorlinks=true,urlcolor=blue!70!black,citecolor=blue!60!black,linkcolor=blue!60!black]{hyperref}
+%\usepackage{aliascnt} %for creating different biblatex references for different theoremstyles
+\usepackage[setpagesize=false,dvipdfmx]{hyperref}
+\usepackage{aliascnt}
+\hypersetup{
+    colorlinks=true,
+    citecolor=blue,
+    linkcolor=blue,
+    urlcolor=blue,
+}
+
+\renewcommand{\eqref}[1]{\textcolor{blue}{(\ref{#1})}}
+
+%%%%%%ハイパーリンク
+
+
+%%%%%図式
+%\usepackage{tikz}%%%図
+\usepackage{amscd}%%%簡単な図式
+
+\usepackage{tikz}
+\usepackage{tikz-cd} %commutative diagrams in TikZ
+\usetikzlibrary{calc}
+\usetikzlibrary{matrix,arrows}
+\usetikzlibrary{decorations.markings}
+
+%%%%%図式
+
+
+
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+
+\usepackage{amsthm}
+
+%%%%%%%%%%%%Plain型%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%definition型%%%%%%%%%%%%
+
+\theoremstyle{definition}
+
+\renewcommand{\sectionautorefname}{Section}
+
+\newtheorem{thm}{Theorem}[section]
+\newcommand{\thmautorefname}{定理}
+
+
+\newaliascnt{prop}{thm}%%%カウンター「prop」の定義（thmと同じ）
+\newtheorem{prop}[prop]{命題}
+\aliascntresetthe{prop}
+\newcommand{\propautorefname}{命題}%%%カウンター名propは「命題」で参照する
+
+\newaliascnt{cor}{thm}
+\newtheorem{cor}[cor]{系}
+\aliascntresetthe{cor}
+\newcommand{\corautorefname}{系}
+
+\newaliascnt{lem}{thm}
+\newtheorem{lem}[lem]{補題}
+\aliascntresetthe{lem}
+\newcommand{\lemautorefname}{補題}
+
+
+\newaliascnt{prob}{thm}
+\newtheorem{prob}[prob]{問題}
+\aliascntresetthe{prob}
+\newcommand{\probautorefname}{問題}
+
+\newaliascnt{defi}{thm}
+\newtheorem{defi}[defi]{定義}
+\aliascntresetthe{defi}
+\newcommand{\defiautorefname}{定義}
+
+
+
+\newaliascnt{exam}{thm}
+\newtheorem{exam}[exam]{例}
+\aliascntresetthe{exam}
+\newcommand{\examautorefname}{例}
+
+%%%%%%%番号づけない定理環境
+\newtheorem*{exam*}{例}
+\newtheorem*{rem*}{注意}
+\newtheorem*{defi*}{定義}
+
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+
+
+
+
+
+%%%%%箇条書き環境
+\usepackage[]{enumitem}
+
+\makeatletter
+\AddEnumerateCounter{\fnsymbol}{\c@fnsymbol}{9}%%%%fnsymbolという文字をenumerate環境のパラメーターで使えるようにする。
+\makeatother
+
+\makeatletter
+\renewcommand{\p@enumii}{}
+\makeatother
+
+\renewcommand{\theenumi}{(\roman{enumi})}%%%%%itemは(1),(2),(3)で番号付ける。
+\renewcommand{\labelenumi}{\theenumi}
+
+\renewcommand{\theenumii}{(\alph{enumii})}%%%%%itemは(1),(2),(3)で番号付ける。
+\renewcommand{\labelenumii}{\theenumii}
+
+\usepackage{moreenum}
+%%%%%箇条書き環境
+
+
+
+\usepackage{mandorasymb}
+\usepackage{applekeys}
+\renewcommand{\qedsymbol}{\pencilkey}
+%\renewcommand{\qedsymbol}{\kinoposymbniko}
+
+
+
+
+\usepackage{latexsym}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Isom}{Isom}
+\DeclareMathOperator{\ISOM}{\mathbf{Isom}}
+\DeclareMathOperator{\id}{\mathrm{id}}
+\DeclareMathOperator{\im}{\mathrm{Im}}
+\DeclareMathOperator{\INN}{\mathrm{Inn}}
+\DeclareMathOperator{\Spec}{\mathrm{Spec}}
+\newcommand{\Supp}{\mathrm{Supp}}
+\DeclareMathOperator{\Aut}{\mathrm{Aut}}
+
+\newcommand{\coker}{\mathrm{coker}}
+
+\DeclareMathOperator{\Tor}{\mathrm{Tor}}
+\DeclareMathOperator{\Ext}{\mathrm{Ext}}
+
+\DeclareMathOperator{\colim}{\mathrm{colim}}
+\DeclareMathOperator{\plim}{\mathrm{lim}}
+\newcommand{\Ob}{\mathrm{Ob}}
+
+\newcommand{\rsa}{\rightsquigarrow}
+\renewcommand{\coprod}{\amalg}
+\renewcommand{\emptyset}{\varnothing}
+\newcommand{\ep}{\varepsilon}
+
+\newcommand{\dfn}{:\overset{\mbox{{\scriptsize def}}}{=}}
+\newcommand{\deff}{:\hspace{-3pt}\overset{\text{def}}{\iff}}
+\newcommand{\lb}[1]{\llbracket #1\rrbracket}
+
+\newcommand{\Sym}{\mathrm{Sym}}
+\newcommand{\Mod}{\mathsf{Mod}}
+
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+
+
+
+\newcommand{\mcA}{\mathcal{A}}
+\newcommand{\mcB}{\mathcal{B}}
+\newcommand{\mcC}{\mathcal{C}}
+\newcommand{\mcD}{\mathcal{D}}
+\newcommand{\mcE}{\mathcal{E}}
+\newcommand{\mcF}{\mathcal{F}}
+\newcommand{\mcG}{\mathcal{G}}
+\newcommand{\mcH}{\mathcal{H}}
+\newcommand{\mcI}{\mathcal{I}}
+\newcommand{\mcJ}{\mathcal{J}}
+\newcommand{\mcK}{\mathcal{K}}
+\newcommand{\mcL}{\mathcal{L}}
+\newcommand{\mcM}{\mathcal{M}}
+\newcommand{\mcN}{\mathcal{N}}
+\newcommand{\mcO}{\mathcal{O}}
+\newcommand{\mcP}{\mathcal{P}}
+\newcommand{\mcQ}{\mathcal{Q}}
+\newcommand{\mcR}{\mathcal{R}}
+\newcommand{\mcS}{\mathcal{S}}
+\newcommand{\mcT}{\mathcal{T}}
+\newcommand{\mcU}{\mathcal{U}}
+\newcommand{\mcV}{\mathcal{V}}
+\newcommand{\mcW}{\mathcal{W}}
+\newcommand{\mcX}{\mathcal{X}}
+\newcommand{\mcY}{\mathcal{Y}}
+\newcommand{\mcZ}{\mathcal{Z}}
+
+
+
+\newcommand{\mfa}{\mathfrak{a}}
+\newcommand{\mfb}{\mathfrak{b}}
+\newcommand{\mfc}{\mathfrak{c}}
+\newcommand{\mfd}{\mathfrak{d}}
+\newcommand{\mfe}{\mathfrak{e}}
+\newcommand{\mff}{\mathfrak{f}}
+\newcommand{\mfg}{\mathfrak{g}}
+\newcommand{\mfh}{\mathfrak{h}}
+\newcommand{\mfi}{\mathfrak{i}}
+\newcommand{\mfj}{\mathfrak{j}}
+\newcommand{\mfk}{\mathfrak{k}}
+\newcommand{\mfl}{\mathfrak{l}}
+\newcommand{\mfm}{\mathfrak{m}}
+\newcommand{\mfn}{\mathfrak{n}}
+\newcommand{\mfo}{\mathfrak{o}}
+\newcommand{\mfp}{\mathfrak{p}}
+\newcommand{\mfq}{\mathfrak{q}}
+\newcommand{\mfr}{\mathfrak{r}}
+\newcommand{\mfs}{\mathfrak{s}}
+\newcommand{\mft}{\mathfrak{t}}
+\newcommand{\mfu}{\mathfrak{u}}
+\newcommand{\mfv}{\mathfrak{v}}
+\newcommand{\mfw}{\mathfrak{w}}
+\newcommand{\mfx}{\mathfrak{x}}
+\newcommand{\mfy}{\mathfrak{y}}
+\newcommand{\mfz}{\mathfrak{z}}
+
+\DeclareMathOperator{\OOO}{\mcO}
+
+\newcommand{\OC}{{\OOO_C}}
+\newcommand{\OD}{{\OOO_D}}
+\renewcommand{\OE}{{\OOO_E}}
+\newcommand{\OF}{{\OOO_F}}
+\newcommand{\OH}{{\OOO_H}}
+\newcommand{\OS}{{\OOO_S}}
+\newcommand{\OT}{{\OOO_T}}
+\newcommand{\OU}{{\OOO_U}}
+\newcommand{\OV}{{\OOO_V}}
+\newcommand{\OW}{{\OOO_W}}
+\newcommand{\OX}{{\OOO_X}}
+\newcommand{\OY}{{\OOO_Y}}
+\newcommand{\OZ}{{\OOO_Z}}
+
+\newcommand{\OO}[1]{\OOO_{#1}}
+
+
+
+\title{鈴木群論 解答}
+
+\author{ゆじ}
+
+\begin{document}
+
+\maketitle
+
+\chapter{基礎の概念}
+
+
+\section{群の定義とその例}
+
+
+\begin{prob}
+  \(G\)を結合法則を満たす積の定義された集合とする。
+  ある元\(e\in G\)が存在し、次の二条件を満たしているとき、
+  \(G\)は群であることを示せ：
+  \begin{enumerate}
+    \item
+    \(\forall g\in G, ge=g\).
+    \item
+    \(\forall g\in G, \exists h\in G, gh = e\).
+  \end{enumerate}
+\end{prob}
+
+\begin{proof}
+  \(g\in G\)をとる。
+  \(gh=e\)となる\(h\)をとり、\(hg'=e\)となる\(g'\)をとると、
+  \[
+  hg = hge = hg(hg') = (h(gh))g' = (he)g' = hg' = e
+  \]
+  となって\(hg = e\)がわかる。
+  また、\(hg = e\)より、
+  \[eg = (gh)g = g(hg) = ge = g\]
+  がわかる。
+  よって\(e\)は両側単位元で\(h\)は\(g\)の両側逆元となる。
+  以上で解答を完了する。
+\end{proof}
+
+
+
+
+\begin{prob}
+  \(G\)を結合法則を満たす積の定義された集合とする。
+  ある元\(e\in G\)が存在して、次の二条件を満たしているとき、
+  \(G\)は群であるか？：
+  \begin{enumerate}
+    \item
+    \(\forall g\in G, eg = g\).
+    \item
+    \(\forall g\in G, \exists h\in G, gh = e\).
+  \end{enumerate}
+\end{prob}
+
+\begin{proof}
+  群ではない。
+  \(H\)を群、\(a\dfn H\)として、\(G\dfn H\cup\{a\}\)に演算\(*\)を次で定める：
+  \(g_1,g_2\in H\)なら\(H\)の演算で\(g_1*g_2 \dfn g_1g_2\in H\)とする。
+  \(g\in H\)と\(a\)に対しては\(a*g=g*a\dfn g\)とする。
+  \(a*a = a\)とする。
+  すると、\(H\)の単位元を\(e\in H\subset G\)とすることで、
+  \(G\)は群とはならないが与えられた二つの条件を満たす集合となる。
+  以上で証明を完了する。
+\end{proof}
+
+
+\begin{rem*}
+  結合法則を満たす積の定義された集合\(G\)が
+  次の二条件を満たしているとき群となる：
+  \begin{enumerate}
+    \item
+    \(\forall g\in G, eg = g\)となる元\(e\in G\)がただ一つ存在する。
+    \item
+    \(\forall g\in G, \exists h\in G, gh = e\).
+  \end{enumerate}
+  これを示す。
+
+  まず、元\(u\in G\)が\(ue = e\)を満たすとする。
+  このとき、任意の\(g\in G\)に対して
+  \[ug = u(eg) = (ue)g = eg = g\]
+  となるので、
+  \(e\)の唯一性から\(u=e\)が従う。
+
+  次に、\(g\in G\)を任意に取る。
+  \(g'\dfn ge\)とおいて、\(g'h=e\)となる\(h\in G\)をとり、
+  さらに\(hh'=e\)となる\(h'\in G\)をとる。すると、
+  \[
+  (hg)e = hghh' = hg(eh)h' = h((ge)h)h' = h(g'h)h' = heh' = hh' = e
+  \]
+  が成り立つ。
+  よって\(hg = e\)となる。
+  ここで
+  \[
+  ge = gee = g'e = g'hg = eg = g
+  \]
+  なので、\(e\)は
+  \[
+  \forall g\in G, ge = g
+  \]
+  を満たす。
+  よって、上の演習問題を使えば、\(G\)は群であることが従う。
+\end{rem*}
+
+
+
+
+
+
+\section{部分群}
+
+
+\begin{prob}
+  群\(G\)の空でない部分集合\(H\subset G\)が部分群であるためには
+  次が必要十分であることを示せ：
+  \[
+  \forall g,h\in H, \ gh^{-1}\in H.
+  \]
+\end{prob}
+
+\begin{proof}
+  必要性は、
+  \(g,h\in H\)に対して
+  \(g,h^{-1}\in H\)であるので
+  \(gh^{-1}\in H\)となることから従う。
+
+  十分性を示す。
+  \(g\in H\)をとる (\(H\)は空ではないので一つは元がある)。
+  すると
+  \[e = gg^{-1}\in H\]
+  となる。
+  よって\(e\in H\)が成り立つ。
+  次に\(e\in H\)と任意の元\(g\in H\)に対して条件を使えば、
+  \[g^{-1} = eg^{-1}\in H\]
+  が成り立つ。
+  さらに任意の\(g,h\in H\)に対して、\(h^{-1}\in H\)なので、
+  \[gh = g(h^{-1})^{-1}\in H\]
+  が成り立つ。
+  以上より\(H\)は部分群となる。
+\end{proof}
+
+
+
+
+\begin{prob}
+  \
+  \begin{enumerate}
+    \item
+    有限群\(G\)の空でない部分集合\(H\subset G\)が部分群であるためには、
+    \(\forall g,h\in H, gh\in H\)であることだけで十分である。
+    \item
+    群\(G\)のすべての元の位数が有限であるとする。
+    このとき、空でない部分集合\(H\subset G\)が部分群であるためには、
+    \(\forall g,h\in H, gh\in H\)であることだけで十分である。
+    \item
+    群\(G\)の空でない部分集合\(H\subset G\)が部分群であるためには、
+    一般には\(\forall g,h\in H, gh\in H\)であることだけでは不十分である。
+    例を挙げなさい。
+  \end{enumerate}
+\end{prob}
+
+\begin{proof}
+  有限群ならすべての元の位数は有限なので(1)は(2)より従う。
+  (2)を示す。
+  \(g\in H\)と任意の\(n > 0\)に対して、条件より帰納的に\(g^n\in H\)が成り立つ。
+  すべての元の位数が有限であることから、
+  ある\(n > 0\)に対して\(g^n\in H\)が成り立ち、
+  このとき\(g^{-1} = g^{n-1}\in H\)が成り立つ。
+  以上で\(H\)は部分群となる。
+
+  (3)の例はたとえば\(\N\subset \Z\)など。
+  以上で解答を完了する。
+\end{proof}
+
+
+
+
+\begin{prob}
+  加法に関する群\(\Q\)は極大部分群を持たないことを示せ。
+\end{prob}
+
+\begin{proof}
+  \(A\subsetneq \Q\)を極大部分群とする。
+  まず、\(A\)と\(\Z\subset \Q\)で生成される部分群が\(\Q\)となるとする。
+  任意の\(r\in \Q\)に対して
+  ある\(a\in \N_{\geq 0}\)とある\(n\in \Z, m\in A\)が存在して
+  \(r = -n+am\)が成り立つので、
+  \(n+r\in A\)が成り立つ。
+  とくに、\(k\in \N_{>0}\)に対して、
+  ある\(n\in \Z\)が存在して\(n+1/k\in A\)が成り立つ。
+  よって\(kn+1\in A\)が成り立つ。
+  同様に、ある\(n'\in \Z\)が存在して
+  \(n'+1/(kn+1)\in A\)が成り立つので、
+  とくに\(n'(kn+1) + 1\in A\)が成り立つ。
+  ここで\(n'(kn+1)\in A\)なので、\(1\in A\)が成り立つ。
+  従って\(\Z\subset A\)となって、\(A=\Q\)が従う。
+  これは\(A\neq \Q\)に反する。
+  以上より、\(A\)と\(\Z\)で生成される部分群は\(\Q\)とは異なる。
+  \(A\)の極大性より、\(\Z\subset A\)が従う。
+
+  次に、\(1/n\not\in A\)となる最小の\(n\in \N_{>0}\)をとる
+  (任意の\(k\in \N_{>0}\)に対して\(1/k\in A\)となるとすると、
+  任意の\(m\in \Z, k\in \N_{>0}\)に対して
+  \(m/k\in A\)が成り立つことが従い、これは\(A\neq \Q\)に反するので、
+  このような\(n\)の存在がわかる)。
+  このとき、\(1/n^2\not\in A\)となる。
+  \(A\)と\(1/n\)で生成される部分群を\(A'\)とおく。
+  \(1/n^2\in A'\)と仮定すると、
+  ある\(a,b\in \Z, m\in A\)が存在して、
+  \(1/n^2 = a/n+bm\)が成り立つ。
+  よって\(1/n = a + bmn\in \Z + A = A\)が成り立つ。
+  これは\(1/n\not\in A\)に矛盾する。
+  よって\(1/n^2\not\in A'\)が従い、とくに\(A'\neq \Q\)である。
+  ここで\(1/n\in A'\setminus A\)であるから、
+  \(A\subsetneq A'\)である。
+  これは\(A\)の極大性に反する。
+  よって極大部分群\(A\subset \Q\)が存在しないことが示された。
+  以上で解答を完了する。
+\end{proof}
+
+
+
+\begin{prob}
+  \(G\)を群、\(X\subset G\)を\(e\not\in X\)となる部分集合とする。
+  \[\mcH\dfn \{H\subset G | \text{\(H\)は部分群で、\(H\cap X = \emptyset\)}\}\]
+  に包含関係で順序を入れるとき、\(\mcH\)には極大元が存在することを示せ。
+  また、\(H_0\cap X = \emptyset\)となる\(H_0\)を一つとって、
+  \[\mcH_0\dfn \{H\in \mcH|H_0\subset H\}\]
+  とおくとき、\(\mcH_0\)にも極大元が存在する。
+\end{prob}
+
+\begin{proof}
+  前半は\(H_0 = \{e\}\)とすることで後半より従うので、
+  後半のみ示せば良い。
+  \(\{H_i\}_{i\in I}\subset \mcH_0\)を全順序部分集合とする。
+  \(H\dfn \bigcup_{i\in I}H_i\)と定めると、
+  これは群となる。
+  さらに\(H\cap X = \bigcup_{i\in I}(H_i\cap X) = \emptyset\)であるから、
+  \(H\in \mcH_0\)である。
+  従ってZornの補題より主張が従う。
+  以上で解答を完了する。
+\end{proof}
+
+
+
+\begin{prob}
+  \(G\)を群、
+  \(H\subsetneq G\)を真の部分群、
+  \(S\subset G\)を有限集合とし、\(\<H,S\> = G\)と仮定する。
+  このとき、\(H\)を含む極大部分群が存在する。
+  とくに、有限個の元で生成された群\(G\)には極大部分群が存在する。
+\end{prob}
+
+\begin{proof}
+  \(\<H,T\>=G\)となる\(T\subset S\)のうち元の数が最小のものを一つとる。
+  \(T\)の元の数の最小性から、
+  \(H_0\dfn \<H,T\setminus\{t\}\>\neq G\)である。
+  また、\(\<H_0,t\> = \<H,T\> = G\)であるから、
+  \(t\not\in H_0\)である。
+  前問より、\(H_0\)を含み、\(t\)を含まない部分群のうち極大なもの\(H'\)が存在する。
+  \(H'\)が極大部分群であることを示す。
+  \(H'\subsetneq H_1\subset G\)となる部分群\(H_1\)を任意にとる。
+  このとき、\(H_0\subset H'\subsetneq H_1\)と\(H'\)の極大性から、
+  \(t\in H_1\)が成り立つ。
+  よって\(G = \<H_0,t\> \subset H_1\)が成り立ち、
+  \(H_1 = G\)となるので、\(H'\)は極大部分群である。
+  以上で解答を完了する。
+\end{proof}
+
+
+
+
+
+
+
+\section{剰余類}
+
+
+
+\begin{prob}
+  \([\Z:k\Z] = k\)であり、
+  \(0,1,\cdots,k-1\)は\(k\Z\)に関する剰余類の代表系となる。
+\end{prob}
+
+\begin{proof}
+  さすがに自明でいいよね。
+\end{proof}
+
+
+
+\begin{prob}
+  両側剰余類\(HxK\)に入る\(K\)に関する右剰余類の数を求めよ。
+\end{prob}
+
+\begin{proof}
+  \(h_1xK = h_2xK\) \(\iff\)
+  \((h_2x)^{-1}h_1x = x^{-1}h_2^{-1}h_1 x \in K\) \(\iff\)
+  \(h_2^{-1}h_1\in xKx^{-1}\)なので
+  よって求める数は\([H:H\cap xKx^{-1}]\)である。
+\end{proof}
+
+
+
+
+
+\begin{prob}\label{1-3}
+  \
+  \begin{enumerate}
+    \item \(H\subset G\)が有限部分群で\(x\in G\)であれば、
+    \(HxH\)に含まれる\(H\)の左剰余類の数は
+    \(HxH\)に含まれる\(H\)の右剰余類の数と等しい。これを示せ。
+    \item \label{1-3-2}
+    群\(G\)と部分群\(H\subset G\)を
+    \begin{align*}
+      G &\dfn \left\{
+      \begin{pmatrix}
+        r & s \\
+        0 & 1 \\
+      \end{pmatrix} \
+      \middle| \ r,s\in \Q,r\neq 0
+      \right\}, \\
+      H &\dfn \left\{
+      \begin{pmatrix}
+        1 & m \\
+        0 & 1 \\
+      \end{pmatrix} \
+      \middle| \ m\in \Z \right\} \ \subset G,
+    \end{align*}
+    で定義する。自然数\(n\in \N\)に対し、
+    \[
+    x\dfn
+    \begin{pmatrix}
+      n & 0 \\
+      0 & 1 \\
+    \end{pmatrix} \ \in G
+    \]
+    と定める。
+    このとき、両側剰余類\(HxH\)に含まれる\(H\)の左剰余類および右剰余類の数を求めよ。
+  \end{enumerate}
+\end{prob}
+
+\begin{proof}
+  (1)を示す。
+  共役をとることで全単射\(H\cap x^{-1}Hx \xrightarrow{\sim} H\cap xHx^{-1}\)が得られるので、
+  \(\#(H) < \infty\)であることから、
+  \[
+  [H:H\cap x^{-1}Hx] = \#(H)/\#(H\cap x^{-1}Hx)
+  = \#(H)/\#(H\cap xHx^{-1}) = [H:H\cap xHx^{-1}]
+  \]
+  が従う。
+  以上で(1)の解答を完了する。
+
+  (2)を示す。
+  計算すれば、
+  \begin{align*}
+    HxH \ &= \ \left\{
+    \begin{pmatrix}
+      n & nm+m' \\
+      0 & 1 \\
+    \end{pmatrix}
+    \middle| \ m,m'\in \Z
+    \right\}, \\
+    Hx \ &= \ \left\{
+    \begin{pmatrix}
+      n & m \\
+      0 & 1 \\
+    \end{pmatrix}
+    \middle| \ m\in \Z
+    \right\}, \\
+    xH \ &= \ \left\{
+    \begin{pmatrix}
+      n & nm \\
+      0 & 1 \\
+    \end{pmatrix}
+    \middle| \ m\in \Z
+    \right\},
+  \end{align*}
+  となる。
+  よって、左剰余類の数は\(1\)個、
+  右剰余類の数は\(n\)個である。
+\end{proof}
+
+
+
+\begin{prob}
+  \(G\)を有限群、\(H\subsetneq G\)を真の部分群とすれば、
+  \(H\)のどの元とも共役ではない\(G\)の元が存在する。
+\end{prob}
+
+
+\begin{proof}
+  \(H\)と共役な部分集合の数は\(l \dfn [G:N_G(H)]\)である。
+  \(H\)のある元と共役な\(G\)の元の集合は
+  \(S\dfn \bigcup_{g\in N_G(H)\backslash G} g^{-1}Hg\)
+  と表されるが、
+  \(1\in H\cap g^{-1}Hg\neq \emptyset\)であるから、
+  \(\#(S) < \#(H)l \leq \#(G)\)
+  となる。
+  以上で証明を完了する。
+\end{proof}
+
+
+
+
+
+\begin{prob}
+  群\(G\)の空でない部分集合\(H\)が部分群であるための必要十分条件は
+  \(HH\subset H, H^{-1}\subset H\)が成り立つことである。
+  これを示しなさい。
+  また、このとき常に等号が成立することを示しなさい。
+\end{prob}
+
+\begin{proof}
+  さすがに自明でいいと思う。
+\end{proof}
+
+
+
+
+
+\begin{prob}
+  \(G\)を、平面の中に与えられた正\(n\)角形\(R_n\)を保つ平面の合同返還のなす群
+  (=二面体群\(D_{2n}\)) とする。
+  \(R_n\)の隣り合う頂点\(P,Q\in R_n\)を一つとり、
+  頂点\(P\in R_n\)を通る内角の二等分線に関する対称変換を\(\sigma\)、
+  辺\(PQ\)の垂直二等分線に関する対称変換を\(\tau\)とする。
+  \(S\dfn \<\sigma\>, T\dfn \<\tau\>\)とする。
+  \begin{enumerate}
+    \item \(\#(S) = \#(T) = 2\)を示せ。
+    \item もし\(n\)が奇数なら\(ST\)は部分群にならない。これを示せ。
+    \item 積\(\tau\sigma\)は\(R_n\)の中心周りの位数\(n\)の回転であって、
+    \(P\)を\(Q\)に写す。これを示せ。
+    \item \(n\)が偶数でも\(ST\)は部分群にならない。これを示せ。
+  \end{enumerate}
+\end{prob}
+
+\begin{proof}
+  (1)は自明。
+  (2)を示す。
+  \(ST = \{1,\sigma,\tau,\tau\sigma\}\)なので
+  \(ST\)は\(4\)元集合である。
+  よってもし\(ST\)が\(G\)の部分群であれば、
+  \(\#(G) = 2n\)は\(4\)で割り切れなければならない。
+  しかし\(n\)は奇数なのでこれはあり得ない。
+
+  (3)を示す。
+  まず\(\tau(\sigma(P)) = \tau(P) = Q\)である。
+  次に\(\sigma(Q)\neq Q\)であるから\(\tau(\sigma(Q)) \neq \tau(Q) = P\)である。
+  これは回転しかあり得ない。
+  \(P,Q\)は隣り合っているので、
+  \(\tau\sigma\)は位数\(n\)である。
+
+  (4)を示す。
+  \(ST\)が部分群であれば、
+  \(\tau\sigma\)は位数\(2\)でなければならないが、
+  \(n\geq 3\)なのでこれは(3)に反する。
+  以上で解答を完了する。
+\end{proof}
+
+
+
+
+\begin{prob}
+  \(G\)を群、\(H,K\subset G\)を部分群として、
+  \(G = HK\)であると仮定する。
+  このとき、任意の\(x,y\in G\)に対し
+  \(G = H^xK^y\)であり、
+  さらにある\(z\in G\)が存在して
+  \(H^x = H^z, K^y = K^z\)が成り立つことを示しなさい。
+\end{prob}
+
+
+\begin{proof}
+  \(x,y\in G\)を任意にとる。
+  まず\(x = hk\)となる\(h\in H, k\in K\)をとると、
+  \[G = G^k = H^kK^k = H^{hk}K = H^xK\]
+  が成り立つ。
+  次に\(y^{-1} = h'k'\)となる\(h'\in H^x, k'\in K\)をとると、
+  \(y = {k'}^{-1}{h'}^{-1}\)となるので、
+  \[G = G^{{h'}^{-1}} = (H^x)^{{h'}^{-1}}K^{{h'}^{-1}} = H^xK^{{h'}^{-1}} = H^xK^y\]
+  が成り立つ。
+  以上で一つ目の主張が示された。
+  二つ目は、\(z\dfn k{h'}^{-1}\)とおくと、
+  \(h'\in H^x, x = kh, y = {k'}^{-1}{h'}^{-1}\)なので、
+  \begin{align*}
+    &H^z = H^{k{h'}^{-1}} = (H^k)^{{h'}^{-1}} = (H^x)^{{h'}^{-1}} = H^x, \\
+    &K^z = K^{k{h'}^{-1}} = K^{{h'}^{-1}} = K^y,
+  \end{align*}
+  が成り立つ。
+  以上で解答を完了する。
+\end{proof}
+
+
+
+
+
+
+
+
+\section{正規部分群、剰余群}
+
+
+
+
+\begin{prob}
+  \
+  \begin{enumerate}
+    \item
+    群\(G\)の部分群\(H\)が正規部分群であるための必要十分条件は、
+    任意の\(x\in G\)に対して
+    \(x^{-1}Hx\subset H\)となることである。
+    これを示せ。
+    \item
+    群\(G\)と部分群\(H\)と元\(y\in G\)であって、
+    \(y^{-1}Hy \subset H\)であるが\(y\not\in N_G(H)\)となる例を挙げよ。
+    また、部分集合
+    \(\{y\in G| y^{-1}Hy\subset H\}\)は群とは限らない。そのような例を挙げよ。
+  \end{enumerate}
+\end{prob}
+
+
+\begin{proof}
+  (1)は自明なので(2)を示す。
+  \autoref{1-3} \ref{1-3-2}の\(G,H,x\)を考える。
+  \[
+  y\dfn x^{-1} =
+  \begin{pmatrix}
+    1/n & 0 \\
+    0 & 1 \\
+  \end{pmatrix}
+  \]
+  とする。
+  \[
+  \begin{pmatrix}
+    n & 0 \\
+    0 & 1 \\
+  \end{pmatrix}
+  \begin{pmatrix}
+    1 & m \\
+    0 & 1 \\
+  \end{pmatrix}
+  \begin{pmatrix}
+    1/n & 0 \\
+    0 & 1 \\
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+    n & mn \\
+    0 & 1 \\
+  \end{pmatrix}
+  \begin{pmatrix}
+    1/n & 0 \\
+    0 & 1 \\
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+    1 & nm \\
+    0 & 1 \\
+  \end{pmatrix}
+  \]
+  なので、
+  \(H^y = y^{-1}Hy = xHx^{-1}\subsetneq H\)
+  となる。
+  とくに\(H^y\neq H\)なので\(y\not\in N_G(H)\)となる。
+  次に、\(g^{-1}Hg\subset H\)となるための\(g\in G\)の条件を求める。
+  任意の\(m\in \Z\)に対して
+  \[
+  \begin{pmatrix}
+    r & s \\
+    0 & 1 \\
+  \end{pmatrix}^{-1}
+  \begin{pmatrix}
+    1 & m \\
+    0 & 1 \\
+  \end{pmatrix}
+  \begin{pmatrix}
+    r & s \\
+    0 & 1 \\
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+    1/r & -s \\
+    0 & 1 \\
+  \end{pmatrix}
+  \begin{pmatrix}
+    r & s+m \\
+    0 & 1 \\
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+    1 & (s+m)/r-s \\
+    0 & 1 \\
+  \end{pmatrix}
+  \ \ \in H
+  \]
+  となると仮定して\(r\in \Q\setminus \{0\}, s\in \Q\)を求める。
+  つまり、
+  \(\forall m\in \Z, (s+m)/r-s\in \Z\)
+  と仮定する。
+  さらに\(s\neq 0\)と仮定する。
+  \(m=0\)とすれば、\(k\dfn s/r-s \in \Z\)となる。
+  よって\(r=(s+k)/s\)であり、
+  任意の\(m\in \Z\)に対して
+  \((s+m)s/(s+k)-s = (m-k)s/(s+k)\in \Z\)が成り立つ。
+  すなわち、任意の\(m\in \Z\)に対して\(ms/(s+k)\in \Z\)が成り立つ。
+  違いに素な整数\(a,b\neq 0\)を用いて\(s=a/b\)と表せば、
+  任意の\(m\in \Z\)に対して
+  \(ms/(s+k) = am/(a+kb)\in \Z\)が成り立つ。
+  \(a,b\)は違いに素であるから、
+  \(m=1\)とすれば\(a/(a+kb)\not\in \Z\)となり、
+  これは仮定に反する。
+  よって\(s=0\)である。
+  するとこのとき\(1/r\in \Z\)が成り立つ。
+  逆に\(s=0,1/r\in \Z\)であれば
+  任意の\(m\in \Z\)に対して
+  \((s+m)/r-s\in \Z\)が成り立つ。
+  従って、
+  \[
+  \{y\in G|y^{-1}Hy\subset H\} =
+  \left\{
+  \begin{pmatrix}
+    1/n & 0 \\
+    0 & 1 \\
+  \end{pmatrix}
+  \middle| n\in \Z\setminus \{0\}
+  \right\}
+  \]
+  となり、これは群ではない。
+  以上で解答を完了する。
+\end{proof}
+
+
+
+
+
+
+\begin{prob}
+  部分集合\(S\subset G\)が正規であれば、
+  \(\<S\>\)は正規部分群である。これを示せ。
+\end{prob}
+
+\begin{proof}
+  本文の定理2.19より、任意の\(g\in G\)に対して
+  \(\<S\>^g = \<S^g\> = \<S\>\)
+  が成り立つので\(\<S\>\)は正規部分群である。
+  以上で解答を完了する。
+\end{proof}
+
+
+
+
+\begin{prob}
+  \
+  \begin{enumerate}
+    \item
+    指数\(2\)の部分群は正規であることを示しなさい。
+    \item
+    \(G\)を有限群とし、
+    \(\#(G)\)を割り切る最小の素数を\(p\)とするとき、
+    指数\(p\)の部分群は正規であることを示しなさい。
+  \end{enumerate}
+\end{prob}
+
+
+\begin{proof}
+  (1)を示す。
+  \(H\subset G\)が指数\(2\)の部分群であるとする。
+  \(g\in G\)を任意にとる。
+  \(gH = H \iff g\in H\)であるので、
+  \(gH\neq H \iff g\not\in H \iff Hg\neq H\)
+  となるが、このとき
+  \(gH = G\setminus H = Hg\)となる。
+  これは\(H\)が正規であることを示している。
+  以上で(1)の証明を完了する。
+
+  (2)を示す。
+  \(p\)を\(\#(G)\)を割り切る最小の素数とし、
+  \(H\subset G\)を指数\(p\)の部分群とする。
+  ヒントに従って、
+  \(H\)が正規でないと仮定する。
+  すると、\(H\)の共役であって\(H\)と異なる部分群\(K\subset G\)が存在する。
+  \(K\)は部分群なので、\(\#(K)\)は\(\#(G)\)を割り切る。
+  \(p\)は\(\#(G)\)を割り切る最小の素数なので、
+  よって、\(p\)は\(\#(K)\)を割り切る最小の正の自然数である。
+  \(H\neq K\)なので、\(K\neq H\cap K\)である。
+  従って\(\#(K)/\#(H\cap K) > 1\)であり、
+  これは\(p\)以上の素因子しか持たないので、
+  とくに\(\#(K)/\#(H\cap K)\geq p\)が成り立つ。
+  ここで、
+  \[p \leq \#(K)/\#(H\cap K) = \#(HK)/\#(H) \leq \#(G)/\#(H) = p\]
+  となるので、\(\#(HK) = \#(G)\)が従い、
+  よって\(HK = G\)が従う。
+  しかしこれは本文命題(3.15)の系2に矛盾する。
+  \(H\)は正規である。
+  以上で解答を完了する。
+\end{proof}
+
+
+\begin{proof}[(2)の別解答]
+  \(G\)は\(G/H\)に左から作用する。
+  これによって群準同型\(f:G\to S_p\)を得る。
+  \(\im(f)\)は\(S_p\)の部分群であり、
+  その位数は\(p!\)と\(\#(G)\)を割り切るが、
+  \(p\)は\(\#(G)\)の最小の素因数であるので、
+  \(\#(\im(f)) = p\)である。
+  明らかに\(H\subset \ker(f)\)であるので、
+  以上より\(H=\ker(f)\)が従う。これは\(H\)が正規であることを示している。
+\end{proof}
+
+
+
+
+
+\begin{prob}
+  \[
+  Q\dfn \left\{
+  \pm
+  \begin{pmatrix}
+    1 & 0 \\
+    0 & 1 \\
+  \end{pmatrix},
+  \pm
+  \begin{pmatrix}
+    0 & 1 \\
+    -1 & 0 \\
+  \end{pmatrix},
+  \pm
+  \begin{pmatrix}
+    \sqrt{-1} & 0 \\
+    0 & -\sqrt{-1} \\
+  \end{pmatrix},
+  \pm
+  \begin{pmatrix}
+    0 & \sqrt{-1} \\
+    \sqrt{-1} & 0 \\
+  \end{pmatrix}
+  \right\} \ \ \subset M_2(\C)
+  \]
+  は行列の掛け算に関して群となる。
+  \(Q\)は位数\(2\)の部分群をただ一つしか持たず、
+  \(Q\)のすべての部分群は可換な正規部分群となるが、
+  \(Q\)は可換ではない。
+  これを示せ。
+  この\(Q\)を\textbf{四元数群}という。
+\end{prob}
+
+\begin{proof}
+  \[
+  \begin{pmatrix}
+    0 & 1 \\
+    -1 & 0 \\
+  \end{pmatrix}^2
+  =
+  \begin{pmatrix}
+    \sqrt{-1} & 0 \\
+    0 & -\sqrt{-1} \\
+  \end{pmatrix}^2
+  =
+  \begin{pmatrix}
+    0 & \sqrt{-1} \\
+    \sqrt{-1} & 0 \\
+  \end{pmatrix}^2
+  =
+  \begin{pmatrix}
+    -1 & 0 \\
+    0 & -1 \\
+  \end{pmatrix}
+  \]
+  となるので位数\(2\)の元は単位行列に\(-1\)をかけたものしかない。
+  よって位数\(2\)の部分群は唯一である。
+  他の真の部分群の位数は\(4\)であるが、
+  これらは指数\(2\)であるからどれも正規部分群である。
+  また、
+  \[
+  \begin{pmatrix}
+    0 & 1 \\
+    -1 & 0 \\
+  \end{pmatrix}
+  \begin{pmatrix}
+    0 & \sqrt{-1} \\
+    \sqrt{-1} & 0 \\
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+    \sqrt{-1} & 0 \\
+    0 & -\sqrt{-1} \\
+  \end{pmatrix}, \ \
+  \begin{pmatrix}
+    0 & \sqrt{-1} \\
+    \sqrt{-1} & 0 \\
+  \end{pmatrix}
+  \begin{pmatrix}
+    0 & 1 \\
+    -1 & 0 \\
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+    -\sqrt{-1} & 0 \\
+    0 & \sqrt{-1} \\
+  \end{pmatrix}
+  \]
+  となるので、\(Q\)は非可換群である。
+  以上で解答を完了する。
+\end{proof}
+
+
+
+
+
+
+
+\section{準同型、同型定理}
+
+
+\begin{prob}
+  巡回群の剰余群が巡回群であることを直接示せ。
+\end{prob}
+
+\begin{proof}
+  \(G\)を巡回群とする。
+  ある元\(g\in G\)が存在して、
+  \(G = \{g^n | n\in \Z\}\)が成り立つ。
+  \(N\lhd G\)を正規部分群とする。
+  \(G/N = \{g^nN | n \in \Z\}\)
+  であることを証明すれば良いが、
+  \(G/N\)の元はどれも
+  \(g'N, g'\in G\)の形で表され、
+  \(G\)の元はどれも\(g^n\)の形で表されるので、これは明らかである。
+\end{proof}
+
+
+
+\begin{prob}
+  \(G\)を有限群、\(N\lhd G\)を正規部分群とする。
+  このとき、\(N\)を通る組成列が存在することを示せ。
+\end{prob}
+
+\begin{proof}
+  \(G/N\)の組成列を一つとり、
+  それを自然な全射\(G\to G/N\)で\(G\)に引き戻し、
+  \(N\)の組成列と繋げれば良い。
+\end{proof}
+
+
+
+\begin{prob}
+  \(G\)を群、\(H\subset G\)を部分群とする。
+  \(G\)の部分群の列
+  \[
+  G = G_0 \supset G_1 \supset \cdots \supset G_r = H
+  \]
+  であって、各\(i=0,\cdots,r-1\)について
+  \(G_i \supset G_{i+1}\)が極大正規部分群であるものが存在するとき、
+  \(H\)を\textbf{組成部分群}と言い、
+  上の列を\(G\)と\(H\)の間の長さ\(r\)の\textbf{組成列}、
+  \(\{G_0/G_1,\cdots,G_{r-1}/G_r\}\)を\textbf{組成剰余群列}と言う。
+  \begin{enumerate}
+    \item
+    \(H\)が組成部分群であれば、
+    その組成剰余群列は単純群の集合で、
+    それらの単純群の同型類は順序を除いて一意的であることを示せ。
+    \item
+    \(H\subset G\)が組成部分群で
+    \(K\subset H\)が組成部分群であれば
+    \(K\subset G\)は組成部分群であることを示せ。
+    \item
+    \(H\subset G\)が組成部分群であり、
+    \(N\lhd G\)が極大正規部分群であるとき、
+    \(H\subset N\)であるか、または
+    \(H\cap N \lhd H\)が極大正規部分群であることを示せ。
+    後者の場合は\(H/(H\cap N) \cong G/N\)が成り立つ。
+    \item
+    \(H,K\subset G\)が組成部分群であるとき、
+    \(H\cap K\subset K\)は組成部分群列であることを示せ。
+    とくに\(H\cap K\subset G\)は組成部分群列であり、
+    \(G\)と\(H\subset K\)の間の組成剰余群列に含まれる単純群は、
+    \(G\)と\(H\)の間の組成剰余群列と
+    \(G\)と\(K\)の間の組成剰余群列の和集合に含まれるある一つの単純群と同型であることを示せ。
+    \item
+    \(H,K\subset G\)を組成部分群であって、
+    \(H\subset K\)であると仮定する。
+    \(H\neq K\)なら、\(G\)から\(K\)までの組成列の長さは
+    \(G\)から\(H\)までの組成列の長さより短い。
+    また、\(K\neq G\)なら、\(K\)から\(H\)までの組成列の長さは
+    \(G\)から\(H\)までの組成列の長さより短い。
+    これを示せ。
+  \end{enumerate}
+\end{prob}
+
+
+\begin{proof}
+  (1)はJordan-H\"{o}lderの定理と同様に証明すれば良い。
+  (2)は\(H\)と\(K\)の間の組成列、
+  \(G\)と\(H\)の間の組成列を繋ぐことで従う。
+  (3)を示す。
+  \(H\not\subset N\)とする。
+  組成列
+  \[H = G_r \lhd G_{r-1} \lhd \cdots \lhd G_1 \lhd G_0 = G\]
+  と一つとれば、
+  組成列
+  \[
+  H/(H\cap N) = G_r/(G_r\cap N) \lhd G_{r-1}/(G_{r-1}\cap N)
+  \lhd \cdots \lhd G_1/(G_1\cap N) \lhd G_0/(G_0\cap N) = G/N
+  \]
+  を得る。
+  ここで\(H\not\subset N\)であるから、
+  \(H/(H\cap N) \neq \{1\}\)であり、
+  \(G/N\)は単純群であるから、従って
+  \[
+  H/(H\cap N) \xrightarrow{\sim} G_r/(G_r\cap N) \xrightarrow{\sim}
+  \cdots \xrightarrow{\sim} G_1/(G_1\cap N) \xrightarrow{\sim} G/N
+  \]
+  が成り立つ。
+  \(G/N\)は単純群であるから、とくに\(H\cap N \lhd H\)は極大正規部分群である。
+  以上で(3)の証明を完了する。
+
+  (4)を示す。
+  \(H\)の組成列
+  \[H = G_r \lhd G_{r-1} \lhd \cdots \lhd G_1 \lhd G_0 = G\]
+  を一つとる。
+  \(K_i\dfn K\cap G_i\)とおけば、
+  (3)より\(K_i = K_{i+1}\)であるか、または
+  \(K_{i+1}\)は\(K_i\)の極大部分群であるかのどちらかが成り立つ。
+  従って、
+  \[H\cap K = K_r \lhd K_{r-1} \lhd \cdots \lhd K_1 \lhd K_0 = K\]
+  は (いくつか重複はあるが) 組成列である。
+  よって\(H\cap K\)は\(K\)の組成列である。
+  さらに(3)より、
+  \(K_i/K_{i+1}\)は\(\{1\}\)であるか、
+  または\(\cong G_i/G_{i+1}\)となるので後半も従う。
+  以上で(4)の証明を完了する。
+
+  (4)より\(H = H\cap K\)は\(K\)の組成部分群であるので(5)は明らかである。
+  以上で解答を完了する。
+\end{proof}
+
+
+
+
+\section{自己同型}
+
+
+\begin{prob}
+  群\(G\)が自明な中心を持つ (\(Z(G) = \{1\}\)) とき、
+  \(C_{\Aut(G)}(\INN(G)) = \{1\}\)であることを示せ。
+  とくに\(Z(\Aut(G)) = \{1\}\)が成り立つ。
+\end{prob}
+
+\begin{proof}
+  \(\sigma \in C_{\Aut(G)}(\INN(G))\)を任意に取る。
+  このとき、任意の\(g\in G\)に対して
+  \(\sigma \circ i_g = i_g \circ \sigma\)であるので、
+  任意の\(h\in G\)に対して
+  \(\sigma(g^{-1}hg) = g^{-1}\sigma(h)g\)が成り立つ。
+  従って、任意の\(g,h\in G\)に対して
+  \(\sigma(h)(\sigma(g)g^{-1})\sigma(h)^{-1} = \sigma(g)g^{-1}\)が成り立つ。
+  \(\sigma\)は自己同型であるから、
+  任意の\(g,h\in G\)に対して
+  \(h(\sigma(g)g^{-1})h^{-1} = \sigma(g)g^{-1}\)が成り立つ。
+  よって任意の\(g\in G\)に対して
+  \(\sigma(g)g^{-1}\in Z(G) = \{1\}\)
+  が成り立ち、
+  \(\sigma = \id_G\)を得る。
+  以上で解答を完了する。
+\end{proof}
+
+
+\begin{rem*}[別解答]
+  \(\sigma:G\xrightarrow{\sim} G\)と\(g\in G\)に対して
+  \(\sigma \circ i_g \circ \sigma = i_{\sigma(g)}\)であるが、
+  左辺は\(\Aut(G)\)の群演算では\(\sigma^{-1}i_g\sigma = i_{\sigma}(i_g)\)
+  となるので、\(i_{\sigma}(i_g) = i_{\sigma(g)}\)が成り立つ。
+  これは、以下の図式が可換であることを示している：
+  \[
+  \begin{CD}
+    G @>{g\mapsto i_g}>> \INN(G) \\
+    @V{\sigma}VV @VV{i_{\sigma}|_{\INN(G)}}V \\
+    G @>{g\mapsto i_g}>> \INN(G).
+  \end{CD}
+  \]
+  もし\(Z(G) = \{1\}\)であれば、
+  \(G\xrightarrow{\sim} \INN(G)\)であるから、
+  \(\Aut(G) \to \Aut(\INN(G)), \sigma \mapsto i_{\sigma}|_{\INN(G)}\)
+  は全単射となる。
+  これは\(C_{\Aut(G)}(\INN(G)) = \{\id_{\Aut(G)}\}\)を意味する。
+\end{rem*}
+
+
+
+
+\begin{prob}
+  \(Z(G) = \{1\}\)かつ
+  \(\INN(G)\subset \Aut(G)\)が特性部分群であると仮定する。
+  このとき\(\Aut(\Aut(G)) = \INN(\Aut(G))\)である。
+\end{prob}
+
+\begin{proof}
+  はじめに、任意の\(g\in G, \tau\in \Aut(G)\)に対して
+  \(\tau\circ i_g = i_{\tau(g)}\circ \tau\)
+  が成り立つことに注意しておく。
+
+  同型射\(\phi:\Aut(G) \xrightarrow{\sim} \Aut(G)\)を任意にとる。
+  \(Z(G) = \{1\}\)なので
+  \(G \xrightarrow{\sim} \INN(G)\)である。
+  また、\(\INN(G) \subset \Aut(G)\)は特性部分群であるから、
+  \(\phi\)は\(G\)の自己同型
+  \(\alpha:G\xrightarrow{\sim} G\)を引き起こして、
+  以下の図式を可換にする：
+  \[
+  \begin{CD}
+    G @>{g\mapsto i_g}>> \Aut(G) \\
+    @V{\alpha}V{\cong}V @V{\phi}V{\cong}V \\
+    G @>{g\mapsto i_g}>> \Aut(G).
+  \end{CD}
+  \]
+  ここで、
+  \[
+  \phi \circ i_{i_g} \circ \phi^{-1}
+  = i_{\phi(i_g)}
+  = i_{i_{\alpha(g)}}
+  = i_{i_{\alpha}^{-1}(i_g)}
+  = i_{\alpha}^{-1}\circ i_{i_g} \circ i_{\alpha}
+  \]
+  が成り立つので、
+  よって\(i_{\alpha}\circ \phi\in C\dfn C_{\Aut(\Aut(G))}(\INN(\INN(G)))\)となる。
+
+  解答を完了するために、\(C = \{\id_{\Aut(G)}\}\)を示す。
+  任意に\(\psi\in C, \sigma \in \Aut(G), g\in G\)をとる。
+  すると
+  \begin{align*}
+    i_{\psi(\sigma)\circ i_g}
+    &= i_{\psi(\sigma)} \circ i_{i_g}
+    = \psi \circ i_{\sigma} \circ \psi^{-1} \circ i_{i_g}
+    \overset{\bigstar}{=}
+    \psi \circ i_{\sigma} \circ i_{i_g} \circ \psi^{-1} \\
+    &= \psi \circ i_{\sigma \circ i_g} \circ \psi^{-1}
+    = \psi \circ i_{i_{\sigma(g)} \circ \sigma} \circ \psi^{-1}
+    = \psi \circ i_{i_{\sigma(g)}} \circ i_{\sigma} \circ \psi^{-1} \\
+    &\overset{\bigstar}{=}
+    i_{i_{\sigma(g)}} \circ \psi \circ i_{\sigma} \circ \psi^{-1}
+    = i_{i_{\sigma(g)}} \circ i_{\psi(\sigma)}
+    = i_{i_{\sigma(g)} \circ \psi(\sigma)}
+  \end{align*}
+  となる。
+  ここで\(\bigstar\)の箇所で\(\psi\in C\)を使った。
+  \(Z(G) = \{1\}\)と前問より
+  \(Z(\Aut(G)) = \{\id_G\}\)なので、
+  内部自己同型をとる射
+  \(\Aut(G) \to \Aut(\Aut(G))\)は単射であり、
+  よって任意の\(g\in G\)に対して
+  \(\psi(\sigma) \circ i_g = i_{\sigma(g)} \circ \psi(\sigma)\)
+  が成り立つ。
+  従って、
+  \[
+  i_{\psi(\sigma)(g)} \circ \psi(\sigma)
+  = \psi(\sigma)\circ i_g
+  = i_{\sigma(g)}\circ \psi(\sigma)
+  \]
+  となる。
+  右から\(\psi(\sigma)^{-1}\)を合成して
+  再び\(Z(G) = \{1\}\)を用いることで、
+  任意の\(g\in G\)に対して
+  \(\psi(\sigma)(g) = \sigma(g)\)
+  が成り立つ。
+  これは\(\psi(\sigma) = \sigma\)を示している。
+  よって\(\psi = \id_{\Aut(G)}\)となり、
+  \(C = \{\id_{\Aut(G)}\}\)が従う。
+  以上で解答を完了する。
+\end{proof}
+
+
+\begin{rem*}[別解答]
+  \(A \dfn \Aut(\Aut(G)), B\dfn \INN(\Aut(G)), I\dfn \INN(\INN(G))\)とおく。
+  \(Z(G) = \{1\}\)より
+  \(Z(\Aut(G)) = \{\id_G\}\)であり、
+  前問より\(A\xrightarrow{\sim} \Aut(B), \Aut(G)\cong B, I\cong G\)
+  となる。
+  すると
+  \[
+  \begin{CD}
+    1 @>>> C_A(I) @>>> N_A(I) @>>> \left[\Aut(I)\cong \Aut(G)\right] \\
+    @. @VVV @VVV @VV{\sigma\mapsto i_{\sigma}}V \\
+    1 @>>> C_A(B) @>>> A @>{\cong}>> \left[\Aut(B)\cong \Aut(\Aut(G))\right]
+  \end{CD}
+  \]
+  という可換図式ができて、\(C_A(I)\subset C_A(B) = \{1\}\)が従う。
+  これは上の証明の後半で示していることである。
+  この部分の証明に\(\INN(G)\subset \Aut(G)\)が特性部分群であることは必要ない。
+
+  \(\sigma\in \Aut(G)\)と\(g\in G\)に対して
+  \[i_{\sigma}(i_g) = \sigma^{-1} i_g \sigma = \sigma \circ i_g \circ \sigma^{-1} = i_{\sigma(g)}\]
+  であるから、
+  \(i_{\sigma}^{-1}i_{i_g}i_{\sigma} = i_{i_{\sigma}(i_g)} = i_{i_{\sigma(g)}}\)
+  となって\(B = \INN(\Aut(G)) \subset N_A(I)\)が従う。
+  このことは\(N_A(I)\to \Aut(I)\)が全射であることを意味する。
+  よって以下において\(\Leftarrow\)側が成り立つことがわかる
+  (\(\Rightarrow\)側は上の図式の可換性より従う)：
+  \begin{itemize}
+    \item[ \ ]
+    \(N_A(I) = A\) \ \(\iff\) \
+    \(\INN(\Aut(G)) = \Aut(\Aut(G))\).
+  \end{itemize}
+  さらに、任意の\(\phi\in A\)と\(g\in G\)に対して
+  \(i_{\phi(i_g)} = \phi\circ i_{i_g}\circ \phi^{-1}\)
+  であるから、以下が成り立つ：
+  \begin{itemize}
+    \item[ \ ]
+    \(\INN(G) \ \text{char} \ \Aut(G)\) \ \(\iff\) \ \(N_A(I) = A\)
+  \end{itemize}
+  結局、\(\INN(\Aut(G)) = \Aut(\Aut(G))\)であることは
+  \(\INN(G)\subset \Aut(G)\)が特性部分群であることと同値であることがわかる。
+\end{rem*}
+
+
+\begin{rem*}
+  上の注意の記号のもと、
+  \(B = N_A(I)\)である。
+  \(B \subset N_A(I)\)は
+  任意の\(\sigma\in \Aut(G), g\in G\)に対して
+  \(i_{\sigma}(i_g) = i_{\sigma(g)}\)となることから明らかである。
+  逆に\(\phi\in N_A(I)\)とすると、
+  任意の\(g\in G\)に対して
+  \(i_{\phi(i_g)} = \phi\circ i_{i_g}\circ \phi^{-1} \in I\)
+  となることから
+  \(\phi(i_g)\in \INN(G)\)が成り立つ。
+  ここで\(\phi(i_g) = i_{\sigma_{\phi}(g)}\)
+  となる\(\sigma_{\phi}(g)\in G\)をとれば、
+  写像\(\sigma_{\phi}: G\to G\)は群準同型であり、
+  群準同型\(N_A(I) \to B, \phi\mapsto \sigma_{\phi}\)を得る。
+  この群準同型の核は\(C_A(I)\)であるからこれは単射で、
+  しかも包含射\(B\subset N_A(I)\)の左逆射となっているので、
+  とくに\(B = N_A(I)\)が従う。
+\end{rem*}
+
+
+
+\begin{prob}
+  \(G\)を非可換単純群とする。
+  このとき\(\Aut(G)\)のすべての自己同型は内部自己同型であることを示せ。
+\end{prob}
+
+\begin{proof}
+  前問より、\(\INN(G)\subset \Aut(G)\)が特性部分群であることを示せば良い。
+  \(\phi:\Aut(G) \xrightarrow{\sim} \Aut(G)\)を自己同型として、
+  \(\phi(\INN(G)) \neq \INN(G)\)となると仮定する。
+  \(\INN(G),\phi(\INN(G))\)は\(\Aut(G)\)の正規部分群であるから、
+  \(N_{\Aut(G)}(\INN(G)) = N_{\Aut(G)}(\phi(\INN(G))) = \Aut(G)\)となる。
+  \(G\)は非可換単純群なので、\(Z(G) = \{1\}\)である。
+  従って\(G\cong \INN(G)\)であり、
+  \(\INN(G)\)は単純群となる。
+  \(\phi(\INN(G)) \cap \INN(G)\lhd \INN(G)\)であり、
+  \(\INN(G)\)は単純群なので、
+  \(\phi(\INN(G)) \cap \INN(G) = \{1\}\)となる。
+  以上より、
+  \[
+  \phi(\INN(G)) \cap \INN(G) = \{1\}, \ \
+  \INN(G) \subset N_{\Aut(G)}(\phi(\INN(G))), \ \
+  \phi(\INN(G)) \subset N_{\Aut(G)}(\INN(G)),
+  \]
+  が成り立つ。
+  ここで本文補題(3.16)を用いると、
+  \(\INN(G)\)の任意の元と
+  \(\phi(\INN(G))\)の任意の元は交換可能、
+  すなわち、\(G\cong \phi(\INN(G)) \subset C_{\Aut(G)}(\INN(G))\)となることが従う。
+  よって問題1.6.1より\(G = \{1\}\)となって\(G\)がアーベルでないことに反する。
+  よって\(\phi(\INN(G))\cap \INN(G) = \INN(G)\)となり、
+  \(\INN(G)\subset \Aut(G)\)は特性部分群であることが従う。
+  以上で解答を完了する。
+\end{proof}
+
+
+
+\begin{prob}
+  \(\sigma\)を群\(G\)の正規自己準同型として、
+  \(H\dfn \sigma(G)\)とする。
+  以下の問いに答えよ。
+  \begin{enumerate}
+    \item
+    \(g\in G\)とする。
+    \(\sigma(g) \dfn z(g)^{-1}g\)
+    となるように\(z:G\to G\)を定義すると、
+    \(\im(z) \subset C_G(H)\)が成り立つ。
+    これを示せ。
+    \item
+    \(H\lhd G\)であることを示せ。
+    さらに
+    \(G = HC_G(H), H\cap C_G(H) = Z(H) \subset Z(G)\)
+    が成り立つことを示せ。
+    \item
+    \(H,C_G(H)\)ともに\(\sigma\)不変であることを示せ。
+    さらに
+    \(\rho\dfn \sigma|_{C_G(H)}: C_G(H)\to C_G(H),
+    \zeta \dfn z|_H:H\to C_G(H)\)とおくとき、
+    \(\im(\rho)\subset Z(H)\)であり、そして
+    任意の\(h\in Z(H)\)に対して
+    \(h = \zeta(h)\rho(h)\)
+    が成り立つことを示せ。
+    \item
+    逆に\(G = HC_G(H)\)となる群\(G\)と正規部分群\(H\lhd G\)と
+    準同型\(\zeta:H\to Z(H)\)と
+    準同型\(\rho:C_G(H) \to Z(H)\)が与えられていて、
+    任意の\(h\in H\)に対して
+    \(h = \zeta(h)\rho(h)\)を満たしているとき、
+    任意の元\(g = ch\in G, c\in C_G(H), h\in H\)に対して
+    \(\sigma(g) = \rho(c)\zeta(h)^{-1}h\)
+    として\(\sigma:G\to G\)を定義すれば、
+    \(\sigma\)は正規準同型であり、
+    \(\im(\sigma)\subset H\)である。
+    これを示せ。
+  \end{enumerate}
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+
+
+\end{document}

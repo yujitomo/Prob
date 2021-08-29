@@ -274,6 +274,7 @@
 
 \newcommand{\resol}{\mathrm{Resol}}
 \newcommand{\spectm}{\mathrm{Sp}}
+\newcommand{\vol}{\mathrm{vol}}
 
 
 
@@ -1381,14 +1382,15 @@
 
 
 
-\subsection{各種ノルムの基本的な性質}
+\subsection{\(L^p\)空間}
 
 
 \begin{rem}
   \((M,g)\)を向きづけ可能なリーマン多様体、
   \(E\)をその上の複素ベクトル束、
   \(h\)を\(E\)上のエルミート計量として、
-  \(\mu_g\)を自然な測度とする。
+  \(\mu\)を\(M\)上の測度とする
+  (この時点では\(g\)から定まる標準的な測度であるとは仮定しない)。
   可測関数としての\(E\to M\)の右逆元\(s:M\to E\)のことを
   単に\textbf{可測section}と言うことにする。
   可測sectionのなす線形空間を\(\mcL(E)\)で表す。
@@ -1405,97 +1407,129 @@
   \((M,g)\)を向きづけ可能なリーマン多様体、
   \(E\)をその上の複素ベクトル束、
   \(h\)を\(E\)上のエルミート計量として、
-  \(\mu_g\)を自然な測度とする。
+  \(\mu\)を\(M\)上の測度とする。
   可測section \(s:M\to E\)
   (可測関数であって\(E\to M\)の右逆元になっている関数)
   に対して、
   \begin{align*}
-    \|s\|_{L^p(E)} &\dfn \left( \int_M h(s,s)^{p/2}d\mu_g \right)^{1/p}, &(p\neq \infty), \\
-    \|s\|_{L^{\infty}(E)} &\dfn \inf\{C\geq 0 | \|h(s,s)\|\leq C, (a.e.)\}, &(p=\infty),
+    \|s\|_{L^p(E),\mu} &\dfn \left( \int_M h(s,s)^{p/2}d\mu \right)^{1/p}, &(p\neq \infty), \\
+    \|s\|_{L^{\infty}(E),\mu} &\dfn \inf\{C\geq 0 | |h(s,s)|\leq C, (\mu\text{-a.e.})\}, &(p=\infty),
   \end{align*}
   と置く。
   これを\textbf{\(L^p\)-ノルム}と言う。
   \begin{align*}
-    \mcL^p(E) &\dfn \left\{ s:M\to E \middle| \text{\(\|s\|_p<\infty\)となる可測section}\right\}, \\
+    \mcL^p(E) &\dfn \left\{ s:M\to E \middle| \text{\(\|s\|_{L^p(E),\mu} < \infty\)となる可測section}\right\}, \\
     L^p(E) &\dfn \mcL^p(E)/(\|-\|_{L^p}=0),
   \end{align*}
   と定める。
-  ペア\((L^p(E),\|-\|_{L^p})\)を\textbf{\(L^p\)-空間}と言う。
+  \((L^p(E),\mu,\|-\|_{L^p(E),\mu})\)を\textbf{\(L^p\)-空間}と言う。
+  \(\mu\)としてリーマン計量\(g\)から自然に定まるものを考えているときは
+  しばしば\(\mu\)を省略する。
   \(L^p(M)\dfn L^p(M\times \C)\)と書く。
   定義より、
-  \(\|s\|_{L^p(E)} = \|h(s,s)\|_{L^p(M)}\)
+  \(\|s\|_{L^p(E),\mu} = \|h(s,s)\|_{L^p(M),\mu}\)
   が成り立つ。
 
   \(p=2\)とする。
   \[
-  (s,t)_{L^2(E)} \dfn \int_M h(s,t)d\mu
+  (s,t)_{L^2(E),\mu} \dfn \int_M h(s,t)d\mu
   \]
   と定義し、これを\(L^2\)-内積と言う。
-  定義より、\(\|s\|_{L^2(E)} = \sqrt{(s,s)_{L^2(E)}}\)が成り立つ。
+  定義より、\(\|s\|_{L^2(E),\mu} = \sqrt{(s,s)_{L^2(E)}}\)が成り立つ。
 \end{defi}
 
 
 
 \begin{rem}
   \(L^p(E)\)の元は実際には\(\mcL^p(E)\)の元であるかのように扱うが、
-  実際には代表元の取り方はほとんど至るところ\(0\)な関数を除いて一意的なので、
+  実際には代表元の取り方は\(\mu\text{-a.e.}\)に\(0\)な関数を除いて一意的なので、
   問題は生じない。
 \end{rem}
 
 
+\begin{rem}
+  \(\Gamma_c(M,E)\)を\(M\)のコンパクト部分集合の外で\(0\)となる
+  \(C^{\infty}\)切断全体のなす線形空間とする。
+  このとき、合成\(\Gamma_c(M,E)\xrightarrow{\subset} \mcL^p(E) \to L^p(E)\)は単射である。
+  それは、連続で\(\neq 0\)な切断\(s:M\to E\)は
+  ある点\(x\in M\)の近傍上でつねに\(s\neq 0\)であるので、
+  \(h(s,s)\)の積分は正となる。
+  実際には、軟化することによって、
+  \(\Gamma_c(M,E)\subset L^p(E)\)は稠密部分集合であることが示される (次の小節で証明する)。
+  とくに、\(L^p(E)\)は\(\Gamma_c(E)\)の\(L^p\)-ノルムによる完備化と自然に同型である。
+\end{rem}
+
+
 \begin{lem}
-  \autoref{Lp def}の状況設定のもとで以下の主張が成り立つ：
+  \(1\leq p\leq \infty\)、
+  \((M,g)\)を向きづけ可能なリーマン多様体、
+  \(E\)をその上の複素ベクトル束、
+  \(h\)を\(E\)上のエルミート計量として、
+  \(\mu\)を\(M\)上の測度とする。
+  このとき、以下の主張が成り立つ：
   \begin{enumerate}
     \item \label{Schwarz ineq}
     (\textbf{Schwarzの不等式}).
     \(s,t\in L^2(E)\)に対して、
-    \(|(s,t)_{L^2(E)}| \leq \|s\|_{L^2(E)}\|t\|_{L^2(E)}\)が成り立つ。
+    \(|(s,t)_{L^2(E)}| \leq \|s\|_{L^2(E),\mu}\|t\|_{L^2(E),\mu}\)が成り立つ。
     特に、\(L^2(E)\)ノルムはノルムである。
     \item \label{L2 is Hilbert}
-    \(L^2(E)\)はHilbert空間である。
+    \((L^2(E),\mu,(-,-)_{L^2(E)})\)はHilbert空間である。
     \item \label{Holder ineq}
     (\textbf{H\"{o}lderの不等式}).
-    \(p,q,r\geq 1\)は\(1/p+1/q=1/r\)を満たす実数であるとする。
-    このとき、任意の\(f\in \mcL^p(M), g\in \mcL^q(M)\)に対し
-    \(\|fg\|_{L^r}\leq \|f\|_{L^p}\|g\|_{L^q}\)が成り立つ。
-    特に、\(st\in \mcL^r(E)\)である。
+    \(p,q,r\geq 1\)は\(1/p+1/q=1/r\)を満たす実数、
+    \((E_1,h_1), (E_2,h_2)\)をエルミートベクトル束、
+    \(h\)を\(E_1\otimes E_2\)上のエルミート計量とする。
+    このとき、任意の\(s\in L^p(E_1), t\in L^q(E_2)\)に対して
+    \(\|s\otimes t\|_{L^r(E_1\otimes E_2),\mu} \leq \|s\|_{L^p(E_1),\mu}\|t\|_{L^q(E_2),\mu}\)が成り立つ。
+    特に、\(s\otimes t\in \mcL^r(E_1\otimes E_2)\)である。
+    \item \label{Lp inclusion}
+    \(\vol_{\mu}(M) \dfn \int_Md\mu = \mu(M) < \infty\)と仮定する。
+    このとき、任意の\(1\leq p < q\)と
+    任意の\(s\in L^p(E)\)に対して
+    \(\|s\|_{L^p(E),\mu} \leq \vol_{\mu}(M)^{pq/(q-p)}\|s\|_{L^q(E),\mu}\)
+    が成り立つ。
+    とくに、\(1\leq p < q\)であれば\(L^q(E) \subset L^p(E)\)が成り立つ。
     \item \label{Lp is Banach}
-    任意の\(1\leq p\leq \infty\)に対して\((L^p(E),\|-\|_{L^p}\)はBanach空間である。
+    任意の\(1\leq p\leq \infty\)に対して\((L^p(E),\mu,\|-\|_{L^p(E),\mu})\)はBanach空間である。
   \end{enumerate}
 \end{lem}
 
 \begin{proof}
   \ref{Schwarz ineq}を示す。
   まず適当に\(e^{i\theta}\)倍を施すことによって
-  \((s,t)_{L^2(E)}\in \R\)であると仮定して良い。
+  \((s,t)_{L^2(E),\mu}\in \R\)であると仮定して良い。
   次に任意の実数\(\lambda\in \R\)に対して
   \[
-  0\leq \|\lambda s+t\|_{L^2(E)}^2
+  0\leq \|\lambda s+t\|_{L^2(E),\mu}^2
   = \int_M h(\lambda s+t,\lambda s+t)d\mu
-  = \lambda^2 \|s\|_{L^2(E)}^2 + 2\lambda (s,t)_{L^2(E)} + \|t\|_{L^2(E)}^2
+  = \lambda^2 \|s\|_{L^2(E),\mu}^2 + 2\lambda (s,t)_{L^2(E),\mu} + \|t\|_{L^2(E),\mu}^2
   \]
   が成り立つので、これを\(\lambda\)に関する二次関数と見ると、
-  判別式\(=\|s\|_{L^2(E)}^2\|t\|_{L^2(E)}^2 - (s,t)_{L^2(E)}^2 \geq 0\)となる。
+  判別式\(= \|s\|_{L^2(E),\mu}^2\|t\|_{L^2(E),\mu}^2 - (s,t)_{L^2(E),\mu}^2 \geq 0\)となる。
   以上で\ref{Schwarz ineq}の証明を完了する。
 
   \ref{L2 is Hilbert}を示す。
   \(L^2(E)\)ノルムに関して\(s_n\to s, t_n\to t\)であるとすると、
-  \[
-  |(s_n,t_n)_{L^2(E)} - (s,t)_{L^2(E)}|
-  = |(s_n-s,t_n)_{L^2(E)} + (s,t_n-t)_{L^2(E)}|
-  \leq \|s_n-s\|_{L^2(E)}\|t_n\|_{L^2(E)} + \|s\|_{L^2(E)}\|t_n-t\|_{L^2(E)}
-  \to 0, \ \ (n\to\infty)
-  \]
-  となるので\((s_n,t_n)_{L^2(E)}\to (s,t)_{L^2(E)}\)が成り立つ。
+  Schwarzの不等式より、
+  \begin{align*}
+    |(s_n,t_n)_{L^2(E),\mu} - (s,t)_{L^2(E),\mu}|
+    &= |(s_n-s,t_n)_{L^2(E),\mu} + (s,t_n-t)_{L^2(E),\mu}| \\
+    &\leq \|s_n-s\|_{L^2(E),\mu}\|t_n\|_{L^2(E),\mu} + \|s\|_{L^2(E)}\|t_n-t\|_{L^2(E),\mu}
+    \to 0, \ \ (n\to\infty)
+  \end{align*}
+  となるので、\((s_n,t_n)_{L^2(E),\mu} \to (s,t)_{L^2(E),\mu}\)が成り立つ。
   以上で\ref{L2 is Hilbert}の証明を完了する。
 
   \ref{Holder ineq}を示す。
-  \(a\dfn \|s\|_{L^p} \neq 0, b\dfn \|t\|_{L^q}\neq 0\)と置く。
+  \(a\dfn \|s\|_{L^p,\mu} \neq 0, b\dfn \|t\|_{L^q,\mu}\neq 0\)と置く。
   もし\(a,b\)のうちの一方が\(0\)なら、
   \(s,t\)のうちの一方はほとんど至る所で\(0\)であるため、
   \(st = 0, (a.e.)\)となる。
   よって\(a,b > 0\)として良い。
 
+  まず\(E_1 = E_2 = M\times \C\)の場合に証明する。
+  このとき\(s,t\)は\(M\)上の可測関数である。
   \(\log\)は上に凸なので、任意の\(x,y > 0\)に対して
   \(\log(rx^p/p+ry^q/q) \geq (r/p)\log x^p + (r/q)\log y^q = \log (xy)^r\)
   が成り立つ。
@@ -1503,65 +1537,237 @@
   \(x^p/p + y^q/q \geq (xy)^r/r\)が成り立つ。
   従って、
   \[
-  \int_M \left| \frac{fg}{ab} \right|^r d\mu_g
-  \leq \int_M \frac{r}{p}\left| \frac{f}{a} \right|^p d\mu_g
-  + \int_M \frac{r}{q}\left| \frac{g}{b} \right|^q d\mu_g
+  \int_M \left| \frac{st}{ab} \right|^r d\mu
+  \leq \int_M \frac{r}{p}\left| \frac{s}{a} \right|^p d\mu
+  + \int_M \frac{r}{q}\left| \frac{t}{b} \right|^q d\mu
   = \frac{r}{p} + \frac{r}{q} = 1
   \]
   が成り立つ。
-  整理すると、\(\|fg\|_{L^r(M)} \leq ab = \|f\|_{L^p(M)}\|g\|_{L^q(M)}\)が従う。
+  整理すると、\(\|st\|_{L^r(M),\mu} \leq ab = \|s\|_{L^p(M),\mu}\|t\|_{L^q(M),\mu}\)が従う。
+
+  次に一般の場合に証明する。
+  \(s\in L^p(E_1), t\in L^q(E_2)\)であるから、
+  \(\sqrt{|h_1(s,s)|}\in L^p(M), \sqrt{|h_2(t,t)|}\in L^q(M)\)となることに注意する。
+  \(h(s\otimes t,s\otimes t) = h_1(s,s)h_2(t,t)\)であるから、
+  \begin{align*}
+    \|s\otimes t\|_{L^r(E_1\otimes E_2),\mu}
+    &= \|\sqrt{|h_1(s,s)|}\sqrt{|h_2(t,t)|}\|_{L^r(M),\mu} \\
+    &\leq \|\sqrt{|h_1(s,s)|}\|_{L^p(M),\mu}\|\sqrt{|h_2(t,t)|}\|_{L^q(M),\mu} \\
+    &= \|s\|_{L^p(E_1),\mu}\|t\|_{L^q(E_2),\mu}
+  \end{align*}
+  が成り立つ。
   以上で\ref{Holder ineq}の証明を完了する。
 
+  \ref{Lp inclusion}は\ref{Holder ineq}よりただちに従う。
+
   \ref{Lp is Banach}を示す。
-  まず\(c\in \R\) (または\(\in \C\)) と\(s\in \mcL^p(E)\)に対して
-  \(\|cs\|_{L^p(E)} = |c|\|s\|_{L^p(E)}\)が成り立つので\(cs\in \mcL^p(E)\)である。
-  次に\(s,t\in \mcL^p(E)\)に対して、
-  関数\((-)^p\)の凸性、
-  \(\sqrt{a+b} \leq \sqrt{a}+\sqrt{b}, (\forall a,b\geq 0)\)、
+  まず\(c \in \C\)と\(s\in \mcL^p(E)\)に対して
+  \(\|cs\|_{L^p(E),\mu} = |c|\|s\|_{L^p(E),\mu}\)が成り立つので\(cs\in \mcL^p(E)\)である。
+  次に\(s,t\in \mcL^p(E)\)を任意にとる。
+  関数\((-)^p\)の凸性
+  \(\sqrt{a+b} \leq \sqrt{a}+\sqrt{b}, (\forall a,b\geq 0)\)
   より、
   \begin{align*}
-    \|s+t\|_{L^p(E)}^p
-    &= \left(\int_M (\sqrt{h(s,s) + 2\Re h(s,t) + h(t,t)})^p d\mu_g\right)^{1/p} \\
+    &\|s+t\|_{L^p(E),\mu}^p \\
+    &= \left(\int_M (\sqrt{h(s,s) + 2\Re(h(s,t)) + h(t,t)})^p d\mu\right)^{1/p} \\
     &\overset{\bigstar}{\leq}
-    \left(\int_M \sqrt{4^{-p+1}(h(s,s)^p + 2(\Re h(s,t))^p + h(t,t)^p)} d\mu_g \right)^{1/p} \\
+    \left(\int_M \sqrt{4^{-p+1}(h(s,s)^p + 2(\Re(h(s,t)))^p + h(t,t)^p)} d\mu \right)^{1/p} \\
     &\leq
-    2^{-1+1/p}\left(\int_M \sqrt{h(s,s)^p + 2|h(s,t)|^p + h(t,t)^p} d\mu_g \right)^{1/p} \\
+    2^{-1+1/p}\left(\int_M \sqrt{h(s,s)^p + 2|h(s,t)|^p + h(t,t)^p} d\mu \right)^{1/p} \\
     &\overset{\spadesuit}{\leq}
-    2^{-1+1/p}\left(\int_M \sqrt{h(s,s)}^p d\mu_g + \int_M \sqrt{2|h(s,t)|^p} d\mu_g
-    + \int_M \sqrt{h(t,t)}^p d\mu_g \right)^{1/p} \\
+    2^{-1+1/p}\left(\int_M \sqrt{h(s,s)}^p d\mu + \int_M \sqrt{2|h(s,t)|^p} d\mu
+    + \int_M \sqrt{h(t,t)}^p d\mu \right)^{1/p} \\
     &\overset{\clubsuit}{\leq}
-    2^{-1+1/p}\left( \|s\|_{L^p(E)}^p + \|t\|_{L^p(E)}^p + \int_M \sqrt{2|h(s,t)|^p} d\mu_g \right)^{1/p} \\
-    2^{p-1}(\|s\|_{L^p(E)}^p + \|t\|_{L^p(E)}^p) < \infty
+    2^{-1+1/p}\left( \|s\|_{L^p(E),\mu}^p + \|t\|_{L^p(E),\mu}^p +
+    \sqrt{2}\int_M (|h(s,s)h(t,t)|)^{p/4} d\mu \right)^{1/p} \\
+    &\overset{\heartsuit}{\leq}
+    2^{-1+1/p}\left( \|s\|_{L^p(E),\mu}^p + \|t\|_{L^p(E),\mu}^p +
+    \sqrt{2}^{-1}\int_M \sqrt{|h(s,s)|}^pd\mu
+    + \sqrt{2}^{-1}\int_M \sqrt{|h(t,t)|}^pd\mu \right)^{1/p} \\
+    &= (2^{-1+1/p}+2^{-1/2}) \left( \|s\|_{L^p(E),\mu}^p + \|t\|_{L^p(E),\mu}^p\right) < \infty
   \end{align*}
   が成り立つ。
   ただしここで\(\bigstar\)の箇所で関数\(x^p)\)の凸性を使い、
   \(\spadesuit\)の箇所で不等式\(\sqrt{\sum a_i} \leq \sum \sqrt{a_i},(\forall a_i \geq 0)\)を使い、
   \(\clubsuit\)の箇所でSchwartの不等式を使い、
-  が成り立ち、\(s+t\in \mcL^p(E)\)となる。
-  次に、任意の\(s,t\in \mcL^p(E)\)に対して、H\"{o}lderの不等式より、
+  \(\heartsuit\)の箇所で相加相乗平均の関係を使った。
+  以上より\(s+t\in \mcL^p(E)\)となる。
+
+  次に、任意の\(s,t\in \mcL^p(E)\)を任意にとる。
+  Schwarzの不等式より、
+  \(|\Re(h(s,t))| \leq \sqrt{|h(s,s)||h(t,t)|}\)が成り立つ。
+  従って、
   \begin{align*}
-    \|s+t\|_{L^p(E)}^p &= \|h(s+t,s+t)^{1/p}h(s+t,s+t)^{(p-1)/p}\|_{L^p(M)}^p \\
-    &\leq \|h(s+t,s+t)^{1/p}\|_{L^p(M)}^p
-    \int_M |s+t| &\leq
+    \sqrt{|h(s+t,s+t)|}
+    &\leq \sqrt{|h(s,s)| + 2|\Re(h(s,t))| + |h(t,t)|} \\
+    &\leq \sqrt{|h(s,s)| + 2\sqrt{|h(s,s)||h(t,t)|} + |h(t,t)|} \\
+    &= \sqrt{|h(s,s)|} + \sqrt{|h(t,t)|}
   \end{align*}
+  が成り立つ (\(h\)に対する三角不等式)。
+  よって、
+  \begin{align*}
+    \|s+t\|_{L^p(E),\mu}^p
+    &= \int_M\sqrt{|h(s+t,s+t)|}\sqrt{|h(s+t,s+t)|}^{p-1} d\mu \\
+    &\overset{\bigstar}{\leq}
+    \int_M\left(\sqrt{|h(s,s)|} + \sqrt{|h(t,t)|}\right) \sqrt{|h(s+t,s+t)|}^{p-1} d\mu \\
+    &= \|\sqrt{|h(s,s)|}\sqrt{|h(s+t,s+t)|}^{p-1}\|_{L^1(M),\mu}
+    + \|\sqrt{|h(t,t)|}\sqrt{|h(s+t,s+t)|}^{p-1}\|_{L^1(M),\mu} \\
+    &\overset{\spadesuit}{\leq}
+    \|\sqrt{|h(s,s)|}\|_{L^p(M),\mu}\|\sqrt{|h(s+t,s+t)|}^{p-1}\|_{L^{p/(p-1)}(M),\mu} \\
+    &\ \ \ + \|\sqrt{|h(t,t)|}\|_{L^p(M),\mu}\|\sqrt{|h(s+t,s+t)|}^{p-1}\|_{L^{p/(p-1)}(M),\mu} \\
+    &= \left( \|s\|_{L^p(E),\mu} + \|t\|_{L^p(E)}\right)\|s+t\|_{L^p(E),\mu}^{p-1}
+  \end{align*}
+  が従う。
+  ただしここで\(\bigstar\)の箇所は\(h\)に対する三角不等式を用い、
+  \(\spadesuit\)の箇所は\(q=1/(p-1), r=1, E = M\times \C\)に対するH\"{o}lderの不等式を用いた。
+  この不等式の両辺を\(\|s+t\|_{L^p(E),\mu}^{p-1}\)で割れば、
+  \(\|s+t\|_{L^p(E),\mu} \leq \|s\|_{L^p(E),\mu} + \|t\|_{L^p(E),\mu}\)を得る。
+  以上より、\((L^p(E),\mu,\|-\|_{L^p(E),\mu})\)はノルム空間となる。
+
+  最後に\((L^p(E),\mu,\|-\|_{L^p(E),\mu})\)が完備であることを示す。
+  \(s_n\in L^p(E)\)をCauchy列とする。
+  このとき、\(\|s_n\|_{L^p(E),\mu}\)もCauchy列であるから、
+  ある\(C > 0\)が存在して
+  \(\|s_n\|_{L^p(E),\mu} < C\)が成り立つ。
+  ここで\(M\)の任意の相対コンパクトな開集合\(U\)上で
+  \[\|s_n|_U\|_{L^p(E|_U),\mu|_U} < \|s_n\|_{L^p(E),\mu} < C = \|\frac{C}{\mu(U)}\|_{L^p(U),\mu|_U}\]
+  となるので、
+  従って、優収束定理より、
+  \(s_n|_U\)は\(U\)上ほとんど至るところである可測切断\(s_U\)に各点収束して、
+  さらに\(\|s_n|_U\|_{L^p(E|_U),\mu|_U} \to \|s_U\|_{L^p(E|_U),\mu|_U} < \infty, (n\to \infty)\)
+  が成り立つ。
+  よってとくに\(s_n\)は\(M\)上ほとんど至る所である可測切断\(s\)に各点収束し、
+  さらに任意の相対コンパクトな開集合\(U\subset M\)に対して
+  \(\|s_n|_U\|_{L^p(E|_U),\mu|_U} \to \|s|_U\|_{L^p(E|_U),\mu|_U}, (n\to \infty)\)が成り立つ。
+  ここで、任意の相対コンパクトな開集合\(U\subset M\)と任意の\(n\)に対して
+  \(\|s_n|_U\|_{L^p(E|_U),\mu|_U} < C\)であるから、
+  \(\|s\|_{L^p(E),\mu} = \sup_U\|s|_U\|_{L^p(E|_U),\mu|_U} \leq C\)が成り立ち、
+  \(\|s_n\|_{L^p(E),\mu} \to \|s\|_{L^p(E),\mu}, (n\to \infty)\)と
+  \(s\in L^p(E)\)が従う。
+  この\(s\)が\(L^p\)ノルムの意味での\(s_n\)の極限であることを示すことが残っている。
+  \[
+  \left| \|s_n - s\|_{L^p(E),\mu} - \|s_m - s\|_{L^p(E),\mu} \right|
+  \leq \| (s_n - s) + (s - s_m) \|_{L^p(E),\mu}
+  = \|s_n-s_m\|_{L^p(E),\mu} \to 0 ,  \ \ (n,m\to\infty)
+  \]
+  となるので\(\|s_n-s\|_{L^p(E),\mu}\)は\(\R\)のCauchy列である。
+  とくに、先ほどと同様に、
+  優収束定理によって\(s_n-s\)は\(0\)にほとんど至るところで各点収束して、
+  さらに
+  \[\|s_n-s\|_{L^p(E),\mu} \to \|0\|_{L^p(E),\mu} = 0, \ \ (n\to \infty)\]
+  が成り立つ。
+  これは\(s_n\to s\)が\(L^p\)ノルムに関する収束であることを意味している。
+  よって\((L^p(E),\mu,\|-\|_{L^p(E),\mu})\)は完備であることが示された。
+  以上ですべての主張の証明を完了する。
 \end{proof}
 
 
-\begin{rem}
-  合成\(\Gamma(M,E)\xrightarrow{\subset} \mcL^p(E) \to L^p(E)\)は単射である。
-  それは、連続で\(\neq 0\)な切断\(s:M\to E\)は
-  ある点\(x\in M\)の近傍上でつねに\(s\neq 0\)であるので、
-  \(h(s,s)\)の積分は正となる。
-  実際には、軟化することによって、
-  \(\Gamma(M,E)\subset L^p(E)\)は稠密部分集合であることが示される。
-  とくに、\(L^p(E)\)は\(\Gamma(E)\)の\(L^p\)-ノルムによる完備化と自然に同型である。
-\end{rem}
 
+
+
+
+
+
+\subsection{Mollifier}
+
+
+この小節では、Friedrichsの軟化作用素 (mollifier) を用いて
+\(\Gamma_0(M,E)\subset L^p(E)\)が稠密であることを示す。
+軟化作用素はあとで弱解の正則性を証明する際にも用いられる。
+
+この節では以下の記号を固定する。
+\(\gamma \in C_c^{\infty}(\R^N)\)を、次を満たす関数とする：
+\begin{itemize}
+  \item
+  \(\gamma(x) \geq 0, \ (\forall x\in \R^N)\),
+  \item
+  \(\gamma(x) = \gamma(-x), \ (\forall x\in \R^N)\),
+  \item
+  \(|x| \geq 1\)ならば\(\gamma(x) = 0\),
+  \item
+  \(\int_{\R^N}\gamma(x) dx = 1\).
+\end{itemize}
+各\(\ep > 0\)に対して
+\(\gamma_{\ep}(x) \dfn \frac{1}{\ep^n}\gamma(\frac{x}{\ep})\)とおく。
+このとき、\(\int_{\R^N}\gamma_{\ep}(x)dx = 1\)が成り立つ。
+
+\begin{defi}
+  \((M,g)\)を向きづけ可能な\textbf{コンパクト}リーマン多様体、
+  \(E\)をその上のランク\(r\)の複素ベクトル束、
+  \(h\)を\(E\)上のエルミート計量、
+  \(\mu\)を\(M\)上の測度とする。
+
+  まず、\(M\)はコンパクトなので、
+  ある有限個のチャート\((U_a,\varphi_a:U_a\to \varphi_a(U_a)), (a\in A)\)が存在して、
+  \(E|_{U_a}\cong U_a\times \C^N\)となる。
+  \((U_a)_{a\in A}\)に従属する\(1\)の分割
+  \((\rho_a)_{a\in A}\)を一つとり、
+  \[\Supp(\rho_a) \subset V_a \subset \overline{V}_a \subset W_a\subset \overline{W}_a\subset U_a\]
+  となる開集合\(V_a,W_a\)をそれぞれとる。
+  このとき、\(M\)が有限個の\(U_a\)で被覆されていることから、
+  ある\(\ep_0 > 0\)が存在して、
+  任意の\(a\in A\)に対して
+  \[d_{\R^n}(\varphi_a(\overline{V}_a),\R^n\setminus \varphi_a(W_a)) > \ep_0\]
+  が成り立つ。
+  ここで\(n = \dim (M)\)であり、
+  \(d_{\R^n}\)は\(\R^n\)の標準的な距離である。
+  \(E\)の\(U_a\)上での正規直交フレーム\(e_1^a,\cdots,e_N^a\)を一つ固定する。
+
+  次に、任意に切断\(s\in \Gamma(M,E)\)をとる。
+  \(s|_{U_a} = {s'}_a^ie_i^a\)となるように\({s'}_a^i\)をとってから
+  \(s_a^i\dfn \sqrt{\rho_a}s_a^i\)と定めると、
+  \(s_a^i\)は\(M\)上の\(\C\)に値をとる\(C^{\infty}\)関数とみなせて、
+  \(\Supp(s_a^i)\subset \Supp(\rho_a)\subset V_a\)が成り立つ。
+  各\(x\in M\)と\(\ep\in (0,\ep_0)\)に対して
+  \[
+  F_{\ep}(s)(x) \dfn \sum_{a\in A}\sum_{i=1}^r
+  \varphi_a\left(\int_{y\in \R^n}\gamma_{\ep}(x-y)s_a^i(\varphi_a^{-1}(y))dy\right)e_a
+  \]
+
+  \(s_a \dfn s\rho_a\)とおくと、
+  \(\Supp(s_a) \subset \Supp(\rho_a)\)が成り立つ。
+  よって、ある\(\C\)に値をとる\(M\)上の\(C^\infty\)関数\(s_a^i\)が存在して、
+  \(s_a|_{U_a} = s_a^i|_{U_a}e_i\)が成り立つ。
+
+\end{defi}
+
+
+\begin{lem}
+  \(p\in L^1(\R^N), f\in L^p(\R^N)\)とする。
+  \[
+  (p*f)(x) \dfn \int_{\R^N}p(x-y)f(y)dy
+  \]
+  で定義される関数\(p*f\)について、
+  \(\|p*f\|_{L^2} \leq \|p\|_{L^1}\|f\|_{L^2}\)が成り立つ。
+  特に、\(p*f\in L^2(\R^N)\)が成り立つ。
+\end{lem}
+
+\begin{proof}
+  \(|p(x-y)f(y)|^2 = |p(x-y)||p(x-y)f(y)^2|\)と分解して
+  \begin{align*}
+    \|p*f\|_{L^2}^2
+    &= \int_{\R^N}p(x-y)^2f(y)^2dy \\
+    &\leq \int_{\R^N}|p(x-y)|dy \times \int_{\R^N}|p(x-y)f(y)^2|dy \\
+    &\leq \|p\|_{L^1} \int_{\R^N}|p(x-y)f(y)^2|dy
+  \end{align*}
+  が成り立つ。
+  ここで
+\end{proof}
+
+
+
+
+
+
+
+
+
+\subsection{Sobolev空間とH\"{o}lderノルム}
 
 
 \begin{defi}[弱微分]
-  \((M,g)\)をリーマン多様体 (複素の場合はK\"{a}hler)、
-  \((E,h)\)を計量ベクトル束 (複素の場合はエルミート)、
+  \((M,g)\)をリーマン多様体、
+  \((E,h)\)をエルミートベクトル束、
   \(\nabla\)を\(h\)と可換な\(E\)上の接続とする。
   \(p\)乗可積分な可測切断\(s\in L^p(E)\)と
   ベクトル場\(X\in \Gamma(TM)\)に対し、
@@ -1587,7 +1793,8 @@
   \]
   そして
   \(
-  \|s\|_{W^{k,p}} \dfn \sup_{[\bfX] = k,X_i\neq 0}\sum_{i=0}^k \frac{\|\nabla_{\bfX_i}s\|_p}{\|\bfX_i\|_p},
+  \|s\|_{W^{k,p}} \dfn
+  \sup_{[\bfX] = k,X_i\neq 0}\sum_{i=0}^k \frac{\|\nabla_{\bfX_i}s\|_p}{\|\bfX_i\|_p},
   \)
   と定義する。
   ノルム空間\((W^{k,p}(E),\|-\|_{W^{k,p}})\)を\textbf{Sobolev空間}と言う。
@@ -1630,34 +1837,6 @@
   を階数\(k\)指数\(\ep\)の\textbf{H\"{o}lderノルム}と言う。
 \end{defi}
 
-
-
-
-
-\subsection{軟化}
-
-
-\begin{lem}
-  \(p\in L^1(\R^N), f\in L^2(\R^N)\)とする。
-  \[
-  (p*f)(x) \dfn \int_{\R^N}p(x-y)f(y)dy
-  \]
-  で定義される関数\(p*f\)について、
-  \(\|p*f\|_{L^2} \leq \|p\|_{L^1}\|f\|_{L^2}\)が成り立つ。
-  特に、\(p*f\in L^2(\R^N)\)が成り立つ。
-\end{lem}
-
-\begin{proof}
-  \(|p(x-y)f(y)|^2 = |p(x-y)||p(x-y)f(y)^2|\)と分解して
-  \begin{align*}
-    \|p*f\|_{L^2}^2
-    &= \int_{\R^N}p(x-y)^2f(y)^2dy \\
-    &\leq \int_{\R^N}|p(x-y)|dy \times \int_{\R^N}|p(x-y)f(y)^2|dy \\
-    &\leq \|p\|_{L^1} \int_{\R^N}|p(x-y)f(y)^2|dy
-  \end{align*}
-  が成り立つ。
-  ここで
-\end{proof}
 
 
 
